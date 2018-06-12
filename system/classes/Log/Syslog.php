@@ -1,3 +1,8 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
 
-class Log_Syslog extends Kohana_Log_Syslog {}
+defined('SYSPATH') OR die('No direct script access.');
+
+class Log_Syslog extends Kohana_Log_Syslog
+{
+    
+}

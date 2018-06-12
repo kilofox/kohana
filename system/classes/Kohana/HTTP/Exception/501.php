@@ -1,10 +1,12 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
 
-class Kohana_HTTP_Exception_501 extends HTTP_Exception {
+defined('SYSPATH') OR die('No direct script access.');
 
-	/**
-	 * @var   integer    HTTP 501 Not Implemented
-	 */
-	protected $_code = 501;
+class Kohana_HTTP_Exception_501 extends HTTP_Exception
+{
+    /**
+     * @var   integer    HTTP 501 Not Implemented
+     */
+    protected $_code = 501;
 
 }

@@ -1,4 +1,6 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
+
+defined('SYSPATH') OR die('No direct script access.');
 /**
  * UTF8::rtrim
  *
@@ -10,13 +12,13 @@
  */
 function _rtrim($str, $charlist = NULL)
 {
-	if ($charlist === NULL)
-		return rtrim($str);
+    if ($charlist === NULL)
+        return rtrim($str);
 
-	if (UTF8::is_ascii($charlist))
-		return rtrim($str, $charlist);
+    if (UTF8::is_ascii($charlist))
+        return rtrim($str, $charlist);
 
-	$charlist = preg_replace('#[-\[\]:\\\\^/]#', '\\\\$0', $charlist);
+    $charlist = preg_replace('#[-\[\]:\\\\^/]#', '\\\\$0', $charlist);
 
-	return preg_replace('/['.$charlist.']++$/uD', '', $str);
+    return preg_replace('/[' . $charlist . ']++$/uD', '', $str);
 }

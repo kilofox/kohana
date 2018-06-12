@@ -1,3 +1,8 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
 
-abstract class Controller extends Kohana_Controller {}
+defined('SYSPATH') OR die('No direct script access.');
+
+abstract class Controller extends Kohana_Controller
+{
+    
+}

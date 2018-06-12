@@ -1,10 +1,12 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
 
-class Kohana_HTTP_Exception_408 extends HTTP_Exception {
+defined('SYSPATH') OR die('No direct script access.');
 
-	/**
-	 * @var   integer    HTTP 408 Request Timeout
-	 */
-	protected $_code = 408;
+class Kohana_HTTP_Exception_408 extends HTTP_Exception
+{
+    /**
+     * @var   integer    HTTP 408 Request Timeout
+     */
+    protected $_code = 408;
 
 }

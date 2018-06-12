@@ -1,4 +1,7 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
+
+defined('SYSPATH') OR die('No direct script access.');
+
 /**
  * @package    Kohana
  * @category   Exceptions
@@ -6,4 +9,7 @@
  * @copyright  (c) 2009-2012 Kohana Team
  * @license    http://kohanaframework.org/license
  */
-class Kohana_View_Exception extends Kohana_Exception {}
+class Kohana_View_Exception extends Kohana_Exception
+{
+    
+}

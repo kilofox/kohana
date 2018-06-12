@@ -1,10 +1,12 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
 
-class Kohana_HTTP_Exception_303 extends HTTP_Exception_Redirect {
+defined('SYSPATH') OR die('No direct script access.');
 
-	/**
-	 * @var   integer    HTTP 303 See Other
-	 */
-	protected $_code = 303;
+class Kohana_HTTP_Exception_303 extends HTTP_Exception_Redirect
+{
+    /**
+     * @var   integer    HTTP 303 See Other
+     */
+    protected $_code = 303;
 
 }

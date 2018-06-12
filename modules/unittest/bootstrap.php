@@ -38,7 +38,7 @@ define('EXT', '.php');
  * this bootstrap file somewhere else then you'll need to modify this value to 
  * compensate.
  */
-define('DOCROOT', realpath(dirname(__FILE__).'/../../').DIRECTORY_SEPARATOR);
+define('DOCROOT', realpath(dirname(__FILE__) . '/../../') . DIRECTORY_SEPARATOR);
 
 /**
  * Set the PHP error reporting level. If you set this in php.ini, you remove this.
@@ -61,29 +61,25 @@ error_reporting(E_ALL | E_STRICT);
  *
  * @link http://kohanaframework.org/guide/using.configuration
  */
-
 // Make the application relative to the docroot
-if ( ! is_dir($application) AND is_dir(DOCROOT.$application))
-{
-	$application = DOCROOT.$application;
+if (!is_dir($application) AND is_dir(DOCROOT . $application)) {
+    $application = DOCROOT . $application;
 }
 
 // Make the modules relative to the docroot
-if ( ! is_dir($modules) AND is_dir(DOCROOT.$modules))
-{
-	$modules = DOCROOT.$modules;
+if (!is_dir($modules) AND is_dir(DOCROOT . $modules)) {
+    $modules = DOCROOT . $modules;
 }
 
 // Make the system relative to the docroot
-if ( ! is_dir($system) AND is_dir(DOCROOT.$system))
-{
-	$system = DOCROOT.$system;
+if (!is_dir($system) AND is_dir(DOCROOT . $system)) {
+    $system = DOCROOT . $system;
 }
 
 // Define the absolute paths for configured directories
-define('APPPATH', realpath($application).DIRECTORY_SEPARATOR);
-define('MODPATH', realpath($modules).DIRECTORY_SEPARATOR);
-define('SYSPATH', realpath($system).DIRECTORY_SEPARATOR);
+define('APPPATH', realpath($application) . DIRECTORY_SEPARATOR);
+define('MODPATH', realpath($modules) . DIRECTORY_SEPARATOR);
+define('SYSPATH', realpath($system) . DIRECTORY_SEPARATOR);
 
 // Clean up the configuration vars
 unset($application, $modules, $system);
@@ -91,40 +87,34 @@ unset($application, $modules, $system);
 /**
  * Define the start time of the application, used for profiling.
  */
-if ( ! defined('KOHANA_START_TIME'))
-{
-	define('KOHANA_START_TIME', microtime(TRUE));
+if (!defined('KOHANA_START_TIME')) {
+    define('KOHANA_START_TIME', microtime(TRUE));
 }
 
 /**
  * Define the memory usage at the start of the application, used for profiling.
  */
-if ( ! defined('KOHANA_START_MEMORY'))
-{
-	define('KOHANA_START_MEMORY', memory_get_usage());
+if (!defined('KOHANA_START_MEMORY')) {
+    define('KOHANA_START_MEMORY', memory_get_usage());
 }
 
 // Bootstrap the application
-require APPPATH.'bootstrap'.EXT;
+require APPPATH . 'bootstrap' . EXT;
 
 // Disable output buffering
-if (($ob_len = ob_get_length()) !== FALSE)
-{
-	// flush_end on an empty buffer causes headers to be sent. Only flush if needed.
-	if ($ob_len > 0)
-	{
-		ob_end_flush();
-	}
-	else
-	{
-		ob_end_clean();
-	}
+if (($ob_len = ob_get_length()) !== FALSE) {
+    // flush_end on an empty buffer causes headers to be sent. Only flush if needed.
+    if ($ob_len > 0) {
+        ob_end_flush();
+    } else {
+        ob_end_clean();
+    }
 }
 
 // Enable the unittest module if it is not already loaded - use the absolute path
 $modules = Kohana::modules();
-$unittest_path = realpath(__DIR__).DIRECTORY_SEPARATOR;
-if ( ! in_array($unittest_path, $modules)) {
-	$modules['unittest'] = $unittest_path;
-	Kohana::modules($modules);
+$unittest_path = realpath(__DIR__) . DIRECTORY_SEPARATOR;
+if (!in_array($unittest_path, $modules)) {
+    $modules['unittest'] = $unittest_path;
+    Kohana::modules($modules);
 }

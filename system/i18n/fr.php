@@ -1,8 +1,8 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
+
+defined('SYSPATH') OR die('No direct script access.');
 
 return array(
-
-	'French' => 'Français',
-	'Hello, world!' => 'Bonjour, monde!',
-
+    'French' => 'Français',
+    'Hello, world!' => 'Bonjour, monde!',
 );

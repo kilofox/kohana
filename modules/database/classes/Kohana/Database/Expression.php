@@ -1,4 +1,7 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
+
+defined('SYSPATH') OR die('No direct script access.');
+
 /**
  * Database expressions can be used to add unescaped SQL fragments to a
  * [Database_Query_Builder] object.
@@ -16,123 +19,122 @@
  * @copyright  (c) 2009 Kohana Team
  * @license    http://kohanaphp.com/license
  */
-class Kohana_Database_Expression {
+class Kohana_Database_Expression
+{
+    // Unquoted parameters
+    protected $_parameters;
+    // Raw expression string
+    protected $_value;
 
-	// Unquoted parameters
-	protected $_parameters;
+    /**
+     * Sets the expression string.
+     *
+     *     $expression = new Database_Expression('COUNT(users.id)');
+     *
+     * @param   string  $value      raw SQL expression string
+     * @param   array   $parameters unquoted parameter values
+     * @return  void
+     */
+    public function __construct($value, $parameters = array())
+    {
+        // Set the expression string
+        $this->_value = $value;
+        $this->_parameters = $parameters;
+    }
 
-	// Raw expression string
-	protected $_value;
+    /**
+     * Bind a variable to a parameter.
+     *
+     * @param   string  $param  parameter key to replace
+     * @param   mixed   $var    variable to use
+     * @return  $this
+     */
+    public function bind($param, & $var)
+    {
+        $this->_parameters[$param] = & $var;
 
-	/**
-	 * Sets the expression string.
-	 *
-	 *     $expression = new Database_Expression('COUNT(users.id)');
-	 *
-	 * @param   string  $value      raw SQL expression string
-	 * @param   array   $parameters unquoted parameter values
-	 * @return  void
-	 */
-	public function __construct($value, $parameters = array())
-	{
-		// Set the expression string
-		$this->_value = $value;
-		$this->_parameters = $parameters;
-	}
+        return $this;
+    }
 
-	/**
-	 * Bind a variable to a parameter.
-	 *
-	 * @param   string  $param  parameter key to replace
-	 * @param   mixed   $var    variable to use
-	 * @return  $this
-	 */
-	public function bind($param, & $var)
-	{
-		$this->_parameters[$param] =& $var;
+    /**
+     * Set the value of a parameter.
+     *
+     * @param   string  $param  parameter key to replace
+     * @param   mixed   $value  value to use
+     * @return  $this
+     */
+    public function param($param, $value)
+    {
+        $this->_parameters[$param] = $value;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Set the value of a parameter.
-	 *
-	 * @param   string  $param  parameter key to replace
-	 * @param   mixed   $value  value to use
-	 * @return  $this
-	 */
-	public function param($param, $value)
-	{
-		$this->_parameters[$param] = $value;
+    /**
+     * Add multiple parameter values.
+     *
+     * @param   array   $params list of parameter values
+     * @return  $this
+     */
+    public function parameters(array $params)
+    {
+        $this->_parameters = $params + $this->_parameters;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Add multiple parameter values.
-	 *
-	 * @param   array   $params list of parameter values
-	 * @return  $this
-	 */
-	public function parameters(array $params)
-	{
-		$this->_parameters = $params + $this->_parameters;
+    /**
+     * Get the expression value as a string.
+     *
+     *     $sql = $expression->value();
+     *
+     * @return  string
+     */
+    public function value()
+    {
+        return (string) $this->_value;
+    }
 
-		return $this;
-	}
+    /**
+     * Return the value of the expression as a string.
+     *
+     *     echo $expression;
+     *
+     * @return  string
+     * @uses    Database_Expression::value
+     */
+    public function __toString()
+    {
+        return $this->value();
+    }
 
-	/**
-	 * Get the expression value as a string.
-	 *
-	 *     $sql = $expression->value();
-	 *
-	 * @return  string
-	 */
-	public function value()
-	{
-		return (string) $this->_value;
-	}
+    /**
+     * Compile the SQL expression and return it. Replaces any parameters with
+     * their given values.
+     *
+     * @param   mixed    Database instance or name of instance
+     * @return  string
+     */
+    public function compile($db = NULL)
+    {
+        if (!is_object($db)) {
+            // Get the database instance
+            $db = Database::instance($db);
+        }
 
-	/**
-	 * Return the value of the expression as a string.
-	 *
-	 *     echo $expression;
-	 *
-	 * @return  string
-	 * @uses    Database_Expression::value
-	 */
-	public function __toString()
-	{
-		return $this->value();
-	}
+        $value = $this->value();
 
-	/**
-	 * Compile the SQL expression and return it. Replaces any parameters with
-	 * their given values.
-	 *
-	 * @param   mixed    Database instance or name of instance
-	 * @return  string
-	 */
-	public function compile($db = NULL)
-	{
-		if ( ! is_object($db))
-		{
-			// Get the database instance
-			$db = Database::instance($db);
-		}
+        if (!empty($this->_parameters)) {
+            // Quote all of the parameter values
+            $params = array_map(array($db, 'quote'), $this->_parameters);
 
-		$value = $this->value();
+            // Replace the values in the expression
+            $value = strtr($value, $params);
+        }
 
-		if ( ! empty($this->_parameters))
-		{
-			// Quote all of the parameter values
-			$params = array_map(array($db, 'quote'), $this->_parameters);
+        return $value;
+    }
 
-			// Replace the values in the expression
-			$value = strtr($value, $params);
-		}
+}
 
-		return $value;
-	}
-
-} // End Database_Expression
+// End Database_Expression

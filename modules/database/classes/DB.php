@@ -1,3 +1,8 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
 
-class DB extends Kohana_DB {}
+defined('SYSPATH') OR die('No direct script access.');
+
+class DB extends Kohana_DB
+{
+    
+}

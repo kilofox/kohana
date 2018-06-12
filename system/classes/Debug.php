@@ -1,3 +1,8 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
 
-class Debug extends Kohana_Debug {}
+defined('SYSPATH') OR die('No direct script access.');
+
+class Debug extends Kohana_Debug
+{
+    
+}

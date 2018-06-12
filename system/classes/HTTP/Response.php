@@ -1,3 +1,8 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
 
-interface HTTP_Response extends Kohana_HTTP_Response {}
+defined('SYSPATH') OR die('No direct script access.');
+
+interface HTTP_Response extends Kohana_HTTP_Response
+{
+    
+}

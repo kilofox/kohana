@@ -1,4 +1,6 @@
-<?php defined('SYSPATH') or die('No direct script access.');
+<?php
+
+defined('SYSPATH') or die('No direct script access.');
 
 /**
  * Transparent extension for Kohana_Unittest_Database_TestCase
@@ -13,5 +15,5 @@
  */
 abstract class Unittest_Database_TestCase extends Kohana_Unittest_Database_TestCase
 {
-	
+    
 }

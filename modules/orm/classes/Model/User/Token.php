@@ -1,7 +1,10 @@
-<?php defined('SYSPATH') OR die('No direct access allowed.');
+<?php
 
-class Model_User_Token extends Model_Auth_User_Token {
+defined('SYSPATH') OR die('No direct access allowed.');
 
-	// This class can be replaced or extended
+class Model_User_Token extends Model_Auth_User_Token
+{
+    // This class can be replaced or extended
+}
 
-} // End User Token Model
+// End User Token Model

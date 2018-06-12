@@ -35,76 +35,76 @@
 
 .syntaxhighlighter
 {
-	
+
 }
 
 .syntaxhighlighter
 {
-	width: 100% !important;
-	margin: 0 !important;
-	padding: 1px !important; /* adds a little border on top and bottom */
-	position: relative !important;
-	/*background-color: #fff !important;*/
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 1px !important; /* adds a little border on top and bottom */
+    position: relative !important;
+    /*background-color: #fff !important;*/
 }
 
 /* Highlighed line number */
 .syntaxhighlighter .line.highlighted .number
 {
-	color: black !important;
+    color: black !important;
 }
 
 /* Highlighed line */
 .syntaxhighlighter .line.highlighted.alt1,
 .syntaxhighlighter .line.highlighted.alt2
 {
-	background-color: #e0e0e0 !important;
+    background-color: #e0e0e0 !important;
 }
 
 /* Gutter line numbers */
 .syntaxhighlighter .line .number
 {
-	color: #afafaf !important;
+    color: #afafaf !important;
 }
 
 /* Add border to the lines */
 .syntaxhighlighter .line .content
 {
-	border-left: none !important;
-	padding-left: 0 !important;
-	color: #000 !important;
+    border-left: none !important;
+    padding-left: 0 !important;
+    color: #000 !important;
 }
 
 .syntaxhighlighter.printing .line .content 
 {
-	border: 0 !important;
+    border: 0 !important;
 }
 
 /* First line */
 .syntaxhighlighter .line.alt1
 {
-	/*background-color: #fff !important;*/
+    /*background-color: #fff !important;*/
 }
 
 /* Second line */
 .syntaxhighlighter .line.alt2
 {
-	/*background-color: #F8F8F8 !important;*/
+    /*background-color: #F8F8F8 !important;*/
 }
 
 .syntaxhighlighter .toolbar
 {
-	background-color: #F8F8F8 !important;
-	border: #E7E5DC solid 1px !important;
+    background-color: #F8F8F8 !important;
+    border: #E7E5DC solid 1px !important;
 }
 
 .syntaxhighlighter .toolbar a
 {
-	color: #a0a0a0 !important;
+    color: #a0a0a0 !important;
 }
 
 .syntaxhighlighter .toolbar a:hover
 {
-	color: red !important;
+    color: red !important;
 }
 
 /************************************
@@ -113,71 +113,71 @@
 .syntaxhighlighter .plain,
 .syntaxhighlighter .plain a
 { 
-	color: #000 !important;
+    color: #000 !important;
 }
 
 .syntaxhighlighter .comments,
 .syntaxhighlighter .comments a
 { 
-	color: #008200 !important;
+    color: #008200 !important;
 }
 
 .syntaxhighlighter .string,
 .syntaxhighlighter .string a
 {
-	color: blue !important; 
+    color: blue !important; 
 }
 
 .syntaxhighlighter .keyword
 { 
-	color: #069 !important; 
-	font-weight: bold !important; 
+    color: #069 !important; 
+    font-weight: bold !important; 
 }
 
 .syntaxhighlighter .preprocessor 
 { 
-	color: gray !important; 
+    color: gray !important; 
 }
 
 .syntaxhighlighter .variable 
 { 
-	color: #a70 !important; 
+    color: #a70 !important; 
 }
 
 .syntaxhighlighter .value
 { 
-	color: #090 !important; 
+    color: #090 !important; 
 }
 
 .syntaxhighlighter .functions
 { 
-	color: #ff1493 !important; 
+    color: #ff1493 !important; 
 }
 
 .syntaxhighlighter .constants
 { 
-	color: #0066CC !important; 
+    color: #0066CC !important; 
 }
 
 .syntaxhighlighter .script
 { 
-	background-color: yellow !important;
+    background-color: yellow !important;
 }
 
 .syntaxhighlighter .color1,
 .syntaxhighlighter .color1 a
 { 
-	color: #808080 !important; 
+    color: #808080 !important; 
 }
 
 .syntaxhighlighter .color2,
 .syntaxhighlighter .color2 a
 { 
-	color: #ff1493 !important; 
+    color: #ff1493 !important; 
 }
 
 .syntaxhighlighter .color3,
 .syntaxhighlighter .color3 a
 { 
-	color: red !important; 
+    color: red !important; 
 }

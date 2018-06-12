@@ -1,3 +1,8 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
 
-abstract class Request_Client extends Kohana_Request_Client {}
+defined('SYSPATH') OR die('No direct script access.');
+
+abstract class Request_Client extends Kohana_Request_Client
+{
+    
+}

@@ -7,14 +7,12 @@ $modules_iterator = new DirectoryIterator(MODPATH);
 
 $modules = array();
 
-foreach ($modules_iterator as $module)
-{
-	if ($module->isDir() AND ! $module->isDot())
-	{
-		$modules[$module->getFilename()] = MODPATH.$module->getFilename();
-	}
+foreach ($modules_iterator as $module) {
+    if ($module->isDir() AND ! $module->isDot()) {
+        $modules[$module->getFilename()] = MODPATH . $module->getFilename();
+    }
 }
 
 Kohana::modules(Kohana::modules() + $modules);
 
-unset ($modules_iterator, $modules, $module);
+unset($modules_iterator, $modules, $module);

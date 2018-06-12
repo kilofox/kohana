@@ -8,9 +8,9 @@
 	Any options you specify when calling phpunit will override the ones in here
 -->
 <phpunit colors="true" bootstrap="rel/path/to/index.php">
-	<testsuites>
-		<testsuite name="Kohana Tests">
-			<file>rel/path/to/unittest/tests.php</file>
-		</testsuite>
-	</testsuites>
+    <testsuites>
+	<testsuite name="Kohana Tests">
+	    <file>rel/path/to/unittest/tests.php</file>
+	</testsuite>
+    </testsuites>
 </phpunit>

@@ -1,3 +1,8 @@
-<?php defined('SYSPATH') or die('No direct script access.');
+<?php
 
-interface Cache_Tagging extends Kohana_Cache_Tagging {}
+defined('SYSPATH') or die('No direct script access.');
+
+interface Cache_Tagging extends Kohana_Cache_Tagging
+{
+    
+}

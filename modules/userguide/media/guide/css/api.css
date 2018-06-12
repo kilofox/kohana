@@ -4,7 +4,7 @@
 div.class-list div.class { width: 50%; }
 div.class-list div.class.left { float: left; clear: both; }
 div.class-list div.class.right { float: right; }
-	div.class-list div.class h2 { background:none; }
+div.class-list div.class h2 { background:none; }
 
 /* table of contents at the top of each class */
 div.toc { }
@@ -29,6 +29,6 @@ div.method h3 .param { font-weight: normal; cursor: help; border-bottom:1px dash
 div.method h3 abbr.param { text-transform: none; font-size: 1em; }
 
 dl.tags { overflow: auto; background: #e8efcf; padding: 1em; border: solid 6px #d8dfbf; margin-bottom:1.5em; }
-	dl.tags dt { margin: 0; clear: both; float: left; width: 25%; }
-	dl.tags dd { margin: 0; padding: 0; clear: right; float: right; }
-	
+dl.tags dt { margin: 0; clear: both; float: left; width: 25%; }
+dl.tags dd { margin: 0; padding: 0; clear: right; float: right; }
+

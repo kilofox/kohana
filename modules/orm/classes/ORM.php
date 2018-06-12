@@ -1,3 +1,8 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
 
-class ORM extends Kohana_ORM {}
+defined('SYSPATH') OR die('No direct script access.');
+
+class ORM extends Kohana_ORM
+{
+    
+}

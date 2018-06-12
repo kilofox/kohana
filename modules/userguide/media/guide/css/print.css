@@ -1,7 +1,7 @@
 
 /* Smaller font for printing */
 body {
-	font:14px/1.5 Helvetica,Arial;
+    font:14px/1.5 Helvetica,Arial;
 }
 
 /* Show link urls, imitating markdown syntax */
@@ -24,25 +24,25 @@ h6 a.permalink
 { display:none; }
 
 pre {
-	padding:1em;
-	border:1px dashed #999;
+    padding:1em;
+    border:1px dashed #999;
 }
 
 table {
-	border-left: 1px solid #999;
-	border-top: 1px solid #999;
+    border-left: 1px solid #999;
+    border-top: 1px solid #999;
 }
 
 table td, table th {
-	padding:0.4em 0.8em;
-	border-right: 1px solid #999;
-	border-bottom: 1px solid #999;
+    padding:0.4em 0.8em;
+    border-right: 1px solid #999;
+    border-bottom: 1px solid #999;
 }
 
 /* syntax highlighter tables inside pre cause problems */
 pre table, pre table td, pre table th {
-	padding:0;
-	border:none;
+    padding:0;
+    border:none;
 }
 
 p.note { padding:1em; border: 1px solid black; }

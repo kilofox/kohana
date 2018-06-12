@@ -1,10 +1,12 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
 
-class Kohana_HTTP_Exception_300 extends HTTP_Exception_Redirect {
+defined('SYSPATH') OR die('No direct script access.');
 
-	/**
-	 * @var   integer    HTTP 300 Multiple Choices
-	 */
-	protected $_code = 300;
+class Kohana_HTTP_Exception_300 extends HTTP_Exception_Redirect
+{
+    /**
+     * @var   integer    HTTP 300 Multiple Choices
+     */
+    protected $_code = 300;
 
 }

@@ -1,3 +1,8 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
 
-class Request extends Kohana_Request {}
+defined('SYSPATH') OR die('No direct script access.');
+
+class Request extends Kohana_Request
+{
+    
+}

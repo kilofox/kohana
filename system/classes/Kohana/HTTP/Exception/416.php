@@ -1,10 +1,12 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
 
-class Kohana_HTTP_Exception_416 extends HTTP_Exception {
+defined('SYSPATH') OR die('No direct script access.');
 
-	/**
-	 * @var   integer    HTTP 416 Request Range Not Satisfiable
-	 */
-	protected $_code = 416;
+class Kohana_HTTP_Exception_416 extends HTTP_Exception
+{
+    /**
+     * @var   integer    HTTP 416 Request Range Not Satisfiable
+     */
+    protected $_code = 416;
 
 }

@@ -1,10 +1,12 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
 
-class Kohana_HTTP_Exception_500 extends HTTP_Exception {
+defined('SYSPATH') OR die('No direct script access.');
 
-	/**
-	 * @var   integer    HTTP 500 Internal Server Error
-	 */
-	protected $_code = 500;
+class Kohana_HTTP_Exception_500 extends HTTP_Exception
+{
+    /**
+     * @var   integer    HTTP 500 Internal Server Error
+     */
+    protected $_code = 500;
 
 }

@@ -1,4 +1,7 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
+
+defined('SYSPATH') OR die('No direct script access.');
+
 /**
  * Base Config source Interface
  *
@@ -10,5 +13,7 @@
  * @copyright  (c) 2012-2014 Kohana Team
  * @license    http://kohanaframework.org/license
  */
-
-interface Kohana_Config_Source {}
+interface Kohana_Config_Source
+{
+    
+}

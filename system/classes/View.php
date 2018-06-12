@@ -1,3 +1,8 @@
-<?php defined('SYSPATH') OR die('No direct script access.');
+<?php
 
-class View extends Kohana_View {}
+defined('SYSPATH') OR die('No direct script access.');
+
+class View extends Kohana_View
+{
+    
+}
