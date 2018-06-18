@@ -72,6 +72,7 @@ class Kohana_LogTest extends Unittest_TestCase
      * @TODO Is this test too specific?
      *
      * @test
+     * @requires OS Linux
      * @covers Log::attach
      */
     public function test_attach_attaches_log_writer_min_max_and_returns_this()

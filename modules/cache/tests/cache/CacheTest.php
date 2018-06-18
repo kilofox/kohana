@@ -155,7 +155,10 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
      */
     public function test_config($key, $value, $expected_result, array $expected_config)
     {
-        $cache = $this->getMock('Cache_File', NULL, array(), '', FALSE);
+        $cache = $this->getMockBuilder('Cache_File')
+            ->setMethods(['__construct'])
+            ->disableOriginalConstructor()
+            ->getMock();
 
         if ($expected_result === Kohana_CacheTest::EXPECT_SELF) {
             $expected_result = $cache;
@@ -213,13 +216,7 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
      */
     public function test_sanitize_id($id, $expected)
     {
-        $cache = $this->getMock('Cache', array(
-            'get',
-            'set',
-            'delete',
-            'delete_all'
-            ), array(array()), '', FALSE
-        );
+        $cache = $this->createMock('Cache');
 
         $cache_reflection = new ReflectionClass($cache);
         $sanitize_id = $cache_reflection->getMethod('_sanitize_id');
@@ -229,5 +226,3 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
     }
 
 }
-
-// End Kohana_CacheTest

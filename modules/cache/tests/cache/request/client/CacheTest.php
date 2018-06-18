@@ -45,7 +45,7 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
         $request = new Request('welcome/index');
         $response = new Response;
 
-        $client_mock = $this->getMock('Request_Client_Internal');
+        $client_mock = $this->createMock('Request_Client_Internal');
 
         $request->client($client_mock);
         $client_mock->expects($this->exactly(0))
@@ -72,7 +72,7 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
         ));
 
         $request = new Request('welcome/index', NULL, array($route));
-        $cache_mock = $this->_get_cache_mock();
+        $cache_mock = $this->createMock('Cache_File');
 
         $request->client()->cache(HTTP_Cache::factory($cache_mock));
 
@@ -95,7 +95,7 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
     {
         $lifetime = 800;
         $request = new Request('welcome/index');
-        $cache_mock = $this->_get_cache_mock();
+        $cache_mock = $this->createMock('Cache_File');
         $response = Response::factory();
 
         $request->client()->cache(new HTTP_Cache(array(
@@ -133,7 +133,7 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
     {
         $lifetime = 800;
         $request = new Request('welcome/index');
-        $cache_mock = $this->_get_cache_mock();
+        $cache_mock = $this->createMock('Cache_File');
 
         $request->client()->cache(new HTTP_Cache(array(
             'cache' => $cache_mock
@@ -233,7 +233,7 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
         /**
          * Set up a mock response object to test with
          */
-        $response = $this->getMock('Response');
+        $response = $this->createMock('Response');
 
         $response->expects($this->any())
             ->method('headers')
@@ -244,16 +244,6 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
         $this->assertEquals($request->cache()->set_cache($response), $expected);
     }
 
-    /**
-     * Returns a mock object for Cache
-     *
-     * @return Cache
-     */
-    protected function _get_cache_mock()
-    {
-        return $this->getMock('Cache_File', array(), array(), '', FALSE);
-    }
-
 }
 
 // End Kohana_Request_Client_CacheTest
@@ -262,7 +252,7 @@ class Controller_Kohana_Request_CacheTest_Dummy extends Controller
 {
     public function action_index()
     {
-        
+
     }
 
 }

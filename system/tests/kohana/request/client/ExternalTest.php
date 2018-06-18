@@ -175,11 +175,11 @@ class Kohana_Request_Client_ExternalTest extends Unittest_TestCase
             ->body($body)
             ->post($post);
 
-        $client = $this->getMock('Request_Client_External', array('_send_message'));
+        $client = $this->getMockForAbstractClass('Request_Client_External', [], '', true, true, true, ['_send_message']);
         $client->expects($this->once())
             ->method('_send_message')
             ->with($request)
-            ->will($this->returnValue($this->getMock('Response')));
+            ->will($this->returnValue($this->createMock('Response')));
 
         $request->client($client);
 

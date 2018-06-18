@@ -24,7 +24,8 @@ class Kohana_ResponseTest extends Unittest_TestCase
      */
     public function provider_body()
     {
-        $view = $this->getMock('View');
+        $view = $this->createMock('View');
+
         $view->expects($this->any())
             ->method('__toString')
             ->will($this->returnValue('foo'));
@@ -37,7 +38,7 @@ class Kohana_ResponseTest extends Unittest_TestCase
 
     /**
      * Tests that we can set and read a body of a response
-     * 
+     *
      * @test
      * @dataProvider provider_body
      *
@@ -72,8 +73,8 @@ class Kohana_ResponseTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_body_string_zero
-     * @param string $string 
-     * @param string $expected 
+     * @param string $string
+     * @param string $expected
      * @return void
      */
     public function test_body_string_zero($string, $expected)
@@ -131,9 +132,9 @@ class Kohana_ResponseTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_cookie_set
-     * @param string $key 
-     * @param string $value 
-     * @param string $expected 
+     * @param string $key
+     * @param string $value
+     * @param string $expected
      * @return void
      */
     public function test_cookie_set($key, $value, $expected)
@@ -174,7 +175,7 @@ class Kohana_ResponseTest extends Unittest_TestCase
 
     /**
      * Test the content type is sent when set
-     * 
+     *
      * @test
      */
     public function test_content_type_when_set()
