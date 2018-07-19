@@ -1,17 +1,26 @@
 <?php
 
-defined('SYSPATH') OR die('No direct script access.');
-
-return array(
-    'default' => array(
+return [
+    'default' => [
+        'driver' => 'openssl',
         /**
          * The following options must be set:
          *
-         * string   key     secret passphrase
-         * integer  mode    encryption mode, one of MCRYPT_MODE_*
-         * integer  cipher  encryption cipher, one of the Mcrpyt cipher constants
+         * string   key     Secret passphrase.
+         * integer  cipher  Encryption cipher, one of the openssl_get_cipher_methods().
+         */
+        'method' => 'AES-256-CTR',
+    ],
+    'mcrypt' => [
+        'driver' => 'mcrypt',
+        /**
+         * The following options must be set:
+         *
+         * string   key     Secret passphrase.
+         * integer  cipher  Encryption cipher, one of the Mcrpyt cipher constants.
+         * integer  mode    Encryption mode, one of MCRYPT_MODE_*.
          */
         'cipher' => MCRYPT_RIJNDAEL_128,
         'mode' => MCRYPT_MODE_NOFB,
-    ),
-);
+    ]
+];
