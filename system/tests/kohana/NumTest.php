@@ -120,6 +120,7 @@ class Kohana_NumTest extends Unittest_TestCase
     /**
      * @todo test locales
      * @test
+     * @requires OS Linux
      * @dataProvider provider_format
      * @param integer $number
      * @param integer $places
