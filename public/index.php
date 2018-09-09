@@ -53,7 +53,7 @@ error_reporting(E_ALL | E_STRICT);
  * @link http://kohanaframework.org/guide/using.configuration
  */
 // Set the full path to the docroot
-define('DOCROOT', realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
+define('DOCROOT', realpath(__DIR__ . '/..') . DIRECTORY_SEPARATOR);
 
 // Make the application relative to the docroot, for symlink'd index.php
 if (!is_dir($application) AND is_dir(DOCROOT . $application))
