@@ -7,7 +7,7 @@ return [
          * The following options must be set:
          *
          * string   key     Secret passphrase.
-         * integer  cipher  Encryption cipher, one of the openssl_get_cipher_methods().
+         * integer  method  The cipher method, one of the return value from openssl_get_cipher_methods().
          */
         'method' => 'AES-256-CTR',
     ],
