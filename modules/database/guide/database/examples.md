@@ -12,38 +12,39 @@ In this example, we loop through an array of whitelisted input fields and for ea
 
 	$query = DB::select()->from('users');
 	
-	//only search for these fields
-	$form_inputs = array('first_name', 'last_name', 'email');
-	foreach ($form_inputs as $name) 
-	{
-		$value = Arr::get($_GET, $name, FALSE);
-		if ($value !== FALSE AND $value != '')
-		{
-			$query->where($name, 'like', '%'.$value.'%');
+	// Only search for these fields
+	$formInputs = ['first_name', 'last_name', 'email'];
+	foreach ($formInputs as $name) {
+		$value = Arr::get($_GET, $name, false);
+		if ($value !== false && $value != '') {
+			$query->where($name, 'like', '%' . $value . '%');
 		}
 	}
 	
-	//copy the query & execute it
-	$pagination_query = clone $query;
-	$count = $pagination_query->select(DB::expr('COUNT(*) AS mycount'))->execute()->get('mycount');
+	// Copy the query and execute it
+	$paginationQuery = clone $query;
+	$count = $paginationQuery->select(DB::expr('COUNT(*) AS mycount'))
+		->execute()
+		->get('mycount');
 	
-	//pass the total item count to Pagination
+	// Pass the total item count to Pagination
 	$config = Kohana::$config->load('pagination');
-	$pagination = Pagination::factory(array(
+	$pagination = Pagination::factory([
 		'total_items' => $count,
-		'current_page'   => array('source' => 'route', 'key' => 'page'), 
+		'current_page' => ['source' => 'route', 'key' => 'page'],
 		'items_per_page' => 20,
-		'view'           => 'pagination/pretty',
-		'auto_hide'      => TRUE,
-	));
-	$page_links = $pagination->render();
+		'view' => 'pagination/pretty',
+		'auto_hide' => true,
+	]);
+	$pageLinks = $pagination->render();
 	
-	//search for results starting at the offset calculated by the Pagination class
+	// Search for results starting at the offset calculated by the Pagination class
 	$query->order_by('last_name', 'asc')
 		->order_by('first_name', 'asc')
 		->limit($pagination->items_per_page)
 		->offset($pagination->offset);
-	$results = $query->execute()->as_array();
+	$results = $query->execute()
+		->as_array();
 
 ## Having
 

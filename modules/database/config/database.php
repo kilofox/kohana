@@ -13,7 +13,7 @@ return [
              * bool     persistent  Use persistent connections?
              */
             'dsn' => 'mysql:host=localhost;dbname=kohana',
-            'username' => 'root',
+            'username' => '',
             'password' => '',
             'persistent' => false,
         ],
@@ -48,7 +48,7 @@ return [
             'username' => '',
             'password' => '',
             'persistent' => false,
-            'ssl' => false,
+            'ssl' => null,
         ],
         /**
          * The following extra options are available for PDO:
