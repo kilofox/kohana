@@ -4,20 +4,17 @@ Making your module work with the User Guide is simple.
 
 First, copy this config and place in it `<module>/config/userguide.php`, replacing anything in `<>` with the appropriate values:
 
-	return array
-	(
+	return [
 		// Leave this alone
-		'modules' => array(
-
+		'modules' => [
 			/*
 			 * The path to this module's userguide pages, without the 'guide/'.
 			 *
-			 * For example,  '/guide/modulename/' would be 'modulename'
+			 * For example, '/guide/modulename/' would be 'modulename'
 			 */
-			'<modulename>' => array(
-
+			'<modulename>' => [
 				// Whether this module's user guide pages should be shown
-				'enabled' => TRUE,
+				'enabled' => true,
 
 				// The name that should show up on the user guide index page
 				'name' => '<Module Name>',
@@ -26,10 +23,9 @@ First, copy this config and place in it `<module>/config/userguide.php`, replaci
 				'description' => '<Description goes here>',
 
 				// Copyright message, shown in the footer for this module
-				'copyright' => '&copy; 2012 <Your Name>',
-			)
-		),
-
+				'copyright' => '&copy; 2018 <Your Name>',
+			]
+		],
 		/*
 		 * If you use transparent extensions outside the Kohana_ namespace,
 		 * add your class prefix here. Both common Kohana naming conventions are
@@ -40,12 +36,12 @@ First, copy this config and place in it `<module>/config/userguide.php`, replaci
 		 * For example, if you use Modulename_<class_name> for your base classes
 		 * then you would define:
 		 */
-		'transparent_prefixes' => array(
-			'Modulename' => TRUE,
-		)
-	);
+		'transparent_prefixes' => [
+			'Modulename' => true,
+		]
+	];
 
-Next, create a folder in your module directory called `guide/<modulename>` and create `index.md` and `menu.md`.  The contents of `index.md` is what is shown on the index page of your module.
+Next, create a folder in your module directory called `guide/<modulename>` and create `index.md` and `menu.md`. The contents of `index.md` is what is shown on the index page of your module.
 
 ## Creating the side menu
 
@@ -66,10 +62,10 @@ Guide pages can be named or arranged any way you want within that folder (with t
 
 ## Formatting page titles and links
 
-Page paths are relative to `guide/<modulename>`.  So `[Page name](page-name)` would look for `guide/<modulename>/page-name.md` and `[Another](category/another)` would look for `guide/<modulename>/category/another.md`.
+Page paths are relative to `guide/<modulename>`. So `[Page name](page-name)` would look for `guide/<modulename>/page-name.md` and `[Another](category/another)` would look for `guide/<modulename>/category/another.md`.
 
 The breadcrumbs and page titles are pulled from the `menu.md` file, not the filenames or paths.
 
-To link to the `index.md` page, you should have an empty link, e.g. `[Module Name]()`.  Do not include `.md` in your links.
+To link to the `index.md` page, you should have an empty link, e.g. `[Module Name]()`. Do not include `.md` in your links.
 
 All user guide pages use [Markdown](markdown).
