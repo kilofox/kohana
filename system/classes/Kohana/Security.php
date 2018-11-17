@@ -30,10 +30,10 @@ class Kohana_Security
      *
      * And then check it when using [Validation]:
      *
-     *     $array->rules('csrf', array(
-     *         array('not_empty'),
-     *         array('Security::check'),
-     *     ));
+     *     $array->rules('csrf', [
+     *         ['not_empty'],
+     *         ['Security::check'],
+     *     ]);
      *
      * This provides a basic, but effective, method of preventing CSRF attacks.
      *
@@ -127,7 +127,7 @@ class Kohana_Security
      */
     public static function encode_php_tags($str)
     {
-        return str_replace(array('<?', '?>'), array('&lt;?', '?&gt;'), $str);
+        return str_replace(['<?', '?>'], ['&lt;?', '?&gt;'], $str);
     }
 
 }

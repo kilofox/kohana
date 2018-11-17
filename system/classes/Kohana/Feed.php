@@ -50,7 +50,7 @@ class Kohana_Feed
 
         // Feed could not be loaded
         if ($feed === FALSE)
-            return array();
+            return [];
 
         $namespaces = $feed->getNamespaces(TRUE);
 
@@ -58,7 +58,7 @@ class Kohana_Feed
         $feed = isset($feed->channel) ? $feed->xpath('//item') : $feed->entry;
 
         $i = 0;
-        $items = array();
+        $items = [];
 
         foreach ($feed as $item) {
             if ($limit > 0 AND $i++ === $limit)
@@ -85,7 +85,7 @@ class Kohana_Feed
      */
     public static function create($info, $items, $encoding = 'UTF-8')
     {
-        $info += array('title' => 'Generated Feed', 'link' => '', 'generator' => 'KohanaPHP');
+        $info += ['title' => 'Generated Feed', 'link' => '', 'generator' => 'KohanaPHP'];
 
         $feed = '<?xml version="1.0" encoding="' . $encoding . '"?><rss version="2.0"><channel></channel></rss>';
         $feed = simplexml_load_string($feed);

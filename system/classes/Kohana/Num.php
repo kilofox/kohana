@@ -199,9 +199,7 @@ class Kohana_Num
 
         // Verify the size format and store the matching parts
         if (!preg_match($pattern, $size, $matches))
-            throw new Kohana_Exception('The byte unit size, ":size", is improperly formatted.', array(
-            ':size' => $size,
-            ));
+            throw new Kohana_Exception('The byte unit size, ":size", is improperly formatted.', [':size' => $size,]);
 
         // Find the float value of the size
         $size = (float) $matches[1];

@@ -49,7 +49,7 @@ class Kohana_Log
             Log::$_instance = new Log;
 
             // Write the logs at shutdown
-            register_shutdown_function(array(Log::$_instance, 'write'));
+            register_shutdown_function([Log::$_instance, 'write']);
         }
 
         return Log::$_instance;
@@ -58,12 +58,12 @@ class Kohana_Log
     /**
      * @var  array  list of added messages
      */
-    protected $_messages = array();
+    protected $_messages = [];
 
     /**
      * @var  array  list of log writers
      */
-    protected $_writers = array();
+    protected $_writers = [];
 
     /**
      * Attaches a log writer, and optionally limits the levels of messages that
@@ -76,7 +76,7 @@ class Kohana_Log
      * @param   integer     $min_level  min level to write IF $levels is not an array
      * @return  Log
      */
-    public function attach(Log_Writer $writer, $levels = array(), $min_level = 0)
+    public function attach(Log_Writer $writer, $levels = [], $min_level = 0)
     {
         if (!is_array($levels)) {
             $levels = range($min_level, $levels);
@@ -111,9 +111,9 @@ class Kohana_Log
      * Adds a message to the log. Replacement values must be passed in to be
      * replaced using [strtr](http://php.net/strtr).
      *
-     *     $log->add(Log::ERROR, 'Could not locate user: :user', array(
+     *     $log->add(Log::ERROR, 'Could not locate user: :user', [
      *         ':user' => $username,
-     *     ));
+     *     ]);
      *
      * @param   string  $level       level of message
      * @param   string  $message     message body
@@ -144,7 +144,7 @@ class Kohana_Log
         }
 
         if ($additional == NULL) {
-            $additional = array();
+            $additional = [];
         }
 
         // Create a new message
@@ -187,7 +187,7 @@ class Kohana_Log
         $messages = $this->_messages;
 
         // Reset the messages array
-        $this->_messages = array();
+        $this->_messages = [];
 
         foreach ($this->_writers as $writer) {
             if (empty($writer['levels'])) {
@@ -195,7 +195,7 @@ class Kohana_Log
                 $writer['object']->write($messages);
             } else {
                 // Filtered messages
-                $filtered = array();
+                $filtered = [];
 
                 foreach ($messages as $message) {
                     if (in_array($message['level'], $writer['levels'])) {

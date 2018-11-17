@@ -44,7 +44,7 @@ class Kohana_Arr
      * Test if a value is an array with an additional check for array-like objects.
      *
      *     // Returns TRUE
-     *     Arr::is_array(array());
+     *     Arr::is_array([]);
      *     Arr::is_array(new ArrayObject);
      *
      *     // Returns FALSE
@@ -141,7 +141,7 @@ class Kohana_Arr
             } elseif ($key === '*') {
                 // Handle wildcards
 
-                $values = array();
+                $values = [];
                 foreach ($array as $arr) {
                     if ($value = Arr::path($arr, implode('.', $keys))) {
                         $values[] = $value;
@@ -198,7 +198,7 @@ class Kohana_Arr
             }
 
             if (!isset($array[$key])) {
-                $array[$key] = array();
+                $array[$key] = [];
             }
 
             $array = & $array[$key];
@@ -221,9 +221,9 @@ class Kohana_Arr
     public static function range($step = 10, $max = 100)
     {
         if ($step < 1)
-            return array();
+            return [];
 
-        $array = array();
+        $array = [];
         for ($i = $step; $i <= $max; $i += $step) {
             $array[$i] = $i;
         }
@@ -262,11 +262,11 @@ class Kohana_Arr
      * array, the default value will be added instead.
      *
      *     // Get the values "username", "password" from $_POST
-     *     $auth = Arr::extract($_POST, array('username', 'password'));
+     *     $auth = Arr::extract($_POST, ['username', 'password']);
      *
      *     // Get the value "level1.level2a" from $data
-     *     $data = array('level1' => array('level2a' => 'value 1', 'level2b' => 'value 2'));
-     *     Arr::extract($data, array('level1.level2a', 'password'));
+     *     $data = ['level1' => ['level2a' => 'value 1', 'level2b' => 'value 2']];
+     *     Arr::extract($data, ['level1.level2a', 'password']);
      *
      * @param   array  $array    array to extract paths from
      * @param   array  $paths    list of path
@@ -275,7 +275,7 @@ class Kohana_Arr
      */
     public static function extract($array, array $paths, $default = NULL)
     {
-        $found = array();
+        $found = [];
         foreach ($paths as $path) {
             Arr::set_path($found, $path, Arr::path($array, $path, $default));
         }
@@ -289,7 +289,7 @@ class Kohana_Arr
      *     // Get all of the "id" values from a result
      *     $ids = Arr::pluck($result, 'id');
      *
-     * [!!] A list of arrays is an array that contains arrays, eg: array(array $a, array $b, array $c, ...)
+     * [!!] A list of arrays is an array that contains arrays, eg: [array $a, array $b, array $c, ...]
      *
      * @param   array   $array  list of arrays to check
      * @param   string  $key    key to pluck
@@ -297,7 +297,7 @@ class Kohana_Arr
      */
     public static function pluck($array, $key)
     {
-        $values = array();
+        $values = [];
 
         foreach ($array as $row) {
             if (isset($row[$key])) {
@@ -337,13 +337,13 @@ class Kohana_Arr
      *     $array = Arr::map('strip_tags', $array);
      *
      *     // Apply $this->filter to every element in the array
-     *     $array = Arr::map(array(array($this,'filter')), $array);
+     *     $array = Arr::map([[$this, 'filter']], $array);
      *
      *     // Apply strip_tags and $this->filter to every element
-     *     $array = Arr::map(array('strip_tags',array($this,'filter')), $array);
+     *     $array = Arr::map(['strip_tags', [$this,'filter']], $array);
      *
      * [!!] Because you can pass an array of callbacks, if you wish to use an array-form callback
-     * you must nest it in an additional array as above. Calling Arr::map(array($this,'filter'), $array)
+     * you must nest it in an additional array as above. Calling Arr::map([$this,'filter'], $array)
      * will cause an error.
      * [!!] Unlike `array_map`, this method requires a callback and will only map
      * a single array.
@@ -379,8 +379,8 @@ class Kohana_Arr
      *
      * Note that this does not work the same as [array_merge_recursive](http://php.net/array_merge_recursive)!
      *
-     *     $john = array('name' => 'john', 'children' => array('fred', 'paul', 'sally', 'jane'));
-     *     $mary = array('name' => 'mary', 'children' => array('jane'));
+     *     $john = ['name' => 'john', 'children' => ['fred', 'paul', 'sally', 'jane']];
+     *     $mary = ['name' => 'mary', 'children' => ['jane']];
      *
      *     // John and Mary are married, merge them together
      *     $john = Arr::merge($john, $mary);
@@ -443,8 +443,8 @@ class Kohana_Arr
      * Overwrites an array with values from input arrays.
      * Keys that do not exist in the first array will not be added!
      *
-     *     $a1 = array('name' => 'john', 'mood' => 'happy', 'food' => 'bacon');
-     *     $a2 = array('name' => 'jack', 'food' => 'tacos', 'drink' => 'beer');
+     *     $a1 = ['name' => 'john', 'mood' => 'happy', 'food' => 'bacon'];
+     *     $a2 = ['name' => 'jack', 'food' => 'tacos', 'drink' => 'beer'];
      *
      *     // Overwrite the values of $a1 with $a2
      *     $array = Arr::overwrite($a1, $a2);
@@ -511,13 +511,13 @@ class Kohana_Arr
             $command = explode('::', $command, 2);
         }
 
-        return array($command, $params);
+        return [$command, $params];
     }
 
     /**
      * Convert a multi-dimensional array into a single-dimensional array.
      *
-     *     $array = array('set' => array('one' => 'something'), 'two' => 'other');
+     *     $array = ['set' => ['one' => 'something'], 'two' => 'other'];
      *
      *     // Flatten the array
      *     $array = Arr::flatten($array);
@@ -535,7 +535,7 @@ class Kohana_Arr
     {
         $is_assoc = Arr::is_assoc($array);
 
-        $flat = array();
+        $flat = [];
         foreach ($array as $key => $value) {
             if (is_array($value)) {
                 $flat = array_merge($flat, Arr::flatten($value));

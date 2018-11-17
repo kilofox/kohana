@@ -75,7 +75,7 @@ class Kohana_Upload
         }
 
         if (!is_dir($directory) OR ! is_writable(realpath($directory))) {
-            throw new Kohana_Exception('Directory :dir must be writable', array(':dir' => Debug::path($directory)));
+            throw new Kohana_Exception('Directory :dir must be writable', [':dir' => Debug::path($directory)]);
         }
 
         // Make the filename into a complete path
@@ -132,7 +132,7 @@ class Kohana_Upload
     /**
      * Test if an uploaded file is an allowed file type, by extension.
      *
-     *     $array->rule('file', 'Upload::type', array(':value', array('jpg', 'png', 'gif')));
+     *     $array->rule('file', 'Upload::type', [':value', ['jpg', 'png', 'gif']]);
      *
      * @param   array   $file       $_FILES item
      * @param   array   $allowed    allowed file extensions
@@ -154,8 +154,8 @@ class Kohana_Upload
      * and B is the byte unit (K, MiB, GB, etc.). All valid byte units are
      * defined in Num::$byte_units
      *
-     *     $array->rule('file', 'Upload::size', array(':value', '1M'))
-     *     $array->rule('file', 'Upload::size', array(':value', '2.5KiB'))
+     *     $array->rule('file', 'Upload::size', [':value', '1M'])
+     *     $array->rule('file', 'Upload::size', [':value', '2.5KiB'])
      *
      * @param   array   $file   $_FILES item
      * @param   string  $size   maximum file size allowed
@@ -187,10 +187,10 @@ class Kohana_Upload
      *     $array->rule('image', 'Upload::image')
      *
      *     // The "photo" file has a maximum size of 640x480 pixels
-     *     $array->rule('photo', 'Upload::image', array(':value', 640, 480));
+     *     $array->rule('photo', 'Upload::image', [':value', 640, 480]);
      *
      *     // The "image" file must be exactly 100x100 pixels
-     *     $array->rule('image', 'Upload::image', array(':value', 100, 100, TRUE));
+     *     $array->rule('image', 'Upload::image', [':value', 100, 100, TRUE]);
      *
      *
      * @param   array   $file       $_FILES item

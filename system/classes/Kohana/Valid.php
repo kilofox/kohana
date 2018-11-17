@@ -26,7 +26,7 @@ class Kohana_Valid
         }
 
         // Value cannot be NULL, FALSE, '', or an empty array
-        return !in_array($value, array(NULL, FALSE, '', array()), TRUE);
+        return !in_array($value, [NULL, FALSE, '', []], TRUE);
     }
 
     /**
@@ -147,6 +147,7 @@ class Kohana_Valid
     {
         if (!Valid::not_empty($email))
             return FALSE; // Empty fields cause issues with checkdnsrr()
+
 
 
             
@@ -337,7 +338,7 @@ class Kohana_Valid
     public static function phone($number, $lengths = NULL)
     {
         if (!is_array($lengths)) {
-            $lengths = array(7, 10, 11);
+            $lengths = [7, 10, 11];
         }
 
         // Remove all non-digit characters from the number

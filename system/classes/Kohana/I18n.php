@@ -13,7 +13,7 @@ defined('SYSPATH') OR die('No direct script access.');
  *     echo __('Hello, world');
  *
  *     // With parameter replacement
- *     echo __('Hello, :user', array(':user' => $username));
+ *     echo __('Hello, :user', [':user' => $username]);
  *
  * @package    Kohana
  * @category   Base
@@ -36,7 +36,7 @@ class Kohana_I18n
     /**
      * @var  array  cache of loaded languages
      */
-    protected static $_cache = array();
+    protected static $_cache = [];
 
     /**
      * Get and set the target language.
@@ -55,7 +55,7 @@ class Kohana_I18n
     {
         if ($lang) {
             // Normalize the language
-            I18n::$lang = strtolower(str_replace(array(' ', '_'), '-', $lang));
+            I18n::$lang = strtolower(str_replace([' ', '_'], '-', $lang));
         }
 
         return I18n::$lang;
@@ -101,7 +101,7 @@ class Kohana_I18n
         }
 
         // New translation table
-        $table = array();
+        $table = [];
 
         // Split the language: language, region, locale, etc
         $parts = explode('-', $lang);
@@ -111,7 +111,7 @@ class Kohana_I18n
             $path = implode(DIRECTORY_SEPARATOR, $parts);
 
             if ($files = Kohana::find_file('i18n', $path, NULL, TRUE)) {
-                $t = array();
+                $t = [];
                 foreach ($files as $file) {
                     // Merge the language strings into the sub table
                     $t = array_merge($t, Kohana::load($file));
@@ -137,7 +137,7 @@ if (!function_exists('__')) {
      * Kohana translation/internationalization function. The PHP function
      * [strtr](http://php.net/strtr) is used for replacing parameters.
      *
-     *    __('Welcome back, :user', array(':user' => $username));
+     *    __('Welcome back, :user', [':user' => $username]);
      *
      * [!!] The target language is defined by [I18n::$lang].
      *

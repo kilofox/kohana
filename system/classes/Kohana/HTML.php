@@ -248,7 +248,7 @@ class Kohana_HTML
     /**
      * Creates a image link.
      *
-     *     echo HTML::image('media/img/logo.png', array('alt' => 'My Company'));
+     *     echo HTML::image('media/img/logo.png', ['alt' => 'My Company']);
      *
      * @param   string  $file       file name
      * @param   array   $attributes default attributes
@@ -285,7 +285,7 @@ class Kohana_HTML
         if (empty($attributes))
             return '';
 
-        $sorted = array();
+        $sorted = [];
         foreach (HTML::$attribute_order as $key) {
             if (isset($attributes[$key])) {
                 // Add the attribute to the sorted list

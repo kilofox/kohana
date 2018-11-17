@@ -31,7 +31,7 @@ class Kohana_Debug
         // Get all passed variables
         $variables = func_get_args();
 
-        $output = array();
+        $output = [];
         foreach ($variables as $var) {
             $output[] = Debug::_dump($var, 1024);
         }
@@ -106,7 +106,7 @@ class Kohana_Debug
 
             return '<small>string</small><span>(' . strlen($var) . ')</span> "' . $str . '"';
         } elseif (is_array($var)) {
-            $output = array();
+            $output = [];
 
             // Indentation for this variable
             $space = str_repeat($s = '    ', $level);
@@ -148,7 +148,7 @@ class Kohana_Debug
             // Copy the object as an array
             $array = (array) $var;
 
-            $output = array();
+            $output = [];
 
             // Indentation for this variable
             $space = str_repeat($s = '    ', $level);
@@ -156,7 +156,7 @@ class Kohana_Debug
             $hash = spl_object_hash($var);
 
             // Objects that are being dumped
-            static $objects = array();
+            static $objects = [];
 
             if (empty($var)) {
                 // Do nothing
@@ -244,7 +244,7 @@ class Kohana_Debug
         $line = 0;
 
         // Set the reading range
-        $range = array('start' => $line_number - $padding, 'end' => $line_number + $padding);
+        $range = ['start' => $line_number - $padding, 'end' => $line_number + $padding];
 
         // Set the zero-padding amount for line numbers
         $format = '% ' . strlen($range['end']) . 'd';
@@ -297,9 +297,9 @@ class Kohana_Debug
         }
 
         // Non-standard function calls
-        $statements = array('include', 'include_once', 'require', 'require_once');
+        $statements = ['include', 'include_once', 'require', 'require_once'];
 
-        $output = array();
+        $output = [];
         foreach ($trace as $step) {
             if (!isset($step['function'])) {
                 // Invalid trace step
@@ -325,10 +325,10 @@ class Kohana_Debug
             if (in_array($step['function'], $statements)) {
                 if (empty($step['args'])) {
                     // No arguments
-                    $args = array();
+                    $args = [];
                 } else {
                     // Sanitize the file path
-                    $args = array($step['args'][0]);
+                    $args = [$step['args'][0]];
                 }
             } elseif (isset($step['args'])) {
                 if (!function_exists($step['function']) OR strpos($step['function'], '{closure}') !== FALSE) {
@@ -349,7 +349,7 @@ class Kohana_Debug
                     $params = $reflection->getParameters();
                 }
 
-                $args = array();
+                $args = [];
 
                 foreach ($step['args'] as $i => $arg) {
                     if (isset($params[$i])) {
@@ -367,13 +367,13 @@ class Kohana_Debug
                 $function = $step['class'] . $step['type'] . $step['function'];
             }
 
-            $output[] = array(
+            $output[] = [
                 'function' => $function,
                 'args' => isset($args) ? $args : NULL,
                 'file' => isset($file) ? $file : NULL,
                 'line' => isset($line) ? $line : NULL,
                 'source' => isset($source) ? $source : NULL,
-            );
+            ];
 
             unset($function, $args, $file, $line, $source);
         }

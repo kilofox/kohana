@@ -23,10 +23,10 @@ class Kohana_Form
      *     echo Form::open();
      *
      *     // Form will submit to 'search' using GET
-     *     echo Form::open('search', array('method' => 'get'));
+     *     echo Form::open('search', ['method' => 'get']);
      *
      *     // When "file" inputs are present, you must include the "enctype"
-     *     echo Form::open(NULL, array('enctype' => 'multipart/form-data'));
+     *     echo Form::open(NULL, ['enctype' => 'multipart/form-data']);
      *
      * @param   mixed   $action     form action, defaults to the current request URI, or [Request] class to use
      * @param   array   $attributes html attributes
@@ -225,7 +225,7 @@ class Kohana_Form
         $attributes['name'] = $name;
 
         // Add default rows and cols attributes (required)
-        $attributes += array('rows' => 10, 'cols' => 50);
+        $attributes += ['rows' => 10, 'cols' => 50];
 
         return '<textarea' . HTML::attributes($attributes) . '>' . HTML::chars($body, $double_encode) . '</textarea>';
     }
@@ -257,10 +257,10 @@ class Kohana_Form
         if (!is_array($selected)) {
             if ($selected === NULL) {
                 // Use an empty array
-                $selected = array();
+                $selected = [];
             } else {
                 // Convert the selected options to an array
-                $selected = array((string) $selected);
+                $selected = [(string) $selected];
             }
         }
 
@@ -271,17 +271,17 @@ class Kohana_Form
             foreach ($options as $value => $name) {
                 if (is_array($name)) {
                     // Create a new optgroup
-                    $group = array('label' => $value);
+                    $group = ['label' => $value];
 
                     // Create a new list of options
-                    $_options = array();
+                    $_options = [];
 
                     foreach ($name as $_value => $_name) {
                         // Force value to be string
                         $_value = (string) $_value;
 
                         // Create a new attribute set for this option
-                        $option = array('value' => $_value);
+                        $option = ['value' => $_value];
 
                         if (in_array($_value, $selected)) {
                             // This option is selected
@@ -301,7 +301,7 @@ class Kohana_Form
                     $value = (string) $value;
 
                     // Create a new attribute set for this option
-                    $option = array('value' => $value);
+                    $option = ['value' => $value];
 
                     if (in_array($value, $selected)) {
                         // This option is selected
@@ -341,7 +341,7 @@ class Kohana_Form
     /**
      * Creates a image form input.
      *
-     *     echo Form::image(NULL, NULL, array('src' => 'media/img/login.png'));
+     *     echo Form::image(NULL, NULL, ['src' => 'media/img/login.png']);
      *
      * @param   string  $name       input name
      * @param   string  $value      input value
@@ -368,7 +368,7 @@ class Kohana_Form
      * Creates a button form input. Note that the body of a button is NOT escaped,
      * to allow images and other HTML to be used.
      *
-     *     echo Form::button('save', 'Save Profile', array('type' => 'submit'));
+     *     echo Form::button('save', 'Save Profile', ['type' => 'submit']);
      *
      * @param   string  $name       input name
      * @param   string  $body       input value

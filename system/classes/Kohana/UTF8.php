@@ -34,7 +34,7 @@ class Kohana_UTF8
     /**
      * @var  array  List of called methods that have had their required file included.
      */
-    public static $called = array();
+    public static $called = [];
 
     /**
      * Recursively cleans arrays, objects, and strings. Removes ASCII control

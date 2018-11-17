@@ -86,16 +86,12 @@ class Kohana_URL
                 // check that host does not contain forbidden characters (see RFC 952 and RFC 2181)
                 // use preg_replace() instead of preg_match() to prevent DoS attacks with long host names
                 if ($host && '' !== preg_replace('/(?:^\[)?[a-zA-Z0-9-:\]_]+\.?/', '', $host)) {
-                    throw new Kohana_Exception(
-                    'Invalid host :host', array(':host' => $host)
-                    );
+                    throw new Kohana_Exception('Invalid host :host', [':host' => $host]);
                 }
 
                 // Validate $host, see if it matches trusted hosts
                 if (!static::is_trusted_host($host)) {
-                    throw new Kohana_Exception(
-                    'Untrusted host :host. If you trust :host, add it to the trusted hosts in the `url` config file.', array(':host' => $host)
-                    );
+                    throw new Kohana_Exception('Untrusted host :host. If you trust :host, add it to the trusted hosts in the `url` config file.', [':host' => $host]);
                 }
             }
 
@@ -148,7 +144,7 @@ class Kohana_URL
      * parameters and returns the resulting query string.
      *
      *     // Returns "?sort=title&limit=10" combined with any existing GET values
-     *     $query = URL::query(array('sort' => 'title', 'limit' => 10));
+     *     $query = URL::query(['sort' => 'title', 'limit' => 10]);
      *
      * Typically you would use this when you are sorting query results,
      * or something similar.

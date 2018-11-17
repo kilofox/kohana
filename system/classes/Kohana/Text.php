@@ -16,7 +16,7 @@ class Kohana_Text
     /**
      * @var  array   number units and text equivalents
      */
-    public static $units = array(
+    public static $units = [
         1000000000 => 'billion',
         1000000 => 'million',
         1000 => 'thousand',
@@ -48,7 +48,7 @@ class Kohana_Text
         3 => 'three',
         2 => 'two',
         1 => 'one',
-    );
+    ];
 
     /**
      * Limits a phrase to a given number of words.
@@ -261,9 +261,9 @@ class Kohana_Text
      * Replaces the given words with a string.
      *
      *     // Displays "What the #####, man!"
-     *     echo Text::censor('What the frick, man!', array(
+     *     echo Text::censor('What the frick, man!', [
      *         'frick' => '#####',
-     *     ));
+     *     ]);
      *
      * @param   string  $str                    phrase to replace words in
      * @param   array   $badwords               words to replace
@@ -301,7 +301,7 @@ class Kohana_Text
     /**
      * Finds the text that is similar between a set of words.
      *
-     *     $match = Text::similar(array('fred', 'fran', 'free'); // "fr"
+     *     $match = Text::similar(['fred', 'fran', 'free']); // "fr"
      *
      * @param   array   $words  words to find similar text of
      * @return  string
@@ -416,7 +416,7 @@ class Kohana_Text
             return '';
 
         // Standardize newlines
-        $str = str_replace(array("\r\n", "\r"), "\n", $str);
+        $str = str_replace(["\r\n", "\r"], "\n", $str);
 
         // Trim whitespace on each line
         $str = preg_replace('~^[ \t]+~m', '', $str);
@@ -471,12 +471,12 @@ class Kohana_Text
 
         // IEC prefixes (binary)
         if ($si == FALSE OR strpos($force_unit, 'i') !== FALSE) {
-            $units = array('B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB');
+            $units = ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB'];
             $mod = 1024;
         }
         // SI prefixes (decimal)
         else {
-            $units = array('B', 'kB', 'MB', 'GB', 'TB', 'PB');
+            $units = ['B', 'kB', 'MB', 'GB', 'TB', 'PB'];
             $mod = 1000;
         }
 
@@ -507,7 +507,7 @@ class Kohana_Text
         $number = (int) $number;
 
         // Uncompiled text version
-        $text = array();
+        $text = [];
 
         // Last matched unit within the loop
         $last_unit = NULL;
@@ -593,7 +593,7 @@ class Kohana_Text
      * Multiple values can be returned at once by using an array:
      *
      *     // Get the browser and platform with a single call
-     *     $info = Text::user_agent($agent, array('browser', 'platform'));
+     *     $info = Text::user_agent($agent, ['browser', 'platform']);
      *
      * When using an array for the value, an associative array will be returned.
      *
@@ -605,7 +605,7 @@ class Kohana_Text
     public static function user_agent($agent, $value)
     {
         if (is_array($value)) {
-            $data = array();
+            $data = [];
             foreach ($value as $part) {
                 // Add each part to the set
                 $data[$part] = Text::user_agent($agent, $part);
@@ -616,7 +616,7 @@ class Kohana_Text
 
         if ($value === 'browser' OR $value == 'version') {
             // Extra data will be captured
-            $info = array();
+            $info = [];
 
             // Load browsers
             $browsers = Kohana::$config->load('user_agents')->browser;

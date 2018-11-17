@@ -16,7 +16,7 @@ defined('SYSPATH') OR die('No direct script access.');
 class Kohana_View
 {
     // Array of global variables
-    protected static $_global_data = array();
+    protected static $_global_data = [];
 
     /**
      * Returns a new View object. If you do not define the "file" parameter,
@@ -82,7 +82,7 @@ class Kohana_View
      * You can also use an array or Traversable object to set several values at once:
      *
      *     // Create the values $food and $beverage in the view
-     *     View::set_global(array('food' => 'bread', 'beverage' => 'water'));
+     *     View::set_global(['food' => 'bread', 'beverage' => 'water']);
      *
      * [!!] Note: When setting with using Traversable object we're not attaching the whole object to the view,
      * i.e. the object's standard properties will not be available in the view context.
@@ -120,7 +120,7 @@ class Kohana_View
     // View filename
     protected $_file;
     // Array of local variables
-    protected $_data = array();
+    protected $_data = [];
 
     /**
      * Sets the initial view filename and local data. Views should almost
@@ -163,7 +163,7 @@ class Kohana_View
         } elseif (array_key_exists($key, View::$_global_data)) {
             return View::$_global_data[$key];
         } else {
-            throw new Kohana_Exception('View variable is not set: :var', array(':var' => $key));
+            throw new Kohana_Exception('View variable is not set: :var', [':var' => $key]);
         }
     }
 
@@ -244,9 +244,7 @@ class Kohana_View
     public function set_filename($file)
     {
         if (($path = Kohana::find_file('views', $file)) === FALSE) {
-            throw new View_Exception('The requested view :file could not be found', array(
-            ':file' => $file,
-            ));
+            throw new View_Exception('The requested view :file could not be found', [':file' => $file]);
         }
 
         // Store the file path locally
@@ -265,7 +263,7 @@ class Kohana_View
      * You can also use an array or Traversable object to set several values at once:
      *
      *     // Create the values $food and $beverage in the view
-     *     $view->set(array('food' => 'bread', 'beverage' => 'water'));
+     *     $view->set(['food' => 'bread', 'beverage' => 'water']);
      *
      * [!!] Note: When setting with using Traversable object we're not attaching the whole object to the view,
      * i.e. the object's standard properties will not be available in the view context.
