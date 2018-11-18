@@ -29,7 +29,7 @@ abstract class Kohana_Request_Client
     /**
      * @var  array  Headers to preserve when following a redirect
      */
-    protected $_follow_headers = array('authorization');
+    protected $_follow_headers = ['authorization'];
 
     /**
      * @var  bool  Follow 302 redirect with original request method?
@@ -39,9 +39,9 @@ abstract class Kohana_Request_Client
     /**
      * @var array  Callbacks to use when response contains given headers
      */
-    protected $_header_callbacks = array(
+    protected $_header_callbacks = [
         'Location' => 'Request_Client::on_header_location'
-    );
+    ];
 
     /**
      * @var int  Maximum number of requests that header callbacks can trigger before the request is aborted
@@ -56,7 +56,7 @@ abstract class Kohana_Request_Client
     /**
      * @var array  Arbitrary parameters that are shared with header callbacks through their Request_Client object
      */
-    protected $_callback_params = array();
+    protected $_callback_params = [];
 
     /**
      * Creates a new `Request_Client` object,
@@ -64,7 +64,7 @@ abstract class Kohana_Request_Client
      *
      * @param   array    $params Params
      */
-    public function __construct(array $params = array())
+    public function __construct(array $params = [])
     {
         foreach ($params as $key => $value) {
             if (method_exists($this, $key)) {
@@ -99,14 +99,13 @@ abstract class Kohana_Request_Client
     {
         // Prevent too much recursion of header callback requests
         if ($this->callback_depth() > $this->max_callback_depth())
-            throw new Request_Client_Recursion_Exception(
-            "Could not execute request to :uri - too many recursions after :depth requests", array(
+            throw new Request_Client_Recursion_Exception("Could not execute request to :uri - too many recursions after :depth requests", [
             ':uri' => $request->uri(),
             ':depth' => $this->callback_depth() - 1,
-            ));
+            ]);
 
         // Execute the request and pass the currently used protocol
-        $orig_response = $response = Response::factory(array('_protocol' => $request->protocol()));
+        $orig_response = $response = Response::factory(['_protocol' => $request->protocol()]);
 
         if (($cache = $this->cache()) instanceof HTTP_Cache)
             return $cache->execute($this, $request, $response);
@@ -238,10 +237,12 @@ abstract class Kohana_Request_Client
      * By default, the [Request_Client::on_header_location] callback is assigned
      * to the Location header to support automatic redirect following.
      *
-     *     $client->header_callbacks(array(
+     *     $client->header_callbacks([
      *         'Location' => 'Request_Client::on_header_location',
-     *         'WWW-Authenticate' => function($request, $response, $client) {return $new_response;},
-     *     );
+     *         'WWW-Authenticate' => function($request, $response, $client) {
+     *             return $new_response;
+     *         }
+     *     ];
      *
      * @param array $header_callbacks	Array of callbacks to trigger on presence of given headers
      * @return Request_Client
@@ -301,7 +302,7 @@ abstract class Kohana_Request_Client
      * As with other Kohana setter/getters, usage is:
      *
      *     // Set full array
-     *     $client->callback_params(array('foo'=>'bar'));
+     *     $client->callback_params(['foo' => 'bar']);
      *
      *     // Set single key
      *     $client->callback_params('foo','bar');
@@ -368,7 +369,7 @@ abstract class Kohana_Request_Client
     public static function on_header_location(Request $request, Response $response, Request_Client $client)
     {
         // Do we need to follow a Location header ?
-        if ($client->follow() AND in_array($response->status(), array(201, 301, 302, 303, 307))) {
+        if ($client->follow() AND in_array($response->status(), [201, 301, 302, 303, 307])) {
             // Figure out which method to use for the follow request
             switch ($response->status()) {
                 default:

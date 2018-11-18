@@ -44,7 +44,7 @@ class Kohana_Request_Client_Internal extends Request_Client
 
         if ($directory) {
             // Add the directory name to the class prefix
-            $prefix .= str_replace(array('\\', '/'), '_', trim($directory, '/')) . '_';
+            $prefix .= str_replace(['\\', '/'], '_', trim($directory, '/')) . '_';
         }
 
         if (Kohana::$profiling) {
@@ -71,17 +71,14 @@ class Kohana_Request_Client_Internal extends Request_Client
 
         try {
             if (!class_exists($prefix . $controller)) {
-                throw HTTP_Exception::factory(404, 'The requested URL :uri was not found on this server.', array(':uri' => $request->uri())
-                )->request($request);
+                throw HTTP_Exception::factory(404, 'The requested URL :uri was not found on this server.', [':uri' => $request->uri()])->request($request);
             }
 
             // Load the controller using reflection
             $class = new ReflectionClass($prefix . $controller);
 
             if ($class->isAbstract()) {
-                throw new Kohana_Exception(
-                'Cannot create instances of abstract :controller', array(':controller' => $prefix . $controller)
-                );
+                throw new Kohana_Exception('Cannot create instances of abstract :controller', [':controller' => $prefix . $controller]);
             }
 
             // Create a new instance of the controller

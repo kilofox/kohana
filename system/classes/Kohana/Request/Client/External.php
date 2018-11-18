@@ -56,7 +56,7 @@ abstract class Kohana_Request_Client_External extends Request_Client
      * @return  Request_Client_External
      * @throws  Request_Exception
      */
-    public static function factory(array $params = array(), $client = NULL)
+    public static function factory(array $params = [], $client = NULL)
     {
         if ($client === NULL) {
             $client = Request_Client_External::$client;
@@ -76,7 +76,7 @@ abstract class Kohana_Request_Client_External extends Request_Client
      * @link    http://www.php.net/manual/function.curl-setopt
      * @link    http://www.php.net/manual/http.request.options
      */
-    protected $_options = array();
+    protected $_options = [];
 
     /**
      * Processes the request, executing the controller action that handles this

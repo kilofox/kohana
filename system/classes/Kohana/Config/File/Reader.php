@@ -42,7 +42,7 @@ class Kohana_Config_File_Reader implements Kohana_Config_Reader
      */
     public function load($group)
     {
-        $config = array();
+        $config = [];
 
         if ($files = Kohana::find_file($this->_directory, $group, NULL, TRUE)) {
             foreach ($files as $file) {
