@@ -12,8 +12,7 @@ class Bench_ArrCallback extends Codebench
     public $description = 'Parsing <em>command[param,param]</em> strings in <code>Arr::callback()</code>:
 		 http://github.com/shadowhand/kohana/commit/c3aaae849164bf92a486e29e736a265b350cb4da#L0R127';
     public $loops = 10000;
-    public $subjects = array
-        (
+    public $subjects = [
         // Valid callback strings
         'foo',
         'foo::bar',
@@ -23,7 +22,7 @@ class Bench_ArrCallback extends Codebench
         'foo[[apple],[orange]]', // params with brackets inside
         // Invalid callback strings
         'foo[apple,orange', // no closing bracket
-    );
+    ];
 
     public function bench_shadowhand($subject)
     {

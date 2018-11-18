@@ -28,7 +28,7 @@ class Bench_MDDoBaseURL extends Codebench
     {
         // The original regex contained a bug, which is fixed here for benchmarking purposes.
         // At the very start of the regex, (?!!) has been replace by (?<!!)
-        return preg_replace_callback('~(?<!!)\[(.+?)\]\(([^#]\S*(?:\s*".+?")?)\)~', array($this, '_add_base_url_original'), $subject);
+        return preg_replace_callback('~(?<!!)\[(.+?)\]\(([^#]\S*(?:\s*".+?")?)\)~', [$this, '_add_base_url_original'], $subject);
     }
 
     public function _add_base_url_original($matches)
@@ -44,7 +44,7 @@ class Bench_MDDoBaseURL extends Codebench
 
     public function bench_optimized_callback($subject)
     {
-        return preg_replace_callback('~(?<!!)\[(.+?)\]\((?!\w++://)([^#]\S*(?:\s*+".+?")?)\)~', array($this, '_add_base_url_optimized'), $subject);
+        return preg_replace_callback('~(?<!!)\[(.+?)\]\((?!\w++://)([^#]\S*(?:\s*+".+?")?)\)~', [$this, '_add_base_url_optimized'], $subject);
     }
 
     public function _add_base_url_optimized($matches)

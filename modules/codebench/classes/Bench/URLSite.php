@@ -11,8 +11,7 @@ class Bench_URLSite extends Codebench
 {
     public $description = 'http://dev.kohanaframework.org/issues/3110';
     public $loops = 1000;
-    public $subjects = array
-        (
+    public $subjects = [
         '',
         'news',
         'news/',
@@ -23,7 +22,7 @@ class Bench_URLSite extends Codebench
         'http://example.com/hello',
         'http://example.com:80/',
         'http://user:pass@example.com/',
-    );
+    ];
 
     public function __construct()
     {

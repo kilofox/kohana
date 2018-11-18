@@ -11,11 +11,10 @@ class Bench_LtrimDigits extends Codebench
 {
     public $description = 'Chopping off leading digits: regex vs ltrim.';
     public $loops = 100000;
-    public $subjects = array
-        (
+    public $subjects = [
         '123digits',
         'no-digits',
-    );
+    ];
 
     public function bench_regex($subject)
     {

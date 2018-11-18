@@ -11,13 +11,12 @@ class Bench_AutoLinkEmails extends Codebench
 {
     public $description = 'Fixing <a href="http://dev.kohanaphp.com/issues/2772">#2772</a>, and comparing some possibilities.';
     public $loops = 1000;
-    public $subjects = array
-        (
+    public $subjects = [
         '<ul>
 		    <li>voorzitter@xxxx.com</li>
 		    <li>vicevoorzitter@xxxx.com</li>
 		</ul>',
-    );
+    ];
 
     // The original function, with str_replace replaced by preg_replace. Looks clean.
     public function bench_match_all_loop($subject)
@@ -44,7 +43,7 @@ class Bench_AutoLinkEmails extends Codebench
     public function bench_replace_callback_external($subject)
     {
         return preg_replace_callback(
-            '~\b(?<!href="mailto:|">|58;)(?!\.)[-+_a-z0-9.]++(?<!\.)@(?![-.])[-a-z0-9.]+(?<!\.)\.[a-z]{2,6}\b~i', array($this, '_callback_external'), $subject
+            '~\b(?<!href="mailto:|">|58;)(?!\.)[-+_a-z0-9.]++(?<!\.)@(?![-.])[-a-z0-9.]+(?<!\.)\.[a-z]{2,6}\b~i', [$this, '_callback_external'], $subject
         );
     }
 

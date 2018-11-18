@@ -12,14 +12,13 @@ class Bench_UserFuncArray extends Codebench
     public $description = 'Testing the speed difference of using <code>call_user_func_array</code>
 		 compared to counting args and doing manual calls.';
     public $loops = 100000;
-    public $subjects = array
-        (
+    public $subjects = [
         // Argument sets
-        array(),
-        array('one'),
-        array('one', 'two'),
-        array('one', 'two', 'three'),
-    );
+        [],
+        ['one'],
+        ['one', 'two'],
+        ['one', 'two', 'three'],
+    ];
 
     public function bench_count_args($args)
     {
@@ -38,7 +37,7 @@ class Bench_UserFuncArray extends Codebench
                 $this->$name($args[0], $args[1], $args[2], $args[3]);
                 break;
             default:
-                call_user_func_array(array($this, $name), $args);
+                call_user_func_array([$this, $name], $args);
                 break;
         }
     }
@@ -46,7 +45,7 @@ class Bench_UserFuncArray extends Codebench
     public function bench_direct_call($args)
     {
         $name = 'callme';
-        call_user_func_array(array($this, $name), $args);
+        call_user_func_array([$this, $name], $args);
     }
 
     protected function callme()

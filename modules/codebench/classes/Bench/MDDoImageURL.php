@@ -27,7 +27,7 @@ class Bench_MDDoImageURL extends Codebench
 
     public function bench_original($subject)
     {
-        return preg_replace_callback('~!\[(.+?)\]\((\S*(?:\s*".+?")?)\)~', array($this, '_add_image_url_original'), $subject);
+        return preg_replace_callback('~!\[(.+?)\]\((\S*(?:\s*".+?")?)\)~', [$this, '_add_image_url_original'], $subject);
     }
 
     protected function _add_image_url_original($matches)
@@ -44,7 +44,7 @@ class Bench_MDDoImageURL extends Codebench
     public function bench_optimized_callback($subject)
     {
         // Moved the check for "://" to the regex, simplifying the callback function
-        return preg_replace_callback('~!\[(.+?)\]\((?!\w++://)(\S*(?:\s*+".+?")?)\)~', array($this, '_add_image_url_optimized'), $subject);
+        return preg_replace_callback('~!\[(.+?)\]\((?!\w++://)(\S*(?:\s*+".+?")?)\)~', [$this, '_add_image_url_optimized'], $subject);
     }
 
     protected function _add_image_url_optimized($matches)

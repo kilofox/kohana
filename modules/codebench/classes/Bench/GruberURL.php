@@ -11,8 +11,7 @@ class Bench_GruberURL extends Codebench
 {
     public $description = 'Optimization for http://daringfireball.net/2009/11/liberal_regex_for_matching_urls';
     public $loops = 10000;
-    public $subjects = array
-        (
+    public $subjects = [
         'http://foo.com/blah_blah',
         'http://foo.com/blah_blah/',
         '(Something like http://foo.com/blah_blah)',
@@ -35,7 +34,7 @@ class Bench_GruberURL extends Codebench
         'Just a www.example.com link.',
         // To test the use of possessive quatifiers:
         'httpppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp',
-    );
+    ];
 
     public function bench_daringfireball($subject)
     {

@@ -11,18 +11,18 @@ class Bench_DateSpan extends Codebench
 {
     public $description = 'Optimization for <code>Date::span()</code>.';
     public $loops = 1000;
-    public $subjects = array();
+    public $subjects = [];
 
     public function __construct()
     {
         parent::__construct();
 
-        $this->subjects = array(
+        $this->subjects = [
             time(),
             time() - Date::MONTH,
             time() - Date::YEAR,
             time() - Date::YEAR * 10,
-        );
+        ];
     }
 
     // Original method
@@ -79,10 +79,10 @@ class Bench_DateSpan extends Codebench
         unset($timespan, $remote, $local);
 
         // Deny access to these variables
-        $deny = array_flip(array('deny', 'key', 'difference', 'output'));
+        $deny = array_flip(['deny', 'key', 'difference', 'output']);
 
         // Return the difference
-        $difference = array();
+        $difference = [];
         foreach ($output as $key) {
             if (isset($$key) AND ! isset($deny[$key])) {
                 // Add requested key to the output

@@ -12,8 +12,7 @@ class Bench_MDDoIncludeViews extends Codebench
     public $description = 'Optimization for the <code>doIncludeViews()</code> method of <code>Kohana_Kodoc_Markdown</code>
 		 for the Kohana Userguide.';
     public $loops = 10000;
-    public $subjects = array
-        (
+    public $subjects = [
         // Valid matches
         '{{one}} two {{three}}',
         '{{userguide/examples/hello_world_error}}',
@@ -23,7 +22,7 @@ class Bench_MDDoIncludeViews extends Codebench
         '{{userguide/examples/hello_world_error}',
         '{{userguide/examples/hello_world_error }}',
         '{{userguide/examples/{{hello_world_error }}',
-    );
+    ];
 
     public function bench_original($subject)
     {
