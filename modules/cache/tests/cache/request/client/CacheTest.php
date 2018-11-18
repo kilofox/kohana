@@ -26,10 +26,10 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
     public function setUp()
     {
         Route::set('welcome', 'welcome/index')
-            ->defaults(array(
+            ->defaults([
                 'controller' => 'welcome',
                 'action' => 'index'
-        ));
+        ]);
 
         parent::setUp();
     }
@@ -66,12 +66,12 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
     public function test_cache_miss()
     {
         $route = new Route('welcome/index');
-        $route->defaults(array(
+        $route->defaults([
             'controller' => 'Kohana_Request_CacheTest_Dummy',
             'action' => 'index',
-        ));
+        ]);
 
-        $request = new Request('welcome/index', NULL, array($route));
+        $request = new Request('welcome/index', NULL, [$route]);
         $cache_mock = $this->createMock('Cache_File');
 
         $request->client()->cache(HTTP_Cache::factory($cache_mock));
@@ -98,10 +98,7 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
         $cache_mock = $this->createMock('Cache_File');
         $response = Response::factory();
 
-        $request->client()->cache(new HTTP_Cache(array(
-            'cache' => $cache_mock
-            )
-        ));
+        $request->client()->cache(new HTTP_Cache(['cache' => $cache_mock]));
 
         $response->headers('cache-control', 'max-age=' . $lifetime);
 
@@ -135,18 +132,15 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
         $request = new Request('welcome/index');
         $cache_mock = $this->createMock('Cache_File');
 
-        $request->client()->cache(new HTTP_Cache(array(
-            'cache' => $cache_mock
-            )
-        ));
+        $request->client()->cache(new HTTP_Cache(['cache' => $cache_mock]));
 
         $response = Response::factory();
 
-        $response->headers(array(
+        $response->headers([
             'cache-control' => 'max-age=' . $lifetime,
             HTTP_Cache::CACHE_STATUS_KEY =>
             HTTP_Cache::CACHE_STATUS_HIT
-        ));
+        ]);
 
         $key = $request->client()->cache()->create_cache_key($request);
 
@@ -167,57 +161,53 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
      */
     public function provider_set_cache()
     {
-        return array(
-            array(
-                new HTTP_Header(array('cache-control' => 'no-cache')),
-                array('no-cache' => NULL),
+        return [
+            [
+                new HTTP_Header(['cache-control' => 'no-cache']),
+                ['no-cache' => NULL],
                 FALSE,
-            ),
-            array(
-                new HTTP_Header(array('cache-control' => 'no-store')),
-                array('no-store' => NULL),
+            ],
+            [
+                new HTTP_Header(['cache-control' => 'no-store']),
+                ['no-store' => NULL],
                 FALSE,
-            ),
-            array(
-                new HTTP_Header(array('cache-control' => 'max-age=100')),
-                array('max-age' => '100'),
+            ],
+            [
+                new HTTP_Header(['cache-control' => 'max-age=100']),
+                ['max-age' => '100'],
                 TRUE
-            ),
-            array(
-                new HTTP_Header(array('cache-control' => 'private')),
-                array('private' => NULL),
+            ],
+            [
+                new HTTP_Header(['cache-control' => 'private']),
+                ['private' => NULL],
                 FALSE
-            ),
-            array(
-                new HTTP_Header(array('cache-control' => 'private, max-age=100')),
-                array('private' => NULL, 'max-age' => '100'),
+            ],
+            [
+                new HTTP_Header(['cache-control' => 'private, max-age=100']),
+                ['private' => NULL, 'max-age' => '100'],
                 FALSE
-            ),
-            array(
-                new HTTP_Header(array('cache-control' => 'private, s-maxage=100')),
-                array('private' => NULL, 's-maxage' => '100'),
+            ],
+            [
+                new HTTP_Header(['cache-control' => 'private, s-maxage=100']),
+                ['private' => NULL, 's-maxage' => '100'],
                 TRUE
-            ),
-            array(
-                new HTTP_Header(array(
-                    'expires' => date('m/d/Y', strtotime('-1 day')),
-                    )),
-                array(),
+            ],
+            [
+                new HTTP_Header(['expires' => date('m/d/Y', strtotime('-1 day'))]),
+                [],
                 FALSE
-            ),
-            array(
-                new HTTP_Header(array(
-                    'expires' => date('m/d/Y', strtotime('+1 day')),
-                    )),
-                array(),
+            ],
+            [
+                new HTTP_Header(['expires' => date('m/d/Y', strtotime('+1 day'))]),
+                [],
                 TRUE
-            ),
-            array(
-                new HTTP_Header(array()),
-                array(),
+            ],
+            [
+                new HTTP_Header([]),
+                [],
                 TRUE
-            ),
-        );
+            ],
+        ];
     }
 
     /**

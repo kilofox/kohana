@@ -35,12 +35,12 @@ class Kohana_CacheArithmeticMemcacheTest extends Kohana_CacheArithmeticMethodsTe
         if (!$config = Kohana::$config->load('cache.memcache')) {
             Kohana::$config->load('cache')
                 ->set(
-                    'memcache', array(
+                    'memcache', [
                     'driver' => 'memcache',
                     'default_expire' => 3600,
                     'compression' => FALSE, // Use Zlib compression (can cause issues with integers)
-                    'servers' => array(
-                        'local' => array(
+                    'servers' => [
+                        'local' => [
                             'host' => 'localhost', // Memcache Server
                             'port' => 11211, // Memcache port number
                             'persistent' => FALSE, // Persistent connection
@@ -48,10 +48,10 @@ class Kohana_CacheArithmeticMemcacheTest extends Kohana_CacheArithmeticMethodsTe
                             'timeout' => 1,
                             'retry_interval' => 15,
                             'status' => TRUE,
-                        ),
-                    ),
+                        ],
+                    ],
                     'instant_death' => TRUE,
-                    )
+                    ]
             );
             $config = Kohana::$config->load('cache.memcache');
         }
@@ -91,16 +91,16 @@ class Kohana_CacheArithmeticMemcacheTest extends Kohana_CacheArithmeticMethodsTe
         $id_set = 'set_id';
         $ttl = 300;
 
-        $data = array(
+        $data = [
             'foobar',
             0,
             1.0,
             new stdClass,
-            array('foo', 'bar' => 1),
+            ['foo', 'bar' => 1],
             TRUE,
             NULL,
             FALSE
-        );
+        ];
 
         $previous_set = $cache->get($id_set, NULL);
 

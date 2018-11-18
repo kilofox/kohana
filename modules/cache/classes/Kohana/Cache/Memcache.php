@@ -14,32 +14,36 @@ defined('SYSPATH') or die('No direct script access.');
  *
  * Below is an example of a _memcache_ server configuration.
  *
- *     return array(
- *          'default'   => array(                          // Default group
- *                  'driver'         => 'memcache',        // using Memcache driver
- *                  'servers'        => array(             // Available server definitions
- *                         // First memcache server server
- *                         array(
- *                              'host'             => 'localhost',
- *                              'port'             => 11211,
- *                              'persistent'       => FALSE
- *                              'weight'           => 1,
- *                              'timeout'          => 1,
- *                              'retry_interval'   => 15,
- *                              'status'           => TRUE,
- * 				'instant_death'	   => TRUE,
- *                              'failure_callback' => array('className', 'classMethod')
- *                         ),
- *                         // Second memcache server
- *                         array(
- *                              'host'             => '192.168.1.5',
- *                              'port'             => 22122,
- *                              'persistent'       => TRUE
- *                         )
- *                  ),
- *                  'compression'    => FALSE,             // Use compression?
- *           ),
- *     )
+ *     return [
+ *         // Default group
+ *         'default' => [
+ *             // Using Memcache driver
+ *             'driver' => 'memcache',
+ *             // Available server definitions
+ *             'servers' => [
+ *                 // First memcache server server
+ *                 [
+ *                     'host' => 'localhost',
+ *                     'port' => 11211,
+ *                     'persistent' => FALSE
+ *                     'weight' => 1,
+ *                     'timeout' => 1,
+ *                     'retry_interval' => 15,
+ *                     'status' => TRUE,
+ * 				       'instant_death' => TRUE,
+ *                     'failure_callback' => ['className', 'classMethod']
+ *                 ],
+ *                 // Second memcache server
+ *                 [
+ *                     'host' => '192.168.1.5',
+ *                     'port' => 22122,
+ *                     'persistent' => TRUE
+ *                 ]
+ *             ],
+ *             // Use compression?
+ *             'compression' => FALSE,
+ *         ],
+ *     ];
  *
  * In cases where only one cache group is required, if the group is named `default` there is
  * no need to pass the group name when instantiating a cache instance.
@@ -107,7 +111,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      *
      * @var array
      */
-    protected $_default_config = array();
+    protected $_default_config = [];
 
     /**
      * Constructs the memcache Kohana_Cache object
@@ -136,7 +140,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
         }
 
         // Setup default server configuration
-        $this->_default_config = array(
+        $this->_default_config = [
             'host' => 'localhost',
             'port' => 11211,
             'persistent' => FALSE,
@@ -145,8 +149,8 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
             'retry_interval' => 15,
             'status' => TRUE,
             'instant_death' => TRUE,
-            'failure_callback' => array($this, '_failed_request'),
-        );
+            'failure_callback' => [$this, '_failed_request'],
+        ];
 
         // Add the memcache servers to the pool
         foreach ($servers as $server) {
@@ -154,7 +158,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
             $server += $this->_default_config;
 
             if (!$this->_memcache->addServer($server['host'], $server['port'], $server['persistent'], $server['weight'], $server['timeout'], $server['retry_interval'], $server['status'], $server['failure_callback'])) {
-                throw new Cache_Exception('Memcache could not connect to host \':host\' using port \':port\'', array(':host' => $server['host'], ':port' => $server['port']));
+                throw new Cache_Exception('Memcache could not connect to host \':host\' using port \':port\'', [':host' => $server['host'], ':port' => $server['port']]);
             }
         }
 
@@ -304,9 +308,10 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
             return;
         else {
             return $this->_memcache->setServerParams(
-                    $host['host'], $host['port'], $host['timeout'], $host['retry_interval'], FALSE, // Server is offline
-                    array($this, '_failed_request'
-            ));
+                    $host['host'], $host['port'], $host['timeout'], $host['retry_interval'],
+                    // Server is offline
+                    FALSE, [$this, '_failed_request']
+            );
         }
     }
 

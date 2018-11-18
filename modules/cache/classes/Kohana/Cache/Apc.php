@@ -10,11 +10,13 @@ defined('SYSPATH') or die('No direct script access.');
  *
  * Below is an example of an _apc_ server configuration.
  *
- *     return array(
- *          'apc' => array(                          // Driver group
- *                  'driver'         => 'apc',         // using APC driver
- *           ),
- *     )
+ *     return [
+ *         // Driver group
+ *         'apc' => [
+ *             // Using APC driver
+ *             'driver' => 'apc',
+ *         ],
+ *     ];
  *
  * In cases where only one cache group is required, if the group is named `default` there is
  * no need to pass the group name when instantiating a cache instance.

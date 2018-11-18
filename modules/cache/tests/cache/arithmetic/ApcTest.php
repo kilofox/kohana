@@ -41,10 +41,10 @@ class Kohana_ApcTest extends Kohana_CacheArithmeticMethodsTest
         if (!Kohana::$config->load('cache.apc')) {
             Kohana::$config->load('cache')
                 ->set(
-                    'apc', array(
+                    'apc', [
                     'driver' => 'apc',
                     'default_expire' => 3600,
-                    )
+                    ]
             );
         }
 

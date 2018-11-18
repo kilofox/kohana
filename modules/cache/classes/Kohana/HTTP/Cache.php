@@ -27,24 +27,17 @@ class Kohana_HTTP_Cache
      * injector for the Cache library.
      * 
      *      // Create HTTP_Cache with named cache engine
-     *      $http_cache = HTTP_Cache::factory('memcache', array(
-     *          'allow_private_cache' => FALSE
-     *          )
-     *      );
+     *      $http_cache = HTTP_Cache::factory('memcache', ['allow_private_cache' => FALSE]);
      * 
      *      // Create HTTP_Cache with supplied cache engine
-     *      $http_cache = HTTP_Cache::factory(Cache::instance('memcache'),
-     *          array(
-     *              'allow_private_cache' => FALSE
-     *          )
-     *      );
+     *      $http_cache = HTTP_Cache::factory(Cache::instance('memcache'), ['allow_private_cache' => FALSE]);
      *
      * @uses    Cache
      * @param   mixed   $cache      cache engine to use
      * @param   array   $options    options to set to this class
      * @return  HTTP_Cache
      */
-    public static function factory($cache, array $options = array())
+    public static function factory($cache, array $options = [])
     {
         if (!$cache instanceof Cache) {
             $cache = Cache::instance($cache);
@@ -108,7 +101,7 @@ class Kohana_HTTP_Cache
      *
      * @param   array $options 
      */
-    public function __construct(array $options = array())
+    public function __construct(array $options = [])
     {
         foreach ($options as $key => $value) {
             if (method_exists($this, $key)) {
@@ -138,19 +131,20 @@ class Kohana_HTTP_Cache
             return $client->execute_request($request, $response);
 
         // If this is a destructive request, by-pass cache completely
-        if (in_array($request->method(), array(
+        if (in_array($request->method(), [
                 HTTP_Request::POST,
                 HTTP_Request::PUT,
-                HTTP_Request::DELETE))) {
+                HTTP_Request::DELETE
+            ])) {
             // Kill existing caches for this request
             $this->invalidate_cache($request);
 
             $response = $client->execute_request($request, $response);
 
-            $cache_control = HTTP_Header::create_cache_control(array(
+            $cache_control = HTTP_Header::create_cache_control([
                     'no-cache',
                     'must-revalidate'
-            ));
+            ]);
 
             // Ensure client respects destructive action
             return $response->headers('cache-control', $cache_control);
@@ -307,7 +301,7 @@ class Kohana_HTTP_Cache
             $cache_control = HTTP_Header::parse_cache_control($cache_control);
 
             // If the no-cache or no-store directive is set, return
-            if (array_intersect($cache_control, array('no-cache', 'no-store')))
+            if (array_intersect($cache_control, ['no-cache', 'no-store']))
                 return FALSE;
 
             // Check for private cache and get out of here if invalid

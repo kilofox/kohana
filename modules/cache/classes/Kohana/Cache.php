@@ -38,19 +38,23 @@ defined('SYSPATH') or die('No direct script access.');
  *
  * Below is an example of a _memcache_ server configuration.
  *
- *     return array(
- *          'memcache' => array(                           // Name of group
- *                  'driver'         => 'memcache',        // using Memcache driver
- *                  'servers'        => array(             // Available server definitions
- *                         array(
- *                              'host'       => 'localhost',
- *                              'port'       => 11211,
- *                              'persistent' => FALSE
- *                         )
- *                  ),
- *                  'compression'    => FALSE,             // Use compression?
- *           ),
- *     )
+ *     return [
+ *         // Name of group
+ *         'memcache' => [
+ *             // Using Memcache driver
+ *             'driver' => 'memcache',
+ *             // Available server definitions
+ *             'servers' => [
+ *                 [
+ *                     'host' => 'localhost',
+ *                     'port' => 11211,
+ *                     'persistent' => FALSE
+ *                 ]
+ *             ],
+ *             // Use compression?
+ *             'compression' => FALSE,
+ *         ],
+ *     ]
  *
  * In cases where only one cache group is required, set `Cache::$default` (in your bootstrap,
  * or by extending `Kohana_Cache` class) to the name of the group, and use:
@@ -93,7 +97,7 @@ abstract class Kohana_Cache
     /**
      * @var   Kohana_Cache instances
      */
-    public static $instances = array();
+    public static $instances = [];
 
     /**
      * Creates a singleton of a Kohana Cache group. If no group is supplied
@@ -128,9 +132,7 @@ abstract class Kohana_Cache
         $config = Kohana::$config->load('cache');
 
         if (!$config->offsetExists($group)) {
-            throw new Cache_Exception(
-            'Failed to load Kohana Cache group: :group', array(':group' => $group)
-            );
+            throw new Cache_Exception('Failed to load Kohana Cache group: :group', [':group' => $group]);
         }
 
         $config = $config->get($group);
@@ -146,7 +148,7 @@ abstract class Kohana_Cache
     /**
      * @var  Config
      */
-    protected $_config = array();
+    protected $_config = [];
 
     /**
      * Ensures singleton pattern is observed, loads the default expiry
@@ -164,13 +166,10 @@ abstract class Kohana_Cache
      * to this class.
      *
      *     // Overwrite all configuration
-     *     $cache->config(array('driver' => 'memcache', '...'));
+     *     $cache->config(['driver' => 'memcache', '...']);
      *
      *     // Set a new configuration setting
-     *     $cache->config('servers', array(
-     *          'foo' => 'bar',
-     *          '...'
-     *          ));
+     *     $cache->config('servers', ['foo' => 'bar', '...']);
      *
      *     // Get a configuration setting
      *     $servers = $cache->config('servers);
@@ -290,7 +289,7 @@ abstract class Kohana_Cache
     protected function _sanitize_id($id)
     {
         // Change slashes and spaces to underscores
-        return str_replace(array('/', '\\', ' '), '_', $id);
+        return str_replace(['/', '\\', ' '], '_', $id);
     }
 
 }

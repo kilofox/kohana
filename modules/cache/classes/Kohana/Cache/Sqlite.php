@@ -57,7 +57,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
                 // Create the caches table
                 $this->_db->query(Arr::get($this->_config, 'schema', NULL));
             } catch (PDOException $e) {
-                throw new Cache_Exception('Failed to create new SQLite caches table with the following error : :error', array(':error' => $e->getMessage()));
+                throw new Cache_Exception('Failed to create new SQLite caches table with the following error : :error', [':error' => $e->getMessage()]);
             }
         }
     }
@@ -77,9 +77,9 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
 
         // Try and load the cache based on id
         try {
-            $statement->execute(array(':id' => $this->_sanitize_id($id)));
+            $statement->execute([':id' => $this->_sanitize_id($id)]);
         } catch (PDOException $e) {
-            throw new Cache_Exception('There was a problem querying the local SQLite3 cache. :error', array(':error' => $e->getMessage()));
+            throw new Cache_Exception('There was a problem querying the local SQLite3 cache. :error', [':error' => $e->getMessage()]);
         }
 
         if (!$result = $statement->fetch(PDO::FETCH_OBJ)) {
@@ -135,9 +135,9 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
 
         // Remove the entry
         try {
-            $statement->execute(array(':id' => $this->_sanitize_id($id)));
+            $statement->execute([':id' => $this->_sanitize_id($id)]);
         } catch (PDOException $e) {
-            throw new Cache_Exception('There was a problem querying the local SQLite3 cache. :error', array(':error' => $e->getMessage()));
+            throw new Cache_Exception('There was a problem querying the local SQLite3 cache. :error', [':error' => $e->getMessage()]);
         }
 
         return (bool) $statement->rowCount();
@@ -157,7 +157,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
         try {
             $statement->execute();
         } catch (PDOException $e) {
-            throw new Cache_Exception('There was a problem querying the local SQLite3 cache. :error', array(':error' => $e->getMessage()));
+            throw new Cache_Exception('There was a problem querying the local SQLite3 cache. :error', [':error' => $e->getMessage()]);
         }
 
         return (bool) $statement->rowCount();
@@ -194,9 +194,9 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
 
         // Try to insert
         try {
-            $statement->execute(array(':id' => $this->_sanitize_id($id), ':cache' => $data, ':expiration' => $lifetime, ':tags' => $tags));
+            $statement->execute([':id' => $this->_sanitize_id($id), ':cache' => $data, ':expiration' => $lifetime, ':tags' => $tags]);
         } catch (PDOException $e) {
-            throw new Cache_Exception('There was a problem querying the local SQLite3 cache. :error', array(':error' => $e->getMessage()));
+            throw new Cache_Exception('There was a problem querying the local SQLite3 cache. :error', [':error' => $e->getMessage()]);
         }
 
         return (bool) $statement->rowCount();
@@ -216,9 +216,9 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
 
         // Try to delete
         try {
-            $statement->execute(array(':tag' => "%<{$tag}>%"));
+            $statement->execute([':tag' => "%<{$tag}>%"]);
         } catch (PDOException $e) {
-            throw new Cache_Exception('There was a problem querying the local SQLite3 cache. :error', array(':error' => $e->getMessage()));
+            throw new Cache_Exception('There was a problem querying the local SQLite3 cache. :error', [':error' => $e->getMessage()]);
         }
 
         return (bool) $statement->rowCount();
@@ -238,14 +238,14 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
 
         // Try to find
         try {
-            if (!$statement->execute(array(':tag' => "%<{$tag}>%"))) {
-                return array();
+            if (!$statement->execute([':tag' => "%<{$tag}>%"])) {
+                return [];
             }
         } catch (PDOException $e) {
-            throw new Cache_Exception('There was a problem querying the local SQLite3 cache. :error', array(':error' => $e->getMessage()));
+            throw new Cache_Exception('There was a problem querying the local SQLite3 cache. :error', [':error' => $e->getMessage()]);
         }
 
-        $result = array();
+        $result = [];
 
         while ($row = $statement->fetchObject()) {
             // Disable notices for unserializing
@@ -272,9 +272,9 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
         $statement = $this->_db->prepare('DELETE FROM caches WHERE expiration < :expiration');
 
         try {
-            $statement->execute(array(':expiration' => time()));
+            $statement->execute([':expiration' => time()]);
         } catch (PDOException $e) {
-            throw new Cache_Exception('There was a problem querying the local SQLite3 cache. :error', array(':error' => $e->getMessage()));
+            throw new Cache_Exception('There was a problem querying the local SQLite3 cache. :error', [':error' => $e->getMessage()]);
         }
     }
 
@@ -289,9 +289,9 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
     {
         $statement = $this->_db->prepare('SELECT id FROM caches WHERE id = :id');
         try {
-            $statement->execute(array(':id' => $this->_sanitize_id($id)));
+            $statement->execute([':id' => $this->_sanitize_id($id)]);
         } catch (PDOExeption $e) {
-            throw new Cache_Exception('There was a problem querying the local SQLite3 cache. :error', array(':error' => $e->getMessage()));
+            throw new Cache_Exception('There was a problem querying the local SQLite3 cache. :error', [':error' => $e->getMessage()]);
         }
 
         return (bool) $statement->fetchAll();
