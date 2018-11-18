@@ -6,7 +6,7 @@ defined('SYSPATH') OR die('No direct script access.');
  * Database writer for the config system
  *
  * Schema for configuration table:
- * 
+ *
  *    CREATE TABLE IF NOT EXISTS `config` (
  *      `group_name` varchar(128) NOT NULL,
  *      `config_key` varchar(128) NOT NULL,
@@ -22,7 +22,7 @@ defined('SYSPATH') OR die('No direct script access.');
  */
 class Kohana_Config_Database_Writer extends Config_Database_Reader implements Kohana_Config_Writer
 {
-    protected $_loaded_keys = array();
+    protected $_loaded_keys = [];
 
     /**
      * Tries to load the specificed configuration group
@@ -46,7 +46,7 @@ class Kohana_Config_Database_Writer extends Config_Database_Reader implements Ko
     /**
      * Writes the passed config for $group
      *
-     * Returns chainable instance on success or throws 
+     * Returns chainable instance on success or throws
      * Kohana_Config_Exception on failure
      *
      * @param string      $group  The config group
@@ -86,8 +86,8 @@ class Kohana_Config_Database_Writer extends Config_Database_Reader implements Ko
      */
     protected function _insert($group, $key, $config)
     {
-        DB::insert($this->_table_name, array('group_name', 'config_key', 'config_value'))
-            ->values(array($group, $key, $config))
+        DB::insert($this->_table_name, ['group_name', 'config_key', 'config_value'])
+            ->values([$group, $key, $config])
             ->execute($this->_db_instance);
 
         return $this;
@@ -104,7 +104,7 @@ class Kohana_Config_Database_Writer extends Config_Database_Reader implements Ko
     protected function _update($group, $key, $config)
     {
         DB::update($this->_table_name)
-            ->set(array('config_value' => $config))
+            ->set(['config_value' => $config])
             ->where('group_name', '=', $group)
             ->where('config_key', '=', $key)
             ->execute($this->_db_instance);

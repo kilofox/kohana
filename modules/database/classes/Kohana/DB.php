@@ -55,9 +55,9 @@ class Kohana_DB
      *     $query = DB::select('id', 'username');
      *
      *     // SELECT id AS user_id
-     *     $query = DB::select(array('id', 'user_id'));
+     *     $query = DB::select(['id', 'user_id']);
      *
-     * @param   mixed   $columns  column name or array($column, $alias) or object
+     * @param   mixed   $columns  column name or [$column, $alias] or object
      * @return  Database_Query_Builder_Select
      */
     public static function select($columns = NULL)
@@ -69,7 +69,7 @@ class Kohana_DB
      * Create a new [Database_Query_Builder_Select] from an array of columns.
      *
      *     // SELECT id, username
-     *     $query = DB::select_array(array('id', 'username'));
+     *     $query = DB::select_array(['id', 'username']);
      *
      * @param   array   $columns  columns to select
      * @return  Database_Query_Builder_Select
@@ -83,10 +83,10 @@ class Kohana_DB
      * Create a new [Database_Query_Builder_Insert].
      *
      *     // INSERT INTO users (id, username)
-     *     $query = DB::insert('users', array('id', 'username'));
+     *     $query = DB::insert('users', ['id', 'username']);
      *
      * @param   string  $table    table to insert into
-     * @param   array   $columns  list of column names or array($column, $alias) or object
+     * @param   array   $columns  list of column names or [$column, $alias] or object
      * @return  Database_Query_Builder_Insert
      */
     public static function insert($table = NULL, array $columns = NULL)
@@ -127,14 +127,14 @@ class Kohana_DB
      * is the only way to use SQL functions within query builders.
      *
      *     $expression = DB::expr('COUNT(users.id)');
-     *     $query = DB::update('users')->set(array('login_count' => DB::expr('login_count + 1')))->where('id', '=', $id);
+     *     $query = DB::update('users')->set(['login_count' => DB::expr('login_count + 1')])->where('id', '=', $id);
      *     $users = ORM::factory('user')->where(DB::expr("BINARY `hash`"), '=', $hash)->find();
      *
      * @param   string  $string  expression
      * @param   array   parameters
      * @return  Database_Expression
      */
-    public static function expr($string, $parameters = array())
+    public static function expr($string, $parameters = [])
     {
         return new Database_Expression($string, $parameters);
     }

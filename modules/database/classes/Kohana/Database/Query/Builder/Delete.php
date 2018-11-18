@@ -19,7 +19,7 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where
     /**
      * Set the table for a delete.
      *
-     * @param   mixed  $table  table name or array($table, $alias) or object
+     * @param   mixed  $table  table name or [$table, $alias] or object
      * @return  void
      */
     public function __construct($table = NULL)
@@ -36,7 +36,7 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where
     /**
      * Sets the table to delete from.
      *
-     * @param   mixed  $table  table name or array($table, $alias) or object
+     * @param   mixed  $table  table name or [$table, $alias] or object
      * @return  $this
      */
     public function table($table)
@@ -85,9 +85,9 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where
     public function reset()
     {
         $this->_table = NULL;
-        $this->_where = array();
+        $this->_where = [];
 
-        $this->_parameters = array();
+        $this->_parameters = [];
 
         $this->_sql = NULL;
 

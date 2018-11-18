@@ -14,16 +14,16 @@ defined('SYSPATH') OR die('No direct script access.');
 abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builder
 {
     // WHERE ...
-    protected $_where = array();
+    protected $_where = [];
     // ORDER BY ...
-    protected $_order_by = array();
+    protected $_order_by = [];
     // LIMIT ...
     protected $_limit = NULL;
 
     /**
      * Alias of and_where()
      *
-     * @param   mixed   $column  column name or array($column, $alias) or object
+     * @param   mixed   $column  column name or [$column, $alias] or object
      * @param   string  $op      logic operator
      * @param   mixed   $value   column value
      * @return  $this
@@ -36,14 +36,14 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
     /**
      * Creates a new "AND WHERE" condition for the query.
      *
-     * @param   mixed   $column  column name or array($column, $alias) or object
+     * @param   mixed   $column  column name or [$column, $alias] or object
      * @param   string  $op      logic operator
      * @param   mixed   $value   column value
      * @return  $this
      */
     public function and_where($column, $op, $value)
     {
-        $this->_where[] = array('AND' => array($column, $op, $value));
+        $this->_where[] = ['AND' => [$column, $op, $value]];
 
         return $this;
     }
@@ -51,14 +51,14 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
     /**
      * Creates a new "OR WHERE" condition for the query.
      *
-     * @param   mixed   $column  column name or array($column, $alias) or object
+     * @param   mixed   $column  column name or [$column, $alias] or object
      * @param   string  $op      logic operator
      * @param   mixed   $value   column value
      * @return  $this
      */
     public function or_where($column, $op, $value)
     {
-        $this->_where[] = array('OR' => array($column, $op, $value));
+        $this->_where[] = ['OR' => [$column, $op, $value]];
 
         return $this;
     }
@@ -80,7 +80,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      */
     public function and_where_open()
     {
-        $this->_where[] = array('AND' => '(');
+        $this->_where[] = ['AND' => '('];
 
         return $this;
     }
@@ -92,7 +92,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      */
     public function or_where_open()
     {
-        $this->_where[] = array('OR' => '(');
+        $this->_where[] = ['OR' => '('];
 
         return $this;
     }
@@ -133,7 +133,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      */
     public function and_where_close()
     {
-        $this->_where[] = array('AND' => ')');
+        $this->_where[] = ['AND' => ')'];
 
         return $this;
     }
@@ -145,7 +145,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      */
     public function or_where_close()
     {
-        $this->_where[] = array('OR' => ')');
+        $this->_where[] = ['OR' => ')'];
 
         return $this;
     }
@@ -153,13 +153,13 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
     /**
      * Applies sorting with "ORDER BY ..."
      *
-     * @param   mixed   $column     column name or array($column, $alias) or object
+     * @param   mixed   $column     column name or [$column, $alias] or object
      * @param   string  $direction  direction of sorting
      * @return  $this
      */
     public function order_by($column, $direction = NULL)
     {
-        $this->_order_by[] = array($column, $direction);
+        $this->_order_by[] = [$column, $direction];
 
         return $this;
     }

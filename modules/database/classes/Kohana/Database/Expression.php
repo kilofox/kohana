@@ -9,10 +9,10 @@ defined('SYSPATH') OR die('No direct script access.');
  * For example, you can use an expression to generate a column alias:
  *
  *     // SELECT CONCAT(first_name, last_name) AS full_name
- *     $query = DB::select(array(DB::expr('CONCAT(first_name, last_name)'), 'full_name')));
+ *     $query = DB::select([DB::expr('CONCAT(first_name, last_name)'), 'full_name']);
  *
  * More examples are available on the [Query Builder](database/query/builder#database-expressions) page
- * 
+ *
  * @package    Kohana/Database
  * @category   Base
  * @author     Kohana Team
@@ -35,7 +35,7 @@ class Kohana_Database_Expression
      * @param   array   $parameters unquoted parameter values
      * @return  void
      */
-    public function __construct($value, $parameters = array())
+    public function __construct($value, $parameters = [])
     {
         // Set the expression string
         $this->_value = $value;
@@ -126,7 +126,7 @@ class Kohana_Database_Expression
 
         if (!empty($this->_parameters)) {
             // Quote all of the parameter values
-            $params = array_map(array($db, 'quote'), $this->_parameters);
+            $params = array_map([$db, 'quote'], $this->_parameters);
 
             // Replace the values in the expression
             $value = strtr($value, $params);

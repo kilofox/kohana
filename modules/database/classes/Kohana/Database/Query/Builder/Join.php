@@ -18,15 +18,15 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
     // JOIN ...
     protected $_table;
     // ON ...
-    protected $_on = array();
+    protected $_on = [];
     // USING ...
-    protected $_using = array();
+    protected $_using = [];
 
     /**
      * Creates a new JOIN statement for a table. Optionally, the type of JOIN
      * can be specified as the second parameter.
      *
-     * @param   mixed   $table  column name or array($column, $alias) or object
+     * @param   mixed   $table  column name or [$column, $alias] or object
      * @param   string  $type   type of JOIN: INNER, RIGHT, LEFT, etc
      * @return  void
      */
@@ -44,9 +44,9 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
     /**
      * Adds a new condition for joining.
      *
-     * @param   mixed   $c1  column name or array($column, $alias) or object
+     * @param   mixed   $c1  column name or [$column, $alias] or object
      * @param   string  $op  logic operator
-     * @param   mixed   $c2  column name or array($column, $alias) or object
+     * @param   mixed   $c2  column name or [$column, $alias] or object
      * @return  $this
      */
     public function on($c1, $op, $c2)
@@ -55,7 +55,7 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
             throw new Kohana_Exception('JOIN ... ON ... cannot be combined with JOIN ... USING ...');
         }
 
-        $this->_on[] = array($c1, $op, $c2);
+        $this->_on[] = [$c1, $op, $c2];
 
         return $this;
     }
@@ -103,9 +103,9 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
 
         if (!empty($this->_using)) {
             // Quote and concat the columns
-            $sql .= ' USING (' . implode(', ', array_map(array($db, 'quote_column'), $this->_using)) . ')';
+            $sql .= ' USING (' . implode(', ', array_map([$db, 'quote_column'], $this->_using)) . ')';
         } else {
-            $conditions = array();
+            $conditions = [];
             foreach ($this->_on as $condition) {
                 // Split the condition
                 list($c1, $op, $c2) = $condition;
@@ -130,7 +130,7 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
     {
         $this->_type = $this->_table = NULL;
 
-        $this->_on = array();
+        $this->_on = [];
     }
 
 }

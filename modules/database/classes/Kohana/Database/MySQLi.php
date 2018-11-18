@@ -14,7 +14,7 @@ defined('SYSPATH') OR die('No direct script access.');
 class Kohana_Database_MySQLi extends Database
 {
     // Database in use by each connection
-    protected static $_current_databases = array();
+    protected static $_current_databases = [];
     // Use SET NAMES to set the character set
     protected static $_set_names;
     // Identifier for this connection within the PHP driver
@@ -34,7 +34,7 @@ class Kohana_Database_MySQLi extends Database
         }
 
         // Extract the connection parameters, adding required variabels
-        extract($this->_config['connection'] + array(
+        extract($this->_config['connection'] + [
             'database' => '',
             'hostname' => '',
             'username' => '',
@@ -42,7 +42,7 @@ class Kohana_Database_MySQLi extends Database
             'socket' => '',
             'port' => 3306,
             'ssl' => NULL,
-        ));
+        ]);
 
         // Prevent this information from showing up in traces
         unset($this->_config['connection']['username'], $this->_config['connection']['password']);
@@ -61,7 +61,7 @@ class Kohana_Database_MySQLi extends Database
             // No connection exists
             $this->_connection = NULL;
 
-            throw new Database_Exception(':error', array(':error' => $e->getMessage()), $e->getCode());
+            throw new Database_Exception(':error', [':error' => $e->getMessage()], $e->getCode());
         }
 
         // \xFF is a better delimiter, but the PHP driver uses underscore
@@ -74,7 +74,7 @@ class Kohana_Database_MySQLi extends Database
 
         if (!empty($this->_config['connection']['variables'])) {
             // Set session variables
-            $variables = array();
+            $variables = [];
 
             foreach ($this->_config['connection']['variables'] as $var => $val) {
                 $variables[] = 'SESSION ' . $var . ' = ' . $this->quote($val);
@@ -121,7 +121,7 @@ class Kohana_Database_MySQLi extends Database
         }
 
         if ($status === FALSE) {
-            throw new Database_Exception(':error', array(':error' => $this->_connection->error), $this->_connection->errno);
+            throw new Database_Exception(':error', [':error' => $this->_connection->error], $this->_connection->errno);
         }
     }
 
@@ -142,10 +142,10 @@ class Kohana_Database_MySQLi extends Database
                 Profiler::delete($benchmark);
             }
 
-            throw new Database_Exception(':error [ :query ]', array(
+            throw new Database_Exception(':error [ :query ]', [
             ':error' => $this->_connection->error,
             ':query' => $sql
-            ), $this->_connection->errno);
+            ], $this->_connection->errno);
         }
 
         if (isset($benchmark)) {
@@ -160,10 +160,10 @@ class Kohana_Database_MySQLi extends Database
             return new Database_MySQLi_Result($result, $sql, $as_object, $params);
         } elseif ($type === Database::INSERT) {
             // Return a list of insert id and rows created
-            return array(
+            return [
                 $this->_connection->insert_id,
                 $this->_connection->affected_rows,
-            );
+            ];
         } else {
             // Return the number of rows affected
             return $this->_connection->affected_rows;
@@ -172,43 +172,42 @@ class Kohana_Database_MySQLi extends Database
 
     public function datatype($type)
     {
-        static $types = array
-            (
-            'blob' => array('type' => 'string', 'binary' => TRUE, 'character_maximum_length' => '65535'),
-            'bool' => array('type' => 'bool'),
-            'bigint unsigned' => array('type' => 'int', 'min' => '0', 'max' => '18446744073709551615'),
-            'datetime' => array('type' => 'string'),
-            'decimal unsigned' => array('type' => 'float', 'exact' => TRUE, 'min' => '0'),
-            'double' => array('type' => 'float'),
-            'double precision unsigned' => array('type' => 'float', 'min' => '0'),
-            'double unsigned' => array('type' => 'float', 'min' => '0'),
-            'enum' => array('type' => 'string'),
-            'fixed' => array('type' => 'float', 'exact' => TRUE),
-            'fixed unsigned' => array('type' => 'float', 'exact' => TRUE, 'min' => '0'),
-            'float unsigned' => array('type' => 'float', 'min' => '0'),
-            'geometry' => array('type' => 'string', 'binary' => TRUE),
-            'int unsigned' => array('type' => 'int', 'min' => '0', 'max' => '4294967295'),
-            'integer unsigned' => array('type' => 'int', 'min' => '0', 'max' => '4294967295'),
-            'longblob' => array('type' => 'string', 'binary' => TRUE, 'character_maximum_length' => '4294967295'),
-            'longtext' => array('type' => 'string', 'character_maximum_length' => '4294967295'),
-            'mediumblob' => array('type' => 'string', 'binary' => TRUE, 'character_maximum_length' => '16777215'),
-            'mediumint' => array('type' => 'int', 'min' => '-8388608', 'max' => '8388607'),
-            'mediumint unsigned' => array('type' => 'int', 'min' => '0', 'max' => '16777215'),
-            'mediumtext' => array('type' => 'string', 'character_maximum_length' => '16777215'),
-            'national varchar' => array('type' => 'string'),
-            'numeric unsigned' => array('type' => 'float', 'exact' => TRUE, 'min' => '0'),
-            'nvarchar' => array('type' => 'string'),
-            'point' => array('type' => 'string', 'binary' => TRUE),
-            'real unsigned' => array('type' => 'float', 'min' => '0'),
-            'set' => array('type' => 'string'),
-            'smallint unsigned' => array('type' => 'int', 'min' => '0', 'max' => '65535'),
-            'text' => array('type' => 'string', 'character_maximum_length' => '65535'),
-            'tinyblob' => array('type' => 'string', 'binary' => TRUE, 'character_maximum_length' => '255'),
-            'tinyint' => array('type' => 'int', 'min' => '-128', 'max' => '127'),
-            'tinyint unsigned' => array('type' => 'int', 'min' => '0', 'max' => '255'),
-            'tinytext' => array('type' => 'string', 'character_maximum_length' => '255'),
-            'year' => array('type' => 'string'),
-        );
+        static $types = [
+            'blob' => ['type' => 'string', 'binary' => TRUE, 'character_maximum_length' => '65535'],
+            'bool' => ['type' => 'bool'],
+            'bigint unsigned' => ['type' => 'int', 'min' => '0', 'max' => '18446744073709551615'],
+            'datetime' => ['type' => 'string'],
+            'decimal unsigned' => ['type' => 'float', 'exact' => TRUE, 'min' => '0'],
+            'double' => ['type' => 'float'],
+            'double precision unsigned' => ['type' => 'float', 'min' => '0'],
+            'double unsigned' => ['type' => 'float', 'min' => '0'],
+            'enum' => ['type' => 'string'],
+            'fixed' => ['type' => 'float', 'exact' => TRUE],
+            'fixed unsigned' => ['type' => 'float', 'exact' => TRUE, 'min' => '0'],
+            'float unsigned' => ['type' => 'float', 'min' => '0'],
+            'geometry' => ['type' => 'string', 'binary' => TRUE],
+            'int unsigned' => ['type' => 'int', 'min' => '0', 'max' => '4294967295'],
+            'integer unsigned' => ['type' => 'int', 'min' => '0', 'max' => '4294967295'],
+            'longblob' => ['type' => 'string', 'binary' => TRUE, 'character_maximum_length' => '4294967295'],
+            'longtext' => ['type' => 'string', 'character_maximum_length' => '4294967295'],
+            'mediumblob' => ['type' => 'string', 'binary' => TRUE, 'character_maximum_length' => '16777215'],
+            'mediumint' => ['type' => 'int', 'min' => '-8388608', 'max' => '8388607'],
+            'mediumint unsigned' => ['type' => 'int', 'min' => '0', 'max' => '16777215'],
+            'mediumtext' => ['type' => 'string', 'character_maximum_length' => '16777215'],
+            'national varchar' => ['type' => 'string'],
+            'numeric unsigned' => ['type' => 'float', 'exact' => TRUE, 'min' => '0'],
+            'nvarchar' => ['type' => 'string'],
+            'point' => ['type' => 'string', 'binary' => TRUE],
+            'real unsigned' => ['type' => 'float', 'min' => '0'],
+            'set' => ['type' => 'string'],
+            'smallint unsigned' => ['type' => 'int', 'min' => '0', 'max' => '65535'],
+            'text' => ['type' => 'string', 'character_maximum_length' => '65535'],
+            'tinyblob' => ['type' => 'string', 'binary' => TRUE, 'character_maximum_length' => '255'],
+            'tinyint' => ['type' => 'int', 'min' => '-128', 'max' => '127'],
+            'tinyint unsigned' => ['type' => 'int', 'min' => '0', 'max' => '255'],
+            'tinytext' => ['type' => 'string', 'character_maximum_length' => '255'],
+            'year' => ['type' => 'string'],
+        ];
 
         $type = str_replace(' zerofill', '', $type);
 
@@ -232,9 +231,7 @@ class Kohana_Database_MySQLi extends Database
         $this->_connection or $this->connect();
 
         if ($mode AND ! $this->_connection->query("SET TRANSACTION ISOLATION LEVEL $mode")) {
-            throw new Database_Exception(':error', array(
-            ':error' => $this->_connection->error
-            ), $this->_connection->errno);
+            throw new Database_Exception(':error', [':error' => $this->_connection->error], $this->_connection->errno);
         }
 
         return (bool) $this->_connection->query('START TRANSACTION');
@@ -276,7 +273,7 @@ class Kohana_Database_MySQLi extends Database
             $result = $this->query(Database::SELECT, 'SHOW TABLES', FALSE);
         }
 
-        $tables = array();
+        $tables = [];
         foreach ($result as $row) {
             $tables[] = reset($row);
         }
@@ -298,7 +295,7 @@ class Kohana_Database_MySQLi extends Database
         }
 
         $count = 0;
-        $columns = array();
+        $columns = [];
         foreach ($result as $row) {
             list($type, $length) = $this->_parse_type($row['Type']);
 
@@ -364,9 +361,7 @@ class Kohana_Database_MySQLi extends Database
         $this->_connection or $this->connect();
 
         if (($value = $this->_connection->real_escape_string((string) $value)) === FALSE) {
-            throw new Database_Exception(':error', array(
-            ':error' => $this->_connection->error,
-            ), $this->_connection->errno);
+            throw new Database_Exception(':error', [':error' => $this->_connection->error], $this->_connection->errno);
         }
 
         // SQL standard is to use single-quotes for all values

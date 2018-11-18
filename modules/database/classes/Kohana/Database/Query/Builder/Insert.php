@@ -16,14 +16,14 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
     // INSERT INTO ...
     protected $_table;
     // (...)
-    protected $_columns = array();
+    protected $_columns = [];
     // VALUES (...)
-    protected $_values = array();
+    protected $_values = [];
 
     /**
      * Set the table and columns for an insert.
      *
-     * @param   mixed  $table    table name or array($table, $alias) or object
+     * @param   mixed  $table    table name or [$table, $alias] or object
      * @param   array  $columns  column names
      * @return  void
      */
@@ -129,13 +129,13 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
         $query = 'INSERT INTO ' . $db->quote_table($this->_table);
 
         // Add the column names
-        $query .= ' (' . implode(', ', array_map(array($db, 'quote_column'), $this->_columns)) . ') ';
+        $query .= ' (' . implode(', ', array_map([$db, 'quote_column'], $this->_columns)) . ') ';
 
         if (is_array($this->_values)) {
             // Callback for quoting values
-            $quote = array($db, 'quote');
+            $quote = [$db, 'quote'];
 
-            $groups = array();
+            $groups = [];
             foreach ($this->_values as $group) {
                 foreach ($group as $offset => $value) {
                     if ((is_string($value) AND array_key_exists($value, $this->_parameters)) === FALSE) {
@@ -164,9 +164,9 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
     {
         $this->_table = NULL;
 
-        $this->_columns = $this->_values = array();
+        $this->_columns = $this->_values = [];
 
-        $this->_parameters = array();
+        $this->_parameters = [];
 
         $this->_sql = NULL;
 

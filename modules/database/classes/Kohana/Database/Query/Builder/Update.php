@@ -16,12 +16,12 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
     // UPDATE ...
     protected $_table;
     // SET ...
-    protected $_set = array();
+    protected $_set = [];
 
     /**
      * Set the table for a update.
      *
-     * @param   mixed  $table  table name or array($table, $alias) or object
+     * @param   mixed  $table  table name or [$table, $alias] or object
      * @return  void
      */
     public function __construct($table = NULL)
@@ -38,7 +38,7 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
     /**
      * Sets the table to update.
      *
-     * @param   mixed  $table  table name or array($table, $alias) or object
+     * @param   mixed  $table  table name or [$table, $alias] or object
      * @return  $this
      */
     public function table($table)
@@ -57,7 +57,7 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
     public function set(array $pairs)
     {
         foreach ($pairs as $column => $value) {
-            $this->_set[] = array($column, $value);
+            $this->_set[] = [$column, $value];
         }
 
         return $this;
@@ -66,13 +66,13 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
     /**
      * Set the value of a single column.
      *
-     * @param   mixed  $column  table name or array($table, $alias) or object
+     * @param   mixed  $column  table name or [$table, $alias] or object
      * @param   mixed  $value   column value
      * @return  $this
      */
     public function value($column, $value)
     {
-        $this->_set[] = array($column, $value);
+        $this->_set[] = [$column, $value];
 
         return $this;
     }
@@ -120,11 +120,11 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
     {
         $this->_table = NULL;
 
-        $this->_set = $this->_where = array();
+        $this->_set = $this->_where = [];
 
         $this->_limit = NULL;
 
-        $this->_parameters = array();
+        $this->_parameters = [];
 
         $this->_sql = NULL;
 
