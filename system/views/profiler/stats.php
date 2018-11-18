@@ -6,8 +6,8 @@
 
 <?php
 $group_stats = Profiler::group_stats();
-$group_cols = array('min', 'max', 'average', 'total');
-$application_cols = array('min', 'max', 'average', 'current');
+$group_cols = ['min', 'max', 'average', 'total'];
+$application_cols = ['min', 'max', 'average', 'current'];
 ?>
 
 <div class="kohana">

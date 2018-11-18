@@ -9,45 +9,45 @@ defined('SYSPATH') OR die('No direct script access.');
  *  prefix - The digits the card needs to start with, in regex format
  *  luhn   - Enable or disable card number validation by the Luhn algorithm
  */
-return array(
-    'default' => array(
+return [
+    'default' => [
         'length' => '13,14,15,16,17,18,19',
         'prefix' => '',
         'luhn' => TRUE,
-    ),
-    'american express' => array(
+    ],
+    'american express' => [
         'length' => '15',
         'prefix' => '3[47]',
         'luhn' => TRUE,
-    ),
-    'diners club' => array(
+    ],
+    'diners club' => [
         'length' => '14,16',
         'prefix' => '36|55|30[0-5]',
         'luhn' => TRUE,
-    ),
-    'discover' => array(
+    ],
+    'discover' => [
         'length' => '16',
         'prefix' => '6(?:5|011)',
         'luhn' => TRUE,
-    ),
-    'jcb' => array(
+    ],
+    'jcb' => [
         'length' => '15,16',
         'prefix' => '3|1800|2131',
         'luhn' => TRUE,
-    ),
-    'maestro' => array(
+    ],
+    'maestro' => [
         'length' => '16,18',
         'prefix' => '50(?:20|38)|6(?:304|759)',
         'luhn' => TRUE,
-    ),
-    'mastercard' => array(
+    ],
+    'mastercard' => [
         'length' => '16',
         'prefix' => '5[1-5]',
         'luhn' => TRUE,
-    ),
-    'visa' => array(
+    ],
+    'visa' => [
         'length' => '13,16',
         'prefix' => '4',
         'luhn' => TRUE,
-    ),
-);
+    ],
+];
