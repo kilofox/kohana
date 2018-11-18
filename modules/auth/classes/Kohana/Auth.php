@@ -50,7 +50,7 @@ abstract class Kohana_Auth
      * @param   array  $config  Config Options
      * @return  void
      */
-    public function __construct($config = array())
+    public function __construct($config = [])
     {
         // Save the config in the object
         $this->_config = $config;

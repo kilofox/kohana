@@ -2,7 +2,7 @@
 
 defined('SYSPATH') OR die('No direct access allowed.');
 
-return array(
+return [
     'driver' => 'File',
     'hash_method' => 'sha256',
     'hash_key' => NULL,
@@ -10,7 +10,7 @@ return array(
     'session_type' => Session::$default,
     'session_key' => 'auth_user',
     // Username/password combinations for the Auth File driver
-    'users' => array(
+    'users' => [
     // 'admin' => 'b3154acf3a344170077d11bdb5fff31532f679a1919e716a02',
-    ),
-);
+    ],
+];
