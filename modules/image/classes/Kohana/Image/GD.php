@@ -19,7 +19,7 @@ class Kohana_Image_GD extends Image
     const IMAGEFILTER = 'imagefilter';
     const IMAGELAYEREFFECT = 'imagelayereffect';
 
-    protected static $_available_functions = array();
+    protected static $_available_functions = [];
 
     /**
      * Checks if GD is enabled and verify that key methods exist, some of which require GD to
@@ -33,12 +33,12 @@ class Kohana_Image_GD extends Image
         if (!function_exists('gd_info')) {
             throw new Kohana_Exception('GD is either not installed or not enabled, check your configuration');
         }
-        $functions = array(
+        $functions = [
             Image_GD::IMAGEROTATE,
             Image_GD::IMAGECONVOLUTION,
             Image_GD::IMAGEFILTER,
             Image_GD::IMAGELAYEREFFECT
-        );
+        ];
         foreach ($functions as $function) {
             Image_GD::$_available_functions[$function] = function_exists($function);
         }
@@ -58,7 +58,7 @@ class Kohana_Image_GD extends Image
         }
 
         if (!version_compare($version, '2.0.1', '>=')) {
-            throw new Kohana_Exception('Image_GD requires GD version :required or greater, you have :version', array('required' => '2.0.1', ':version' => $version));
+            throw new Kohana_Exception('Image_GD requires GD version :required or greater, you have :version', ['required' => '2.0.1', ':version' => $version]);
         }
 
         return Image_GD::$_checked = TRUE;
@@ -99,7 +99,7 @@ class Kohana_Image_GD extends Image
         }
 
         if (!isset($create) OR ! function_exists($create)) {
-            throw new Kohana_Exception('Installed GD does not support :type images', array(':type' => image_type_to_extension($this->type, FALSE)));
+            throw new Kohana_Exception('Installed GD does not support :type images', [':type' => image_type_to_extension($this->type, FALSE)]);
         }
 
         // Save function for future use
@@ -232,7 +232,7 @@ class Kohana_Image_GD extends Image
     protected function _do_rotate($degrees)
     {
         if (empty(Image_GD::$_available_functions[Image_GD::IMAGEROTATE])) {
-            throw new Kohana_Exception('This method requires :function, which is only available in the bundled version of GD', array(':function' => 'imagerotate'));
+            throw new Kohana_Exception('This method requires :function, which is only available in the bundled version of GD', [':function' => 'imagerotate']);
         }
 
         // Loads image if not yet loaded
@@ -306,7 +306,7 @@ class Kohana_Image_GD extends Image
     protected function _do_sharpen($amount)
     {
         if (empty(Image_GD::$_available_functions[Image_GD::IMAGECONVOLUTION])) {
-            throw new Kohana_Exception('This method requires :function, which is only available in the bundled version of GD', array(':function' => 'imageconvolution'));
+            throw new Kohana_Exception('This method requires :function, which is only available in the bundled version of GD', [':function' => 'imageconvolution']);
         }
 
         // Loads image if not yet loaded
@@ -318,9 +318,9 @@ class Kohana_Image_GD extends Image
         // Gaussian blur matrix
         $matrix = array
             (
-            array(-1, -1, -1),
-            array(-1, $amount, -1),
-            array(-1, -1, -1),
+            [-1, -1, -1],
+            [-1, $amount, -1],
+            [-1, -1, -1],
         );
 
         // Perform the sharpen
@@ -342,7 +342,7 @@ class Kohana_Image_GD extends Image
     protected function _do_reflection($height, $opacity, $fade_in)
     {
         if (empty(Image_GD::$_available_functions[Image_GD::IMAGEFILTER])) {
-            throw new Kohana_Exception('This method requires :function, which is only available in the bundled version of GD', array(':function' => 'imagefilter'));
+            throw new Kohana_Exception('This method requires :function, which is only available in the bundled version of GD', [':function' => 'imagefilter']);
         }
 
         // Loads image if not yet loaded
@@ -414,7 +414,7 @@ class Kohana_Image_GD extends Image
     protected function _do_watermark(Image $watermark, $offset_x, $offset_y, $opacity)
     {
         if (empty(Image_GD::$_available_functions[Image_GD::IMAGELAYEREFFECT])) {
-            throw new Kohana_Exception('This method requires :function, which is only available in the bundled version of GD', array(':function' => 'imagelayereffect'));
+            throw new Kohana_Exception('This method requires :function, which is only available in the bundled version of GD', [':function' => 'imagelayereffect']);
         }
 
         // Loads image if not yet loaded
@@ -590,11 +590,11 @@ class Kohana_Image_GD extends Image
                 $quality = 9;
                 break;
             default:
-                throw new Kohana_Exception('Installed GD does not support :type images', array(':type' => $extension));
+                throw new Kohana_Exception('Installed GD does not support :type images', [':type' => $extension]);
                 break;
         }
 
-        return array($save, $type);
+        return [$save, $type];
     }
 
     /**
