@@ -5,7 +5,7 @@ defined('SYSPATH') or die('No direct script access.');
 class Kohana_Minion_CLI
 {
     public static $wait_msg = 'Press any key to continue...';
-    protected static $foreground_colors = array(
+    protected static $foreground_colors = [
         'black' => '0;30',
         'dark_gray' => '1;30',
         'blue' => '0;34',
@@ -22,8 +22,8 @@ class Kohana_Minion_CLI
         'yellow' => '1;33',
         'light_gray' => '0;37',
         'white' => '1;37',
-    );
-    protected static $background_colors = array(
+    ];
+    protected static $background_colors = [
         'black' => '40',
         'red' => '41',
         'green' => '42',
@@ -32,7 +32,7 @@ class Kohana_Minion_CLI
         'magenta' => '45',
         'cyan' => '46',
         'light_gray' => '47',
-    );
+    ];
 
     /**
      * Returns one or more command-line options. Options are specified using
@@ -52,7 +52,7 @@ class Kohana_Minion_CLI
         $options = func_get_args();
 
         // Found option values
-        $values = array();
+        $values = [];
 
         // Skip the first option, it is always the file executed
         for ($i = 1; $i < $_SERVER['argc']; $i++) {
@@ -107,7 +107,7 @@ class Kohana_Minion_CLI
      * $color = Minion_CLI::read('What is your favorite color?');
      *
      * // Will only accept the options in the array
-     * $ready = Minion_CLI::read('Are you ready?', array('y','n'));
+     * $ready = Minion_CLI::read('Are you ready?', ['y','n']);
      *
      * @param  string  $text    text to show user before waiting for input
      * @param  array   $options array of options the user is shown
