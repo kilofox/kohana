@@ -5,7 +5,7 @@ include_once('bootstrap.php');
 // Enable all modules we can find
 $modules_iterator = new DirectoryIterator(MODPATH);
 
-$modules = array();
+$modules = [];
 
 foreach ($modules_iterator as $module) {
     if ($module->isDir() AND ! $module->isDot()) {

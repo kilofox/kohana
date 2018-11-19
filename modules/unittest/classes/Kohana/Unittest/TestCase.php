@@ -25,7 +25,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
      * A default set of environment to be applied before each test
      * @var array
      */
-    protected $environmentDefault = array();
+    protected $environmentDefault = [];
 
     /**
      * Creates a predefined environment using the default environment
@@ -146,7 +146,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
 
     /**
      * Parse out the options from the tag using DOM object tree.
-     * 
+     *
      * TODO:
      * This should be removed when [phpunit-dom-assertions](https://github.com/phpunit/phpunit-dom-assertions) gets released.
      *
@@ -157,12 +157,12 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
      */
     public static function findNodes(DOMDocument $dom, array $options, $isHtml = true)
     {
-        $valid = array(
+        $valid = [
             'id', 'class', 'tag', 'content', 'attributes', 'parent',
             'child', 'ancestor', 'descendant', 'children', 'adjacent-sibling'
-        );
+        ];
 
-        $filtered = array();
+        $filtered = [];
         $options = self::assertValidKeys($options, $valid);
 
         // find the element by id
@@ -174,7 +174,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             $options['attributes']['class'] = $options['class'];
         }
 
-        $nodes = array();
+        $nodes = [];
 
         // find the element by a tag type
         if ($options['tag']) {
@@ -195,7 +195,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             }
         } // no tag selected, get them all
         else {
-            $tags = array(
+            $tags = [
                 'a', 'abbr', 'acronym', 'address', 'area', 'b', 'base', 'bdo',
                 'big', 'blockquote', 'body', 'br', 'button', 'caption', 'cite',
                 'code', 'col', 'colgroup', 'dd', 'del', 'div', 'dfn', 'dl',
@@ -213,7 +213,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
                 'footer', 'header', 'hgroup', 'keygen', 'mark', 'meter', 'nav',
                 'output', 'progress', 'ruby', 'rt', 'rp', 'track', 'section',
                 'source', 'summary', 'time', 'video', 'wbr'
-            );
+            ];
 
             foreach ($tags as $tag) {
                 if ($isHtml) {
@@ -277,7 +277,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             }
 
             $nodes = $filtered;
-            $filtered = array();
+            $filtered = [];
 
             if (empty($nodes)) {
                 return false;
@@ -310,7 +310,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             }
 
             $nodes = $filtered;
-            $filtered = array();
+            $filtered = [];
 
             if (empty($nodes)) {
                 return false;
@@ -331,7 +331,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             }
 
             $nodes = $filtered;
-            $filtered = array();
+            $filtered = [];
 
             if (empty($nodes)) {
                 return false;
@@ -341,7 +341,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
         // filter by child node
         if ($options['child']) {
             $childNodes = self::findNodes($dom, $options['child'], $isHtml);
-            $childNodes = !empty($childNodes) ? $childNodes : array();
+            $childNodes = !empty($childNodes) ? $childNodes : [];
 
             foreach ($nodes as $node) {
                 foreach ($node->childNodes as $child) {
@@ -354,7 +354,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             }
 
             $nodes = $filtered;
-            $filtered = array();
+            $filtered = [];
 
             if (empty($nodes)) {
                 return false;
@@ -364,7 +364,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
         // filter by adjacent-sibling
         if ($options['adjacent-sibling']) {
             $adjacentSiblingNodes = self::findNodes($dom, $options['adjacent-sibling'], $isHtml);
-            $adjacentSiblingNodes = !empty($adjacentSiblingNodes) ? $adjacentSiblingNodes : array();
+            $adjacentSiblingNodes = !empty($adjacentSiblingNodes) ? $adjacentSiblingNodes : [];
 
             foreach ($nodes as $node) {
                 $sibling = $node;
@@ -386,7 +386,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             }
 
             $nodes = $filtered;
-            $filtered = array();
+            $filtered = [];
 
             if (empty($nodes)) {
                 return false;
@@ -411,7 +411,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             }
 
             $nodes = $filtered;
-            $filtered = array();
+            $filtered = [];
 
             if (empty($nodes)) {
                 return false;
@@ -421,7 +421,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
         // filter by descendant
         if ($options['descendant']) {
             $descendantNodes = self::findNodes($dom, $options['descendant'], $isHtml);
-            $descendantNodes = !empty($descendantNodes) ? $descendantNodes : array();
+            $descendantNodes = !empty($descendantNodes) ? $descendantNodes : [];
 
             foreach ($nodes as $node) {
                 foreach (self::getDescendants($node) as $descendant) {
@@ -434,7 +434,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             }
 
             $nodes = $filtered;
-            $filtered = array();
+            $filtered = [];
 
             if (empty($nodes)) {
                 return false;
@@ -443,7 +443,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
 
         // filter by children
         if ($options['children']) {
-            $validChild = array('count', 'greater_than', 'less_than', 'only');
+            $validChild = ['count', 'greater_than', 'less_than', 'only'];
             $childOptions = self::assertValidKeys(
                     $options['children'], $validChild
             );
@@ -518,7 +518,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
         }
 
         // return the first node that matches all criteria
-        return !empty($nodes) ? $nodes : array();
+        return !empty($nodes) ? $nodes : [];
     }
 
     /**
@@ -534,7 +534,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
      */
     public static function assertValidKeys(array $hash, array $validKeys)
     {
-        $valids = array();
+        $valids = [];
 
         // Normalize validation keys so that we can use both indexed and
         // associative arrays.
@@ -590,7 +590,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
 
     /**
      * Get the text value of this node's child text node.
-     * 
+     *
      * TODO:
      * This should be removed when [phpunit-dom-assertions](https://github.com/phpunit/phpunit-dom-assertions) gets released.
      *
@@ -619,7 +619,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
 
     /**
      * Recursively get flat array of all descendants of this node.
-     *  
+     *
      * TODO:
      * This should be removed when [phpunit-dom-assertions](https://github.com/phpunit/phpunit-dom-assertions) gets released.
      *
@@ -628,8 +628,8 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
      */
     protected static function getDescendants(DOMNode $node)
     {
-        $allChildren = array();
-        $childNodes = $node->childNodes ? $node->childNodes : array();
+        $allChildren = [];
+        $childNodes = $node->childNodes ? $node->childNodes : [];
 
         foreach ($childNodes as $child) {
             if ($child->nodeType === XML_CDATA_SECTION_NODE ||
@@ -638,10 +638,10 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             }
 
             $children = self::getDescendants($child);
-            $allChildren = array_merge($allChildren, $children, array($child));
+            $allChildren = array_merge($allChildren, $children, [$child]);
         }
 
-        return isset($allChildren) ? $allChildren : array();
+        return isset($allChildren) ? $allChildren : [];
     }
 
 }

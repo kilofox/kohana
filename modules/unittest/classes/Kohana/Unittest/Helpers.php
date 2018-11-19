@@ -8,8 +8,8 @@ defined('SYSPATH') or die('No direct script access.');
 class Kohana_Unittest_Helpers
 {
     /**
-     * Static variable used to work out whether we have an internet 
-     * connection 
+     * Static variable used to work out whether we have an internet
+     * connection
      * @see has_internet
      * @var boolean
      */
@@ -34,7 +34,7 @@ class Kohana_Unittest_Helpers
 
     /**
      * Helper function which replaces the "/" to OS-specific delimiter
-     * 
+     *
      * @param string $path
      * @return string
      */
@@ -44,7 +44,7 @@ class Kohana_Unittest_Helpers
     }
 
     /**
-     * Removes all cache files from the kohana cache dir 
+     * Removes all cache files from the kohana cache dir
      *
      * @return void
      */
@@ -79,7 +79,7 @@ class Kohana_Unittest_Helpers
      * @see set_environment
      * @var array
      */
-    protected $_environment_backup = array();
+    protected $_environment_backup = [];
 
     /**
      * Allows easy setting & backing up of enviroment config
@@ -101,7 +101,7 @@ class Kohana_Unittest_Helpers
             $backup_needed = !array_key_exists($option, $this->_environment_backup);
 
             // Handle changing superglobals
-            if (in_array($option, array('_GET', '_POST', '_SERVER', '_FILES'))) {
+            if (in_array($option, ['_GET', '_POST', '_SERVER', '_FILES'])) {
                 // For some reason we need to do this in order to change the superglobals
                 global $$option;
 
@@ -149,7 +149,7 @@ class Kohana_Unittest_Helpers
      * Restores the environment to the original state
      *
      * @chainable
-     * @return Kohana_Unittest_Helpers $this 
+     * @return Kohana_Unittest_Helpers $this
      */
     public function restore_environment()
     {
