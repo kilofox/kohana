@@ -31,17 +31,17 @@ class Kohana_Kodoc_Class extends Kodoc
     /**
      * @var  array  array of tags, retrieved from the comment
      */
-    public $tags = array();
+    public $tags = [];
 
     /**
      * @var  array  array of this classes constants
      */
-    public $constants = array();
+    public $constants = [];
 
     /**
      * @var array Parent classes/interfaces of this class/interface
      */
-    public $parents = array();
+    public $parents = [];
 
     /**
      * Loads a class and uses [reflection](http://php.net/reflection) to parse
@@ -92,7 +92,7 @@ class Kohana_Kodoc_Class extends Kodoc
      */
     public function constants()
     {
-        $result = array();
+        $result = [];
 
         foreach ($this->constants as $name => $value) {
             $result[$name] = Debug::vars($value);
@@ -136,7 +136,7 @@ class Kohana_Kodoc_Class extends Kodoc
 
         $defaults = $this->class->getDefaultProperties();
 
-        usort($props, array($this, '_prop_sort'));
+        usort($props, [$this, '_prop_sort']);
 
         foreach ($props as $key => $property) {
             // Create Kodoc Properties for each property
@@ -173,7 +173,7 @@ class Kohana_Kodoc_Class extends Kodoc
     {
         $methods = $this->class->getMethods();
 
-        usort($methods, array($this, '_method_sort'));
+        usort($methods, [$this, '_method_sort']);
 
         foreach ($methods as $key => $method) {
             $methods[$key] = new Kodoc_Method($this->class->name, $method->name);
@@ -251,7 +251,7 @@ class Kohana_Kodoc_Class extends Kodoc
      */
     public function tags()
     {
-        $result = array();
+        $result = [];
 
         foreach ($this->tags as $name => $set) {
             foreach ($set as $text) {

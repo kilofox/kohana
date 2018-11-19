@@ -26,7 +26,7 @@ class Kohana_Kodoc_Method extends Kodoc
     /**
      * @var  array  The things this function can return
      */
-    public $return = array();
+    public $return = [];
 
     /**
      * @var  string  The source code for this function
@@ -57,10 +57,10 @@ class Kohana_Kodoc_Method extends Kodoc
         }
 
         if (isset($tags['param'])) {
-            $params = array();
+            $params = [];
 
             foreach ($this->method->getParameters() as $i => $param) {
-                $param = new Kodoc_Method_Param(array($this->method->class, $this->method->name), $i);
+                $param = new Kodoc_Method_Param([$this->method->class, $this->method->name], $i);
 
                 if (isset($tags['param'][$i])) {
                     preg_match('/^(\S+)(?:\s*(?:\$' . $param->name . '\s*)?(.+))?$/s', $tags['param'][$i], $matches);
@@ -82,7 +82,7 @@ class Kohana_Kodoc_Method extends Kodoc
         if (isset($tags['return'])) {
             foreach ($tags['return'] as $return) {
                 if (preg_match('/^(\S*)(?:\s*(.+?))?$/', $return, $matches)) {
-                    $this->return[] = array($matches[1], isset($matches[2]) ? $matches[2] : '');
+                    $this->return[] = [$matches[1], isset($matches[2]) ? $matches[2] : ''];
                 }
             }
 

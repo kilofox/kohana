@@ -1,7 +1,7 @@
 <h1>
     <?php echo $doc->modifiers, $doc->class->name ?>
     <?php foreach ($doc->parents as $parent): ?>
-        <br/><small>extends <?php echo HTML::anchor($route->uri(array('class' => $parent->name)), $parent->name, NULL, NULL, TRUE) ?></small>
+        <br/><small>extends <?php echo HTML::anchor($route->uri(['class' => $parent->name]), $parent->name, NULL, NULL, TRUE) ?></small>
     <?php endforeach; ?>
 </h1>
 
@@ -10,7 +10,7 @@
             Implements:
             <?php
             for ($i = 0, $split = FALSE, $count = count($interfaces); $i < $count; $i++, $split = " | ") {
-                echo $split . HTML::anchor($route->uri(array('class' => $interfaces[$i])), $interfaces[$i], NULL, NULL, TRUE);
+                echo $split . HTML::anchor($route->uri(['class' => $interfaces[$i]]), $interfaces[$i], NULL, NULL, TRUE);
             }
             ?></small>
     </p>
@@ -18,7 +18,7 @@
 
 <?php if ($child = $doc->is_transparent($doc->class->name)): ?>
     <p class="note">
-        This class is a transparent base class for <?php echo HTML::anchor($route->uri(array('class' => $child)), $child) ?> and
+        This class is a transparent base class for <?php echo HTML::anchor($route->uri(['class' => $child]), $child) ?> and
         should not be accessed directly.
     </p>
 <?php endif; ?>

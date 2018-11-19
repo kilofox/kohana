@@ -50,12 +50,12 @@
 </span><span class="line"><span class="number">212</span> 	{
 </span><span class="line"><span class="number">213</span> 		if (($path = Kohana::find_file('views', $file)) === FALSE)
 </span><span class="line"><span class="number">214</span> 		{
-</span><span class="line highlight"><span class="number">215</span> 			throw new Kohana_View_Exception('The requested view :file could not be found', array(
+</span><span class="line highlight"><span class="number">215</span> 			throw new Kohana_View_Exception('The requested view :file could not be found', [
 </span><span class="line"><span class="number">216</span> 				':file' =&gt; $file,
 
-</span><span class="line"><span class="number">217</span> 			));
+</span><span class="line"><span class="number">217</span> 			]);
 </span><span class="line"><span class="number">218</span> 		}
-</span><span class="line"><span class="number">219</span> 
+</span><span class="line"><span class="number">219</span>
 </span><span class="line"><span class="number">220</span> 		// Store the file path locally
 </span></code></pre>		<ol class="trace">
             <li>
@@ -85,7 +85,7 @@
 </span><span class="line highlight"><span class="number">115</span> 			$this-&gt;set_filename($file);
 
 </span><span class="line"><span class="number">116</span> 		}
-</span><span class="line"><span class="number">117</span> 
+</span><span class="line"><span class="number">117</span>
 </span><span class="line"><span class="number">118</span> 		if ( $data !== NULL)
 </span><span class="line"><span class="number">119</span> 		{
 </span><span class="line"><span class="number">120</span> 			// Add the values to the current data
@@ -123,7 +123,7 @@
 </span><span class="line highlight"><span class="number">26</span> 		return new View($file, $data);
 </span><span class="line"><span class="number">27</span> 	}
 
-</span><span class="line"><span class="number">28</span> 
+</span><span class="line"><span class="number">28</span>
 </span><span class="line"><span class="number">29</span> 	/**
 </span><span class="line"><span class="number">30</span> 	 * Captures the output that is generated when a view is included.
 </span><span class="line"><span class="number">31</span> 	 * The view data will be extracted to make local variables. This method
@@ -157,7 +157,7 @@
 </span><span class="line highlight"><span class="number">32</span> 			$this-&gt;template = View::factory($this-&gt;template);
 </span><span class="line"><span class="number">33</span> 		}
 </span><span class="line"><span class="number">34</span> 	}
-</span><span class="line"><span class="number">35</span> 
+</span><span class="line"><span class="number">35</span>
 </span><span class="line"><span class="number">36</span> 	/**
 </span><span class="line"><span class="number">37</span> 	 * Assigns the template as the request response.
 
@@ -192,7 +192,7 @@
     <small>public</small> request => <small>object</small> <span>Request(9)</span> <code>{
         <small>public</small> route => <small>object</small> <span>Route(4)</span> <code>{
             <small>protected</small> _uri => <small>string</small><span>(32)</span> "(&lt;controller&gt;(/&lt;action&gt;(/&lt;id&gt;)))"
-            <small>protected</small> _regex => <small>array</small><span>(0)</span> 
+            <small>protected</small> _regex => <small>array</small><span>(0)</span>
             <small>protected</small> _defaults => <small>array</small><span>(2)</span> <span>(
                 "controller" => <small>string</small><span>(7)</span> "welcome"
                 "action" => <small>string</small><span>(5)</span> "index"
@@ -210,25 +210,25 @@
         <small>public</small> controller => <small>string</small><span>(5)</span> "hello"
         <small>public</small> action => <small>string</small><span>(5)</span> "index"
         <small>public</small> uri => <small>string</small><span>(5)</span> "hello"
-        <small>protected</small> _params => <small>array</small><span>(0)</span> 
+        <small>protected</small> _params => <small>array</small><span>(0)</span>
     }</code>
 
 }</code></pre></td>
                         </tr>
                     </table>
                 </div>
-                <pre id="error4ac2453378034source4" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">835</span> 
+                <pre id="error4ac2453378034source4" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">835</span>
 </span><span class="line"><span class="number">836</span> 			// Create a new instance of the controller
 </span><span class="line"><span class="number">837</span> 			$controller = $class-&gt;newInstance($this);
 
-</span><span class="line"><span class="number">838</span> 
+</span><span class="line"><span class="number">838</span>
 </span><span class="line"><span class="number">839</span> 			// Execute the "before action" method
 </span><span class="line highlight"><span class="number">840</span> 			$class-&gt;getMethod('before')-&gt;invoke($controller);
-</span><span class="line"><span class="number">841</span> 
+</span><span class="line"><span class="number">841</span>
 </span><span class="line"><span class="number">842</span> 			// Determine the action to use
 </span><span class="line"><span class="number">843</span> 			$action = empty($this-&gt;action) ? Route::$default_action : $this-&gt;action;
 
-</span><span class="line"><span class="number">844</span> 
+</span><span class="line"><span class="number">844</span>
 </span><span class="line"><span class="number">845</span> 			// Execute the main action with the parameters
 </span></code></pre></code></pre>
             </li>
@@ -274,7 +274,7 @@
                 <pre id="error4ac2453378034source6" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">101</span> 	// Load empty core extension
 </span><span class="line"><span class="number">102</span> 	require SYSPATH.'classes/kohana'.EXT;
 </span><span class="line"><span class="number">103</span> }
-</span><span class="line"><span class="number">104</span> 
+</span><span class="line"><span class="number">104</span>
 </span><span class="line"><span class="number">105</span> // Bootstrap the application
 
 </span><span class="line highlight"><span class="number">106</span> require APPPATH.'bootstrap'.EXT;

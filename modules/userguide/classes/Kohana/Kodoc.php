@@ -21,7 +21,7 @@ class Kohana_Kodoc
     /**
      * Make a class#member API link using an array of matches from [Kodoc::$regex_class_member]
      *
-     * @param   array   $matches    array( 1 => link text, 2 => class name, [3 => member name] )
+     * @param   array   $matches    [1 => 'link text', 2 => 'class name', [3 => 'member name']]
      * @return  string
      */
     public static function link_class_member($matches)
@@ -41,7 +41,7 @@ class Kohana_Kodoc
             }
         }
 
-        return HTML::anchor(Route::get('docs/api')->uri(array('class' => $class)) . $member, $link, NULL, NULL, TRUE);
+        return HTML::anchor(Route::get('docs/api')->uri(['class' => $class]) . $member, $link, NULL, NULL, TRUE);
     }
 
     public static function factory($class)
@@ -60,7 +60,7 @@ class Kohana_Kodoc
 
         ksort($classes);
 
-        $menu = array();
+        $menu = [];
 
         $route = Route::get('docs/api');
 
@@ -74,7 +74,7 @@ class Kohana_Kodoc
             if (!Kodoc::show_class($class))
                 continue;
 
-            $link = HTML::anchor($route->uri(array('class' => $class->class->name)), $class->class->name);
+            $link = HTML::anchor($route->uri(['class' => $class->class->name]), $class->class->name);
 
             if (isset($class->tags['package'])) {
                 foreach ($class->tags['package'] as $package) {
@@ -110,7 +110,7 @@ class Kohana_Kodoc
             $list = Kohana::list_files('classes');
         }
 
-        $classes = array();
+        $classes = [];
 
         // This will be used a lot!
         $ext_length = strlen(EXT);
@@ -144,7 +144,7 @@ class Kohana_Kodoc
     {
         $list = Kodoc::classes($list);
 
-        $classes = array();
+        $classes = [];
 
         foreach ($list as $class) {
             // Skip transparent extension classes
@@ -153,7 +153,7 @@ class Kohana_Kodoc
 
             $_class = new ReflectionClass($class);
 
-            $methods = array();
+            $methods = [];
 
             foreach ($_class->getMethods() as $_method) {
                 $declares = $_method->getDeclaringClass()->name;
@@ -203,12 +203,12 @@ class Kohana_Kodoc
 
             if (preg_match('/^(\w+)\W(.*)$/D', $text, $matches)) {
                 return HTML::anchor(
-                        $route->uri(array('class' => $matches[1])), $matches[1]
+                        $route->uri(['class' => $matches[1]]), $matches[1]
                     ) . ' ' . $matches[2];
             }
 
             return HTML::anchor(
-                    $route->uri(array('class' => $text)), $text
+                    $route->uri(['class' => $text]), $text
             );
         } elseif ($tag === 'see' OR $tag === 'uses') {
             if (preg_match('/^' . Kodoc::$regex_class_member . '/', $text, $matches))
@@ -226,18 +226,18 @@ class Kohana_Kodoc
      * @param   string  $comment    The DocBlock to parse
      * @param   boolean $html       Whether or not to convert the return values
      *   to HTML (deprecated)
-     * @return  array   array(string $description, array $tags)
+     * @return  array   [string $description, array $tags]
      */
     public static function parse($comment, $html = TRUE)
     {
         // Normalize all new lines to \n
-        $comment = str_replace(array("\r\n", "\n"), "\n", $comment);
+        $comment = str_replace(["\r\n", "\n"], "\n", $comment);
 
         // Split into lines while capturing without leading whitespace
         preg_match_all('/^\s*\* ?(.*)\n/m', $comment, $lines);
 
         // Tag content
-        $tags = array();
+        $tags = [];
 
         /**
          * Process a tag and add it to $tags
@@ -296,7 +296,7 @@ class Kohana_Kodoc
             $comment = Kodoc_Markdown::markdown($comment);
         }
 
-        return array($comment, $tags);
+        return [$comment, $tags];
     }
 
     /**
@@ -341,7 +341,7 @@ class Kohana_Kodoc
             return TRUE;
 
         // Get the package tags for this class (as an array)
-        $packages = Arr::get($class->tags, 'package', array('None'));
+        $packages = Arr::get($class->tags, 'package', ['None']);
 
         $show_this = FALSE;
 
@@ -365,9 +365,9 @@ class Kohana_Kodoc
      *
      * Transparent prefixes are defined in the userguide.php config file:
      *
-     *     'transparent_prefixes' => array(
+     *     'transparent_prefixes' => [
      *         'Kohana' => TRUE,
-     *     );
+     *     ];
      *
      * Module developers can therefore add their own transparent extension
      * namespaces and exclude them from the userguide.

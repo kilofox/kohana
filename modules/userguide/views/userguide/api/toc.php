@@ -57,7 +57,7 @@
 
 <div class="class-list">
 
-    <?php foreach ($classes as $class => $methods): $link = $route->uri(array('class' => $class)) ?>
+    <?php foreach ($classes as $class => $methods): $link = $route->uri(['class' => $class]) ?>
         <div class="class <?php echo Text::alternate('left', 'right') ?>">
             <h2><?php echo HTML::anchor($link, $class, NULL, NULL, TRUE) ?></h2>
             <ul class="methods">
