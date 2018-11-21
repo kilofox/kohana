@@ -25,8 +25,8 @@ class Kohana_Valid
             $value = $value->getArrayCopy();
         }
 
-        // Value cannot be NULL, FALSE, '', or an empty array
-        return !in_array($value, [NULL, FALSE, '', []], TRUE);
+        // Value cannot be null, false, '', or an empty array
+        return !in_array($value, [null, false, '', []], true);
     }
 
     /**
@@ -77,9 +77,9 @@ class Kohana_Valid
         if (is_array($length)) {
             foreach ($length as $strlen) {
                 if (UTF8::strlen($value) === $strlen)
-                    return TRUE;
+                    return true;
             }
-            return FALSE;
+            return false;
         }
 
         return UTF8::strlen($value) === $length;
@@ -107,13 +107,13 @@ class Kohana_Valid
      * @param   boolean $strict strict RFC compatibility
      * @return  boolean
      */
-    public static function email($email, $strict = FALSE)
+    public static function email($email, $strict = false)
     {
         if (UTF8::strlen($email) > 254) {
-            return FALSE;
+            return false;
         }
 
-        if ($strict === TRUE) {
+        if ($strict === true) {
             $qtext = '[^\\x0d\\x22\\x5c\\x80-\\xff]';
             $dtext = '[^\\x0d\\x5b-\\x5d\\x80-\\xff]';
             $atom = '[^\\x00-\\x20\\x22\\x28\\x29\\x2c\\x2e\\x3a-\\x3c\\x3e\\x40\\x5b-\\x5d\\x7f-\\xff]+';
@@ -146,11 +146,11 @@ class Kohana_Valid
     public static function email_domain($email)
     {
         if (!Valid::not_empty($email))
-            return FALSE; // Empty fields cause issues with checkdnsrr()
+            return false; // Empty fields cause issues with checkdnsrr()
 
 
 
-            
+
 // Check if the email domain has a valid MX record
         return (bool) checkdnsrr(preg_replace('/^[^@]++@/', '', $email), 'MX');
     }
@@ -197,16 +197,16 @@ class Kohana_Valid
 			(?:/.*)?
 
 			$~iDx', $url, $matches))
-            return FALSE;
+            return false;
 
         // We matched an IP address
         if (!isset($matches[1]))
-            return TRUE;
+            return true;
 
         // Check maximum length of the whole hostname
         // http://en.wikipedia.org/wiki/Domain_name#cite_note-0
         if (strlen($matches[1]) > 253)
-            return FALSE;
+            return false;
 
         // An extra check for the top level domain
         // It must start with a letter
@@ -221,12 +221,12 @@ class Kohana_Valid
      * @param   boolean $allow_private  allow private IP networks
      * @return  boolean
      */
-    public static function ip($ip, $allow_private = TRUE)
+    public static function ip($ip, $allow_private = true)
     {
         // Do not allow reserved addresses
         $flags = FILTER_FLAG_NO_RES_RANGE;
 
-        if ($allow_private === FALSE) {
+        if ($allow_private === false) {
             // Do not allow private or reserved addresses
             $flags = $flags | FILTER_FLAG_NO_PRIV_RANGE;
         }
@@ -242,23 +242,23 @@ class Kohana_Valid
      * @return  boolean
      * @uses    Valid::luhn
      */
-    public static function credit_card($number, $type = NULL)
+    public static function credit_card($number, $type = null)
     {
         // Remove all non-digit characters from the number
         if (($number = preg_replace('/\D+/', '', $number)) === '')
-            return FALSE;
+            return false;
 
-        if ($type == NULL) {
+        if ($type == null) {
             // Use the default type
             $type = 'default';
         } elseif (is_array($type)) {
             foreach ($type as $t) {
                 // Test each type for validity
                 if (Valid::credit_card($number, $t))
-                    return TRUE;
+                    return true;
             }
 
-            return FALSE;
+            return false;
         }
 
         $cards = Kohana::$config->load('credit_cards');
@@ -267,22 +267,22 @@ class Kohana_Valid
         $type = strtolower($type);
 
         if (!isset($cards[$type]))
-            return FALSE;
+            return false;
 
         // Check card number length
         $length = strlen($number);
 
         // Validate the card length by the card type
         if (!in_array($length, preg_split('/\D+/', $cards[$type]['length'])))
-            return FALSE;
+            return false;
 
         // Check card number prefix
         if (!preg_match('/^' . $cards[$type]['prefix'] . '/', $number))
-            return FALSE;
+            return false;
 
         // No Luhn check required
-        if ($cards[$type]['luhn'] == FALSE)
-            return TRUE;
+        if ($cards[$type]['luhn'] == false)
+            return true;
 
         return Valid::luhn($number);
     }
@@ -302,7 +302,7 @@ class Kohana_Valid
 
         if (!ctype_digit($number)) {
             // Luhn can only be used on numbers!
-            return FALSE;
+            return false;
         }
 
         // Check number length
@@ -335,7 +335,7 @@ class Kohana_Valid
      * @param   array   $lengths
      * @return  boolean
      */
-    public static function phone($number, $lengths = NULL)
+    public static function phone($number, $lengths = null)
     {
         if (!is_array($lengths)) {
             $lengths = [7, 10, 11];
@@ -356,7 +356,7 @@ class Kohana_Valid
      */
     public static function date($str)
     {
-        return (strtotime($str) !== FALSE);
+        return (strtotime($str) !== false);
     }
 
     /**
@@ -366,11 +366,11 @@ class Kohana_Valid
      * @param   boolean $utf8   trigger UTF-8 compatibility
      * @return  boolean
      */
-    public static function alpha($str, $utf8 = FALSE)
+    public static function alpha($str, $utf8 = false)
     {
         $str = (string) $str;
 
-        if ($utf8 === TRUE) {
+        if ($utf8 === true) {
             return (bool) preg_match('/^\pL++$/uD', $str);
         } else {
             return ctype_alpha($str);
@@ -384,9 +384,9 @@ class Kohana_Valid
      * @param   boolean $utf8   trigger UTF-8 compatibility
      * @return  boolean
      */
-    public static function alpha_numeric($str, $utf8 = FALSE)
+    public static function alpha_numeric($str, $utf8 = false)
     {
-        if ($utf8 === TRUE) {
+        if ($utf8 === true) {
             return (bool) preg_match('/^[\pL\pN]++$/uD', $str);
         } else {
             return ctype_alnum($str);
@@ -400,9 +400,9 @@ class Kohana_Valid
      * @param   boolean $utf8   trigger UTF-8 compatibility
      * @return  boolean
      */
-    public static function alpha_dash($str, $utf8 = FALSE)
+    public static function alpha_dash($str, $utf8 = false)
     {
-        if ($utf8 === TRUE) {
+        if ($utf8 === true) {
             $regex = '/^[-\pL\pN_]++$/uD';
         } else {
             $regex = '/^[-a-z0-9_]++$/iD';
@@ -418,9 +418,9 @@ class Kohana_Valid
      * @param   boolean $utf8   trigger UTF-8 compatibility
      * @return  boolean
      */
-    public static function digit($str, $utf8 = FALSE)
+    public static function digit($str, $utf8 = false)
     {
-        if ($utf8 === TRUE) {
+        if ($utf8 === true) {
             return (bool) preg_match('/^\pN++$/uD', $str);
         } else {
             return (is_int($str) AND $str >= 0) OR ctype_digit($str);
@@ -454,11 +454,11 @@ class Kohana_Valid
      * @param   integer $step   increment size
      * @return  boolean
      */
-    public static function range($number, $min, $max, $step = NULL)
+    public static function range($number, $min, $max, $step = null)
     {
         if ($number < $min OR $number > $max) {
             // Number is outside of range
-            return FALSE;
+            return false;
         }
 
         if (!$step) {
@@ -479,7 +479,7 @@ class Kohana_Valid
      * @param   integer $digits number of digits
      * @return  boolean
      */
-    public static function decimal($str, $places = 2, $digits = NULL)
+    public static function decimal($str, $places = 2, $digits = null)
     {
         if ($digits > 0) {
             // Specific number of digits

@@ -41,14 +41,14 @@ class Kohana_Security
      * @return  string
      * @uses    Session::instance
      */
-    public static function token($new = FALSE)
+    public static function token($new = false)
     {
         $session = Session::instance();
 
         // Get the current token
         $token = $session->get(Security::$token_name);
 
-        if ($new === TRUE OR ! $token) {
+        if ($new === true OR ! $token) {
             // Generate a new unique token
             if (function_exists('openssl_random_pseudo_bytes')) {
                 // Generate a random pseudo bytes token if openssl_random_pseudo_bytes is available
@@ -56,7 +56,7 @@ class Kohana_Security
                 $token = base64_encode(openssl_random_pseudo_bytes(32));
             } else {
                 // Otherwise, fall back to a hashed uniqid
-                $token = sha1(uniqid(NULL, TRUE));
+                $token = sha1(uniqid(null, true));
             }
 
             // Store the new token
@@ -86,7 +86,7 @@ class Kohana_Security
     /**
      * Compare two hashes in a time-invariant manner.
      * Prevents cryptographic side-channel attacks (timing attacks, specifically)
-     * 
+     *
      * @param string $a cryptographic hash
      * @param string $b cryptographic hash
      * @return boolean

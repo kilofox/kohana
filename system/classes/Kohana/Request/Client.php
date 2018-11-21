@@ -24,7 +24,7 @@ abstract class Kohana_Request_Client
     /**
      * @var  bool  Should redirects be followed?
      */
-    protected $_follow = FALSE;
+    protected $_follow = false;
 
     /**
      * @var  array  Headers to preserve when following a redirect
@@ -34,7 +34,7 @@ abstract class Kohana_Request_Client
     /**
      * @var  bool  Follow 302 redirect with original request method?
      */
-    protected $_strict_redirect = TRUE;
+    protected $_strict_redirect = true;
 
     /**
      * @var array  Callbacks to use when response contains given headers
@@ -158,9 +158,9 @@ abstract class Kohana_Request_Client
      * @return  HTTP_Cache
      * @return  Request_Client
      */
-    public function cache(HTTP_Cache $cache = NULL)
+    public function cache(HTTP_Cache $cache = null)
     {
-        if ($cache === NULL)
+        if ($cache === null)
             return $this->_cache;
 
         $this->_cache = $cache;
@@ -175,9 +175,9 @@ abstract class Kohana_Request_Client
      * @return  bool
      * @return  Request_Client
      */
-    public function follow($follow = NULL)
+    public function follow($follow = null)
     {
-        if ($follow === NULL)
+        if ($follow === null)
             return $this->_follow;
 
         $this->_follow = $follow;
@@ -193,9 +193,9 @@ abstract class Kohana_Request_Client
      * @return  array
      * @return  Request_Client
      */
-    public function follow_headers($follow_headers = NULL)
+    public function follow_headers($follow_headers = null)
     {
-        if ($follow_headers === NULL)
+        if ($follow_headers === null)
             return $this->_follow_headers;
 
         $this->_follow_headers = array_map('strtolower', $follow_headers);
@@ -216,9 +216,9 @@ abstract class Kohana_Request_Client
      * @param  bool  $strict_redirect  Boolean indicating if 302 redirects should be followed with the original method
      * @return Request_Client
      */
-    public function strict_redirect($strict_redirect = NULL)
+    public function strict_redirect($strict_redirect = null)
     {
-        if ($strict_redirect === NULL)
+        if ($strict_redirect === null)
             return $this->_strict_redirect;
 
         $this->_strict_redirect = $strict_redirect;
@@ -247,9 +247,9 @@ abstract class Kohana_Request_Client
      * @param array $header_callbacks	Array of callbacks to trigger on presence of given headers
      * @return Request_Client
      */
-    public function header_callbacks($header_callbacks = NULL)
+    public function header_callbacks($header_callbacks = null)
     {
-        if ($header_callbacks === NULL)
+        if ($header_callbacks === null)
             return $this->_header_callbacks;
 
         $this->_header_callbacks = $header_callbacks;
@@ -268,9 +268,9 @@ abstract class Kohana_Request_Client
      * @param int $depth  Maximum number of callback requests to execute before aborting
      * @return Request_Client|int
      */
-    public function max_callback_depth($depth = NULL)
+    public function max_callback_depth($depth = null)
     {
-        if ($depth === NULL)
+        if ($depth === null)
             return $this->_max_callback_depth;
 
         $this->_max_callback_depth = $depth;
@@ -285,9 +285,9 @@ abstract class Kohana_Request_Client
      * @param int $depth  Current recursion depth
      * @return Request_Client|int
      */
-    public function callback_depth($depth = NULL)
+    public function callback_depth($depth = null)
     {
-        if ($depth === NULL)
+        if ($depth === null)
             return $this->_callback_depth;
 
         $this->_callback_depth = $depth;
@@ -317,10 +317,10 @@ abstract class Kohana_Request_Client
      * @param mixed $value
      * @return Request_Client|mixed
      */
-    public function callback_params($param = NULL, $value = NULL)
+    public function callback_params($param = null, $value = null)
     {
         // Getter for full array
-        if ($param === NULL)
+        if ($param === null)
             return $this->_callback_params;
 
         // Setter for full array
@@ -329,7 +329,7 @@ abstract class Kohana_Request_Client
             return $this;
         }
         // Getter for single value
-        elseif ($value === NULL) {
+        elseif ($value === null) {
             return Arr::get($this->_callback_params, $param);
         }
         // Setter for single value
@@ -407,7 +407,7 @@ abstract class Kohana_Request_Client
             return $follow_request;
         }
 
-        return NULL;
+        return null;
     }
 
 }

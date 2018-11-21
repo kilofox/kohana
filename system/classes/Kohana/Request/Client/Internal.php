@@ -93,7 +93,7 @@ class Kohana_Request_Client_Internal extends Request_Client
             }
         } catch (HTTP_Exception $e) {
             // Store the request context in the Exception
-            if ($e->request() === NULL) {
+            if ($e->request() === null) {
                 $e->request($request);
             }
 

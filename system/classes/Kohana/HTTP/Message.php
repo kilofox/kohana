@@ -22,7 +22,7 @@ interface Kohana_HTTP_Message
      * @param   string   $protocol  Protocol to set to the request/response
      * @return  mixed
      */
-    public function protocol($protocol = NULL);
+    public function protocol($protocol = null);
     /**
      * Gets or sets HTTP headers to the request or response. All headers
      * are included immediately after the HTTP protocol definition during
@@ -33,7 +33,7 @@ interface Kohana_HTTP_Message
      * @param   string  $value  Value to set to the supplied key
      * @return  mixed
      */
-    public function headers($key = NULL, $value = NULL);
+    public function headers($key = null, $value = null);
     /**
      * Gets or sets the HTTP body to the request or response. The body is
      * included after the header, separated by a single empty new line.
@@ -42,7 +42,7 @@ interface Kohana_HTTP_Message
      * @return  string
      * @return  void
      */
-    public function body($content = NULL);
+    public function body($content = null);
     /**
      * Renders the HTTP_Interaction to a string, producing
      *

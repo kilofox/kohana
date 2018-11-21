@@ -23,7 +23,7 @@ class Kohana_Config_Group extends ArrayObject
      * Used when updating config
      * @var Kohana_Config
      */
-    protected $_parent_instance = NULL;
+    protected $_parent_instance = null;
 
     /**
      * The group this config is for
@@ -89,7 +89,7 @@ class Kohana_Config_Group extends ArrayObject
      * @param   mixed   $default    default value
      * @return  mixed
      */
-    public function get($key, $default = NULL)
+    public function get($key, $default = null)
     {
         return $this->offsetExists($key) ? $this->offsetGet($key) : $default;
     }

@@ -28,18 +28,18 @@ class Kohana_Config
     /**
      * Attach a configuration reader. By default, the reader will be added as
      * the first used reader. However, if the reader should be used only when
-     * all other readers fail, use `FALSE` for the second parameter.
+     * all other readers fail, use `false` for the second parameter.
      *
      *     $config->attach($reader);        // Try first
-     *     $config->attach($reader, FALSE); // Try last
+     *     $config->attach($reader, false); // Try last
      *
      * @param   Kohana_Config_Source    $source instance
      * @param   boolean                 $first  add the reader as the first used object
      * @return  $this
      */
-    public function attach(Kohana_Config_Source $source, $first = TRUE)
+    public function attach(Kohana_Config_Source $source, $first = true)
     {
-        if ($first === TRUE) {
+        if ($first === true) {
             // Place the log reader at the top of the stack
             array_unshift($this->_sources, $source);
         } else {
@@ -63,7 +63,7 @@ class Kohana_Config
      */
     public function detach(Kohana_Config_Source $source)
     {
-        if (($key = array_search($source, $this->_sources)) !== FALSE) {
+        if (($key = array_search($source, $this->_sources)) !== false) {
             // Remove the writer
             unset($this->_sources[$key]);
         }
@@ -98,14 +98,14 @@ class Kohana_Config
             throw new Kohana_Exception("Config group must be a string");
         }
 
-        if (strpos($group, '.') !== FALSE) {
+        if (strpos($group, '.') !== false) {
             // Split the config group and path
             list($group, $path) = explode('.', $group, 2);
         }
 
         if (isset($this->_groups[$group])) {
             if (isset($path)) {
-                return Arr::path($this->_groups[$group], $path, NULL, '.');
+                return Arr::path($this->_groups[$group], $path, null, '.');
             }
             return $this->_groups[$group];
         }
@@ -126,7 +126,7 @@ class Kohana_Config
         $this->_groups[$group] = new Config_Group($this, $group, $config);
 
         if (isset($path)) {
-            return Arr::path($config, $path, NULL, '.');
+            return Arr::path($config, $path, null, '.');
         }
 
         return $this->_groups[$group];

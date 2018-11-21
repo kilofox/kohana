@@ -30,7 +30,7 @@ class Kohana_Fragment
     /**
      * @var  boolean  use multilingual fragment support?
      */
-    public static $i18n = FALSE;
+    public static $i18n = false;
 
     /**
      * @var  array  list of buffer => cache key
@@ -40,7 +40,7 @@ class Kohana_Fragment
     /**
      * Generate the cache key name for a fragment.
      *
-     *     $key = Fragment::_cache_key('footer', TRUE);
+     *     $key = Fragment::_cache_key('footer', true);
      *
      * @param   string  $name   fragment name
      * @param   boolean $i18n   multilingual fragment support
@@ -48,15 +48,15 @@ class Kohana_Fragment
      * @uses    I18n::lang
      * @since   3.0.4
      */
-    protected static function _cache_key($name, $i18n = NULL)
+    protected static function _cache_key($name, $i18n = null)
     {
-        if ($i18n === NULL) {
+        if ($i18n === null) {
             // Use the default setting
             $i18n = Fragment::$i18n;
         }
 
         // Language prefix for cache key
-        $i18n = ($i18n === TRUE) ? I18n::lang() : '';
+        $i18n = ($i18n === true) ? I18n::lang() : '';
 
         // Note: $i18n and $name need to be delimited to prevent naming collisions
         return 'Fragment::cache(' . $i18n . '+' . $name . ')';
@@ -76,19 +76,19 @@ class Kohana_Fragment
      * @param   boolean $i18n       multilingual fragment support
      * @return  boolean
      */
-    public static function load($name, $lifetime = NULL, $i18n = NULL)
+    public static function load($name, $lifetime = null, $i18n = null)
     {
         // Set the cache lifetime
-        $lifetime = ($lifetime === NULL) ? Fragment::$lifetime : (int) $lifetime;
+        $lifetime = ($lifetime === null) ? Fragment::$lifetime : (int) $lifetime;
 
         // Get the cache key name
         $cache_key = Fragment::_cache_key($name, $i18n);
 
-        if ($fragment = Kohana::cache($cache_key, NULL, $lifetime)) {
+        if ($fragment = Kohana::cache($cache_key, null, $lifetime)) {
             // Display the cached fragment now
             echo $fragment;
 
-            return TRUE;
+            return true;
         } else {
             // Start the output buffer
             ob_start();
@@ -96,7 +96,7 @@ class Kohana_Fragment
             // Store the cache key by the buffer level
             Fragment::$_caches[ob_get_level()] = $cache_key;
 
-            return FALSE;
+            return false;
         }
     }
 
@@ -136,10 +136,10 @@ class Kohana_Fragment
      * @param   boolean $i18n   multilingual fragment support
      * @return  void
      */
-    public static function delete($name, $i18n = NULL)
+    public static function delete($name, $i18n = null)
     {
         // Invalid the cache
-        Kohana::cache(Fragment::_cache_key($name, $i18n), NULL, -3600);
+        Kohana::cache(Fragment::_cache_key($name, $i18n), null, -3600);
     }
 
 }

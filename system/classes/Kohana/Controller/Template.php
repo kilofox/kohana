@@ -21,7 +21,7 @@ abstract class Kohana_Controller_Template extends Controller
     /**
      * @var  boolean  auto render template
      * */
-    public $auto_render = TRUE;
+    public $auto_render = true;
 
     /**
      * Loads the template [View] object.
@@ -30,7 +30,7 @@ abstract class Kohana_Controller_Template extends Controller
     {
         parent::before();
 
-        if ($this->auto_render === TRUE) {
+        if ($this->auto_render === true) {
             // Load the template
             $this->template = View::factory($this->template);
         }
@@ -41,7 +41,7 @@ abstract class Kohana_Controller_Template extends Controller
      */
     public function after()
     {
-        if ($this->auto_render === TRUE) {
+        if ($this->auto_render === true) {
             $this->response->body($this->template->render());
         }
 

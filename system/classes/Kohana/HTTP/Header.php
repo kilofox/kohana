@@ -65,12 +65,12 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  array
      * @since   3.2.0
      */
-    public static function parse_accept_header($accepts = NULL)
+    public static function parse_accept_header($accepts = null)
     {
         $accepts = explode(',', (string) $accepts);
 
         // If there is no accept, lets accept everything
-        if ($accepts === NULL)
+        if ($accepts === null)
             return ['*' => ['*' => (float) HTTP_Header::DEFAULT_QUALITY]];
 
         // Parse the accept header qualities
@@ -104,9 +104,9 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  array
      * @since   3.2.0
      */
-    public static function parse_charset_header($charset = NULL)
+    public static function parse_charset_header($charset = null)
     {
-        if ($charset === NULL) {
+        if ($charset === null) {
             return ['*' => (float) HTTP_Header::DEFAULT_QUALITY];
         }
 
@@ -122,10 +122,10 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  array
      * @since   3.2.0
      */
-    public static function parse_encoding_header($encoding = NULL)
+    public static function parse_encoding_header($encoding = null)
     {
         // Accept everything
-        if ($encoding === NULL) {
+        if ($encoding === null) {
             return ['*' => (float) HTTP_Header::DEFAULT_QUALITY];
         } elseif ($encoding === '') {
             return ['identity' => (float) HTTP_Header::DEFAULT_QUALITY];
@@ -143,9 +143,9 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  array
      * @since   3.2.0
      */
-    public static function parse_language_header($language = NULL)
+    public static function parse_language_header($language = null)
     {
-        if ($language === NULL) {
+        if ($language === null) {
             return ['*' => ['*' => (float) HTTP_Header::DEFAULT_QUALITY]];
         }
 
@@ -219,13 +219,13 @@ class Kohana_HTTP_Header extends ArrayObject
     {
         $directives = explode(',', strtolower($cache_control));
 
-        if ($directives === FALSE)
-            return FALSE;
+        if ($directives === false)
+            return false;
 
         $output = [];
 
         foreach ($directives as $directive) {
-            if (strpos($directive, '=') !== FALSE) {
+            if (strpos($directive, '=') !== false) {
                 list($key, $value) = explode('=', trim($directive), 2);
 
                 $output[$key] = ctype_digit($value) ? (int) $value : $value;
@@ -309,7 +309,7 @@ class Kohana_HTTP_Header extends ArrayObject
     /**
      * Overloads `ArrayObject::offsetSet()` to enable handling of header
      * with multiple instances of the same directive. If the `$replace` flag
-     * is `FALSE`, the header will be appended rather than replacing the
+     * is `false`, the header will be appended rather than replacing the
      * original setting.
      *
      * @param   mixed   $index      index to set `$newval` to
@@ -318,7 +318,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  void
      * @since   3.2.0
      */
-    public function offsetSet($index, $newval, $replace = TRUE)
+    public function offsetSet($index, $newval, $replace = true)
     {
         // Ensure the index is lowercase
         $index = strtolower($index);
@@ -401,7 +401,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * Parses a HTTP Message header line and applies it to this HTTP_Header
      *
      *     $header = $response->headers();
-     *     $header->parse_header_string(NULL, 'content-type: application/json');
+     *     $header->parse_header_string(null, 'content-type: application/json');
      *
      * @param   resource    $resource       the resource (required by Curl API)
      * @param   string      $header_line    the line from the header to parse
@@ -414,7 +414,7 @@ class Kohana_HTTP_Header extends ArrayObject
 
         if (preg_match_all('/(\w[^\s:]*):[ ]*([^\r\n]*(?:\r\n[ \t][^\r\n]*)*)/', $header_line, $matches)) {
             foreach ($matches[0] as $key => $value) {
-                $this->offsetSet($matches[1][$key], $matches[2][$key], FALSE);
+                $this->offsetSet($matches[1][$key], $matches[2][$key], false);
             }
         }
 
@@ -423,7 +423,7 @@ class Kohana_HTTP_Header extends ArrayObject
 
     /**
      * Returns the accept quality of a submitted mime type based on the
-     * request `Accept:` header. If the `$explicit` argument is `TRUE`,
+     * request `Accept:` header. If the `$explicit` argument is `true`,
      * only precise matches will be returned, excluding all wildcard (`*`)
      * directives.
      *
@@ -433,18 +433,18 @@ class Kohana_HTTP_Header extends ArrayObject
      *     // $quality = 0.5
      *     $quality = $request->headers()->accepts_at_quality('application/json');
      *
-     *     // $quality_explicit = FALSE
-     *     $quality_explicit = $request->headers()->accepts_at_quality('text/plain', TRUE);
+     *     // $quality_explicit = false
+     *     $quality_explicit = $request->headers()->accepts_at_quality('text/plain', true);
      *
      * @param   string  $type
      * @param   boolean $explicit   explicit check, excludes `*`
      * @return  mixed
      * @since   3.2.0
      */
-    public function accepts_at_quality($type, $explicit = FALSE)
+    public function accepts_at_quality($type, $explicit = false)
     {
         // Parse Accept header if required
-        if ($this->_accept_content === NULL) {
+        if ($this->_accept_content === null) {
             if ($this->offsetExists('Accept')) {
                 $accept = $this->offsetGet('Accept');
             } else {
@@ -455,13 +455,13 @@ class Kohana_HTTP_Header extends ArrayObject
         }
 
         // If not a real mime, try and find it in config
-        if (strpos($type, '/') === FALSE) {
+        if (strpos($type, '/') === false) {
             $mime = Kohana::$config->load('mimes.' . $type);
 
-            if ($mime === NULL)
-                return FALSE;
+            if ($mime === null)
+                return false;
 
-            $quality = FALSE;
+            $quality = false;
 
             foreach ($mime as $_type) {
                 $quality_check = $this->accepts_at_quality($_type, $explicit);
@@ -475,15 +475,15 @@ class Kohana_HTTP_Header extends ArrayObject
 
         if (isset($this->_accept_content[$parts[0]][$parts[1]])) {
             return $this->_accept_content[$parts[0]][$parts[1]];
-        } elseif ($explicit === TRUE) {
-            return FALSE;
+        } elseif ($explicit === true) {
+            return false;
         } else {
             if (isset($this->_accept_content[$parts[0]]['*'])) {
                 return $this->_accept_content[$parts[0]]['*'];
             } elseif (isset($this->_accept_content['*']['*'])) {
                 return $this->_accept_content['*']['*'];
             } else {
-                return FALSE;
+                return false;
             }
         }
     }
@@ -504,7 +504,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *     $result = $header->preferred_accept([
      *         'text/rtf',
      *         'application/xml'
-     *     ], TRUE); // $result = FALSE (none matched explicitly)
+     *     ], true); // $result = false (none matched explicitly)
      *
      *
      * @param   array   $types      the content types to examine
@@ -512,9 +512,9 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  string  name of the preferred content type
      * @since   3.2.0
      */
-    public function preferred_accept(array $types, $explicit = FALSE)
+    public function preferred_accept(array $types, $explicit = false)
     {
-        $preferred = FALSE;
+        $preferred = false;
         $ceiling = 0;
 
         foreach ($types as $type) {
@@ -544,12 +544,12 @@ class Kohana_HTTP_Header extends ArrayObject
      */
     public function accepts_charset_at_quality($charset)
     {
-        if ($this->_accept_charset === NULL) {
+        if ($this->_accept_charset === null) {
             if ($this->offsetExists('Accept-Charset')) {
                 $charset_header = strtolower($this->offsetGet('Accept-Charset'));
                 $this->_accept_charset = HTTP_Header::parse_charset_header($charset_header);
             } else {
-                $this->_accept_charset = HTTP_Header::parse_charset_header(NULL);
+                $this->_accept_charset = HTTP_Header::parse_charset_header(null);
             }
         }
 
@@ -576,12 +576,12 @@ class Kohana_HTTP_Header extends ArrayObject
      *      ]); // $charset = 'utf-8'
      *
      * @param   array   $charsets   charsets to test
-     * @return  mixed   preferred charset or `FALSE`
+     * @return  mixed   preferred charset or `false`
      * @since   3.2.0
      */
     public function preferred_charset(array $charsets)
     {
-        $preferred = FALSE;
+        $preferred = false;
         $ceiling = 0;
 
         foreach ($charsets as $charset) {
@@ -611,13 +611,13 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  float
      * @since   3.2.0
      */
-    public function accepts_encoding_at_quality($encoding, $explicit = FALSE)
+    public function accepts_encoding_at_quality($encoding, $explicit = false)
     {
-        if ($this->_accept_encoding === NULL) {
+        if ($this->_accept_encoding === null) {
             if ($this->offsetExists('Accept-Encoding')) {
                 $encoding_header = $this->offsetGet('Accept-Encoding');
             } else {
-                $encoding_header = NULL;
+                $encoding_header = null;
             }
 
             $this->_accept_encoding = HTTP_Header::parse_encoding_header($encoding_header);
@@ -630,7 +630,7 @@ class Kohana_HTTP_Header extends ArrayObject
             return $this->_accept_encoding[$encoding];
         }
 
-        if ($explicit === FALSE) {
+        if ($explicit === false) {
             if (isset($this->_accept_encoding['*'])) {
                 return $this->_accept_encoding['*'];
             } elseif ($encoding === 'identity') {
@@ -653,14 +653,14 @@ class Kohana_HTTP_Header extends ArrayObject
      *     // $encoding = 'gzip';
      *
      * @param   array   $encodings  encodings to test against
-     * @param   boolean $explicit   explicit check, if `TRUE` wildcards are excluded
+     * @param   boolean $explicit   explicit check, if `true` wildcards are excluded
      * @return  mixed
      * @since   3.2.0
      */
-    public function preferred_encoding(array $encodings, $explicit = FALSE)
+    public function preferred_encoding(array $encodings, $explicit = false)
     {
         $ceiling = 0;
-        $preferred = FALSE;
+        $preferred = false;
 
         foreach ($encodings as $encoding) {
             $quality = $this->accepts_encoding_at_quality($encoding, $explicit);
@@ -676,7 +676,7 @@ class Kohana_HTTP_Header extends ArrayObject
 
     /**
      * Returns the quality of `$language` supplied, optionally ignoring
-     * wildcards if `$explicit` is set to a non-`FALSE` value. If the quality
+     * wildcards if `$explicit` is set to a non-`false` value. If the quality
      * is not found, `0.0` is returned.
      *
      *     // Accept-Language: en-us, en-gb; q=.7, en; q=.5
@@ -686,21 +686,21 @@ class Kohana_HTTP_Header extends ArrayObject
      *     $lang2 = $header->accepts_language_at_quality('en-au');
      *     // $lang2 = (float) 0.5
      *
-     *     $lang3 = $header->accepts_language_at_quality('en-au', TRUE);
+     *     $lang3 = $header->accepts_language_at_quality('en-au', true);
      *     // $lang3 = (float) 0.0
      *
      * @param   string  $language   language to interrogate
-     * @param   boolean $explicit   explicit interrogation, `TRUE` ignores wildcards
+     * @param   boolean $explicit   explicit interrogation, `true` ignores wildcards
      * @return  float
      * @since   3.2.0
      */
-    public function accepts_language_at_quality($language, $explicit = FALSE)
+    public function accepts_language_at_quality($language, $explicit = false)
     {
-        if ($this->_accept_language === NULL) {
+        if ($this->_accept_language === null) {
             if ($this->offsetExists('Accept-Language')) {
                 $language_header = strtolower($this->offsetGet('Accept-Language'));
             } else {
-                $language_header = NULL;
+                $language_header = null;
             }
 
             $this->_accept_language = HTTP_Header::parse_language_header($language_header);
@@ -713,7 +713,7 @@ class Kohana_HTTP_Header extends ArrayObject
             if (isset($language_parts[1])) {
                 if (isset($this->_accept_language[$language_parts[0]][$language_parts[1]])) {
                     return $this->_accept_language[$language_parts[0]][$language_parts[1]];
-                } elseif ($explicit === FALSE AND isset($this->_accept_language[$language_parts[0]]['*'])) {
+                } elseif ($explicit === false AND isset($this->_accept_language[$language_parts[0]]['*'])) {
                     return $this->_accept_language[$language_parts[0]]['*'];
                 }
             } elseif (isset($this->_accept_language[$language_parts[0]]['*'])) {
@@ -721,7 +721,7 @@ class Kohana_HTTP_Header extends ArrayObject
             }
         }
 
-        if ($explicit === FALSE AND isset($this->_accept_language['*'])) {
+        if ($explicit === false AND isset($this->_accept_language['*'])) {
             return $this->_accept_language['*'];
         }
 
@@ -742,10 +742,10 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  mixed
      * @since   3.2.0
      */
-    public function preferred_language(array $languages, $explicit = FALSE)
+    public function preferred_language(array $languages, $explicit = false)
     {
         $ceiling = 0;
-        $preferred = FALSE;
+        $preferred = false;
 
         foreach ($languages as $language) {
             $quality = $this->accepts_language_at_quality($language, $explicit);
@@ -773,7 +773,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  mixed
      * @since   3.2.0
      */
-    public function send_headers(HTTP_Response $response = NULL, $replace = FALSE, $callback = NULL)
+    public function send_headers(HTTP_Response $response = null, $replace = false, $callback = null)
     {
         $protocol = $response->protocol();
         $status = $response->status();

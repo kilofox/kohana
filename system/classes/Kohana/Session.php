@@ -37,9 +37,9 @@ abstract class Kohana_Session
      * @return  Session
      * @uses    Kohana::$config
      */
-    public static function instance($type = NULL, $id = NULL)
+    public static function instance($type = null, $id = null)
     {
-        if ($type === NULL) {
+        if ($type === null) {
             // Use the default type
             $type = Session::$default;
         }
@@ -74,7 +74,7 @@ abstract class Kohana_Session
     /**
      * @var  bool  encrypt session data?
      */
-    protected $_encrypted = FALSE;
+    protected $_encrypted = false;
 
     /**
      * @var  array  session data
@@ -84,7 +84,7 @@ abstract class Kohana_Session
     /**
      * @var  bool  session destroyed?
      */
-    protected $_destroyed = FALSE;
+    protected $_destroyed = false;
 
     /**
      * Overloads the name, lifetime, and encrypted session settings.
@@ -96,7 +96,7 @@ abstract class Kohana_Session
      * @return  void
      * @uses    Session::read
      */
-    public function __construct(array $config = NULL, $id = NULL)
+    public function __construct(array $config = null, $id = null)
     {
         if (isset($config['name'])) {
             // Cookie name to store the session id in
@@ -109,7 +109,7 @@ abstract class Kohana_Session
         }
 
         if (isset($config['encrypted'])) {
-            if ($config['encrypted'] === TRUE) {
+            if ($config['encrypted'] === true) {
                 // Use the default Encrypt instance
                 $config['encrypted'] = 'default';
             }
@@ -177,7 +177,7 @@ abstract class Kohana_Session
      */
     public function id()
     {
-        return NULL;
+        return null;
     }
 
     /**
@@ -202,7 +202,7 @@ abstract class Kohana_Session
      * @param   mixed   $default    default value to return
      * @return  mixed
      */
-    public function get($key, $default = NULL)
+    public function get($key, $default = null)
     {
         return array_key_exists($key, $this->_data) ? $this->_data[$key] : $default;
     }
@@ -216,7 +216,7 @@ abstract class Kohana_Session
      * @param   mixed   $default    default value to return
      * @return  mixed
      */
-    public function get_once($key, $default = NULL)
+    public function get_once($key, $default = null)
     {
         $value = $this->get($key, $default);
 
@@ -284,9 +284,9 @@ abstract class Kohana_Session
      * @param   string  $id session id
      * @return  void
      */
-    public function read($id = NULL)
+    public function read($id = null)
     {
-        $data = NULL;
+        $data = null;
 
         try {
             if (is_string($data = $this->_read($id))) {
@@ -305,7 +305,7 @@ abstract class Kohana_Session
             }
         } catch (Exception $e) {
             // Error reading the session, usually a corrupt session.
-            throw new Session_Exception('Error reading session data.', NULL, Session_Exception::SESSION_CORRUPT);
+            throw new Session_Exception('Error reading session data.', null, Session_Exception::SESSION_CORRUPT);
         }
 
         if (is_array($data)) {
@@ -343,7 +343,7 @@ abstract class Kohana_Session
         if (headers_sent() OR $this->_destroyed) {
             // Session cannot be written when the headers are sent or when
             // the session has been destroyed
-            return FALSE;
+            return false;
         }
 
         // Set the last active timestamp
@@ -355,7 +355,7 @@ abstract class Kohana_Session
             // Log & ignore all errors when a write fails
             Kohana::$log->add(Log::ERROR, Kohana_Exception::text($e))->write();
 
-            return FALSE;
+            return false;
         }
     }
 
@@ -368,7 +368,7 @@ abstract class Kohana_Session
      */
     public function destroy()
     {
-        if ($this->_destroyed === FALSE) {
+        if ($this->_destroyed === false) {
             if ($this->_destroyed = $this->_destroy()) {
                 // The session has been destroyed, clear all data
                 $this->_data = [];
@@ -387,13 +387,13 @@ abstract class Kohana_Session
      */
     public function restart()
     {
-        if ($this->_destroyed === FALSE) {
+        if ($this->_destroyed === false) {
             // Wipe out the current session.
             $this->destroy();
         }
 
         // Allow the new session to be saved
-        $this->_destroyed = FALSE;
+        $this->_destroyed = false;
 
         return $this->_restart();
     }
@@ -448,7 +448,7 @@ abstract class Kohana_Session
      * @param   string  $id session id
      * @return  string
      */
-    abstract protected function _read($id = NULL);
+    abstract protected function _read($id = null);
     /**
      * Generate a new session id and return it.
      *

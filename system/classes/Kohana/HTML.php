@@ -52,12 +52,12 @@ class Kohana_HTML
     /**
      * @var  boolean  use strict XHTML mode?
      */
-    public static $strict = TRUE;
+    public static $strict = true;
 
     /**
      * @var  boolean  automatically target external URLs to a new window?
      */
-    public static $windowed_urls = FALSE;
+    public static $windowed_urls = false;
 
     /**
      * Convert special characters to HTML entities. All untrusted content
@@ -69,7 +69,7 @@ class Kohana_HTML
      * @param   boolean $double_encode  encode existing entities
      * @return  string
      */
-    public static function chars($value, $double_encode = TRUE)
+    public static function chars($value, $double_encode = true)
     {
         return htmlspecialchars((string) $value, ENT_QUOTES, Kohana::$charset, $double_encode);
     }
@@ -85,7 +85,7 @@ class Kohana_HTML
      * @param   boolean $double_encode  encode existing entities
      * @return  string
      */
-    public static function entities($value, $double_encode = TRUE)
+    public static function entities($value, $double_encode = true)
     {
         return htmlentities((string) $value, ENT_QUOTES, Kohana::$charset, $double_encode);
     }
@@ -106,9 +106,9 @@ class Kohana_HTML
      * @uses    URL::site
      * @uses    HTML::attributes
      */
-    public static function anchor($uri, $title = NULL, array $attributes = NULL, $protocol = NULL, $index = TRUE)
+    public static function anchor($uri, $title = null, array $attributes = null, $protocol = null, $index = true)
     {
-        if ($title === NULL) {
+        if ($title === null) {
             // Use the URI as the title
             $title = $uri;
         }
@@ -117,8 +117,8 @@ class Kohana_HTML
             // Only use the base URL
             $uri = URL::base($protocol, $index);
         } else {
-            if (strpos($uri, '://') !== FALSE) {
-                if (HTML::$windowed_urls === TRUE AND empty($attributes['target'])) {
+            if (strpos($uri, '://') !== false) {
+                if (HTML::$windowed_urls === true AND empty($attributes['target'])) {
                     // Make the link open in a new window
                     $attributes['target'] = '_blank';
                 }
@@ -149,9 +149,9 @@ class Kohana_HTML
      * @uses    URL::base
      * @uses    HTML::attributes
      */
-    public static function file_anchor($file, $title = NULL, array $attributes = NULL, $protocol = NULL, $index = FALSE)
+    public static function file_anchor($file, $title = null, array $attributes = null, $protocol = null, $index = false)
     {
-        if ($title === NULL) {
+        if ($title === null) {
             // Use the file name as the title
             $title = basename($file);
         }
@@ -174,9 +174,9 @@ class Kohana_HTML
      * @return  string
      * @uses    HTML::attributes
      */
-    public static function mailto($email, $title = NULL, array $attributes = NULL)
+    public static function mailto($email, $title = null, array $attributes = null)
     {
-        if ($title === NULL) {
+        if ($title === null) {
             // Use the email address as the title
             $title = $email;
         }
@@ -197,9 +197,9 @@ class Kohana_HTML
      * @uses    URL::base
      * @uses    HTML::attributes
      */
-    public static function style($file, array $attributes = NULL, $protocol = NULL, $index = FALSE)
+    public static function style($file, array $attributes = null, $protocol = null, $index = false)
     {
-        if (strpos($file, '://') === FALSE AND strpos($file, '//') !== 0) {
+        if (strpos($file, '://') === false AND strpos($file, '//') !== 0) {
             // Add the base URL
             $file = URL::site($file, $protocol, $index);
         }
@@ -229,9 +229,9 @@ class Kohana_HTML
      * @uses    URL::base
      * @uses    HTML::attributes
      */
-    public static function script($file, array $attributes = NULL, $protocol = NULL, $index = FALSE)
+    public static function script($file, array $attributes = null, $protocol = null, $index = false)
     {
-        if (strpos($file, '://') === FALSE AND strpos($file, '//') !== 0) {
+        if (strpos($file, '://') === false AND strpos($file, '//') !== 0) {
             // Add the base URL
             $file = URL::site($file, $protocol, $index);
         }
@@ -258,9 +258,9 @@ class Kohana_HTML
      * @uses    URL::base
      * @uses    HTML::attributes
      */
-    public static function image($file, array $attributes = NULL, $protocol = NULL, $index = FALSE)
+    public static function image($file, array $attributes = null, $protocol = null, $index = false)
     {
-        if (strpos($file, '://') === FALSE) {
+        if (strpos($file, '://') === false) {
             // Add the base URL
             $file = URL::site($file, $protocol, $index);
         }
@@ -280,7 +280,7 @@ class Kohana_HTML
      * @param   array   $attributes attribute list
      * @return  string
      */
-    public static function attributes(array $attributes = NULL)
+    public static function attributes(array $attributes = null)
     {
         if (empty($attributes))
             return '';
@@ -298,7 +298,7 @@ class Kohana_HTML
 
         $compiled = '';
         foreach ($attributes as $key => $value) {
-            if ($value === NULL) {
+            if ($value === null) {
                 // Skip attributes that have NULL values
                 continue;
             }
@@ -309,7 +309,7 @@ class Kohana_HTML
 
                 if (!HTML::$strict) {
                     // Just use a key
-                    $value = FALSE;
+                    $value = false;
                 }
             }
 

@@ -37,7 +37,7 @@ class Kohana_Request_Client_Stream extends Request_Client_External
 
         // Process cookies
         if ($cookies = $request->cookie()) {
-            $request->headers('cookie', http_build_query($cookies, NULL, '; '));
+            $request->headers('cookie', http_build_query($cookies, null, '; '));
         }
 
         // Get the message body
@@ -69,22 +69,22 @@ class Kohana_Request_Client_Stream extends Request_Client_External
         $uri = $request->uri();
 
         if ($query = $request->query()) {
-            $uri .= '?' . http_build_query($query, NULL, '&');
+            $uri .= '?' . http_build_query($query, null, '&');
         }
 
-        $stream = fopen($uri, $mode, FALSE, $context);
+        $stream = fopen($uri, $mode, false, $context);
 
         $meta_data = stream_get_meta_data($stream);
 
         // Get the HTTP response code
         $http_response = array_shift($meta_data['wrapper_data']);
 
-        if (preg_match_all('/(\w+\/\d\.\d) (\d{3})/', $http_response, $matches) !== FALSE) {
+        if (preg_match_all('/(\w+\/\d\.\d) (\d{3})/', $http_response, $matches) !== false) {
             $protocol = $matches[1][0];
             $status = (int) $matches[2][0];
         } else {
-            $protocol = NULL;
-            $status = NULL;
+            $protocol = null;
+            $status = null;
         }
 
         // Get any exisiting response headers

@@ -49,7 +49,7 @@ class Kohana_Kohana_Exception extends Exception
      * @param   Exception       $previous   Previous exception
      * @return  void
      */
-    public function __construct($message = "", array $variables = NULL, $code = 0, Exception $previous = NULL)
+    public function __construct($message = "", array $variables = null, $code = 0, Exception $previous = null)
     {
         // Set the message
         $message = __($message, $variables);
@@ -120,7 +120,7 @@ class Kohana_Kohana_Exception extends Exception
             ob_get_level() AND ob_clean();
 
             // Set the Status code to 500, and Content-Type to text/plain.
-            header('Content-Type: text/plain; charset=' . Kohana::$charset, TRUE, 500);
+            header('Content-Type: text/plain; charset=' . Kohana::$charset, true, 500);
 
             echo Kohana_Exception::text($e);
 
@@ -143,7 +143,7 @@ class Kohana_Kohana_Exception extends Exception
             $error = Kohana_Exception::text($e);
 
             // Add this exception to the log
-            Kohana::$log->add($level, $error, NULL, ['exception' => $e]);
+            Kohana::$log->add($level, $error, null, ['exception' => $e]);
 
             // Make sure the logs are written
             Kohana::$log->write();

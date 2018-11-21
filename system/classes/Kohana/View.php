@@ -28,7 +28,7 @@ class Kohana_View
      * @param   array   $data   array of values
      * @return  View
      */
-    public static function factory($file = NULL, array $data = NULL)
+    public static function factory($file = null, array $data = null)
     {
         return new View($file, $data);
     }
@@ -91,7 +91,7 @@ class Kohana_View
      * @param   mixed                     $value  value
      * @return  void
      */
-    public static function set_global($key, $value = NULL)
+    public static function set_global($key, $value = null)
     {
         if (is_array($key) OR $key instanceof Traversable) {
             foreach ($key as $name => $value) {
@@ -132,13 +132,13 @@ class Kohana_View
      * @param   array   $data   array of values
      * @uses    View::set_filename
      */
-    public function __construct($file = NULL, array $data = NULL)
+    public function __construct($file = null, array $data = null)
     {
-        if ($file !== NULL) {
+        if ($file !== null) {
             $this->set_filename($file);
         }
 
-        if ($data !== NULL) {
+        if ($data !== null) {
             // Add the values to the current data
             $this->_data = $data + $this->_data;
         }
@@ -243,7 +243,7 @@ class Kohana_View
      */
     public function set_filename($file)
     {
-        if (($path = Kohana::find_file('views', $file)) === FALSE) {
+        if (($path = Kohana::find_file('views', $file)) === false) {
             throw new View_Exception('The requested view :file could not be found', [':file' => $file]);
         }
 
@@ -272,7 +272,7 @@ class Kohana_View
      * @param   mixed                     $value  value
      * @return  $this
      */
-    public function set($key, $value = NULL)
+    public function set($key, $value = null)
     {
         if (is_array($key) OR $key instanceof Traversable) {
             foreach ($key as $name => $value) {
@@ -319,9 +319,9 @@ class Kohana_View
      * @throws  View_Exception
      * @uses    View::capture
      */
-    public function render($file = NULL)
+    public function render($file = null)
     {
-        if ($file !== NULL) {
+        if ($file !== null) {
             $this->set_filename($file);
         }
 

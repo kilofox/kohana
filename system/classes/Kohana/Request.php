@@ -57,7 +57,7 @@ class Kohana_Request implements HTTP_Request
      * @uses    Route::all
      * @uses    Route::matches
      */
-    public static function factory($uri = TRUE, $client_params = [], $allow_external = TRUE, $injected_routes = [])
+    public static function factory($uri = true, $client_params = [], $allow_external = true, $injected_routes = [])
     {
         // If this is the initial request
         if (!Request::$initial) {
@@ -76,7 +76,7 @@ class Kohana_Request implements HTTP_Request
                 AND $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')
                 AND in_array($_SERVER['REMOTE_ADDR'], Request::$trusted_proxies)) {
                 // This request is secure
-                $secure = TRUE;
+                $secure = true;
             }
 
             if (isset($_SERVER['HTTP_REFERER'])) {
@@ -125,7 +125,7 @@ class Kohana_Request implements HTTP_Request
                 $body = file_get_contents('php://input');
             }
 
-            if ($uri === TRUE) {
+            if ($uri === true) {
                 // Attempt to guess the proper URI
                 $uri = Request::detect_uri();
             }
@@ -305,11 +305,11 @@ class Kohana_Request implements HTTP_Request
      * @return  mixed   An array of all types or a specific type as a string
      * @uses    Request::_parse_accept
      */
-    public static function accept_type($type = NULL)
+    public static function accept_type($type = null)
     {
         static $accepts;
 
-        if ($accepts === NULL) {
+        if ($accepts === null) {
             // Parse the HTTP_ACCEPT header
             $accepts = Request::_parse_accept($_SERVER['HTTP_ACCEPT'], ['*/*' => 1.0]);
         }
@@ -336,18 +336,18 @@ class Kohana_Request implements HTTP_Request
      * @return  mixed   An array of all types or a specific type as a string
      * @uses    Request::_parse_accept
      */
-    public static function accept_lang($lang = NULL)
+    public static function accept_lang($lang = null)
     {
         static $accepts;
 
-        if ($accepts === NULL) {
+        if ($accepts === null) {
             // Parse the HTTP_ACCEPT_LANGUAGE header
             $accepts = Request::_parse_accept($_SERVER['HTTP_ACCEPT_LANGUAGE']);
         }
 
         if (isset($lang)) {
             // Return the quality setting for this lang
-            return isset($accepts[$lang]) ? $accepts[$lang] : FALSE;
+            return isset($accepts[$lang]) ? $accepts[$lang] : false;
         }
 
         return $accepts;
@@ -367,18 +367,18 @@ class Kohana_Request implements HTTP_Request
      * @return  mixed   An array of all types or a specific type as a string
      * @uses    Request::_parse_accept
      */
-    public static function accept_encoding($type = NULL)
+    public static function accept_encoding($type = null)
     {
         static $accepts;
 
-        if ($accepts === NULL) {
+        if ($accepts === null) {
             // Parse the HTTP_ACCEPT_LANGUAGE header
             $accepts = Request::_parse_accept($_SERVER['HTTP_ACCEPT_ENCODING']);
         }
 
         if (isset($type)) {
             // Return the quality setting for this type
-            return isset($accepts[$type]) ? $accepts[$type] : FALSE;
+            return isset($accepts[$type]) ? $accepts[$type] : false;
         }
 
         return $accepts;
@@ -397,7 +397,7 @@ class Kohana_Request implements HTTP_Request
     {
         // Make sure the request method is POST
         if (Request::$initial->method() !== HTTP_Request::POST)
-            return FALSE;
+            return false;
 
         // Get the post_max_size in bytes
         $max_bytes = Num::bytes(ini_get('post_max_size'));
@@ -413,11 +413,11 @@ class Kohana_Request implements HTTP_Request
      * @param   array   $routes  Route
      * @return  array
      */
-    public static function process(Request $request, $routes = NULL)
+    public static function process(Request $request, $routes = null)
     {
         // Load routes
         $routes = (empty($routes)) ? Route::all() : $routes;
-        $params = NULL;
+        $params = null;
 
         foreach ($routes as $name => $route) {
             // Use external routes for reverse routing only
@@ -434,7 +434,7 @@ class Kohana_Request implements HTTP_Request
             }
         }
 
-        return NULL;
+        return null;
     }
 
     /**
@@ -447,7 +447,7 @@ class Kohana_Request implements HTTP_Request
      * @param   array    $accepts  Default values
      * @return  array
      */
-    protected static function _parse_accept(& $header, array $accepts = NULL)
+    protected static function _parse_accept(& $header, array $accepts = null)
     {
         if (!empty($header)) {
             // Get all of the types
@@ -465,7 +465,7 @@ class Kohana_Request implements HTTP_Request
 
                 foreach ($parts as $part) {
                     // Prevent undefined $value notice below
-                    if (strpos($part, '=') === FALSE)
+                    if (strpos($part, '=') === false)
                         continue;
 
                     // Separate the key and value
@@ -510,7 +510,7 @@ class Kohana_Request implements HTTP_Request
     /**
      * @var  boolean
      */
-    protected $_secure = FALSE;
+    protected $_secure = false;
 
     /**
      * @var  string  referring URL
@@ -560,7 +560,7 @@ class Kohana_Request implements HTTP_Request
     /**
      * @var  boolean  external request
      */
-    protected $_external = FALSE;
+    protected $_external = false;
 
     /**
      * @var  array   parameters from the route
@@ -605,7 +605,7 @@ class Kohana_Request implements HTTP_Request
      * @uses    Route::all
      * @uses    Route::matches
      */
-    public function __construct($uri, $client_params = [], $allow_external = TRUE, $injected_routes = [])
+    public function __construct($uri, $client_params = [], $allow_external = true, $injected_routes = [])
     {
         $client_params = is_array($client_params) ? $client_params : [];
 
@@ -624,9 +624,9 @@ class Kohana_Request implements HTTP_Request
         }
 
         // Detect protocol (if present)
-        // $allow_external = FALSE prevents the default index.php from
+        // $allow_external = false prevents the default index.php from
         // being able to proxy external pages.
-        if (!$allow_external OR strpos($uri, '://') === FALSE) {
+        if (!$allow_external OR strpos($uri, '://') === false) {
             // Remove leading and trailing slashes from the URI
             $this->_uri = trim($uri, '/');
 
@@ -641,11 +641,11 @@ class Kohana_Request implements HTTP_Request
 
             // Set the security setting if required
             if (strpos($uri, 'https://') === 0) {
-                $this->secure(TRUE);
+                $this->secure(true);
             }
 
             // Set external state
-            $this->_external = TRUE;
+            $this->_external = true;
 
             // Setup the client
             $this->_client = Request_Client_External::factory($client_params);
@@ -670,9 +670,9 @@ class Kohana_Request implements HTTP_Request
      * @param   string $uri
      * @return  mixed
      */
-    public function uri($uri = NULL)
+    public function uri($uri = null)
     {
-        if ($uri === NULL) {
+        if ($uri === null) {
             // Act as a getter
             return ($this->_uri === '') ? '/' : $this->_uri;
         }
@@ -693,7 +693,7 @@ class Kohana_Request implements HTTP_Request
      * @since   3.0.7
      * @uses    URL::site
      */
-    public function url($protocol = NULL)
+    public function url($protocol = null)
     {
         if ($this->is_external()) {
             // If it's an external request return the URI
@@ -713,9 +713,9 @@ class Kohana_Request implements HTTP_Request
      * @param   mixed    $default  Default value if the key is not set
      * @return  mixed
      */
-    public function param($key = NULL, $default = NULL)
+    public function param($key = null, $default = null)
     {
-        if ($key === NULL) {
+        if ($key === null) {
             // Return the full array
             return $this->_params;
         }
@@ -729,9 +729,9 @@ class Kohana_Request implements HTTP_Request
      * @param   string $referrer
      * @return  mixed
      */
-    public function referrer($referrer = NULL)
+    public function referrer($referrer = null)
     {
-        if ($referrer === NULL) {
+        if ($referrer === null) {
             // Act as a getter
             return $this->_referrer;
         }
@@ -748,9 +748,9 @@ class Kohana_Request implements HTTP_Request
      * @param   string $route
      * @return  mixed
      */
-    public function route(Route $route = NULL)
+    public function route(Route $route = null)
     {
-        if ($route === NULL) {
+        if ($route === null) {
             // Act as a getter
             return $this->_route;
         }
@@ -767,9 +767,9 @@ class Kohana_Request implements HTTP_Request
      * @param   string   $directory  Directory to execute the controller from
      * @return  mixed
      */
-    public function directory($directory = NULL)
+    public function directory($directory = null)
     {
-        if ($directory === NULL) {
+        if ($directory === null) {
             // Act as a getter
             return $this->_directory;
         }
@@ -786,9 +786,9 @@ class Kohana_Request implements HTTP_Request
      * @param   string   $controller  Controller to execute the action
      * @return  mixed
      */
-    public function controller($controller = NULL)
+    public function controller($controller = null)
     {
-        if ($controller === NULL) {
+        if ($controller === null) {
             // Act as a getter
             return $this->_controller;
         }
@@ -805,9 +805,9 @@ class Kohana_Request implements HTTP_Request
      * @param   string   $action  Action to execute the controller from
      * @return  mixed
      */
-    public function action($action = NULL)
+    public function action($action = null)
     {
-        if ($action === NULL) {
+        if ($action === null) {
             // Act as a getter
             return $this->_action;
         }
@@ -824,9 +824,9 @@ class Kohana_Request implements HTTP_Request
      * @return  Request_Client
      * @return  self
      */
-    public function client(Request_Client $client = NULL)
+    public function client(Request_Client $client = null)
     {
-        if ($client === NULL)
+        if ($client === null)
             return $this->_client;
         else {
             $this->_client = $client;
@@ -841,9 +841,9 @@ class Kohana_Request implements HTTP_Request
      * @param   string    $requested_with Requested with value
      * @return  mixed
      */
-    public function requested_with($requested_with = NULL)
+    public function requested_with($requested_with = null)
     {
-        if ($requested_with === NULL) {
+        if ($requested_with === null) {
             // Act as a getter
             return $this->_requested_with;
         }
@@ -964,9 +964,9 @@ class Kohana_Request implements HTTP_Request
      * @param   string   $method  Method to use for this request
      * @return  mixed
      */
-    public function method($method = NULL)
+    public function method($method = null)
     {
-        if ($method === NULL) {
+        if ($method === null) {
             // Act as a getter
             return $this->_method;
         }
@@ -984,9 +984,9 @@ class Kohana_Request implements HTTP_Request
      * @param   string   $protocol  Protocol to set to the request
      * @return  mixed
      */
-    public function protocol($protocol = NULL)
+    public function protocol($protocol = null)
     {
-        if ($protocol === NULL) {
+        if ($protocol === null) {
             if ($this->_protocol)
                 return $this->_protocol;
             else
@@ -1005,9 +1005,9 @@ class Kohana_Request implements HTTP_Request
      * @param   boolean $secure is this request secure?
      * @return  mixed
      */
-    public function secure($secure = NULL)
+    public function secure($secure = null)
     {
-        if ($secure === NULL)
+        if ($secure === null)
             return $this->_secure;
 
         // Act as a setter
@@ -1025,7 +1025,7 @@ class Kohana_Request implements HTTP_Request
      * @param   string  $value Value to set to the supplied key
      * @return  mixed
      */
-    public function headers($key = NULL, $value = NULL)
+    public function headers($key = null, $value = null)
     {
         if ($key instanceof HTTP_Header) {
             // Act a setter, replace all headers
@@ -1046,12 +1046,12 @@ class Kohana_Request implements HTTP_Request
             $this->_header = HTTP::request_headers();
         }
 
-        if ($key === NULL) {
+        if ($key === null) {
             // Act as a getter, return all headers
             return $this->_header;
-        } elseif ($value === NULL) {
+        } elseif ($value === null) {
             // Act as a getter, single header
-            return ($this->_header->offsetExists($key)) ? $this->_header->offsetGet($key) : NULL;
+            return ($this->_header->offsetExists($key)) ? $this->_header->offsetGet($key) : null;
         }
 
         // Act as a setter for a single header
@@ -1068,18 +1068,18 @@ class Kohana_Request implements HTTP_Request
      * @return  string
      * @return  mixed
      */
-    public function cookie($key = NULL, $value = NULL)
+    public function cookie($key = null, $value = null)
     {
         if (is_array($key)) {
             // Act as a setter, replace all cookies
             $this->_cookies = $key;
             return $this;
-        } elseif ($key === NULL) {
+        } elseif ($key === null) {
             // Act as a getter, all cookies
             return $this->_cookies;
-        } elseif ($value === NULL) {
+        } elseif ($value === null) {
             // Act as a getting, single cookie
-            return isset($this->_cookies[$key]) ? $this->_cookies[$key] : NULL;
+            return isset($this->_cookies[$key]) ? $this->_cookies[$key] : null;
         }
 
         // Act as a setter for a single cookie
@@ -1095,9 +1095,9 @@ class Kohana_Request implements HTTP_Request
      * @param   string  $content Content to set to the object
      * @return  mixed
      */
-    public function body($content = NULL)
+    public function body($content = null)
     {
-        if ($content === NULL) {
+        if ($content === null) {
             // Act as a getter
             return $this->_body;
         }
@@ -1136,7 +1136,7 @@ class Kohana_Request implements HTTP_Request
         if (!$post = $this->post()) {
             $body = $this->body();
         } else {
-            $body = http_build_query($post, NULL, '&');
+            $body = http_build_query($post, null, '&');
             $this->body($body)
                 ->headers('content-type', 'application/x-www-form-urlencoded; charset=' . Kohana::$charset);
         }
@@ -1177,7 +1177,7 @@ class Kohana_Request implements HTTP_Request
      * @return  mixed
      * @uses    Arr::path
      */
-    public function query($key = NULL, $value = NULL)
+    public function query($key = null, $value = null)
     {
         if (is_array($key)) {
             // Act as a setter, replace all query strings
@@ -1186,10 +1186,10 @@ class Kohana_Request implements HTTP_Request
             return $this;
         }
 
-        if ($key === NULL) {
+        if ($key === null) {
             // Act as a getter, all query strings
             return $this->_get;
-        } elseif ($value === NULL) {
+        } elseif ($value === null) {
             // Act as a getter, single query string
             return Arr::path($this->_get, $key);
         }
@@ -1208,7 +1208,7 @@ class Kohana_Request implements HTTP_Request
      * @return  mixed
      * @uses    Arr::path
      */
-    public function post($key = NULL, $value = NULL)
+    public function post($key = null, $value = null)
     {
         if (is_array($key)) {
             // Act as a setter, replace all fields
@@ -1217,10 +1217,10 @@ class Kohana_Request implements HTTP_Request
             return $this;
         }
 
-        if ($key === NULL) {
+        if ($key === null) {
             // Act as a getter, all fields
             return $this->_post;
-        } elseif ($value === NULL) {
+        } elseif ($value === null) {
             // Act as a getter, single field
             return Arr::path($this->_post, $key);
         }

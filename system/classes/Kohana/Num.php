@@ -98,7 +98,7 @@ class Kohana_Num
      *     // In English, "1,200.05"
      *     // In Spanish, "1.200,05"
      *     // In Portuguese, "1.200.05"
-     *     echo Num::format(1200.05, 2, TRUE);
+     *     echo Num::format(1200.05, 2, true);
      *
      * @param   float   $number     number to format
      * @param   integer $places     decimal places
@@ -106,7 +106,7 @@ class Kohana_Num
      * @return  string
      * @since   3.0.2
      */
-    public static function format($number, $places, $monetary = FALSE)
+    public static function format($number, $places, $monetary = false)
     {
         $info = localeconv();
 
@@ -130,7 +130,7 @@ class Kohana_Num
      * @param boolean $native Set to false to force use of the userland implementation
      * @return float Rounded number
      */
-    public static function round($value, $precision = 0, $mode = self::ROUND_HALF_UP, $native = TRUE)
+    public static function round($value, $precision = 0, $mode = self::ROUND_HALF_UP, $native = true)
     {
         if (version_compare(PHP_VERSION, '5.3', '>=') AND $native) {
             return round($value, $precision, $mode);

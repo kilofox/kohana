@@ -35,8 +35,8 @@ class Kohana_Inflector
      * Checks if a word is defined as uncountable. An uncountable word has a
      * single form. For instance, one "fish" and many "fish", not "fishes".
      *
-     *     Inflector::uncountable('fish'); // TRUE
-     *     Inflector::uncountable('cat');  // FALSE
+     *     Inflector::uncountable('fish'); // true
+     *     Inflector::uncountable('cat');  // false
      *
      * If you find a word is being pluralized improperly, it has probably not
      * been defined as uncountable in `config/inflector.php`. If this is the
@@ -47,7 +47,7 @@ class Kohana_Inflector
      */
     public static function uncountable($str)
     {
-        if (Inflector::$uncountable === NULL) {
+        if (Inflector::$uncountable === null) {
             // Cache uncountables
             Inflector::$uncountable = Kohana::$config->load('inflector')->uncountable;
 
@@ -77,10 +77,10 @@ class Kohana_Inflector
      * @return  string
      * @uses    Inflector::uncountable
      */
-    public static function singular($str, $count = NULL)
+    public static function singular($str, $count = null)
     {
         // $count should always be a float
-        $count = ($count === NULL) ? 1.0 : (float) $count;
+        $count = ($count === null) ? 1.0 : (float) $count;
 
         // Do nothing when $count is not 1
         if ($count != 1)
@@ -141,10 +141,10 @@ class Kohana_Inflector
      * @return  string
      * @uses    Inflector::uncountable
      */
-    public static function plural($str, $count = NULL)
+    public static function plural($str, $count = null)
     {
         // $count should always be a float
-        $count = ($count === NULL) ? 0.0 : (float) $count;
+        $count = ($count === null) ? 0.0 : (float) $count;
 
         // Do nothing with singular
         if ($count == 1)

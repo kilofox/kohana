@@ -146,9 +146,9 @@ class Kohana_Response implements HTTP_Response
      *
      * @return  mixed
      */
-    public function body($content = NULL)
+    public function body($content = null)
     {
-        if ($content === NULL)
+        if ($content === null)
             return $this->_body;
 
         $this->_body = (string) $content;
@@ -162,14 +162,14 @@ class Kohana_Response implements HTTP_Response
      * @param   string   $protocol Protocol to set to the request/response
      * @return  mixed
      */
-    public function protocol($protocol = NULL)
+    public function protocol($protocol = null)
     {
         if ($protocol) {
             $this->_protocol = strtoupper($protocol);
             return $this;
         }
 
-        if ($this->_protocol === NULL) {
+        if ($this->_protocol === null) {
             $this->_protocol = HTTP::$protocol;
         }
 
@@ -189,9 +189,9 @@ class Kohana_Response implements HTTP_Response
      * @param   integer  $status Status to set to this response
      * @return  mixed
      */
-    public function status($status = NULL)
+    public function status($status = null)
     {
-        if ($status === NULL) {
+        if ($status === null) {
             return $this->_status;
         } elseif (array_key_exists($status, Response::$messages)) {
             $this->_status = (int) $status;
@@ -222,14 +222,14 @@ class Kohana_Response implements HTTP_Response
      * @param string $value
      * @return mixed
      */
-    public function headers($key = NULL, $value = NULL)
+    public function headers($key = null, $value = null)
     {
-        if ($key === NULL) {
+        if ($key === null) {
             return $this->_header;
         } elseif (is_array($key)) {
             $this->_header->exchangeArray($key);
             return $this;
-        } elseif ($value === NULL) {
+        } elseif ($value === null) {
             return Arr::get($this->_header, $key);
         } else {
             $this->_header[$key] = $value;
@@ -266,10 +266,10 @@ class Kohana_Response implements HTTP_Response
      * @return  void
      * @return  [Response]
      */
-    public function cookie($key = NULL, $value = NULL)
+    public function cookie($key = null, $value = null)
     {
         // Handle the get cookie calls
-        if ($key === NULL)
+        if ($key === null)
             return $this->_cookies;
         elseif (!is_array($key) AND ! $value)
             return Arr::get($this->_cookies, $key);
@@ -326,22 +326,22 @@ class Kohana_Response implements HTTP_Response
      * @param   callback    $callback   function to handle header output
      * @return  mixed
      */
-    public function send_headers($replace = FALSE, $callback = NULL)
+    public function send_headers($replace = false, $callback = null)
     {
         return $this->_header->send_headers($this, $replace, $callback);
     }
 
     /**
      * Send file download as the response. All execution will be halted when
-     * this method is called! Use TRUE for the filename to send the current
+     * this method is called! Use true for the filename to send the current
      * response as the file content. The third parameter allows the following
      * options to be set:
      *
      * Type      | Option    | Description                        | Default Value
      * ----------|-----------|------------------------------------|--------------
-     * `boolean` | inline    | Display inline instead of download | `FALSE`
+     * `boolean` | inline    | Display inline instead of download | `false`
      * `string`  | mime_type | Manual mime type                   | Automatic
-     * `boolean` | delete    | Delete the file after sending      | `FALSE`
+     * `boolean` | delete    | Delete the file after sending      | `false`
      *
      * Download a file that already exists:
      *
@@ -350,11 +350,11 @@ class Kohana_Response implements HTTP_Response
      * Download generated content as a file:
      *
      *     $request->response($content);
-     *     $request->send_file(TRUE, $filename);
+     *     $request->send_file(true, $filename);
      *
      * [!!] No further processing can be done after this method is called!
      *
-     * @param   string  $filename   filename with path, or TRUE for the current response
+     * @param   string  $filename   filename with path, or true for the current response
      * @param   string  $download   downloaded file name
      * @param   array   $options    additional options
      * @return  void
@@ -363,20 +363,20 @@ class Kohana_Response implements HTTP_Response
      * @uses    File::mime
      * @uses    Request::send_headers
      */
-    public function send_file($filename, $download = NULL, array $options = NULL)
+    public function send_file($filename, $download = null, array $options = null)
     {
         if (!empty($options['mime_type'])) {
             // The mime-type has been manually set
             $mime = $options['mime_type'];
         }
 
-        if ($filename === TRUE) {
+        if ($filename === true) {
             if (empty($download)) {
                 throw new Kohana_Exception('Download name must be provided for streaming files');
             }
 
             // Temporary files will automatically be deleted
-            $options['delete'] = FALSE;
+            $options['delete'] = false;
 
             if (!isset($mime)) {
                 // Guess the mime using the file extension
@@ -468,7 +468,7 @@ class Kohana_Response implements HTTP_Response
         }
 
         // Manually stop execution
-        ignore_user_abort(TRUE);
+        ignore_user_abort(true);
 
         if (!Kohana::$safe_mode) {
             // Keep the script running forever
@@ -597,12 +597,12 @@ class Kohana_Response implements HTTP_Response
      * resumable downloads.
      *
      * @link   http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35
-     * @return array|FALSE
+     * @return array|false
      */
     protected function _parse_byte_range()
     {
         if (!isset($_SERVER['HTTP_RANGE'])) {
-            return FALSE;
+            return false;
         }
 
         // TODO, speed this up with the use of string functions.

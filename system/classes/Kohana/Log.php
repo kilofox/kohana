@@ -28,7 +28,7 @@ class Kohana_Log
     /**
      * @var  boolean  immediately write when logs are added
      */
-    public static $write_on_add = FALSE;
+    public static $write_on_add = false;
 
     /**
      * @var  Log  Singleton instance container
@@ -44,7 +44,7 @@ class Kohana_Log
      */
     public static function instance()
     {
-        if (Log::$_instance === NULL) {
+        if (Log::$_instance === null) {
             // Create a new instance
             Log::$_instance = new Log;
 
@@ -121,7 +121,7 @@ class Kohana_Log
      * @param   array   $additional  additional custom parameters to supply to the log writer
      * @return  Log
      */
-    public function add($level, $message, array $values = NULL, array $additional = NULL)
+    public function add($level, $message, array $values = null, array $additional = null)
     {
         if ($values) {
             // Insert the values into the message
@@ -137,13 +137,13 @@ class Kohana_Log
                 $trace = array_map(function ($item) {
                     unset($item['args']);
                     return $item;
-                }, array_slice(debug_backtrace(FALSE), 1));
+                }, array_slice(debug_backtrace(false), 1));
             } else {
                 $trace = array_slice(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), 1);
             }
         }
 
-        if ($additional == NULL) {
+        if ($additional == null) {
             $additional = [];
         }
 
@@ -154,10 +154,10 @@ class Kohana_Log
             'level' => $level,
             'body' => $message,
             'trace' => $trace,
-            'file' => isset($trace[0]['file']) ? $trace[0]['file'] : NULL,
-            'line' => isset($trace[0]['line']) ? $trace[0]['line'] : NULL,
-            'class' => isset($trace[0]['class']) ? $trace[0]['class'] : NULL,
-            'function' => isset($trace[0]['function']) ? $trace[0]['function'] : NULL,
+            'file' => isset($trace[0]['file']) ? $trace[0]['file'] : null,
+            'line' => isset($trace[0]['line']) ? $trace[0]['line'] : null,
+            'class' => isset($trace[0]['class']) ? $trace[0]['class'] : null,
+            'function' => isset($trace[0]['function']) ? $trace[0]['function'] : null,
             'additional' => $additional,
         );
 

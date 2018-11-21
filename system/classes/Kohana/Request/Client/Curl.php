@@ -55,7 +55,7 @@ class Kohana_Request_Client_Curl extends Request_Client_External
 
         // Process cookies
         if ($cookies = $request->cookie()) {
-            $options[CURLOPT_COOKIE] = http_build_query($cookies, NULL, '; ');
+            $options[CURLOPT_COOKIE] = http_build_query($cookies, null, '; ');
         }
 
         // Get any exisiting response headers
@@ -63,8 +63,8 @@ class Kohana_Request_Client_Curl extends Request_Client_External
 
         // Implement the standard parsing parameters
         $options[CURLOPT_HEADERFUNCTION] = [$response_header, 'parse_header_string'];
-        $this->_options[CURLOPT_RETURNTRANSFER] = TRUE;
-        $this->_options[CURLOPT_HEADER] = FALSE;
+        $this->_options[CURLOPT_RETURNTRANSFER] = true;
+        $this->_options[CURLOPT_HEADER] = false;
 
         // Apply any additional options set to
         $options += $this->_options;
@@ -72,7 +72,7 @@ class Kohana_Request_Client_Curl extends Request_Client_External
         $uri = $request->uri();
 
         if ($query = $request->query()) {
-            $uri .= '?' . http_build_query($query, NULL, '&');
+            $uri .= '?' . http_build_query($query, null, '&');
         }
 
         // Open a new remote connection
@@ -89,7 +89,7 @@ class Kohana_Request_Client_Curl extends Request_Client_External
         // Get the response information
         $code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
-        if ($body === FALSE) {
+        if ($body === false) {
             $error = curl_error($curl);
         }
 
@@ -118,7 +118,7 @@ class Kohana_Request_Client_Curl extends Request_Client_External
     {
         switch ($request->method()) {
             case Request::POST:
-                $options[CURLOPT_POST] = TRUE;
+                $options[CURLOPT_POST] = true;
                 break;
             default:
                 $options[CURLOPT_CUSTOMREQUEST] = $request->method();

@@ -25,19 +25,19 @@ class Kohana_Session_Native extends Session
      * @param   string  $id  session id
      * @return  null
      */
-    protected function _read($id = NULL)
+    protected function _read($id = null)
     {
         /**
          * session_set_cookie_params will override php ini settings
          * If Cookie::$domain is NULL or empty and is passed, PHP
          * will override ini and sent cookies with the host name
          * of the server which generated the cookie
-         * 
+         *
          * see issue #3604
-         * 
+         *
          * see http://www.php.net/manual/en/function.session-set-cookie-params.php
          * see http://www.php.net/manual/en/session.configuration.php#ini.session.cookie-domain
-         * 
+         *
          * set to Cookie::$domain if available, otherwise default to ini setting
          */
         $session_cookie_domain = empty(Cookie::$domain) ? ini_get('session.cookie_domain') : Cookie::$domain;
@@ -48,7 +48,7 @@ class Kohana_Session_Native extends Session
         );
 
         // Do not allow PHP to send Cache-Control headers
-        session_cache_limiter(FALSE);
+        session_cache_limiter(false);
 
         // Set the session cookie name
         session_name($this->_name);
@@ -64,7 +64,7 @@ class Kohana_Session_Native extends Session
         // Use the $_SESSION global for storing data
         $this->_data = & $_SESSION;
 
-        return NULL;
+        return null;
     }
 
     /**
@@ -86,7 +86,7 @@ class Kohana_Session_Native extends Session
         // Write and close the session
         session_write_close();
 
-        return TRUE;
+        return true;
     }
 
     /**

@@ -48,11 +48,11 @@ class Kohana_Profiler
             'group' => strtolower($group),
             'name' => (string) $name,
             // Start the benchmark
-            'start_time' => microtime(TRUE),
+            'start_time' => microtime(true),
             'start_memory' => memory_get_usage(),
             // Set the stop keys without values
-            'stop_time' => FALSE,
-            'stop_memory' => FALSE,
+            'stop_time' => false,
+            'stop_memory' => false,
         );
 
         return $token;
@@ -69,7 +69,7 @@ class Kohana_Profiler
     public static function stop($token)
     {
         // Stop the benchmark
-        Profiler::$_marks[$token]['stop_time'] = microtime(TRUE);
+        Profiler::$_marks[$token]['stop_time'] = microtime(true);
         Profiler::$_marks[$token]['stop_memory'] = memory_get_usage();
     }
 
@@ -121,8 +121,8 @@ class Kohana_Profiler
     {
         // Min and max are unknown by default
         $min = $max = [
-            'time' => NULL,
-            'memory' => NULL
+            'time' => null,
+            'memory' => null
         ];
 
         // Total values are always integers
@@ -135,12 +135,12 @@ class Kohana_Profiler
             // Get the total time and memory for this benchmark
             list($time, $memory) = Profiler::total($token);
 
-            if ($max['time'] === NULL OR $time > $max['time']) {
+            if ($max['time'] === null OR $time > $max['time']) {
                 // Set the maximum time
                 $max['time'] = $time;
             }
 
-            if ($min['time'] === NULL OR $time < $min['time']) {
+            if ($min['time'] === null OR $time < $min['time']) {
                 // Set the minimum time
                 $min['time'] = $time;
             }
@@ -148,12 +148,12 @@ class Kohana_Profiler
             // Increase the total time
             $total['time'] += $time;
 
-            if ($max['memory'] === NULL OR $memory > $max['memory']) {
+            if ($max['memory'] === null OR $memory > $max['memory']) {
                 // Set the maximum memory
                 $max['memory'] = $memory;
             }
 
-            if ($min['memory'] === NULL OR $memory < $min['memory']) {
+            if ($min['memory'] === null OR $memory < $min['memory']) {
                 // Set the minimum memory
                 $min['memory'] = $memory;
             }
@@ -189,10 +189,10 @@ class Kohana_Profiler
      * @uses    Profiler::groups
      * @uses    Profiler::stats
      */
-    public static function group_stats($groups = NULL)
+    public static function group_stats($groups = null)
     {
         // Which groups do we need to calculate stats for?
-        $groups = ($groups === NULL) ? Profiler::groups() : array_intersect_key(Profiler::groups(), array_flip((array) $groups));
+        $groups = ($groups === null) ? Profiler::groups() : array_intersect_key(Profiler::groups(), array_flip((array) $groups));
 
         // All statistics
         $stats = [];
@@ -212,8 +212,8 @@ class Kohana_Profiler
         foreach ($stats as $group => $names) {
             // Min and max are unknown by default
             $groups[$group]['min'] = $groups[$group]['max'] = [
-                'time' => NULL,
-                'memory' => NULL
+                'time' => null,
+                'memory' => null
             ];
 
             // Total values are always integers
@@ -270,9 +270,9 @@ class Kohana_Profiler
         // Import the benchmark data
         $mark = Profiler::$_marks[$token];
 
-        if ($mark['stop_time'] === FALSE) {
+        if ($mark['stop_time'] === false) {
             // The benchmark has not been stopped yet
-            $mark['stop_time'] = microtime(TRUE);
+            $mark['stop_time'] = microtime(true);
             $mark['stop_memory'] = memory_get_usage();
         }
 
@@ -297,40 +297,40 @@ class Kohana_Profiler
     public static function application()
     {
         // Load the stats from cache, which is valid for 1 day
-        $stats = Kohana::cache('profiler_application_stats', NULL, 3600 * 24);
+        $stats = Kohana::cache('profiler_application_stats', null, 3600 * 24);
 
         if (!is_array($stats) OR $stats['count'] > Profiler::$rollover) {
             // Initialize the stats array
             $stats = [
                 'min' => [
-                    'time' => NULL,
-                    'memory' => NULL
+                    'time' => null,
+                    'memory' => null
                 ],
                 'max' => [
-                    'time' => NULL,
-                    'memory' => NULL
+                    'time' => null,
+                    'memory' => null
                 ],
                 'total' => [
-                    'time' => NULL,
-                    'memory' => NULL
+                    'time' => null,
+                    'memory' => null
                 ],
                 'count' => 0
             ];
         }
 
         // Get the application run time
-        $time = microtime(TRUE) - KOHANA_START_TIME;
+        $time = microtime(true) - KOHANA_START_TIME;
 
         // Get the total memory usage
         $memory = memory_get_usage() - KOHANA_START_MEMORY;
 
         // Calculate max time
-        if ($stats['max']['time'] === NULL OR $time > $stats['max']['time']) {
+        if ($stats['max']['time'] === null OR $time > $stats['max']['time']) {
             $stats['max']['time'] = $time;
         }
 
         // Calculate min time
-        if ($stats['min']['time'] === NULL OR $time < $stats['min']['time']) {
+        if ($stats['min']['time'] === null OR $time < $stats['min']['time']) {
             $stats['min']['time'] = $time;
         }
 
@@ -338,12 +338,12 @@ class Kohana_Profiler
         $stats['total']['time'] += $time;
 
         // Calculate max memory
-        if ($stats['max']['memory'] === NULL OR $memory > $stats['max']['memory']) {
+        if ($stats['max']['memory'] === null OR $memory > $stats['max']['memory']) {
             $stats['max']['memory'] = $memory;
         }
 
         // Calculate min memory
-        if ($stats['min']['memory'] === NULL OR $memory < $stats['min']['memory']) {
+        if ($stats['min']['memory'] === null OR $memory < $stats['min']['memory']) {
             $stats['min']['memory'] = $memory;
         }
 

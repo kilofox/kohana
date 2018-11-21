@@ -52,10 +52,10 @@ abstract class Kohana_HTTP
      * @throws HTTP_Exception_304
      * @return Response
      */
-    public static function check_cache(Request $request, Response $response, $etag = NULL)
+    public static function check_cache(Request $request, Response $response, $etag = null)
     {
         // Generate an etag if necessary
-        if ($etag == NULL) {
+        if ($etag == null) {
             $etag = $response->generate_etag();
         }
 

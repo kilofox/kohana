@@ -27,7 +27,7 @@ class Kohana_URL
      *     echo URL::base();
      *
      *     // Absolute URL path with host, https protocol and index.php if set
-     *     echo URL::base('https', TRUE);
+     *     echo URL::base('https', true);
      *
      *     // Absolute URL path with host and protocol from $request
      *     echo URL::base($request);
@@ -38,12 +38,12 @@ class Kohana_URL
      * @uses    Kohana::$index_file
      * @uses    Request::protocol()
      */
-    public static function base($protocol = NULL, $index = FALSE)
+    public static function base($protocol = null, $index = false)
     {
         // Start with the configured base URL
         $base_url = Kohana::$base_url;
 
-        if ($protocol === TRUE) {
+        if ($protocol === true) {
             // Use the initial request to get the protocol
             $protocol = Request::$initial;
         }
@@ -62,7 +62,7 @@ class Kohana_URL
             $protocol = parse_url($base_url, PHP_URL_SCHEME);
         }
 
-        if ($index === TRUE AND ! empty(Kohana::$index_file)) {
+        if ($index === true AND ! empty(Kohana::$index_file)) {
             // Add the index file to the URL
             $base_url .= Kohana::$index_file . '/';
         }
@@ -113,7 +113,7 @@ class Kohana_URL
      * @return  string
      * @uses    URL::base
      */
-    public static function site($uri = '', $protocol = NULL, $index = TRUE)
+    public static function site($uri = '', $protocol = null, $index = true)
     {
         // Chop off possible scheme, host, port, user and pass parts
         $path = preg_replace('~^[-a-z0-9+.]++://[^/]++/?~', '', trim($uri, '/'));
@@ -155,10 +155,10 @@ class Kohana_URL
      * @param   boolean  $use_get  Include current request GET parameters
      * @return  string
      */
-    public static function query(array $params = NULL, $use_get = TRUE)
+    public static function query(array $params = null, $use_get = true)
     {
         if ($use_get) {
-            if ($params === NULL) {
+            if ($params === null) {
                 // Use only the current parameters
                 $params = $_GET;
             } else {
@@ -190,9 +190,9 @@ class Kohana_URL
      * @return  string
      * @uses    UTF8::transliterate_to_ascii
      */
-    public static function title($title, $separator = '-', $ascii_only = FALSE)
+    public static function title($title, $separator = '-', $ascii_only = false)
     {
-        if ($ascii_only === TRUE) {
+        if ($ascii_only === true) {
             // Transliterate non-ASCII characters
             $title = UTF8::transliterate_to_ascii($title);
 
@@ -218,9 +218,9 @@ class Kohana_URL
      *
      * @param string $host
      * @param array $trusted_hosts
-     * @return boolean TRUE if $host is trustworthy
+     * @return bool TRUE if $host is trustworthy.
      */
-    public static function is_trusted_host($host, array $trusted_hosts = NULL)
+    public static function is_trusted_host($host, array $trusted_hosts = null)
     {
 
         // If list of trusted hosts is not directly provided read from config
@@ -234,14 +234,14 @@ class Kohana_URL
             // make sure we fully match the trusted hosts
             $pattern = '#^' . $trusted_host . '$#uD';
 
-            // return TRUE if there is match
+            // return true if there is match
             if (preg_match($pattern, $host)) {
-                return TRUE;
+                return true;
             }
         }
 
-        // return FALSE as nothing is matched
-        return FALSE;
+        // return false as nothing is matched
+        return false;
     }
 
 }

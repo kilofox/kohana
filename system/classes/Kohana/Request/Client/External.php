@@ -56,9 +56,9 @@ abstract class Kohana_Request_Client_External extends Request_Client
      * @return  Request_Client_External
      * @throws  Request_Exception
      */
-    public static function factory(array $params = [], $client = NULL)
+    public static function factory(array $params = [], $client = null)
     {
-        if ($client === NULL) {
+        if ($client === null) {
             $client = Request_Client_External::$client;
         }
 
@@ -121,7 +121,7 @@ abstract class Kohana_Request_Client_External extends Request_Client
 
         // Resolve the POST fields
         if ($post = $request->post()) {
-            $request->body(http_build_query($post, NULL, '&'))
+            $request->body(http_build_query($post, null, '&'))
                 ->headers('content-type', 'application/x-www-form-urlencoded; charset=' . Kohana::$charset);
         }
 
@@ -167,14 +167,14 @@ abstract class Kohana_Request_Client_External extends Request_Client
      * @return  mixed
      * @return  Request_Client_External
      */
-    public function options($key = NULL, $value = NULL)
+    public function options($key = null, $value = null)
     {
-        if ($key === NULL)
+        if ($key === null)
             return $this->_options;
 
         if (is_array($key)) {
             $this->_options = $key;
-        } elseif ($value === NULL) {
+        } elseif ($value === null) {
             return Arr::get($this->_options, $key);
         } else {
             $this->_options[$key] = $value;

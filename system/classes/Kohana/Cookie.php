@@ -16,7 +16,7 @@ class Kohana_Cookie
     /**
      * @var  string  Magic salt to add to the cookie
      */
-    public static $salt = NULL;
+    public static $salt = null;
 
     /**
      * @var  integer  Number of seconds before the cookie expires
@@ -31,17 +31,17 @@ class Kohana_Cookie
     /**
      * @var  string  Restrict the domain that the cookie is available to
      */
-    public static $domain = NULL;
+    public static $domain = null;
 
     /**
      * @var  boolean  Only transmit cookies over secure connections
      */
-    public static $secure = FALSE;
+    public static $secure = false;
 
     /**
      * @var  boolean  Only transmit cookies over HTTP, disabling Javascript access
      */
-    public static $httponly = FALSE;
+    public static $httponly = false;
 
     /**
      * Gets the value of a signed cookie. Cookies without signatures will not
@@ -55,7 +55,7 @@ class Kohana_Cookie
      * @param   mixed   $default    default value to return
      * @return  string
      */
-    public static function get($key, $default = NULL)
+    public static function get($key, $default = null)
     {
         if (!isset($_COOKIE[$key])) {
             // The cookie does not exist
@@ -66,7 +66,7 @@ class Kohana_Cookie
         $cookie = $_COOKIE[$key];
 
         // Find the position of the split between salt and contents
-        $split = strlen(Cookie::salt($key, NULL));
+        $split = strlen(Cookie::salt($key, null));
 
         if (isset($cookie[$split]) AND $cookie[$split] === '~') {
             // Separate the salt and the value
@@ -102,9 +102,9 @@ class Kohana_Cookie
      * @return  boolean
      * @uses    Cookie::salt
      */
-    public static function set($name, $value, $lifetime = NULL)
+    public static function set($name, $value, $lifetime = null)
     {
-        if ($lifetime === NULL) {
+        if ($lifetime === null) {
             // Use the default expiration
             $lifetime = Cookie::$expiration;
         }
@@ -134,7 +134,7 @@ class Kohana_Cookie
         unset($_COOKIE[$name]);
 
         // Nullify the cookie and make it expire
-        return static::_setcookie($name, NULL, -86400, Cookie::$path, Cookie::$domain, Cookie::$secure, Cookie::$httponly);
+        return static::_setcookie($name, null, -86400, Cookie::$path, Cookie::$domain, Cookie::$secure, Cookie::$httponly);
     }
 
     /**

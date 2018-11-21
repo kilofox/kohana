@@ -44,7 +44,7 @@ class Kohana_Config_File_Reader implements Kohana_Config_Reader
     {
         $config = [];
 
-        if ($files = Kohana::find_file($this->_directory, $group, NULL, TRUE)) {
+        if ($files = Kohana::find_file($this->_directory, $group, null, true)) {
             foreach ($files as $file) {
                 // Merge each file to the configuration array
                 $config = Arr::merge($config, Kohana::load($file));

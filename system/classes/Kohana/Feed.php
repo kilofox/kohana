@@ -49,10 +49,10 @@ class Kohana_Feed
         error_reporting($error_level);
 
         // Feed could not be loaded
-        if ($feed === FALSE)
+        if ($feed === false)
             return [];
 
-        $namespaces = $feed->getNamespaces(TRUE);
+        $namespaces = $feed->getNamespaces(true);
 
         // Detect the feed type. RSS 1.0/2.0 and Atom 1.0 are supported.
         $feed = isset($feed->channel) ? $feed->xpath('//item') : $feed->entry;
@@ -99,12 +99,12 @@ class Kohana_Feed
                     throw new Kohana_Exception('Feed images require a link, url, and title');
                 }
 
-                if (strpos($value['link'], '://') === FALSE) {
+                if (strpos($value['link'], '://') === false) {
                     // Convert URIs to URLs
                     $value['link'] = URL::site($value['link'], 'http');
                 }
 
-                if (strpos($value['url'], '://') === FALSE) {
+                if (strpos($value['url'], '://') === false) {
                     // Convert URIs to URLs
                     $value['url'] = URL::site($value['url'], 'http');
                 }
@@ -117,7 +117,7 @@ class Kohana_Feed
                 if (($name === 'pubDate' OR $name === 'lastBuildDate') AND ( is_int($value) OR ctype_digit($value))) {
                     // Convert timestamps to RFC 822 formatted dates
                     $value = date('r', $value);
-                } elseif (($name === 'link' OR $name === 'docs') AND strpos($value, '://') === FALSE) {
+                } elseif (($name === 'link' OR $name === 'docs') AND strpos($value, '://') === false) {
                     // Convert URIs to URLs
                     $value = URL::site($value, 'http');
                 }
@@ -135,7 +135,7 @@ class Kohana_Feed
                 if ($name === 'pubDate' AND ( is_int($value) OR ctype_digit($value))) {
                     // Convert timestamps to RFC 822 formatted dates
                     $value = date('r', $value);
-                } elseif (($name === 'link' OR $name === 'guid') AND strpos($value, '://') === FALSE) {
+                } elseif (($name === 'link' OR $name === 'guid') AND strpos($value, '://') === false) {
                     // Convert URIs to URLs
                     $value = URL::site($value, 'http');
                 }
@@ -150,7 +150,7 @@ class Kohana_Feed
             $feed = dom_import_simplexml($feed)->ownerDocument;
 
             // DOM generates more readable XML
-            $feed->formatOutput = TRUE;
+            $feed->formatOutput = true;
 
             // Export the document as XML
             $feed = $feed->saveXML();

@@ -65,7 +65,7 @@ class Kohana_Debug
      */
     protected static function _dump(& $var, $length = 128, $limit = 10, $level = 0)
     {
-        if ($var === NULL) {
+        if ($var === null) {
             return '<small>NULL</small>';
         } elseif (is_bool($var)) {
             return '<small>bool</small> ' . ($var ? 'TRUE' : 'FALSE');
@@ -113,7 +113,7 @@ class Kohana_Debug
 
             static $marker;
 
-            if ($marker === NULL) {
+            if ($marker === null) {
                 // Make a unique marker - force it to be alphanumeric so that it is always treated as a string array key
                 $marker = uniqid("\x00") . "x";
             }
@@ -125,7 +125,7 @@ class Kohana_Debug
             } elseif ($level < $limit) {
                 $output[] = "<span>(";
 
-                $var[$marker] = TRUE;
+                $var[$marker] = true;
                 foreach ($var as $key => & $val) {
                     if ($key === $marker)
                         continue;
@@ -165,7 +165,7 @@ class Kohana_Debug
             } elseif ($level < $limit) {
                 $output[] = "<code>{";
 
-                $objects[$hash] = TRUE;
+                $objects[$hash] = true;
                 foreach ($array as $key => & $val) {
                     if ($key[0] === "\x00") {
                         // Determine if the access is protected or protected
@@ -189,7 +189,7 @@ class Kohana_Debug
 
             return '<small>object</small> <span>' . get_class($var) . '(' . count($array) . ')</span> ' . implode("\n", $output);
         } else {
-            return '<small>' . gettype($var) . '</small> ' . htmlspecialchars(print_r($var, TRUE), ENT_NOQUOTES, Kohana::$charset);
+            return '<small>' . gettype($var) . '</small> ' . htmlspecialchars(print_r($var, true), ENT_NOQUOTES, Kohana::$charset);
         }
     }
 
@@ -229,14 +229,14 @@ class Kohana_Debug
      * @param   string  $file           file to open
      * @param   integer $line_number    line number to highlight
      * @param   integer $padding        number of padding lines
-     * @return  string   source of file
-     * @return  FALSE    file is unreadable
+     * @return  string  source of file
+     * @return  false   File is unreadable
      */
     public static function source($file, $line_number, $padding = 5)
     {
         if (!$file OR ! is_readable($file)) {
             // Continuing will cause errors
-            return FALSE;
+            return false;
         }
 
         // Open the file and set the line position
@@ -250,7 +250,7 @@ class Kohana_Debug
         $format = '% ' . strlen($range['end']) . 'd';
 
         $source = '';
-        while (($row = fgets($file)) !== FALSE) {
+        while (($row = fgets($file)) !== false) {
             // Increment the line number
             if (++$line > $range['end'])
                 break;
@@ -289,9 +289,9 @@ class Kohana_Debug
      * @param   array   $trace
      * @return  string
      */
-    public static function trace(array $trace = NULL)
+    public static function trace(array $trace = null)
     {
-        if ($trace === NULL) {
+        if ($trace === null) {
             // Start a new trace
             $trace = debug_backtrace();
         }
@@ -331,9 +331,9 @@ class Kohana_Debug
                     $args = [$step['args'][0]];
                 }
             } elseif (isset($step['args'])) {
-                if (!function_exists($step['function']) OR strpos($step['function'], '{closure}') !== FALSE) {
+                if (!function_exists($step['function']) OR strpos($step['function'], '{closure}') !== false) {
                     // Introspection on closures or language constructs in a stack trace is impossible
-                    $params = NULL;
+                    $params = null;
                 } else {
                     if (isset($step['class'])) {
                         if (method_exists($step['class'], $step['function'])) {
@@ -369,10 +369,10 @@ class Kohana_Debug
 
             $output[] = [
                 'function' => $function,
-                'args' => isset($args) ? $args : NULL,
-                'file' => isset($file) ? $file : NULL,
-                'line' => isset($line) ? $line : NULL,
-                'source' => isset($source) ? $source : NULL,
+                'args' => isset($args) ? $args : null,
+                'file' => isset($file) ? $file : null,
+                'line' => isset($line) ? $line : null,
+                'source' => isset($source) ? $source : null,
             ];
 
             unset($function, $args, $file, $line, $source);

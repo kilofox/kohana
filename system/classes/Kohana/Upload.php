@@ -26,7 +26,7 @@ class Kohana_Upload
     /**
      * @var  boolean  remove spaces in uploaded files
      */
-    public static $remove_spaces = TRUE;
+    public static $remove_spaces = true;
 
     /**
      * @var  string  default upload directory
@@ -50,26 +50,26 @@ class Kohana_Upload
      * @param   string  $directory  new directory
      * @param   integer $chmod      chmod mask
      * @return  string  on success, full path to new file
-     * @return  FALSE   on failure
+     * @return  false   on failure
      */
-    public static function save(array $file, $filename = NULL, $directory = NULL, $chmod = 0644)
+    public static function save(array $file, $filename = null, $directory = null, $chmod = 0644)
     {
         if (!isset($file['tmp_name']) OR ! is_uploaded_file($file['tmp_name'])) {
             // Ignore corrupted uploads
-            return FALSE;
+            return false;
         }
 
-        if ($filename === NULL) {
+        if ($filename === null) {
             // Use the default filename, with a timestamp pre-pended
             $filename = uniqid() . $file['name'];
         }
 
-        if (Upload::$remove_spaces === TRUE) {
+        if (Upload::$remove_spaces === true) {
             // Remove spaces from the filename
             $filename = preg_replace('/\s+/u', '_', $filename);
         }
 
-        if ($directory === NULL) {
+        if ($directory === null) {
             // Use the pre-configured upload directory
             $directory = Upload::$default_directory;
         }
@@ -82,7 +82,7 @@ class Kohana_Upload
         $filename = realpath($directory) . DIRECTORY_SEPARATOR . $filename;
 
         if (move_uploaded_file($file['tmp_name'], $filename)) {
-            if ($chmod !== FALSE) {
+            if ($chmod !== false) {
                 // Set permissions on filename
                 chmod($filename, $chmod);
             }
@@ -91,7 +91,7 @@ class Kohana_Upload
             return $filename;
         }
 
-        return FALSE;
+        return false;
     }
 
     /**
@@ -141,7 +141,7 @@ class Kohana_Upload
     public static function type(array $file, array $allowed)
     {
         if ($file['error'] !== UPLOAD_ERR_OK)
-            return TRUE;
+            return true;
 
         $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
 
@@ -165,12 +165,12 @@ class Kohana_Upload
     {
         if ($file['error'] === UPLOAD_ERR_INI_SIZE) {
             // Upload is larger than PHP allowed size (upload_max_filesize)
-            return FALSE;
+            return false;
         }
 
         if ($file['error'] !== UPLOAD_ERR_OK) {
             // The upload failed, no size to check
-            return TRUE;
+            return true;
         }
 
         // Convert the provided size to bytes for comparison
@@ -190,7 +190,7 @@ class Kohana_Upload
      *     $array->rule('photo', 'Upload::image', [':value', 640, 480]);
      *
      *     // The "image" file must be exactly 100x100 pixels
-     *     $array->rule('image', 'Upload::image', [':value', 100, 100, TRUE]);
+     *     $array->rule('image', 'Upload::image', [':value', 100, 100, true]);
      *
      *
      * @param   array   $file       $_FILES item
@@ -199,7 +199,7 @@ class Kohana_Upload
      * @param   boolean $exact      match width and height exactly?
      * @return  boolean
      */
-    public static function image(array $file, $max_width = NULL, $max_height = NULL, $exact = FALSE)
+    public static function image(array $file, $max_width = null, $max_height = null, $exact = false)
     {
         if (Upload::not_empty($file)) {
             try {
@@ -211,7 +211,7 @@ class Kohana_Upload
 
             if (empty($width) OR empty($height)) {
                 // Cannot get image size, cannot validate
-                return FALSE;
+                return false;
             }
 
             if (!$max_width) {
@@ -233,7 +233,7 @@ class Kohana_Upload
             }
         }
 
-        return FALSE;
+        return false;
     }
 
 }

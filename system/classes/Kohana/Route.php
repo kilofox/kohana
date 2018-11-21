@@ -57,7 +57,7 @@ class Kohana_Route
     /**
      * @var  array   list of valid localhost entries
      */
-    public static $localhosts = [FALSE, '', 'local', 'localhost'];
+    public static $localhosts = [false, '', 'local', 'localhost'];
 
     /**
      * @var  string  default action for all routes
@@ -67,7 +67,7 @@ class Kohana_Route
     /**
      * @var  bool Indicates whether routes are cached
      */
-    public static $cache = FALSE;
+    public static $cache = false;
 
     /**
      * @var  array
@@ -88,7 +88,7 @@ class Kohana_Route
      * @param   array   $regex          regex patterns for route keys
      * @return  Route
      */
-    public static function set($name, $uri = NULL, $regex = NULL)
+    public static function set($name, $uri = null, $regex = null)
     {
         return Route::$_routes[$name] = new Route($uri, $regex);
     }
@@ -143,7 +143,7 @@ class Kohana_Route
      *
      *     if (! Route::cache()) {
      *         // Set routes here
-     *         Route::cache(TRUE);
+     *         Route::cache(true);
      *     }
      *
      * @param   boolean $save   cache the current routes
@@ -152,9 +152,9 @@ class Kohana_Route
      * @return  boolean when loading routes
      * @uses    Kohana::cache
      */
-    public static function cache($save = FALSE, $append = FALSE)
+    public static function cache($save = false, $append = false)
     {
-        if ($save === TRUE) {
+        if ($save === true) {
             try {
                 // Cache all defined routes
                 Kohana::cache('Route::cache()', Route::$_routes);
@@ -175,10 +175,10 @@ class Kohana_Route
                 }
 
                 // Routes were cached
-                return Route::$cache = TRUE;
+                return Route::$cache = true;
             } else {
                 // Routes were not cached
-                return Route::$cache = FALSE;
+                return Route::$cache = false;
             }
         }
     }
@@ -195,7 +195,7 @@ class Kohana_Route
      * @since   3.0.7
      * @uses    URL::site
      */
-    public static function url($name, array $params = NULL, $protocol = NULL)
+    public static function url($name, array $params = null, $protocol = null)
     {
         $route = Route::get($name);
 
@@ -220,13 +220,13 @@ class Kohana_Route
      * @uses    Route::REGEX_ESCAPE
      * @uses    Route::REGEX_SEGMENT
      */
-    public static function compile($uri, array $regex = NULL)
+    public static function compile($uri, array $regex = null)
     {
         // The URI should be considered literal except for keys and optional parts
         // Escape everything preg_quote would escape except for : ( ) < >
         $expression = preg_replace('#' . Route::REGEX_ESCAPE . '#', '\\\\$0', $uri);
 
-        if (strpos($expression, '(') !== FALSE) {
+        if (strpos($expression, '(') !== false) {
             // Make optional parts of the URI non-capturing and optional
             $expression = str_replace(['(', ')'], ['(?:', ')?'], $expression);
         }
@@ -266,7 +266,7 @@ class Kohana_Route
     /**
      * @var  array
      */
-    protected $_defaults = ['action' => 'index', 'host' => FALSE];
+    protected $_defaults = ['action' => 'index', 'host' => false];
 
     /**
      * @var  string
@@ -288,9 +288,9 @@ class Kohana_Route
      * @return  void
      * @uses    Route::_compile
      */
-    public function __construct($uri = NULL, $regex = NULL)
+    public function __construct($uri = null, $regex = null)
     {
-        if ($uri === NULL) {
+        if ($uri === null) {
             // Assume the route is from cache
             return;
         }
@@ -321,9 +321,9 @@ class Kohana_Route
      * @param   array   $defaults   key values
      * @return  $this or array
      */
-    public function defaults(array $defaults = NULL)
+    public function defaults(array $defaults = null)
     {
-        if ($defaults === NULL) {
+        if ($defaults === null) {
             return $this->_defaults;
         }
 
@@ -338,7 +338,7 @@ class Kohana_Route
      *     $route->filter(function(Route $route, $params, Request $request) {
      *         // This route only matches POST requests
      *         if ($request->method() !== HTTP_Request::POST) {
-     *             return FALSE;
+     *             return false;
      *         }
      *         if ($params AND $params['controller'] === 'welcome') {
      *             $params['controller'] = 'home';
@@ -347,7 +347,7 @@ class Kohana_Route
      *         return $params;
      *     });
      *
-     * To prevent a route from matching, return `FALSE`. To replace the route
+     * To prevent a route from matching, return `false`. To replace the route
      * parameters, return an array.
      *
      * [!!] Default parameters are added before filters are called!
@@ -370,7 +370,7 @@ class Kohana_Route
     /**
      * Tests if the route matches a given Request. A successful match will return
      * all of the routed parameters as an array. A failed match will return
-     * boolean FALSE.
+     * boolean false.
      *
      *     // Params: controller = users, action = edit, id = 10
      *     $params = $route->matches(Request::factory('users/edit/10'));
@@ -383,7 +383,7 @@ class Kohana_Route
      *
      * @param   Request $request  Request object to match
      * @return  array             on success
-     * @return  FALSE             on failure
+     * @return  false             on failure
      */
     public function matches(Request $request)
     {
@@ -391,7 +391,7 @@ class Kohana_Route
         $uri = trim($request->uri(), '/');
 
         if (!preg_match($this->_route_regex, $uri, $matches))
-            return FALSE;
+            return false;
 
         $params = [];
         foreach ($matches as $key => $value) {
@@ -426,9 +426,9 @@ class Kohana_Route
                 // Execute the filter giving it the route, params, and request
                 $return = call_user_func($callback, $this, $params, $request);
 
-                if ($return === FALSE) {
+                if ($return === false) {
                     // Filter has aborted the match
-                    return FALSE;
+                    return false;
                 } elseif (is_array($return)) {
                     // Filter has modified the parameters
                     $params = $return;
@@ -447,7 +447,7 @@ class Kohana_Route
      */
     public function is_external()
     {
-        return !in_array(Arr::get($this->_defaults, 'host', FALSE), Route::$localhosts);
+        return !in_array(Arr::get($this->_defaults, 'host', false), Route::$localhosts);
     }
 
     /**
@@ -466,7 +466,7 @@ class Kohana_Route
      * @uses    Route::REGEX_GROUP
      * @uses    Route::REGEX_KEY
      */
-    public function uri(array $params = NULL)
+    public function uri(array $params = null)
     {
         if ($params) {
             // @issue #4079 rawurlencode parameters
@@ -512,12 +512,12 @@ class Kohana_Route
                 }
                 else {
                     // Group, unwrapped
-                    $result = $compile($matches[2], FALSE);
+                    $result = $compile($matches[2], false);
 
                     if ($result[1]) {
                         // This portion is required when it contains a group
                         // that is required
-                        $required = TRUE;
+                        $required = true;
 
                         // Add required groups to this result
                         return $result[0];
@@ -534,7 +534,7 @@ class Kohana_Route
             return [$result, $required];
         };
 
-        list($uri) = $compile($this->_uri, TRUE);
+        list($uri) = $compile($this->_uri, true);
 
         // Trim all extra slashes from the URI
         $uri = preg_replace('#//+#', '/', rtrim($uri, '/'));
@@ -543,7 +543,7 @@ class Kohana_Route
             // Need to add the host to the URI
             $host = $this->_defaults['host'];
 
-            if (strpos($host, '://') === FALSE) {
+            if (strpos($host, '://') === false) {
                 // Use the default defined protocol
                 $host = Route::$default_protocol . $host;
             }

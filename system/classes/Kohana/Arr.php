@@ -48,7 +48,7 @@ class Kohana_Arr
      *     Arr::is_array(new ArrayObject);
      *
      *     // Returns FALSE
-     *     Arr::is_array(FALSE);
+     *     Arr::is_array(false);
      *     Arr::is_array('not an array!');
      *     Arr::is_array(Database::instance());
      *
@@ -59,7 +59,7 @@ class Kohana_Arr
     {
         if (is_array($value)) {
             // Definitely an array
-            return TRUE;
+            return true;
         } else {
             // Possibly a Traversable object, functionally the same as an array
             return (is_object($value) AND $value instanceof Traversable);
@@ -86,7 +86,7 @@ class Kohana_Arr
      * @param   string  $delimiter  key path delimiter
      * @return  mixed
      */
-    public static function path($array, $path, $default = NULL, $delimiter = NULL)
+    public static function path($array, $path, $default = null, $delimiter = null)
     {
         if (!Arr::is_array($array)) {
             // This is not an array!
@@ -102,7 +102,7 @@ class Kohana_Arr
                 return $array[$path];
             }
 
-            if ($delimiter === NULL) {
+            if ($delimiter === null) {
                 // Use the default delimiter
                 $delimiter = Arr::$delimiter;
             }
@@ -174,7 +174,7 @@ class Kohana_Arr
      * @param mixed   $value     Value to set
      * @param string  $delimiter Path delimiter
      */
-    public static function set_path(& $array, $path, $value, $delimiter = NULL)
+    public static function set_path(& $array, $path, $value, $delimiter = null)
     {
         if (!$delimiter) {
             // Use the default delimiter
@@ -246,7 +246,7 @@ class Kohana_Arr
      * @param   mixed   $default    default value
      * @return  mixed
      */
-    public static function get($array, $key, $default = NULL)
+    public static function get($array, $key, $default = null)
     {
         if ($array instanceof ArrayObject) {
             // This is a workaround for inconsistent implementation of isset between PHP and HHVM
@@ -273,7 +273,7 @@ class Kohana_Arr
      * @param   mixed  $default  default value
      * @return  array
      */
-    public static function extract($array, array $paths, $default = NULL)
+    public static function extract($array, array $paths, $default = null)
     {
         $found = [];
         foreach ($paths as $path) {
@@ -322,9 +322,9 @@ class Kohana_Arr
      */
     public static function unshift(array & $array, $key, $val)
     {
-        $array = array_reverse($array, TRUE);
+        $array = array_reverse($array, true);
         $array[$key] = $val;
-        $array = array_reverse($array, TRUE);
+        $array = array_reverse($array, true);
 
         return $array;
     }
@@ -353,7 +353,7 @@ class Kohana_Arr
      * @param   array   $keys       array of keys to apply to
      * @return  array
      */
-    public static function map($callbacks, $array, $keys = NULL)
+    public static function map($callbacks, $array, $keys = null)
     {
         foreach ($array as $key => $val) {
             if (is_array($val)) {
@@ -407,7 +407,7 @@ class Kohana_Arr
             }
         } else {
             foreach ($array2 as $value) {
-                if (!in_array($value, $array1, TRUE)) {
+                if (!in_array($value, $array1, true)) {
                     $array1[] = $value;
                 }
             }
@@ -428,7 +428,7 @@ class Kohana_Arr
                     }
                 } else {
                     foreach ($array2 as $value) {
-                        if (!in_array($value, $array1, TRUE)) {
+                        if (!in_array($value, $array1, true)) {
                             $array1[] = $value;
                         }
                     }
@@ -489,7 +489,7 @@ class Kohana_Arr
     public static function callback($str)
     {
         // Overloaded as parts are found
-        $command = $params = NULL;
+        $command = $params = null;
 
         // command[param,param]
         if (preg_match('/^([^\(]*+)\((.*)\)$/', $str, $match)) {
@@ -506,7 +506,7 @@ class Kohana_Arr
             $command = $str;
         }
 
-        if (strpos($command, '::') !== FALSE) {
+        if (strpos($command, '::') !== false) {
             // Create a static method callable command
             $command = explode('::', $command, 2);
         }

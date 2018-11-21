@@ -136,7 +136,7 @@ abstract class Kohana_Controller
      * @param  string  $etag  Resource Etag
      * @return Response
      */
-    protected function check_cache($etag = NULL)
+    protected function check_cache($etag = null)
     {
         return HTTP::check_cache($this->request, $this->response, $etag);
     }

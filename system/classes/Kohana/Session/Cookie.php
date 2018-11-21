@@ -17,9 +17,9 @@ class Kohana_Session_Cookie extends Session
      * @param   string  $id  session id
      * @return  string
      */
-    protected function _read($id = NULL)
+    protected function _read($id = null)
     {
-        return Cookie::get($this->_name, NULL);
+        return Cookie::get($this->_name, null);
     }
 
     /**
@@ -28,7 +28,7 @@ class Kohana_Session_Cookie extends Session
     protected function _regenerate()
     {
         // Cookie sessions have no id
-        return NULL;
+        return null;
     }
 
     /**
@@ -44,7 +44,7 @@ class Kohana_Session_Cookie extends Session
      */
     protected function _restart()
     {
-        return TRUE;
+        return true;
     }
 
     /**

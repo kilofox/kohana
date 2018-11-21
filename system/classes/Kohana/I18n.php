@@ -51,7 +51,7 @@ class Kohana_I18n
      * @return  string
      * @since   3.0.2
      */
-    public static function lang($lang = NULL)
+    public static function lang($lang = null)
     {
         if ($lang) {
             // Normalize the language
@@ -71,7 +71,7 @@ class Kohana_I18n
      * @param   string  $lang   target language
      * @return  string
      */
-    public static function get($string, $lang = NULL)
+    public static function get($string, $lang = null)
     {
         if (!$lang) {
             // Use the global target language
@@ -110,7 +110,7 @@ class Kohana_I18n
             // Create a path for this set of parts
             $path = implode(DIRECTORY_SEPARATOR, $parts);
 
-            if ($files = Kohana::find_file('i18n', $path, NULL, TRUE)) {
+            if ($files = Kohana::find_file('i18n', $path, null, true)) {
                 $t = [];
                 foreach ($files as $file) {
                     // Merge the language strings into the sub table
@@ -147,7 +147,7 @@ if (!function_exists('__')) {
      * @param   string  $lang   source language
      * @return  string
      */
-    function __($string, array $values = NULL, $lang = 'en-us')
+    function __($string, array $values = null, $lang = 'en-us')
     {
         if ($lang !== I18n::$lang) {
             // The message and target languages are different

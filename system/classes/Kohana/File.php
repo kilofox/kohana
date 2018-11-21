@@ -22,7 +22,7 @@ class Kohana_File
      *
      * @param   string  $filename   file name or path
      * @return  string  mime type on success
-     * @return  FALSE   on failure
+     * @return  false   On failure
      */
     public static function mime($filename)
     {
@@ -40,7 +40,7 @@ class Kohana_File
                 return $file['mime'];
         }
 
-        if (class_exists('finfo', FALSE)) {
+        if (class_exists('finfo', false)) {
             if ($info = new finfo(defined('FILEINFO_MIME_TYPE') ? FILEINFO_MIME_TYPE : FILEINFO_MIME)) {
                 return $info->file($filename);
             }
@@ -56,7 +56,7 @@ class Kohana_File
         }
 
         // Unable to find the mime-type
-        return FALSE;
+        return false;
     }
 
     /**
@@ -66,14 +66,14 @@ class Kohana_File
      *
      * @param   string  $extension  php, pdf, txt, etc
      * @return  string  mime type on success
-     * @return  FALSE   on failure
+     * @return  false   On failure
      */
     public static function mime_by_ext($extension)
     {
         // Load all of the mime types
         $mimes = Kohana::$config->load('mimes');
 
-        return isset($mimes[$extension]) ? $mimes[$extension][0] : FALSE;
+        return isset($mimes[$extension]) ? $mimes[$extension][0] : false;
     }
 
     /**
@@ -119,7 +119,7 @@ class Kohana_File
             }
         }
 
-        return isset($types[$type]) ? $types[$type] : FALSE;
+        return isset($types[$type]) ? $types[$type] : false;
     }
 
     /**
