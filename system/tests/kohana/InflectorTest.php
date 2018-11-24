@@ -20,19 +20,19 @@ class Kohana_InflectorTest extends Unittest_TestCase
 {
     /**
      * Provides test data for test_lang()
-     * 
+     *
      * @return array
      */
     public function provider_uncountable()
     {
-        return array(
+        return [
             // $value, $result
-            array('fish', TRUE),
-            array('cat', FALSE),
-            array('deer', TRUE),
-            array('bison', TRUE),
-            array('friend', FALSE),
-        );
+            ['fish', TRUE],
+            ['cat', FALSE],
+            ['deer', TRUE],
+            ['bison', TRUE],
+            ['friend', FALSE],
+        ];
     }
 
     /**
@@ -50,25 +50,25 @@ class Kohana_InflectorTest extends Unittest_TestCase
 
     /**
      * Provides test data for test_lang()
-     * 
+     *
      * @return array
      */
     public function provider_singular()
     {
-        return array(
+        return [
             // $value, $result
-            array('fish', NULL, 'fish'),
-            array('cats', NULL, 'cat'),
-            array('cats', 2, 'cats'),
-            array('cats', '2', 'cats'),
-            array('children', NULL, 'child'),
-            array('meters', 0.6, 'meters'),
-            array('meters', 1.6, 'meters'),
-            array('meters', 1.0, 'meter'),
-            array('status', NULL, 'status'),
-            array('statuses', NULL, 'status'),
-            array('heroes', NULL, 'hero'),
-        );
+            ['fish', NULL, 'fish'],
+            ['cats', NULL, 'cat'],
+            ['cats', 2, 'cats'],
+            ['cats', '2', 'cats'],
+            ['children', NULL, 'child'],
+            ['meters', 0.6, 'meters'],
+            ['meters', 1.6, 'meters'],
+            ['meters', 1.0, 'meter'],
+            ['status', NULL, 'status'],
+            ['statuses', NULL, 'status'],
+            ['heroes', NULL, 'hero'],
+        ];
     }
 
     /**
@@ -86,25 +86,25 @@ class Kohana_InflectorTest extends Unittest_TestCase
 
     /**
      * Provides test data for test_lang()
-     * 
+     *
      * @return array
      */
     public function provider_plural()
     {
-        return array(
+        return [
             // $value, $result
-            array('fish', NULL, 'fish'),
-            array('cat', NULL, 'cats'),
-            array('cats', 1, 'cats'),
-            array('cats', '1', 'cats'),
-            array('movie', NULL, 'movies'),
-            array('meter', 0.6, 'meters'),
-            array('meter', 1.6, 'meters'),
-            array('meter', 1.0, 'meter'),
-            array('hero', NULL, 'heroes'),
-            array('Dog', NULL, 'Dogs'), // Titlecase
-            array('DOG', NULL, 'DOGS'), // Uppercase
-        );
+            ['fish', NULL, 'fish'],
+            ['cat', NULL, 'cats'],
+            ['cats', 1, 'cats'],
+            ['cats', '1', 'cats'],
+            ['movie', NULL, 'movies'],
+            ['meter', 0.6, 'meters'],
+            ['meter', 1.6, 'meters'],
+            ['meter', 1.0, 'meter'],
+            ['hero', NULL, 'heroes'],
+            ['Dog', NULL, 'Dogs'], // Titlecase
+            ['DOG', NULL, 'DOGS'], // Uppercase
+        ];
     }
 
     /**
@@ -122,20 +122,20 @@ class Kohana_InflectorTest extends Unittest_TestCase
 
     /**
      * Provides test data for test_camelize()
-     * 
+     *
      * @return array
      */
     public function provider_camelize()
     {
-        return array(
+        return [
             // $value, $result
-            array('mother cat', 'camelize', 'motherCat'),
-            array('kittens in bed', 'camelize', 'kittensInBed'),
-            array('mother cat', 'underscore', 'mother_cat'),
-            array('kittens in bed', 'underscore', 'kittens_in_bed'),
-            array('kittens-are-cats', 'humanize', 'kittens are cats'),
-            array('dogs_as_well', 'humanize', 'dogs as well'),
-        );
+            ['mother cat', 'camelize', 'motherCat'],
+            ['kittens in bed', 'camelize', 'kittensInBed'],
+            ['mother cat', 'underscore', 'mother_cat'],
+            ['kittens in bed', 'underscore', 'kittens_in_bed'],
+            ['kittens-are-cats', 'humanize', 'kittens are cats'],
+            ['dogs_as_well', 'humanize', 'dogs as well'],
+        ];
     }
 
     /**
@@ -158,18 +158,18 @@ class Kohana_InflectorTest extends Unittest_TestCase
      */
     public function provider_decamelize()
     {
-        return array(
-            array('getText', '_', 'get_text'),
-            array('getJSON', '_', 'get_json'),
-            array('getLongText', '_', 'get_long_text'),
-            array('getI18N', '_', 'get_i18n'),
-            array('getL10n', '_', 'get_l10n'),
-            array('getTe5t1ng', '_', 'get_te5t1ng'),
-            array('OpenFile', '_', 'open_file'),
-            array('CloseIoSocket', '_', 'close_io_socket'),
-            array('fooBar', ' ', 'foo bar'),
-            array('camelCase', '+', 'camel+case'),
-        );
+        return [
+            ['getText', '_', 'get_text'],
+            ['getJSON', '_', 'get_json'],
+            ['getLongText', '_', 'get_long_text'],
+            ['getI18N', '_', 'get_i18n'],
+            ['getL10n', '_', 'get_l10n'],
+            ['getTe5t1ng', '_', 'get_te5t1ng'],
+            ['OpenFile', '_', 'open_file'],
+            ['CloseIoSocket', '_', 'close_io_socket'],
+            ['fooBar', ' ', 'foo bar'],
+            ['camelCase', '+', 'camel+case'],
+        ];
     }
 
     /**

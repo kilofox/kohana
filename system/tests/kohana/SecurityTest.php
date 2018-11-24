@@ -21,9 +21,9 @@ class Kohana_SecurityTest extends Unittest_TestCase
      */
     public function provider_encode_php_tags()
     {
-        return array(
-            array("&lt;?php echo 'helloo'; ?&gt;", "<?php echo 'helloo'; ?>"),
-        );
+        return [
+            ["&lt;?php echo 'helloo'; ?&gt;", "<?php echo 'helloo'; ?>"],
+        ];
     }
 
     /**
@@ -45,9 +45,9 @@ class Kohana_SecurityTest extends Unittest_TestCase
      */
     public function provider_strip_image_tags()
     {
-        return array(
-            array('foo', '<img src="foo" />'),
-        );
+        return [
+            ['foo', '<img src="foo" />'],
+        ];
     }
 
     /**
@@ -69,10 +69,13 @@ class Kohana_SecurityTest extends Unittest_TestCase
      */
     public function provider_csrf_token()
     {
-        $array = array();
+        $array = [];
         for ($i = 0; $i <= 4; $i++) {
             Security::$token_name = 'token_' . $i;
-            $array[] = array(Security::token(TRUE), Security::check(Security::token(FALSE)), $i);
+            $array[] = [
+                Security::token(TRUE),
+                Security::check(Security::token(FALSE)), $i
+            ];
         }
         return $array;
     }

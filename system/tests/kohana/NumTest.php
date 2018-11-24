@@ -51,12 +51,12 @@ class Kohana_NumTest extends Unittest_TestCase
      */
     public function provider_bytes()
     {
-        return array(
-            array(204800.0, '200K'),
-            array(5242880.0, '5MiB'),
-            array(1000.0, 1000),
-            array(2684354560.0, '2.5GB'),
-        );
+        return [
+            [204800.0, '200K'],
+            [5242880.0, '5MiB'],
+            [1000.0, 1000],
+            [2684354560.0, '2.5GB'],
+        ];
     }
 
     /**
@@ -79,14 +79,14 @@ class Kohana_NumTest extends Unittest_TestCase
      */
     public function provider_ordinal()
     {
-        return array(
-            array(0, 'th'),
-            array(1, 'st'),
-            array(21, 'st'),
-            array(112, 'th'),
-            array(23, 'rd'),
-            array(42, 'nd'),
-        );
+        return [
+            [0, 'th'],
+            [1, 'st'],
+            [21, 'st'],
+            [112, 'th'],
+            [23, 'rd'],
+            [42, 'nd'],
+        ];
     }
 
     /**
@@ -107,14 +107,14 @@ class Kohana_NumTest extends Unittest_TestCase
      */
     public function provider_format()
     {
-        return array(
+        return [
             // English
-            array(10000, 2, FALSE, '10,000.00'),
-            array(10000, 2, TRUE, '10,000.00'),
+            [10000, 2, FALSE, '10,000.00'],
+            [10000, 2, TRUE, '10,000.00'],
             // Additional dp's should be removed
-            array(123.456, 2, FALSE, '123.46'),
-            array(123.456, 2, TRUE, '123.46'),
-        );
+            [123.456, 2, FALSE, '123.46'],
+            [123.456, 2, TRUE, '123.46'],
+        ];
     }
 
     /**
@@ -138,56 +138,16 @@ class Kohana_NumTest extends Unittest_TestCase
      */
     function provider_round()
     {
-        return array(
-            array(5.5, 0, array(
-                    6.0,
-                    5.0,
-                    6.0,
-                    5.0,
-                )),
-            array(42.5, 0, array(
-                    43.0,
-                    42.0,
-                    42.0,
-                    43.0,
-                )),
-            array(10.4, 0, array(
-                    10.0,
-                    10.0,
-                    10.0,
-                    10.0,
-                )),
-            array(10.8, 0, array(
-                    11.0,
-                    11.0,
-                    11.0,
-                    11.0,
-                )),
-            array(-5.5, 0, array(
-                    -6.0,
-                    -5.0,
-                    -6.0,
-                    -5.0,
-                )),
-            array(-10.5, 0, array(
-                    -11.0,
-                    -10.0,
-                    -10.0,
-                    -11.0,
-                )),
-            array(26.12375, 4, array(
-                    26.1238,
-                    26.1237,
-                    26.1238,
-                    26.1237,
-                )),
-            array(26.12325, 4, array(
-                    26.1233,
-                    26.1232,
-                    26.1232,
-                    26.1233,
-                )),
-        );
+        return [
+            [5.5, 0, [6.0, 5.0, 6.0, 5.0]],
+            [42.5, 0, [43.0, 42.0, 42.0, 43.0]],
+            [10.4, 0, [10.0, 10.0, 10.0, 10.0]],
+            [10.8, 0, [11.0, 11.0, 11.0, 11.0]],
+            [-5.5, 0, [-6.0, -5.0, -6.0, -5.0]],
+            [-10.5, 0, [-11.0, -10.0, -10.0, -11.0]],
+            [26.12375, 4, [26.1238, 26.1237, 26.1238, 26.1237]],
+            [26.12325, 4, [26.1233, 26.1232, 26.1232, 26.1233]],
+        ];
     }
 
     /**
@@ -200,7 +160,7 @@ class Kohana_NumTest extends Unittest_TestCase
      */
     function test_round($input, $precision, $expected)
     {
-        foreach (array(Num::ROUND_HALF_UP, Num::ROUND_HALF_DOWN, Num::ROUND_HALF_EVEN, Num::ROUND_HALF_ODD) as $i => $mode) {
+        foreach ([Num::ROUND_HALF_UP, Num::ROUND_HALF_DOWN, Num::ROUND_HALF_EVEN, Num::ROUND_HALF_ODD] as $i => $mode) {
             $this->assertSame($expected[$i], Num::round($input, $precision, $mode, FALSE));
         }
     }

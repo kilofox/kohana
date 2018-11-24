@@ -24,23 +24,23 @@ class Kohana_ExceptionTest extends Unittest_TestCase
      */
     public function provider_constructor()
     {
-        return array(
-            array(array(''), '', 0),
-            array(array(':a'), ':a', 0),
-            array(array(':a', NULL), ':a', 0),
-            array(array(':a', array()), ':a', 0),
-            array(array(':a', array(':a' => 'b')), 'b', 0),
-            array(array(':a :b', array(':a' => 'c', ':b' => 'd')), 'c d', 0),
-            array(array(':a', NULL, 5), ':a', 5),
+        return [
+            [[''], '', 0],
+            [[':a'], ':a', 0],
+            [[':a', NULL], ':a', 0],
+            [[':a', []], ':a', 0],
+            [[':a', [':a' => 'b']], 'b', 0],
+            [[':a :b', [':a' => 'c', ':b' => 'd']], 'c d', 0],
+            [[':a', NULL, 5], ':a', 5],
             // #3358
-            array(array(':a', NULL, '3F000'), ':a', '3F000'),
+            [[':a', NULL, '3F000'], ':a', '3F000'],
             // #3404
-            array(array(':a', NULL, '42S22'), ':a', '42S22'),
+            [[':a', NULL, '42S22'], ':a', '42S22'],
             // #3927
-            array(array(':a', NULL, 'b'), ':a', 'b'),
+            [[':a', NULL, 'b'], ':a', 'b'],
             // #4039
-            array(array(':a', NULL, '25P01'), ':a', '25P01'),
-        );
+            [[':a', NULL, '25P01'], ':a', '25P01'],
+        ];
     }
 
     /**
@@ -77,9 +77,9 @@ class Kohana_ExceptionTest extends Unittest_TestCase
      */
     public function provider_text()
     {
-        return array(
-            array(new Kohana_Exception('foobar'), $this->dirSeparator('Kohana_Exception [ 0 ]: foobar ~ SYSPATH/tests/kohana/ExceptionTest.php [ ' . __LINE__ . ' ]')),
-        );
+        return [
+            [new Kohana_Exception('foobar'), $this->dirSeparator('Kohana_Exception [ 0 ]: foobar ~ SYSPATH/tests/kohana/ExceptionTest.php [ ' . __LINE__ . ' ]')],
+        ];
     }
 
     /**

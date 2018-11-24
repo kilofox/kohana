@@ -25,10 +25,13 @@ class Kohana_FileTest extends Unittest_TestCase
      */
     public function provider_mime()
     {
-        return array(
+        return [
             // $value, $result
-            array(Kohana::find_file('tests', 'test_data/github', 'png'), 'image/png'),
-        );
+            [
+                Kohana::find_file('tests', 'test_data/github', 'png'),
+                'image/png'
+            ],
+        ];
     }
 
     /**
@@ -52,10 +55,10 @@ class Kohana_FileTest extends Unittest_TestCase
      */
     public function provider_split_join()
     {
-        return array(
+        return [
             // $value, $result
-            array(Kohana::find_file('tests', 'test_data/github', 'png'), .01, 1),
-        );
+            [Kohana::find_file('tests', 'test_data/github', 'png'), .01, 1],
+        ];
     }
 
     /**

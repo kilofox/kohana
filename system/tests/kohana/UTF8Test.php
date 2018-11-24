@@ -22,14 +22,14 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_clean()
     {
-        return array(
-            array("\0", ''),
-            array("→foo\021", '→foo'),
-            array("\x7Fbar", 'bar'),
-            array("\xFF", ''),
-            array("\x41", 'A'),
-            array(array("→foo\021", "\x41"), array('→foo', 'A')),
-        );
+        return [
+            ["\0", ''],
+            ["→foo\021", '→foo'],
+            ["\x7Fbar", 'bar'],
+            ["\xFF", ''],
+            ["\x41", 'A'],
+            [["→foo\021", "\x41"], ['→foo', 'A']],
+        ];
     }
 
     /**
@@ -48,13 +48,13 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_is_ascii()
     {
-        return array(
-            array("\0", TRUE),
-            array("\$eno\r", TRUE),
-            array('Señor', FALSE),
-            array(array('Se', 'nor'), TRUE),
-            array(array('Se', 'ñor'), FALSE),
-        );
+        return [
+            ["\0", TRUE],
+            ["\$eno\r", TRUE],
+            ['Señor', FALSE],
+            [['Se', 'nor'], TRUE],
+            [['Se', 'ñor'], FALSE],
+        ];
     }
 
     /**
@@ -73,13 +73,13 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_strip_ascii_ctrl()
     {
-        return array(
-            array("\0", ''),
-            array("→foo\021", '→foo'),
-            array("\x7Fbar", 'bar'),
-            array("\xFF", "\xFF"),
-            array("\x41", 'A'),
-        );
+        return [
+            ["\0", ''],
+            ["→foo\021", '→foo'],
+            ["\x7Fbar", 'bar'],
+            ["\xFF", "\xFF"],
+            ["\x41", 'A'],
+        ];
     }
 
     /**
@@ -98,10 +98,10 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_strip_non_ascii()
     {
-        return array(
-            array("\0\021\x7F", "\0\021\x7F"),
-            array('I ♥ cocoñùт', 'I  coco'),
-        );
+        return [
+            ["\0\021\x7F", "\0\021\x7F"],
+            ['I ♥ cocoñùт', 'I  coco'],
+        ];
     }
 
     /**
@@ -120,14 +120,14 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_transliterate_to_ascii()
     {
-        return array(
-            array('Cocoñùт', -1, 'Coconuт'),
-            array('COCOÑÙТ', -1, 'COCOÑÙТ'),
-            array('Cocoñùт', 0, 'Coconuт'),
-            array('COCOÑÙТ', 0, 'COCONUТ'),
-            array('Cocoñùт', 1, 'Cocoñùт'),
-            array('COCOÑÙТ', 1, 'COCONUТ'),
-        );
+        return [
+            ['Cocoñùт', -1, 'Coconuт'],
+            ['COCOÑÙТ', -1, 'COCOÑÙТ'],
+            ['Cocoñùт', 0, 'Coconuт'],
+            ['COCOÑÙТ', 0, 'COCONUТ'],
+            ['Cocoñùт', 1, 'Cocoñùт'],
+            ['COCOÑÙТ', 1, 'COCONUТ'],
+        ];
     }
 
     /**
@@ -146,10 +146,10 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_strlen()
     {
-        return array(
-            array('Cocoñùт', 7),
-            array('Coconut', 7),
-        );
+        return [
+            ['Cocoñùт', 7],
+            ['Coconut', 7],
+        ];
     }
 
     /**
@@ -168,10 +168,10 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_strpos()
     {
-        return array(
-            array('Cocoñùт', 'o', 0, 1),
-            array('Cocoñùт', 'ñ', 1, 4),
-        );
+        return [
+            ['Cocoñùт', 'o', 0, 1],
+            ['Cocoñùт', 'ñ', 1, 4],
+        ];
     }
 
     /**
@@ -190,10 +190,10 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_strrpos()
     {
-        return array(
-            array('Cocoñùт', 'o', 0, 3),
-            array('Cocoñùт', 'ñ', 2, 4),
-        );
+        return [
+            ['Cocoñùт', 'o', 0, 3],
+            ['Cocoñùт', 'ñ', 2, 4],
+        ];
     }
 
     /**
@@ -212,12 +212,12 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_substr()
     {
-        return array(
-            array('Cocoñùт', 3, 2, 'oñ'),
-            array('Cocoñùт', 3, 9, 'oñùт'),
-            array('Cocoñùт', 3, NULL, 'oñùт'),
-            array('Cocoñùт', 3, -2, 'oñ'),
-        );
+        return [
+            ['Cocoñùт', 3, 2, 'oñ'],
+            ['Cocoñùт', 3, 9, 'oñùт'],
+            ['Cocoñùт', 3, NULL, 'oñùт'],
+            ['Cocoñùт', 3, -2, 'oñ'],
+        ];
     }
 
     /**
@@ -236,10 +236,10 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_substr_replace()
     {
-        return array(
-            array('Cocoñùт', 'šš', 3, 2, 'Cocššùт'),
-            array('Cocoñùт', 'šš', 3, 9, 'Cocšš'),
-        );
+        return [
+            ['Cocoñùт', 'šš', 3, 2, 'Cocššùт'],
+            ['Cocoñùт', 'šš', 3, 9, 'Cocšš'],
+        ];
     }
 
     /**
@@ -258,10 +258,10 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_strtolower()
     {
-        return array(
-            array('COCOÑÙТ', 'cocoñùт'),
-            array('JÄGER', 'jäger'),
-        );
+        return [
+            ['COCOÑÙТ', 'cocoñùт'],
+            ['JÄGER', 'jäger'],
+        ];
     }
 
     /**
@@ -280,10 +280,10 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_strtoupper()
     {
-        return array(
-            array('Cocoñùт', 'COCOÑÙТ'),
-            array('jäger', 'JÄGER'),
-        );
+        return [
+            ['Cocoñùт', 'COCOÑÙТ'],
+            ['jäger', 'JÄGER'],
+        ];
     }
 
     /**
@@ -302,9 +302,9 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_ucfirst()
     {
-        return array(
-            array('ñùт', 'Ñùт'),
-        );
+        return [
+            ['ñùт', 'Ñùт'],
+        ];
     }
 
     /**
@@ -323,10 +323,10 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_ucwords()
     {
-        return array(
-            array('ExAmple', 'ExAmple'),
-            array('i ♥ Cocoñùт', 'I ♥ Cocoñùт'),
-        );
+        return [
+            ['ExAmple', 'ExAmple'],
+            ['i ♥ Cocoñùт', 'I ♥ Cocoñùт'],
+        ];
     }
 
     /**
@@ -345,13 +345,13 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_strcasecmp()
     {
-        return array(
-            array('Cocoñùт', 'Cocoñùт', 0),
-            array('Čau', 'Čauo', -1),
-            array('Čau', 'Ča', 1),
-            array('Cocoñùт', 'Cocoñ', 4),
-            array('Cocoñùт', 'Coco', 6),
-        );
+        return [
+            ['Cocoñùт', 'Cocoñùт', 0],
+            ['Čau', 'Čauo', -1],
+            ['Čau', 'Ča', 1],
+            ['Cocoñùт', 'Cocoñ', 4],
+            ['Cocoñùт', 'Coco', 6],
+        ];
     }
 
     /**
@@ -370,12 +370,12 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_str_ireplace()
     {
-        return array(
-            array('т', 't', 'cocoñuт', 'cocoñut'),
-            array('Ñ', 'N', 'cocoñuт', 'cocoNuт'),
-            array(array('т', 'Ñ', 'k' => 'k'), array('t', 'N', 'K'), array('cocoñuт'), array('cocoNut')),
-            array(array('ñ'), 'n', 'cocoñuт', 'coconuт'),
-        );
+        return [
+            ['т', 't', 'cocoñuт', 'cocoñut'],
+            ['Ñ', 'N', 'cocoñuт', 'cocoNuт'],
+            [['т', 'Ñ', 'k' => 'k'], ['t', 'N', 'K'], ['cocoñuт'], ['cocoNut']],
+            [['ñ'], 'n', 'cocoñuт', 'coconuт'],
+        ];
     }
 
     /**
@@ -394,11 +394,11 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_stristr()
     {
-        return array(
-            array('Cocoñùт', 'oñ', 'oñùт'),
-            array('Cocoñùт', 'o', 'ocoñùт'),
-            array('Cocoñùт', 'k', FALSE),
-        );
+        return [
+            ['Cocoñùт', 'oñ', 'oñùт'],
+            ['Cocoñùт', 'o', 'ocoñùт'],
+            ['Cocoñùт', 'k', FALSE],
+        ];
     }
 
     /**
@@ -417,12 +417,12 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_strspn()
     {
-        return array(
-            array("foo", "o", 1, 2, 2),
-            array('Cocoñùт', 'oñ', NULL, NULL, 1),
-            array('Cocoñùт', 'oñ', 2, 4, 1),
-            array('Cocoñùт', 'šš', 3, 9, 4),
-        );
+        return [
+            ["foo", "o", 1, 2, 2],
+            ['Cocoñùт', 'oñ', NULL, NULL, 1],
+            ['Cocoñùт', 'oñ', 2, 4, 1],
+            ['Cocoñùт', 'šš', 3, 9, 4],
+        ];
     }
 
     /**
@@ -441,11 +441,11 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_strcspn()
     {
-        return array(
-            array('Cocoñùт', 'oñ', NULL, NULL, 1),
-            array('Cocoñùт', 'oñ', 2, 4, 1),
-            array('Cocoñùт', 'šš', 3, 9, 4),
-        );
+        return [
+            ['Cocoñùт', 'oñ', NULL, NULL, 1],
+            ['Cocoñùт', 'oñ', 2, 4, 1],
+            ['Cocoñùт', 'šš', 3, 9, 4],
+        ];
     }
 
     /**
@@ -464,11 +464,11 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_str_pad()
     {
-        return array(
-            array('Cocoñùт', 10, 'š', STR_PAD_RIGHT, 'Cocoñùтššš'),
-            array('Cocoñùт', 10, 'š', STR_PAD_LEFT, 'šššCocoñùт'),
-            array('Cocoñùт', 10, 'š', STR_PAD_BOTH, 'šCocoñùтšš'),
-        );
+        return [
+            ['Cocoñùт', 10, 'š', STR_PAD_RIGHT, 'Cocoñùтššš'],
+            ['Cocoñùт', 10, 'š', STR_PAD_LEFT, 'šššCocoñùт'],
+            ['Cocoñùт', 10, 'š', STR_PAD_BOTH, 'šCocoñùтšš'],
+        ];
     }
 
     /**
@@ -498,11 +498,11 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_str_split()
     {
-        return array(
-            array('Bár', 1, array('B', 'á', 'r')),
-            array('Cocoñùт', 2, array('Co', 'co', 'ñù', 'т')),
-            array('Cocoñùт', 3, array('Coc', 'oñù', 'т')),
-        );
+        return [
+            ['Bár', 1, ['B', 'á', 'r']],
+            ['Cocoñùт', 2, ['Co', 'co', 'ñù', 'т']],
+            ['Cocoñùт', 3, ['Coc', 'oñù', 'т']],
+        ];
     }
 
     /**
@@ -521,9 +521,9 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_strrev()
     {
-        return array(
-            array('Cocoñùт', 'тùñocoC'),
-        );
+        return [
+            ['Cocoñùт', 'тùñocoC'],
+        ];
     }
 
     /**
@@ -542,11 +542,11 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_trim()
     {
-        return array(
-            array(' bar ', NULL, 'bar'),
-            array('bar', 'b', 'ar'),
-            array('barb', 'b', 'ar'),
-        );
+        return [
+            [' bar ', NULL, 'bar'],
+            ['bar', 'b', 'ar'],
+            ['barb', 'b', 'ar'],
+        ];
     }
 
     /**
@@ -565,12 +565,12 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_ltrim()
     {
-        return array(
-            array(' bar ', NULL, 'bar '),
-            array('bar', 'b', 'ar'),
-            array('barb', 'b', 'arb'),
-            array('ñùт', 'ñ', 'ùт'),
-        );
+        return [
+            [' bar ', NULL, 'bar '],
+            ['bar', 'b', 'ar'],
+            ['barb', 'b', 'arb'],
+            ['ñùт', 'ñ', 'ùт'],
+        ];
     }
 
     /**
@@ -589,12 +589,12 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_rtrim()
     {
-        return array(
-            array(' bar ', NULL, ' bar'),
-            array('bar', 'b', 'bar'),
-            array('barb', 'b', 'bar'),
-            array('Cocoñùт', 'т', 'Cocoñù'),
-        );
+        return [
+            [' bar ', NULL, ' bar'],
+            ['bar', 'b', 'bar'],
+            ['barb', 'b', 'bar'],
+            ['Cocoñùт', 'т', 'Cocoñù'],
+        ];
     }
 
     /**
@@ -613,11 +613,11 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function provider_ord()
     {
-        return array(
-            array('f', 102),
-            array('ñ', 241),
-            array('Ñ', 209),
-        );
+        return [
+            ['f', 102],
+            ['ñ', 241],
+            ['Ñ', 209],
+        ];
     }
 
     /**

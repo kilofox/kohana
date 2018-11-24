@@ -35,7 +35,7 @@ class Kohana_Config_GroupTest extends Kohana_Unittest_TestCase
      * @param Kohana_Config $instance Instance of Kohana_Config
      * @return Kohana_Config_Group
      */
-    public function get_mock_group($group, $config = array(), $instance = NULL)
+    public function get_mock_group($group, $config = [], $instance = NULL)
     {
         if ($instance === NULL) {
             $instance = $this->get_mock_config();
@@ -54,7 +54,7 @@ class Kohana_Config_GroupTest extends Kohana_Unittest_TestCase
     public function test_loads_group_name_and_values_in_constructor()
     {
         $group_name = 'information';
-        $group_values = array('var' => 'value');
+        $group_values = ['var' => 'value'];
 
         $group = $this->get_mock_group($group_name, $group_values);
 
@@ -77,7 +77,7 @@ class Kohana_Config_GroupTest extends Kohana_Unittest_TestCase
     {
         $group = $this->get_mock_group('informatica');
 
-        $this->assertSame(array(), $group->getArrayCopy());
+        $this->assertSame([], $group->getArrayCopy());
     }
 
     /**
@@ -88,7 +88,7 @@ class Kohana_Config_GroupTest extends Kohana_Unittest_TestCase
      */
     public function test_get_fetches_config_value()
     {
-        $group = $this->get_mock_group('kohana', array('status' => 'awesome'));
+        $group = $this->get_mock_group('kohana', ['status' => 'awesome']);
 
         $this->assertSame('awesome', $group->get('status'));
     }
@@ -116,7 +116,7 @@ class Kohana_Config_GroupTest extends Kohana_Unittest_TestCase
      */
     public function test_set_modifies_existing_config()
     {
-        $group = $this->get_mock_group('kohana', array('status' => 'pre-awesome'));
+        $group = $this->get_mock_group('kohana', ['status' => 'pre-awesome']);
 
         $group->set('status', 'awesome');
 
@@ -126,7 +126,7 @@ class Kohana_Config_GroupTest extends Kohana_Unittest_TestCase
     /**
      * If we modify the config via set() [$var] or ->$var then the change should be passed to
      * the parent config instance so that the config writers can be notified.
-     * 
+     *
      * The modification to the config should also stick
      *
      * @test
@@ -142,7 +142,7 @@ class Kohana_Config_GroupTest extends Kohana_Unittest_TestCase
             ->method('_write_config')
             ->with('kohana', 'status', $this->LogicalOr('totally', 'maybe', 'not'));
 
-        $group = $this->get_mock_group('kohana', array('status' => 'kool'), $mock);
+        $group = $this->get_mock_group('kohana', ['status' => 'kool'], $mock);
 
         $group['status'] = 'totally';
 
@@ -159,21 +159,22 @@ class Kohana_Config_GroupTest extends Kohana_Unittest_TestCase
      */
     public function test_as_array_returns_full_array()
     {
-        $config = $this->get_mock_group('something', array('var' => 'value'));
+        $config = $this->get_mock_group('something', ['var' => 'value']);
 
-        $this->assertSame(array('var' => 'value'), $config->as_array());
+        $this->assertSame(['var' => 'value'], $config->as_array());
 
         // Now change some vars **ahem**
         $config->var = 'LOLCAT';
         $config->lolcat = 'IN UR CODE';
 
-        $this->assertSame(
-            array('var' => 'LOLCAT', 'lolcat' => 'IN UR CODE'), $config->as_array()
-        );
+        $this->assertSame([
+            'var' => 'LOLCAT',
+            'lolcat' => 'IN UR CODE'
+            ], $config->as_array());
 
         // And if we remove an item it should be removed from the exported array
         unset($config['lolcat']);
-        $this->assertSame(array('var' => 'LOLCAT'), $config->as_array());
+        $this->assertSame(['var' => 'LOLCAT'], $config->as_array());
     }
 
     /**
@@ -184,7 +185,7 @@ class Kohana_Config_GroupTest extends Kohana_Unittest_TestCase
      */
     public function test_to_string_serializes_array_output()
     {
-        $vars = array('kohana' => 'cool', 'unit_tests' => 'boring');
+        $vars = ['kohana' => 'cool', 'unit_tests' => 'boring'];
         $config = $this->get_mock_group('hehehe', $vars);
 
         $this->assertSame(serialize($vars), (string) $config);

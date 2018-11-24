@@ -39,9 +39,11 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
 
         self::$_original_routes = $routes_prop->getValue('Route');
 
-        $routes = array(
-            'ko_request_clienttest' => new Route('<controller>/<action>/<data>', array('data' => '.+'))
-            ) + self::$_original_routes;
+        $routes = [
+            'ko_request_clienttest' => new Route('<controller>/<action>/<data>', [
+                'data' => '.+'
+                ])
+            ] + self::$_original_routes;
 
         $routes_prop->setValue('Route', $routes);
     }
@@ -91,11 +93,11 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      */
     protected function _dummy_uri($status, $headers, $body)
     {
-        $data = array(
+        $data = [
             'status' => $status,
             'header' => $headers,
             'body' => $body
-        );
+        ];
         return "/requestclientdummy/fake" . '/' . urlencode(http_build_query($data));
     }
 
@@ -111,7 +113,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      */
     protected function _dummy_redirect_uri($status)
     {
-        return $this->_dummy_uri($status, array('Location' => $this->_dummy_uri(200, NULL, 'followed')), 'not-followed');
+        return $this->_dummy_uri($status, ['Location' => $this->_dummy_uri(200, NULL, 'followed')], 'not-followed');
     }
 
     /**
@@ -120,12 +122,27 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      */
     public function provider_follows_redirects()
     {
-        return array(
-            array(TRUE, $this->_dummy_uri(200, NULL, 'not-followed'), 'not-followed'),
-            array(TRUE, $this->_dummy_redirect_uri(200), 'not-followed'),
-            array(TRUE, $this->_dummy_redirect_uri(302), 'followed'),
-            array(FALSE, $this->_dummy_redirect_uri(302), 'not-followed'),
-        );
+        return [
+            [
+                TRUE,
+                $this->_dummy_uri(200, NULL, 'not-followed'),
+                'not-followed'
+            ],
+            [
+                TRUE,
+                $this->_dummy_redirect_uri(200),
+                'not-followed'
+            ],
+            [
+                TRUE,
+                $this->_dummy_redirect_uri(302),
+                'followed'],
+            [
+                FALSE,
+                $this->_dummy_redirect_uri(302),
+                'not-followed'
+            ],
+        ];
     }
 
     /**
@@ -139,7 +156,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      */
     public function test_follows_redirects($follow, $request_url, $expect_body)
     {
-        $response = Request::factory($request_url, array('follow' => $follow))
+        $response = Request::factory($request_url, ['follow' => $follow])
             ->execute();
 
         $data = json_decode($response->body(), TRUE);
@@ -151,16 +168,15 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      */
     public function test_follows_with_headers()
     {
-        $response = Request::factory(
-                $this->_dummy_redirect_uri(301), array(
+        $response = Request::factory($this->_dummy_redirect_uri(301), [
                 'follow' => TRUE,
-                'follow_headers' => array('Authorization', 'X-Follow-With-Value')
-            ))
-            ->headers(array(
+                'follow_headers' => ['Authorization', 'X-Follow-With-Value']
+            ])
+            ->headers([
                 'Authorization' => 'follow',
                 'X-Follow-With-Value' => 'follow',
                 'X-Not-In-Follow' => 'no-follow'
-            ))
+            ])
             ->execute();
 
         $data = json_decode($response->body(), TRUE);
@@ -179,12 +195,11 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      */
     public function test_follow_does_not_add_extra_headers()
     {
-        $response = Request::factory(
-                $this->_dummy_redirect_uri(301), array(
+        $response = Request::factory($this->_dummy_redirect_uri(301), [
                 'follow' => TRUE,
-                'follow_headers' => array('Authorization')
-            ))
-            ->headers(array())
+                'follow_headers' => ['Authorization']
+            ])
+            ->headers([])
             ->execute();
 
         $data = json_decode($response->body(), TRUE);
@@ -200,14 +215,14 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      */
     public function provider_follows_with_strict_method()
     {
-        return array(
-            array(201, NULL, Request::POST, Request::GET),
-            array(301, NULL, Request::GET, Request::GET),
-            array(302, TRUE, Request::POST, Request::POST),
-            array(302, FALSE, Request::POST, Request::GET),
-            array(303, NULL, Request::POST, Request::GET),
-            array(307, NULL, Request::POST, Request::POST),
-        );
+        return [
+            [201, NULL, Request::POST, Request::GET],
+            [301, NULL, Request::GET, Request::GET],
+            [302, TRUE, Request::POST, Request::POST],
+            [302, FALSE, Request::POST, Request::GET],
+            [303, NULL, Request::POST, Request::GET],
+            [307, NULL, Request::POST, Request::POST],
+        ];
     }
 
     /**
@@ -223,10 +238,10 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      */
     public function test_follows_with_strict_method($status_code, $strict_redirect, $orig_method, $expect_method)
     {
-        $response = Request::factory($this->_dummy_redirect_uri($status_code), array(
+        $response = Request::factory($this->_dummy_redirect_uri($status_code), [
                 'follow' => TRUE,
                 'strict_redirect' => $strict_redirect
-            ))
+            ])
             ->method($orig_method)
             ->execute();
 
@@ -243,11 +258,11 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      */
     public function provider_follows_with_body_if_not_get()
     {
-        return array(
-            array('GET', '301', NULL),
-            array('POST', '303', NULL),
-            array('POST', '307', 'foo-bar')
-        );
+        return [
+            ['GET', '301', NULL],
+            ['POST', '303', NULL],
+            ['POST', '307', 'foo-bar'],
+        ];
     }
 
     /**
@@ -264,7 +279,9 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      */
     public function test_follows_with_body_if_not_get($original_method, $status, $expect_body)
     {
-        $response = Request::factory($this->_dummy_redirect_uri($status), array('follow' => TRUE))
+        $response = Request::factory($this->_dummy_redirect_uri($status), [
+                'follow' => TRUE
+            ])
             ->method($original_method)
             ->body('foo-bar')
             ->execute();
@@ -282,72 +299,74 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      */
     public function provider_triggers_header_callbacks()
     {
-        return array(
+        return [
             // Straightforward response manipulation
-            array(
-                array('X-test-1' =>
-                    function($request, $response, $client) {
-                        $response->body(json_encode(array('body' => 'test1-body-changed')));
+            [
+                [
+                    'X-test-1' => function($request, $response, $client) {
+                        $response->body(json_encode(['body' => 'test1-body-changed']));
                         return $response;
-                    }),
-                $this->_dummy_uri(200, array('X-test-1' => 'foo'), 'test1-body'),
+                    }
+                ],
+                $this->_dummy_uri(200, ['X-test-1' => 'foo'], 'test1-body'),
                 'test1-body-changed'
-            ),
+            ],
             // Subsequent request execution
-            array(
-                array('X-test-2' =>
-                    function($request, $response, $client) {
-                        return Request::factory($response->headers('X-test-2'));
-                    }),
-                $this->_dummy_uri(200, array('X-test-2' => $this->_dummy_uri(200, NULL, 'test2-subsequent-body')), 'test2-orig-body'),
-                'test2-subsequent-body'
-            ),
-            // No callbacks triggered
-            array(
-                array('X-test-3' =>
-                    function ($request, $response, $client) {
-                        throw new Exception("Unexpected execution of X-test-3 callback");
-                    }),
-                $this->_dummy_uri(200, array('X-test-1' => 'foo'), 'test3-body'),
-                'test3-body'
-            ),
-            // Callbacks not triggered once a previous callback has created a new response
-            array(
-                array(
-                    'X-test-1' =>
-                    function($request, $response, $client) {
-                        return Request::factory($response->headers('X-test-1'));
-                    },
-                    'X-test-2' =>
-                    function($request, $response, $client) {
+            [
+                [
+                    'X-test-2' => function($request, $response, $client) {
                         return Request::factory($response->headers('X-test-2'));
                     }
-                ),
-                $this->_dummy_uri(200, array(
+                ],
+                $this->_dummy_uri(200, [
+                    'X-test-2' => $this->_dummy_uri(200, NULL, 'test2-subsequent-body')
+                    ], 'test2-orig-body'),
+                'test2-subsequent-body'
+            ],
+            // No callbacks triggered
+            [
+                [
+                    'X-test-3' => function ($request, $response, $client) {
+                        throw new Exception("Unexpected execution of X-test-3 callback");
+                    }
+                ],
+                $this->_dummy_uri(200, ['X-test-1' => 'foo'], 'test3-body'),
+                'test3-body'
+            ],
+            // Callbacks not triggered once a previous callback has created a new response
+            [
+                [
+                    'X-test-1' => function($request, $response, $client) {
+                        return Request::factory($response->headers('X-test-1'));
+                    },
+                    'X-test-2' => function($request, $response, $client) {
+                        return Request::factory($response->headers('X-test-2'));
+                    }
+                ],
+                $this->_dummy_uri(200, [
                     'X-test-1' => $this->_dummy_uri(200, NULL, 'test1-subsequent-body'),
                     'X-test-2' => $this->_dummy_uri(200, NULL, 'test2-subsequent-body')
-                    ), 'test2-orig-body'),
+                    ], 'test2-orig-body'),
                 'test1-subsequent-body'
-            ),
+            ],
             // Nested callbacks are supported if callback creates new request
-            array(
-                array(
-                    'X-test-1' =>
-                    function($request, $response, $client) {
+            [
+                [
+                    'X-test-1' => function($request, $response, $client) {
                         return Request::factory($response->headers('X-test-1'));
                     },
-                    'X-test-2' =>
-                    function($request, $response, $client) {
+                    'X-test-2' => function($request, $response, $client) {
                         return Request::factory($response->headers('X-test-2'));
                     }
-                ),
-                $this->_dummy_uri(200, array(
-                    'X-test-1' => $this->_dummy_uri(
-                        200, array('X-test-2' => $this->_dummy_uri(200, NULL, 'test2-subsequent-body')), 'test1-subsequent-body'),
-                    ), 'test-orig-body'),
+                ],
+                $this->_dummy_uri(200, [
+                    'X-test-1' => $this->_dummy_uri(200, [
+                        'X-test-2' => $this->_dummy_uri(200, NULL, 'test2-subsequent-body')
+                        ], 'test1-subsequent-body')
+                    ], 'test-orig-body'),
                 'test2-subsequent-body'
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -362,7 +381,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      */
     public function test_triggers_header_callbacks($callbacks, $uri, $expect_body)
     {
-        $response = Request::factory($uri, array('header_callbacks' => $callbacks))
+        $response = Request::factory($uri, ['header_callbacks' => $callbacks])
             ->execute();
 
         $data = json_decode($response->body(), TRUE);
@@ -377,26 +396,25 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      */
     public function test_deep_recursive_callbacks_are_aborted()
     {
-        $uri = $this->_dummy_uri('200', array('x-cb' => '1'), 'body');
+        $uri = $this->_dummy_uri('200', ['x-cb' => '1'], 'body');
 
         // Temporary property to track requests
         $this->requests_executed = 0;
 
         try {
-            $response = Request::factory(
-                    $uri, array(
-                    'header_callbacks' => array(
-                        'x-cb' =>
-                        function ($request, $response, $client) {
+            $response = Request::factory($uri, [
+                    'header_callbacks' => [
+                        'x-cb' => function ($request, $response, $client) {
                             $client->callback_params('testcase')->requests_executed++;
                             // Recurse into a new request
                             return Request::factory($request->uri());
-                        }),
+                        }
+                    ],
                     'max_callback_depth' => 2,
-                    'callback_params' => array(
-                        'testcase' => $this,
-                    )
-                ))
+                    'callback_params' => [
+                        'testcase' => $this
+                    ]
+                ])
                 ->execute();
         } catch (Request_Client_Recursion_Exception $e) {
             // Verify that two requests were executed
@@ -429,18 +447,20 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
     public function test_client_can_hold_params_for_callbacks()
     {
         // Test with param in constructor
-        $request = Request::factory(
-                $this->_dummy_uri(
-                    302, array('Location' => $this->_dummy_uri('200', array('X-cb' => '1'), 'followed')), 'not-followed'), array(
+        $request = Request::factory($this->_dummy_uri(302, [
+                    'Location' => $this->_dummy_uri('200', [
+                        'X-cb' => '1'
+                        ], 'followed')
+                    ], 'not-followed'), [
                 'follow' => TRUE,
-                'header_callbacks' => array(
-                    'x-cb' => array($this, 'callback_assert_params'),
+                'header_callbacks' => [
+                    'x-cb' => [$this, 'callback_assert_params'],
                     'location' => 'Request_Client::on_header_location',
-                ),
-                'callback_params' => array(
+                ],
+                'callback_params' => [
                     'constructor_param' => 'foo'
-                )
-        ));
+                ]
+        ]);
 
         // Test passing param to setter
         $request->client()->callback_params('setter_param', 'bar');
@@ -469,13 +489,13 @@ class Controller_RequestClientDummy extends Controller
     {
         parse_str(urldecode($this->request->param('data')), $data);
         $this->response->status(Arr::get($data, 'status', 200));
-        $this->response->headers(Arr::get($data, 'header', array()));
-        $this->response->body(json_encode(array(
+        $this->response->headers(Arr::get($data, 'header', []));
+        $this->response->body(json_encode([
             'body' => Arr::get($data, 'body', 'ok'),
             'rq_headers' => $this->request->headers(),
             'rq_body' => $this->request->body(),
             'rq_method' => $this->request->method(),
-        )));
+        ]));
     }
 
 }

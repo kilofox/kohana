@@ -30,10 +30,10 @@ class Kohana_ResponseTest extends Unittest_TestCase
             ->method('__toString')
             ->will($this->returnValue('foo'));
 
-        return array(
-            array('unit test', 'unit test'),
-            array($view, 'foo'),
-        );
+        return [
+            ['unit test', 'unit test'],
+            [$view, 'foo'],
+        ];
     }
 
     /**
@@ -61,11 +61,11 @@ class Kohana_ResponseTest extends Unittest_TestCase
      */
     public function provider_body_string_zero()
     {
-        return array(
-            array('0', '0'),
-            array("0", '0'),
-            array(0, '0')
-        );
+        return [
+            ['0', '0'],
+            ["0", '0'],
+            [0, '0'],
+        ];
     }
 
     /**
@@ -92,38 +92,35 @@ class Kohana_ResponseTest extends Unittest_TestCase
      */
     public function provider_cookie_set()
     {
-        return array(
-            array(
+        return [
+            [
                 'test1',
                 'foo',
-                array(
-                    'test1' => array(
+                [
+                    'test1' => [
                         'value' => 'foo',
                         'expiration' => Cookie::$expiration
-                    ),
-                )
-            ),
-            array(
-                array(
+                    ],
+                ]
+            ],
+            [
+                [
                     'test2' => 'stfu',
-                    'test3' => array(
-                        'value' => 'snafu',
-                        'expiration' => 123456789
-                    )
-                ),
+                    'test3' => ['value' => 'snafu', 'expiration' => 123456789]
+                ],
                 NULL,
-                array(
-                    'test2' => array(
+                [
+                    'test2' => [
                         'value' => 'stfu',
                         'expiration' => Cookie::$expiration
-                    ),
-                    'test3' => array(
+                    ],
+                    'test3' => [
                         'value' => 'snafu',
                         'expiration' => 123456789
-                    )
-                )
-            )
-        );
+                    ]
+                ]
+            ],
+        ];
     }
 
     /**
@@ -161,7 +158,7 @@ class Kohana_ResponseTest extends Unittest_TestCase
         $response = new Response;
 
         // Test for empty cookies
-        $this->assertSame(array(), $response->cookie());
+        $this->assertSame([], $response->cookie());
 
         // Test for no specific cookie
         $this->assertNull($response->cookie('foobar'));

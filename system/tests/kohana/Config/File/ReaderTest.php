@@ -18,7 +18,7 @@ defined('SYSPATH') OR die('Kohana bootstrap needs to be included before tests ru
 class Kohana_Config_File_ReaderTest extends Kohana_Unittest_TestCase
 {
     /**
-     * If we don't pass a directory to the reader then it should assume 
+     * If we don't pass a directory to the reader then it should assume
      * that we want to search the dir 'config' by default
      *
      * @test
@@ -32,7 +32,7 @@ class Kohana_Config_File_ReaderTest extends Kohana_Unittest_TestCase
     }
 
     /**
-     * If we pass a directory to the constructor of the file reader it 
+     * If we pass a directory to the constructor of the file reader it
      * should change the search directory
      *
      * @test
@@ -46,7 +46,7 @@ class Kohana_Config_File_ReaderTest extends Kohana_Unittest_TestCase
     }
 
     /**
-     * If the config dir does not exist then the function should just 
+     * If the config dir does not exist then the function should just
      * return an empty array
      *
      * @test
@@ -56,11 +56,11 @@ class Kohana_Config_File_ReaderTest extends Kohana_Unittest_TestCase
     {
         $config = new Kohana_Config_File_Reader('gafloogle');
 
-        $this->assertSame(array(), $config->load('values'));
+        $this->assertSame([], $config->load('values'));
     }
 
     /**
-     * If the requested config group does not exist then the reader 
+     * If the requested config group does not exist then the reader
      * should return an empty array
      *
      * @test
@@ -70,11 +70,11 @@ class Kohana_Config_File_ReaderTest extends Kohana_Unittest_TestCase
     {
         $config = new Kohana_Config_File_Reader;
 
-        $this->assertSame(array(), $config->load('gafloogle'));
+        $this->assertSame([], $config->load('gafloogle'));
     }
 
     /**
-     * Test that the load() function is actually loading the 
+     * Test that the load() function is actually loading the
      * configuration from the files.
      *
      * @test
@@ -86,11 +86,11 @@ class Kohana_Config_File_ReaderTest extends Kohana_Unittest_TestCase
 
         $values = $config->load('inflector');
 
-        // Due to the way the cascading filesystem works there could be 
-        // any number of modifications to the system config in the 
-        // actual output.  Therefore to increase compatability we just 
+        // Due to the way the cascading filesystem works there could be
+        // any number of modifications to the system config in the
+        // actual output.  Therefore to increase compatability we just
         // check that we've got an array and that it's not empty
-        $this->assertNotSame(array(), $values);
+        $this->assertNotSame([], $values);
         $this->assertInternalType('array', $values);
     }
 

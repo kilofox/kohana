@@ -29,7 +29,7 @@ class Kohana_LogTest extends Unittest_TestCase
     {
         $logger = new Log;
 
-        $this->assertAttributeSame(array(), '_messages', $logger);
+        $this->assertAttributeSame([], '_messages', $logger);
     }
 
     /**
@@ -43,7 +43,7 @@ class Kohana_LogTest extends Unittest_TestCase
     {
         $logger = new Log;
 
-        $this->assertAttributeSame(array(), '_writers', $logger);
+        $this->assertAttributeSame([], '_writers', $logger);
     }
 
     /**
@@ -61,9 +61,9 @@ class Kohana_LogTest extends Unittest_TestCase
 
         $this->assertSame($logger, $logger->attach($writer));
 
-        $this->assertAttributeSame(
-            array(spl_object_hash($writer) => array('object' => $writer, 'levels' => array())), '_writers', $logger
-        );
+        $this->assertAttributeSame([
+            spl_object_hash($writer) => ['object' => $writer, 'levels' => []]
+            ], '_writers', $logger);
     }
 
     /**
@@ -82,9 +82,12 @@ class Kohana_LogTest extends Unittest_TestCase
 
         $this->assertSame($logger, $logger->attach($writer, Log::NOTICE, Log::CRITICAL));
 
-        $this->assertAttributeSame(
-            array(spl_object_hash($writer) => array('object' => $writer, 'levels' => array(Log::CRITICAL, Log::ERROR, Log::WARNING, Log::NOTICE))), '_writers', $logger
-        );
+        $this->assertAttributeSame([
+            spl_object_hash($writer) => [
+                'object' => $writer,
+                'levels' => [Log::CRITICAL, Log::ERROR, Log::WARNING, Log::NOTICE]
+            ]
+            ], '_writers', $logger);
     }
 
     /**
@@ -102,7 +105,7 @@ class Kohana_LogTest extends Unittest_TestCase
 
         $this->assertSame($logger, $logger->detach($writer));
 
-        $this->assertAttributeSame(array(), '_writers', $logger);
+        $this->assertAttributeSame([], '_writers', $logger);
     }
 
 }

@@ -23,11 +23,11 @@ class Kohana_FormTest extends Unittest_TestCase
      * @var array
      */
     // @codingStandardsIgnoreStart
-    protected $environmentDefault = array(
+    protected $environmentDefault = [
         'Kohana::$base_url' => '/',
         'HTTP_HOST' => 'kohanaframework.org',
         'Kohana::$index_file' => '',
-    );
+    ];
 
     // @codingStandardsIgnoreEnd
     /**
@@ -37,24 +37,24 @@ class Kohana_FormTest extends Unittest_TestCase
      */
     public function provider_open()
     {
-        return array(
-            array(
-                array('', NULL),
-                array('action' => '')
-            ),
-            array(
-                array(NULL, NULL),
-                array('action' => '')
-            ),
-            array(
-                array('foo', NULL),
-                array('action' => '/foo')
-            ),
-            array(
-                array('foo', array('method' => 'get')),
-                array('action' => '/foo', 'method' => 'get')
-            ),
-        );
+        return [
+            [
+                ['', NULL],
+                ['action' => '']
+            ],
+            [
+                [NULL, NULL],
+                ['action' => '']
+            ],
+            [
+                ['foo', NULL],
+                ['action' => '/foo']
+            ],
+            [
+                ['foo', ['method' => 'get']],
+                ['action' => '/foo', 'method' => 'get']
+            ],
+        ];
     }
 
     /**
@@ -71,14 +71,14 @@ class Kohana_FormTest extends Unittest_TestCase
 
         $tag = Form::open($action, $attributes);
 
-        $matcher = array(
+        $matcher = [
             'tag' => 'form',
             // Default attributes
-            'attributes' => array(
+            'attributes' => [
                 'method' => 'post',
                 'accept-charset' => 'utf-8',
-            ),
-        );
+            ],
+        ];
 
         $matcher['attributes'] = $expected + $matcher['attributes'];
 
@@ -102,13 +102,13 @@ class Kohana_FormTest extends Unittest_TestCase
      */
     public function provider_input()
     {
-        return array(
+        return [
             // $value, $result
-            array('input', 'foo', 'bar', NULL, 'input'),
-            array('input', 'foo', NULL, NULL, 'input'),
-            array('hidden', 'foo', 'bar', NULL, 'hidden'),
-            array('password', 'foo', 'bar', NULL, 'password'),
-        );
+            ['input', 'foo', 'bar', NULL, 'input'],
+            ['input', 'foo', NULL, NULL, 'input'],
+            ['hidden', 'foo', 'bar', NULL, 'hidden'],
+            ['password', 'foo', 'bar', NULL, 'password'],
+        ];
     }
 
     /**
@@ -121,10 +121,10 @@ class Kohana_FormTest extends Unittest_TestCase
      */
     public function test_input($type, $name, $value, $attributes)
     {
-        $matcher = array(
+        $matcher = [
             'tag' => 'input',
-            'attributes' => array('name' => $name, 'type' => $type)
-        );
+            'attributes' => ['name' => $name, 'type' => $type]
+        ];
 
         // Form::input creates a text input
         if ($type === 'input') {
@@ -153,10 +153,10 @@ class Kohana_FormTest extends Unittest_TestCase
      */
     public function provider_file()
     {
-        return array(
+        return [
             // $value, $result
-            array('foo', NULL, '<input type="file" name="foo" />'),
-        );
+            ['foo', NULL, '<input type="file" name="foo" />'],
+        ];
     }
 
     /**
@@ -179,15 +179,15 @@ class Kohana_FormTest extends Unittest_TestCase
      */
     public function provider_check()
     {
-        return array(
+        return [
             // $value, $result
-            array('checkbox', 'foo', NULL, FALSE, NULL),
-            array('checkbox', 'foo', NULL, TRUE, NULL),
-            array('checkbox', 'foo', 'bar', TRUE, NULL),
-            array('radio', 'foo', NULL, FALSE, NULL),
-            array('radio', 'foo', NULL, TRUE, NULL),
-            array('radio', 'foo', 'bar', TRUE, NULL),
-        );
+            ['checkbox', 'foo', NULL, FALSE, NULL],
+            ['checkbox', 'foo', NULL, TRUE, NULL],
+            ['checkbox', 'foo', 'bar', TRUE, NULL],
+            ['radio', 'foo', NULL, FALSE, NULL],
+            ['radio', 'foo', NULL, TRUE, NULL],
+            ['radio', 'foo', 'bar', TRUE, NULL],
+        ];
     }
 
     /**
@@ -200,7 +200,10 @@ class Kohana_FormTest extends Unittest_TestCase
      */
     public function test_check($type, $name, $value, $checked, $attributes)
     {
-        $matcher = array('tag' => 'input', 'attributes' => array('name' => $name, 'type' => $type));
+        $matcher = [
+            'tag' => 'input',
+            'attributes' => ['name' => $name, 'type' => $type]
+        ];
 
         if ($value !== NULL) {
             $matcher['attributes']['value'] = $value;
@@ -225,14 +228,14 @@ class Kohana_FormTest extends Unittest_TestCase
      */
     public function provider_text()
     {
-        return array(
+        return [
             // $value, $result
-            array('textarea', 'foo', 'bar', NULL),
-            array('textarea', 'foo', 'bar', array('rows' => 20, 'cols' => 20)),
-            array('button', 'foo', 'bar', NULL),
-            array('label', 'foo', 'bar', NULL),
-            array('label', 'foo', NULL, NULL),
-        );
+            ['textarea', 'foo', 'bar', NULL],
+            ['textarea', 'foo', 'bar', ['rows' => 20, 'cols' => 20]],
+            ['button', 'foo', 'bar', NULL],
+            ['label', 'foo', 'bar', NULL],
+            ['label', 'foo', NULL, NULL],
+        ];
     }
 
     /**
@@ -245,16 +248,16 @@ class Kohana_FormTest extends Unittest_TestCase
      */
     public function test_text($type, $name, $body, $attributes)
     {
-        $matcher = array(
+        $matcher = [
             'tag' => $type,
-            'attributes' => array(),
+            'attributes' => [],
             'content' => $body,
-        );
+        ];
 
         if ($type !== 'label') {
-            $matcher['attributes'] = array('name' => $name);
+            $matcher['attributes'] = ['name' => $name];
         } else {
-            $matcher['attributes'] = array('for' => $name);
+            $matcher['attributes'] = ['for' => $name];
         }
 
 
@@ -274,16 +277,46 @@ class Kohana_FormTest extends Unittest_TestCase
      */
     public function provider_select()
     {
-        return array(
+        return [
             // $value, $result
-            array('foo', NULL, NULL, "<select name=\"foo\"></select>"),
-            array('foo', array('bar' => 'bar'), NULL, "<select name=\"foo\">\n<option value=\"bar\">bar</option>\n</select>"),
-            array('foo', array('bar' => 'bar'), 'bar', "<select name=\"foo\">\n<option value=\"bar\" selected=\"selected\">bar</option>\n</select>"),
-            array('foo', array('bar' => array('foo' => 'bar')), NULL, "<select name=\"foo\">\n<optgroup label=\"bar\">\n<option value=\"foo\">bar</option>\n</optgroup>\n</select>"),
-            array('foo', array('bar' => array('foo' => 'bar')), 'foo', "<select name=\"foo\">\n<optgroup label=\"bar\">\n<option value=\"foo\" selected=\"selected\">bar</option>\n</optgroup>\n</select>"),
+            [
+                'foo',
+                NULL,
+                NULL,
+                "<select name=\"foo\"></select>"
+            ],
+            [
+                'foo',
+                ['bar' => 'bar'],
+                NULL,
+                "<select name=\"foo\">\n<option value=\"bar\">bar</option>\n</select>"
+            ],
+            [
+                'foo',
+                ['bar' => 'bar'],
+                'bar',
+                "<select name=\"foo\">\n<option value=\"bar\" selected=\"selected\">bar</option>\n</select>"
+            ],
+            [
+                'foo',
+                ['bar' => ['foo' => 'bar']],
+                NULL,
+                "<select name=\"foo\">\n<optgroup label=\"bar\">\n<option value=\"foo\">bar</option>\n</optgroup>\n</select>"
+            ],
+            [
+                'foo',
+                ['bar' => ['foo' => 'bar']],
+                'foo',
+                "<select name=\"foo\">\n<optgroup label=\"bar\">\n<option value=\"foo\" selected=\"selected\">bar</option>\n</optgroup>\n</select>"
+            ],
             // #2286
-            array('foo', array('bar' => 'bar', 'unit' => 'test', 'foo' => 'foo'), array('bar', 'foo'), "<select name=\"foo\" multiple=\"multiple\">\n<option value=\"bar\" selected=\"selected\">bar</option>\n<option value=\"unit\">test</option>\n<option value=\"foo\" selected=\"selected\">foo</option>\n</select>"),
-        );
+            [
+                'foo',
+                ['bar' => 'bar', 'unit' => 'test', 'foo' => 'foo'],
+                ['bar', 'foo'],
+                "<select name=\"foo\" multiple=\"multiple\">\n<option value=\"bar\" selected=\"selected\">bar</option>\n<option value=\"unit\">test</option>\n<option value=\"foo\" selected=\"selected\">foo</option>\n</select>"
+            ],
+        ];
     }
 
     /**
@@ -307,10 +340,14 @@ class Kohana_FormTest extends Unittest_TestCase
      */
     public function provider_submit()
     {
-        return array(
+        return [
             // $value, $result
-            array('foo', 'Foobar!', '<input type="submit" name="foo" value="Foobar!" />'),
-        );
+            [
+                'foo',
+                'Foobar!',
+                '<input type="submit" name="foo" value="Foobar!" />'
+            ],
+        ];
     }
 
     /**
@@ -323,10 +360,14 @@ class Kohana_FormTest extends Unittest_TestCase
      */
     public function test_submit($name, $value, $expected)
     {
-        $matcher = array(
+        $matcher = [
             'tag' => 'input',
-            'attributes' => array('name' => $name, 'type' => 'submit', 'value' => $value)
-        );
+            'attributes' => [
+                'name' => $name,
+                'type' => 'submit',
+                'value' => $value
+            ]
+        ];
 
         $this->assertTag($matcher, Form::submit($name, $value));
     }
@@ -338,10 +379,15 @@ class Kohana_FormTest extends Unittest_TestCase
      */
     public function provider_image()
     {
-        return array(
+        return [
             // $value, $result
-            array('foo', 'bar', array('src' => 'media/img/login.png'), '<input type="image" name="foo" value="bar" src="/media/img/login.png" />'),
-        );
+            [
+                'foo',
+                'bar',
+                ['src' => 'media/img/login.png'],
+                '<input type="image" name="foo" value="bar" src="/media/img/login.png" />'
+            ],
+        ];
     }
 
     /**
@@ -366,18 +412,48 @@ class Kohana_FormTest extends Unittest_TestCase
      */
     function provider_label()
     {
-        return array(
+        return [
             // $value, $result
             // Single for provided
-            array('email', NULL, NULL, '<label for="email">Email</label>'),
-            array('email_address', NULL, NULL, '<label for="email_address">Email Address</label>'),
-            array('email-address', NULL, NULL, '<label for="email-address">Email Address</label>'),
+            [
+                'email',
+                NULL,
+                NULL,
+                '<label for="email">Email</label>'
+            ],
+            [
+                'email_address',
+                NULL,
+                NULL,
+                '<label for="email_address">Email Address</label>'
+            ],
+            [
+                'email-address',
+                NULL,
+                NULL,
+                '<label for="email-address">Email Address</label>'
+            ],
             // For and text values provided
-            array('name', 'First name', NULL, '<label for="name">First name</label>'),
+            [
+                'name',
+                'First name',
+                NULL,
+                '<label for="name">First name</label>'
+            ],
             // with attributes
-            array('lastname', 'Last name', array('class' => 'text'), '<label class="text" for="lastname">Last name</label>'),
-            array('lastname', 'Last name', array('class' => 'text', 'id' => 'txt_lastname'), '<label id="txt_lastname" class="text" for="lastname">Last name</label>'),
-        );
+            [
+                'lastname',
+                'Last name',
+                ['class' => 'text'],
+                '<label class="text" for="lastname">Last name</label>'
+            ],
+            [
+                'lastname',
+                'Last name',
+                ['class' => 'text', 'id' => 'txt_lastname'],
+                '<label id="txt_lastname" class="text" for="lastname">Last name</label>'
+            ],
+        ];
     }
 
     /**

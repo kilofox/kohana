@@ -28,11 +28,11 @@ class Kohana_ValidationTest extends Unittest_TestCase
      */
     public function test_factory_method_returns_instance_with_values()
     {
-        $values = array(
+        $values = [
             'this' => 'something else',
             'writing tests' => 'sucks',
             'why the hell' => 'amIDoingThis',
-        );
+        ];
 
         $instance = Validation::factory($values);
 
@@ -53,17 +53,21 @@ class Kohana_ValidationTest extends Unittest_TestCase
      */
     public function test_copy_copies_all_attributes_except_data()
     {
-        $validation = new Validation(array('foo' => 'bar', 'fud' => 'fear, uncertainty, doubt', 'num' => 9));
+        $validation = new Validation([
+            'foo' => 'bar',
+            'fud' => 'fear, uncertainty, doubt',
+            'num' => 9
+        ]);
 
         $validation->rule('num', 'is_int')->rule('foo', 'is_string');
 
-        $copy_data = array('foo' => 'no', 'fud' => 'maybe', 'num' => 42);
+        $copy_data = ['foo' => 'no', 'fud' => 'maybe', 'num' => 42];
 
         $copy = $validation->copy($copy_data);
 
         $this->assertNotSame($validation, $copy);
 
-        foreach (array('_rules', '_bound', '_labels', '_empty_rules', '_errors') as $attribute) {
+        foreach (['_rules', '_bound', '_labels', '_empty_rules', '_errors'] as $attribute) {
             // This is just an easy way to check that the attributes are identical
             // Without hardcoding the expected values
             $this->assertAttributeSame(
@@ -82,9 +86,9 @@ class Kohana_ValidationTest extends Unittest_TestCase
      */
     public function test_initially_there_are_no_labels()
     {
-        $validation = new Validation(array());
+        $validation = new Validation([]);
 
-        $this->assertAttributeSame(array(), '_labels', $validation);
+        $this->assertAttributeSame([], '_labels', $validation);
     }
 
     /**
@@ -98,19 +102,22 @@ class Kohana_ValidationTest extends Unittest_TestCase
      */
     public function test_label_adds_and_overwrites_label_and_returns_this()
     {
-        $validation = new Validation(array());
+        $validation = new Validation([]);
 
         $this->assertSame($validation, $validation->label('email', 'Email Address'));
 
-        $this->assertAttributeSame(array('email' => 'Email Address'), '_labels', $validation);
+        $this->assertAttributeSame([
+            'email' => 'Email Address'
+            ], '_labels', $validation);
 
         $this->assertSame($validation, $validation->label('email', 'Your Email'));
 
         $validation->label('name', 'Your Name');
 
-        $this->assertAttributeSame(
-            array('email' => 'Your Email', 'name' => 'Your Name'), '_labels', $validation
-        );
+        $this->assertAttributeSame([
+            'email' => 'Your Email',
+            'name' => 'Your Name'
+            ], '_labels', $validation);
     }
 
     /**
@@ -123,18 +130,21 @@ class Kohana_ValidationTest extends Unittest_TestCase
      */
     public function test_labels_adds_and_overwrites_multiple_labels_and_returns_this()
     {
-        $validation = new Validation(array());
-        $initial_data = array('kung fu' => 'fighting', 'fast' => 'cheetah');
+        $validation = new Validation([]);
+        $initial_data = ['kung fu' => 'fighting', 'fast' => 'cheetah'];
 
         $this->assertSame($validation, $validation->labels($initial_data));
 
         $this->assertAttributeSame($initial_data, '_labels', $validation);
 
-        $this->assertSame($validation, $validation->labels(array('fast' => 'lightning')));
+        $this->assertSame($validation, $validation->labels([
+                'fast' => 'lightning'
+        ]));
 
-        $this->assertAttributeSame(
-            array('fast' => 'lightning', 'kung fu' => 'fighting'), '_labels', $validation
-        );
+        $this->assertAttributeSame([
+            'fast' => 'lightning',
+            'kung fu' => 'fighting'
+            ], '_labels', $validation);
     }
 
     /**
@@ -147,9 +157,9 @@ class Kohana_ValidationTest extends Unittest_TestCase
      */
     public function test_bind_adds_and_overwrites_multiple_variables_and_returns_this()
     {
-        $validation = new Validation(array());
-        $data = array('kung fu' => 'fighting', 'fast' => 'cheetah');
-        $bound = array(':foo' => 'some value');
+        $validation = new Validation([]);
+        $data = ['kung fu' => 'fighting', 'fast' => 'cheetah'];
+        $bound = [':foo' => 'some value'];
 
         // Test binding an array of values
         $this->assertSame($validation, $validation->bind($bound));
@@ -157,7 +167,9 @@ class Kohana_ValidationTest extends Unittest_TestCase
 
         // Test binding one value
         $this->assertSame($validation, $validation->bind(':foo', 'some other value'));
-        $this->assertAttributeSame(array(':foo' => 'some other value'), '_bound', $validation);
+        $this->assertAttributeSame([
+            ':foo' => 'some other value'
+            ], '_bound', $validation);
     }
 
     /**
@@ -168,14 +180,14 @@ class Kohana_ValidationTest extends Unittest_TestCase
      */
     public function test_bound_callback()
     {
-        $data = array(
+        $data = [
             'kung fu' => 'fighting',
             'fast' => 'cheetah',
-        );
+        ];
         $validation = new Validation($data);
         $validation->bind(':class', 'Valid')
             // Use the bound value in a callback
-            ->rule('fast', array(':class', 'max_length'), array(':value', 2));
+            ->rule('fast', [':class', 'max_length'], [':value', 2]);
 
         // The rule should have run and check() should fail
         $this->assertSame($validation->check(), FALSE);
@@ -189,77 +201,76 @@ class Kohana_ValidationTest extends Unittest_TestCase
     public function provider_check()
     {
         // $data_array, $rules, $labels, $first_expected, $expected_error
-        return array(
-            array(
-                array('foo' => 'bar'),
-                array('foo' => array(array('not_empty', NULL))),
-                array(),
+        return [
+            [
+                ['foo' => 'bar'],
+                ['foo' => [['not_empty', NULL]]],
+                [],
                 TRUE,
-                array(),
-            ),
-            array(
-                array('unit' => 'test'),
-                array(
-                    'foo' => array(array('not_empty', NULL)),
-                    'unit' => array(array('min_length', array(':value', 6))
-                    ),
-                ),
-                array(),
+                []
+            ],
+            [
+                ['unit' => 'test'],
+                [
+                    'foo' => [['not_empty', NULL]],
+                    'unit' => [['min_length', [':value', 6]]]
+                ],
+                [],
                 FALSE,
-                array(
+                [
                     'foo' => 'foo must not be empty',
                     'unit' => 'unit must be at least 6 characters long'
-                ),
-            ),
-            array(
-                array('foo' => 'bar'),
-                array(
+                ]
+            ],
+            [
+                ['foo' => 'bar'],
+                [
                     // Tests wildcard rules
-                    TRUE => array(array('min_length', array(':value', 4))),
-                    'foo' => array(
-                        array('not_empty', NULL),
+                    TRUE => [['min_length', [':value', 4]]],
+                    'foo' => [
+                        ['not_empty', NULL],
                         // Tests the array syntax for callbacks
-                        array(array('Valid', 'exact_length'), array(':value', 3)),
+                        [['Valid', 'exact_length'], [':value', 3]],
                         // Tests the Class::method syntax for callbacks
-                        array('Valid::exact_length', array(':value', 3)),
+                        ['Valid::exact_length', [':value', 3]],
                         // Tests the lambda function syntax for callbacks
                         // Commented out for PHP 5.2 support
-                        // array(function($value){return TRUE;}, array(':value')),
+                        // [function($value){return TRUE;}, [':value']],
                         // Tests using a function as a rule
-                        array('is_string', array(':value')),
-                    ),
+                        ['is_string', [':value']]
+                    ],
                     // Tests that rules do not run on empty fields unless they are in _empty_rules
-                    'unit' => array(array('exact_length', array(':value', 4))),
-                ),
-                array(),
+                    'unit' => [['exact_length', [':value', 4]]]
+                ],
+                [],
                 FALSE,
-                array('foo' => 'foo must be at least 4 characters long'),
-            ),
+                ['foo' => 'foo must be at least 4 characters long']
+            ],
             // Switch things around and make :value an array
-            array(
-                array('foo' => array('test', 'data')),
-                array('foo' => array(array('in_array', array('kohana', ':value')))),
-                array(),
+            [
+                ['foo' => ['test', 'data']],
+                ['foo' => [['in_array', ['kohana', ':value']]]],
+                [],
                 FALSE,
-                array('foo' => 'foo must be one of the available options'),
-            ),
+                ['foo' => 'foo must be one of the available options']
+            ],
             // Test wildcard rules with no other rules
-            array(
-                array('foo' => array('test')),
-                array(TRUE => array(array('is_string', array(':value')))),
-                array('foo' => 'foo'),
+            [
+                ['foo' => ['test']],
+                [TRUE => [['is_string', [':value']]]],
+                ['foo' => 'foo'],
                 FALSE,
-                array('foo' => '1.foo.is_string'),
-            ),
+                ['foo' => '1.foo.is_string']
+            ],
             // Test array rules use method as error name
-            array(
-                array('foo' => 'test'),
-                array('foo' => array(array(array('Valid', 'min_length'), array(':value', 10)))),
-                array(),
+            [
+                ['foo' => 'test'],
+                ['foo' => [[['Valid', 'min_length'], [':value', 10]]]],
+                [],
                 FALSE,
-                array('foo' => 'foo must be at least 10 characters long'),
-            ),
-        );
+                ['foo' => 'foo must be at least 10 characters long']
+            ],
+        ];
     }
 
     /**
@@ -313,24 +324,19 @@ class Kohana_ValidationTest extends Unittest_TestCase
      */
     public function test_check_stops_when_error_added_by_callback()
     {
-        $validation = new Validation(array(
-            'foo' => 'foo',
-        ));
+        $validation = new Validation(['foo' => 'foo']);
 
         $validation
-            ->rule('foo', array($this, '_validation_callback'), array(':validation'))
+            ->rule('foo', [$this, '_validation_callback'], [':validation'])
             // This rule should never run
-            ->rule('foo', 'min_length', array(':value', 20));
+            ->rule('foo', 'min_length', [':value', 20]);
 
         $validation->check();
         $errors = $validation->errors();
 
-        $expected = array(
-            'foo' => array(
-                0 => '_validation_callback',
-                1 => NULL,
-            ),
-        );
+        $expected = [
+            'foo' => [0 => '_validation_callback', 1 => NULL],
+        ];
 
         $this->assertSame($errors, $expected);
     }
@@ -349,26 +355,26 @@ class Kohana_ValidationTest extends Unittest_TestCase
     public function provider_errors()
     {
         // [data, rules, expected], ...
-        return array(
+        return [
             // No Error
-            array(
-                array('username' => 'frank'),
-                array('username' => array(array('not_empty', NULL))),
-                array(),
-            ),
+            [
+                ['username' => 'frank'],
+                ['username' => [['not_empty', NULL]]],
+                []
+            ],
             // Error from message file
-            array(
-                array('username' => ''),
-                array('username' => array(array('not_empty', NULL))),
-                array('username' => 'username must not be empty'),
-            ),
+            [
+                ['username' => ''],
+                ['username' => [['not_empty', NULL]]],
+                ['username' => 'username must not be empty']
+            ],
             // No error message exists, display the path expected
-            array(
-                array('username' => 'John'),
-                array('username' => array(array('strpos', array(':value', 'Kohana')))),
-                array('username' => 'Validation.username.strpos'),
-            ),
-        );
+            [
+                ['username' => 'John'],
+                ['username' => [['strpos', [':value', 'Kohana']]]],
+                ['username' => 'Validation.username.strpos']
+            ],
+        ];
     }
 
     /**
@@ -404,15 +410,15 @@ class Kohana_ValidationTest extends Unittest_TestCase
     public function provider_translated_errors()
     {
         // [data, rules, expected], ...
-        return array(
-            array(
-                array('Spanish' => ''),
-                array('Spanish' => array(array('not_empty', NULL))),
+        return [
+            [
+                ['Spanish' => ''],
+                ['Spanish' => [['not_empty', NULL]]],
                 // Errors are not translated yet so only the label will translate
-                array('Spanish' => 'Español must not be empty'),
-                array('Spanish' => 'Spanish must not be empty'),
-            ),
-        );
+                ['Spanish' => 'Español must not be empty'],
+                ['Spanish' => 'Spanish must not be empty']
+            ],
+        ];
     }
 
     /**
@@ -459,8 +465,8 @@ class Kohana_ValidationTest extends Unittest_TestCase
      */
     public function test_parameter_labels()
     {
-        $validation = Validation::factory(array('foo' => 'bar'))
-            ->rule('foo', 'equals', array(':value', 'something'))
+        $validation = Validation::factory(['foo' => 'bar'])
+            ->rule('foo', 'equals', [':value', 'something'])
             ->label('something', 'Spanish');
 
         $current = i18n::lang();
@@ -468,8 +474,8 @@ class Kohana_ValidationTest extends Unittest_TestCase
 
         $validation->check();
 
-        $translated_expected = array('foo' => 'foo must equal Español');
-        $untranslated_expected = array('foo' => 'foo must equal Spanish');
+        $translated_expected = ['foo' => 'foo must equal Español'];
+        $untranslated_expected = ['foo' => 'foo must equal Spanish'];
 
         $result_1 = $validation->errors('Validation', TRUE);
         $result_2 = $validation->errors('Validation', 'en');
@@ -491,12 +497,12 @@ class Kohana_ValidationTest extends Unittest_TestCase
      */
     public function test_arrays_in_parameters()
     {
-        $validation = Validation::factory(array('foo' => 'bar'))
-            ->rule('foo', 'equals', array(':value', array('one', 'two')));
+        $validation = Validation::factory(['foo' => 'bar'])
+            ->rule('foo', 'equals', [':value', ['one', 'two']]);
 
         $validation->check();
 
-        $expected = array('foo' => 'foo must equal one, two');
+        $expected = ['foo' => 'foo must equal one, two'];
 
         $this->assertSame($expected, $validation->errors('Validation', FALSE));
     }
@@ -509,14 +515,14 @@ class Kohana_ValidationTest extends Unittest_TestCase
      */
     public function test_data_stays_unaltered()
     {
-        $validation = Validation::factory(array('foo' => 'bar'))
+        $validation = Validation::factory(['foo' => 'bar'])
             ->rule('something', 'not_empty');
 
         $before = $validation->data();
         $validation->check();
         $after = $validation->data();
 
-        $expected = array('foo' => 'bar');
+        $expected = ['foo' => 'bar'];
 
         $this->assertSame($expected, $before);
         $this->assertSame($expected, $after);
@@ -530,12 +536,12 @@ class Kohana_ValidationTest extends Unittest_TestCase
      */
     public function test_object_parameters_not_in_messages()
     {
-        $validation = Validation::factory(array('foo' => 'foo'))
-            ->rule('bar', 'matches', array(':validation', ':field', 'foo'));
+        $validation = Validation::factory(['foo' => 'foo'])
+            ->rule('bar', 'matches', [':validation', ':field', 'foo']);
 
         $validation->check();
         $errors = $validation->errors('validation');
-        $expected = array('bar' => 'bar must be the same as foo');
+        $expected = ['bar' => 'bar must be the same as foo'];
 
         $this->assertSame($expected, $errors);
     }
@@ -548,11 +554,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
      */
     public function test_as_array_returns_original_array()
     {
-        $data = array(
-            'one' => 'hello',
-            'two' => 'world',
-            'ten' => '',
-        );
+        $data = ['one' => 'hello', 'two' => 'world', 'ten' => ''];
 
         $validation = Validation::factory($data);
 
@@ -567,11 +569,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
      */
     public function test_data_returns_original_array()
     {
-        $data = array(
-            'one' => 'hello',
-            'two' => 'world',
-            'ten' => '',
-        );
+        $data = ['one' => 'hello', 'two' => 'world', 'ten' => ''];
 
         $validation = Validation::factory($data);
 
@@ -582,11 +580,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
     public function test_offsetExists()
     // @codingStandardsIgnoreEnd
     {
-        $array = array(
-            'one' => 'Hello',
-            'two' => 'World',
-            'ten' => NULL,
-        );
+        $array = ['one' => 'Hello', 'two' => 'World', 'ten' => NULL];
 
         $validation = Validation::factory($array);
 
@@ -601,7 +595,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
     {
         $this->setExpectedException('Kohana_Exception');
 
-        $validation = Validation::factory(array());
+        $validation = Validation::factory([]);
 
         // Validation is read-only
         $validation['field'] = 'something';
@@ -611,11 +605,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
     public function test_offsetGet()
     // @codingStandardsIgnoreEnd
     {
-        $array = array(
-            'one' => 'Hello',
-            'two' => 'World',
-            'ten' => NULL,
-        );
+        $array = ['one' => 'Hello', 'two' => 'World', 'ten' => NULL];
 
         $validation = Validation::factory($array);
 
@@ -630,9 +620,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
     {
         $this->setExpectedException('Kohana_Exception');
 
-        $validation = Validation::factory(array(
-                'one' => 'Hello, World!',
-        ));
+        $validation = Validation::factory(['one' => 'Hello, World!']);
 
         // Validation is read-only
         unset($validation['one']);
@@ -646,9 +634,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
      */
     public function test_error_type_check()
     {
-        $array = array(
-            'email' => 'not an email address',
-        );
+        $array = ['email' => 'not an email address'];
 
         $validation = Validation::factory($array)
             ->rule('email', 'not_empty')
@@ -670,22 +656,14 @@ class Kohana_ValidationTest extends Unittest_TestCase
     public function provider_rule_label_regex()
     {
         // $data, $field, $rules, $expected
-        return array(
-            array(
-                array(
-                    'email1' => '',
-                ),
+        return [
+            [
+                ['email1' => ''],
                 'email1',
-                array(
-                    array(
-                        'not_empty'
-                    )
-                ),
-                array(
-                    'email1' => 'email1 must not be empty'
-                ),
-            )
-        );
+                [['not_empty']],
+                ['email1' => 'email1 must not be empty']
+            ],
+        ];
     }
 
     /**

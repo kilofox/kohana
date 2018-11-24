@@ -25,20 +25,35 @@ class Kohana_ArrTest extends Unittest_TestCase
      */
     public function provider_callback()
     {
-        return array(
+        return [
             // Tests....
             // That no parameters returns null
-            array('function', array('function', NULL)),
+            [
+                'function',
+                ['function', NULL]
+            ],
             // That we can get an array of parameters values
-            array('function(1,2,3)', array('function', array('1', '2', '3'))),
+            [
+                'function(1,2,3)',
+                ['function', ['1', '2', '3']]
+            ],
             // That it's not just using the callback "function"
-            array('different_name(harry,jerry)', array('different_name', array('harry', 'jerry'))),
+            [
+                'different_name(harry,jerry)',
+                ['different_name', ['harry', 'jerry']]
+            ],
             // That static callbacks are parsed into arrays
-            array('kohana::appify(this)', array(array('kohana', 'appify'), array('this'))),
+            [
+                'kohana::appify(this)',
+                [['kohana', 'appify'], ['this']]
+            ],
             // Spaces are preserved in parameters
-            array('deal::make(me, my mate )', array(array('deal', 'make'), array('me', ' my mate ')))
+            [
+                'deal::make(me, my mate )',
+                [['deal', 'make'], ['me', ' my mate ']]
+            ],
             // TODO: add more cases
-        );
+        ];
     }
 
     /**
@@ -64,52 +79,83 @@ class Kohana_ArrTest extends Unittest_TestCase
      */
     public function provider_extract()
     {
-        return array(
-            array(
-                array('kohana' => 'awesome', 'blueflame' => 'was'),
-                array('kohana', 'cakephp', 'symfony'),
+        return [
+            [
+                [
+                    'kohana' => 'awesome',
+                    'blueflame' => 'was'
+                ],
+                ['kohana', 'cakephp', 'symfony'],
                 NULL,
-                array('kohana' => 'awesome', 'cakephp' => NULL, 'symfony' => NULL)
-            ),
+                [
+                    'kohana' => 'awesome',
+                    'cakephp' => NULL,
+                    'symfony' => NULL
+                ]
+            ],
             // I realise noone should EVER code like this in real life,
             // but unit testing is very very very very boring
-            array(
-                array('chocolate cake' => 'in stock', 'carrot cake' => 'in stock'),
-                array('carrot cake', 'humble pie'),
+            [
+                [
+                    'chocolate cake' => 'in stock',
+                    'carrot cake' => 'in stock'
+                ],
+                ['carrot cake', 'humble pie'],
                 'not in stock',
-                array('carrot cake' => 'in stock', 'humble pie' => 'not in stock'),
-            ),
-            array(
+                [
+                    'carrot cake' => 'in stock',
+                    'humble pie' => 'not in stock'
+                ]
+            ],
+            [
                 // Source Array
-                array('level1' => array('level2a' => 'value 1', 'level2b' => 'value 2')),
+                [
+                    'level1' => ['level2a' => 'value 1', 'level2b' => 'value 2']
+                ],
                 // Paths to extract
-                array('level1.level2a', 'level1.level2b'),
+                ['level1.level2a', 'level1.level2b'],
                 // Default
                 NULL,
                 // Expected Result
-                array('level1' => array('level2a' => 'value 1', 'level2b' => 'value 2')),
-            ),
-            array(
+                [
+                    'level1' => ['level2a' => 'value 1', 'level2b' => 'value 2']
+                ]
+            ],
+            [
                 // Source Array
-                array('level1a' => array('level2a' => 'value 1'), 'level1b' => array('level2b' => 'value 2')),
+                [
+                    'level1a' => ['level2a' => 'value 1'],
+                    'level1b' => ['level2b' => 'value 2']
+                ],
                 // Paths to extract
-                array('level1a', 'level1b.level2b'),
+                ['level1a', 'level1b.level2b'],
                 // Default
                 NULL,
                 // Expected Result
-                array('level1a' => array('level2a' => 'value 1'), 'level1b' => array('level2b' => 'value 2')),
-            ),
-            array(
+                [
+                    'level1a' => ['level2a' => 'value 1'],
+                    'level1b' => ['level2b' => 'value 2']
+                ]
+            ],
+            [
                 // Source Array
-                array('level1a' => array('level2a' => 'value 1'), 'level1b' => array('level2b' => 'value 2')),
+                [
+                    'level1a' => ['level2a' => 'value 1'],
+                    'level1b' => ['level2b' => 'value 2']
+                ],
                 // Paths to extract
-                array('level1a', 'level1b.level2b', 'level1c', 'level1d.notfound'),
+                ['level1a', 'level1b.level2b', 'level1c', 'level1d.notfound'],
                 // Default
                 'default',
                 // Expected Result
-                array('level1a' => array('level2a' => 'value 1'), 'level1b' => array('level2b' => 'value 2'), 'level1c' => 'default', 'level1d' => array('notfound' => 'default')),
-            ),
-        );
+                [
+                    'level1a' => ['level2a' => 'value 1'],
+                    'level1b' => ['level2b' => 'value 2'],
+                    'level1c' => 'default',
+                    'level1d' => ['notfound' => 'default']
+                ]
+            ],
+        ];
     }
 
     /**
@@ -137,17 +183,17 @@ class Kohana_ArrTest extends Unittest_TestCase
      */
     public function provider_pluck()
     {
-        return array(
-            array(
-                array(
-                    array('id' => 20, 'name' => 'John Smith'),
-                    array('name' => 'Linda'),
-                    array('id' => 25, 'name' => 'Fred'),
-                ),
+        return [
+            [
+                [
+                    ['id' => 20, 'name' => 'John Smith'],
+                    ['name' => 'Linda'],
+                    ['id' => 25, 'name' => 'Fred'],
+                ],
                 'id',
-                array(20, 25)
-            ),
-        );
+                [20, 25]
+            ],
+        ];
     }
 
     /**
@@ -174,14 +220,14 @@ class Kohana_ArrTest extends Unittest_TestCase
      */
     public function provider_get()
     {
-        return array(
-            array(array('uno', 'dos', 'tress'), 1, NULL, 'dos'),
-            array(array('we' => 'can', 'make' => 'change'), 'we', NULL, 'can'),
-            array(array('uno', 'dos', 'tress'), 10, NULL, NULL),
-            array(array('we' => 'can', 'make' => 'change'), 'he', NULL, NULL),
-            array(array('we' => 'can', 'make' => 'change'), 'he', 'who', 'who'),
-            array(array('we' => 'can', 'make' => 'change'), 'he', array('arrays'), array('arrays')),
-        );
+        return [
+            [['uno', 'dos', 'tress'], 1, NULL, 'dos'],
+            [['we' => 'can', 'make' => 'change'], 'we', NULL, 'can'],
+            [['uno', 'dos', 'tress'], 10, NULL, NULL],
+            [['we' => 'can', 'make' => 'change'], 'he', NULL, NULL],
+            [['we' => 'can', 'make' => 'change'], 'he', 'who', 'who'],
+            [['we' => 'can', 'make' => 'change'], 'he', ['arrays'], ['arrays']],
+        ];
     }
 
     /**
@@ -208,10 +254,16 @@ class Kohana_ArrTest extends Unittest_TestCase
      */
     public function provider_is_assoc()
     {
-        return array(
-            array(array('one', 'two', 'three'), FALSE),
-            array(array('one' => 'o clock', 'two' => 'o clock', 'three' => 'o clock'), TRUE),
-        );
+        return [
+            [
+                ['one', 'two', 'three'],
+                FALSE
+            ],
+            [
+                ['one' => 'o clock', 'two' => 'o clock', 'three' => 'o clock'],
+                TRUE
+            ],
+        ];
     }
 
     /**
@@ -236,13 +288,13 @@ class Kohana_ArrTest extends Unittest_TestCase
      */
     public function provider_is_array()
     {
-        return array(
-            array($a = array('one', 'two', 'three'), TRUE),
-            array(new ArrayObject($a), TRUE),
-            array(new ArrayIterator($a), TRUE),
-            array('not an array', FALSE),
-            array(new stdClass, FALSE),
-        );
+        return [
+            [$a = ['one', 'two', 'three'], TRUE],
+            [new ArrayObject($a), TRUE],
+            [new ArrayIterator($a), TRUE],
+            ['not an array', FALSE],
+            [new stdClass, FALSE],
+        ];
     }
 
     /**
@@ -262,121 +314,121 @@ class Kohana_ArrTest extends Unittest_TestCase
 
     public function provider_merge()
     {
-        return array(
+        return [
             // Test how it merges arrays and sub arrays with assoc keys
-            array(
-                array('name' => 'mary', 'children' => array('fred', 'paul', 'sally', 'jane')),
-                array('name' => 'john', 'children' => array('fred', 'paul', 'sally', 'jane')),
-                array('name' => 'mary', 'children' => array('jane')),
-            ),
+            [
+                ['name' => 'mary', 'children' => ['fred', 'paul', 'sally', 'jane']],
+                ['name' => 'john', 'children' => ['fred', 'paul', 'sally', 'jane']],
+                ['name' => 'mary', 'children' => ['jane']]
+            ],
             // See how it merges sub-arrays with numerical indexes
-            array(
-                array(array('test1'), array('test2'), array('test3')),
-                array(array('test1'), array('test2')),
-                array(array('test2'), array('test3')),
-            ),
-            array(
-                array(array(array('test1')), array(array('test2')), array(array('test3'))),
-                array(array(array('test1')), array(array('test2'))),
-                array(array(array('test2')), array(array('test3'))),
-            ),
-            array(
-                array('a' => array('test1', 'test2'), 'b' => array('test2', 'test3')),
-                array('a' => array('test1'), 'b' => array('test2')),
-                array('a' => array('test2'), 'b' => array('test3')),
-            ),
-            array(
-                array('digits' => array(0, 1, 2, 3)),
-                array('digits' => array(0, 1)),
-                array('digits' => array(2, 3)),
-            ),
+            [
+                [['test1'], ['test2'], ['test3']],
+                [['test1'], ['test2']],
+                [['test2'], ['test3']]
+            ],
+            [
+                [[['test1']], [['test2']], [['test3']]],
+                [[['test1']], [['test2']]],
+                [[['test2']], [['test3']]]
+            ],
+            [
+                ['a' => ['test1', 'test2'], 'b' => ['test2', 'test3']],
+                ['a' => ['test1'], 'b' => ['test2']],
+                ['a' => ['test2'], 'b' => ['test3']]
+            ],
+            [
+                ['digits' => [0, 1, 2, 3]],
+                ['digits' => [0, 1]],
+                ['digits' => [2, 3]]
+            ],
             // See how it manages merging items with numerical indexes
-            array(
-                array(0, 1, 2, 3),
-                array(0, 1),
-                array(2, 3),
-            ),
+            [
+                [0, 1, 2, 3],
+                [0, 1],
+                [2, 3]
+            ],
             // Try and get it to merge assoc. arrays recursively
-            array(
-                array('foo' => 'bar', array('temp' => 'life')),
-                array('foo' => 'bin', array('temp' => 'name')),
-                array('foo' => 'bar', array('temp' => 'life')),
-            ),
+            [
+                ['foo' => 'bar', ['temp' => 'life']],
+                ['foo' => 'bin', ['temp' => 'name']],
+                ['foo' => 'bar', ['temp' => 'life']]
+            ],
             // Bug #3139
-            array(
-                array('foo' => array('bar')),
-                array('foo' => 'bar'),
-                array('foo' => array('bar')),
-            ),
-            array(
-                array('foo' => 'bar'),
-                array('foo' => array('bar')),
-                array('foo' => 'bar'),
-            ),
+            [
+                ['foo' => ['bar']],
+                ['foo' => 'bar'],
+                ['foo' => ['bar']]
+            ],
+            [
+                ['foo' => 'bar'],
+                ['foo' => ['bar']],
+                ['foo' => 'bar']
+            ],
             // data set #9
             // Associative, Associative
-            array(
-                array('a' => 'K', 'b' => 'K', 'c' => 'L'),
-                array('a' => 'J', 'b' => 'K'),
-                array('a' => 'K', 'c' => 'L'),
-            ),
+            [
+                ['a' => 'K', 'b' => 'K', 'c' => 'L'],
+                ['a' => 'J', 'b' => 'K'],
+                ['a' => 'K', 'c' => 'L']
+            ],
             // Associative, Indexed
-            array(
-                array('a' => 'J', 'b' => 'K', 'L'),
-                array('a' => 'J', 'b' => 'K'),
-                array('K', 'L'),
-            ),
+            [
+                ['a' => 'J', 'b' => 'K', 'L'],
+                ['a' => 'J', 'b' => 'K'],
+                ['K', 'L']
+            ],
             // Associative, Mixed
-            array(
-                array('a' => 'J', 'b' => 'K', 'K', 'c' => 'L'),
-                array('a' => 'J', 'b' => 'K'),
-                array('K', 'c' => 'L'),
-            ),
+            [
+                ['a' => 'J', 'b' => 'K', 'K', 'c' => 'L'],
+                ['a' => 'J', 'b' => 'K'],
+                ['K', 'c' => 'L']
+            ],
             // data set #12
             // Indexed, Associative
-            array(
-                array('J', 'K', 'a' => 'K', 'c' => 'L'),
-                array('J', 'K'),
-                array('a' => 'K', 'c' => 'L'),
-            ),
+            [
+                ['J', 'K', 'a' => 'K', 'c' => 'L'],
+                ['J', 'K'],
+                ['a' => 'K', 'c' => 'L']
+            ],
             // Indexed, Indexed
-            array(
-                array('J', 'K', 'L'),
-                array('J', 'K'),
-                array('K', 'L'),
-            ),
+            [
+                ['J', 'K', 'L'],
+                ['J', 'K'],
+                ['K', 'L']
+            ],
             // Indexed, Mixed
-            array(
-                array('K', 'K', 'c' => 'L'),
-                array('J', 'K'),
-                array('K', 'c' => 'L'),
-            ),
+            [
+                ['K', 'K', 'c' => 'L'],
+                ['J', 'K'],
+                ['K', 'c' => 'L']
+            ],
             // data set #15
             // Mixed, Associative
-            array(
-                array('a' => 'K', 'K', 'c' => 'L'),
-                array('a' => 'J', 'K'),
-                array('a' => 'K', 'c' => 'L'),
-            ),
+            [
+                ['a' => 'K', 'K', 'c' => 'L'],
+                ['a' => 'J', 'K'],
+                ['a' => 'K', 'c' => 'L']
+            ],
             // Mixed, Indexed
-            array(
-                array('a' => 'J', 'K', 'L'),
-                array('a' => 'J', 'K'),
-                array('J', 'L'),
-            ),
+            [
+                ['a' => 'J', 'K', 'L'],
+                ['a' => 'J', 'K'],
+                ['J', 'L']
+            ],
             // Mixed, Mixed
-            array(
-                array('a' => 'K', 'L'),
-                array('a' => 'J', 'K'),
-                array('a' => 'K', 'L'),
-            ),
+            [
+                ['a' => 'K', 'L'],
+                ['a' => 'J', 'K'],
+                ['a' => 'K', 'L']
+            ],
             // Bug #3141
-            array(
-                array('servers' => array(array('1.1.1.1', 4730), array('2.2.2.2', 4730))),
-                array('servers' => array(array('1.1.1.1', 4730))),
-                array('servers' => array(array('2.2.2.2', 4730))),
-            ),
-        );
+            [
+                ['servers' => [['1.1.1.1', 4730], ['2.2.2.2', 4730]]],
+                ['servers' => [['1.1.1.1', 4730]]],
+                ['servers' => [['2.2.2.2', 4730]]]
+            ],
+        ];
     }
 
     /**
@@ -398,45 +450,118 @@ class Kohana_ArrTest extends Unittest_TestCase
      */
     public function provider_path()
     {
-        $array = array(
-            'foobar' => array('definition' => 'lost'),
+        $array = [
+            'foobar' => ['definition' => 'lost'],
             'kohana' => 'awesome',
-            'users' => array(
-                1 => array('name' => 'matt'),
-                2 => array('name' => 'john', 'interests' => array('hocky' => array('length' => 2), 'football' => array())),
+            'users' => [
+                1 => ['name' => 'matt'],
+                2 => [
+                    'name' => 'john',
+                    'interests' => [
+                        'hocky' => ['length' => 2],
+                        'football' => []
+                    ]
+                ],
                 3 => 'frank', // Issue #3194
-            ),
-            'object' => new ArrayObject(array('iterator' => TRUE)), // Iterable object should work exactly the same
-        );
+            ],
+            // Iterable object should work exactly the same
+            'object' => new ArrayObject(['iterator' => TRUE]),
+        ];
 
-        return array(
+        return [
             // Tests returns normal values
-            array($array['foobar'], $array, 'foobar'),
-            array($array['kohana'], $array, 'kohana'),
-            array($array['foobar']['definition'], $array, 'foobar.definition'),
+            [
+                $array['foobar'],
+                $array,
+                'foobar'
+            ],
+            [
+                $array['kohana'],
+                $array,
+                'kohana'
+            ],
+            [
+                $array['foobar']['definition'],
+                $array,
+                'foobar.definition'
+            ],
             // Custom delimiters
-            array($array['foobar']['definition'], $array, 'foobar/definition', NULL, '/'),
+            [
+                $array['foobar']['definition'],
+                $array,
+                'foobar/definition',
+                NULL,
+                '/'
+            ],
             // We should be able to use NULL as a default, returned if the key DNX
-            array(NULL, $array, 'foobar.alternatives', NULL),
-            array(NULL, $array, 'kohana.alternatives', NULL),
+            [
+                NULL,
+                $array,
+                'foobar.alternatives',
+                NULL
+            ],
+            [
+                NULL,
+                $array,
+                'kohana.alternatives',
+                NULL
+            ],
             // Try using a string as a default
-            array('nothing', $array, 'kohana.alternatives', 'nothing'),
+            [
+                'nothing',
+                $array,
+                'kohana.alternatives',
+                'nothing'
+            ],
             // Make sure you can use arrays as defaults
-            array(array('far', 'wide'), $array, 'cheese.origins', array('far', 'wide')),
+            [
+                ['far', 'wide'],
+                $array,
+                'cheese.origins',
+                ['far', 'wide']
+            ],
             // Ensures path() casts ints to actual integers for keys
-            array($array['users'][1]['name'], $array, 'users.1.name'),
+            [
+                $array['users'][1]['name'],
+                $array,
+                'users.1.name'
+            ],
             // Test that a wildcard returns the entire array at that "level"
-            array($array['users'], $array, 'users.*'),
+            [
+                $array['users'],
+                $array,
+                'users.*'
+            ],
             // Now we check that keys after a wilcard will be processed
-            array(array(0 => array(0 => 2)), $array, 'users.*.interests.*.length'),
+            [
+                [0 => [0 => 2]],
+                $array,
+                'users.*.interests.*.length'
+            ],
             // See what happens when it can't dig any deeper from a wildcard
-            array(NULL, $array, 'users.*.fans'),
+            [
+                NULL,
+                $array,
+                'users.*.fans'
+            ],
             // Starting wildcards, issue #3269
-            array(array('matt', 'john'), $array['users'], '*.name'),
+            [
+                ['matt', 'john'],
+                $array['users'],
+                '*.name'
+            ],
             // Path as array, issue #3260
-            array($array['users'][2]['name'], $array, array('users', 2, 'name')),
-            array($array['object']['iterator'], $array, 'object.iterator'),
-        );
+            [
+                $array['users'][2]['name'],
+                $array,
+                ['users', 2, 'name']
+            ],
+            [
+                $array['object']['iterator'],
+                $array,
+                'object.iterator'
+            ],
+        ];
     }
 
     /**
@@ -463,19 +588,49 @@ class Kohana_ArrTest extends Unittest_TestCase
      */
     public function provider_set_path()
     {
-        return array(
+        return [
             // Tests returns normal values
-            array(array('foo' => 'bar'), array(), 'foo', 'bar'),
-            array(array('kohana' => array('is' => 'awesome')), array(), 'kohana.is', 'awesome'),
-            array(array('kohana' => array('is' => 'cool', 'and' => 'slow')),
-                array('kohana' => array('is' => 'cool')), 'kohana.and', 'slow'),
+            [
+                ['foo' => 'bar'],
+                [],
+                'foo',
+                'bar'
+            ],
+            [
+                ['kohana' => ['is' => 'awesome']],
+                [],
+                'kohana.is',
+                'awesome'
+            ],
+            [
+                ['kohana' => ['is' => 'cool', 'and' => 'slow']],
+                ['kohana' => ['is' => 'cool']],
+                'kohana.and',
+                'slow'
+            ],
             // Custom delimiters
-            array(array('kohana' => array('is' => 'awesome')), array(), 'kohana/is', 'awesome', '/'),
+            [
+                ['kohana' => ['is' => 'awesome']],
+                [],
+                'kohana/is',
+                'awesome',
+                '/'
+            ],
             // Ensures set_path() casts ints to actual integers for keys
-            array(array('foo' => array('bar')), array('foo' => array('test')), 'foo.0', 'bar'),
+            [
+                ['foo' => ['bar']],
+                ['foo' => ['test']],
+                'foo.0',
+                'bar'
+            ],
             // Tests if it allows arrays
-            array(array('kohana' => array('is' => 'awesome')), array(), array('kohana', 'is'), 'awesome'),
-        );
+            [
+                ['kohana' => ['is' => 'awesome']],
+                [],
+                ['kohana', 'is'],
+                'awesome'
+            ],
+        ];
     }
 
     /**
@@ -501,11 +656,11 @@ class Kohana_ArrTest extends Unittest_TestCase
      */
     public function provider_range()
     {
-        return array(
-            array(1, 2),
-            array(1, 100),
-            array(25, 10),
-        );
+        return [
+            [1, 2],
+            [1, 100],
+            [25, 10],
+        ];
     }
 
     /**
@@ -538,10 +693,10 @@ class Kohana_ArrTest extends Unittest_TestCase
      */
     public function provider_unshift()
     {
-        return array(
-            array(array('one' => '1', 'two' => '2',), 'zero', '0'),
-            array(array('step 1', 'step 2', 'step 3'), 'step 0', 'wow')
-        );
+        return [
+            [['one' => '1', 'two' => '2'], 'zero', '0'],
+            [['step 1', 'step 2', 'step 3'], 'step 0', 'wow'],
+        ];
     }
 
     /**
@@ -574,14 +729,24 @@ class Kohana_ArrTest extends Unittest_TestCase
      */
     public function provider_overwrite()
     {
-        return array(
-            array(
-                array('name' => 'Henry', 'mood' => 'tired', 'food' => 'waffles', 'sport' => 'checkers'),
-                array('name' => 'John', 'mood' => 'bored', 'food' => 'bacon', 'sport' => 'checkers'),
-                array('name' => 'Matt', 'mood' => 'tired', 'food' => 'waffles'),
-                array('name' => 'Henry', 'age' => 18,),
-            ),
-        );
+        return [
+            [
+                [
+                    'name' => 'Henry',
+                    'mood' => 'tired',
+                    'food' => 'waffles',
+                    'sport' => 'checkers'
+                ],
+                [
+                    'name' => 'John',
+                    'mood' => 'bored',
+                    'food' => 'bacon',
+                    'sport' => 'checkers'
+                ],
+                ['name' => 'Matt', 'mood' => 'tired', 'food' => 'waffles'],
+                ['name' => 'Henry', 'age' => 18]
+            ],
+        ];
     }
 
     /**
@@ -589,7 +754,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_overwrite
      */
-    public function test_overwrite($expected, $arr1, $arr2, $arr3 = array(), $arr4 = array())
+    public function test_overwrite($expected, $arr1, $arr2, $arr3 = [], $arr4 = [])
     {
         $this->assertSame(
             $expected, Arr::overwrite($arr1, $arr2, $arr3, $arr4)
@@ -603,65 +768,44 @@ class Kohana_ArrTest extends Unittest_TestCase
      */
     public function provider_map()
     {
-        return array(
-            array('strip_tags', array('<p>foobar</p>'), NULL, array('foobar')),
-            array('strip_tags', array(array('<p>foobar</p>'), array('<p>foobar</p>')), NULL, array(array('foobar'), array('foobar'))),
-            array(
+        return [
+            [
                 'strip_tags',
-                array(
-                    'foo' => '<p>foobar</p>',
-                    'bar' => '<p>foobar</p>',
-                ),
+                ['<p>foobar</p>'],
                 NULL,
-                array(
-                    'foo' => 'foobar',
-                    'bar' => 'foobar',
-                ),
-            ),
-            array(
+                ['foobar']
+            ],
+            [
                 'strip_tags',
-                array(
-                    'foo' => '<p>foobar</p>',
-                    'bar' => '<p>foobar</p>',
-                ),
-                array('foo'),
-                array(
-                    'foo' => 'foobar',
-                    'bar' => '<p>foobar</p>',
-                ),
-            ),
-            array(
-                array(
-                    'strip_tags',
-                    'trim',
-                ),
-                array(
-                    'foo' => '<p>foobar </p>',
-                    'bar' => '<p>foobar</p>',
-                ),
+                [['<p>foobar</p>'], ['<p>foobar</p>']],
                 NULL,
-                array(
-                    'foo' => 'foobar',
-                    'bar' => 'foobar',
-                ),
-            ),
-            array(
+                [['foobar'], ['foobar']]
+            ],
+            [
                 'strip_tags',
-                array(
-                    array(
-                        'foo' => '<p>foobar</p>',
-                        'bar' => '<p>foobar</p>',
-                    ),
-                ),
-                array('foo'),
-                array(
-                    array(
-                        'foo' => 'foobar',
-                        'bar' => '<p>foobar</p>',
-                    ),
-                ),
-            ),
-        );
+                ['foo' => '<p>foobar</p>', 'bar' => '<p>foobar</p>'],
+                NULL,
+                ['foo' => 'foobar', 'bar' => 'foobar']
+            ],
+            [
+                'strip_tags',
+                ['foo' => '<p>foobar</p>', 'bar' => '<p>foobar</p>'],
+                ['foo'],
+                ['foo' => 'foobar', 'bar' => '<p>foobar</p>']
+            ],
+            [
+                ['strip_tags', 'trim',],
+                ['foo' => '<p>foobar </p>', 'bar' => '<p>foobar</p>'],
+                NULL,
+                ['foo' => 'foobar', 'bar' => 'foobar']
+            ],
+            [
+                'strip_tags',
+                [['foo' => '<p>foobar</p>', 'bar' => '<p>foobar</p>']],
+                ['foo'],
+                [['foo' => 'foobar', 'bar' => '<p>foobar</p>']]
+            ],
+        ];
     }
 
     /**
@@ -683,9 +827,12 @@ class Kohana_ArrTest extends Unittest_TestCase
      */
     public function provider_flatten()
     {
-        return array(
-            array(array('set' => array('one' => 'something'), 'two' => 'other'), array('one' => 'something', 'two' => 'other')),
-        );
+        return [
+            [
+                ['set' => ['one' => 'something'], 'two' => 'other'],
+                ['one' => 'something', 'two' => 'other']
+            ],
+        ];
     }
 
     /**

@@ -30,7 +30,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
     {
         $config = new Config;
 
-        $this->assertAttributeSame(array(), '_sources', $config);
+        $this->assertAttributeSame([], '_sources', $config);
     }
 
     /**
@@ -69,7 +69,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
 
         // Rather than do two assertContains we'll do an assertSame to assert
         // the order of the readers
-        $this->assertAttributeSame(array($reader2, $reader1), '_sources', $config);
+        $this->assertAttributeSame([$reader2, $reader1], '_sources', $config);
 
         // Now we test using the second parameter
         $config = new Config;
@@ -77,7 +77,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
         $config->attach($reader1);
         $config->attach($reader2, TRUE);
 
-        $this->assertAttributeSame(array($reader2, $reader1), '_sources', $config);
+        $this->assertAttributeSame([$reader2, $reader1], '_sources', $config);
     }
 
     /**
@@ -96,7 +96,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
         $config->attach($reader1);
         $config->attach($reader2, FALSE);
 
-        $this->assertAttributeSame(array($reader1, $reader2), '_sources', $config);
+        $this->assertAttributeSame([$reader1, $reader2], '_sources', $config);
     }
 
     /**
@@ -163,7 +163,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
             ->expects($this->once())
             ->method('load')
             ->with('beer')
-            ->will($this->returnValue(array('stout' => 'Guinness')));
+            ->will($this->returnValue(['stout' => 'Guinness']));
 
         $config->attach($reader);
 
@@ -172,7 +172,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
 
     /**
      * If we've already loaded a config group then the correct variable
-     * should be returned if we use the dot path notation to to request 
+     * should be returned if we use the dot path notation to to request
      * a var
      *
      * @test
@@ -189,7 +189,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
         $reader->expects($this->once())
             ->method('load')
             ->with('beer')
-            ->will($this->returnValue(array('stout' => 'Guinness')));
+            ->will($this->returnValue(['stout' => 'Guinness']));
 
         $config->attach($reader);
 
@@ -222,13 +222,13 @@ class Kohana_ConfigTest extends Unittest_TestCase
      */
     public function provider_load_throws_exception_if_no_group_is_given()
     {
-        return array(
-            array(NULL),
-            array(''),
-            array(array()),
-            array(array('foo' => 'bar')),
-            array(new StdClass),
-        );
+        return [
+            [NULL],
+            [''],
+            [[]],
+            [['foo' => 'bar']],
+            [new StdClass],
+        ];
     }
 
     /**
@@ -253,7 +253,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
     }
 
     /**
-     * Make sure that _write_config() passes the changed configuration to all 
+     * Make sure that _write_config() passes the changed configuration to all
      * writers in the queue
      *
      * @test
@@ -307,31 +307,32 @@ class Kohana_ConfigTest extends Unittest_TestCase
         $reader1->expects($this->once())
             ->method('load')
             ->with($group_name)
-            ->will($this->returnValue(array('foo' => 'bar', 'kohana' => 'awesome', 'life' => array('normal', 'fated'))));
+            ->will($this->returnValue([
+                    'foo' => 'bar',
+                    'kohana' => 'awesome',
+                    'life' => ['normal', 'fated']
+        ]));
 
         $reader2->expects($this->once())
             ->method('load')
             ->with($group_name)
-            ->will($this->returnValue(array('kohana' => 'sweet', 'music' => 'tasteful', 'life' => array('extraordinary', 'destined'))));
+            ->will($this->returnValue([
+                    'kohana' => 'sweet',
+                    'music' => 'tasteful',
+                    'life' => ['extraordinary', 'destined']
+        ]));
 
         $config = new Kohana_Config;
 
         // Attach $reader1 at the "top" and reader2 at the "bottom"
         $config->attach($reader1)->attach($reader2, FALSE);
 
-        $this->assertSame(
-            array(
+        $this->assertSame([
             'kohana' => 'awesome',
             'music' => 'tasteful',
-            'life' => array(
-                'extraordinary',
-                'destined',
-                'normal',
-                'fated',
-            ),
+            'life' => ['extraordinary', 'destined', 'normal', 'fated'],
             'foo' => 'bar',
-            ), $config->load($group_name)->as_array()
-        );
+            ], $config->load($group_name)->as_array());
     }
 
     /**
@@ -350,7 +351,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
         $reader->expects($this->once())
             ->method('load')
             ->with('something')
-            ->will($this->returnValue(array()));
+            ->will($this->returnValue([]));
 
         $config = new Kohana_Config;
 
@@ -382,12 +383,15 @@ class Kohana_ConfigTest extends Unittest_TestCase
         $reader1->expects($this->once())
             ->method('load')
             ->with('something')
-            ->will($this->returnValue(array('pie' => 'good', 'kohana' => 'awesome')));
+            ->will($this->returnValue([
+                    'pie' => 'good',
+                    'kohana' => 'awesome'
+        ]));
 
         $reader2->expects($this->once())
             ->method('load')
             ->with('something')
-            ->will($this->returnValue(array('kohana' => 'good')));
+            ->will($this->returnValue(['kohana' => 'good']));
 
         $writer1 = $this->getMockBuilder('Kohana_Config_Writer')
             ->setMethods(['write'])
@@ -399,7 +403,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
         // Due to crazy limitations in phpunit's mocking engine we have to be fairly
         // liberal here as to what order we receive the config items
         // Good news is that order shouldn't matter *yay*
-        // 
+        //
         // Now save your eyes and skip the next... 13 lines!
         $key = $this->logicalOr('pie', 'kohana');
         $val = $this->logicalOr('good', 'awesome');

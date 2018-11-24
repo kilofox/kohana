@@ -27,7 +27,9 @@ class Kohana_HTTPTest extends Unittest_TestCase
     // @codingStandardsIgnoreEnd
     {
         parent::setUp();
-        Kohana::$config->load('url')->set('trusted_hosts', array('www\.example\.com'));
+        Kohana::$config->load('url')->set('trusted_hosts', [
+            'www\.example\.com'
+        ]);
         $this->_initial_request = Request::$initial;
         Request::$initial = new Request('/');
     }
@@ -49,11 +51,11 @@ class Kohana_HTTPTest extends Unittest_TestCase
      * @var array
      */
     // @codingStandardsIgnoreStart
-    protected $environmentDefault = array(
+    protected $environmentDefault = [
         'Kohana::$base_url' => '/kohana/',
         'Kohana::$index_file' => 'index.php',
         'HTTP_HOST' => 'www.example.com',
-    );
+    ];
 
     // @codingStandardsIgnoreEnd
     /**
@@ -63,26 +65,26 @@ class Kohana_HTTPTest extends Unittest_TestCase
      */
     public function provider_redirect()
     {
-        return array(
-            array(
+        return [
+            [
                 'http://www.example.org/',
                 301,
                 'HTTP_Exception_301',
                 'http://www.example.org/'
-            ),
-            array(
+            ],
+            [
                 '/page_one',
                 302,
                 'HTTP_Exception_302',
                 'http://www.example.com/kohana/index.php/page_one'
-            ),
-            array(
+            ],
+            [
                 'page_two',
                 303,
                 'HTTP_Exception_303',
                 'http://www.example.com/kohana/index.php/page_two'
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -118,32 +120,32 @@ class Kohana_HTTPTest extends Unittest_TestCase
      */
     public function provider_request_headers()
     {
-        return array(
-            array(
-                array(
+        return [
+            [
+                [
                     'CONTENT_TYPE' => 'text/html; charset=utf-8',
                     'CONTENT_LENGTH' => '3547',
                     'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
                     'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch',
                     'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,fr;q=0.6,hy;q=0.4',
-                ),
-                array(
+                ],
+                [
                     'content-type' => 'text/html; charset=utf-8',
                     'content-length' => '3547',
                     'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
                     'accept-encoding' => 'gzip, deflate, sdch',
                     'accept-language' => 'en-US,en;q=0.8,fr;q=0.6,hy;q=0.4',
-                )
-            ),
-            array(
-                array(
+                ]
+            ],
+            [
+                [
                     'HTTP_WEIRD_HTTP_HEADER' => 'A weird value for a weird header',
-                ),
-                array(
+                ],
+                [
                     'weird-http-header' => 'A weird value for a weird header',
-                )
-            ),
-        );
+                ]
+            ],
+        ];
     }
 
     /**

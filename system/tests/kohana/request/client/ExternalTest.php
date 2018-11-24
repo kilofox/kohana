@@ -27,33 +27,17 @@ class Kohana_Request_Client_ExternalTest extends Unittest_TestCase
     {
         Request_Client_External::$client = 'Request_Client_Stream';
 
-        $return = array(
-            array(
-                array(),
-                NULL,
-                'Request_Client_Stream'
-            ),
-            array(
-                array(),
-                'Request_Client_Stream',
-                'Request_Client_Stream'
-            )
-        );
+        $return = [
+            [[], NULL, 'Request_Client_Stream'],
+            [[], 'Request_Client_Stream', 'Request_Client_Stream'],
+        ];
 
         if (extension_loaded('curl')) {
-            $return[] = array(
-                array(),
-                'Request_Client_Curl',
-                'Request_Client_Curl'
-            );
+            $return[] = [[], 'Request_Client_Curl', 'Request_Client_Curl'];
         }
 
         if (extension_loaded('http')) {
-            $return[] = array(
-                array(),
-                'Request_Client_HTTP',
-                'Request_Client_HTTP'
-            );
+            $return[] = [[], 'Request_Client_HTTP', 'Request_Client_HTTP'];
         }
 
         return $return;
@@ -61,12 +45,12 @@ class Kohana_Request_Client_ExternalTest extends Unittest_TestCase
 
     /**
      * Tests the [Request_Client_External::factory()] method
-     * 
+     *
      * @dataProvider provider_factory
      *
-     * @param   array   $params  params 
-     * @param   string  $client  client 
-     * @param   Request_Client_External $expected expected 
+     * @param   array   $params  params
+     * @param   string  $client  client
+     * @param   Request_Client_External $expected expected
      * @return  void
      */
     public function test_factory($params, $client, $expected)
@@ -81,38 +65,38 @@ class Kohana_Request_Client_ExternalTest extends Unittest_TestCase
      */
     public function provider_options()
     {
-        return array(
-            array(
+        return [
+            [
                 NULL,
                 NULL,
-                array()
-            ),
-            array(
-                array('foo' => 'bar', 'stfu' => 'snafu'),
+                []
+            ],
+            [
+                ['foo' => 'bar', 'stfu' => 'snafu'],
                 NULL,
-                array('foo' => 'bar', 'stfu' => 'snafu')
-            ),
-            array(
+                ['foo' => 'bar', 'stfu' => 'snafu']
+            ],
+            [
                 'foo',
                 'bar',
-                array('foo' => 'bar')
-            ),
-            array(
-                array('foo' => 'bar'),
+                ['foo' => 'bar']
+            ],
+            [
+                ['foo' => 'bar'],
                 'foo',
-                array('foo' => 'bar')
-            )
-        );
+                ['foo' => 'bar']
+            ],
+        ];
     }
 
     /**
      * Tests the [Request_Client_External::options()] method
      *
      * @dataProvider provider_options
-     * 
-     * @param   mixed  $key  key 
-     * @param   mixed  $value  value 
-     * @param   array  $expected  expected 
+     *
+     * @param   mixed  $key  key
+     * @param   mixed  $value  value
+     * @param   array  $expected  expected
      * @return  void
      */
     public function test_options($key, $value, $expected)
@@ -132,35 +116,35 @@ class Kohana_Request_Client_ExternalTest extends Unittest_TestCase
     public function provider_execute()
     {
         $json = '{"foo": "bar", "snafu": "stfu"}';
-        $post = array('foo' => 'bar', 'snafu' => 'stfu');
+        $post = ['foo' => 'bar', 'snafu' => 'stfu'];
 
-        return array(
-            array(
+        return [
+            [
                 'application/json',
                 $json,
-                array(),
-                array(
+                [],
+                [
                     'content-type' => 'application/json',
                     'body' => $json
-                )
-            ),
-            array(
+                ]
+            ],
+            [
                 'application/json',
                 $json,
                 $post,
-                array(
+                [
                     'content-type' => 'application/x-www-form-urlencoded; charset=' . Kohana::$charset,
                     'body' => http_build_query($post, NULL, '&')
-                )
-            )
-        );
+                ]
+            ],
+        ];
     }
 
     /**
      * Tests the [Request_Client_External::_send_message()] method
      *
      * @dataProvider provider_execute
-     * 
+     *
      * @return  void
      */
     public function test_execute($content_type, $body, $post, $expected)
