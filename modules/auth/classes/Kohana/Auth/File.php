@@ -48,7 +48,7 @@ class Kohana_Auth_File extends Auth
         }
 
         // Login failed
-        return FALSE;
+        return false;
     }
 
     /**
@@ -71,7 +71,7 @@ class Kohana_Auth_File extends Auth
      */
     public function password($username)
     {
-        return Arr::get($this->_users, $username, FALSE);
+        return Arr::get($this->_users, $username, false);
     }
 
     /**
@@ -84,8 +84,8 @@ class Kohana_Auth_File extends Auth
     {
         $username = $this->get_user();
 
-        if ($username === FALSE) {
-            return FALSE;
+        if ($username === false) {
+            return false;
         }
 
         return ($password === $this->password($username));

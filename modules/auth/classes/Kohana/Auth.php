@@ -63,12 +63,12 @@ abstract class Kohana_Auth
     abstract public function check_password($password);
     /**
      * Gets the currently logged in user from the session.
-     * Returns NULL if no user is currently logged in.
+     * Returns null if no user is currently logged in.
      *
      * @param   mixed  $default  Default value to return if the user is currently not logged in.
      * @return  mixed
      */
-    public function get_user($default = NULL)
+    public function get_user($default = null)
     {
         return $this->_session->get($this->_config['session_key'], $default);
     }
@@ -81,10 +81,10 @@ abstract class Kohana_Auth
      * @param   boolean  $remember  Enable autologin
      * @return  boolean
      */
-    public function login($username, $password, $remember = FALSE)
+    public function login($username, $password, $remember = false)
     {
         if (empty($password))
-            return FALSE;
+            return false;
 
         return $this->_login($username, $password, $remember);
     }
@@ -96,9 +96,9 @@ abstract class Kohana_Auth
      * @param   boolean  $logout_all  Remove all tokens for user
      * @return  boolean
      */
-    public function logout($destroy = FALSE, $logout_all = FALSE)
+    public function logout($destroy = false, $logout_all = false)
     {
-        if ($destroy === TRUE) {
+        if ($destroy === true) {
             // Destroy the session completely
             $this->_session->destroy();
         } else {
@@ -120,9 +120,9 @@ abstract class Kohana_Auth
      * @param   string  $role  role name
      * @return  mixed
      */
-    public function logged_in($role = NULL)
+    public function logged_in($role = null)
     {
-        return ($this->get_user() !== NULL);
+        return ($this->get_user() !== null);
     }
 
     /**
@@ -159,7 +159,7 @@ abstract class Kohana_Auth
         // Store username in session
         $this->_session->set($this->_config['session_key'], $user);
 
-        return TRUE;
+        return true;
     }
 
 }

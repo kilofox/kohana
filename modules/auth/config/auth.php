@@ -5,7 +5,7 @@ defined('SYSPATH') OR die('No direct access allowed.');
 return [
     'driver' => 'File',
     'hash_method' => 'sha256',
-    'hash_key' => NULL,
+    'hash_key' => null,
     'lifetime' => 1209600,
     'session_type' => Session::$default,
     'session_key' => 'auth_user',
