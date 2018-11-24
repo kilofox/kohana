@@ -12,8 +12,7 @@ class Bench_MDDoImageURL extends Codebench
     public $description = 'Optimization for the <code>doImageURL()</code> method of <code>Kohana_Kodoc_Markdown</code>
 		 for the Kohana Userguide.';
     public $loops = 10000;
-    public $subjects = array
-        (
+    public $subjects = [
         // Valid matches
         '![Alt text](http://img.skitch.com/20091019-rud5mmqbf776jwua6hx9nm1n.png)',
         '![Alt text](https://img.skitch.com/20091019-rud5mmqbf776jwua6hx9nm1n.png)',
@@ -23,7 +22,7 @@ class Bench_MDDoImageURL extends Codebench
         '![Empty src]()',
         // Invalid matches
         '![Alt text](img/install.png                 "No closing parenthesis"',
-    );
+    ];
 
     public function bench_original($subject)
     {

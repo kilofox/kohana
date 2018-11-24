@@ -1075,11 +1075,10 @@ class Kohana_ORM extends Model implements serializable
         $filters = empty($filters[$field]) ? $wildcards : array_merge($wildcards, $filters[$field]);
 
         // Bind the field name and model so they can be used in the filter method
-        $_bound = array
-            (
+        $_bound = [
             ':field' => $field,
             ':model' => $this,
-        );
+        ];
 
         foreach ($filters as $array) {
             // Value needs to be bound inside the loop so we are always using the

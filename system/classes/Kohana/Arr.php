@@ -22,7 +22,7 @@ class Kohana_Arr
      * Tests if an array is associative or not.
      *
      *     // Returns TRUE
-     *     Arr::is_assoc(array('username' => 'john.doe'));
+     *     Arr::is_assoc(['username' => 'john.doe']);
      *
      *     // Returns FALSE
      *     Arr::is_assoc('foo', 'bar');
@@ -78,7 +78,7 @@ class Kohana_Arr
      *     $colors = Arr::path($array, 'theme.*.color');
      *
      *     // Using an array of keys
-     *     $colors = Arr::path($array, array('theme', '*', 'color'));
+     *     $colors = Arr::path($array, ['theme', '*', 'color']);
      *
      * @param   array   $array      array to search
      * @param   mixed   $path       key path string (delimiter separated) or array of keys
@@ -386,7 +386,7 @@ class Kohana_Arr
      *     $john = Arr::merge($john, $mary);
      *
      *     // The output of $john will now be:
-     *     array('name' => 'mary', 'children' => array('fred', 'paul', 'sally', 'jane'))
+     *     ['name' => 'mary', 'children' => ['fred', 'paul', 'sally', 'jane']]
      *
      * @param   array  $array1      initial array
      * @param   array  $array2,...  array to merge
@@ -450,7 +450,7 @@ class Kohana_Arr
      *     $array = Arr::overwrite($a1, $a2);
      *
      *     // The output of $array will now be:
-     *     array('name' => 'jack', 'mood' => 'happy', 'food' => 'tacos')
+     *     ['name' => 'jack', 'mood' => 'happy', 'food' => 'tacos']
      *
      * @param   array   $array1 master array
      * @param   array   $array2 input arrays that will overwrite existing values
@@ -523,7 +523,7 @@ class Kohana_Arr
      *     $array = Arr::flatten($array);
      *
      *     // The array will now be
-     *     array('one' => 'something', 'two' => 'other');
+     *     ['one' => 'something', 'two' => 'other'];
      *
      * [!!] The keys of array values will be discarded.
      *

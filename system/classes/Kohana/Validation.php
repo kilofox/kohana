@@ -322,14 +322,13 @@ class Kohana_Validation implements ArrayAccess
             $value = $this[$field];
 
             // Bind the field name and value to :field and :value respectively
-            $this->bind(array
-                (
+            $this->bind([
                 ':field' => $field,
                 ':value' => $value,
-            ));
+            ]);
 
             foreach ($set as $array) {
-                // Rules are defined as array($rule, $params)
+                // Rules are defined as [$rule, $params]
                 list($rule, $params) = $array;
 
                 foreach ($params as $key => $param) {

@@ -24,8 +24,9 @@ abstract class Kohana_HTTP_Exception_Expected extends HTTP_Exception
     /**
      * Creates a new translated exception.
      *
-     *     throw new Kohana_Exception('Something went terrible wrong, :user',
-     *         array(':user' => $user));
+     *     throw new Kohana_Exception('Something went terrible wrong, :user', [
+     *         ':user' => $user
+     *     ]);
      *
      * @param   string  $message    status message, custom content to display with error
      * @param   array   $variables  translation variables

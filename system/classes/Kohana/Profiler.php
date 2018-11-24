@@ -43,8 +43,7 @@ class Kohana_Profiler
         // Create a unique token based on the counter
         $token = 'kp/' . base_convert($counter++, 10, 32);
 
-        Profiler::$_marks[$token] = array
-            (
+        Profiler::$_marks[$token] = [
             'group' => strtolower($group),
             'name' => (string) $name,
             // Start the benchmark
@@ -53,7 +52,7 @@ class Kohana_Profiler
             // Set the stop keys without values
             'stop_time' => false,
             'stop_memory' => false,
-        );
+        ];
 
         return $token;
     }
@@ -276,13 +275,12 @@ class Kohana_Profiler
             $mark['stop_memory'] = memory_get_usage();
         }
 
-        return array
-            (
+        return [
             // Total time in seconds
             $mark['stop_time'] - $mark['start_time'],
             // Amount of memory in bytes
             $mark['stop_memory'] - $mark['start_memory'],
-        );
+        ];
     }
 
     /**

@@ -12,8 +12,7 @@ class Bench_MDDoBaseURL extends Codebench
     public $description = 'Optimization for the <code>doBaseURL()</code> method of <code>Kohana_Kodoc_Markdown</code>
 		 for the Kohana Userguide.';
     public $loops = 10000;
-    public $subjects = array
-        (
+    public $subjects = [
         // Valid matches
         '[filesystem](about.filesystem)',
         '[filesystem](about.filesystem "Optional title")',
@@ -22,7 +21,7 @@ class Bench_MDDoBaseURL extends Codebench
         // Invalid matches
         '![this is image syntax](about.filesystem)',
         '[filesystem](about.filesystem',
-    );
+    ];
 
     public function bench_original($subject)
     {

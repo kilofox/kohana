@@ -50,14 +50,12 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
      *     // inside the exception for a user model.
      *     $e->add_object('profile', $validation);
      *     // The errors array will now look something like this
-     *     // array
-     *     // (
-     *     //   'username' => 'This field is required',
-     *     //   'profile'  => array
-     *     //   (
-     *     //     'first_name' => 'This field is required',
-     *     //   ),
-     *     // );
+     *     // [
+     *     //     'username' => 'This field is required'
+     *     //     'profile' => [
+     *     //         'first_name' => 'This field is required'
+     *     //     ]
+     *     // ];
      *
      * @param  string     $alias    The relationship alias from the model
      * @param  Validation $object   The Validation object to merge

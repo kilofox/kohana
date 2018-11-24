@@ -82,11 +82,10 @@ class Kohana_Log
             $levels = range($min_level, $levels);
         }
 
-        $this->_writers["{$writer}"] = array
-            (
+        $this->_writers["{$writer}"] = [
             'object' => $writer,
             'levels' => $levels
-        );
+        ];
 
         return $this;
     }
@@ -148,8 +147,7 @@ class Kohana_Log
         }
 
         // Create a new message
-        $this->_messages[] = array
-            (
+        $this->_messages[] = [
             'time' => time(),
             'level' => $level,
             'body' => $message,
@@ -159,7 +157,7 @@ class Kohana_Log
             'class' => isset($trace[0]['class']) ? $trace[0]['class'] : null,
             'function' => isset($trace[0]['function']) ? $trace[0]['function'] : null,
             'additional' => $additional,
-        );
+        ];
 
         if (Log::$write_on_add) {
             // Write logs as they are added

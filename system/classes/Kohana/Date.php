@@ -248,17 +248,17 @@ class Kohana_Date
      * By default a mirrored array of $month_number => $month_number is returned
      *
      *     Date::months();
-     *     // aray(1 => 1, 2 => 2, 3 => 3, ..., 12 => 12)
+     *     // [1 => 1, 2 => 2, 3 => 3, ..., 12 => 12]
      *
      * But you can customise this by passing in either Date::MONTHS_LONG
      *
      *     Date::months(Date::MONTHS_LONG);
-     *     // array(1 => 'January', 2 => 'February', ..., 12 => 'December')
+     *     // [1 => 'January', 2 => 'February', ..., 12 => 'December']
      *
      * Or Date::MONTHS_SHORT
      *
      *     Date::months(Date::MONTHS_SHORT);
-     *     // array(1 => 'Jan', 2 => 'Feb', ..., 12 => 'Dec')
+     *     // [1 => 'Jan', 2 => 'Feb', ..., 12 => 'Dec']
      *
      * @uses    Date::hours
      * @param   string  $format The format to use for months
@@ -310,7 +310,7 @@ class Kohana_Date
      * If the second timestamp is not given, the current time will be used.
      * Also consider using [Date::fuzzy_span] when displaying a span.
      *
-     *     $span = Date::span(60, 182, 'minutes,seconds'); // array('minutes' => 2, 'seconds' => 2)
+     *     $span = Date::span(60, 182, 'minutes,seconds'); // ['minutes' => 2, 'seconds' => 2]
      *     $span = Date::span(60, 182, 'minutes'); // 2
      *
      * @param   integer $remote timestamp to find the span of

@@ -2,8 +2,8 @@
 
 defined('SYSPATH') OR die('No direct script access.');
 
-return array(
-    'email' => array(
+return [
+    'email' => [
         'custom' => 'very nice email address you have there',
-    ),
-);
+    ],
+];

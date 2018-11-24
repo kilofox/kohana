@@ -316,12 +316,11 @@ class Kohana_Image_GD extends Image
         $amount = round(abs(-18 + ($amount * 0.08)), 2);
 
         // Gaussian blur matrix
-        $matrix = array
-            (
+        $matrix = [
             [-1, -1, -1],
             [-1, $amount, -1],
             [-1, -1, -1],
-        );
+        ];
 
         // Perform the sharpen
         if (imageconvolution($this->_image, $matrix, $amount - 8, 0)) {

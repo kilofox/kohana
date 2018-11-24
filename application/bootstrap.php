@@ -36,7 +36,7 @@ setlocale(LC_ALL, 'en_US.utf-8');
  * @link http://kohanaframework.org/guide/using.autoloading
  * @link http://www.php.net/manual/function.spl-autoload-register
  */
-spl_autoload_register(array('Kohana', 'auto_load'));
+spl_autoload_register(['Kohana', 'auto_load']);
 
 /**
  * Optionally, you can enable a compatibility auto-loader for use with
@@ -44,7 +44,7 @@ spl_autoload_register(array('Kohana', 'auto_load'));
  *
  * It is recommended to not enable this unless absolutely necessary.
  */
-//spl_autoload_register(array('Kohana', 'auto_load_lowercase'));
+//spl_autoload_register(['Kohana', 'auto_load_lowercase']);
 
 /**
  * Enable the Kohana auto-loader for unserialization.
@@ -98,9 +98,9 @@ if (isset($_SERVER['KOHANA_ENV'])) {
  * - boolean  caching     enable or disable internal caching                 FALSE
  * - boolean  expose      set the X-Powered-By header                        FALSE
  */
-Kohana::init(array(
+Kohana::init([
     'base_url' => '/kohana/',
-));
+]);
 
 /**
  * Attach the file write to logging. Multiple writers are supported.
@@ -115,7 +115,7 @@ Kohana::$config->attach(new Config_File);
 /**
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
-Kohana::modules(array(
+Kohana::modules([
     // 'auth'       => MODPATH.'auth',       // Basic authentication
     // 'cache'      => MODPATH.'cache',      // Caching with multiple backends
     // 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
@@ -125,12 +125,12 @@ Kohana::modules(array(
     // 'orm'        => MODPATH.'orm',        // Object Relationship Mapping
     // 'unittest'   => MODPATH.'unittest',   // Unit testing
     // 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
-));
+]);
 
 /**
  * Cookie Salt
  * @see  http://kohanaframework.org/3.3/guide/kohana/cookies
- * 
+ *
  * If you have not defined a cookie salt in your Cookie class then
  * uncomment the line below and define a preferrably long salt.
  */
@@ -141,7 +141,7 @@ Kohana::modules(array(
  * defaults for the URI.
  */
 Route::set('default', '(<controller>(/<action>(/<id>)))')
-    ->defaults(array(
+    ->defaults([
         'controller' => 'welcome',
         'action' => 'index',
-    ));
+    ]);

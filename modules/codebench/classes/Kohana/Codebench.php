@@ -32,15 +32,14 @@ abstract class Kohana_Codebench
     /**
      * @var  array  Grade letters with their maximum scores. Used to color the graphs.
      */
-    public $grades = array
-        (
+    public $grades = [
         125 => 'A',
         150 => 'B',
         200 => 'C',
         300 => 'D',
         500 => 'E',
         'default' => 'F',
-    );
+    ];
 
     /**
      * Constructor.
@@ -70,18 +69,16 @@ abstract class Kohana_Codebench
         }
 
         // Initialize benchmark output
-        $codebench = array
-            (
+        $codebench = [
             'class' => get_class($this),
             'description' => $this->description,
-            'loops' => array
-                (
+            'loops' => [
                 'base' => (int) $this->loops,
                 'total' => (int) $this->loops * count($this->subjects) * count($methods),
-            ),
+            ],
             'subjects' => $this->subjects,
             'benchmarks' => [],
-        );
+        ];
 
         // Benchmark each method
         foreach ($methods as $method) {
@@ -111,12 +108,11 @@ abstract class Kohana_Codebench
                 $benchmark = Profiler::total($token);
 
                 // Benchmark output specific to the current method and subject
-                $codebench['benchmarks'][$method]['subjects'][$subject_key] = array
-                    (
+                $codebench['benchmarks'][$method]['subjects'][$subject_key] = [
                     'return' => $return,
                     'time' => $benchmark[0],
                     'memory' => $benchmark[1],
-                );
+                ];
 
                 // Update method totals
                 $codebench['benchmarks'][$method]['time'] += $benchmark[0];
