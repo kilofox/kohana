@@ -18,7 +18,7 @@ function _str_split($str, $split_length = 1)
         return str_split($str, $split_length);
 
     if ($split_length < 1)
-        return FALSE;
+        return false;
 
     if (UTF8::strlen($str) <= $split_length)
         return [$str];

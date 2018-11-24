@@ -89,7 +89,7 @@ class Route_Holder
      */
     public static function route_filter_modify_params_false(Route $route, $params)
     {
-        return FALSE;
+        return false;
     }
 
 }

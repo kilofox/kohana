@@ -72,7 +72,7 @@ function _to_unicode($str)
             } else {
                 // Current octet is neither in the US-ASCII range nor a legal first octet of a multi-octet sequence.
                 trigger_error('UTF8::to_unicode: Illegal sequence identifier in UTF-8 at byte ' . $i, E_USER_WARNING);
-                return FALSE;
+                return false;
             }
         } else {
             // When m_state is non-zero, we expect a continuation of the multi-octet sequence
@@ -93,7 +93,7 @@ function _to_unicode($str)
                         // Codepoints outside the Unicode range are illegal
                         ( $m_ucs4 > 0x10FFFF)) {
                         trigger_error('UTF8::to_unicode: Illegal sequence or codepoint in UTF-8 at byte ' . $i, E_USER_WARNING);
-                        return FALSE;
+                        return false;
                     }
 
                     if (0xFEFF != $m_ucs4) {

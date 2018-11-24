@@ -32,7 +32,7 @@ abstract class Kohana_HTTP_Exception_Expected extends HTTP_Exception
      * @param   array   $variables  translation variables
      * @return  void
      */
-    public function __construct($message = NULL, array $variables = NULL, Exception $previous = NULL)
+    public function __construct($message = null, array $variables = null, Exception $previous = null)
     {
         parent::__construct($message, $variables, $previous);
 
@@ -49,7 +49,7 @@ abstract class Kohana_HTTP_Exception_Expected extends HTTP_Exception
      * @param   string  $value
      * @return  mixed
      */
-    public function headers($key = NULL, $value = NULL)
+    public function headers($key = null, $value = null)
     {
         $result = $this->_response->headers($key, $value);
 
@@ -67,7 +67,7 @@ abstract class Kohana_HTTP_Exception_Expected extends HTTP_Exception
      */
     public function check()
     {
-        return TRUE;
+        return true;
     }
 
     /**

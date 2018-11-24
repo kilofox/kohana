@@ -88,7 +88,7 @@ class Kohana_Cookie
      * Sets a signed cookie. Note that all cookie values must be strings and no
      * automatic serialization will be performed!
      *
-     * [!!] By default, Cookie::$expiration is 0 - if you skip/pass NULL for the optional
+     * [!!] By default, Cookie::$expiration is 0 - if you skip/pass null for the optional
      *      lifetime argument your cookies will expire immediately unless you have separately
      *      configured Cookie::$expiration.
      *
@@ -121,7 +121,7 @@ class Kohana_Cookie
     }
 
     /**
-     * Deletes a cookie by making the value NULL and expiring it.
+     * Deletes a cookie by making the value null and expiring it.
      *
      *     Cookie::delete('theme');
      *

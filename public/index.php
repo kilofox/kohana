@@ -84,7 +84,7 @@ if (file_exists('install' . EXT)) {
  * Define the start time of the application, used for profiling.
  */
 if (!defined('KOHANA_START_TIME')) {
-    define('KOHANA_START_TIME', microtime(TRUE));
+    define('KOHANA_START_TIME', microtime(true));
 }
 
 /**
@@ -108,8 +108,8 @@ if (PHP_SAPI == 'cli') {
      * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
      * If no source is specified, the URI will be automatically detected.
      */
-    echo Request::factory(TRUE, [], FALSE)
+    echo Request::factory(true, [], false)
         ->execute()
-        ->send_headers(TRUE)
+        ->send_headers(true)
         ->body();
 }

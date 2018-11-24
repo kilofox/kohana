@@ -35,9 +35,9 @@ class Kohana_Config_GroupTest extends Kohana_Unittest_TestCase
      * @param Kohana_Config $instance Instance of Kohana_Config
      * @return Kohana_Config_Group
      */
-    public function get_mock_group($group, $config = [], $instance = NULL)
+    public function get_mock_group($group, $config = [], $instance = null)
     {
-        if ($instance === NULL) {
+        if ($instance === null) {
             $instance = $this->get_mock_config();
         }
 
@@ -95,7 +95,7 @@ class Kohana_Config_GroupTest extends Kohana_Unittest_TestCase
 
     /**
      * If a config option does not exist then get() should return the default value, which is
-     * NULL by default
+     * null by default
      *
      * @test
      * @covers Kohana_Config_Group::get
@@ -104,7 +104,7 @@ class Kohana_Config_GroupTest extends Kohana_Unittest_TestCase
     {
         $group = $this->get_mock_group('kohana');
 
-        $this->assertSame(NULL, $group->get('problems', NULL));
+        $this->assertSame(null, $group->get('problems', null));
         $this->assertSame('nada', $group->get('problems', 'nada'));
     }
 

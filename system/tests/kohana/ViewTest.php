@@ -56,9 +56,9 @@ class Kohana_ViewTest extends Unittest_TestCase
     public function provider_instantiate()
     {
         return [
-            ['kohana/error', FALSE],
-            ['test.css', FALSE],
-            ['doesnt_exist', TRUE],
+            ['kohana/error', false],
+            ['test.css', false],
+            ['doesnt_exist', true],
         ];
     }
 
@@ -71,8 +71,8 @@ class Kohana_ViewTest extends Unittest_TestCase
     {
         return [
             ['foo', 'bar', 'foo', 'bar'],
-            [['foo' => 'bar'], NULL, 'foo', 'bar'],
-            [new ArrayIterator(['foo' => 'bar']), NULL, 'foo', 'bar'],
+            [['foo' => 'bar'], null, 'foo', 'bar'],
+            [new ArrayIterator(['foo' => 'bar']), null, 'foo', 'bar'],
         ];
     }
 
@@ -88,9 +88,9 @@ class Kohana_ViewTest extends Unittest_TestCase
     {
         try {
             $view = new View($path);
-            $this->assertSame(FALSE, $expects_exception);
+            $this->assertSame(false, $expects_exception);
         } catch (View_Exception $e) {
-            $this->assertSame(TRUE, $expects_exception);
+            $this->assertSame(true, $expects_exception);
         }
     }
 

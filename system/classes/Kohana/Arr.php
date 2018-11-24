@@ -21,10 +21,10 @@ class Kohana_Arr
     /**
      * Tests if an array is associative or not.
      *
-     *     // Returns TRUE
+     *     // Returns true
      *     Arr::is_assoc(['username' => 'john.doe']);
      *
-     *     // Returns FALSE
+     *     // Returns false
      *     Arr::is_assoc('foo', 'bar');
      *
      * @param   array   $array  array to check
@@ -43,11 +43,11 @@ class Kohana_Arr
     /**
      * Test if a value is an array with an additional check for array-like objects.
      *
-     *     // Returns TRUE
+     *     // Returns true
      *     Arr::is_array([]);
      *     Arr::is_array(new ArrayObject);
      *
-     *     // Returns FALSE
+     *     // Returns false
      *     Arr::is_array(false);
      *     Arr::is_array('not an array!');
      *     Arr::is_array(Database::instance());

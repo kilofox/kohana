@@ -299,7 +299,7 @@ class Kohana_HTML
         $compiled = '';
         foreach ($attributes as $key => $value) {
             if ($value === null) {
-                // Skip attributes that have NULL values
+                // Skip attributes that have null values
                 continue;
             }
 

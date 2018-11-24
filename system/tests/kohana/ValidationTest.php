@@ -190,7 +190,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
             ->rule('fast', [':class', 'max_length'], [':value', 2]);
 
         // The rule should have run and check() should fail
-        $this->assertSame($validation->check(), FALSE);
+        $this->assertSame($validation->check(), false);
     }
 
     /**
@@ -204,19 +204,19 @@ class Kohana_ValidationTest extends Unittest_TestCase
         return [
             [
                 ['foo' => 'bar'],
-                ['foo' => [['not_empty', NULL]]],
+                ['foo' => [['not_empty', null]]],
                 [],
-                TRUE,
+                true,
                 []
             ],
             [
                 ['unit' => 'test'],
                 [
-                    'foo' => [['not_empty', NULL]],
+                    'foo' => [['not_empty', null]],
                     'unit' => [['min_length', [':value', 6]]]
                 ],
                 [],
-                FALSE,
+                false,
                 [
                     'foo' => 'foo must not be empty',
                     'unit' => 'unit must be at least 6 characters long'
@@ -226,16 +226,16 @@ class Kohana_ValidationTest extends Unittest_TestCase
                 ['foo' => 'bar'],
                 [
                     // Tests wildcard rules
-                    TRUE => [['min_length', [':value', 4]]],
+                    true => [['min_length', [':value', 4]]],
                     'foo' => [
-                        ['not_empty', NULL],
+                        ['not_empty', null],
                         // Tests the array syntax for callbacks
                         [['Valid', 'exact_length'], [':value', 3]],
                         // Tests the Class::method syntax for callbacks
                         ['Valid::exact_length', [':value', 3]],
                         // Tests the lambda function syntax for callbacks
                         // Commented out for PHP 5.2 support
-                        // [function($value){return TRUE;}, [':value']],
+                        // [function($value){return true;}, [':value']],
                         // Tests using a function as a rule
                         ['is_string', [':value']]
                     ],
@@ -243,7 +243,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
                     'unit' => [['exact_length', [':value', 4]]]
                 ],
                 [],
-                FALSE,
+                false,
                 ['foo' => 'foo must be at least 4 characters long']
             ],
             // Switch things around and make :value an array
@@ -251,15 +251,15 @@ class Kohana_ValidationTest extends Unittest_TestCase
                 ['foo' => ['test', 'data']],
                 ['foo' => [['in_array', ['kohana', ':value']]]],
                 [],
-                FALSE,
+                false,
                 ['foo' => 'foo must be one of the available options']
             ],
             // Test wildcard rules with no other rules
             [
                 ['foo' => ['test']],
-                [TRUE => [['is_string', [':value']]]],
+                [true => [['is_string', [':value']]]],
                 ['foo' => 'foo'],
-                FALSE,
+                false,
                 ['foo' => '1.foo.is_string']
             ],
             // Test array rules use method as error name
@@ -267,7 +267,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
                 ['foo' => 'test'],
                 ['foo' => [[['Valid', 'min_length'], [':value', 10]]]],
                 [],
-                FALSE,
+                false,
                 ['foo' => 'foo must be at least 10 characters long']
             ],
         ];
@@ -303,7 +303,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
         }
 
         $status = $validation->check();
-        $errors = $validation->errors(TRUE);
+        $errors = $validation->errors(true);
         $this->assertSame($expected, $status);
         $this->assertSame($expected_errors, $errors);
 
@@ -335,7 +335,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
         $errors = $validation->errors();
 
         $expected = [
-            'foo' => [0 => '_validation_callback', 1 => NULL],
+            'foo' => [0 => '_validation_callback', 1 => null],
         ];
 
         $this->assertSame($errors, $expected);
@@ -359,13 +359,13 @@ class Kohana_ValidationTest extends Unittest_TestCase
             // No Error
             [
                 ['username' => 'frank'],
-                ['username' => [['not_empty', NULL]]],
+                ['username' => [['not_empty', null]]],
                 []
             ],
             // Error from message file
             [
                 ['username' => ''],
-                ['username' => [['not_empty', NULL]]],
+                ['username' => [['not_empty', null]]],
                 ['username' => 'username must not be empty']
             ],
             // No error message exists, display the path expected
@@ -397,9 +397,9 @@ class Kohana_ValidationTest extends Unittest_TestCase
 
         $validation->check();
 
-        $this->assertSame($expected, $validation->errors('Validation', FALSE));
+        $this->assertSame($expected, $validation->errors('Validation', false));
         // Should be able to get raw errors array
-        $this->assertAttributeSame($validation->errors(NULL), '_errors', $validation);
+        $this->assertAttributeSame($validation->errors(null), '_errors', $validation);
     }
 
     /**
@@ -413,7 +413,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
         return [
             [
                 ['Spanish' => ''],
-                ['Spanish' => [['not_empty', NULL]]],
+                ['Spanish' => [['not_empty', null]]],
                 // Errors are not translated yet so only the label will translate
                 ['Spanish' => 'Español must not be empty'],
                 ['Spanish' => 'Spanish must not be empty']
@@ -445,9 +445,9 @@ class Kohana_ValidationTest extends Unittest_TestCase
 
         $validation->check();
 
-        $result_1 = $validation->errors('Validation', TRUE);
+        $result_1 = $validation->errors('Validation', true);
         $result_2 = $validation->errors('Validation', 'en');
-        $result_3 = $validation->errors('Validation', FALSE);
+        $result_3 = $validation->errors('Validation', false);
 
         // Restore the current language
         i18n::lang($current);
@@ -477,9 +477,9 @@ class Kohana_ValidationTest extends Unittest_TestCase
         $translated_expected = ['foo' => 'foo must equal Español'];
         $untranslated_expected = ['foo' => 'foo must equal Spanish'];
 
-        $result_1 = $validation->errors('Validation', TRUE);
+        $result_1 = $validation->errors('Validation', true);
         $result_2 = $validation->errors('Validation', 'en');
-        $result_3 = $validation->errors('Validation', FALSE);
+        $result_3 = $validation->errors('Validation', false);
 
         // Restore the current language
         i18n::lang($current);
@@ -504,7 +504,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
 
         $expected = ['foo' => 'foo must equal one, two'];
 
-        $this->assertSame($expected, $validation->errors('Validation', FALSE));
+        $this->assertSame($expected, $validation->errors('Validation', false));
     }
 
     /**
@@ -580,7 +580,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
     public function test_offsetExists()
     // @codingStandardsIgnoreEnd
     {
-        $array = ['one' => 'Hello', 'two' => 'World', 'ten' => NULL];
+        $array = ['one' => 'Hello', 'two' => 'World', 'ten' => null];
 
         $validation = Validation::factory($array);
 
@@ -605,7 +605,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
     public function test_offsetGet()
     // @codingStandardsIgnoreEnd
     {
-        $array = ['one' => 'Hello', 'two' => 'World', 'ten' => NULL];
+        $array = ['one' => 'Hello', 'two' => 'World', 'ten' => null];
 
         $validation = Validation::factory($array);
 

@@ -159,7 +159,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                 ]
             ],
             [
-                NULL,
+                null,
                 [
                     '*' => (float) 1
                 ]
@@ -207,7 +207,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                 ]
             ],
             [
-                NULL,
+                null,
                 [
                     '*' => (float) 1
                 ]
@@ -280,7 +280,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                 ]
             ],
             [
-                NULL,
+                null,
                 [
                     '*' => [
                         '*' => (float) 1
@@ -439,7 +439,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Accept-Language' => 'en-gb, en-us, en; q=.1'
                 ],
                 [
-                    ['Accept-Encoding', 'compress, gzip', FALSE]
+                    ['Accept-Encoding', 'compress, gzip', false]
                 ],
                 [
                     'content-type' => 'application/x-www-form-urlencoded',
@@ -455,8 +455,8 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Accept-Language' => 'en-gb, en-us, en; q=.1'
                 ],
                 [
-                    ['Accept-Encoding', 'compress, gzip', FALSE],
-                    ['Accept-Encoding', 'bzip', FALSE]
+                    ['Accept-Encoding', 'compress, gzip', false],
+                    ['Accept-Encoding', 'bzip', false]
                 ],
                 [
                     'content-type' => 'application/x-www-form-urlencoded',
@@ -472,9 +472,9 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Accept-Language' => 'en-gb, en-us, en; q=.1'
                 ],
                 [
-                    ['Accept-Encoding', 'compress, gzip', FALSE],
-                    ['Accept-Encoding', 'bzip', TRUE],
-                    ['Accept', 'text/*', FALSE]
+                    ['Accept-Encoding', 'compress, gzip', false],
+                    ['Accept-Encoding', 'bzip', true],
+                    ['Accept', 'text/*', false]
                 ],
                 [
                     'content-type' => 'application/x-www-form-urlencoded',
@@ -526,7 +526,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                 [
                     'FoO' => 'bar',
                     'START' => 'end',
-                    'true' => TRUE
+                    'true' => true
                 ],
                 'FOO',
                 'bar'
@@ -535,25 +535,25 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                 [
                     'FoO' => 'bar',
                     'START' => 'end',
-                    'true' => TRUE
+                    'true' => true
                 ],
                 'true',
-                TRUE
+                true
             ],
             [
                 [
                     'FoO' => 'bar',
                     'START' => 'end',
-                    'true' => TRUE
+                    'true' => true
                 ],
                 'True',
-                TRUE
+                true
             ],
             [
                 [
                     'FoO' => 'bar',
                     'START' => 'end',
-                    'true' => TRUE
+                    'true' => true
                 ],
                 'Start',
                 'end'
@@ -606,7 +606,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Content-Type' => 'application/x-www-form-urlencoded'
                 ],
                 'Content-Type',
-                TRUE
+                true
             ],
             [
                 [
@@ -615,7 +615,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Content-Type' => 'application/x-www-form-urlencoded'
                 ],
                 'CONTENT-TYPE',
-                TRUE
+                true
             ],
             [
                 [
@@ -624,7 +624,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Content-Type' => 'application/x-www-form-urlencoded'
                 ],
                 'accept-language',
-                TRUE
+                true
             ],
             [
                 [
@@ -633,7 +633,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Content-Type' => 'application/x-www-form-urlencoded'
                 ],
                 'x-powered-by',
-                FALSE
+                false
             ],
         ];
     }
@@ -780,7 +780,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
 
         foreach ($headers as $header) {
 
-            $this->assertEquals(strlen($header), $http_header->parse_header_string(NULL, $header));
+            $this->assertEquals(strlen($header), $http_header->parse_header_string(null, $header));
         }
 
         $this->assertSame($expected, $http_header->getArrayCopy());
@@ -799,7 +799,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Accept' => 'application/json, text/html; q=.5, text/*; q=.1, */*'
                 ],
                 'application/json',
-                FALSE,
+                false,
                 1.0
             ],
             [
@@ -807,7 +807,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Accept' => 'application/json, text/html; q=.5, text/*; q=.1, */*'
                 ],
                 'text/html',
-                FALSE,
+                false,
                 0.5
             ],
             [
@@ -815,7 +815,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Accept' => 'application/json, text/html; q=.5, text/*; q=.1, */*'
                 ],
                 'text/plain',
-                FALSE,
+                false,
                 0.1
             ],
             [
@@ -823,15 +823,15 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Accept' => 'application/json, text/html; q=.5, text/*; q=.1, */*'
                 ],
                 'text/plain',
-                TRUE,
-                FALSE
+                true,
+                false
             ],
             [
                 [
                     'Accept' => 'application/json, text/html; q=.5, text/*; q=.1, */*'
                 ],
                 'application/xml',
-                FALSE,
+                false,
                 1.0
             ],
             [
@@ -839,20 +839,20 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Accept' => 'application/json, text/html; q=.5, text/*; q=.1, */*'
                 ],
                 'application/xml',
-                TRUE,
-                FALSE
+                true,
+                false
             ],
             [
                 [],
                 'application/xml',
-                FALSE,
+                false,
                 1.0
             ],
             [
                 [],
                 'application/xml',
-                TRUE,
-                FALSE
+                true,
+                false
             ],
         ];
     }
@@ -888,7 +888,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Accept' => 'application/json, text/html; q=.5, text/*; q=.1, */*'
                 ],
                 ['text/html', 'application/json', 'text/plain'],
-                FALSE,
+                false,
                 'application/json'
             ],
             [
@@ -896,7 +896,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Accept' => 'application/json, text/html; q=.5, text/*; q=.1, */*'
                 ],
                 ['text/plain', 'application/xml', 'image/jpeg'],
-                FALSE,
+                false,
                 'application/xml'
             ],
             [
@@ -904,7 +904,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Accept' => 'application/json, text/html; q=.5, text/*; q=.1'
                 ],
                 ['text/plain', 'application/xml', 'image/jpeg'],
-                FALSE,
+                false,
                 'text/plain'
             ],
             [
@@ -912,8 +912,8 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Accept' => 'application/json, text/html; q=.5, text/*; q=.1, */*'
                 ],
                 ['text/plain', 'application/xml', 'image/jpeg'],
-                TRUE,
-                FALSE
+                true,
+                false
             ],
         ];
     }
@@ -1045,7 +1045,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-encoding' => 'compress, gzip, blowfish; q=.7, *; q=.5'
                 ],
                 'gzip',
-                FALSE,
+                false,
                 1.0
             ],
             [
@@ -1053,7 +1053,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-encoding' => 'compress, gzip, blowfish; q=.7, *; q=.5'
                 ],
                 'gzip',
-                TRUE,
+                true,
                 1.0
             ],
             [
@@ -1061,7 +1061,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-encoding' => 'compress, gzip, blowfish; q=.7, *; q=.5'
                 ],
                 'blowfish',
-                FALSE,
+                false,
                 0.7
             ],
             [
@@ -1069,7 +1069,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-encoding' => 'compress, gzip, blowfish; q=.7, *; q=.5'
                 ],
                 'bzip',
-                FALSE,
+                false,
                 0.5
             ],
             [
@@ -1077,7 +1077,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-encoding' => 'compress, gzip, blowfish; q=.7, *; q=.5'
                 ],
                 'bzip',
-                TRUE,
+                true,
                 (float) 0
             ],
         ];
@@ -1114,7 +1114,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-encoding' => 'compress, gzip, blowfish; q=.7, *; q=.5'
                 ],
                 ['gzip', 'blowfish', 'bzip'],
-                FALSE,
+                false,
                 'gzip'
             ],
             [
@@ -1122,7 +1122,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-encoding' => 'compress, gzip, blowfish; q=.7, *; q=.5'
                 ],
                 ['bzip', 'ROT-13'],
-                FALSE,
+                false,
                 'bzip'
             ],
             [
@@ -1130,15 +1130,15 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-encoding' => 'compress, gzip, blowfish; q=.7, *; q=.5'
                 ],
                 ['bzip', 'ROT-13'],
-                TRUE,
-                FALSE
+                true,
+                false
             ],
             [
                 [
                     'accept-encoding' => 'compress, gzip, blowfish; q=.2, *; q=.5'
                 ],
                 ['ROT-13', 'blowfish'],
-                FALSE,
+                false,
                 'ROT-13'
             ],
         ];
@@ -1175,7 +1175,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-language' => 'en-us; q=.9, en-gb; q=.7, en; q=.5, fr-fr; q=.9, fr; q=.8'
                 ],
                 'en',
-                FALSE,
+                false,
                 0.5
             ],
             [
@@ -1183,7 +1183,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-language' => 'en-us; q=.9, en-gb; q=.7, en; q=.5, fr-fr; q=.9, fr; q=.8'
                 ],
                 'en-gb',
-                FALSE,
+                false,
                 0.7
             ],
             [
@@ -1191,7 +1191,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-language' => 'en-us; q=.9, en-gb; q=.7, en; q=.5, fr-fr; q=.9, fr; q=.8'
                 ],
                 'en',
-                TRUE,
+                true,
                 0.5
             ],
             [
@@ -1199,7 +1199,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-language' => 'en-us; q=.9, en-gb; q=.7, en; q=.5, fr-fr; q=.9, fr; q=.8'
                 ],
                 'fr-ni',
-                FALSE,
+                false,
                 0.8
             ],
             [
@@ -1207,7 +1207,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-language' => 'en-us; q=.9, en-gb; q=.7, en; q=.5, fr-fr; q=.9, fr; q=.8'
                 ],
                 'fr-ni',
-                TRUE,
+                true,
                 (float) 0
             ],
             [
@@ -1215,7 +1215,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-language' => 'en-US'
                 ],
                 'en-us',
-                TRUE,
+                true,
                 (float) 1
             ],
         ];
@@ -1252,7 +1252,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-language' => 'en-us; q=.9, en-gb; q=.7, en; q=.5, fr-fr; q=.9, fr; q=.8'
                 ],
                 ['en', 'fr', 'en-gb'],
-                FALSE,
+                false,
                 'fr'
             ],
             [
@@ -1260,7 +1260,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-language' => 'en-us; q=.9, en-gb; q=.7, en; q=.5, fr-fr; q=.9, fr; q=.8'
                 ],
                 ['en', 'fr', 'en-gb'],
-                TRUE,
+                true,
                 'fr'
             ],
             [
@@ -1268,7 +1268,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-language' => 'en-us; q=.9, en-gb; q=.7, en; q=.5, fr-fr; q=.9, fr; q=.8'
                 ],
                 ['en-au', 'fr-ni', 'fr'],
-                FALSE,
+                false,
                 'fr-ni'
             ],
             [
@@ -1276,7 +1276,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-language' => 'en-us; q=.9, en-gb; q=.7, en; q=.5, fr-fr; q=.9, fr; q=.8'
                 ],
                 ['en-au', 'fr-ni', 'fr'],
-                TRUE,
+                true,
                 'fr'
             ],
             [
@@ -1284,7 +1284,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'accept-language' => 'en-US'
                 ],
                 ['en-us'],
-                TRUE,
+                true,
                 'en-us'
             ],
         ];
@@ -1324,7 +1324,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'HTTP/1.1 200 OK',
                     'Content-Type: ' . $content_type,
                 ],
-                FALSE
+                false
             ],
             [
                 [],
@@ -1333,7 +1333,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Content-Type: ' . $content_type,
                     'X-Powered-By: ' . Kohana::version(),
                 ],
-                TRUE
+                true
             ],
             [
                 [
@@ -1350,7 +1350,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'Accept-Language: en, en-gb, en-us',
                     'Content-Type: ' . $content_type,
                 ],
-                FALSE
+                false
             ],
             [
                 [
@@ -1372,7 +1372,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'X-Powered-By: Mohana',
                     'X-Ssl-Enabled: TRUE'
                 ],
-                TRUE
+                true
             ],
         ];
     }
@@ -1393,7 +1393,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
         $response = new Response;
         $response->headers($state);
 
-        $this->assertSame($expected, $response->send_headers(FALSE, [
+        $this->assertSame($expected, $response->send_headers(false, [
                 $this, 'send_headers_handler'
         ]));
     }

@@ -37,7 +37,7 @@ class Kohana_I18nTest extends Unittest_TestCase
     {
         return [
             // $input, $expected_result
-            [NULL, 'en-us'],
+            [null, 'en-us'],
             ['es-es', 'es-es'],
         ];
     }

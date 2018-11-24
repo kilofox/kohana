@@ -29,7 +29,7 @@ class Kohana_Session_Native extends Session
     {
         /**
          * session_set_cookie_params will override php ini settings
-         * If Cookie::$domain is NULL or empty and is passed, PHP
+         * If Cookie::$domain is null or empty and is passed, PHP
          * will override ini and sent cookies with the host name
          * of the server which generated the cookie
          *

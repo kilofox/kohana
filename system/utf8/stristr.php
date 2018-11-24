@@ -26,5 +26,5 @@ function _stristr($str, $search)
     if (isset($matches[1]))
         return substr($str, strlen($matches[1]));
 
-    return FALSE;
+    return false;
 }

@@ -539,7 +539,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
     {
         // Load config.
         $config = Kohana::$config->load('encrypt');
-        // If instance name is NULL the config group should be the default.
+        // If instance name is null the config group should be the default.
         $configGroup = $instanceName ?: Encrypt::$default;
         // If config group does not exists, create one.
         if (!array_key_exists($configGroup, $config)) {

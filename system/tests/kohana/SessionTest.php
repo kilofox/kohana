@@ -46,12 +46,12 @@ class Kohana_SessionTest extends Unittest_TestCase
                 [
                     'name' => 'awesomeness',
                     'lifetime' => 1231456421,
-                    'encrypted' => FALSE
+                    'encrypted' => false
                 ],
                 [
                     'name' => 'awesomeness',
                     'lifetime' => '1231456421',
-                    'encrypted' => FALSE
+                    'encrypted' => false
                 ]
             ],
             // data set 1
@@ -62,7 +62,7 @@ class Kohana_SessionTest extends Unittest_TestCase
                 ],
                 [
                     'name' => 123,
-                    'encrypted' => TRUE
+                    'encrypted' => true
                 ]
             ],
         ];
@@ -172,7 +172,7 @@ class Kohana_SessionTest extends Unittest_TestCase
     {
         $session = $this->getMockSession();
 
-        $this->assertAttributeSame(FALSE, '_encrypted', $session);
+        $this->assertAttributeSame(false, '_encrypted', $session);
     }
 
     /**
@@ -185,7 +185,7 @@ class Kohana_SessionTest extends Unittest_TestCase
     {
         $session = $this->getMockSession();
 
-        $this->assertAttributeSame(FALSE, '_destroyed', $session);
+        $this->assertAttributeSame(false, '_destroyed', $session);
     }
 
     /**
@@ -196,8 +196,8 @@ class Kohana_SessionTest extends Unittest_TestCase
     public function provider_get_returns_default_if_var_dnx()
     {
         return [
-            ['something_crazy', FALSE],
-            ['a_true', TRUE],
+            ['something_crazy', false],
+            ['a_true', true],
             ['an_int', 158163158],
         ];
     }
@@ -227,12 +227,12 @@ class Kohana_SessionTest extends Unittest_TestCase
     {
         $session = $this->getMockSession();
 
-        $this->assertSame(NULL, $session->get('level_of_cool'));
+        $this->assertSame(null, $session->get('level_of_cool'));
     }
 
     /**
      * This test makes sure that session is using array_key_exists
-     * as isset will return FALSE if the value is NULL
+     * as isset will return false if the value is null
      *
      * @test
      * @covers Session::get
@@ -241,9 +241,9 @@ class Kohana_SessionTest extends Unittest_TestCase
     {
         $session = $this->getMockSession();
 
-        $session->set('arkward', NULL);
+        $session->set('arkward', null);
 
-        $this->assertSame(NULL, $session->get('arkward', 'uh oh'));
+        $this->assertSame(null, $session->get('arkward', 'uh oh'));
     }
 
     /**
@@ -429,7 +429,7 @@ class Kohana_SessionTest extends Unittest_TestCase
             ->expects($this->once())
             ->method('_destroy')
             ->with()
-            ->will($this->returnValue(TRUE));
+            ->will($this->returnValue(true));
 
         $this->assertTrue($session->destroy());
 
@@ -455,7 +455,7 @@ class Kohana_SessionTest extends Unittest_TestCase
             ->expects($this->once())
             ->method('_destroy')
             ->with()
-            ->will($this->returnValue(FALSE));
+            ->will($this->returnValue(false));
 
         $this->assertFalse($session->destroy());
         $this->assertAttributeSame(

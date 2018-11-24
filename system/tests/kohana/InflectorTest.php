@@ -27,11 +27,11 @@ class Kohana_InflectorTest extends Unittest_TestCase
     {
         return [
             // $value, $result
-            ['fish', TRUE],
-            ['cat', FALSE],
-            ['deer', TRUE],
-            ['bison', TRUE],
-            ['friend', FALSE],
+            ['fish', true],
+            ['cat', false],
+            ['deer', true],
+            ['bison', true],
+            ['friend', false],
         ];
     }
 
@@ -57,17 +57,17 @@ class Kohana_InflectorTest extends Unittest_TestCase
     {
         return [
             // $value, $result
-            ['fish', NULL, 'fish'],
-            ['cats', NULL, 'cat'],
+            ['fish', null, 'fish'],
+            ['cats', null, 'cat'],
             ['cats', 2, 'cats'],
             ['cats', '2', 'cats'],
-            ['children', NULL, 'child'],
+            ['children', null, 'child'],
             ['meters', 0.6, 'meters'],
             ['meters', 1.6, 'meters'],
             ['meters', 1.0, 'meter'],
-            ['status', NULL, 'status'],
-            ['statuses', NULL, 'status'],
-            ['heroes', NULL, 'hero'],
+            ['status', null, 'status'],
+            ['statuses', null, 'status'],
+            ['heroes', null, 'hero'],
         ];
     }
 
@@ -93,17 +93,17 @@ class Kohana_InflectorTest extends Unittest_TestCase
     {
         return [
             // $value, $result
-            ['fish', NULL, 'fish'],
-            ['cat', NULL, 'cats'],
+            ['fish', null, 'fish'],
+            ['cat', null, 'cats'],
             ['cats', 1, 'cats'],
             ['cats', '1', 'cats'],
-            ['movie', NULL, 'movies'],
+            ['movie', null, 'movies'],
             ['meter', 0.6, 'meters'],
             ['meter', 1.6, 'meters'],
             ['meter', 1.0, 'meter'],
-            ['hero', NULL, 'heroes'],
-            ['Dog', NULL, 'Dogs'], // Titlecase
-            ['DOG', NULL, 'DOGS'], // Uppercase
+            ['hero', null, 'heroes'],
+            ['Dog', null, 'Dogs'], // Titlecase
+            ['DOG', null, 'DOGS'], // Uppercase
         ];
     }
 

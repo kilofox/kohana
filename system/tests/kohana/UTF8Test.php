@@ -49,11 +49,11 @@ class Kohana_UTF8Test extends Unittest_TestCase
     public function provider_is_ascii()
     {
         return [
-            ["\0", TRUE],
-            ["\$eno\r", TRUE],
-            ['Señor', FALSE],
-            [['Se', 'nor'], TRUE],
-            [['Se', 'ñor'], FALSE],
+            ["\0", true],
+            ["\$eno\r", true],
+            ['Señor', false],
+            [['Se', 'nor'], true],
+            [['Se', 'ñor'], false],
         ];
     }
 
@@ -215,7 +215,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
         return [
             ['Cocoñùт', 3, 2, 'oñ'],
             ['Cocoñùт', 3, 9, 'oñùт'],
-            ['Cocoñùт', 3, NULL, 'oñùт'],
+            ['Cocoñùт', 3, null, 'oñùт'],
             ['Cocoñùт', 3, -2, 'oñ'],
         ];
     }
@@ -397,7 +397,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
         return [
             ['Cocoñùт', 'oñ', 'oñùт'],
             ['Cocoñùт', 'o', 'ocoñùт'],
-            ['Cocoñùт', 'k', FALSE],
+            ['Cocoñùт', 'k', false],
         ];
     }
 
@@ -419,7 +419,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     {
         return [
             ["foo", "o", 1, 2, 2],
-            ['Cocoñùт', 'oñ', NULL, NULL, 1],
+            ['Cocoñùт', 'oñ', null, null, 1],
             ['Cocoñùт', 'oñ', 2, 4, 1],
             ['Cocoñùт', 'šš', 3, 9, 4],
         ];
@@ -442,7 +442,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     public function provider_strcspn()
     {
         return [
-            ['Cocoñùт', 'oñ', NULL, NULL, 1],
+            ['Cocoñùт', 'oñ', null, null, 1],
             ['Cocoñùт', 'oñ', 2, 4, 1],
             ['Cocoñùт', 'šš', 3, 9, 4],
         ];
@@ -543,7 +543,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     public function provider_trim()
     {
         return [
-            [' bar ', NULL, 'bar'],
+            [' bar ', null, 'bar'],
             ['bar', 'b', 'ar'],
             ['barb', 'b', 'ar'],
         ];
@@ -566,7 +566,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     public function provider_ltrim()
     {
         return [
-            [' bar ', NULL, 'bar '],
+            [' bar ', null, 'bar '],
             ['bar', 'b', 'ar'],
             ['barb', 'b', 'arb'],
             ['ñùт', 'ñ', 'ùт'],
@@ -590,7 +590,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     public function provider_rtrim()
     {
         return [
-            [' bar ', NULL, ' bar'],
+            [' bar ', null, ' bar'],
             ['bar', 'b', 'bar'],
             ['barb', 'b', 'bar'],
             ['Cocoñùт', 'т', 'Cocoñù'],

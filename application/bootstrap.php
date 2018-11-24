@@ -88,15 +88,15 @@ if (isset($_SERVER['KOHANA_ENV'])) {
  *
  * The following options are available:
  *
- * - string   base_url    path, and optionally domain, of your application   NULL
+ * - string   base_url    path, and optionally domain, of your application   null
  * - string   index_file  name of your index file, usually "index.php"       index.php
  * - string   charset     internal character set used for input and output   utf-8
  * - string   cache_dir   set the internal cache directory                   APPPATH/cache
  * - integer  cache_life  lifetime, in seconds, of items cached              60
- * - boolean  errors      enable or disable error handling                   TRUE
- * - boolean  profile     enable or disable internal profiling               TRUE
- * - boolean  caching     enable or disable internal caching                 FALSE
- * - boolean  expose      set the X-Powered-By header                        FALSE
+ * - boolean  errors      enable or disable error handling                   true
+ * - boolean  profile     enable or disable internal profiling               true
+ * - boolean  caching     enable or disable internal caching                 false
+ * - boolean  expose      set the X-Powered-By header                        false
  */
 Kohana::init([
     'base_url' => '/kohana/',
@@ -134,7 +134,7 @@ Kohana::modules([
  * If you have not defined a cookie salt in your Cookie class then
  * uncomment the line below and define a preferrably long salt.
  */
-// Cookie::$salt = NULL;
+// Cookie::$salt = null;
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of

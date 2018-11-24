@@ -150,10 +150,10 @@ class Kohana_FeedTest extends Unittest_TestCase
     {
         $this->setEnvironment($enviroment);
 
-        $this->assertTag($matcher_item, Feed::create($info, $items), '', FALSE);
+        $this->assertTag($matcher_item, Feed::create($info, $items), '', false);
 
         foreach ($matchers_image as $matcher_image) {
-            $this->assertTag($matcher_image, Feed::create($info, $items), '', FALSE);
+            $this->assertTag($matcher_image, Feed::create($info, $items), '', false);
         }
     }
 

@@ -15,9 +15,9 @@ function _strtolower($str)
     if (UTF8::is_ascii($str))
         return strtolower($str);
 
-    static $utf8_upper_to_lower = NULL;
+    static $utf8_upper_to_lower = null;
 
-    if ($utf8_upper_to_lower === NULL) {
+    if ($utf8_upper_to_lower === null) {
         $utf8_upper_to_lower = [
             0x0041 => 0x0061, 0x03A6 => 0x03C6, 0x0162 => 0x0163, 0x00C5 => 0x00E5, 0x0042 => 0x0062,
             0x0139 => 0x013A, 0x00C1 => 0x00E1, 0x0141 => 0x0142, 0x038E => 0x03CD, 0x0100 => 0x0101,
@@ -67,8 +67,8 @@ function _strtolower($str)
 
     $uni = UTF8::to_unicode($str);
 
-    if ($uni === FALSE)
-        return FALSE;
+    if ($uni === false)
+        return false;
 
     for ($i = 0, $c = count($uni); $i < $c; $i++) {
         if (isset($utf8_upper_to_lower[$uni[$i]])) {

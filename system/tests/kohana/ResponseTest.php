@@ -108,7 +108,7 @@ class Kohana_ResponseTest extends Unittest_TestCase
                     'test2' => 'stfu',
                     'test3' => ['value' => 'snafu', 'expiration' => 123456789]
                 ],
-                NULL,
+                null,
                 [
                     'test2' => [
                         'value' => 'stfu',

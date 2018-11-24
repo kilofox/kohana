@@ -149,7 +149,7 @@ class Kohana_URL
      * Typically you would use this when you are sorting query results,
      * or something similar.
      *
-     * [!!] Parameters with a NULL value are left out.
+     * [!!] Parameters with a null value are left out.
      *
      * @param   array    $params   Array of GET parameters
      * @param   boolean  $use_get  Include current request GET parameters
@@ -172,7 +172,7 @@ class Kohana_URL
             return '';
         }
 
-        // Note: http_build_query returns an empty string for a params array with only NULL values
+        // Note: http_build_query returns an empty string for a params array with only null values
         $query = http_build_query($params, '', '&');
 
         // Don't prepend '?' to an empty string
@@ -218,7 +218,7 @@ class Kohana_URL
      *
      * @param string $host
      * @param array $trusted_hosts
-     * @return bool TRUE if $host is trustworthy.
+     * @return bool true if $host is trustworthy.
      */
     public static function is_trusted_host($host, array $trusted_hosts = null)
     {

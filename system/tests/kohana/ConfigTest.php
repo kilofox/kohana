@@ -51,7 +51,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
     }
 
     /**
-     * By default (or by passing TRUE as the second parameter) the config object
+     * By default (or by passing true as the second parameter) the config object
      * should prepend the reader to the front of the readers queue
      *
      * @test
@@ -75,13 +75,13 @@ class Kohana_ConfigTest extends Unittest_TestCase
         $config = new Config;
 
         $config->attach($reader1);
-        $config->attach($reader2, TRUE);
+        $config->attach($reader2, true);
 
         $this->assertAttributeSame([$reader2, $reader1], '_sources', $config);
     }
 
     /**
-     * Test that attaching a new reader (and passing FALSE as second param) causes
+     * Test that attaching a new reader (and passing false as second param) causes
      * phpunit to append the reader rather than prepend
      *
      * @test
@@ -94,7 +94,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
         $reader2 = $this->createMock('Kohana_Config_Reader');
 
         $config->attach($reader1);
-        $config->attach($reader2, FALSE);
+        $config->attach($reader2, false);
 
         $this->assertAttributeSame([$reader1, $reader2], '_sources', $config);
     }
@@ -223,7 +223,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
     public function provider_load_throws_exception_if_no_group_is_given()
     {
         return [
-            [NULL],
+            [null],
             [''],
             [[]],
             [['foo' => 'bar']],
@@ -325,7 +325,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
         $config = new Kohana_Config;
 
         // Attach $reader1 at the "top" and reader2 at the "bottom"
-        $config->attach($reader1)->attach($reader2, FALSE);
+        $config->attach($reader1)->attach($reader2, false);
 
         $this->assertSame([
             'kohana' => 'awesome',
@@ -419,7 +419,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
             ->with('something', clone $key, clone $val);
 
         $config
-            ->attach($reader1)->attach($reader2, FALSE)
+            ->attach($reader1)->attach($reader2, false)
             ->attach($writer1)->attach($writer2);
 
         // Now let's get this thing going!

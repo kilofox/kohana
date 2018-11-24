@@ -30,7 +30,7 @@ class Kohana_ArrTest extends Unittest_TestCase
             // That no parameters returns null
             [
                 'function',
-                ['function', NULL]
+                ['function', null]
             ],
             // That we can get an array of parameters values
             [
@@ -86,11 +86,11 @@ class Kohana_ArrTest extends Unittest_TestCase
                     'blueflame' => 'was'
                 ],
                 ['kohana', 'cakephp', 'symfony'],
-                NULL,
+                null,
                 [
                     'kohana' => 'awesome',
-                    'cakephp' => NULL,
-                    'symfony' => NULL
+                    'cakephp' => null,
+                    'symfony' => null
                 ]
             ],
             // I realise noone should EVER code like this in real life,
@@ -115,7 +115,7 @@ class Kohana_ArrTest extends Unittest_TestCase
                 // Paths to extract
                 ['level1.level2a', 'level1.level2b'],
                 // Default
-                NULL,
+                null,
                 // Expected Result
                 [
                     'level1' => ['level2a' => 'value 1', 'level2b' => 'value 2']
@@ -130,7 +130,7 @@ class Kohana_ArrTest extends Unittest_TestCase
                 // Paths to extract
                 ['level1a', 'level1b.level2b'],
                 // Default
-                NULL,
+                null,
                 // Expected Result
                 [
                     'level1a' => ['level2a' => 'value 1'],
@@ -221,10 +221,10 @@ class Kohana_ArrTest extends Unittest_TestCase
     public function provider_get()
     {
         return [
-            [['uno', 'dos', 'tress'], 1, NULL, 'dos'],
-            [['we' => 'can', 'make' => 'change'], 'we', NULL, 'can'],
-            [['uno', 'dos', 'tress'], 10, NULL, NULL],
-            [['we' => 'can', 'make' => 'change'], 'he', NULL, NULL],
+            [['uno', 'dos', 'tress'], 1, null, 'dos'],
+            [['we' => 'can', 'make' => 'change'], 'we', null, 'can'],
+            [['uno', 'dos', 'tress'], 10, null, null],
+            [['we' => 'can', 'make' => 'change'], 'he', null, null],
             [['we' => 'can', 'make' => 'change'], 'he', 'who', 'who'],
             [['we' => 'can', 'make' => 'change'], 'he', ['arrays'], ['arrays']],
         ];
@@ -257,11 +257,11 @@ class Kohana_ArrTest extends Unittest_TestCase
         return [
             [
                 ['one', 'two', 'three'],
-                FALSE
+                false
             ],
             [
                 ['one' => 'o clock', 'two' => 'o clock', 'three' => 'o clock'],
-                TRUE
+                true
             ],
         ];
     }
@@ -289,11 +289,11 @@ class Kohana_ArrTest extends Unittest_TestCase
     public function provider_is_array()
     {
         return [
-            [$a = ['one', 'two', 'three'], TRUE],
-            [new ArrayObject($a), TRUE],
-            [new ArrayIterator($a), TRUE],
-            ['not an array', FALSE],
-            [new stdClass, FALSE],
+            [$a = ['one', 'two', 'three'], true],
+            [new ArrayObject($a), true],
+            [new ArrayIterator($a), true],
+            ['not an array', false],
+            [new stdClass, false],
         ];
     }
 
@@ -465,7 +465,7 @@ class Kohana_ArrTest extends Unittest_TestCase
                 3 => 'frank', // Issue #3194
             ],
             // Iterable object should work exactly the same
-            'object' => new ArrayObject(['iterator' => TRUE]),
+            'object' => new ArrayObject(['iterator' => true]),
         ];
 
         return [
@@ -490,21 +490,21 @@ class Kohana_ArrTest extends Unittest_TestCase
                 $array['foobar']['definition'],
                 $array,
                 'foobar/definition',
-                NULL,
+                null,
                 '/'
             ],
-            // We should be able to use NULL as a default, returned if the key DNX
+            // We should be able to use null as a default, returned if the key DNX
             [
-                NULL,
+                null,
                 $array,
                 'foobar.alternatives',
-                NULL
+                null
             ],
             [
-                NULL,
+                null,
                 $array,
                 'kohana.alternatives',
-                NULL
+                null
             ],
             // Try using a string as a default
             [
@@ -540,7 +540,7 @@ class Kohana_ArrTest extends Unittest_TestCase
             ],
             // See what happens when it can't dig any deeper from a wildcard
             [
-                NULL,
+                null,
                 $array,
                 'users.*.fans'
             ],
@@ -574,7 +574,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      * @param boolean $expected   The expected value
      * @param string  $delimiter  The path delimiter
      */
-    public function test_path($expected, $array, $path, $default = NULL, $delimiter = NULL)
+    public function test_path($expected, $array, $path, $default = null, $delimiter = null)
     {
         $this->assertSame(
             $expected, Arr::path($array, $path, $default, $delimiter)
@@ -642,7 +642,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      * @param boolean $expected   The expected value
      * @param string  $delimiter  The path delimiter
      */
-    public function test_set_path($expected, $array, $path, $value, $delimiter = NULL)
+    public function test_set_path($expected, $array, $path, $value, $delimiter = null)
     {
         Arr::set_path($array, $path, $value, $delimiter);
 
@@ -772,19 +772,19 @@ class Kohana_ArrTest extends Unittest_TestCase
             [
                 'strip_tags',
                 ['<p>foobar</p>'],
-                NULL,
+                null,
                 ['foobar']
             ],
             [
                 'strip_tags',
                 [['<p>foobar</p>'], ['<p>foobar</p>']],
-                NULL,
+                null,
                 [['foobar'], ['foobar']]
             ],
             [
                 'strip_tags',
                 ['foo' => '<p>foobar</p>', 'bar' => '<p>foobar</p>'],
-                NULL,
+                null,
                 ['foo' => 'foobar', 'bar' => 'foobar']
             ],
             [
@@ -796,7 +796,7 @@ class Kohana_ArrTest extends Unittest_TestCase
             [
                 ['strip_tags', 'trim',],
                 ['foo' => '<p>foobar </p>', 'bar' => '<p>foobar</p>'],
-                NULL,
+                null,
                 ['foo' => 'foobar', 'bar' => 'foobar']
             ],
             [

@@ -109,11 +109,11 @@ class Kohana_NumTest extends Unittest_TestCase
     {
         return [
             // English
-            [10000, 2, FALSE, '10,000.00'],
-            [10000, 2, TRUE, '10,000.00'],
+            [10000, 2, false, '10,000.00'],
+            [10000, 2, true, '10,000.00'],
             // Additional dp's should be removed
-            [123.456, 2, FALSE, '123.46'],
-            [123.456, 2, TRUE, '123.46'],
+            [123.456, 2, false, '123.46'],
+            [123.456, 2, true, '123.46'],
         ];
     }
 
@@ -161,7 +161,7 @@ class Kohana_NumTest extends Unittest_TestCase
     function test_round($input, $precision, $expected)
     {
         foreach ([Num::ROUND_HALF_UP, Num::ROUND_HALF_DOWN, Num::ROUND_HALF_EVEN, Num::ROUND_HALF_ODD] as $i => $mode) {
-            $this->assertSame($expected[$i], Num::round($input, $precision, $mode, FALSE));
+            $this->assertSame($expected[$i], Num::round($input, $precision, $mode, false));
         }
     }
 

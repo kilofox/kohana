@@ -48,8 +48,8 @@ class Kohana_CookieTest extends Unittest_TestCase
         $this->setEnvironment([
             'Cookie::$path' => '/path',
             'Cookie::$domain' => 'my.domain',
-            'Cookie::$secure' => TRUE,
-            'Cookie::$httponly' => FALSE,
+            'Cookie::$secure' => true,
+            'Cookie::$httponly' => false,
         ]);
 
         Kohana_CookieTest_TestableCookie::set('cookie', 'value');
@@ -57,8 +57,8 @@ class Kohana_CookieTest extends Unittest_TestCase
         $this->assertSetCookieWith([
             'path' => '/path',
             'domain' => 'my.domain',
-            'secure' => TRUE,
-            'httponly' => FALSE
+            'secure' => true,
+            'httponly' => false
         ]);
     }
 
@@ -70,7 +70,7 @@ class Kohana_CookieTest extends Unittest_TestCase
     public function provider_set_calculates_expiry_from_lifetime()
     {
         return [
-            [NULL, self::COOKIE_EXPIRATION + self::UNIX_TIMESTAMP],
+            [null, self::COOKIE_EXPIRATION + self::UNIX_TIMESTAMP],
             [0, 0],
             [10, 10 + self::UNIX_TIMESTAMP],
         ];
@@ -171,7 +171,7 @@ class Kohana_CookieTest extends Unittest_TestCase
      */
     public function test_delete_does_not_require_configured_salt()
     {
-        Cookie::$salt = NULL;
+        Cookie::$salt = null;
         $this->assertTrue(Kohana_CookieTest_TestableCookie::delete('cookie'));
         $this->assertDeletedCookie('cookie');
     }
@@ -182,7 +182,7 @@ class Kohana_CookieTest extends Unittest_TestCase
      */
     public function test_salt_throws_with_no_configured_salt()
     {
-        Cookie::$salt = NULL;
+        Cookie::$salt = null;
         Cookie::salt('key', 'value');
     }
 
@@ -247,7 +247,7 @@ class Kohana_CookieTest extends Unittest_TestCase
                     'salt' => 'our-salt',
                     'user-agent' => 'Chrome'
                 ],
-                ['user-agent' => NULL]
+                ['user-agent' => null]
             ],
         ];
     }
@@ -284,10 +284,10 @@ class Kohana_CookieTest extends Unittest_TestCase
     // @codingStandardsIgnoreEnd
     {
         $this->assertArrayNotHasKey($name, $_COOKIE);
-        // To delete the client-side cookie, Cookie::delete should send a new cookie with value NULL and expiry in the past
+        // To delete the client-side cookie, Cookie::delete should send a new cookie with value null and expiry in the past
         $this->assertSetCookieWith([
             'name' => $name,
-            'value' => NULL,
+            'value' => null,
             'expire' => -86400,
             'path' => Cookie::$path,
             'domain' => Cookie::$domain,
@@ -317,7 +317,7 @@ class Kohana_CookieTest extends Unittest_TestCase
      */
     protected function set_or_remove_http_user_agent($user_agent)
     {
-        if ($user_agent === NULL) {
+        if ($user_agent === null) {
             unset($_SERVER['HTTP_USER_AGENT']);
         } else {
             $_SERVER['HTTP_USER_AGENT'] = $user_agent;
@@ -352,7 +352,7 @@ class Kohana_CookieTest_TestableCookie extends Cookie
             'httponly' => $httponly
         ];
 
-        return TRUE;
+        return true;
     }
 
     /**

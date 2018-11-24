@@ -79,7 +79,7 @@ class Kohana_RouteTest extends Unittest_TestCase
 
     /**
      * Route::name() should fetch the name of a passed route
-     * If route is not found then it should return FALSE
+     * If route is not found then it should return false
      *
      * @TODO: This test needs to segregate the Route::$_routes singleton
      * @test
@@ -98,7 +98,7 @@ class Kohana_RouteTest extends Unittest_TestCase
 
     /**
      * If Route::cache() was able to restore routes from the cache then
-     * it should return TRUE and load the cached routes
+     * it should return true and load the cached routes
      *
      * @test
      * @covers Route::cache
@@ -108,7 +108,7 @@ class Kohana_RouteTest extends Unittest_TestCase
         $routes = Route::all();
 
         // First we create the cache
-        Route::cache(TRUE);
+        Route::cache(true);
 
         // Now lets modify the "current" routes
         Route::set('nonsensical_route', 'flabbadaga/ding_dong');
@@ -134,7 +134,7 @@ class Kohana_RouteTest extends Unittest_TestCase
         $cached = Route::all();
 
         // First we create the cache
-        Route::cache(TRUE);
+        Route::cache(true);
 
         // Now lets modify the "current" routes
         Route::set('nonsensical_route', 'flabbadaga/ding_dong');
@@ -142,7 +142,7 @@ class Kohana_RouteTest extends Unittest_TestCase
         $modified = Route::all();
 
         // Then try and load said cache
-        $this->assertTrue(Route::cache(NULL, TRUE));
+        $this->assertTrue(Route::cache(null, true));
 
         // Check the route cache flag
         $this->assertTrue(Route::$cache);
@@ -152,7 +152,7 @@ class Kohana_RouteTest extends Unittest_TestCase
     }
 
     /**
-     * Route::cache() should return FALSE if cached routes could not be found
+     * Route::cache() should return false if cached routes could not be found
      *
      * The cache is cleared before and after each test in setUp tearDown
      * by cleanCacheDir()
@@ -162,14 +162,14 @@ class Kohana_RouteTest extends Unittest_TestCase
      */
     public function test_cache_returns_false_if_cache_dnx()
     {
-        $this->assertSame(FALSE, Route::cache(), 'Route cache was not empty');
+        $this->assertSame(false, Route::cache(), 'Route cache was not empty');
 
         // Check the route cache flag
         $this->assertFalse(Route::$cache);
     }
 
     /**
-     * If the constructor is passed a NULL uri then it should assume it's
+     * If the constructor is passed a null uri then it should assume it's
      * being loaded from the cache & therefore shouldn't override the cached attributes
      *
      * @test
@@ -185,15 +185,15 @@ class Kohana_RouteTest extends Unittest_TestCase
         $route->expects($this->never())
             ->method('compile');
 
-        $route->__construct(NULL, NULL);
+        $route->__construct(null, null);
 
         $this->assertAttributeSame('', '_uri', $route);
         $this->assertAttributeSame([], '_regex', $route);
         $this->assertAttributeSame([
             'action' => 'index',
-            'host' => FALSE
+            'host' => false
             ], '_defaults', $route);
-        $this->assertAttributeSame(NULL, '_route_regex', $route);
+        $this->assertAttributeSame(null, '_route_regex', $route);
     }
 
     /**
@@ -225,7 +225,7 @@ class Kohana_RouteTest extends Unittest_TestCase
 
         $this->assertAttributeSame([], '_regex', $route);
 
-        $route = new Route($uri2, NULL);
+        $route = new Route($uri2, null);
 
         $this->assertAttributeSame([], '_regex', $route);
     }
@@ -280,7 +280,7 @@ class Kohana_RouteTest extends Unittest_TestCase
         // Mock a request class with the $match uri
         $stub = $this->get_request_mock($match);
 
-        $this->assertSame(FALSE, $route->matches($stub));
+        $this->assertSame(false, $route->matches($stub));
     }
 
     /**
@@ -337,7 +337,7 @@ class Kohana_RouteTest extends Unittest_TestCase
         return [
             [
                 '<controller>(/<action>(/<id>))',
-                NULL,
+                null,
                 ['controller' => 'Welcome', 'action' => 'index'],
                 'Welcome',
                 'index',
@@ -347,7 +347,7 @@ class Kohana_RouteTest extends Unittest_TestCase
             ],
             [
                 '(<controller>(/<action>(/<id>)))',
-                NULL,
+                null,
                 ['controller' => 'welcome', 'action' => 'index'],
                 'Welcome',
                 'index',
@@ -426,7 +426,7 @@ class Kohana_RouteTest extends Unittest_TestCase
             [
                 'api(/<version>)/const(/<id>)(/<custom>)',
                 ['version' => 1],
-                NULL,
+                null,
                 'api/const'
             ],
             [
@@ -485,7 +485,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      */
     public function test_optional_groups_containing_specified_params($uri, $defaults, $params, $expected)
     {
-        $route = new Route($uri, NULL);
+        $route = new Route($uri, null);
         $route->defaults($defaults);
 
         $this->assertSame($expected, $route->uri($params));
@@ -573,7 +573,7 @@ class Kohana_RouteTest extends Unittest_TestCase
         return [
             [
                 'info/about_us',
-                NULL,
+                null,
                 'info/about_us',
                 ['some' => 'random', 'params' => 'to confuse']
             ],
@@ -608,7 +608,7 @@ class Kohana_RouteTest extends Unittest_TestCase
         return [
             [
                 '<controller>(/<action)',
-                NULL,
+                null,
                 ['action' => 'awesome-action']
             ],
             /**
@@ -617,7 +617,7 @@ class Kohana_RouteTest extends Unittest_TestCase
              */
             [
                 '(<controller>(/<action>))',
-                NULL,
+                null,
                 ['action' => 'awesome-action']
             ],
         ];
@@ -651,7 +651,7 @@ class Kohana_RouteTest extends Unittest_TestCase
         return [
             [
                 '<controller>/<action>(/<id>)',
-                NULL,
+                null,
                 'users/edit',
                 ['controller' => 'users', 'action' => 'edit'],
                 'users/edit/god',
@@ -718,7 +718,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      * @param array $params
      * @param boolean $protocol
      */
-    public function test_composing_url_from_route($expected, $params = NULL, $protocol = NULL)
+    public function test_composing_url_from_route($expected, $params = null, $protocol = null)
     {
         Route::set('foobar', '(<controller>(/<action>(/<id>)))')
             ->defaults(['controller' => 'welcome']);
@@ -848,7 +848,7 @@ class Kohana_RouteTest extends Unittest_TestCase
                 ['controller' => 'test', 'action' => 'same'],
                 ['Route_Holder', 'route_filter_modify_params_false'],
                 'test/fail',
-                FALSE
+                false
             ],
         ];
     }

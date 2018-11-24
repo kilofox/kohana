@@ -18,7 +18,7 @@ defined('SYSPATH') OR die('Kohana bootstrap needs to be included before tests ru
  */
 class Kohana_DateTest extends Unittest_TestCase
 {
-    protected $_original_timezone = NULL;
+    protected $_original_timezone = null;
     protected $default_locale;
 
     /**
@@ -73,7 +73,7 @@ class Kohana_DateTest extends Unittest_TestCase
      * @param string  $local    Local TZ
      * @param integer $now      Current timestamp
      */
-    public function test_offset($expected, $remote, $local, $now = NULL)
+    public function test_offset($expected, $remote, $local, $now = null)
     {
         $this->assertSame($expected, Date::offset($remote, $local, $now));
     }
@@ -199,16 +199,16 @@ class Kohana_DateTest extends Unittest_TestCase
     {
         return [
             // According to "the rhyme" these should be the same every year
-            [9, FALSE, 30],
-            [4, FALSE, 30],
-            [6, FALSE, 30],
-            [11, FALSE, 30],
-            [1, FALSE, 31],
-            [3, FALSE, 31],
-            [5, FALSE, 31],
-            [7, FALSE, 31],
-            [8, FALSE, 31],
-            [10, FALSE, 31],
+            [9, false, 30],
+            [4, false, 30],
+            [6, false, 30],
+            [11, false, 30],
+            [1, false, 31],
+            [3, false, 31],
+            [5, false, 31],
+            [7, false, 31],
+            [8, false, 31],
+            [10, false, 31],
             // February is such a pain
             [2, 2001, 28],
             [2, 2000, 29],
@@ -296,7 +296,7 @@ class Kohana_DateTest extends Unittest_TestCase
      * @param string|null    $timestamp_format The output format
      * @param string|null    $timezone         The timezone identifier
      */
-    public function test_formatted_time($expected, $datetime_str, $timestamp_format = NULL, $timezone = NULL)
+    public function test_formatted_time($expected, $datetime_str, $timestamp_format = null, $timezone = null)
     {
         $timestamp = Date::formatted_time($datetime_str, $timestamp_format, $timezone);
 
@@ -326,7 +326,7 @@ class Kohana_DateTest extends Unittest_TestCase
                     11 => "11",
                     12 => "12"
                 ],
-                NULL
+                null
             ],
             [
                 [
@@ -384,7 +384,7 @@ class Kohana_DateTest extends Unittest_TestCase
 
     /**
      * Date::months() should allow the user to specify different format types, defaulting
-     * to a mirrored month number => month number array if format is NULL or unrecognised
+     * to a mirrored month number => month number array if format is null or unrecognised
      *
      * @test
      * @dataProvider provider_months
@@ -411,7 +411,7 @@ class Kohana_DateTest extends Unittest_TestCase
                 $time,
                 $time,
                 '',
-                FALSE
+                false
             ],
             // Test that providing only one output just returns that output
             [
@@ -465,7 +465,7 @@ class Kohana_DateTest extends Unittest_TestCase
             [
                 // Add a bit of extra time to account for phpunit processing
                 $time + (14 * 31 * 24 * 60 * 60) + (79 * 80),
-                NULL,
+                null,
                 'months,years',
                 [
                     'months' => 2,
@@ -600,7 +600,7 @@ class Kohana_DateTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_years
      */
-    public function test_years($expected, $start = FALSE, $end = FALSE)
+    public function test_years($expected, $start = false, $end = false)
     {
         $this->assertSame(
             $expected, Date::years($start, $end)
@@ -635,7 +635,7 @@ class Kohana_DateTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_hours
      */
-    public function test_hours($expected, $step = 1, $long = FALSE, $start = NULL)
+    public function test_hours($expected, $step = 1, $long = false, $start = null)
     {
         $this->assertSame(
             $expected, Date::hours($step, $long, $start)

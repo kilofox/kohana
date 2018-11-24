@@ -37,7 +37,7 @@ class Kohana_UploadTest extends Unittest_TestCase
                         ]
                     ]
                 ],
-                FALSE
+                false
             ],
             [
                 'unit_test',
@@ -49,7 +49,7 @@ class Kohana_UploadTest extends Unittest_TestCase
                         ]
                     ]
                 ],
-                TRUE
+                true
             ],
             [
                 'unit_test',
@@ -65,7 +65,7 @@ class Kohana_UploadTest extends Unittest_TestCase
                         ]
                     ]
                 ],
-                TRUE
+                true
             ],
             [
                 'unit_test',
@@ -80,7 +80,7 @@ class Kohana_UploadTest extends Unittest_TestCase
                         ]
                     ]
                 ],
-                FALSE
+                false
             ],
         ];
     }
@@ -137,7 +137,7 @@ class Kohana_UploadTest extends Unittest_TestCase
     {
         return [
             [
-                TRUE,
+                true,
                 [
                     'error' => UPLOAD_ERR_OK,
                     'name' => 'Unit_Test File',
@@ -147,7 +147,7 @@ class Kohana_UploadTest extends Unittest_TestCase
                 ]
             ],
             [
-                FALSE,
+                false,
                 [
                     'name' => 'Unit_Test File',
                     'type' => 'image/png',
@@ -156,7 +156,7 @@ class Kohana_UploadTest extends Unittest_TestCase
                 ]
             ],
             [
-                FALSE,
+                false,
                 [
                     'error' => UPLOAD_ERR_OK,
                     'type' => 'image/png',
@@ -165,7 +165,7 @@ class Kohana_UploadTest extends Unittest_TestCase
                 ]
             ],
             [
-                FALSE,
+                false,
                 [
                     'name' => 'Unit_Test File',
                     'error' => UPLOAD_ERR_OK,
@@ -174,7 +174,7 @@ class Kohana_UploadTest extends Unittest_TestCase
                 ]
             ],
             [
-                FALSE,
+                false,
                 [
                     'error' => UPLOAD_ERR_OK,
                     'name' => 'Unit_Test File',
@@ -183,7 +183,7 @@ class Kohana_UploadTest extends Unittest_TestCase
                 ]
             ],
             [
-                FALSE,
+                false,
                 [
                     'error' => UPLOAD_ERR_OK,
                     'name' => 'Unit_Test File',

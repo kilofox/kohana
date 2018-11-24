@@ -35,7 +35,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
         // This requires reflection as the API for editing defined routes is limited
         $route_class = new ReflectionClass('Route');
         $routes_prop = $route_class->getProperty('_routes');
-        $routes_prop->setAccessible(TRUE);
+        $routes_prop->setAccessible(true);
 
         self::$_original_routes = $routes_prop->getValue('Route');
 
@@ -58,7 +58,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
         // Reset routes
         $route_class = new ReflectionClass('Route');
         $routes_prop = $route_class->getProperty('_routes');
-        $routes_prop->setAccessible(TRUE);
+        $routes_prop->setAccessible(true);
         $routes_prop->setValue('Route', self::$_original_routes);
 
         parent::tearDownAfterClass();
@@ -113,7 +113,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      */
     protected function _dummy_redirect_uri($status)
     {
-        return $this->_dummy_uri($status, ['Location' => $this->_dummy_uri(200, NULL, 'followed')], 'not-followed');
+        return $this->_dummy_uri($status, ['Location' => $this->_dummy_uri(200, null, 'followed')], 'not-followed');
     }
 
     /**
@@ -124,21 +124,21 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
     {
         return [
             [
-                TRUE,
-                $this->_dummy_uri(200, NULL, 'not-followed'),
+                true,
+                $this->_dummy_uri(200, null, 'not-followed'),
                 'not-followed'
             ],
             [
-                TRUE,
+                true,
                 $this->_dummy_redirect_uri(200),
                 'not-followed'
             ],
             [
-                TRUE,
+                true,
                 $this->_dummy_redirect_uri(302),
                 'followed'],
             [
-                FALSE,
+                false,
                 $this->_dummy_redirect_uri(302),
                 'not-followed'
             ],
@@ -159,7 +159,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
         $response = Request::factory($request_url, ['follow' => $follow])
             ->execute();
 
-        $data = json_decode($response->body(), TRUE);
+        $data = json_decode($response->body(), true);
         $this->assertEquals($expect_body, $data['body']);
     }
 
@@ -169,7 +169,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
     public function test_follows_with_headers()
     {
         $response = Request::factory($this->_dummy_redirect_uri(301), [
-                'follow' => TRUE,
+                'follow' => true,
                 'follow_headers' => ['Authorization', 'X-Follow-With-Value']
             ])
             ->headers([
@@ -179,7 +179,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
             ])
             ->execute();
 
-        $data = json_decode($response->body(), TRUE);
+        $data = json_decode($response->body(), true);
         $headers = $data['rq_headers'];
 
         $this->assertEquals('followed', $data['body']);
@@ -196,13 +196,13 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
     public function test_follow_does_not_add_extra_headers()
     {
         $response = Request::factory($this->_dummy_redirect_uri(301), [
-                'follow' => TRUE,
+                'follow' => true,
                 'follow_headers' => ['Authorization']
             ])
             ->headers([])
             ->execute();
 
-        $data = json_decode($response->body(), TRUE);
+        $data = json_decode($response->body(), true);
         $headers = $data['rq_headers'];
 
         $this->assertArrayNotHasKey('authorization', $headers, 'Empty headers should not be added when following redirects');
@@ -216,12 +216,12 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
     public function provider_follows_with_strict_method()
     {
         return [
-            [201, NULL, Request::POST, Request::GET],
-            [301, NULL, Request::GET, Request::GET],
-            [302, TRUE, Request::POST, Request::POST],
-            [302, FALSE, Request::POST, Request::GET],
-            [303, NULL, Request::POST, Request::GET],
-            [307, NULL, Request::POST, Request::POST],
+            [201, null, Request::POST, Request::GET],
+            [301, null, Request::GET, Request::GET],
+            [302, true, Request::POST, Request::POST],
+            [302, false, Request::POST, Request::GET],
+            [303, null, Request::POST, Request::GET],
+            [307, null, Request::POST, Request::POST],
         ];
     }
 
@@ -239,13 +239,13 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
     public function test_follows_with_strict_method($status_code, $strict_redirect, $orig_method, $expect_method)
     {
         $response = Request::factory($this->_dummy_redirect_uri($status_code), [
-                'follow' => TRUE,
+                'follow' => true,
                 'strict_redirect' => $strict_redirect
             ])
             ->method($orig_method)
             ->execute();
 
-        $data = json_decode($response->body(), TRUE);
+        $data = json_decode($response->body(), true);
 
         $this->assertEquals('followed', $data['body']);
         $this->assertEquals($expect_method, $data['rq_method']);
@@ -259,8 +259,8 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
     public function provider_follows_with_body_if_not_get()
     {
         return [
-            ['GET', '301', NULL],
-            ['POST', '303', NULL],
+            ['GET', '301', null],
+            ['POST', '303', null],
             ['POST', '307', 'foo-bar'],
         ];
     }
@@ -280,13 +280,13 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
     public function test_follows_with_body_if_not_get($original_method, $status, $expect_body)
     {
         $response = Request::factory($this->_dummy_redirect_uri($status), [
-                'follow' => TRUE
+                'follow' => true
             ])
             ->method($original_method)
             ->body('foo-bar')
             ->execute();
 
-        $data = json_decode($response->body(), TRUE);
+        $data = json_decode($response->body(), true);
 
         $this->assertEquals('followed', $data['body']);
         $this->assertEquals($expect_body, $data['rq_body']);
@@ -319,7 +319,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
                     }
                 ],
                 $this->_dummy_uri(200, [
-                    'X-test-2' => $this->_dummy_uri(200, NULL, 'test2-subsequent-body')
+                    'X-test-2' => $this->_dummy_uri(200, null, 'test2-subsequent-body')
                     ], 'test2-orig-body'),
                 'test2-subsequent-body'
             ],
@@ -344,8 +344,8 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
                     }
                 ],
                 $this->_dummy_uri(200, [
-                    'X-test-1' => $this->_dummy_uri(200, NULL, 'test1-subsequent-body'),
-                    'X-test-2' => $this->_dummy_uri(200, NULL, 'test2-subsequent-body')
+                    'X-test-1' => $this->_dummy_uri(200, null, 'test1-subsequent-body'),
+                    'X-test-2' => $this->_dummy_uri(200, null, 'test2-subsequent-body')
                     ], 'test2-orig-body'),
                 'test1-subsequent-body'
             ],
@@ -361,7 +361,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
                 ],
                 $this->_dummy_uri(200, [
                     'X-test-1' => $this->_dummy_uri(200, [
-                        'X-test-2' => $this->_dummy_uri(200, NULL, 'test2-subsequent-body')
+                        'X-test-2' => $this->_dummy_uri(200, null, 'test2-subsequent-body')
                         ], 'test1-subsequent-body')
                     ], 'test-orig-body'),
                 'test2-subsequent-body'
@@ -384,7 +384,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
         $response = Request::factory($uri, ['header_callbacks' => $callbacks])
             ->execute();
 
-        $data = json_decode($response->body(), TRUE);
+        $data = json_decode($response->body(), true);
 
         $this->assertEquals($expect_body, $data['body']);
     }
@@ -452,7 +452,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
                         'X-cb' => '1'
                         ], 'followed')
                     ], 'not-followed'), [
-                'follow' => TRUE,
+                'follow' => true,
                 'header_callbacks' => [
                     'x-cb' => [$this, 'callback_assert_params'],
                     'location' => 'Request_Client::on_header_location',

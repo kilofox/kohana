@@ -599,7 +599,7 @@ class Kohana_Text
      *
      * @param   string  $agent  user_agent
      * @param   mixed   $value  array or string to return: browser, version, robot, mobile, platform
-     * @return  mixed   requested information, FALSE if nothing is found
+     * @return  mixed   requested information, false if nothing is found
      * @uses    Kohana::$config
      */
     public static function user_agent($agent, $value)

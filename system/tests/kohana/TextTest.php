@@ -104,9 +104,9 @@ class Kohana_TextTest extends Unittest_TestCase
     function provider_limit_words()
     {
         return [
-            ['', '', 100, NULL],
-            ['…', 'The rain in spain', -10, NULL],
-            ['The rain…', 'The rain in spain', 2, NULL],
+            ['', '', 100, null],
+            ['…', 'The rain in spain', -10, null],
+            ['The rain…', 'The rain in spain', 2, null],
             ['The rain...', 'The rain in spain', 2, '...'],
         ];
     }
@@ -133,65 +133,65 @@ class Kohana_TextTest extends Unittest_TestCase
                 '',
                 '',
                 100,
-                NULL,
-                FALSE
+                null,
+                false
             ],
             [
                 '…',
                 'BOO!',
                 -42,
-                NULL,
-                FALSE
+                null,
+                false
             ],
             [
                 'making php bet…',
                 'making php better for the sane',
                 14,
-                NULL,
-                FALSE
+                null,
+                false
             ],
             [
                 'Garçon! Un café s.v.p.',
                 'Garçon! Un café s.v.p.',
                 50,
                 '__',
-                FALSE
+                false
             ],
             [
                 'Garçon!__',
                 'Garçon! Un café s.v.p.',
                 8,
                 '__',
-                FALSE
+                false
             ],
             // @issue 3238
             [
                 'making php…',
                 'making php better for the sane',
                 14,
-                NULL,
-                TRUE
+                null,
+                true
             ],
             [
                 'Garçon!__',
                 'Garçon! Un café s.v.p.',
                 9,
                 '__',
-                TRUE
+                true
             ],
             [
                 'Garçon!__',
                 'Garçon! Un café s.v.p.',
                 7,
                 '__',
-                TRUE
+                true
             ],
             [
                 '__',
                 'Garçon! Un café s.v.p.',
                 5,
                 '__',
-                TRUE
+                true
             ],
         ];
     }
@@ -302,14 +302,14 @@ class Kohana_TextTest extends Unittest_TestCase
                 'A donkey is also an ass',
                 ['ass'],
                 '*',
-                TRUE
+                true
             ],
             [
                 "Cake### isn't nearly as good as kohana###",
                 "CakePHP isn't nearly as good as kohanaphp",
                 ['php'],
                 '#',
-                TRUE
+                true
             ],
             // If it's > 1 then it's just replaced straight out
             [
@@ -317,14 +317,14 @@ class Kohana_TextTest extends Unittest_TestCase
                 "If you're born out of wedlock you're a child",
                 ['child'],
                 '--expletive--',
-                TRUE
+                true
             ],
             [
                 'class',
                 'class',
                 ['ass'],
                 '*',
-                FALSE
+                false
             ],
         ];
     }
@@ -356,7 +356,7 @@ class Kohana_TextTest extends Unittest_TestCase
             ['distinct', 12],
             ['aeiou', 4],
             ['‹¡›«¿»', 8], // UTF8 characters
-            [NULL, 8], // Issue #3256
+            [null, 8], // Issue #3256
         ];
     }
 
@@ -375,7 +375,7 @@ class Kohana_TextTest extends Unittest_TestCase
      */
     function test_random($type, $length)
     {
-        if ($type === NULL) {
+        if ($type === null) {
             $type = 'alnum';
         }
 
@@ -439,12 +439,12 @@ class Kohana_TextTest extends Unittest_TestCase
     {
         return [
             // TODO: cover the other units
-            ['256.00 B', 256, NULL, NULL, TRUE],
-            ['1.02 kB', 1024, NULL, NULL, TRUE],
+            ['256.00 B', 256, null, null, true],
+            ['1.02 kB', 1024, null, null, true],
             // In case you need to know the size of a floppy disk in petabytes
-            ['0.00147 GB', 1.44 * 1000 * 1024, 'GB', '%01.5f %s', TRUE],
+            ['0.00147 GB', 1.44 * 1000 * 1024, 'GB', '%01.5f %s', true],
             // SI is the standard, but lets deviate slightly
-            ['1.00 MiB', 1024 * 1024, 'MiB', NULL, FALSE],
+            ['1.00 MiB', 1024 * 1024, 'MiB', null, false],
         ];
     }
 
@@ -762,7 +762,7 @@ class Kohana_TextTest extends Unittest_TestCase
             ],
             [
                 'Hi my.domain.com@domain.com you came from',
-                FALSE,
+                false,
                 ['my.domain.com@domain.com']
             ],
         ];
@@ -778,7 +778,7 @@ class Kohana_TextTest extends Unittest_TestCase
     {
         $linked_text = Text::auto_link($text);
 
-        if ($urls === FALSE) {
+        if ($urls === false) {
             $this->assertNotContains('http://', $linked_text);
         } elseif (count($urls)) {
             foreach ($urls as $url) {

@@ -104,13 +104,13 @@ class Kohana_DebugTest extends Unittest_TestCase
                 '<small>string</small><span>(6)</span> "fo&nbsp;&hellip;"'
             ],
             [
-                NULL,
+                null,
                 128,
                 10,
                 '<small>NULL</small>'
             ],
             [
-                TRUE,
+                true,
                 128,
                 10,
                 '<small>bool</small> TRUE'

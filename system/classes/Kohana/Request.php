@@ -283,7 +283,7 @@ class Kohana_Request implements HTTP_Request
      * Returns information about the initial user agent.
      *
      * @param   mixed   $value  array or string to return: browser, version, robot, mobile, platform
-     * @return  mixed   requested information, FALSE if nothing is found
+     * @return  mixed   requested information, false if nothing is found
      * @uses    Request::$user_agent
      * @uses    Text::user_agent
      */
@@ -325,7 +325,7 @@ class Kohana_Request implements HTTP_Request
     /**
      * Returns the accepted languages. If a specific language is defined,
      * the quality of that language will be returned. If the language is not
-     * accepted, FALSE will be returned.
+     * accepted, false will be returned.
      *
      *     $langs = Request::accept_lang();
      *
@@ -356,7 +356,7 @@ class Kohana_Request implements HTTP_Request
     /**
      * Returns the accepted encodings. If a specific encoding is defined,
      * the quality of that encoding will be returned. If the encoding is not
-     * accepted, FALSE will be returned.
+     * accepted, false will be returned.
      *
      *     $encodings = Request::accept_encoding();
      *

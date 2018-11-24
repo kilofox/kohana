@@ -187,7 +187,7 @@ class Kohana_UTF8
      * @param   string  $search needle
      * @param   integer $offset offset from which character in haystack to start searching
      * @return  integer position of needle
-     * @return  boolean FALSE if the needle is not found
+     * @return  boolean false if the needle is not found
      * @uses    UTF8::$server_utf8
      * @uses    Kohana::$charset
      */
@@ -217,7 +217,7 @@ class Kohana_UTF8
      * @param   string  $search needle
      * @param   integer $offset offset from which character in haystack to start searching
      * @return  integer position of needle
-     * @return  boolean FALSE if the needle is not found
+     * @return  boolean false if the needle is not found
      * @uses    UTF8::$server_utf8
      */
     public static function strrpos($str, $search, $offset = 0)
@@ -448,7 +448,7 @@ class Kohana_UTF8
      * @param   string  $str    input string
      * @param   string  $search needle
      * @return  string  matched substring if found
-     * @return  FALSE   if the substring was not found
+     * @return  false   if the substring was not found
      */
     public static function stristr($str, $search)
     {
@@ -687,7 +687,7 @@ class Kohana_UTF8
      *
      * @param   string  $str    UTF-8 encoded string
      * @return  array   unicode code points
-     * @return  FALSE   if the string is invalid
+     * @return  false   if the string is invalid
      */
     public static function to_unicode($str)
     {
@@ -716,7 +716,7 @@ class Kohana_UTF8
      *
      * @param   array   $str    unicode code points representing a string
      * @return  string  utf8 string of characters
-     * @return  boolean FALSE if a code point cannot be found
+     * @return  boolean false if a code point cannot be found
      */
     public static function from_unicode($arr)
     {

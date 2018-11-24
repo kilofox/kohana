@@ -74,13 +74,13 @@ class Kohana_CoreTest extends Unittest_TestCase
      */
     public function test_sanitize($value, $result)
     {
-        $this->setEnvironment(['Kohana::$magic_quotes' => TRUE]);
+        $this->setEnvironment(['Kohana::$magic_quotes' => true]);
 
         $this->assertSame($result, Kohana::sanitize($value));
     }
 
     /**
-     * Passing FALSE for the file extension should prevent appending any extension.
+     * Passing false for the file extension should prevent appending any extension.
      * See issue #3214
      *
      * @test
@@ -89,7 +89,7 @@ class Kohana_CoreTest extends Unittest_TestCase
     public function test_find_file_no_extension()
     {
         // EXT is manually appened to the _file name_, not passed as the extension
-        $path = Kohana::find_file('classes', $file = 'Kohana/Core' . EXT, FALSE);
+        $path = Kohana::find_file('classes', $file = 'Kohana/Core' . EXT, false);
 
         $this->assertInternalType('string', $path);
 
@@ -97,7 +97,7 @@ class Kohana_CoreTest extends Unittest_TestCase
     }
 
     /**
-     * If a file can't be found then find_file() should return FALSE if
+     * If a file can't be found then find_file() should return false if
      * only a single file was requested, or an empty array if multiple files
      * (i.e. configuration files) were requested
      *
@@ -108,7 +108,7 @@ class Kohana_CoreTest extends Unittest_TestCase
     {
         $this->assertFalse(Kohana::find_file('configy', 'zebra'));
 
-        $this->assertSame([], Kohana::find_file('configy', 'zebra', NULL, TRUE));
+        $this->assertSame([], Kohana::find_file('configy', 'zebra', null, true));
     }
 
     /**
@@ -156,8 +156,8 @@ class Kohana_CoreTest extends Unittest_TestCase
         return [
             // $value, $result
             ['foo', 'hello, world', 10],
-            ['bar', NULL, 10],
-            ['bar', NULL, -10],
+            ['bar', null, 10],
+            ['bar', null, -10],
         ];
     }
 
@@ -193,7 +193,7 @@ class Kohana_CoreTest extends Unittest_TestCase
             ],
             [
                 'no_message_file',
-                NULL,
+                null,
                 'anything',
                 []
             ],
@@ -223,7 +223,7 @@ class Kohana_CoreTest extends Unittest_TestCase
             ],
             [
                 'kohana_core_message_tests',
-                NULL,
+                null,
                 'anything',
                 [
                     'bottom_only' => 'inherited bottom message',

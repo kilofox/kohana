@@ -211,7 +211,7 @@ abstract class Kohana_Request_Client
      * get this wrong, with 302 widely used for 'POST - 302 redirect - GET' patterns.
      * By default, Kohana's client is fully compliant with the HTTP spec. Some
      * non-compliant third party sites may require that strict_redirect is set
-     * FALSE to force the client to switch to GET following a 302 response.
+     * false to force the client to switch to GET following a 302 response.
      *
      * @param  bool  $strict_redirect  Boolean indicating if 302 redirects should be followed with the original method
      * @return Request_Client
@@ -359,7 +359,7 @@ abstract class Kohana_Request_Client
      * The default handler for following redirects, triggered by the presence of
      * a Location header in the response.
      *
-     * The client's follow property must be set TRUE and the HTTP response status
+     * The client's follow property must be set true and the HTTP response status
      * one of 201, 301, 302, 303 or 307 for the redirect to be followed.
      *
      * @param Request $request

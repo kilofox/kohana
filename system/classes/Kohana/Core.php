@@ -47,7 +47,7 @@ class Kohana_Core
     public static $magic_quotes = false;
 
     /**
-     * @var  boolean  TRUE if PHP safe mode is on
+     * @var  boolean  true if PHP safe mode is on
      */
     public static $safe_mode = false;
 

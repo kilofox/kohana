@@ -28,7 +28,7 @@ class Kohana_Request_Client_ExternalTest extends Unittest_TestCase
         Request_Client_External::$client = 'Request_Client_Stream';
 
         $return = [
-            [[], NULL, 'Request_Client_Stream'],
+            [[], null, 'Request_Client_Stream'],
             [[], 'Request_Client_Stream', 'Request_Client_Stream'],
         ];
 
@@ -67,13 +67,13 @@ class Kohana_Request_Client_ExternalTest extends Unittest_TestCase
     {
         return [
             [
-                NULL,
-                NULL,
+                null,
+                null,
                 []
             ],
             [
                 ['foo' => 'bar', 'stfu' => 'snafu'],
-                NULL,
+                null,
                 ['foo' => 'bar', 'stfu' => 'snafu']
             ],
             [
@@ -134,7 +134,7 @@ class Kohana_Request_Client_ExternalTest extends Unittest_TestCase
                 $post,
                 [
                     'content-type' => 'application/x-www-form-urlencoded; charset=' . Kohana::$charset,
-                    'body' => http_build_query($post, NULL, '&')
+                    'body' => http_build_query($post, null, '&')
                 ]
             ],
         ];
@@ -150,7 +150,7 @@ class Kohana_Request_Client_ExternalTest extends Unittest_TestCase
     public function test_execute($content_type, $body, $post, $expected)
     {
         $old_request = Request::$initial;
-        Request::$initial = TRUE;
+        Request::$initial = true;
 
         // Create a mock Request
         $request = new Request('http://kohanaframework.org/');

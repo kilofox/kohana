@@ -291,7 +291,7 @@ class Kohana_Validation implements ArrayAccess
         $rules = $this->_rules;
 
         foreach ($expected as $field) {
-            // Use the submitted value or NULL if no data exists
+            // Use the submitted value or null if no data exists
             $data[$field] = Arr::get($this, $field);
 
             if (isset($rules[true])) {

@@ -29,25 +29,25 @@ $error_id = uniqid('error');
     document.documentElement.className = document.documentElement.className + ' js';
     function koggle(elem)
     {
-	elem = document.getElementById(elem);
+        elem = document.getElementById(elem);
 
-	if (elem.style && elem.style['display'])
-	    // Only works with the "style" attr
-	    var disp = elem.style['display'];
-	else if (elem.currentStyle)
-	    // For MSIE, naturally
-	    var disp = elem.currentStyle['display'];
-	else if (window.getComputedStyle)
-	    // For most other browsers
-	    var disp = document.defaultView.getComputedStyle(elem, null).getPropertyValue('display');
+        if (elem.style && elem.style['display'])
+            // Only works with the "style" attr
+            var disp = elem.style['display'];
+        else if (elem.currentStyle)
+            // For MSIE, naturally
+            var disp = elem.currentStyle['display'];
+        else if (window.getComputedStyle)
+            // For most other browsers
+            var disp = document.defaultView.getComputedStyle(elem, null).getPropertyValue('display');
 
-	// Toggle the state of the "display" style
-	elem.style.display = disp == 'block' ? 'none' : 'block';
-	return false;
+        // Toggle the state of the "display" style
+        elem.style.display = disp == 'block' ? 'none' : 'block';
+        return false;
     }
 </script>
 <div id="kohana_error">
-    <h1><span class="type"><?php echo $class ?> [ <?php echo $code ?> ]:</span> <span class="message"><?php echo htmlspecialchars((string) $message, ENT_QUOTES | ENT_IGNORE, Kohana::$charset, TRUE); ?></span></h1>
+    <h1><span class="type"><?php echo $class ?> [ <?php echo $code ?> ]:</span> <span class="message"><?php echo htmlspecialchars((string) $message, ENT_QUOTES | ENT_IGNORE, Kohana::$charset, true); ?></span></h1>
     <div id="<?php echo $error_id ?>" class="content">
         <p><span class="file"><?php echo Debug::path($file) ?> [ <?php echo $line ?> ]</span></p>
         <?php echo Debug::source($file, $line) ?>
@@ -116,7 +116,7 @@ $error_id = uniqid('error');
                 <table cellspacing="0">
                     <?php foreach ($GLOBALS[$var] as $key => $value): ?>
                         <tr>
-                            <td><code><?php echo htmlspecialchars((string) $key, ENT_QUOTES, Kohana::$charset, TRUE); ?></code></td>
+                            <td><code><?php echo htmlspecialchars((string) $key, ENT_QUOTES, Kohana::$charset, true); ?></code></td>
                             <td><pre><?php echo Debug::dump($value) ?></pre></td>
                         </tr>
                     <?php endforeach ?>

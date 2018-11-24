@@ -19,10 +19,10 @@ function _strrpos($str, $search, $offset = 0)
 
     if ($offset == 0) {
         $array = explode($search, $str, -1);
-        return isset($array[0]) ? UTF8::strlen(implode($search, $array)) : FALSE;
+        return isset($array[0]) ? UTF8::strlen(implode($search, $array)) : false;
     }
 
     $str = UTF8::substr($str, $offset);
     $pos = UTF8::strrpos($str, $search);
-    return ($pos === FALSE) ? FALSE : ($pos + $offset);
+    return ($pos === false) ? false : ($pos + $offset);
 }

@@ -56,54 +56,54 @@ class Kohana_URLTest extends Unittest_TestCase
             // $protocol, $index, $expected, $enviroment
             // Test with different combinations of parameters for max code coverage
             [
-                NULL,
-                FALSE,
+                null,
+                false,
                 '/kohana/'
             ],
             [
                 'http',
-                FALSE,
+                false,
                 'http://example.com/kohana/'
             ],
             [
-                NULL,
-                TRUE,
+                null,
+                true,
                 '/kohana/index.php/'
             ],
             [
-                NULL,
-                TRUE,
+                null,
+                true,
                 '/kohana/index.php/'
             ],
             [
                 'http',
-                TRUE,
+                true,
                 'http://example.com/kohana/index.php/'
             ],
             [
                 'https',
-                TRUE,
+                true,
                 'https://example.com/kohana/index.php/'
             ],
             [
                 'ftp',
-                TRUE,
+                true,
                 'ftp://example.com/kohana/index.php/'
             ],
-            // Test for automatic protocol detection, protocol = TRUE
+            // Test for automatic protocol detection, protocol = true
             [
-                TRUE,
-                TRUE,
+                true,
+                true,
                 'cli://example.com/kohana/index.php/',
                 [
-                    'HTTPS' => FALSE,
+                    'HTTPS' => false,
                     'Request::$initial' => Request::factory('/')->protocol('cli')
                 ]
             ],
             // Change base url'
             [
                 'https',
-                FALSE,
+                false,
                 'https://example.com/kohana/',
                 [
                     'Kohana::$base_url' => 'omglol://example.com/kohana/'
@@ -112,7 +112,7 @@ class Kohana_URLTest extends Unittest_TestCase
             // Use port in base url, issue #3307
             [
                 'http',
-                FALSE,
+                false,
                 'http://example.com:8080/',
                 [
                     'Kohana::$base_url' => 'example.com:8080/'
@@ -120,8 +120,8 @@ class Kohana_URLTest extends Unittest_TestCase
             ],
             // Use protocol from base url if none specified
             [
-                NULL,
-                FALSE,
+                null,
+                false,
                 'http://www.example.com/',
                 [
                     'Kohana::$base_url' => 'http://www.example.com/'
@@ -130,7 +130,7 @@ class Kohana_URLTest extends Unittest_TestCase
             // Use HTTP_HOST before SERVER_NAME
             [
                 'http',
-                FALSE,
+                false,
                 'http://example.com/kohana/',
                 [
                     'HTTP_HOST' => 'example.com',
@@ -140,10 +140,10 @@ class Kohana_URLTest extends Unittest_TestCase
             // Use SERVER_NAME if HTTP_HOST DNX
             [
                 'http',
-                FALSE,
+                false,
                 'http://example.org/kohana/',
                 [
-                    'HTTP_HOST' => NULL,
+                    'HTTP_HOST' => null,
                     'SERVER_NAME' => 'example.org'
                 ]
             ],
@@ -179,7 +179,7 @@ class Kohana_URLTest extends Unittest_TestCase
         return [
             [
                 '',
-                NULL,
+                null,
                 '/kohana/index.php/'
             ],
             [
@@ -189,7 +189,7 @@ class Kohana_URLTest extends Unittest_TestCase
             ],
             [
                 'my/site',
-                NULL,
+                null,
                 '/kohana/index.php/my/site'
             ],
             [
@@ -200,7 +200,7 @@ class Kohana_URLTest extends Unittest_TestCase
             // @ticket #3110
             [
                 'my/site/page:5',
-                NULL,
+                null,
                 '/kohana/index.php/my/site/page:5'
             ],
             [
@@ -210,7 +210,7 @@ class Kohana_URLTest extends Unittest_TestCase
             ],
             [
                 'my/site?var=asd&kohana=awesome',
-                NULL,
+                null,
                 '/kohana/index.php/my/site?var=asd&kohana=awesome'
             ],
             [
@@ -220,7 +220,7 @@ class Kohana_URLTest extends Unittest_TestCase
             ],
             [
                 '?kohana=awesome&life=good',
-                NULL,
+                null,
                 '/kohana/index.php/?kohana=awesome&life=good'
             ],
             [
@@ -230,7 +230,7 @@ class Kohana_URLTest extends Unittest_TestCase
             ],
             [
                 '?kohana=awesome&life=good#fact',
-                NULL,
+                null,
                 '/kohana/index.php/?kohana=awesome&life=good#fact'
             ],
             [
@@ -240,7 +240,7 @@ class Kohana_URLTest extends Unittest_TestCase
             ],
             [
                 'some/long/route/goes/here?kohana=awesome&life=good#fact',
-                NULL,
+                null,
                 '/kohana/index.php/some/long/route/goes/here?kohana=awesome&life=good#fact'
             ],
             [
@@ -316,7 +316,7 @@ class Kohana_URLTest extends Unittest_TestCase
      */
     public function test_site_url_encode_uri($expected, $uri)
     {
-        $this->assertSame($expected, URL::site($uri, FALSE));
+        $this->assertSame($expected, URL::site($uri, false));
     }
 
     /**
@@ -394,7 +394,7 @@ class Kohana_URLTest extends Unittest_TestCase
                 'espana-wins',
                 'España-wins',
                 '-',
-                TRUE
+                true
             ],
         ];
     }
@@ -408,7 +408,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @param string $separator    Seperate to replace invalid characters with
      * @param string $expected     Expected result
      */
-    public function test_title($expected, $title, $separator, $ascii_only = FALSE)
+    public function test_title($expected, $title, $separator, $ascii_only = false)
     {
         $this->assertSame(
             $expected, URL::title($title, $separator, $ascii_only)
@@ -425,12 +425,12 @@ class Kohana_URLTest extends Unittest_TestCase
             [
                 [],
                 '',
-                NULL
+                null
             ],
             [
                 ['_GET' => ['test' => 'data']],
                 '?test=data',
-                NULL
+                null
             ],
             [
                 [],
@@ -446,33 +446,33 @@ class Kohana_URLTest extends Unittest_TestCase
                 ['_GET' => ['sort' => 'down']],
                 '?test=data',
                 ['test' => 'data'],
-                FALSE
+                false
             ],
             // http://dev.kohanaframework.org/issues/3362
             [
                 [],
                 '',
-                ['key' => NULL]
+                ['key' => null]
             ],
             [
                 [],
                 '?key=0',
-                ['key' => FALSE]
+                ['key' => false]
             ],
             [
                 [],
                 '?key=1',
-                ['key' => TRUE]
+                ['key' => true]
             ],
             [
                 ['_GET' => ['sort' => 'down']],
                 '?sort=down&key=1',
-                ['key' => TRUE]
+                ['key' => true]
             ],
             [
                 ['_GET' => ['sort' => 'down']],
                 '?sort=down&key=0',
-                ['key' => FALSE]
+                ['key' => false]
             ],
             // @issue 4240
             [
@@ -498,7 +498,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @param array $params Query string
      * @param boolean $use_get Combine with GET parameters
      */
-    public function test_query($enviroment, $expected, $params, $use_get = TRUE)
+    public function test_query($enviroment, $expected, $params, $use_get = true)
     {
         $this->setEnvironment($enviroment);
 
@@ -518,25 +518,25 @@ class Kohana_URLTest extends Unittest_TestCase
             [
                 'givenhost',
                 ['list-of-trusted-hosts'],
-                FALSE
+                false
             ],
             // data set #1
             [
                 'givenhost',
                 ['givenhost', 'example\.com'],
-                TRUE
+                true
             ],
             // data set #2
             [
                 'www.kohanaframework.org',
                 ['.*\.kohanaframework\.org'],
-                TRUE
+                true
             ],
             // data set #3
             [
                 'kohanaframework.org',
                 ['.*\.kohanaframework\.org'],
-                FALSE // because we are requesting a subdomain
+                false // because we are requesting a subdomain
             ],
         ];
     }
@@ -548,7 +548,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @dataProvider provider_is_trusted_host
      * @param string $host the given host
      * @param array $trusted_hosts list of trusted hosts
-     * @param boolean $expected TRUE if host is trusted, FALSE otherwise
+     * @param boolean $expected true if host is trusted, false otherwise
      */
     public function test_is_trusted_host($host, $trusted_hosts, $expected)
     {

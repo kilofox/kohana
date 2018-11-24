@@ -28,12 +28,12 @@ class Kohana_ModelTest extends Unittest_TestCase
     {
         $foobar = Model::factory('Foobar');
 
-        $this->assertEquals(TRUE, $foobar instanceof Model);
+        $this->assertEquals(true, $foobar instanceof Model);
     }
 
 }
 
 class Model_Foobar extends Model
 {
-    
+
 }

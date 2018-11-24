@@ -39,15 +39,15 @@ class Kohana_FormTest extends Unittest_TestCase
     {
         return [
             [
-                ['', NULL],
+                ['', null],
                 ['action' => '']
             ],
             [
-                [NULL, NULL],
+                [null, null],
                 ['action' => '']
             ],
             [
-                ['foo', NULL],
+                ['foo', null],
                 ['action' => '/foo']
             ],
             [
@@ -104,10 +104,10 @@ class Kohana_FormTest extends Unittest_TestCase
     {
         return [
             // $value, $result
-            ['input', 'foo', 'bar', NULL, 'input'],
-            ['input', 'foo', NULL, NULL, 'input'],
-            ['hidden', 'foo', 'bar', NULL, 'hidden'],
-            ['password', 'foo', 'bar', NULL, 'password'],
+            ['input', 'foo', 'bar', null, 'input'],
+            ['input', 'foo', null, null, 'input'],
+            ['hidden', 'foo', 'bar', null, 'hidden'],
+            ['password', 'foo', 'bar', null, 'password'],
         ];
     }
 
@@ -131,8 +131,8 @@ class Kohana_FormTest extends Unittest_TestCase
             $matcher['attributes']['type'] = 'text';
         }
 
-        // NULL just means no value
-        if ($value !== NULL) {
+        // null just means no value
+        if ($value !== null) {
             $matcher['attributes']['value'] = $value;
         }
 
@@ -155,7 +155,7 @@ class Kohana_FormTest extends Unittest_TestCase
     {
         return [
             // $value, $result
-            ['foo', NULL, '<input type="file" name="foo" />'],
+            ['foo', null, '<input type="file" name="foo" />'],
         ];
     }
 
@@ -181,12 +181,12 @@ class Kohana_FormTest extends Unittest_TestCase
     {
         return [
             // $value, $result
-            ['checkbox', 'foo', NULL, FALSE, NULL],
-            ['checkbox', 'foo', NULL, TRUE, NULL],
-            ['checkbox', 'foo', 'bar', TRUE, NULL],
-            ['radio', 'foo', NULL, FALSE, NULL],
-            ['radio', 'foo', NULL, TRUE, NULL],
-            ['radio', 'foo', 'bar', TRUE, NULL],
+            ['checkbox', 'foo', null, false, null],
+            ['checkbox', 'foo', null, true, null],
+            ['checkbox', 'foo', 'bar', true, null],
+            ['radio', 'foo', null, false, null],
+            ['radio', 'foo', null, true, null],
+            ['radio', 'foo', 'bar', true, null],
         ];
     }
 
@@ -205,7 +205,7 @@ class Kohana_FormTest extends Unittest_TestCase
             'attributes' => ['name' => $name, 'type' => $type]
         ];
 
-        if ($value !== NULL) {
+        if ($value !== null) {
             $matcher['attributes']['value'] = $value;
         }
 
@@ -213,7 +213,7 @@ class Kohana_FormTest extends Unittest_TestCase
             $matcher['attributes'] = $attributes + $matcher['attributes'];
         }
 
-        if ($checked === TRUE) {
+        if ($checked === true) {
             $matcher['attributes']['checked'] = 'checked';
         }
 
@@ -230,11 +230,11 @@ class Kohana_FormTest extends Unittest_TestCase
     {
         return [
             // $value, $result
-            ['textarea', 'foo', 'bar', NULL],
+            ['textarea', 'foo', 'bar', null],
             ['textarea', 'foo', 'bar', ['rows' => 20, 'cols' => 20]],
-            ['button', 'foo', 'bar', NULL],
-            ['label', 'foo', 'bar', NULL],
-            ['label', 'foo', NULL, NULL],
+            ['button', 'foo', 'bar', null],
+            ['label', 'foo', 'bar', null],
+            ['label', 'foo', null, null],
         ];
     }
 
@@ -281,14 +281,14 @@ class Kohana_FormTest extends Unittest_TestCase
             // $value, $result
             [
                 'foo',
-                NULL,
-                NULL,
+                null,
+                null,
                 "<select name=\"foo\"></select>"
             ],
             [
                 'foo',
                 ['bar' => 'bar'],
-                NULL,
+                null,
                 "<select name=\"foo\">\n<option value=\"bar\">bar</option>\n</select>"
             ],
             [
@@ -300,7 +300,7 @@ class Kohana_FormTest extends Unittest_TestCase
             [
                 'foo',
                 ['bar' => ['foo' => 'bar']],
-                NULL,
+                null,
                 "<select name=\"foo\">\n<optgroup label=\"bar\">\n<option value=\"foo\">bar</option>\n</optgroup>\n</select>"
             ],
             [
@@ -417,27 +417,27 @@ class Kohana_FormTest extends Unittest_TestCase
             // Single for provided
             [
                 'email',
-                NULL,
-                NULL,
+                null,
+                null,
                 '<label for="email">Email</label>'
             ],
             [
                 'email_address',
-                NULL,
-                NULL,
+                null,
+                null,
                 '<label for="email_address">Email Address</label>'
             ],
             [
                 'email-address',
-                NULL,
-                NULL,
+                null,
+                null,
                 '<label for="email-address">Email Address</label>'
             ],
             // For and text values provided
             [
                 'name',
                 'First name',
-                NULL,
+                null,
                 '<label for="name">First name</label>'
             ],
             // with attributes
