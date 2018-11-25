@@ -21,11 +21,11 @@ class Kohana_Config_Database_Reader implements Kohana_Config_Reader
      *
      * @param array Configuration for the reader
      */
-    public function __construct(array $config = NULL)
+    public function __construct(array $config = null)
     {
         if (isset($config['instance'])) {
             $this->_db_instance = $config['instance'];
-        } elseif ($this->_db_instance === NULL) {
+        } elseif ($this->_db_instance === null) {
             $this->_db_instance = Database::$default;
         }
 
@@ -37,7 +37,7 @@ class Kohana_Config_Database_Reader implements Kohana_Config_Reader
     /**
      * Tries to load the specificed configuration group
      *
-     * Returns FALSE if group does not exist or an array if it does
+     * Returns false if group does not exist or an array if it does
      *
      * @param  string $group Configuration group
      * @return boolean|array
@@ -45,20 +45,20 @@ class Kohana_Config_Database_Reader implements Kohana_Config_Reader
     public function load($group)
     {
         /**
-         * Prevents the catch-22 scenario where the database config reader attempts to load the 
+         * Prevents the catch-22 scenario where the database config reader attempts to load the
          * database connections details from the database.
          *
          * @link http://dev.kohanaframework.org/issues/4316
          */
         if ($group === 'database')
-            return FALSE;
+            return false;
 
         $query = DB::select('config_key', 'config_value')
             ->from($this->_table_name)
             ->where('group_name', '=', $group)
             ->execute($this->_db_instance);
 
-        return count($query) ? array_map('unserialize', $query->as_array('config_key', 'config_value')) : FALSE;
+        return count($query) ? array_map('unserialize', $query->as_array('config_key', 'config_value')) : false;
     }
 
 }

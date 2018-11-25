@@ -115,7 +115,7 @@ class Kohana_Database_Expression
      * @param   mixed    Database instance or name of instance
      * @return  string
      */
-    public function compile($db = NULL)
+    public function compile($db = null)
     {
         if (!is_object($db)) {
             // Get the database instance

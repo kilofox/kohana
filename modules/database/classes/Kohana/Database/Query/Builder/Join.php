@@ -30,12 +30,12 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
      * @param   string  $type   type of JOIN: INNER, RIGHT, LEFT, etc
      * @return  void
      */
-    public function __construct($table, $type = NULL)
+    public function __construct($table, $type = null)
     {
         // Set the table to JOIN on
         $this->_table = $table;
 
-        if ($type !== NULL) {
+        if ($type !== null) {
             // Set the JOIN type
             $this->_type = (string) $type;
         }
@@ -85,7 +85,7 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
      * @param   mixed  $db  Database instance or name of instance
      * @return  string
      */
-    public function compile($db = NULL)
+    public function compile($db = null)
     {
         if (!is_object($db)) {
             // Get the database instance
@@ -128,7 +128,7 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
 
     public function reset()
     {
-        $this->_type = $this->_table = NULL;
+        $this->_type = $this->_table = null;
 
         $this->_on = [];
     }

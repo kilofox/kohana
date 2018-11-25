@@ -16,7 +16,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
     // SELECT ...
     protected $_select = [];
     // DISTINCT
-    protected $_distinct = FALSE;
+    protected $_distinct = false;
     // FROM ...
     protected $_from = [];
     // JOIN ...
@@ -26,7 +26,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
     // HAVING ...
     protected $_having = [];
     // OFFSET ...
-    protected $_offset = NULL;
+    protected $_offset = null;
     // UNION ...
     protected $_union = [];
     // The last JOIN statement created
@@ -38,7 +38,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      * @param   array  $columns  column list
      * @return  void
      */
-    public function __construct(array $columns = NULL)
+    public function __construct(array $columns = null)
     {
         if (!empty($columns)) {
             // Set the initial columns
@@ -68,7 +68,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      * @param   mixed  $columns  column name or [$column, $alias] or object
      * @return  $this
      */
-    public function select($columns = NULL)
+    public function select($columns = null)
     {
         $columns = func_get_args();
 
@@ -112,7 +112,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      * @param   string  $type   join type (LEFT, RIGHT, INNER, etc)
      * @return  $this
      */
-    public function join($table, $type = NULL)
+    public function join($table, $type = null)
     {
         $this->_join[] = $this->_last_join = new Database_Query_Builder_Join($table, $type);
 
@@ -172,7 +172,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      * @param   mixed   $value   column value
      * @return  $this
      */
-    public function having($column, $op, $value = NULL)
+    public function having($column, $op, $value = null)
     {
         return $this->and_having($column, $op, $value);
     }
@@ -185,7 +185,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      * @param   mixed   $value   column value
      * @return  $this
      */
-    public function and_having($column, $op, $value = NULL)
+    public function and_having($column, $op, $value = null)
     {
         $this->_having[] = ['AND' => [$column, $op, $value]];
 
@@ -200,7 +200,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      * @param   mixed   $value   column value
      * @return  $this
      */
-    public function or_having($column, $op, $value = NULL)
+    public function or_having($column, $op, $value = null)
     {
         $this->_having[] = ['OR' => [$column, $op, $value]];
 
@@ -283,7 +283,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      * @param boolean $all  decides if it's an UNION or UNION ALL clause
      * @return $this
      */
-    public function union($select, $all = TRUE)
+    public function union($select, $all = true)
     {
         if (is_string($select)) {
             $select = DB::select()->from($select);
@@ -297,12 +297,12 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
     /**
      * Start returning results after "OFFSET ..."
      *
-     * @param   integer   $number  starting result number or NULL to reset
+     * @param   integer   $number  starting result number or null to reset
      * @return  $this
      */
     public function offset($number)
     {
-        $this->_offset = ($number === NULL) ? NULL : (int) $number;
+        $this->_offset = ($number === null) ? null : (int) $number;
 
         return $this;
     }
@@ -313,7 +313,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      * @param   mixed  $db  Database instance or name of instance
      * @return  string
      */
-    public function compile($db = NULL)
+    public function compile($db = null)
     {
         if (!is_object($db)) {
             // Get the database instance
@@ -329,7 +329,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
         // Start a selection query
         $query = 'SELECT ';
 
-        if ($this->_distinct === TRUE) {
+        if ($this->_distinct === true) {
             // Select only unique results
             $query .= 'DISTINCT ';
         }
@@ -372,12 +372,12 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
             $query .= ' ' . $this->_compile_order_by($db, $this->_order_by);
         }
 
-        if ($this->_limit !== NULL) {
+        if ($this->_limit !== null) {
             // Add limiting
             $query .= ' LIMIT ' . $this->_limit;
         }
 
-        if ($this->_offset !== NULL) {
+        if ($this->_offset !== null) {
             // Add offsets
             $query .= ' OFFSET ' . $this->_offset;
         }
@@ -386,7 +386,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
             $query = '(' . $query . ')';
             foreach ($this->_union as $u) {
                 $query .= ' UNION ';
-                if ($u['all'] === TRUE) {
+                if ($u['all'] === true) {
                     $query .= 'ALL ';
                 }
                 $query .= '(' . $u['select']->compile($db) . ')';
@@ -402,13 +402,13 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
     {
         $this->_select = $this->_from = $this->_join = $this->_where = $this->_group_by = $this->_having = $this->_order_by = $this->_union = [];
 
-        $this->_distinct = FALSE;
+        $this->_distinct = false;
 
-        $this->_limit = $this->_offset = $this->_last_join = NULL;
+        $this->_limit = $this->_offset = $this->_last_join = null;
 
         $this->_parameters = [];
 
-        $this->_sql = NULL;
+        $this->_sql = null;
 
         return $this;
     }

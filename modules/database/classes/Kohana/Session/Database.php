@@ -40,7 +40,7 @@ class Kohana_Session_Database extends Session
     // The old session id
     protected $_update_id;
 
-    public function __construct(array $config = NULL, $id = NULL)
+    public function __construct(array $config = null, $id = null)
     {
         if (!isset($config['group'])) {
             // Use the default group
@@ -79,7 +79,7 @@ class Kohana_Session_Database extends Session
         return $this->_session_id;
     }
 
-    protected function _read($id = NULL)
+    protected function _read($id = null)
     {
         if ($id OR $id = Cookie::get($this->_name)) {
             $result = DB::select([$this->_columns['contents'], 'contents'])
@@ -101,7 +101,7 @@ class Kohana_Session_Database extends Session
         // Create a new session id
         $this->_regenerate();
 
-        return NULL;
+        return null;
     }
 
     protected function _regenerate()
@@ -115,7 +115,7 @@ class Kohana_Session_Database extends Session
 
         do {
             // Create a new session id
-            $id = str_replace('.', '-', uniqid(NULL, TRUE));
+            $id = str_replace('.', '-', uniqid(null, true));
 
             // Get the the id from the database
             $result = $query->execute($this->_db);
@@ -126,7 +126,7 @@ class Kohana_Session_Database extends Session
 
     protected function _write()
     {
-        if ($this->_update_id === NULL) {
+        if ($this->_update_id === null) {
             // Insert a new row
             $query = DB::insert($this->_table, $this->_columns)
                 ->values([':new_id', ':active', ':contents']);
@@ -158,7 +158,7 @@ class Kohana_Session_Database extends Session
         // Update the cookie with the new session id
         Cookie::set($this->_name, $this->_session_id, $this->_lifetime);
 
-        return TRUE;
+        return true;
     }
 
     /**
@@ -168,14 +168,14 @@ class Kohana_Session_Database extends Session
     {
         $this->_regenerate();
 
-        return TRUE;
+        return true;
     }
 
     protected function _destroy()
     {
-        if ($this->_update_id === NULL) {
+        if ($this->_update_id === null) {
             // Session has not been created yet
-            return TRUE;
+            return true;
         }
 
         // Delete the current session
@@ -188,16 +188,16 @@ class Kohana_Session_Database extends Session
             $query->execute($this->_db);
 
             // Delete the old session id
-            $this->_update_id = NULL;
+            $this->_update_id = null;
 
             // Delete the cookie
             Cookie::delete($this->_name);
         } catch (Exception $e) {
             // An error occurred, the session has not been deleted
-            return FALSE;
+            return false;
         }
 
-        return TRUE;
+        return true;
     }
 
     protected function _gc()

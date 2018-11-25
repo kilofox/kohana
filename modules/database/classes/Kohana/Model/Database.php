@@ -24,7 +24,7 @@ abstract class Kohana_Model_Database extends Model
      * @param   mixed    $db    Database instance object or string
      * @return  Model
      */
-    public static function factory($name, $db = NULL)
+    public static function factory($name, $db = null)
     {
         // Add the model prefix
         $class = 'Model_' . $name;
@@ -43,7 +43,7 @@ abstract class Kohana_Model_Database extends Model
      * @param   mixed  $db  Database instance object or string
      * @return  void
      */
-    public function __construct($db = NULL)
+    public function __construct($db = null)
     {
         if ($db) {
             // Set the instance or name

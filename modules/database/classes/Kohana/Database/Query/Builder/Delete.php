@@ -22,7 +22,7 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where
      * @param   mixed  $table  table name or [$table, $alias] or object
      * @return  void
      */
-    public function __construct($table = NULL)
+    public function __construct($table = null)
     {
         if ($table) {
             // Set the inital table name
@@ -52,7 +52,7 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where
      * @param   mixed  $db  Database instance or name of instance
      * @return  string
      */
-    public function compile($db = NULL)
+    public function compile($db = null)
     {
         if (!is_object($db)) {
             // Get the database instance
@@ -72,7 +72,7 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where
             $query .= ' ' . $this->_compile_order_by($db, $this->_order_by);
         }
 
-        if ($this->_limit !== NULL) {
+        if ($this->_limit !== null) {
             // Add limiting
             $query .= ' LIMIT ' . $this->_limit;
         }
@@ -84,12 +84,12 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where
 
     public function reset()
     {
-        $this->_table = NULL;
+        $this->_table = null;
         $this->_where = [];
 
         $this->_parameters = [];
 
-        $this->_sql = NULL;
+        $this->_sql = null;
 
         return $this;
     }

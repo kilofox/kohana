@@ -27,7 +27,7 @@ class Kohana_Database_MySQLi extends Database
         if ($this->_connection)
             return;
 
-        if (Database_MySQLi::$_set_names === NULL) {
+        if (Database_MySQLi::$_set_names === null) {
             // Determine if we can use mysqli_set_charset(), which is only
             // available on PHP 5.2.3+ when compiled against MySQL 5.0+
             Database_MySQLi::$_set_names = !function_exists('mysqli_set_charset');
@@ -41,7 +41,7 @@ class Kohana_Database_MySQLi extends Database
             'password' => '',
             'socket' => '',
             'port' => 3306,
-            'ssl' => NULL,
+            'ssl' => null,
         ]);
 
         // Prevent this information from showing up in traces
@@ -59,7 +59,7 @@ class Kohana_Database_MySQLi extends Database
             }
         } catch (Exception $e) {
             // No connection exists
-            $this->_connection = NULL;
+            $this->_connection = null;
 
             throw new Database_Exception(':error', [':error' => $e->getMessage()], $e->getCode());
         }
@@ -88,12 +88,12 @@ class Kohana_Database_MySQLi extends Database
     {
         try {
             // Database is assumed disconnected
-            $status = TRUE;
+            $status = true;
 
             if (is_resource($this->_connection)) {
                 if ($status = $this->_connection->close()) {
                     // Clear the connection
-                    $this->_connection = NULL;
+                    $this->_connection = null;
 
                     // Clear the instance
                     parent::disconnect();
@@ -112,7 +112,7 @@ class Kohana_Database_MySQLi extends Database
         // Make sure the database is connected
         $this->_connection or $this->connect();
 
-        if (Database_MySQLi::$_set_names === TRUE) {
+        if (Database_MySQLi::$_set_names === true) {
             // PHP is compiled against MySQL 4.x
             $status = (bool) $this->_connection->query('SET NAMES ' . $this->quote($charset));
         } else {
@@ -120,12 +120,12 @@ class Kohana_Database_MySQLi extends Database
             $status = $this->_connection->set_charset($charset);
         }
 
-        if ($status === FALSE) {
+        if ($status === false) {
             throw new Database_Exception(':error', [':error' => $this->_connection->error], $this->_connection->errno);
         }
     }
 
-    public function query($type, $sql, $as_object = FALSE, array $params = NULL)
+    public function query($type, $sql, $as_object = false, array $params = null)
     {
         // Make sure the database is connected
         $this->_connection or $this->connect();
@@ -136,7 +136,7 @@ class Kohana_Database_MySQLi extends Database
         }
 
         // Execute the query
-        if (($result = $this->_connection->query($sql)) === FALSE) {
+        if (($result = $this->_connection->query($sql)) === false) {
             if (isset($benchmark)) {
                 // This benchmark is worthless
                 Profiler::delete($benchmark);
@@ -173,36 +173,36 @@ class Kohana_Database_MySQLi extends Database
     public function datatype($type)
     {
         static $types = [
-            'blob' => ['type' => 'string', 'binary' => TRUE, 'character_maximum_length' => '65535'],
+            'blob' => ['type' => 'string', 'binary' => true, 'character_maximum_length' => '65535'],
             'bool' => ['type' => 'bool'],
             'bigint unsigned' => ['type' => 'int', 'min' => '0', 'max' => '18446744073709551615'],
             'datetime' => ['type' => 'string'],
-            'decimal unsigned' => ['type' => 'float', 'exact' => TRUE, 'min' => '0'],
+            'decimal unsigned' => ['type' => 'float', 'exact' => true, 'min' => '0'],
             'double' => ['type' => 'float'],
             'double precision unsigned' => ['type' => 'float', 'min' => '0'],
             'double unsigned' => ['type' => 'float', 'min' => '0'],
             'enum' => ['type' => 'string'],
-            'fixed' => ['type' => 'float', 'exact' => TRUE],
-            'fixed unsigned' => ['type' => 'float', 'exact' => TRUE, 'min' => '0'],
+            'fixed' => ['type' => 'float', 'exact' => true],
+            'fixed unsigned' => ['type' => 'float', 'exact' => true, 'min' => '0'],
             'float unsigned' => ['type' => 'float', 'min' => '0'],
-            'geometry' => ['type' => 'string', 'binary' => TRUE],
+            'geometry' => ['type' => 'string', 'binary' => true],
             'int unsigned' => ['type' => 'int', 'min' => '0', 'max' => '4294967295'],
             'integer unsigned' => ['type' => 'int', 'min' => '0', 'max' => '4294967295'],
-            'longblob' => ['type' => 'string', 'binary' => TRUE, 'character_maximum_length' => '4294967295'],
+            'longblob' => ['type' => 'string', 'binary' => true, 'character_maximum_length' => '4294967295'],
             'longtext' => ['type' => 'string', 'character_maximum_length' => '4294967295'],
-            'mediumblob' => ['type' => 'string', 'binary' => TRUE, 'character_maximum_length' => '16777215'],
+            'mediumblob' => ['type' => 'string', 'binary' => true, 'character_maximum_length' => '16777215'],
             'mediumint' => ['type' => 'int', 'min' => '-8388608', 'max' => '8388607'],
             'mediumint unsigned' => ['type' => 'int', 'min' => '0', 'max' => '16777215'],
             'mediumtext' => ['type' => 'string', 'character_maximum_length' => '16777215'],
             'national varchar' => ['type' => 'string'],
-            'numeric unsigned' => ['type' => 'float', 'exact' => TRUE, 'min' => '0'],
+            'numeric unsigned' => ['type' => 'float', 'exact' => true, 'min' => '0'],
             'nvarchar' => ['type' => 'string'],
-            'point' => ['type' => 'string', 'binary' => TRUE],
+            'point' => ['type' => 'string', 'binary' => true],
             'real unsigned' => ['type' => 'float', 'min' => '0'],
             'set' => ['type' => 'string'],
             'smallint unsigned' => ['type' => 'int', 'min' => '0', 'max' => '65535'],
             'text' => ['type' => 'string', 'character_maximum_length' => '65535'],
-            'tinyblob' => ['type' => 'string', 'binary' => TRUE, 'character_maximum_length' => '255'],
+            'tinyblob' => ['type' => 'string', 'binary' => true, 'character_maximum_length' => '255'],
             'tinyint' => ['type' => 'int', 'min' => '-128', 'max' => '127'],
             'tinyint unsigned' => ['type' => 'int', 'min' => '0', 'max' => '255'],
             'tinytext' => ['type' => 'string', 'character_maximum_length' => '255'],
@@ -225,7 +225,7 @@ class Kohana_Database_MySQLi extends Database
      * @param string $mode  Isolation level
      * @return boolean
      */
-    public function begin($mode = NULL)
+    public function begin($mode = null)
     {
         // Make sure the database is connected
         $this->_connection or $this->connect();
@@ -263,14 +263,14 @@ class Kohana_Database_MySQLi extends Database
         return (bool) $this->_connection->query('ROLLBACK');
     }
 
-    public function list_tables($like = NULL)
+    public function list_tables($like = null)
     {
         if (is_string($like)) {
             // Search for table names
-            $result = $this->query(Database::SELECT, 'SHOW TABLES LIKE ' . $this->quote($like), FALSE);
+            $result = $this->query(Database::SELECT, 'SHOW TABLES LIKE ' . $this->quote($like), false);
         } else {
             // Find all table names
-            $result = $this->query(Database::SELECT, 'SHOW TABLES', FALSE);
+            $result = $this->query(Database::SELECT, 'SHOW TABLES', false);
         }
 
         $tables = [];
@@ -281,17 +281,17 @@ class Kohana_Database_MySQLi extends Database
         return $tables;
     }
 
-    public function list_columns($table, $like = NULL, $add_prefix = TRUE)
+    public function list_columns($table, $like = null, $add_prefix = true)
     {
         // Quote the table name
-        $table = ($add_prefix === TRUE) ? $this->quote_table($table) : $table;
+        $table = ($add_prefix === true) ? $this->quote_table($table) : $table;
 
         if (is_string($like)) {
             // Search for column names
-            $result = $this->query(Database::SELECT, 'SHOW FULL COLUMNS FROM ' . $table . ' LIKE ' . $this->quote($like), FALSE);
+            $result = $this->query(Database::SELECT, 'SHOW FULL COLUMNS FROM ' . $table . ' LIKE ' . $this->quote($like), false);
         } else {
             // Find all column names
-            $result = $this->query(Database::SELECT, 'SHOW FULL COLUMNS FROM ' . $table, FALSE);
+            $result = $this->query(Database::SELECT, 'SHOW FULL COLUMNS FROM ' . $table, false);
         }
 
         $count = 0;
@@ -360,7 +360,7 @@ class Kohana_Database_MySQLi extends Database
         // Make sure the database is connected
         $this->_connection or $this->connect();
 
-        if (($value = $this->_connection->real_escape_string((string) $value)) === FALSE) {
+        if (($value = $this->_connection->real_escape_string((string) $value)) === false) {
             throw new Database_Exception(':error', [':error' => $this->_connection->error], $this->_connection->errno);
         }
 

@@ -52,15 +52,15 @@ abstract class Kohana_Database
      * @param   array    $config  configuration parameters
      * @return  Database
      */
-    public static function instance($name = NULL, array $config = NULL)
+    public static function instance($name = null, array $config = null)
     {
-        if ($name === NULL) {
+        if ($name === null) {
             // Use the default instance name
             $name = Database::$default;
         }
 
         if (!isset(Database::$instances[$name])) {
-            if ($config === NULL) {
+            if ($config === null) {
                 // Load the configuration for this database
                 $config = Kohana::$config->load('database')->$name;
             }
@@ -165,7 +165,7 @@ abstract class Kohana_Database
     {
         unset(Database::$instances[$this->_instance]);
 
-        return TRUE;
+        return true;
     }
 
     /**
@@ -182,20 +182,20 @@ abstract class Kohana_Database
      * Perform an SQL query of the given type.
      *
      *     // Make a SELECT query and use objects for results
-     *     $db->query(Database::SELECT, 'SELECT * FROM groups', TRUE);
+     *     $db->query(Database::SELECT, 'SELECT * FROM groups', true);
      *
      *     // Make a SELECT query and use "Model_User" for the results
      *     $db->query(Database::SELECT, 'SELECT * FROM users LIMIT 1', 'Model_User');
      *
      * @param   integer  $type       Database::SELECT, Database::INSERT, etc
      * @param   string   $sql        SQL query
-     * @param   mixed    $as_object  result object class string, TRUE for stdClass, FALSE for assoc array
+     * @param   mixed    $as_object  result object class string, true for stdClass, false for assoc array
      * @param   array    $params     object construct parameters for result class
      * @return  object   Database_Result for SELECT queries
      * @return  array    list (insert id, row count) for INSERT queries
      * @return  integer  number of affected rows for all other queries
      */
-    abstract public function query($type, $sql, $as_object = FALSE, array $params = NULL);
+    abstract public function query($type, $sql, $as_object = false, array $params = null);
     /**
      * Start a SQL transaction
      *
@@ -217,7 +217,7 @@ abstract class Kohana_Database
      * @param string $mode  transaction mode
      * @return  boolean
      */
-    abstract public function begin($mode = NULL);
+    abstract public function begin($mode = null);
     /**
      * Commit the current transaction
      *
@@ -250,7 +250,7 @@ abstract class Kohana_Database
         // Quote the table name
         $table = $this->quote_table($table);
 
-        return $this->query(Database::SELECT, 'SELECT COUNT(*) AS total_row_count FROM ' . $table, FALSE)
+        return $this->query(Database::SELECT, 'SELECT COUNT(*) AS total_row_count FROM ' . $table, false)
                 ->get('total_row_count');
     }
 
@@ -266,27 +266,27 @@ abstract class Kohana_Database
     {
         static $types = [
             // SQL-92
-            'bit' => ['type' => 'string', 'exact' => TRUE],
+            'bit' => ['type' => 'string', 'exact' => true],
             'bit varying' => ['type' => 'string'],
-            'char' => ['type' => 'string', 'exact' => TRUE],
+            'char' => ['type' => 'string', 'exact' => true],
             'char varying' => ['type' => 'string'],
-            'character' => ['type' => 'string', 'exact' => TRUE],
+            'character' => ['type' => 'string', 'exact' => true],
             'character varying' => ['type' => 'string'],
             'date' => ['type' => 'string'],
-            'dec' => ['type' => 'float', 'exact' => TRUE],
-            'decimal' => ['type' => 'float', 'exact' => TRUE],
+            'dec' => ['type' => 'float', 'exact' => true],
+            'decimal' => ['type' => 'float', 'exact' => true],
             'double precision' => ['type' => 'float'],
             'float' => ['type' => 'float'],
             'int' => ['type' => 'int', 'min' => '-2147483648', 'max' => '2147483647'],
             'integer' => ['type' => 'int', 'min' => '-2147483648', 'max' => '2147483647'],
             'interval' => ['type' => 'string'],
-            'national char' => ['type' => 'string', 'exact' => TRUE],
+            'national char' => ['type' => 'string', 'exact' => true],
             'national char varying' => ['type' => 'string'],
-            'national character' => ['type' => 'string', 'exact' => TRUE],
+            'national character' => ['type' => 'string', 'exact' => true],
             'national character varying' => ['type' => 'string'],
-            'nchar' => ['type' => 'string', 'exact' => TRUE],
+            'nchar' => ['type' => 'string', 'exact' => true],
             'nchar varying' => ['type' => 'string'],
-            'numeric' => ['type' => 'float', 'exact' => TRUE],
+            'numeric' => ['type' => 'float', 'exact' => true],
             'real' => ['type' => 'float'],
             'smallint' => ['type' => 'int', 'min' => '-32768', 'max' => '32767'],
             'time' => ['type' => 'string'],
@@ -295,8 +295,8 @@ abstract class Kohana_Database
             'timestamp with time zone' => ['type' => 'string'],
             'varchar' => ['type' => 'string'],
             // SQL:1999
-            'binary large object' => ['type' => 'string', 'binary' => TRUE],
-            'blob' => ['type' => 'string', 'binary' => TRUE],
+            'binary large object' => ['type' => 'string', 'binary' => true],
+            'blob' => ['type' => 'string', 'binary' => true],
             'boolean' => ['type' => 'bool'],
             'char large object' => ['type' => 'string'],
             'character large object' => ['type' => 'string'],
@@ -309,9 +309,9 @@ abstract class Kohana_Database
             // SQL:2003
             'bigint' => ['type' => 'int', 'min' => '-9223372036854775808', 'max' => '9223372036854775807'],
             // SQL:2008
-            'binary' => ['type' => 'string', 'binary' => TRUE, 'exact' => TRUE],
-            'binary varying' => ['type' => 'string', 'binary' => TRUE],
-            'varbinary' => ['type' => 'string', 'binary' => TRUE],
+            'binary' => ['type' => 'string', 'binary' => true, 'exact' => true],
+            'binary varying' => ['type' => 'string', 'binary' => true],
+            'varbinary' => ['type' => 'string', 'binary' => true],
         ];
 
         if (isset($types[$type]))
@@ -333,7 +333,7 @@ abstract class Kohana_Database
      * @param   string   $like  table to search for
      * @return  array
      */
-    abstract public function list_tables($like = NULL);
+    abstract public function list_tables($like = null);
     /**
      * Lists all of the columns in a table. Optionally, a LIKE string can be
      * used to search for specific fields.
@@ -345,14 +345,14 @@ abstract class Kohana_Database
      *     $columns = $db->list_columns('users', '%name%');
      *
      *     // Get the columns from a table that doesn't use the table prefix
-     *     $columns = $db->list_columns('users', NULL, FALSE);
+     *     $columns = $db->list_columns('users', null, false);
      *
      * @param   string  $table       table to get columns from
      * @param   string  $like        column to search for
      * @param   boolean $add_prefix  whether to add the table prefix automatically or not
      * @return  array
      */
-    abstract public function list_columns($table, $like = NULL, $add_prefix = TRUE);
+    abstract public function list_columns($table, $like = null, $add_prefix = true);
     /**
      * Extracts the text between parentheses, if any.
      *
@@ -364,9 +364,9 @@ abstract class Kohana_Database
      */
     protected function _parse_type($type)
     {
-        if (($open = strpos($type, '(')) === FALSE) {
+        if (($open = strpos($type, '(')) === false) {
             // No length specified
-            return [$type, NULL];
+            return [$type, null];
         }
 
         // Closing parenthesis
@@ -396,7 +396,7 @@ abstract class Kohana_Database
     /**
      * Quote a value for an SQL query.
      *
-     *     $db->quote(NULL);   // 'NULL'
+     *     $db->quote(null);   // 'NULL'
      *     $db->quote(10);     // 10
      *     $db->quote('fred'); // 'fred'
      *
@@ -411,11 +411,11 @@ abstract class Kohana_Database
      */
     public function quote($value)
     {
-        if ($value === NULL) {
+        if ($value === null) {
             return 'NULL';
-        } elseif ($value === TRUE) {
+        } elseif ($value === true) {
             return "'1'";
-        } elseif ($value === FALSE) {
+        } elseif ($value === false) {
             return "'0'";
         } elseif (is_object($value)) {
             if ($value instanceof Database_Query) {
@@ -483,7 +483,7 @@ abstract class Kohana_Database
 
             if ($column === '*') {
                 return $column;
-            } elseif (strpos($column, '.') !== FALSE) {
+            } elseif (strpos($column, '.') !== false) {
                 $parts = explode('.', $column);
 
                 if ($prefix = $this->table_prefix()) {
@@ -551,7 +551,7 @@ abstract class Kohana_Database
 
             $table = str_replace($this->_identifier, $escaped_identifier, $table);
 
-            if (strpos($table, '.') !== FALSE) {
+            if (strpos($table, '.') !== false) {
                 $parts = explode('.', $table);
 
                 if ($prefix = $this->table_prefix()) {
@@ -615,7 +615,7 @@ abstract class Kohana_Database
 
             $value = str_replace($this->_identifier, $escaped_identifier, $value);
 
-            if (strpos($value, '.') !== FALSE) {
+            if (strpos($value, '.') !== false) {
                 $parts = explode('.', $value);
 
                 foreach ($parts as & $part) {

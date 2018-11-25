@@ -13,7 +13,7 @@ defined('SYSPATH') OR die('No direct script access.');
  */
 class Kohana_Database_Result_Cached extends Database_Result
 {
-    public function __construct(array $result, $sql, $as_object = NULL)
+    public function __construct(array $result, $sql, $as_object = null)
     {
         parent::__construct($result, $sql, $as_object);
 
@@ -36,16 +36,16 @@ class Kohana_Database_Result_Cached extends Database_Result
         if ($this->offsetExists($offset)) {
             $this->_current_row = $offset;
 
-            return TRUE;
+            return true;
         } else {
-            return FALSE;
+            return false;
         }
     }
 
     public function current()
     {
         // Return an array of the row
-        return $this->valid() ? $this->_result[$this->_current_row] : NULL;
+        return $this->valid() ? $this->_result[$this->_current_row] : null;
     }
 
 }

@@ -23,7 +23,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
     // Return rows as an object or associative array
     protected $_as_object;
     // Parameters for __construct when using object results
-    protected $_object_params = NULL;
+    protected $_object_params = null;
 
     /**
      * Sets the total number of rows and stores the result locally.
@@ -34,7 +34,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      * @param   array   $params
      * @return  void
      */
-    public function __construct($result, $sql, $as_object = FALSE, array $params = NULL)
+    public function __construct($result, $sql, $as_object = false, array $params = null)
     {
         // Store the result locally
         $this->_result = $result;
@@ -91,17 +91,17 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      * @param   string  $value  column for values
      * @return  array
      */
-    public function as_array($key = NULL, $value = NULL)
+    public function as_array($key = null, $value = null)
     {
         $results = [];
 
-        if ($key === NULL AND $value === NULL) {
+        if ($key === null AND $value === null) {
             // Indexed rows
 
             foreach ($this as $row) {
                 $results[] = $row;
             }
-        } elseif ($key === NULL) {
+        } elseif ($key === null) {
             // Indexed columns
 
             if ($this->_as_object) {
@@ -113,7 +113,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
                     $results[] = $row[$value];
                 }
             }
-        } elseif ($value === NULL) {
+        } elseif ($value === null) {
             // Associative rows
 
             if ($this->_as_object) {
@@ -154,7 +154,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      * @param   mixed   $default  default value if the column does not exist
      * @return  mixed
      */
-    public function get($name, $default = NULL)
+    public function get($name, $default = null)
     {
         $row = $this->current();
 
@@ -209,7 +209,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
     public function offsetGet($offset)
     {
         if (!$this->seek($offset))
-            return NULL;
+            return null;
 
         return $this->current();
     }

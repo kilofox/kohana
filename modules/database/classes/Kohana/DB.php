@@ -60,7 +60,7 @@ class Kohana_DB
      * @param   mixed   $columns  column name or [$column, $alias] or object
      * @return  Database_Query_Builder_Select
      */
-    public static function select($columns = NULL)
+    public static function select($columns = null)
     {
         return new Database_Query_Builder_Select(func_get_args());
     }
@@ -74,7 +74,7 @@ class Kohana_DB
      * @param   array   $columns  columns to select
      * @return  Database_Query_Builder_Select
      */
-    public static function select_array(array $columns = NULL)
+    public static function select_array(array $columns = null)
     {
         return new Database_Query_Builder_Select($columns);
     }
@@ -89,7 +89,7 @@ class Kohana_DB
      * @param   array   $columns  list of column names or [$column, $alias] or object
      * @return  Database_Query_Builder_Insert
      */
-    public static function insert($table = NULL, array $columns = NULL)
+    public static function insert($table = null, array $columns = null)
     {
         return new Database_Query_Builder_Insert($table, $columns);
     }
@@ -103,7 +103,7 @@ class Kohana_DB
      * @param   string  $table  table to update
      * @return  Database_Query_Builder_Update
      */
-    public static function update($table = NULL)
+    public static function update($table = null)
     {
         return new Database_Query_Builder_Update($table);
     }
@@ -117,7 +117,7 @@ class Kohana_DB
      * @param   string  $table  table to delete from
      * @return  Database_Query_Builder_Delete
      */
-    public static function delete($table = NULL)
+    public static function delete($table = null)
     {
         return new Database_Query_Builder_Delete($table);
     }

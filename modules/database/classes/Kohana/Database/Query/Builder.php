@@ -42,7 +42,7 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
      */
     protected function _compile_conditions(Database $db, array $conditions)
     {
-        $last_condition = NULL;
+        $last_condition = null;
 
         $sql = '';
         foreach ($conditions as $group) {
@@ -66,7 +66,7 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
                     // Split the condition
                     list($column, $op, $value) = $condition;
 
-                    if ($value === NULL) {
+                    if ($value === null) {
                         if ($op === '=') {
                             // Convert "val = NULL" to "val IS NULL"
                             $op = 'IS';
@@ -83,19 +83,19 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
                         // BETWEEN always has exactly two arguments
                         list($min, $max) = $value;
 
-                        if ((is_string($min) AND array_key_exists($min, $this->_parameters)) === FALSE) {
+                        if ((is_string($min) AND array_key_exists($min, $this->_parameters)) === false) {
                             // Quote the value, it is not a parameter
                             $min = $db->quote($min);
                         }
 
-                        if ((is_string($max) AND array_key_exists($max, $this->_parameters)) === FALSE) {
+                        if ((is_string($max) AND array_key_exists($max, $this->_parameters)) === false) {
                             // Quote the value, it is not a parameter
                             $max = $db->quote($max);
                         }
 
                         // Quote the min and max value
                         $value = $min . ' AND ' . $max;
-                    } elseif ((is_string($value) AND array_key_exists($value, $this->_parameters)) === FALSE) {
+                    } elseif ((is_string($value) AND array_key_exists($value, $this->_parameters)) === false) {
                         // Quote the value, it is not a parameter
                         $value = $db->quote($value);
                     }
@@ -138,7 +138,7 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
             // Quote the column name
             $column = $db->quote_column($column);
 
-            if ((is_string($value) AND array_key_exists($value, $this->_parameters)) === FALSE) {
+            if ((is_string($value) AND array_key_exists($value, $this->_parameters)) === false) {
                 // Quote the value, it is not a parameter
                 $value = $db->quote($value);
             }

@@ -18,7 +18,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
     // ORDER BY ...
     protected $_order_by = [];
     // LIMIT ...
-    protected $_limit = NULL;
+    protected $_limit = null;
 
     /**
      * Alias of and_where()
@@ -157,7 +157,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      * @param   string  $direction  direction of sorting
      * @return  $this
      */
-    public function order_by($column, $direction = NULL)
+    public function order_by($column, $direction = null)
     {
         $this->_order_by[] = [$column, $direction];
 
@@ -167,12 +167,12 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
     /**
      * Return up to "LIMIT ..." results
      *
-     * @param   integer  $number  maximum results to return or NULL to reset
+     * @param   integer  $number  maximum results to return or null to reset
      * @return  $this
      */
     public function limit($number)
     {
-        $this->_limit = ($number === NULL) ? NULL : (int) $number;
+        $this->_limit = ($number === null) ? null : (int) $number;
 
         return $this;
     }

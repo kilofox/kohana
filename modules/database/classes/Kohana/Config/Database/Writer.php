@@ -27,7 +27,7 @@ class Kohana_Config_Database_Writer extends Config_Database_Reader implements Ko
     /**
      * Tries to load the specificed configuration group
      *
-     * Returns FALSE if group does not exist or an array if it does
+     * Returns false if group does not exist or an array if it does
      *
      * @param  string $group Configuration group
      * @return boolean|array
@@ -36,7 +36,7 @@ class Kohana_Config_Database_Writer extends Config_Database_Reader implements Ko
     {
         $config = parent::load($group);
 
-        if ($config !== FALSE) {
+        if ($config !== false) {
             $this->_loaded_keys[$group] = array_combine(array_keys($config), array_keys($config));
         }
 
@@ -73,7 +73,7 @@ class Kohana_Config_Database_Writer extends Config_Database_Reader implements Ko
             }
         }
 
-        return TRUE;
+        return true;
     }
 
     /**

@@ -27,7 +27,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
      * @param   array  $columns  column names
      * @return  void
      */
-    public function __construct($table = NULL, array $columns = NULL)
+    public function __construct($table = null, array $columns = null)
     {
         if ($table) {
             // Set the inital table name
@@ -118,7 +118,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
      * @param   mixed  $db  Database instance or name of instance
      * @return  string
      */
-    public function compile($db = NULL)
+    public function compile($db = null)
     {
         if (!is_object($db)) {
             // Get the database instance
@@ -138,7 +138,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
             $groups = [];
             foreach ($this->_values as $group) {
                 foreach ($group as $offset => $value) {
-                    if ((is_string($value) AND array_key_exists($value, $this->_parameters)) === FALSE) {
+                    if ((is_string($value) AND array_key_exists($value, $this->_parameters)) === false) {
                         // Quote the value, it is not a parameter
                         $group[$offset] = $db->quote($value);
                     }
@@ -162,13 +162,13 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
 
     public function reset()
     {
-        $this->_table = NULL;
+        $this->_table = null;
 
         $this->_columns = $this->_values = [];
 
         $this->_parameters = [];
 
-        $this->_sql = NULL;
+        $this->_sql = null;
 
         return $this;
     }

@@ -34,9 +34,9 @@ class Kohana_Database_PDO extends Database
         // Extract the connection parameters, adding required variabels
         extract($this->_config['connection'] + [
             'dsn' => '',
-            'username' => NULL,
-            'password' => NULL,
-            'persistent' => FALSE,
+            'username' => null,
+            'password' => null,
+            'persistent' => false,
         ]);
 
         // Clear the connection parameters for security
@@ -47,7 +47,7 @@ class Kohana_Database_PDO extends Database
 
         if (!empty($persistent)) {
             // Make the connection persistent
-            $options[PDO::ATTR_PERSISTENT] = TRUE;
+            $options[PDO::ATTR_PERSISTENT] = true;
         }
 
         try {
@@ -111,7 +111,7 @@ class Kohana_Database_PDO extends Database
     public function disconnect()
     {
         // Destroy the PDO object
-        $this->_connection = NULL;
+        $this->_connection = null;
 
         return parent::disconnect();
     }
@@ -125,7 +125,7 @@ class Kohana_Database_PDO extends Database
         $this->_connection->exec('SET NAMES ' . $this->quote($charset));
     }
 
-    public function query($type, $sql, $as_object = FALSE, array $params = NULL)
+    public function query($type, $sql, $as_object = false, array $params = null)
     {
         // Make sure the database is connected
         $this->_connection or $this->connect();
@@ -159,7 +159,7 @@ class Kohana_Database_PDO extends Database
 
         if ($type === Database::SELECT) {
             // Convert the result into an array, as PDOStatement::rowCount is not reliable
-            if ($as_object === FALSE) {
+            if ($as_object === false) {
                 $result->setFetchMode(PDO::FETCH_ASSOC);
             } elseif (is_string($as_object)) {
                 $result->setFetchMode(PDO::FETCH_CLASS, $as_object, $params);
@@ -183,7 +183,7 @@ class Kohana_Database_PDO extends Database
         }
     }
 
-    public function begin($mode = NULL)
+    public function begin($mode = null)
     {
         // Make sure the database is connected
         $this->_connection or $this->connect();
@@ -207,12 +207,12 @@ class Kohana_Database_PDO extends Database
         return $this->_connection->rollBack();
     }
 
-    public function list_tables($like = NULL)
+    public function list_tables($like = null)
     {
         throw new Kohana_Exception('Database method :method is not supported by :class', [':method' => __FUNCTION__, ':class' => __CLASS__]);
     }
 
-    public function list_columns($table, $like = NULL, $add_prefix = TRUE)
+    public function list_columns($table, $like = null, $add_prefix = true)
     {
         throw new Kohana_Exception('Database method :method is not supported by :class', [':method' => __FUNCTION__, ':class' => __CLASS__]);
     }
