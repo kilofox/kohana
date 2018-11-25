@@ -106,7 +106,7 @@ class Bench_URLSite extends Codebench
 
     public function bench_less_is_more_with_strpos_optimization($uri)
     {
-        if (strpos($uri, '://') !== FALSE) {
+        if (strpos($uri, '://') !== false) {
             // Chop off possible scheme, host, port, user and pass parts
             $uri = preg_replace('~^[-a-z0-9+.]++://[^/]++/?~', '', trim($uri, '/'));
         }

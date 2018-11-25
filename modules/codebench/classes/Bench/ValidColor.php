@@ -102,7 +102,7 @@ class Bench_ValidColor extends Codebench
             $subject = substr($subject, 1);
         }
 
-        // TRUE if:
+        // true if:
         // 1. $subject is 6 or 3 chars long
         // 2. $subject contains only hexadecimal digits
         return (((isset($subject[5]) AND ! isset($subject[6])) OR ( isset($subject[2]) AND ! isset($subject[3])))

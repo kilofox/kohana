@@ -79,74 +79,74 @@ defined('SYSPATH') or die('No direct access allowed.');
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <script>
-	    $(document).ready(function () {
-		// Insert "Toggle All" button
-		var expand_all_text = '▸ Expand all';
-		var collapse_all_text = '▾ Collapse all';
-		$('#bench').before('<p id="toggle_all">' + expand_all_text + '</p>');
+            $(document).ready(function() {
+                // Insert "Toggle All" button
+                var expand_all_text = '▸ Expand all';
+                var collapse_all_text = '▾ Collapse all';
+                $('#bench').before('<p id="toggle_all">' + expand_all_text + '</p>');
 
-		// Cache these selection operations
-		var $runner = $('#runner');
-		var $toggle_all = $('#toggle_all');
-		var $bench_titles = $('#bench > li > h2');
-		var $bench_rows = $('#bench > li > div > table > tbody > tr');
+                // Cache these selection operations
+                var $runner = $('#runner');
+                var $toggle_all = $('#toggle_all');
+                var $bench_titles = $('#bench > li > h2');
+                var $bench_rows = $('#bench > li > div > table > tbody > tr');
 
-		// Runner form
-		$(':input:first', $runner).focus();
-		$runner.submit(function () {
-		    $(':submit', this).attr('value', 'Running…').attr('disabled', 'disabled');
-		    $('.alert', this).remove();
-		});
+                // Runner form
+                $(':input:first', $runner).focus();
+                $runner.submit(function() {
+                    $(':submit', this).attr('value', 'Running…').attr('disabled', 'disabled');
+                    $('.alert', this).remove();
+                });
 
-		// Toggle details for all benchmarks
-		$('#toggle_all').click(function () {
-		    if ($(this).data('expanded')) {
-			$(this).data('expanded', false);
-			$(this).text(expand_all_text);
-			$bench_titles.removeClass('expanded').siblings().hide();
-		    } else {
-			$(this).data('expanded', true);
-			$(this).text(collapse_all_text);
-			$bench_titles.addClass('expanded').siblings().show();
-		    }
-		});
+                // Toggle details for all benchmarks
+                $('#toggle_all').click(function() {
+                    if ($(this).data('expanded')) {
+                        $(this).data('expanded', false);
+                        $(this).text(expand_all_text);
+                        $bench_titles.removeClass('expanded').siblings().hide();
+                    } else {
+                        $(this).data('expanded', true);
+                        $(this).text(collapse_all_text);
+                        $bench_titles.addClass('expanded').siblings().show();
+                    }
+                });
 
 <?php if (Kohana::$config->load('codebench')->expand_all) { ?>
-    		// Expand all benchmark details by default
-    		$toggle_all.click();
+                    // Expand all benchmark details by default
+                    $toggle_all.click();
 <?php } ?>
 
-		// Toggle details for a single benchmark
-		$bench_titles.click(function () {
-		    $(this).toggleClass('expanded').siblings().toggle();
+                // Toggle details for a single benchmark
+                $bench_titles.click(function() {
+                    $(this).toggleClass('expanded').siblings().toggle();
 
-		    // Counts of bench titles
-		    var total_bench_titles = $bench_titles.length;
-		    var expanded_bench_titles = $bench_titles.filter('.expanded').length;
+                    // Counts of bench titles
+                    var total_bench_titles = $bench_titles.length;
+                    var expanded_bench_titles = $bench_titles.filter('.expanded').length;
 
-		    // If no benchmark details are expanded, change "Collapse all" to "Expand all"
-		    if (expanded_bench_titles == 0 && $toggle_all.data('expanded')) {
-			$toggle_all.click();
-		    }
-		    // If all benchmark details are expanded, change "Expand all" to "Collapse all"
-		    else if (expanded_bench_titles == total_bench_titles && !$toggle_all.data('expanded')) {
-			$toggle_all.click();
-		    }
-		});
+                    // If no benchmark details are expanded, change "Collapse all" to "Expand all"
+                    if (expanded_bench_titles == 0 && $toggle_all.data('expanded')) {
+                        $toggle_all.click();
+                    }
+                    // If all benchmark details are expanded, change "Expand all" to "Collapse all"
+                    else if (expanded_bench_titles == total_bench_titles && !$toggle_all.data('expanded')) {
+                        $toggle_all.click();
+                    }
+                });
 
-		// Highlight clicked rows
-		$bench_rows.click(function () {
-		    $(this).toggleClass('highlight');
-		    // Highlight doubleclicked rows globally
-		}).dblclick(function () {
-		    var nth_row = $(this).parent().children().index(this) + 1;
-		    if ($(this).hasClass('highlight')) {
-			$bench_rows.filter(':nth-child(' + nth_row + ')').removeClass('highlight');
-		    } else {
-			$bench_rows.filter(':nth-child(' + nth_row + ')').addClass('highlight');
-		    }
-		});
-	    });
+                // Highlight clicked rows
+                $bench_rows.click(function() {
+                    $(this).toggleClass('highlight');
+                    // Highlight doubleclicked rows globally
+                }).dblclick(function() {
+                    var nth_row = $(this).parent().children().index(this) + 1;
+                    if ($(this).hasClass('highlight')) {
+                        $bench_rows.filter(':nth-child(' + nth_row + ')').removeClass('highlight');
+                    } else {
+                        $bench_rows.filter(':nth-child(' + nth_row + ')').addClass('highlight');
+                    }
+                });
+            });
         </script>
 
     </head>
@@ -207,11 +207,11 @@ defined('SYSPATH') or die('No direct access allowed.');
                                         <?php foreach ($benchmark['subjects'] as $subject_key => $subject) { ?>
                                             <tr>
                                                 <td>
-                                                    <strong class="help" title="(<?php echo gettype($codebench['subjects'][$subject_key]) ?>) <?php echo HTML::chars(var_export($codebench['subjects'][$subject_key], TRUE)) ?>">
+                                                    <strong class="help" title="(<?php echo gettype($codebench['subjects'][$subject_key]) ?>) <?php echo HTML::chars(var_export($codebench['subjects'][$subject_key], true)) ?>">
                                                         [<?php echo HTML::chars($subject_key) ?>] →
                                                     </strong>
                                                     <span class="quiet">(<?php echo gettype($subject['return']) ?>)</span>
-                                                    <?php echo HTML::chars(var_export($subject['return'], TRUE)) ?>
+                                                    <?php echo HTML::chars(var_export($subject['return'], true)) ?>
                                                 </td>
                                                 <td class="numeric">
                                                     <span title="+<?php echo (int) $subject['percent']['fastest']['memory'] ?>% memory">
@@ -241,7 +241,7 @@ defined('SYSPATH') or die('No direct access allowed.');
             <?php } ?>
 
             <?php if (!empty($codebench['description'])) { ?>
-                <?php echo Text::auto_p(Text::auto_link($codebench['description']), FALSE) ?>
+                <?php echo Text::auto_p(Text::auto_link($codebench['description']), false) ?>
             <?php } ?>
 
             <?php // echo '<h2>Raw output:</h2>', Debug::vars($codebench)  ?>
@@ -249,7 +249,7 @@ defined('SYSPATH') or die('No direct access allowed.');
         <?php } ?>
 
         <p id="footer">
-            Page executed in <strong><?php echo round(microtime(TRUE) - KOHANA_START_TIME, 2) ?>&nbsp;s</strong>
+            Page executed in <strong><?php echo round(microtime(true) - KOHANA_START_TIME, 2) ?>&nbsp;s</strong>
             using <strong><?php echo Text::widont(Text::bytes(memory_get_usage(), 'MB')) ?></strong> of memory.<br />
             <a href="http://github.com/kohana/codebench">Codebench</a>, a <a href="http://kohanaframework.org/">Kohana</a> module
             by <a href="http://www.geertdedeckere.be/article/introducing-codebench">Geert De Deckere</a>.

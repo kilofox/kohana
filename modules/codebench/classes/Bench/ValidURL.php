@@ -83,16 +83,16 @@ class Bench_ValidURL extends Codebench
 			(?:/.*)?
 
 			$~iDx', $url, $matches))
-            return FALSE;
+            return false;
 
         // We matched an IP address
         if (!isset($matches[1]))
-            return TRUE;
+            return true;
 
         // Check maximum length of the whole hostname
         // http://en.wikipedia.org/wiki/Domain_name#cite_note-0
         if (strlen($matches[1]) > 253)
-            return FALSE;
+            return false;
 
         // An extra check for the top level domain
         // It must start with a letter

@@ -26,19 +26,19 @@ class Bench_DateSpan extends Codebench
     }
 
     // Original method
-    public static function bench_span_original($remote, $local = NULL, $output = 'years,months,weeks,days,hours,minutes,seconds')
+    public static function bench_span_original($remote, $local = null, $output = 'years,months,weeks,days,hours,minutes,seconds')
     {
         // Array with the output formats
         $output = preg_split('/[^a-z]+/', strtolower((string) $output));
 
         // Invalid output
         if (empty($output))
-            return FALSE;
+            return false;
 
         // Make the output values into keys
         extract(array_flip($output), EXTR_SKIP);
 
-        if ($local === NULL) {
+        if ($local === null) {
             // Calculate the span from the current time
             $local = time();
         }
@@ -92,7 +92,7 @@ class Bench_DateSpan extends Codebench
 
         // Invalid output formats string
         if (empty($difference))
-            return FALSE;
+            return false;
 
         // If only one output format was asked, don't put it in an array
         if (count($difference) === 1)
@@ -103,14 +103,14 @@ class Bench_DateSpan extends Codebench
     }
 
     // Using an array for the output
-    public static function bench_span_use_array($remote, $local = NULL, $output = 'years,months,weeks,days,hours,minutes,seconds')
+    public static function bench_span_use_array($remote, $local = null, $output = 'years,months,weeks,days,hours,minutes,seconds')
     {
         // Array with the output formats
         $output = preg_split('/[^a-z]+/', strtolower((string) $output));
 
         // Invalid output
         if (empty($output))
-            return FALSE;
+            return false;
 
         // Convert the list of outputs to an associative array
         $output = array_combine($output, array_fill(0, count($output), 0));
@@ -118,7 +118,7 @@ class Bench_DateSpan extends Codebench
         // Make the output values into keys
         extract(array_flip($output), EXTR_SKIP);
 
-        if ($local === NULL) {
+        if ($local === null) {
             // Calculate the span from the current time
             $local = time();
         }

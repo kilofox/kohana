@@ -65,7 +65,7 @@ abstract class Kohana_Codebench
         // Make sure the benchmark runs at least once,
         // also if no subject data has been provided.
         if (empty($this->subjects)) {
-            $this->subjects = ['NULL' => NULL];
+            $this->subjects = ['NULL' => null];
         }
 
         // Initialize benchmark output

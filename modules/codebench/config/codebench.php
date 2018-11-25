@@ -11,5 +11,5 @@ return [
     /**
      * Expand all benchmark details by default.
      */
-    'expand_all' => FALSE,
+    'expand_all' => false,
 ];

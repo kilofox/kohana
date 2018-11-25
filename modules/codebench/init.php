@@ -7,5 +7,5 @@ Route::set('codebench', 'codebench(/<class>)')
     ->defaults([
         'controller' => 'Codebench',
         'action' => 'index',
-        'class' => NULL
+        'class' => null
     ]);
