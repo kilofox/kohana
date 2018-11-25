@@ -59,9 +59,9 @@ abstract class Kohana_Minion_Task
      */
     public static function factory($options)
     {
-        if (($task = Arr::get($options, 'task')) !== NULL) {
+        if (($task = Arr::get($options, 'task')) !== null) {
             unset($options['task']);
-        } else if (($task = Arr::get($options, 0)) !== NULL) {
+        } else if (($task = Arr::get($options, 0)) !== null) {
             // The first positional argument (aka 0) may be the task name
             unset($options[0]);
         } else {
@@ -96,7 +96,7 @@ abstract class Kohana_Minion_Task
      *
      *     protected $_options = [
      *         'limit' => 4,
-     *         'table' => NULL,
+     *         'table' => null,
      *     ];
      *
      * @var array
@@ -120,7 +120,7 @@ abstract class Kohana_Minion_Task
 
     /**
      * The file that get's passes to Validation::errors() when validation fails
-     * @var string|NULL
+     * @var string|null
      */
     protected $_errors_file = 'validation';
 
@@ -131,9 +131,9 @@ abstract class Kohana_Minion_Task
      */
     public function __toString()
     {
-        static $task_name = NULL;
+        static $task_name = null;
 
-        if ($task_name === NULL) {
+        if ($task_name === null) {
             $task_name = Minion_Task::convert_class_to_task($this);
         }
 

@@ -46,7 +46,7 @@ class Kohana_Minion_CLI
      * @param   string  $options,...    option name
      * @return  array
      */
-    public static function options($options = NULL)
+    public static function options($options = null)
     {
         // Get all of the requested options
         $options = func_get_args();
@@ -77,7 +77,7 @@ class Kohana_Minion_CLI
                 // Separate the name and value
                 list ($opt, $value) = explode('=', $opt, 2);
             } else {
-                $value = NULL;
+                $value = null;
             }
 
             $values[$opt] = $value;
@@ -113,7 +113,7 @@ class Kohana_Minion_CLI
      * @param  array   $options array of options the user is shown
      * @return string  the user input
      */
-    public static function read($text = '', array $options = NULL)
+    public static function read($text = '', array $options = null)
     {
         // If a question has been asked with the read
         $options_output = '';
@@ -191,7 +191,7 @@ class Kohana_Minion_CLI
 
     /**
      * Outputs a replacable line to the cli. You can continue replacing the
-     * line until `TRUE` is passed as the second parameter in order to indicate
+     * line until `true` is passed as the second parameter in order to indicate
      * you are done modifying the line.
      *
      *     // Sample progress indicator
@@ -200,14 +200,14 @@ class Kohana_Minion_CLI
      *     Minion_CLI::write_replace('50%');
      *     Minion_CLI::write_replace('75%');
      *     // Done writing this line
-     *     Minion_CLI::write_replace('100%', TRUE);
+     *     Minion_CLI::write_replace('100%', true);
      *
      * @param string  $text      the text to output
      * @param boolean $end_line  whether the line is done being replaced
      */
-    public static function write_replace($text = '', $end_line = FALSE)
+    public static function write_replace($text = '', $end_line = false)
     {
-        // Append a newline if $end_line is TRUE
+        // Append a newline if $end_line is true
         $text = $end_line ? $text . PHP_EOL : $text;
         fwrite(STDOUT, "\r\033[K" . $text);
     }
