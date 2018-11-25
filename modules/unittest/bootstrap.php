@@ -34,8 +34,8 @@ define('EXT', '.php');
 /**
  * Set the path to the document root
  *
- * This assumes that this file is stored 2 levels below the DOCROOT, if you move 
- * this bootstrap file somewhere else then you'll need to modify this value to 
+ * This assumes that this file is stored 2 levels below the DOCROOT, if you move
+ * this bootstrap file somewhere else then you'll need to modify this value to
  * compensate.
  */
 define('DOCROOT', realpath(dirname(__FILE__) . '/../../') . DIRECTORY_SEPARATOR);
@@ -88,7 +88,7 @@ unset($application, $modules, $system);
  * Define the start time of the application, used for profiling.
  */
 if (!defined('KOHANA_START_TIME')) {
-    define('KOHANA_START_TIME', microtime(TRUE));
+    define('KOHANA_START_TIME', microtime(true));
 }
 
 /**
@@ -102,7 +102,7 @@ if (!defined('KOHANA_START_MEMORY')) {
 require APPPATH . 'bootstrap' . EXT;
 
 // Disable output buffering
-if (($ob_len = ob_get_length()) !== FALSE) {
+if (($ob_len = ob_get_length()) !== false) {
     // flush_end on an empty buffer causes headers to be sent. Only flush if needed.
     if ($ob_len > 0) {
         ob_end_flush();

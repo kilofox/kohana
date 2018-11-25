@@ -38,14 +38,14 @@ class Kohana_Unittest_Tests
      * * Restores exception phpunit error handlers (for cli)
      * * registeres an autoloader to load test files
      */
-    static public function configure_environment($do_whitelist = TRUE, $do_blacklist = TRUE)
+    static public function configure_environment($do_whitelist = true, $do_blacklist = true)
     {
         restore_exception_handler();
         restore_error_handler();
 
         spl_autoload_register(['Unittest_tests', 'autoload']);
 
-        Unittest_tests::$cache = (($cache = Kohana::cache('unittest_whitelist_cache')) === NULL) ? [] : $cache;
+        Unittest_tests::$cache = (($cache = Kohana::cache('unittest_whitelist_cache')) === null) ? [] : $cache;
     }
 
     /**
@@ -55,7 +55,7 @@ class Kohana_Unittest_Tests
      */
     static function suite()
     {
-        static $suite = NULL;
+        static $suite = null;
 
         if ($suite instanceof PHPUnit_Framework_TestSuite) {
             return $suite;
@@ -69,7 +69,7 @@ class Kohana_Unittest_Tests
         $config = Kohana::$config->load('unittest');
 
         if ($config->use_whitelist) {
-            Unittest_Tests::whitelist(NULL, $suite);
+            Unittest_Tests::whitelist(null, $suite);
         }
 
         if (count($config['blacklist'])) {
@@ -121,7 +121,7 @@ class Kohana_Unittest_Tests
      * @param array $blacklist_items A set of files to blacklist
      * @param Unittest_TestSuite $suite The test suite
      */
-    static public function blacklist(array $blacklist_items, Unittest_TestSuite $suite = NULL)
+    static public function blacklist(array $blacklist_items, Unittest_TestSuite $suite = null)
     {
         foreach ($blacklist_items as $item) {
             if (is_dir($item)) {
@@ -141,7 +141,7 @@ class Kohana_Unittest_Tests
      * @param array $directories Optional directories to whitelist
      * @param Unittest_Testsuite $suite Suite to load the whitelist into
      */
-    static public function whitelist(array $directories = NULL, Unittest_TestSuite $suite = NULL)
+    static public function whitelist(array $directories = null, Unittest_TestSuite $suite = null)
     {
         if (empty($directories)) {
             $directories = self::get_config_whitelist();
@@ -176,11 +176,11 @@ class Kohana_Unittest_Tests
             $k_modules = Kohana::modules();
 
             // Have to do this because kohana merges config...
-            // If you want to include all modules & override defaults then TRUE must be the first
+            // If you want to include all modules & override defaults then true must be the first
             // value in the modules array of your app/config/unittest file
-            if (array_search(TRUE, $modules, TRUE) === (count($modules) - 1)) {
+            if (array_search(true, $modules, true) === (count($modules) - 1)) {
                 $modules = $k_modules;
-            } elseif (array_search(FALSE, $modules, TRUE) === FALSE) {
+            } elseif (array_search(false, $modules, true) === false) {
                 $modules = array_intersect_key($k_modules, array_combine($modules, $modules));
             } else {
                 // modules are disabled
@@ -203,7 +203,7 @@ class Kohana_Unittest_Tests
      * @param array $files Array of files to whitelist
      * @param Unittest_TestSuite $suite Suite to load the whitelist into
      */
-    static protected function set_whitelist($files, Unittest_TestSuite $suite = NULL)
+    static protected function set_whitelist($files, Unittest_TestSuite $suite = null)
     {
 
         foreach ($files as $file) {

@@ -13,7 +13,7 @@ class Kohana_Unittest_Helpers
      * @see has_internet
      * @var boolean
      */
-    static protected $_has_internet = NULL;
+    static protected $_has_internet = null;
 
     /**
      * Check for internet connectivity
@@ -26,7 +26,7 @@ class Kohana_Unittest_Helpers
             // The @ operator is used here to avoid DNS errors when there is no connection.
             $sock = @fsockopen("www.google.com", 80, $errno, $errstr, 1);
 
-            self::$_has_internet = (bool) $sock ? TRUE : FALSE;
+            self::$_has_internet = (bool) $sock ? true : false;
         }
 
         return self::$_has_internet;
@@ -95,7 +95,7 @@ class Kohana_Unittest_Helpers
     public function set_environment(array $environment)
     {
         if (!count($environment))
-            return FALSE;
+            return false;
 
         foreach ($environment as $option => $value) {
             $backup_needed = !array_key_exists($option, $this->_environment_backup);
@@ -113,7 +113,7 @@ class Kohana_Unittest_Helpers
                 $$option = $value;
             }
             // If this is a static property i.e. Html::$windowed_urls
-            elseif (strpos($option, '::$') !== FALSE) {
+            elseif (strpos($option, '::$') !== false) {
                 list($class, $var) = explode('::$', $option, 2);
 
                 $class = new ReflectionClass($class);
