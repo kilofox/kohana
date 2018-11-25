@@ -30,7 +30,7 @@ class Kohana_Image_Imagick extends Image
             throw new Kohana_Exception('Imagick is not installed, or the extension is not loaded');
         }
 
-        return Image_Imagick::$_checked = TRUE;
+        return Image_Imagick::$_checked = true;
     }
 
     /**
@@ -75,10 +75,10 @@ class Kohana_Image_Imagick extends Image
             $this->width = $this->im->getImageWidth();
             $this->height = $this->im->getImageHeight();
 
-            return TRUE;
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 
     protected function _do_crop($width, $height, $offset_x, $offset_y)
@@ -91,10 +91,10 @@ class Kohana_Image_Imagick extends Image
             // Trim off hidden areas
             $this->im->setImagePage($this->width, $this->height, 0, 0);
 
-            return TRUE;
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 
     protected function _do_rotate($degrees)
@@ -107,10 +107,10 @@ class Kohana_Image_Imagick extends Image
             // Trim off hidden areas
             $this->im->setImagePage($this->width, $this->height, 0, 0);
 
-            return TRUE;
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 
     protected function _do_flip($direction)
@@ -183,10 +183,10 @@ class Kohana_Image_Imagick extends Image
             $this->width = $this->im->getImageWidth();
             $this->height = $this->im->getImageHeight();
 
-            return TRUE;
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 
     protected function _do_watermark(Image $image, $offset_x, $offset_y, $opacity)
@@ -238,10 +238,10 @@ class Kohana_Image_Imagick extends Image
             // Replace the current image with the new image
             $this->im = $background;
 
-            return TRUE;
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 
     protected function _do_save($file, $quality)
@@ -260,10 +260,10 @@ class Kohana_Image_Imagick extends Image
             $this->type = $type;
             $this->mime = image_type_to_mime_type($type);
 
-            return TRUE;
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 
     protected function _do_render($type, $quality)

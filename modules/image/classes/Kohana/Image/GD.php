@@ -61,7 +61,7 @@ class Kohana_Image_GD extends Image
             throw new Kohana_Exception('Image_GD requires GD version :required or greater, you have :version', ['required' => '2.0.1', ':version' => $version]);
         }
 
-        return Image_GD::$_checked = TRUE;
+        return Image_GD::$_checked = true;
     }
 
     // Temporary image resource
@@ -99,7 +99,7 @@ class Kohana_Image_GD extends Image
         }
 
         if (!isset($create) OR ! function_exists($create)) {
-            throw new Kohana_Exception('Installed GD does not support :type images', [':type' => image_type_to_extension($this->type, FALSE)]);
+            throw new Kohana_Exception('Installed GD does not support :type images', [':type' => image_type_to_extension($this->type, false)]);
         }
 
         // Save function for future use
@@ -137,7 +137,7 @@ class Kohana_Image_GD extends Image
             $this->_image = $create($this->file);
 
             // Preserve transparency when saving
-            imagesavealpha($this->_image, TRUE);
+            imagesavealpha($this->_image, true);
         }
     }
 
@@ -245,7 +245,7 @@ class Kohana_Image_GD extends Image
         $image = imagerotate($this->_image, 360 - $degrees, $transparent, 1);
 
         // Save the alpha of the rotated image
-        imagesavealpha($image, TRUE);
+        imagesavealpha($image, true);
 
         // Get the width and height of the rotated image
         $width = imagesx($image);
@@ -335,7 +335,7 @@ class Kohana_Image_GD extends Image
      *
      * @param   integer   $height   reflection height
      * @param   integer   $opacity  reflection opacity
-     * @param   boolean   $fade_in  TRUE to fade out, FALSE to fade in
+     * @param   boolean   $fade_in  true to fade out, false to fade in
      * @return  void
      */
     protected function _do_reflection($height, $opacity, $fade_in)
@@ -371,7 +371,7 @@ class Kohana_Image_GD extends Image
             // Place the line at the bottom of the reflection
             $dst_y = $this->height + $offset;
 
-            if ($fade_in === TRUE) {
+            if ($fade_in === true) {
                 // Start with the most transparent line first
                 $dst_opacity = round($opacity + ($stepping * ($height - $offset)));
             } else {
@@ -422,7 +422,7 @@ class Kohana_Image_GD extends Image
         // Create the watermark image resource
         $overlay = imagecreatefromstring($watermark->render());
 
-        imagesavealpha($overlay, TRUE);
+        imagesavealpha($overlay, true);
 
         // Get the width and height of the watermark
         $width = imagesx($overlay);
@@ -443,7 +443,7 @@ class Kohana_Image_GD extends Image
         }
 
         // Alpha blending must be enabled on the background!
-        imagealphablending($this->_image, TRUE);
+        imagealphablending($this->_image, true);
 
         if (imagecopy($this->_image, $overlay, $offset_x, $offset_y, 0, 0, $width, $height)) {
             // Destroy the overlay image
@@ -478,7 +478,7 @@ class Kohana_Image_GD extends Image
         imagefilledrectangle($background, 0, 0, $this->width, $this->height, $color);
 
         // Alpha blending must be enabled on the background!
-        imagealphablending($background, TRUE);
+        imagealphablending($background, true);
 
         // Copy the image onto a white background to remove all transparency
         if (imagecopy($background, $this->_image, 0, 0, 0, 0, $this->width, $this->height)) {
@@ -509,13 +509,13 @@ class Kohana_Image_GD extends Image
         // Save the image to a file
         $status = isset($quality) ? $save($this->_image, $file, $quality) : $save($this->_image, $file);
 
-        if ($status === TRUE AND $type !== $this->type) {
+        if ($status === true AND $type !== $this->type) {
             // Reset the image type and mime type
             $this->type = $type;
             $this->mime = image_type_to_mime_type($type);
         }
 
-        return TRUE;
+        return true;
     }
 
     /**
@@ -537,9 +537,9 @@ class Kohana_Image_GD extends Image
         ob_start();
 
         // Render the image
-        $status = isset($quality) ? $save($this->_image, NULL, $quality) : $save($this->_image, NULL);
+        $status = isset($quality) ? $save($this->_image, null, $quality) : $save($this->_image, null);
 
-        if ($status === TRUE AND $type !== $this->type) {
+        if ($status === true AND $type !== $this->type) {
             // Reset the image type and mime type
             $this->type = $type;
             $this->mime = image_type_to_mime_type($type);
@@ -561,7 +561,7 @@ class Kohana_Image_GD extends Image
     {
         if (!$extension) {
             // Use the current image type
-            $extension = image_type_to_extension($this->type, FALSE);
+            $extension = image_type_to_extension($this->type, false);
         }
 
         switch (strtolower($extension)) {
@@ -578,7 +578,7 @@ class Kohana_Image_GD extends Image
                 $type = IMAGETYPE_GIF;
 
                 // GIFs do not a quality setting
-                $quality = NULL;
+                $quality = null;
                 break;
             case 'png':
                 // Save a PNG file
@@ -609,10 +609,10 @@ class Kohana_Image_GD extends Image
         $image = imagecreatetruecolor($width, $height);
 
         // Do not apply alpha blending
-        imagealphablending($image, FALSE);
+        imagealphablending($image, false);
 
         // Save alpha levels
-        imagesavealpha($image, TRUE);
+        imagesavealpha($image, true);
 
         return $image;
     }
