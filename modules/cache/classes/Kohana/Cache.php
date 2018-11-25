@@ -48,11 +48,11 @@ defined('SYSPATH') or die('No direct script access.');
  *                 [
  *                     'host' => 'localhost',
  *                     'port' => 11211,
- *                     'persistent' => FALSE
+ *                     'persistent' => false
  *                 ]
  *             ],
  *             // Use compression?
- *             'compression' => FALSE,
+ *             'compression' => false,
  *         ],
  *     ]
  *
@@ -116,10 +116,10 @@ abstract class Kohana_Cache
      * @return  Cache
      * @throws  Cache_Exception
      */
-    public static function instance($group = NULL)
+    public static function instance($group = null)
     {
         // If there is no group supplied
-        if ($group === NULL) {
+        if ($group === null) {
             // Use the default setting
             $group = Cache::$default;
         }
@@ -178,15 +178,15 @@ abstract class Kohana_Cache
      * @param   mixed    value to associate with key
      * @return  mixed
      */
-    public function config($key = NULL, $value = NULL)
+    public function config($key = null, $value = null)
     {
-        if ($key === NULL)
+        if ($key === null)
             return $this->_config;
 
         if (is_array($key)) {
             $this->_config = $key;
         } else {
-            if ($value === NULL)
+            if ($value === null)
                 return Arr::get($this->_config, $key);
 
             $this->_config[$key] = $value;
@@ -223,7 +223,7 @@ abstract class Kohana_Cache
      * @return  mixed
      * @throws  Cache_Exception
      */
-    abstract public function get($id, $default = NULL);
+    abstract public function get($id, $default = null);
     /**
      * Set a value to cache with id and lifetime
      *

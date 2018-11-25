@@ -73,7 +73,7 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      * @return  mixed
      * @throws  Cache_Exception
      */
-    public function get($id, $default = NULL)
+    public function get($id, $default = null)
     {
         $data = apcu_fetch($this->_sanitize_id($id), $success);
 
@@ -96,9 +96,9 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      * @param   integer  $lifetime  lifetime in seconds
      * @return  boolean
      */
-    public function set($id, $data, $lifetime = NULL)
+    public function set($id, $data, $lifetime = null)
     {
-        if ($lifetime === NULL) {
+        if ($lifetime === null) {
             $lifetime = Arr::get($this->_config, 'default_expire', Cache::DEFAULT_EXPIRE);
         }
 
@@ -151,7 +151,7 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
         if (apcu_exists($id)) {
             return apcu_inc($id, $step);
         } else {
-            return FALSE;
+            return false;
         }
     }
 
@@ -170,7 +170,7 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
         if (apcu_exists($id)) {
             return apcu_dec($id, $step);
         } else {
-            return FALSE;
+            return false;
         }
     }
 

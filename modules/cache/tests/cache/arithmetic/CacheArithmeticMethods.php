@@ -58,19 +58,19 @@ abstract class Kohana_CacheArithmeticMethodsTest extends Kohana_CacheBasicMethod
                 10
             ],
             [
-                NULL,
+                null,
                 [
                     'id' => 'increment_test_4',
                     'step' => 1
                 ],
-                FALSE
+                false
             ],
         ];
     }
 
     /**
      * Test for [Cache_Arithmetic::increment()]
-     * 
+     *
      * @dataProvider provider_increment
      *
      * @param   integer  start state
@@ -78,11 +78,11 @@ abstract class Kohana_CacheArithmeticMethodsTest extends Kohana_CacheBasicMethod
      * @return  void
      */
     public function test_increment(
-    $start_state = NULL, array $inc_args, $expected)
+    $start_state = null, array $inc_args, $expected)
     {
         $cache = $this->cache();
 
-        if ($start_state !== NULL) {
+        if ($start_state !== null) {
             $cache->set($inc_args['id'], $start_state, 0);
         }
 
@@ -126,31 +126,30 @@ abstract class Kohana_CacheArithmeticMethodsTest extends Kohana_CacheBasicMethod
                 45
             ],
             [
-                NULL,
+                null,
                 [
                     'id' => 'decrement_test_4',
                     'step' => 1
                 ],
-                FALSE
+                false
             ],
         ];
     }
 
     /**
      * Test for [Cache_Arithmetic::decrement()]
-     * 
+     *
      * @dataProvider provider_decrement
      *
      * @param   integer  start state
      * @param   array    decrement arguments
      * @return  void
      */
-    public function test_decrement(
-    $start_state = NULL, array $dec_args, $expected)
+    public function test_decrement($start_state = null, array $dec_args, $expected)
     {
         $cache = $this->cache();
 
-        if ($start_state !== NULL) {
+        if ($start_state !== null) {
             $cache->set($dec_args['id'], $start_state, 0);
         }
 

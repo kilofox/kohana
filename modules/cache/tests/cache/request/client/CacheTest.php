@@ -71,7 +71,7 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
             'action' => 'index',
         ]);
 
-        $request = new Request('welcome/index', NULL, [$route]);
+        $request = new Request('welcome/index', null, [$route]);
         $cache_mock = $this->createMock('Cache_File');
 
         $request->client()->cache(HTTP_Cache::factory($cache_mock));
@@ -79,7 +79,7 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
         $cache_mock->expects($this->once())
             ->method('get')
             ->with($request->client()->cache()->create_cache_key($request))
-            ->will($this->returnValue(FALSE));
+            ->will($this->returnValue(false));
 
         $response = $request->client()->execute($request);
 
@@ -111,7 +111,7 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
         $cache_mock->expects($this->at(1))
             ->method('set')
             ->with($this->identicalTo($key), $this->anything(), $this->identicalTo($lifetime))
-            ->will($this->returnValue(TRUE));
+            ->will($this->returnValue(true));
 
         $this->assertTrue(
             $request->client()->cache()
@@ -164,48 +164,48 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
         return [
             [
                 new HTTP_Header(['cache-control' => 'no-cache']),
-                ['no-cache' => NULL],
-                FALSE,
+                ['no-cache' => null],
+                false,
             ],
             [
                 new HTTP_Header(['cache-control' => 'no-store']),
-                ['no-store' => NULL],
-                FALSE,
+                ['no-store' => null],
+                false,
             ],
             [
                 new HTTP_Header(['cache-control' => 'max-age=100']),
                 ['max-age' => '100'],
-                TRUE
+                true
             ],
             [
                 new HTTP_Header(['cache-control' => 'private']),
-                ['private' => NULL],
-                FALSE
+                ['private' => null],
+                false
             ],
             [
                 new HTTP_Header(['cache-control' => 'private, max-age=100']),
-                ['private' => NULL, 'max-age' => '100'],
-                FALSE
+                ['private' => null, 'max-age' => '100'],
+                false
             ],
             [
                 new HTTP_Header(['cache-control' => 'private, s-maxage=100']),
-                ['private' => NULL, 's-maxage' => '100'],
-                TRUE
+                ['private' => null, 's-maxage' => '100'],
+                true
             ],
             [
                 new HTTP_Header(['expires' => date('m/d/Y', strtotime('-1 day'))]),
                 [],
-                FALSE
+                false
             ],
             [
                 new HTTP_Header(['expires' => date('m/d/Y', strtotime('+1 day'))]),
                 [],
-                TRUE
+                true
             ],
             [
                 new HTTP_Header([]),
                 [],
-                TRUE
+                true
             ],
         ];
     }

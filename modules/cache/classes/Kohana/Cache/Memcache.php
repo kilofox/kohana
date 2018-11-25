@@ -25,23 +25,23 @@ defined('SYSPATH') or die('No direct script access.');
  *                 [
  *                     'host' => 'localhost',
  *                     'port' => 11211,
- *                     'persistent' => FALSE
+ *                     'persistent' => false
  *                     'weight' => 1,
  *                     'timeout' => 1,
  *                     'retry_interval' => 15,
- *                     'status' => TRUE,
- * 				       'instant_death' => TRUE,
+ *                     'status' => true,
+ *                     'instant_death' => true,
  *                     'failure_callback' => ['className', 'classMethod']
  *                 ],
  *                 // Second memcache server
  *                 [
  *                     'host' => '192.168.1.5',
  *                     'port' => 22122,
- *                     'persistent' => TRUE
+ *                     'persistent' => true
  *                 ]
  *             ],
  *             // Use compression?
- *             'compression' => FALSE,
+ *             'compression' => false,
  *         ],
  *     ];
  *
@@ -66,12 +66,12 @@ defined('SYSPATH') or die('No direct script access.');
  * ---------------- | -------- | ---------------------------------------------------------------
  * host             | __YES__  | (_string_) The host of the memcache server, i.e. __localhost__; or __127.0.0.1__; or __memcache.domain.tld__
  * port             | __NO__   | (_integer_) Point to the port where memcached is listening for connections. Set this parameter to 0 when using UNIX domain sockets.  Default __11211__
- * persistent       | __NO__   | (_boolean_) Controls the use of a persistent connection. Default __TRUE__
+ * persistent       | __NO__   | (_boolean_) Controls the use of a persistent connection. Default __true__
  * weight           | __NO__   | (_integer_) Number of buckets to create for this server which in turn control its probability of it being selected. The probability is relative to the total weight of all servers. Default __1__
  * timeout          | __NO__   | (_integer_) Value in seconds which will be used for connecting to the daemon. Think twice before changing the default value of 1 second - you can lose all the advantages of caching if your connection is too slow. Default __1__
  * retry_interval   | __NO__   | (_integer_) Controls how often a failed server will be retried, the default value is 15 seconds. Setting this parameter to -1 disables automatic retry. Default __15__
- * status           | __NO__   | (_boolean_) Controls if the server should be flagged as online. Default __TRUE__
- * failure_callback | __NO__   | (_[callback](http://www.php.net/manual/en/language.pseudo-types.php#language.types.callback)_) Allows the user to specify a callback function to run upon encountering an error. The callback is run before failover is attempted. The function takes two parameters, the hostname and port of the failed server. Default __NULL__
+ * status           | __NO__   | (_boolean_) Controls if the server should be flagged as online. Default __true__
+ * failure_callback | __NO__   | (_[callback](http://www.php.net/manual/en/language.pseudo-types.php#language.types.callback)_) Allows the user to specify a callback function to run upon encountering an error. The callback is run before failover is attempted. The function takes two parameters, the hostname and port of the failed server. Default __null__
  *
  * ### System requirements
  *
@@ -132,7 +132,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
         $this->_memcache = new Memcache;
 
         // Load servers from configuration
-        $servers = Arr::get($this->_config, 'servers', NULL);
+        $servers = Arr::get($this->_config, 'servers', null);
 
         if (!$servers) {
             // Throw an exception if no server found
@@ -143,12 +143,12 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
         $this->_default_config = [
             'host' => 'localhost',
             'port' => 11211,
-            'persistent' => FALSE,
+            'persistent' => false,
             'weight' => 1,
             'timeout' => 1,
             'retry_interval' => 15,
-            'status' => TRUE,
-            'instant_death' => TRUE,
+            'status' => true,
+            'instant_death' => true,
             'failure_callback' => [$this, '_failed_request'],
         ];
 
@@ -163,7 +163,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
         }
 
         // Setup the flags
-        $this->_flags = Arr::get($this->_config, 'compression', FALSE) ? MEMCACHE_COMPRESSED : FALSE;
+        $this->_flags = Arr::get($this->_config, 'compression', false) ? MEMCACHE_COMPRESSED : false;
     }
 
     /**
@@ -180,14 +180,14 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      * @return  mixed
      * @throws  Cache_Exception
      */
-    public function get($id, $default = NULL)
+    public function get($id, $default = null)
     {
         // Get the value from Memcache
         $value = $this->_memcache->get($this->_sanitize_id($id));
 
         // If the value wasn't found, normalise it
-        if ($value === FALSE) {
-            $value = (NULL === $default) ? NULL : $default;
+        if ($value === false) {
+            $value = (null === $default) ? null : $default;
         }
 
         // Return the value
@@ -277,7 +277,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
     /**
      * Callback method for Memcache::failure_callback to use if any Memcache call
      * on a particular server fails. This method switches off that instance of the
-     * server if the configuration setting `instant_death` is set to `TRUE`.
+     * server if the configuration setting `instant_death` is set to `true`.
      *
      * @param   string   $hostname
      * @param   integer  $port
@@ -290,7 +290,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
             return;
 
         // Setup non-existent host
-        $host = FALSE;
+        $host = false;
 
         // Get host settings from configuration
         foreach ($this->_config['servers'] as $server) {
@@ -310,7 +310,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
             return $this->_memcache->setServerParams(
                     $host['host'], $host['port'], $host['timeout'], $host['retry_interval'],
                     // Server is offline
-                    FALSE, [$this, '_failed_request']
+                    false, [$this, '_failed_request']
             );
         }
     }

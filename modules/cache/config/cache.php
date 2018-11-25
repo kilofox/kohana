@@ -6,7 +6,7 @@ return [
 //        'driver' => 'memcache',
 //        'default_expire' => 3600,
 //        // Use Zlib compression (can cause issues with integers)
-//        'compression' => FALSE,
+//        'compression' => false,
 //        'servers' => [
 //            'local' => [
 //                // Memcache Server
@@ -14,21 +14,21 @@ return [
 //                // Memcache port number
 //                'port' => 11211,
 //                // Persistent connection
-//                'persistent' => FALSE,
+//                'persistent' => false,
 //                'weight' => 1,
 //                'timeout' => 1,
 //                'retry_interval' => 15,
-//                'status' => TRUE,
+//                'status' => true,
 //            ],
 //        ],
 //        // Take server offline immediately on first fail (no retry)
-//        'instant_death' => TRUE,
+//        'instant_death' => true,
 //    ],
 //    'memcachetag' => [
 //        'driver' => 'memcachetag',
 //        'default_expire' => 3600,
 //        // Use Zlib compression (can cause issues with integers)
-//        'compression' => FALSE,
+//        'compression' => false,
 //        'servers' => [
 //            'local' => [
 //                // Memcache Server
@@ -36,14 +36,14 @@ return [
 //                // Memcache port number
 //                'port' => 11211,
 //                // Persistent connection
-//                'persistent' => FALSE,
+//                'persistent' => false,
 //                'weight' => 1,
 //                'timeout' => 1,
 //                'retry_interval' => 15,
-//                'status' => TRUE,
+//                'status' => true,
 //            ],
 //        ],
-//        'instant_death' => TRUE,
+//        'instant_death' => true,
 //    ],
 //    'apc' => [
 //        'driver' => 'apc',

@@ -84,11 +84,11 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
         }
         // PHP < 5.3 exception handle
         catch (ErrorException $e) {
-            $this->_cache_dir = $this->_make_directory($directory, 0777, TRUE);
+            $this->_cache_dir = $this->_make_directory($directory, 0777, true);
         }
         // PHP >= 5.3 exception handle
         catch (UnexpectedValueException $e) {
-            $this->_cache_dir = $this->_make_directory($directory, 0777, TRUE);
+            $this->_cache_dir = $this->_make_directory($directory, 0777, true);
         }
 
         // If the defined directory is a file, get outta here
@@ -121,7 +121,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * @return  mixed
      * @throws  Cache_Exception
      */
-    public function get($id, $default = NULL)
+    public function get($id, $default = null)
     {
         $filename = Cache_File::filename($this->_sanitize_id($id));
         $directory = $this->_resolve_directory($filename);
@@ -139,7 +139,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
                 // Test the expiry
                 if ($this->_is_expired($file)) {
                     // Delete the file
-                    $this->_delete_file($file, FALSE, TRUE);
+                    $this->_delete_file($file, false, true);
                     return $default;
                 }
 
@@ -152,7 +152,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
 
                 $cache = '';
 
-                while ($data->eof() === FALSE) {
+                while ($data->eof() === false) {
                     $cache .= $data->fgets();
                 }
 
@@ -188,13 +188,13 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * @param   integer  $lifetime  lifetime in seconds
      * @return  boolean
      */
-    public function set($id, $data, $lifetime = NULL)
+    public function set($id, $data, $lifetime = null)
     {
         $filename = Cache_File::filename($this->_sanitize_id($id));
         $directory = $this->_resolve_directory($filename);
 
-        // If lifetime is NULL
-        if ($lifetime === NULL) {
+        // If lifetime is null
+        if ($lifetime === null) {
             // Set to the default expiry
             $lifetime = Arr::get($this->_config, 'default_expire', Cache::DEFAULT_EXPIRE);
         }
@@ -204,7 +204,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
 
         // If the directory path is not a directory
         if (!$dir->isDir()) {
-            $this->_make_directory($directory, 0777, TRUE);
+            $this->_make_directory($directory, 0777, true);
         }
 
         // Open file to inspect
@@ -241,7 +241,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
         $filename = Cache_File::filename($this->_sanitize_id($id));
         $directory = $this->_resolve_directory($filename);
 
-        return $this->_delete_file(new SplFileInfo($directory . $filename), FALSE, TRUE);
+        return $this->_delete_file(new SplFileInfo($directory . $filename), false, true);
     }
 
     /**
@@ -258,7 +258,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      */
     public function delete_all()
     {
-        return $this->_delete_file($this->_cache_dir, TRUE);
+        return $this->_delete_file($this->_cache_dir, true);
     }
 
     /**
@@ -269,15 +269,15 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      */
     public function garbage_collect()
     {
-        $this->_delete_file($this->_cache_dir, TRUE, FALSE, TRUE);
+        $this->_delete_file($this->_cache_dir, true, false, true);
         return;
     }
 
     /**
-     * Deletes files recursively and returns FALSE on any errors
+     * Deletes files recursively and returns false on any errors
      *
      *     // Delete a file or folder whilst retaining parent directory and ignore all errors
-     *     $this->_delete_file($folder, TRUE, TRUE);
+     *     $this->_delete_file($folder, true, true);
      *
      * @param   SplFileInfo  $file                     file
      * @param   boolean      $retain_parent_directory  retain the parent directory
@@ -286,7 +286,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * @return  boolean
      * @throws  Cache_Exception
      */
-    protected function _delete_file(SplFileInfo $file, $retain_parent_directory = FALSE, $ignore_errors = FALSE, $only_expired = FALSE)
+    protected function _delete_file(SplFileInfo $file, $retain_parent_directory = false, $ignore_errors = false, $only_expired = false)
     {
         // Allow graceful error handling
         try {
@@ -295,12 +295,12 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
                 try {
                     // Handle ignore files
                     if (in_array($file->getFilename(), $this->config('ignore_on_delete'))) {
-                        $delete = FALSE;
+                        $delete = false;
                     }
                     // If only expired is not set
-                    elseif ($only_expired === FALSE) {
+                    elseif ($only_expired === false) {
                         // We want to delete the file
-                        $delete = TRUE;
+                        $delete = true;
                     }
                     // Otherwise...
                     else {
@@ -309,10 +309,10 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
                     }
 
                     // If the delete flag is set delete file
-                    if ($delete === TRUE)
+                    if ($delete === true)
                         return unlink($file->getRealPath());
                     else
-                        return FALSE;
+                        return false;
                 } catch (ErrorException $e) {
                     // Catch any delete file warnings
                     if ($e->getCode() === E_WARNING) {
@@ -344,7 +344,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
 
                 // If set to retain parent directory, return now
                 if ($retain_parent_directory) {
-                    return TRUE;
+                    return true;
                 }
 
                 try {
@@ -363,15 +363,15 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
                 }
             } else {
                 // We get here if a file has already been deleted
-                return FALSE;
+                return false;
             }
         }
         // Catch all exceptions
         catch (Exception $e) {
             // If ignore_errors is on
-            if ($ignore_errors === TRUE) {
+            if ($ignore_errors === true) {
                 // Return
-                return FALSE;
+                return false;
             }
             // Throw exception
             throw $e;
@@ -404,7 +404,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * @return  SplFileInfo
      * @throws  Cache_Exception
      */
-    protected function _make_directory($directory, $mode = 0777, $recursive = FALSE, $context = NULL)
+    protected function _make_directory($directory, $mode = 0777, $recursive = false, $context = null)
     {
         // call mkdir according to the availability of a passed $context param
         $mkdir_result = $context ?
@@ -426,7 +426,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * Test if cache file is expired
      *
      * @param SplFileInfo $file the cache file
-     * @return boolean TRUE if expired false otherwise
+     * @return boolean true if expired false otherwise
      */
     protected function _is_expired(SplFileInfo $file)
     {

@@ -29,7 +29,7 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
             $base = [
                 // Test default group
                 [
-                    NULL,
+                    null,
                     Cache::instance('file')
                 ],
                 // Test defined group
@@ -52,7 +52,7 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
 
     /**
      * Tests the [Cache::factory()] method behaves as expected
-     * 
+     *
      * @dataProvider provider_instance
      *
      * @return  void
@@ -106,14 +106,14 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
                 [
                     'server' => 'otherhost',
                     'port' => 5555,
-                    'persistent' => TRUE,
+                    'persistent' => true,
                 ],
-                NULL,
+                null,
                 Kohana_CacheTest::EXPECT_SELF,
                 [
                     'server' => 'otherhost',
                     'port' => 5555,
-                    'persistent' => TRUE,
+                    'persistent' => true,
                 ],
             ],
             [
@@ -126,13 +126,13 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
             ],
             [
                 'server',
-                NULL,
-                NULL,
+                null,
+                null,
                 []
             ],
             [
-                NULL,
-                NULL,
+                null,
+                null,
                 [],
                 []
             ]
@@ -141,7 +141,7 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
 
     /**
      * Tests the config method behaviour
-     * 
+     *
      * @dataProvider provider_config
      *
      * @param   mixed    key value to set or get
@@ -204,11 +204,11 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
      * Tests the [Cache::_sanitize_id()] method works as expected.
      * This uses some nasty reflection techniques to access a protected
      * method.
-     * 
+     *
      * @dataProvider provider_sanitize_id
      *
-     * @param   string    id 
-     * @param   string    expected 
+     * @param   string    id
+     * @param   string    expected
      * @return  void
      */
     public function test_sanitize_id($id, $expected)
@@ -217,7 +217,7 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
 
         $cache_reflection = new ReflectionClass($cache);
         $sanitize_id = $cache_reflection->getMethod('_sanitize_id');
-        $sanitize_id->setAccessible(TRUE);
+        $sanitize_id->setAccessible(true);
 
         $this->assertSame($expected, $sanitize_id->invoke($cache, $id));
     }

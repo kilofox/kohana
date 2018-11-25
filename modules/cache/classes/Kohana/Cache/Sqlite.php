@@ -33,9 +33,9 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
     {
         parent::__construct($config);
 
-        $database = Arr::get($this->_config, 'database', NULL);
+        $database = Arr::get($this->_config, 'database', null);
 
-        if ($database === NULL) {
+        if ($database === null) {
             throw new Cache_Exception('Database path not available in Kohana Cache configuration');
         }
 
@@ -47,15 +47,15 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
 
         // If there is no table, create a new one
         if (0 == count($result)) {
-            $database_schema = Arr::get($this->_config, 'schema', NULL);
+            $database_schema = Arr::get($this->_config, 'schema', null);
 
-            if ($database_schema === NULL) {
+            if ($database_schema === null) {
                 throw new Cache_Exception('Database schema not found in Kohana Cache configuration');
             }
 
             try {
                 // Create the caches table
-                $this->_db->query(Arr::get($this->_config, 'schema', NULL));
+                $this->_db->query(Arr::get($this->_config, 'schema', null));
             } catch (PDOException $e) {
                 throw new Cache_Exception('Failed to create new SQLite caches table with the following error : :error', [':error' => $e->getMessage()]);
             }
@@ -70,7 +70,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      * @return  mixed
      * @throws  Cache_Exception
      */
-    public function get($id, $default = NULL)
+    public function get($id, $default = null)
     {
         // Prepare statement
         $statement = $this->_db->prepare('SELECT id, expiration, cache FROM caches WHERE id = :id LIMIT 0, 1');
@@ -116,7 +116,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      * @param   integer  $lifetime  lifetime [Optional]
      * @return  boolean
      */
-    public function set($id, $data, $lifetime = NULL)
+    public function set($id, $data, $lifetime = null)
     {
         return (bool) $this->set_with_tags($id, $data, $lifetime);
     }
@@ -173,17 +173,17 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      * @return  boolean
      * @throws  Cache_Exception
      */
-    public function set_with_tags($id, $data, $lifetime = NULL, array $tags = NULL)
+    public function set_with_tags($id, $data, $lifetime = null, array $tags = null)
     {
         // Serialize the data
         $data = serialize($data);
 
         // Normalise tags
-        $tags = (NULL === $tags) ? NULL : ('<' . implode('>,<', $tags) . '>');
+        $tags = (null === $tags) ? null : ('<' . implode('>,<', $tags) . '>');
 
         // Setup lifetime
-        if ($lifetime === NULL) {
-            $lifetime = (0 === Arr::get($this->_config, 'default_expire', NULL)) ? 0 : (Arr::get($this->_config, 'default_expire', Cache::DEFAULT_EXPIRE) + time());
+        if ($lifetime === null) {
+            $lifetime = (0 === Arr::get($this->_config, 'default_expire', null)) ? 0 : (Arr::get($this->_config, 'default_expire', Cache::DEFAULT_EXPIRE) + time());
         } else {
             $lifetime = (0 === $lifetime) ? 0 : ($lifetime + time());
         }

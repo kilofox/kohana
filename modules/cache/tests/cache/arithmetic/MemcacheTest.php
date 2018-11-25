@@ -16,9 +16,9 @@ class Kohana_CacheArithmeticMemcacheTest extends Kohana_CacheArithmeticMethodsTe
     /**
      * This method MUST be implemented by each driver to setup the `Cache`
      * instance for each test.
-     * 
+     *
      * This method should do the following tasks for each driver test:
-     * 
+     *
      *  - Test the Cache instance driver is available, skip test otherwise
      *  - Setup the Cache instance
      *  - Call the parent setup method, `parent::setUp()`
@@ -38,19 +38,19 @@ class Kohana_CacheArithmeticMemcacheTest extends Kohana_CacheArithmeticMethodsTe
                     'memcache', [
                     'driver' => 'memcache',
                     'default_expire' => 3600,
-                    'compression' => FALSE, // Use Zlib compression (can cause issues with integers)
+                    'compression' => false, // Use Zlib compression (can cause issues with integers)
                     'servers' => [
                         'local' => [
                             'host' => 'localhost', // Memcache Server
                             'port' => 11211, // Memcache port number
-                            'persistent' => FALSE, // Persistent connection
+                            'persistent' => false, // Persistent connection
                             'weight' => 1,
                             'timeout' => 1,
                             'retry_interval' => 15,
-                            'status' => TRUE,
+                            'status' => true,
                         ],
                     ],
-                    'instant_death' => TRUE,
+                    'instant_death' => true,
                     ]
             );
             $config = Kohana::$config->load('cache.memcache');
@@ -63,7 +63,7 @@ class Kohana_CacheArithmeticMemcacheTest extends Kohana_CacheArithmeticMethodsTe
                 $config['servers']['local']['port']);
         }
 
-        if ($memcache->getVersion() === FALSE) {
+        if ($memcache->getVersion() === false) {
             $this->markTestSkipped('Memcache server @ ' .
                 $config['servers']['local']['host'] . ':' .
                 $config['servers']['local']['port'] .
@@ -79,7 +79,7 @@ class Kohana_CacheArithmeticMemcacheTest extends Kohana_CacheArithmeticMethodsTe
      * Tests that multiple values set with Memcache do not cause unexpected
      * results. For accurate results, this should be run with a memcache
      * configuration that includes multiple servers.
-     * 
+     *
      * This is to test #4110
      *
      * @link    http://dev.kohanaframework.org/issues/4110
@@ -97,16 +97,16 @@ class Kohana_CacheArithmeticMemcacheTest extends Kohana_CacheArithmeticMethodsTe
             1.0,
             new stdClass,
             ['foo', 'bar' => 1],
-            TRUE,
-            NULL,
-            FALSE
+            true,
+            null,
+            false
         ];
 
-        $previous_set = $cache->get($id_set, NULL);
+        $previous_set = $cache->get($id_set, null);
 
         foreach ($data as $value) {
             // Use Equals over Sames as Objects will not be equal
-            $this->assertEquals($previous_set, $cache->get($id_set, NULL));
+            $this->assertEquals($previous_set, $cache->get($id_set, null));
             $cache->set($id_set, $value, $ttl);
 
             $previous_set = $value;

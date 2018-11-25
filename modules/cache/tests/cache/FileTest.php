@@ -16,9 +16,9 @@ class Kohana_Cache_FileTest extends Kohana_CacheBasicMethodsTest
     /**
      * This method MUST be implemented by each driver to setup the `Cache`
      * instance for each test.
-     * 
+     *
      * This method should do the following tasks for each driver test:
-     * 
+     *
      *  - Test the Cache instance driver is available, skip test otherwise
      *  - Setup the Cache instance
      *  - Call the parent setup method, `parent::setUp()`
@@ -136,18 +136,18 @@ class Kohana_Cache_FileTest extends Kohana_CacheBasicMethodsTest
      * Tests if cache file exists given cache id.
      *
      * @param string $id cache id
-     * @return boolean TRUE if file exists FALSE otherwise
+     * @return boolean true if file exists false otherwise
      */
     protected function is_file($id)
     {
         $cache = $this->cache();
 
         $method_sanitize_id = new ReflectionMethod($cache, '_sanitize_id');
-        $method_sanitize_id->setAccessible(TRUE);
+        $method_sanitize_id->setAccessible(true);
         $method_filename = new ReflectionMethod($cache, 'filename');
-        $method_filename->setAccessible(TRUE);
+        $method_filename->setAccessible(true);
         $method_resolve_directory = new ReflectionMethod($cache, '_resolve_directory');
-        $method_resolve_directory->setAccessible(TRUE);
+        $method_resolve_directory->setAccessible(true);
 
         $sanitized_id = $method_sanitize_id->invoke($cache, $id);
         $filename = $method_filename->invoke($cache, $sanitized_id);

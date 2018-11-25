@@ -78,7 +78,7 @@ class Kohana_Cache_Wincache extends Cache
      * @return  mixed
      * @throws  Cache_Exception
      */
-    public function get($id, $default = NULL)
+    public function get($id, $default = null)
     {
         $data = wincache_ucache_get($this->_sanitize_id($id), $success);
 
@@ -101,9 +101,9 @@ class Kohana_Cache_Wincache extends Cache
      * @param   integer  $lifetime  lifetime in seconds
      * @return  boolean
      */
-    public function set($id, $data, $lifetime = NULL)
+    public function set($id, $data, $lifetime = null)
     {
-        if ($lifetime === NULL) {
+        if ($lifetime === null) {
             $lifetime = Arr::get($this->_config, 'default_expire', Cache::DEFAULT_EXPIRE);
         }
 

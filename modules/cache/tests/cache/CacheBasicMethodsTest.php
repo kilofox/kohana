@@ -19,9 +19,9 @@ abstract class Kohana_CacheBasicMethodsTest extends PHPUnit_Framework_TestCase
     /**
      * This method MUST be implemented by each driver to setup the `Cache`
      * instance for each test.
-     * 
+     *
      * This method should do the following tasks for each driver test:
-     * 
+     *
      *  - Test the Cache instance driver is available, skip test otherwise
      *  - Setup the Cache instance
      *  - Call the parent setup method, `parent::setUp()`
@@ -34,14 +34,14 @@ abstract class Kohana_CacheBasicMethodsTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Accessor method to `$_cache_driver`. 
+     * Accessor method to `$_cache_driver`.
      *
      * @return  Cache
      * @return  self
      */
-    public function cache(Cache $cache = NULL)
+    public function cache(Cache $cache = null)
     {
-        if ($cache === NULL)
+        if ($cache === null)
             return $this->_cache_driver;
 
         $this->_cache_driver = $cache;
@@ -60,9 +60,9 @@ abstract class Kohana_CacheBasicMethodsTest extends PHPUnit_Framework_TestCase
         $object->bar = 'bar';
 
         $html_text = <<<TESTTEXT
-<!doctype html>  
-<head> 
-</head> 
+<!doctype html>
+<head>
+</head>
 
 <body>
 </body>
@@ -75,9 +75,9 @@ TESTTEXT;
                     'id' => 'string', // Key to set to cache
                     'value' => 'foobar', // Value to set to key
                     'ttl' => 0, // Time to live
-                    'wait' => FALSE, // Test wait time to let cache expire
+                    'wait' => false, // Test wait time to let cache expire
                     'type' => 'string', // Type test
-                    'default' => NULL         // Default value get should return
+                    'default' => null // Default value get should return
                 ],
                 'foobar'
             ],
@@ -86,9 +86,9 @@ TESTTEXT;
                     'id' => 'integer',
                     'value' => 101010,
                     'ttl' => 0,
-                    'wait' => FALSE,
+                    'wait' => false,
                     'type' => 'integer',
-                    'default' => NULL
+                    'default' => null
                 ],
                 101010
             ],
@@ -97,9 +97,9 @@ TESTTEXT;
                     'id' => 'float',
                     'value' => 10.00,
                     'ttl' => 0,
-                    'wait' => FALSE,
+                    'wait' => false,
                     'type' => 'float',
-                    'default' => NULL
+                    'default' => null
                 ],
                 10.00
             ],
@@ -111,9 +111,9 @@ TESTTEXT;
                         'value' => 'bar'
                     ],
                     'ttl' => 0,
-                    'wait' => FALSE,
+                    'wait' => false,
                     'type' => 'array',
-                    'default' => NULL
+                    'default' => null
                 ],
                 [
                     'key' => 'foo',
@@ -123,33 +123,33 @@ TESTTEXT;
             [
                 [
                     'id' => 'boolean',
-                    'value' => TRUE,
+                    'value' => true,
                     'ttl' => 0,
-                    'wait' => FALSE,
+                    'wait' => false,
                     'type' => 'boolean',
-                    'default' => NULL
+                    'default' => null
                 ],
-                TRUE
+                true
             ],
             [
                 [
                     'id' => 'null',
-                    'value' => NULL,
+                    'value' => null,
                     'ttl' => 0,
-                    'wait' => FALSE,
+                    'wait' => false,
                     'type' => 'null',
-                    'default' => NULL
+                    'default' => null
                 ],
-                NULL
+                null
             ],
             [
                 [
                     'id' => 'object',
                     'value' => $object,
                     'ttl' => 0,
-                    'wait' => FALSE,
+                    'wait' => false,
                     'type' => 'object',
-                    'default' => NULL
+                    'default' => null
                 ],
                 $object
             ],
@@ -158,9 +158,9 @@ TESTTEXT;
                     'id' => 'bar\\ with / troublesome key',
                     'value' => 'foo bar snafu',
                     'ttl' => 0,
-                    'wait' => FALSE,
+                    'wait' => false,
                     'type' => 'string',
-                    'default' => NULL
+                    'default' => null
                 ],
                 'foo bar snafu'
             ],
@@ -171,7 +171,7 @@ TESTTEXT;
                     'ttl' => 0,
                     'wait' => 1,
                     'type' => 'string',
-                    'default' => NULL
+                    'default' => null
                 ],
                 'cache value that should last'
             ],
@@ -182,9 +182,9 @@ TESTTEXT;
                     'ttl' => 3,
                     'wait' => 5,
                     'type' => 'null',
-                    'default' => NULL
+                    'default' => null
                 ],
-                NULL
+                null
             ],
             [
                 [
@@ -202,9 +202,9 @@ TESTTEXT;
                     'id' => 'new line test with HTML',
                     'value' => $html_text,
                     'ttl' => 10,
-                    'wait' => FALSE,
+                    'wait' => false,
                     'type' => 'string',
-                    'default' => NULL,
+                    'default' => null,
                 ],
                 $html_text
             ],
@@ -213,9 +213,9 @@ TESTTEXT;
                     'id' => 'test with 60*5',
                     'value' => 'blabla',
                     'ttl' => 60 * 5,
-                    'wait' => FALSE,
+                    'wait' => false,
                     'type' => 'string',
-                    'default' => NULL,
+                    'default' => null,
                 ],
                 'blabla'
             ],
@@ -224,9 +224,9 @@ TESTTEXT;
                     'id' => 'test with 60*50',
                     'value' => 'bla bla',
                     'ttl' => 60 * 50,
-                    'wait' => FALSE,
+                    'wait' => false,
                     'type' => 'string',
-                    'default' => NULL,
+                    'default' => null,
                 ],
                 'bla bla'
             ]
@@ -235,16 +235,16 @@ TESTTEXT;
 
     /**
      * Tests the [Cache::set()] method, testing;
-     * 
+     *
      *  - The value is cached
      *  - The lifetime is respected
      *  - The returned value type is as expected
      *  - The default not-found value is respected
-     * 
+     *
      * @dataProvider provider_set_get
      *
-     * @param   array    data 
-     * @param   mixed    expected 
+     * @param   array    data
+     * @param   mixed    expected
      * @return  void
      */
     public function test_set_get(array $data, $expected)
@@ -254,7 +254,7 @@ TESTTEXT;
 
         $this->assertTrue($cache->set($id, $value, $ttl));
 
-        if ($wait !== FALSE) {
+        if ($wait !== false) {
             // Lets let the cache expire
             sleep($wait);
         }
@@ -268,10 +268,10 @@ TESTTEXT;
 
     /**
      * Tests the [Cache::delete()] method, testing;
-     * 
+     *
      *  - The a cached value is deleted from cache
-     *  - The cache returns a TRUE value upon deletion
-     *  - The cache returns a FALSE value if no value exists to delete
+     *  - The cache returns a true value upon deletion
+     *  - The cache returns a false value if no value exists to delete
      *
      * @return  void
      */
@@ -286,11 +286,11 @@ TESTTEXT;
             $this->fail('Unable to set cache value to delete!');
         }
 
-        // Test delete returns TRUE and check the value is gone
+        // Test delete returns true and check the value is gone
         $this->assertTrue($cache->delete('test_delete_1'));
         $this->assertNull($cache->get('test_delete_1'));
 
-        // Test non-existant cache value returns FALSE if no error
+        // Test non-existant cache value returns false if no error
         $this->assertFalse($cache->delete('test_delete_1'));
     }
 
