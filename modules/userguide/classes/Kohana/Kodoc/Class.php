@@ -82,7 +82,7 @@ class Kohana_Kodoc_Class extends Kodoc
             }
         }
 
-        list($this->description, $this->tags) = Kodoc::parse($comment, FALSE);
+        list($this->description, $this->tags) = Kodoc::parse($comment, false);
     }
 
     /**

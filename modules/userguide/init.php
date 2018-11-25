@@ -7,16 +7,16 @@ Route::set('docs/media', 'guide-media(/<file>)', ['file' => '.+'])
     ->defaults([
         'controller' => 'Userguide',
         'action' => 'media',
-        'file' => NULL,
+        'file' => null,
     ]);
 
 // API Browser, if enabled
-if (Kohana::$config->load('userguide.api_browser') === TRUE) {
+if (Kohana::$config->load('userguide.api_browser') === true) {
     Route::set('docs/api', 'guide-api(/<class>)', ['class' => '[a-zA-Z0-9_]+'])
         ->defaults([
             'controller' => 'Userguide',
             'action' => 'api',
-            'class' => NULL,
+            'class' => null,
     ]);
 }
 

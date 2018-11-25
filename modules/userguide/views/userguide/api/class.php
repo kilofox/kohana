@@ -1,7 +1,7 @@
 <h1>
     <?php echo $doc->modifiers, $doc->class->name ?>
     <?php foreach ($doc->parents as $parent): ?>
-        <br/><small>extends <?php echo HTML::anchor($route->uri(['class' => $parent->name]), $parent->name, NULL, NULL, TRUE) ?></small>
+        <br/><small>extends <?php echo HTML::anchor($route->uri(['class' => $parent->name]), $parent->name, null, null, true) ?></small>
     <?php endforeach; ?>
 </h1>
 
@@ -9,8 +9,8 @@
     <p class="interfaces"><small>
             Implements:
             <?php
-            for ($i = 0, $split = FALSE, $count = count($interfaces); $i < $count; $i++, $split = " | ") {
-                echo $split . HTML::anchor($route->uri(['class' => $interfaces[$i]]), $interfaces[$i], NULL, NULL, TRUE);
+            for ($i = 0, $split = false, $count = count($interfaces); $i < $count; $i++, $split = " | ") {
+                echo $split . HTML::anchor($route->uri(['class' => $interfaces[$i]]), $interfaces[$i], null, null, true);
             }
             ?></small>
     </p>
@@ -121,5 +121,6 @@
         <?php endforeach ?>
     </div>
     <?php
+
 
  endif ?>

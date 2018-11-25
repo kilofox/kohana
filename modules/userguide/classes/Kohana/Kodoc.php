@@ -28,7 +28,7 @@ class Kohana_Kodoc
     {
         $link = $matches[1];
         $class = $matches[2];
-        $member = NULL;
+        $member = null;
 
         if (isset($matches[3])) {
             // If the first char is a $ it is a property, e.g. Kohana::$base_url
@@ -41,7 +41,7 @@ class Kohana_Kodoc
             }
         }
 
-        return HTML::anchor(Route::get('docs/api')->uri(['class' => $class]) . $member, $link, NULL, NULL, TRUE);
+        return HTML::anchor(Route::get('docs/api')->uri(['class' => $class]) . $member, $link, null, null, true);
     }
 
     public static function factory($class)
@@ -104,9 +104,9 @@ class Kohana_Kodoc
      * @param   array   array of files, obtained using Kohana::list_files
      * @return  array   an array of all the class names
      */
-    public static function classes(array $list = NULL)
+    public static function classes(array $list = null)
     {
-        if ($list === NULL) {
+        if ($list === null) {
             $list = Kohana::list_files('classes');
         }
 
@@ -140,7 +140,7 @@ class Kohana_Kodoc
      * >     ~bluehawk
      *
      */
-    public static function class_methods(array $list = NULL)
+    public static function class_methods(array $list = null)
     {
         $list = Kodoc::classes($list);
 
@@ -186,7 +186,7 @@ class Kohana_Kodoc
     public static function format_tag($tag, $text)
     {
         if ($tag === 'license') {
-            if (strpos($text, '://') !== FALSE)
+            if (strpos($text, '://') !== false)
                 return HTML::anchor($text);
         }
         elseif ($tag === 'link') {
@@ -228,7 +228,7 @@ class Kohana_Kodoc
      *   to HTML (deprecated)
      * @return  array   [string $description, array $tags]
      */
-    public static function parse($comment, $html = TRUE)
+    public static function parse($comment, $html = true)
     {
         // Normalize all new lines to \n
         $comment = str_replace(["\r\n", "\n"], "\n", $comment);
@@ -258,7 +258,7 @@ class Kohana_Kodoc
             }
         };
 
-        $comment = $tag = NULL;
+        $comment = $tag = null;
         $end = count($lines[1]) - 1;
 
         foreach ($lines[1] as $i => $line) {
@@ -309,7 +309,7 @@ class Kohana_Kodoc
     public static function source($file, $start, $end)
     {
         if (!$file)
-            return FALSE;
+            return false;
 
         $file = file($file, FILE_IGNORE_NEW_LINES);
 
@@ -337,19 +337,19 @@ class Kohana_Kodoc
         $api_packages = Kohana::$config->load('userguide.api_packages');
 
         // If api_packages is true, all packages should be shown
-        if ($api_packages === TRUE)
-            return TRUE;
+        if ($api_packages === true)
+            return true;
 
         // Get the package tags for this class (as an array)
         $packages = Arr::get($class->tags, 'package', ['None']);
 
-        $show_this = FALSE;
+        $show_this = false;
 
         // Loop through each package tag
         foreach ($packages as $package) {
             // If this package is in the allowed packages, set show this to true
             if (in_array($package, explode(',', $api_packages)))
-                $show_this = TRUE;
+                $show_this = true;
         }
 
         return $show_this;
@@ -366,7 +366,7 @@ class Kohana_Kodoc
      * Transparent prefixes are defined in the userguide.php config file:
      *
      *     'transparent_prefixes' => [
-     *         'Kohana' => TRUE,
+     *         'Kohana' => true,
      *     ];
      *
      * Module developers can therefore add their own transparent extension
@@ -378,10 +378,10 @@ class Kohana_Kodoc
      * @return  string                    The name of the class that extends this (in the case provided)
      * @throws  InvalidArgumentException  If the $classes array is provided and the $class variable is not lowercase
      */
-    public static function is_transparent($class, $classes = NULL)
+    public static function is_transparent($class, $classes = null)
     {
 
-        static $transparent_prefixes = NULL;
+        static $transparent_prefixes = null;
 
         if (!$transparent_prefixes) {
             $transparent_prefixes = Kohana::$config->load('userguide.transparent_prefixes');
@@ -401,14 +401,14 @@ class Kohana_Kodoc
 
             // It is only a transparent class if the unprefixed class also exists
             if ($classes AND ! isset($classes[$child_class]))
-                return FALSE;
+                return false;
 
             // Return the name of the child class
             return $child_class;
         }
         else {
             // Not a transparent class
-            return FALSE;
+            return false;
         }
     }
 

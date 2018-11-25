@@ -38,7 +38,7 @@ class Kohana_Kodoc_Property extends Kodoc
      */
     public $default;
 
-    public function __construct($class, $property, $default = NULL)
+    public function __construct($class, $property, $default = null)
     {
         $property = new ReflectionProperty($class, $property);
 
@@ -66,7 +66,7 @@ class Kohana_Kodoc_Property extends Kodoc
         if ($property->isStatic() AND ( $property->isPublic() OR version_compare(PHP_VERSION, '5.3', '>='))) {
             // Force the property to be accessible
             if (version_compare(PHP_VERSION, '5.3', '>=')) {
-                $property->setAccessible(TRUE);
+                $property->setAccessible(true);
             }
 
             // Don't debug the entire object, just say what kind of object it is

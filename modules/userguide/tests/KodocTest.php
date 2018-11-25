@@ -325,18 +325,36 @@ COMMENT
     {
         return [
             // Kohana_Core is a special case
-            ['Kohana', 'Kohana_Core', NULL],
-            ['Controller_Template', 'Kohana_Controller_Template', NULL],
-            ['Controller_Template', 'Kohana_Controller_Template', [
+            [
+                'Kohana',
+                'Kohana_Core',
+                null
+            ],
+            [
+                'Controller_Template',
+                'Kohana_Controller_Template',
+                null
+            ],
+            [
+                'Controller_Template',
+                'Kohana_Controller_Template',
+                [
                     'Kohana_Controller_Template' => 'Kohana_Controller_Template',
                     'Controller_Template' => 'Controller_Template'
                 ]
             ],
-            [FALSE, 'Kohana_Controller_Template', [
+            [
+                false,
+                'Kohana_Controller_Template',
+                [
                     'Kohana_Controller_Template' => 'Kohana_Controller_Template'
                 ]
             ],
-            [FALSE, 'Controller_Template', NULL],
+            [
+                false,
+                'Controller_Template',
+                null
+            ],
         ];
     }
 

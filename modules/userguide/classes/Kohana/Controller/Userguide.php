@@ -25,7 +25,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
 
         if ($this->request->action() === 'media') {
             // Do not template media files
-            $this->auto_render = FALSE;
+            $this->auto_render = false;
         } else {
             // Grab the necessary routes
             $this->media = Route::get('docs/media');
@@ -49,7 +49,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         $this->template->menu = View::factory('userguide/menu', ['modules' => $this->_modules()]);
 
         // Don't show disqus on the index page
-        $this->template->show_comments = FALSE;
+        $this->template->show_comments = false;
     }
 
     // Display an error if a page isn't found
@@ -60,7 +60,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         $this->template->content = View::factory('userguide/error', ['message' => $message]);
 
         // Don't show disqus on error pages
-        $this->template->show_comments = FALSE;
+        $this->template->show_comments = false;
 
         // If we are in a module and that module has a menu, show that
         if ($module = $this->request->param('module') AND $menu = $this->file($module . '/menu') AND Kohana::$config->load('userguide.modules.' . $module . '.enabled')) {
@@ -81,7 +81,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
 
             // Bind the breadcrumb
             $this->template->breadcrumb = [
-                $this->guide->uri(['page' => NULL]) => 'User Guide',
+                $this->guide->uri(['page' => null]) => 'User Guide',
                 $this->request->route()->uri() => 'API Browser',
                 'Error'
             ];
@@ -137,9 +137,9 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         $this->template->title = ($page == 'index') ? Kohana::$config->load('userguide.modules.' . $module . '.name') : $this->title($page);
 
         // Parse the page contents into the template
-        Kodoc_Markdown::$show_toc = TRUE;
+        Kodoc_Markdown::$show_toc = true;
         $this->template->content = Kodoc_Markdown::markdown(file_get_contents($file));
-        Kodoc_Markdown::$show_toc = FALSE;
+        Kodoc_Markdown::$show_toc = false;
 
         // Attach this module's menu to the template
         $this->template->menu = Kodoc_Markdown::markdown($this->_get_all_menu_markdown());
@@ -212,7 +212,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
 
         // Add the breadcrumb
         $breadcrumb = [];
-        $breadcrumb[$this->guide->uri(['page' => NULL])] = 'User Guide';
+        $breadcrumb[$this->guide->uri(['page' => null])] = 'User Guide';
         $breadcrumb[$this->request->route()->uri()] = 'API Browser';
         $breadcrumb[] = $this->template->title;
     }

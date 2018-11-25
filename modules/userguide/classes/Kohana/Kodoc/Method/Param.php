@@ -41,12 +41,12 @@ class Kohana_Kodoc_Method_Param extends Kodoc
     /**
      * @var  boolean  is the parameter passed by reference?
      */
-    public $reference = FALSE;
+    public $reference = false;
 
     /**
      * @var  boolean  is the parameter optional?
      */
-    public $optional = FALSE;
+    public $optional = false;
 
     public function __construct($method, $param)
     {
@@ -59,11 +59,11 @@ class Kohana_Kodoc_Method_Param extends Kodoc
         }
 
         if ($this->param->isPassedByReference()) {
-            $this->reference = TRUE;
+            $this->reference = true;
         }
 
         if ($this->param->isOptional()) {
-            $this->optional = TRUE;
+            $this->optional = true;
         }
     }
 

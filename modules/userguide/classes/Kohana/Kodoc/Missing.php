@@ -34,7 +34,7 @@ abstract class Kohana_Kodoc_Missing
             eval("class {$class} extends Kodoc_Missing {}");
         }
 
-        return TRUE;
+        return true;
     }
 
 }

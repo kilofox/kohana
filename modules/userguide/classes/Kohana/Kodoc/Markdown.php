@@ -40,7 +40,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      * Slightly less terrible way to make it so the TOC only shows up when we
      * want it to.  set this to true to show the toc.
      */
-    public static $show_toc = FALSE;
+    public static $show_toc = false;
 
     /**
      * Transform some text using [Kodoc_Markdown]
@@ -54,7 +54,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
     {
         static $instance;
 
-        if ($instance === NULL) {
+        if ($instance === null) {
             $instance = new Kodoc_Markdown;
         }
 
@@ -147,7 +147,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      */
     function make_heading_id($heading)
     {
-        $id = url::title($heading, '-', TRUE);
+        $id = url::title($heading, '-', true);
 
         if (isset($this->_heading_ids[$id])) {
             $id .= '-';
@@ -268,7 +268,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
                 ->render()
             ;
 
-            if (($offset = strpos($text, '<p>')) !== FALSE) {
+            if (($offset = strpos($text, '<p>')) !== false) {
                 // Insert the page TOC just before the first <p>, which every
                 // Markdown page should (will?) have.
                 $text = substr_replace($text, $toc, $offset, 0);

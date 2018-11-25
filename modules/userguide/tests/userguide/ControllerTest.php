@@ -23,7 +23,7 @@ class Userguide_ControllerTest extends Unittest_TestCase
             ['userguide' . DIRECTORY_SEPARATOR . 'adding', 'guide' . DIRECTORY_SEPARATOR . 'userguide' . DIRECTORY_SEPARATOR . 'adding.md'],
             ['userguide' . DIRECTORY_SEPARATOR . 'adding.md', 'guide' . DIRECTORY_SEPARATOR . 'userguide' . DIRECTORY_SEPARATOR . 'adding.md'],
             ['userguide' . DIRECTORY_SEPARATOR . 'adding.markdown', 'guide' . DIRECTORY_SEPARATOR . 'userguide' . DIRECTORY_SEPARATOR . 'adding.md'],
-            ['userguide' . DIRECTORY_SEPARATOR . 'does_not_exist.md', FALSE]
+            ['userguide' . DIRECTORY_SEPARATOR . 'does_not_exist.md', false]
         ];
     }
 

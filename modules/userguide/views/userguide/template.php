@@ -5,12 +5,14 @@
 
         <title><?php echo $title ?> | Kohana <?php echo 'User Guide'; ?></title>
 
-        <?php foreach ($styles as $style => $media)
-            echo HTML::style($style, ['media' => $media], NULL, TRUE), "\n"
+        <?php
+        foreach ($styles as $style => $media)
+            echo HTML::style($style, ['media' => $media], null, true), "\n"
             ?>
 
-        <?php foreach ($scripts as $script)
-            echo HTML::script($script, NULL, NULL, TRUE), "\n"
+        <?php
+        foreach ($scripts as $script)
+            echo HTML::script($script, null, null, true), "\n"
             ?>
 
         <!--[if lt IE 9]>
@@ -47,7 +49,7 @@
                             <ul id="kodoc-breadcrumb">
                                 <?php foreach ($breadcrumb as $link => $title): ?>
                                     <?php if (is_string($link)): ?>
-                                        <li><?php echo HTML::anchor($link, $title, NULL, NULL, TRUE) ?></li>
+                                        <li><?php echo HTML::anchor($link, $title, null, null, true) ?></li>
                                     <?php else: ?>
                                         <li class="last"><?php echo $title ?></li>
         <?php endif ?>
@@ -66,14 +68,14 @@
 <?php if ($show_comments): ?>
                             <div id="disqus_thread" class="clear"></div>
                             <script type="text/javascript">
-    			    var disqus_identifier = '<?php echo HTML::chars(Request::current()->uri()) ?>';
-    			    (function () {
-    				var dsq = document.createElement('script');
-    				dsq.type = 'text/javascript';
-    				dsq.async = true;
-    				dsq.src = 'http://kohana.disqus.com/embed.js';
-    				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    			    })();
+                                var disqus_identifier = '<?php echo HTML::chars(Request::current()->uri()) ?>';
+                                (function() {
+                                    var dsq = document.createElement('script');
+                                    dsq.type = 'text/javascript';
+                                    dsq.async = true;
+                                    dsq.src = 'http://kohana.disqus.com/embed.js';
+                                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                })();
                             </script>
                             <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=kohana">comments powered by Disqus.</a></noscript>
                             <a href="http://disqus.com" class="dsq-brlink">Documentation comments powered by <span class="logo-disqus">Disqus</span></a>
@@ -100,18 +102,18 @@
 
 <?php if (Kohana::$environment === Kohana::PRODUCTION): ?>
             <script type="text/javascript">
-    	    //<![CDATA[
-    	    (function () {
-    		var links = document.getElementsByTagName('a');
-    		var query = '?';
-    		for (var i = 0; i < links.length; i++) {
-    		    if (links[i].href.indexOf('#disqus_thread') >= 0) {
-    			query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-    		    }
-    		}
-    		document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/kohana/get_num_replies.js' + query + '"></' + 'script>');
-    	    })();
-    	    //]]>
+                //<![CDATA[
+                (function() {
+                    var links = document.getElementsByTagName('a');
+                    var query = '?';
+                    for (var i = 0; i < links.length; i++) {
+                        if (links[i].href.indexOf('#disqus_thread') >= 0) {
+                            query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+                        }
+                    }
+                    document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/kohana/get_num_replies.js' + query + '"></' + 'script>');
+                })();
+                //]]>
             </script>
 <?php endif ?>
     </body>

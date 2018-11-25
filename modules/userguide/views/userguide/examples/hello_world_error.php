@@ -23,21 +23,21 @@
     document.write('<style type="text/css"> .collapsed { display: none; } </style>');
     function koggle(elem)
     {
-	elem = document.getElementById(elem);
+        elem = document.getElementById(elem);
 
-	if (elem.style && elem.style['display'])
-	    // Only works with the "style" attr
-	    var disp = elem.style['display'];
-	else if (elem.currentStyle)
-	    // For MSIE, naturally
-	    var disp = elem.currentStyle['display'];
-	else if (window.getComputedStyle)
-	    // For most other browsers
-	    var disp = document.defaultView.getComputedStyle(elem, null).getPropertyValue('display');
+        if (elem.style && elem.style['display'])
+            // Only works with the "style" attr
+            var disp = elem.style['display'];
+        else if (elem.currentStyle)
+            // For MSIE, naturally
+            var disp = elem.currentStyle['display'];
+        else if (window.getComputedStyle)
+            // For most other browsers
+            var disp = document.defaultView.getComputedStyle(elem, null).getPropertyValue('display');
 
-	// Toggle the state of the "display" style
-	elem.style.display = disp == 'block' ? 'none' : 'block';
-	return false;
+        // Toggle the state of the "display" style
+        elem.style.display = disp == 'block' ? 'none' : 'block';
+        return false;
     }
 </script>
 <div id="kohana_error">
@@ -48,7 +48,7 @@
 
 </span><span class="line"><span class="number">211</span> 	public function set_filename($file)
 </span><span class="line"><span class="number">212</span> 	{
-</span><span class="line"><span class="number">213</span> 		if (($path = Kohana::find_file('views', $file)) === FALSE)
+</span><span class="line"><span class="number">213</span> 		if (($path = Kohana::find_file('views', $file)) === false)
 </span><span class="line"><span class="number">214</span> 		{
 </span><span class="line highlight"><span class="number">215</span> 			throw new Kohana_View_Exception('The requested view :file could not be found', [
 </span><span class="line"><span class="number">216</span> 				':file' =&gt; $file,
@@ -78,15 +78,15 @@
                 </div>
 
                 <pre id="error4ac2453378034source0" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">110</span> 	 */
-</span><span class="line"><span class="number">111</span> 	public function __construct($file = NULL, array $data = NULL)
+</span><span class="line"><span class="number">111</span> 	public function __construct($file = null, array $data = null)
 </span><span class="line"><span class="number">112</span> 	{
-</span><span class="line"><span class="number">113</span> 		if ($file !== NULL)
+</span><span class="line"><span class="number">113</span> 		if ($file !== null)
 </span><span class="line"><span class="number">114</span> 		{
 </span><span class="line highlight"><span class="number">115</span> 			$this-&gt;set_filename($file);
 
 </span><span class="line"><span class="number">116</span> 		}
 </span><span class="line"><span class="number">117</span>
-</span><span class="line"><span class="number">118</span> 		if ( $data !== NULL)
+</span><span class="line"><span class="number">118</span> 		if ( $data !== null)
 </span><span class="line"><span class="number">119</span> 		{
 </span><span class="line"><span class="number">120</span> 			// Add the values to the current data
 </span></code></pre></code></pre>
@@ -118,7 +118,7 @@
 
 </span><span class="line"><span class="number">22</span> 	 * @return  View
 </span><span class="line"><span class="number">23</span> 	 */
-</span><span class="line"><span class="number">24</span> 	public static function factory($file = NULL, array $data = NULL)
+</span><span class="line"><span class="number">24</span> 	public static function factory($file = null, array $data = null)
 </span><span class="line"><span class="number">25</span> 	{
 </span><span class="line highlight"><span class="number">26</span> 		return new View($file, $data);
 </span><span class="line"><span class="number">27</span> 	}
@@ -150,7 +150,7 @@
 
                 <pre id="error4ac2453378034source2" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">27</span> 	public function before()
 </span><span class="line"><span class="number">28</span> 	{
-</span><span class="line"><span class="number">29</span> 		if ($this-&gt;auto_render === TRUE)
+</span><span class="line"><span class="number">29</span> 		if ($this-&gt;auto_render === true)
 </span><span class="line"><span class="number">30</span> 		{
 </span><span class="line"><span class="number">31</span> 			// Load the template
 
@@ -188,7 +188,7 @@
                             <td><code>object</code></td>
                             <td><pre><small>object</small> <span>Controller_Hello(3)</span> <code>{
     <small>public</small> template => <small>string</small><span>(4)</span> "site"
-    <small>public</small> auto_render => <small>bool</small> TRUE
+    <small>public</small> auto_render => <small>bool</small> true
     <small>public</small> request => <small>object</small> <span>Request(9)</span> <code>{
         <small>public</small> route => <small>object</small> <span>Route(4)</span> <code>{
             <small>protected</small> _uri => <small>string</small><span>(32)</span> "(&lt;controller&gt;(/&lt;action&gt;(/&lt;id&gt;)))"
