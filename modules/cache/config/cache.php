@@ -2,6 +2,19 @@
 
 defined('SYSPATH') or die('No direct script access.');
 return [
+//    'memcached' => [
+//        'driver' => 'memcached',
+//        'default_expire' => 3600,
+//        'servers' => [
+//            'local' => [
+//                // Memcached Server
+//                'host' => 'localhost',
+//                // Memcached port number
+//                'port' => 11211,
+//                'weight' => 1,
+//            ],
+//        ]
+//    ],
 //    'memcache' => [
 //        'driver' => 'memcache',
 //        'default_expire' => 3600,
