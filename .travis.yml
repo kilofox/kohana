@@ -11,10 +11,14 @@ php:
   - 7.0
 
 before_script:
+  - INI_FILE=~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - echo extension = memcached.so >> $INI_FILE
+  - if [[ $TRAVIS_PHP_VERSION = 5.* ]]; then (echo yes | pecl install -f apcu-4.0.11 && echo apc.enable_cli = 1 >> $INI_FILE); fi;
+  - if [[ $TRAVIS_PHP_VERSION = 7.* ]]; then (echo yes | pecl install -f apcu-5.1.15 && echo apc.enable_cli = 1 >> $INI_FILE); fi;
   - composer install --prefer-dist --no-interaction
 
 script:
-  - vendor/bin/phpunit --bootstrap=modules/unittest/bootstrap.php modules/unittest/tests.php
+  - vendor/bin/phpunit --bootstrap=modules/unittest/bootstrap_all_modules.php modules/unittest/tests.php
 
 notifications:
   irc:
