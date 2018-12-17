@@ -58,6 +58,10 @@ return [
 //        ],
 //        'instant_death' => true,
 //    ],
+//    'apcu' => [
+//        'driver' => 'apcu',
+//        'default_expire' => 3600,
+//    ],
 //    'apc' => [
 //        'driver' => 'apc',
 //        'default_expire' => 3600,
@@ -71,13 +75,6 @@ return [
 //        'default_expire' => 3600,
 //        'database' => APPPATH . 'cache/kohana-cache.sql3',
 //        'schema' => 'CREATE TABLE caches(id VARCHAR(127) PRIMARY KEY, tags VARCHAR(255), expiration INTEGER, cache TEXT)',
-//    ],
-//    'eaccelerator' => [
-//        'driver' => 'eaccelerator',
-//    ],
-//    'xcache' => [
-//        'driver' => 'xcache',
-//        'default_expire' => 3600,
 //    ],
 //    'file' => [
 //        'driver' => 'file',
