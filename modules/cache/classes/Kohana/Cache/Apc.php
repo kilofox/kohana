@@ -40,6 +40,7 @@ defined('SYSPATH') or die('No direct script access.');
  * @author     Kohana Team
  * @copyright  (c) 2009-2012 Kohana Team
  * @license    http://kohanaphp.com/license
+ * @deprecated 3.4.0
  */
 class Kohana_Cache_Apc extends Cache implements Cache_Arithmetic
 {

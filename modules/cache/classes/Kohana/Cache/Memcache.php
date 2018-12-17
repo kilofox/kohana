@@ -25,7 +25,7 @@ defined('SYSPATH') or die('No direct script access.');
  *                 [
  *                     'host' => 'localhost',
  *                     'port' => 11211,
- *                     'persistent' => false
+ *                     'persistent' => false,
  *                     'weight' => 1,
  *                     'timeout' => 1,
  *                     'retry_interval' => 15,
@@ -86,6 +86,7 @@ defined('SYSPATH') or die('No direct script access.');
  * @author     Kohana Team
  * @copyright  (c) 2009-2012 Kohana Team
  * @license    http://kohanaphp.com/license
+ * @deprecated 3.4.0
  */
 class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
 {
