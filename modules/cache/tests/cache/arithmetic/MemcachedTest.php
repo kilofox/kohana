@@ -7,7 +7,7 @@
  * @group      kohana.cache.memcached
  * @category   Test
  * @author     Tinsh <kilofox2000@gmail.com>
- * @copyright  (c) 2017-2018 Kohana Group
+ * @copyright  (c) 2018 Kohana Group
  * @license    https://kohana.top/license
  */
 class Kohana_CacheArithmeticMemcachedTest extends Kohana_CacheArithmeticMethodsTest

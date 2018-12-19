@@ -71,7 +71,7 @@
  * @package    Kohana/Cache
  * @category   Base
  * @author     Tinsh <kilofox2000@gmail.com>
- * @copyright  (c) 2017-2018 Kohana Group
+ * @copyright  (c) 2018 Kohana Group
  * @license    https://kohana.top/license
  */
 class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic

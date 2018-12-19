@@ -22,8 +22,8 @@
  * @category    Security
  * @author      Kohana Team
  * @author      Tinsh <kilofox2000@gmail.com>
- * @copyright   (c) 2007-2017 Kohana Team
- * @copyright   (c) 2017-2018 Kohana Group
+ * @copyright   (c) 2007-2012 Kohana Team
+ * @copyright   (c) 2018 Kohana Group
  * @license     https://kohana.top/license
  */
 class Kohana_Encrypt_Mcrypt

@@ -13,8 +13,8 @@
  * @author      Kohana Team
  * @author      Samuel Demirdjian <sam@enov.ws>
  * @author      Tinsh <kilofox2000@gmail.com>
- * @copyright   (c) 2014-2017 Kohana Team
- * @copyright   (c) 2017-2018 Kohana Group
+ * @copyright   (c) 2014 Kohana Team
+ * @copyright   (c) 2018 Kohana Group
  * @license     https://kohana.top/license
  */
 class Kohana_Encrypt_McryptTest extends Unittest_TestCase
