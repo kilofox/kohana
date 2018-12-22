@@ -30,7 +30,7 @@ class Kohana_RouteTest extends Unittest_TestCase
         parent::setUp();
 
         Kohana::$config->load('url')->set('trusted_hosts', [
-            'kohanaframework\.org'
+            'kohana\.top'
         ]);
 
         $this->cleanCacheDir();
@@ -124,7 +124,7 @@ class Kohana_RouteTest extends Unittest_TestCase
     }
 
     /**
-     * Check appending cached routes. See http://dev.kohanaframework.org/issues/4347
+     * Check appending cached routes.
      *
      * @test
      * @covers Route::cache
@@ -700,9 +700,9 @@ class Kohana_RouteTest extends Unittest_TestCase
                 ['controller' => 'news', 'action' => 'view', 'id' => 42]
             ],
             [
-                'http://kohanaframework.org/news',
+                'https://kohana.top/news',
                 ['controller' => 'news'],
-                'http'
+                'https'
             ],
         ];
     }
@@ -724,7 +724,7 @@ class Kohana_RouteTest extends Unittest_TestCase
             ->defaults(['controller' => 'welcome']);
 
         $this->setEnvironment([
-            '_SERVER' => ['HTTP_HOST' => 'kohanaframework.org'],
+            '_SERVER' => ['HTTP_HOST' => 'kohana.top'],
             'Kohana::$base_url' => '/',
             'Kohana::$index_file' => '',
         ]);
@@ -768,7 +768,7 @@ class Kohana_RouteTest extends Unittest_TestCase
             ->defaults([
                 'controller' => 'foo',
                 'action' => 'bar',
-                'host' => 'http://kohanaframework.org'
+                'host' => 'https://kohana.top'
         ]);
 
         // Test internal route
@@ -791,26 +791,26 @@ class Kohana_RouteTest extends Unittest_TestCase
                 [
                     'controller' => 'foo',
                     'action' => 'bar',
-                    'host' => 'kohanaframework.org'
+                    'host' => 'kohana.top'
                 ],
-                'http://kohanaframework.org/foo/bar'
+                'http://kohana.top/foo/bar'
             ],
             [
                 '<controller>/<action>',
                 [
                     'controller' => 'foo',
                     'action' => 'bar',
-                    'host' => 'http://kohanaframework.org'
+                    'host' => 'https://kohana.top'
                 ],
-                'http://kohanaframework.org/foo/bar'
+                'https://kohana.top/foo/bar'
             ],
             [
                 'foo/bar',
                 [
                     'controller' => 'foo',
-                    'host' => 'http://kohanaframework.org'
+                    'host' => 'https://kohana.top'
                 ],
-                'http://kohanaframework.org/foo/bar'
+                'https://kohana.top/foo/bar'
             ],
         ];
     }

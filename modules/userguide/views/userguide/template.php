@@ -23,7 +23,7 @@
 
         <div id="kodoc-header">
             <div class="container">
-                <a href="http://kohanaframework.org/" id="kodoc-logo">
+                <a href="https://kohana.top/" id="kodoc-logo">
                     <img src="<?php echo Route::url('docs/media', ['file' => 'img/kohana.png']) ?>" />
                 </a>
                 <div id="kodoc-menu">
@@ -95,7 +95,7 @@
 <?php endif ?>
                 </div>
                 <div class="span-12 last right">
-                    <p>Powered by <?php echo HTML::anchor('http://kohanaframework.org/', 'Kohana') ?> v<?php echo Kohana::VERSION ?></p>
+                    <p>Powered by <?php echo HTML::anchor('https://kohana.top/', 'Kohana') ?> v<?php echo Kohana::VERSION ?></p>
                 </div>
             </div>
         </div>

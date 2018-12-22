@@ -189,20 +189,20 @@ COMMENT
             [
                 <<<'COMMENT'
 /**
- * @link http://kohanaframework.org
+ * @link https://kohana.top
  */
 COMMENT
                 ,
-                ['', ['link' => ['<a href="http://kohanaframework.org">http://kohanaframework.org</a>']]],
+                ['', ['link' => ['<a href="https://kohana.top">https://kohana.top</a>']]],
             ],
             [
                 <<<'COMMENT'
 /**
- * @link http://kohanaframework.org Description
+ * @link https://kohana.top Description
  */
 COMMENT
                 ,
-                ['', ['link' => ['<a href="http://kohanaframework.org">Description</a>']]],
+                ['', ['link' => ['<a href="https://kohana.top">Description</a>']]],
             ],
             [
                 <<<'COMMENT'

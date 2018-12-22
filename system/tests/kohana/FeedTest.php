@@ -83,8 +83,8 @@ class Kohana_FeedTest extends Unittest_TestCase
         $info = [
             'pubDate' => 123,
             'image' => [
-                'link' => 'http://kohanaframework.org/image.png',
-                'url' => 'http://kohanaframework.org/', 'title' => 'title'
+                'link' => 'https://kohana.top/image.png',
+                'url' => 'https://kohana.top/', 'title' => 'title'
             ]
         ];
 

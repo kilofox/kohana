@@ -17,7 +17,7 @@ if (is_file(APPPATH . 'classes/Kohana' . EXT)) {
 /**
  * Set the default time zone.
  *
- * @link http://kohanaframework.org/guide/using.configuration
+ * @link https://kohana.top/guide/using.configuration
  * @link http://www.php.net/manual/timezones
  */
 date_default_timezone_set('America/Chicago');
@@ -25,7 +25,7 @@ date_default_timezone_set('America/Chicago');
 /**
  * Set the default locale.
  *
- * @link http://kohanaframework.org/guide/using.configuration
+ * @link https://kohana.top/guide/using.configuration
  * @link http://www.php.net/manual/function.setlocale
  */
 setlocale(LC_ALL, 'en_US.utf-8');
@@ -33,7 +33,7 @@ setlocale(LC_ALL, 'en_US.utf-8');
 /**
  * Enable the Kohana auto-loader.
  *
- * @link http://kohanaframework.org/guide/using.autoloading
+ * @link https://kohana.top/guide/using.autoloading
  * @link http://www.php.net/manual/function.spl-autoload-register
  */
 spl_autoload_register(['Kohana', 'auto_load']);
@@ -116,20 +116,20 @@ Kohana::$config->attach(new Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules([
-    // 'auth'       => MODPATH.'auth',       // Basic authentication
-    // 'cache'      => MODPATH.'cache',      // Caching with multiple backends
-    // 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
-    // 'database'   => MODPATH.'database',   // Database access
-    // 'image'      => MODPATH.'image',      // Image manipulation
-    // 'minion'     => MODPATH.'minion',     // CLI Tasks
-    // 'orm'        => MODPATH.'orm',        // Object Relationship Mapping
-    // 'unittest'   => MODPATH.'unittest',   // Unit testing
-    // 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
+//    'auth' => MODPATH . 'auth', // Basic authentication
+//    'cache' => MODPATH . 'cache', // Caching with multiple backends
+//    'codebench' => MODPATH . 'codebench', // Benchmarking tool
+//    'database' => MODPATH . 'database', // Database access
+//    'image' => MODPATH . 'image', // Image manipulation
+//    'minion' => MODPATH . 'minion', // CLI Tasks
+//    'orm' => MODPATH . 'orm', // Object Relationship Mapping
+//    'unittest' => MODPATH . 'unittest', // Unit testing
+//    'userguide' => MODPATH . 'userguide', // User guide and API documentation
 ]);
 
 /**
  * Cookie Salt
- * @see  http://kohanaframework.org/3.3/guide/kohana/cookies
+ * @see  https://kohana.top/3.3/guide/kohana/cookies
  *
  * If you have not defined a cookie salt in your Cookie class then
  * uncomment the line below and define a preferrably long salt.

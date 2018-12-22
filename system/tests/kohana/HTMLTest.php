@@ -258,9 +258,9 @@ class Kohana_HTMLTest extends Unittest_TestCase
                 'Category A',
             ],
             [
-                '<a href="http://kohanaframework.org">Kohana</a>',
+                '<a href="https://kohana.top">Kohana</a>',
                 [],
-                'http://kohanaframework.org',
+                'https://kohana.top',
                 'Kohana',
             ],
             [

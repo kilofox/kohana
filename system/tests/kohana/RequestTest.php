@@ -659,7 +659,7 @@ class Kohana_RequestTest extends Unittest_TestCase
 
         return [
             [
-                new Request('http://kohanaframework.org'),
+                new Request('https://kohana.top'),
                 $internal_client,
                 $internal_client
             ],
