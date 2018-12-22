@@ -9,6 +9,6 @@ file_put_contents('logo.php', "<?php
  * Kohana Logo, base64_encoded PNG
  * 
  * @copyright  (c) 2008-2012 Kohana Team
- * @license    http://kohanaframework.org/license
+ * @license    https://kohana.top/license
  */
 return ['mime' => 'image/png', 'data' => '{$data}']; ?>");

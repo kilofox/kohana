@@ -12,7 +12,7 @@ defined('SYSPATH') OR die('No direct script access.');
  * @author     Kohana Team
  * @since      3.1.0
  * @copyright  (c) 2008-2014 Kohana Team
- * @license    http://kohanaframework.org/license
+ * @license    https://kohana.top/license
  */
 interface Kohana_HTTP_Response extends HTTP_Message
 {

@@ -10,7 +10,7 @@ defined('SYSPATH') OR die('No direct script access.');
  * @category   Base
  * @author     Kohana Team
  * @copyright  (c) 2008-2012 Kohana Team
- * @license    http://kohanaframework.org/license
+ * @license    https://kohana.top/license
  * @uses       [PHP cURL](http://php.net/manual/en/book.curl.php)
  */
 class Kohana_Request_Client_Curl extends Request_Client_External

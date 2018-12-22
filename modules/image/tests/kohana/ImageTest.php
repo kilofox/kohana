@@ -9,7 +9,7 @@ defined('SYSPATH') OR die('Kohana bootstrap needs to be included before tests ru
  * @category   Test
  * @author     Kohana Team
  * @copyright  (c) 2009-2012 Kohana Team
- * @license    http://http://kohanaframework.org/license
+ * @license    http://https://kohana.top/license
  */
 class Kohana_ImageTest extends PHPUnit_Framework_TestCase
 {

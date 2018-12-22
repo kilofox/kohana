@@ -9,7 +9,7 @@ defined('SYSPATH') OR die('No direct script access.');
  * @category   Configuration
  * @author     Kohana Team
  * @copyright  (c) 2012 Kohana Team
- * @license    http://kohanaframework.org/license
+ * @license    https://kohana.top/license
  */
 class Kohana_Config_Database_Reader implements Kohana_Config_Reader
 {

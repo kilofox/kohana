@@ -9,7 +9,7 @@ defined('SYSPATH') or die('No direct script access.');
  * @category   Controller
  * @author     Kohana Team
  * @copyright  (c) 2008-2013 Kohana Team
- * @license    http://kohanaframework.org/license
+ * @license    https://kohana.top/license
  */
 abstract class Kohana_Controller_Userguide extends Controller_Template
 {

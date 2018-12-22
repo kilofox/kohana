@@ -9,7 +9,7 @@
  * @category   Test
  * @author     Kohana Team
  * @copyright  (c) 2009-2012 Kohana Team
- * @license    http://kohanaframework.org/license
+ * @license    https://kohana.top/license
  */
 class Minion_TaskTest extends Kohana_Unittest_TestCase
 {

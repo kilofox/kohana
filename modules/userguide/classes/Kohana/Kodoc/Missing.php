@@ -11,7 +11,7 @@ defined('SYSPATH') or die('No direct script access.');
  * @category   Undocumented
  * @author     Kohana Team
  * @copyright  (c) 2008-2013 Kohana Team
- * @license    http://kohanaframework.org/license
+ * @license    https://kohana.top/license
  * @since      3.0.7
  */
 abstract class Kohana_Kodoc_Missing

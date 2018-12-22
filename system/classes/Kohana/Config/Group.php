@@ -14,7 +14,7 @@ defined('SYSPATH') OR die('No direct script access.');
  * @category   Configuration
  * @author     Kohana Team
  * @copyright  (c) 2012-2014 Kohana Team
- * @license    http://kohanaframework.org/license
+ * @license    https://kohana.top/license
  */
 class Kohana_Config_Group extends ArrayObject
 {

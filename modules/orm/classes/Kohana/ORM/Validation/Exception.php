@@ -8,7 +8,7 @@ defined('SYSPATH') OR die('No direct script access.');
  * @package    Kohana/ORM
  * @author     Kohana Team
  * @copyright  (c) 2007-2012 Kohana Team
- * @license    http://kohanaframework.org/license
+ * @license    https://kohana.top/license
  */
 class Kohana_ORM_Validation_Exception extends Kohana_Exception
 {

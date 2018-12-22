@@ -14,7 +14,7 @@ defined('SYSPATH') OR die('Kohana bootstrap needs to be included before tests ru
  * @author     Kohana Team
  * @author	   Andrew Coulton
  * @copyright  (c) 2008-2012 Kohana Team
- * @license    http://kohanaframework.org/license
+ * @license    https://kohana.top/license
  */
 class Kohana_Request_ClientTest extends Unittest_TestCase
 {

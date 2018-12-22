@@ -7,7 +7,7 @@
  * @package    Kohana/Userguide
  * @author     Kohana Team
  * @copyright  (c) 2008-2013 Kohana Team
- * @license    http://kohanaframework.org/license
+ * @license    https://kohana.top/license
  */
 class Kohana_KodocTest extends PHPUnit_Framework_TestCase
 {
@@ -180,11 +180,11 @@ COMMENT
             [
                 <<<'COMMENT'
 /**
- * @license http://kohanaframework.org/license
+ * @license https://kohana.top/license
  */
 COMMENT
                 ,
-                ['', ['license' => ['<a href="http://kohanaframework.org/license">http://kohanaframework.org/license</a>']]],
+                ['', ['license' => ['<a href="https://kohana.top/license">https://kohana.top/license</a>']]],
             ],
             [
                 <<<'COMMENT'

@@ -9,7 +9,7 @@ defined('SYSPATH') or die('No direct script access.');
  * @category   Helpers
  * @author     Kohana Team
  * @copyright  (c) 2009-2011 Kohana Team
- * @license    http://kohanaframework.org/license
+ * @license    https://kohana.top/license
  */
 class Task_Help extends Minion_Task
 {

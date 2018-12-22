@@ -29,7 +29,7 @@ defined('SYSPATH') OR die('No direct script access.');
  * @category   Base
  * @author     Kohana Team
  * @copyright  (c) 2008-2012 Kohana Team
- * @license    http://kohanaframework.org/license
+ * @license    https://kohana.top/license
  * @uses       [PECL HTTP](http://php.net/manual/en/book.http.php)
  */
 abstract class Kohana_Request_Client_External extends Request_Client

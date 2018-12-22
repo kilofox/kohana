@@ -17,7 +17,7 @@ defined('SYSPATH') OR die('No direct script access.');
  * @category   Helpers
  * @author     Kohana Team
  * @copyright  (c) 2009-2012 Kohana Team
- * @license    http://kohanaframework.org/license
+ * @license    https://kohana.top/license
  * @uses       Kohana::cache
  */
 class Kohana_Fragment

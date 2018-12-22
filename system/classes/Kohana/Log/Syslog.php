@@ -9,7 +9,7 @@ defined('SYSPATH') OR die('No direct script access.');
  * @category   Logging
  * @author     Jeremy Bush
  * @copyright  (c) 2012 Kohana Team
- * @license    http://kohanaframework.org/license
+ * @license    https://kohana.top/license
  */
 class Kohana_Log_Syslog extends Log_Writer
 {
