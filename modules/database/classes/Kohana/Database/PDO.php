@@ -226,5 +226,3 @@ class Kohana_Database_PDO extends Database
     }
 
 }
-
-// End Database_PDO

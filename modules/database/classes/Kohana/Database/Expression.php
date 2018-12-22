@@ -136,5 +136,3 @@ class Kohana_Database_Expression
     }
 
 }
-
-// End Database_Expression

@@ -469,5 +469,3 @@ class Kohana_HTTP_Cache
     }
 
 }
-
-// End Kohana_HTTP_Cache

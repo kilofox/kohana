@@ -181,5 +181,3 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
     }
 
 }
-
-// End Kohana_ORM_Validation_Exception

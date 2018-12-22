@@ -63,5 +63,3 @@ class Kohana_Database_MySQLi_Result extends Database_Result
     }
 
 }
-
-// End Database_MySQLi_Result_Select

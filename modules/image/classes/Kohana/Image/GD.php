@@ -618,5 +618,3 @@ class Kohana_Image_GD extends Image
     }
 
 }
-
-// End Image_GD

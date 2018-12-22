@@ -275,5 +275,3 @@ class Kohana_Auth_ORM extends Auth
     }
 
 }
-
-// End Auth ORM

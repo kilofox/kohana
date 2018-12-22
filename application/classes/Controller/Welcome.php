@@ -10,5 +10,3 @@ class Controller_Welcome extends Controller
     }
 
 }
-
-// End Welcome

@@ -95,5 +95,3 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where
     }
 
 }
-
-// End Database_Query_Builder_Delete

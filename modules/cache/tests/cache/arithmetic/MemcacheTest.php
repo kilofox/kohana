@@ -114,5 +114,3 @@ class Kohana_CacheArithmeticMemcacheTest extends Kohana_CacheArithmeticMethodsTe
     }
 
 }
-
-// End Kohana_CacheArithmeticMemcacheTest

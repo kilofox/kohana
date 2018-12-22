@@ -121,5 +121,3 @@ class Kohana_Kodoc_Method extends Kodoc
     }
 
 }
-
-// End Kodoc_Method

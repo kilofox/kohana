@@ -34,5 +34,3 @@ class Kohana_ImageTest extends PHPUnit_Framework_TestCase
     }
 
 }
-
-// End Kohana_ImageTest

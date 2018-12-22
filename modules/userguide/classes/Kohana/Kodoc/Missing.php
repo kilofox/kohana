@@ -38,5 +38,3 @@ abstract class Kohana_Kodoc_Missing
     }
 
 }
-
-// End Kohana_Kodoc_Missing

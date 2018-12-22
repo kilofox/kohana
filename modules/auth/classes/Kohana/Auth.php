@@ -163,5 +163,3 @@ abstract class Kohana_Auth
     }
 
 }
-
-// End Auth

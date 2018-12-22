@@ -60,5 +60,3 @@ abstract class Kohana_Model_Database extends Model
     }
 
 }
-
-// End Model

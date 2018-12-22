@@ -134,5 +134,3 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
     }
 
 }
-
-// End Database_Query_Builder_Join

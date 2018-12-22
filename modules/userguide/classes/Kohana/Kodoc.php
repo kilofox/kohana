@@ -413,5 +413,3 @@ class Kohana_Kodoc
     }
 
 }
-
-// End Kodoc

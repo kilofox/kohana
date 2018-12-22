@@ -366,5 +366,3 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
     }
 
 }
-
-// End Userguide

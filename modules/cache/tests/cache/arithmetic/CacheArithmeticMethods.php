@@ -161,5 +161,3 @@ abstract class Kohana_CacheArithmeticMethodsTest extends Kohana_CacheBasicMethod
     }
 
 }
-
-// End Kohana_CacheArithmeticMethodsTest

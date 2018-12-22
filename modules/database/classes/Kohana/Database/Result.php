@@ -307,5 +307,3 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
     }
 
 }
-
-// End Database_Result

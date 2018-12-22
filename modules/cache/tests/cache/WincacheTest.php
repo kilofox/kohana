@@ -44,5 +44,4 @@ if (isset($_ENV['TRAVIS'])) {
 
     }
 
-    // End Kohana_WincacheTest
 }

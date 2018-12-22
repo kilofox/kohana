@@ -1411,5 +1411,3 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
     }
 
 }
-
-// End Kohana_HTTP_HeaderTest

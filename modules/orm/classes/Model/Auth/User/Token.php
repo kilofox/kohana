@@ -73,5 +73,3 @@ class Model_Auth_User_Token extends ORM
     }
 
 }
-
-// End Auth User Token Model

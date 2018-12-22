@@ -174,5 +174,3 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
     }
 
 }
-
-// End Database_Query_Builder_Insert

@@ -49,5 +49,3 @@ class Kohana_Database_Result_Cached extends Database_Result
     }
 
 }
-
-// End Database_Result_Cached

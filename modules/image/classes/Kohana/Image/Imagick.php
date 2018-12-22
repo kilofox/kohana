@@ -317,5 +317,3 @@ class Kohana_Image_Imagick extends Image
     }
 
 }
-
-// End Kohana_Image_Imagick

@@ -2209,5 +2209,3 @@ class Kohana_ORM extends Model implements serializable
     }
 
 }
-
-// End ORM

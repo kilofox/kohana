@@ -682,5 +682,3 @@ abstract class Kohana_Image
      */
     abstract protected function _do_render($type, $quality);
 }
-
-// End Image

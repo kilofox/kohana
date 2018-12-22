@@ -214,5 +214,3 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
      */
     abstract public function reset();
 }
-
-// End Database_Query_Builder

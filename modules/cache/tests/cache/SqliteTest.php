@@ -48,5 +48,3 @@ class Kohana_SqliteTest extends Kohana_CacheBasicMethodsTest
     }
 
 }
-
-// End Kohana_SqliteTest

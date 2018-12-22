@@ -324,5 +324,3 @@ TESTTEXT;
     }
 
 }
-
-// End Kohana_CacheBasicMethodsTest

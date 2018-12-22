@@ -369,5 +369,3 @@ class Kohana_Database_MySQLi extends Database
     }
 
 }
-
-// End Database_MySQLi

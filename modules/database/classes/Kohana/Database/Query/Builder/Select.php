@@ -414,5 +414,3 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
     }
 
 }
-
-// End Database_Query_Select

@@ -83,5 +83,3 @@ class Kohana_Kodoc_Property extends Kodoc
     }
 
 }
-
-// End Kodoc_Property

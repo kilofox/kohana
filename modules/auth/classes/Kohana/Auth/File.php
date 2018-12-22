@@ -92,5 +92,3 @@ class Kohana_Auth_File extends Auth
     }
 
 }
-
-// End Auth File

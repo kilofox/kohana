@@ -205,5 +205,3 @@ class Model_Auth_User extends ORM
     }
 
 }
-
-// End Auth User Model

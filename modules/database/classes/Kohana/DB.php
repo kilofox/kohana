@@ -140,5 +140,3 @@ class Kohana_DB
     }
 
 }
-
-// End DB

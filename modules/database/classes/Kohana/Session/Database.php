@@ -218,5 +218,3 @@ class Kohana_Session_Database extends Session
     }
 
 }
-
-// End Session_Database

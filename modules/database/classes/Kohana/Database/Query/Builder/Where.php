@@ -178,5 +178,3 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
     }
 
 }
-
-// End Database_Query_Builder_Where

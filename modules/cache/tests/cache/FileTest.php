@@ -160,5 +160,3 @@ class Kohana_Cache_FileTest extends Kohana_CacheBasicMethodsTest
     }
 
 }
-
-// End Kohana_SqliteTest

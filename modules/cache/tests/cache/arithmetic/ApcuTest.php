@@ -81,5 +81,3 @@ class Kohana_ApcuTest extends Kohana_CacheArithmeticMethodsTest
     }
 
 }
-
-// End Kohana_ApcuTest

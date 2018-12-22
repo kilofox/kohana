@@ -168,5 +168,3 @@ class Kohana_Cache_Apc extends Cache implements Cache_Arithmetic
     }
 
 }
-
-// End Kohana_Cache_Apc

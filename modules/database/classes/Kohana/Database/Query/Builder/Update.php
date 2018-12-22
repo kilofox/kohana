@@ -132,5 +132,3 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
     }
 
 }
-
-// End Database_Query_Builder_Update

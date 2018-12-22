@@ -38,5 +38,3 @@ interface Kohana_Cache_Arithmetic
      */
     public function decrement($id, $step = 1);
 }
-
-// End Kohana_Cache_Arithmetic

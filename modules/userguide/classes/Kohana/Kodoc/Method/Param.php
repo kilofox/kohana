@@ -93,5 +93,3 @@ class Kohana_Kodoc_Method_Param extends Kodoc
     }
 
 }
-
-// End Kodoc_Method_Param

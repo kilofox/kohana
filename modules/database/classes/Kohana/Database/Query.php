@@ -244,5 +244,3 @@ class Kohana_Database_Query
     }
 
 }
-
-// End Database_Query

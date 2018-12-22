@@ -263,5 +263,3 @@ class Kohana_Kodoc_Class extends Kodoc
     }
 
 }
-
-// End Kodoc_Class

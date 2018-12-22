@@ -32,5 +32,3 @@ class Model_Auth_Role extends ORM
     }
 
 }
-
-// End Auth Role Model

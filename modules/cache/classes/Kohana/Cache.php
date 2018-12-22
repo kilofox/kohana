@@ -293,5 +293,3 @@ abstract class Kohana_Cache
     }
 
 }
-
-// End Kohana_Cache

@@ -279,5 +279,3 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
     }
 
 }
-
-// End Kodoc_Markdown
