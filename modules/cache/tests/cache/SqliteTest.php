@@ -9,7 +9,7 @@ include_once(Kohana::find_file('tests/cache', 'CacheBasicMethodsTest'));
  * @category   Test
  * @author     Kohana Team
  * @copyright  (c) 2009-2012 Kohana Team
- * @license    http://kohanaphp.com/license
+ * @license    https://kohana.top/license
  */
 class Kohana_SqliteTest extends Kohana_CacheBasicMethodsTest
 {

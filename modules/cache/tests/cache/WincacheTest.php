@@ -15,7 +15,7 @@ if (isset($_ENV['TRAVIS'])) {
      * @category   Test
      * @author     Kohana Team
      * @copyright  (c) 2009-2012 Kohana Team
-     * @license    http://kohanaphp.com/license
+     * @license    https://kohana.top/license
      */
     class Kohana_WincacheTest extends Kohana_CacheBasicMethodsTest
     {

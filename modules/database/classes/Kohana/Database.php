@@ -15,7 +15,7 @@
  * @category   Base
  * @author     Kohana Team
  * @copyright  (c) 2008-2012 Kohana Team
- * @license    http://kohanaphp.com/license
+ * @license    https://kohana.top/license
  */
 abstract class Kohana_Database
 {

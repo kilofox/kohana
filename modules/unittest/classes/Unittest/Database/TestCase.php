@@ -9,7 +9,7 @@
  * @package    Kohana/UnitTest
  * @author     Kohana Team
  * @copyright  (c) 2008-2009 Kohana Team
- * @license    http://kohanaphp.com/license
+ * @license    https://kohana.top/license
  */
 abstract class Unittest_Database_TestCase extends Kohana_Unittest_Database_TestCase
 {

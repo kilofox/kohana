@@ -7,7 +7,7 @@
  * @category   Query
  * @author     Kohana Team
  * @copyright  (c) 2008-2009 Kohana Team
- * @license    http://kohanaphp.com/license
+ * @license    https://kohana.top/license
  */
 abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builder
 {

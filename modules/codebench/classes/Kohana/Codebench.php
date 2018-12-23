@@ -7,7 +7,7 @@
  * @category   Base
  * @author     Kohana Team
  * @copyright  (c) 2009 Kohana Team
- * @license    http://kohanaphp.com/license.html
+ * @license    https://kohana.top/license.html
  */
 abstract class Kohana_Codebench
 {

@@ -40,7 +40,7 @@
  * @category   Base
  * @author     Kohana Team
  * @copyright  (c) 2009-2012 Kohana Team
- * @license    http://kohanaphp.com/license
+ * @license    https://kohana.top/license
  */
 class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
 {

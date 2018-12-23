@@ -7,7 +7,7 @@
  * @category   Controllers
  * @author     Kohana Team
  * @copyright  (c) 2009 Kohana Team
- * @license    http://kohanaphp.com/license.html
+ * @license    https://kohana.top/license.html
  */
 class Controller_Codebench extends Kohana_Controller_Template
 {

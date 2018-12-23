@@ -10,7 +10,7 @@
  * @version    2.0
  * @author     Kohana Team
  * @copyright  (c) 2009-2012 Kohana Team
- * @license    http://kohanaphp.com/license
+ * @license    https://kohana.top/license
  * @since      3.0.8
  */
 interface Kohana_Cache_GarbageCollect
