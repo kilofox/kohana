@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') OR die('No direct script access.');
-
 /**
  * Abstract controller class for automatic templating.
  *

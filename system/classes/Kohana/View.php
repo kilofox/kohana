@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') OR die('No direct script access.');
-
 /**
  * Acts as an object wrapper for HTML pages with embedded PHP, called "views".
  * Variables can be assigned with the view object and referenced locally within

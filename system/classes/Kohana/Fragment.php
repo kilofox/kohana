@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') OR die('No direct script access.');
-
 /**
  * View fragment caching. This is primarily used to cache small parts of a view
  * that rarely change. For instance, you may want to cache the footer of your

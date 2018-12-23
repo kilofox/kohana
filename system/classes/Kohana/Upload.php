@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') OR die('No direct script access.');
-
 /**
  * Upload helper class for working with uploaded files and [Validation].
  *

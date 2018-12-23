@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') OR die('No direct script access.');
-
 /**
  * The group wrapper acts as an interface to all the config directives
  * gathered from across the system.

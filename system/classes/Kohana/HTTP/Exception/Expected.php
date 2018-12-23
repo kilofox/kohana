@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') OR die('No direct script access.');
-
 /**
  * "Expected" HTTP exception class. Used for all [HTTP_Exception]'s where a standard
  * Kohana error page should never be shown.

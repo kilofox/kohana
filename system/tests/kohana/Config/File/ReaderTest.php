@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') OR die('Kohana bootstrap needs to be included before tests run');
-
 /**
  * Tests the Config file reader that's shipped with kohana
  *

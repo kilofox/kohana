@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') OR die('No direct script access.');
-
 return [
     'alpha' => ':field must contain only letters',
     'alpha_dash' => ':field must contain only numbers, letters and dashes',

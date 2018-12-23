@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') OR die('No direct script access.');
-
 /**
  * STDOUT log writer. Writes out messages to STDOUT.
  *

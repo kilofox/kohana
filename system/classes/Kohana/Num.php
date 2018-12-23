@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') OR die('No direct script access.');
-
 /**
  * Number helper class. Provides additional formatting methods that for working
  * with numbers.

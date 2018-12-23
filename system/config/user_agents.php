@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') OR die('No direct script access.');
-
 return [
     'platform' => [
         'windows nt 10.0' => 'Windows 10',
