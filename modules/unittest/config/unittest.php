@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') or die('No direct script access.');
-
 return [
     // If you don't use a whitelist then only files included during the request will be counted
     // If you do, then only whitelisted items will be counted

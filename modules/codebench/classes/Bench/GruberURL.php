@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') or die('No direct access allowed.');
-
 /**
  * @package    Kohana/Codebench
  * @category   Tests

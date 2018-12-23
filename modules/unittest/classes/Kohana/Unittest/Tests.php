@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') or die('No direct script access.');
-
 /**
  * PHPUnit testsuite for kohana application
  *

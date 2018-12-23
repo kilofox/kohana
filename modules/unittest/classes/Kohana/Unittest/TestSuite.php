@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') or die('No direct script access.');
-
 /**
  * A version of the stock PHPUnit testsuite that supports whitelisting and
  * blacklisting for code coverage filter

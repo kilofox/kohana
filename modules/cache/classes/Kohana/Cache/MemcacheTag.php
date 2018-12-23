@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') or die('No direct script access.');
-
 /**
  * See [Kohana_Cache_Memcache]
  *

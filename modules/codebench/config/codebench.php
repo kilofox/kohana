@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') or die('No direct access allowed.');
-
 return [
     /**
      * The maximum execution time, in seconds. If set to zero, no time limit is imposed.

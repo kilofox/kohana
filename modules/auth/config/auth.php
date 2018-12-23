@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') OR die('No direct access allowed.');
-
 return [
     'driver' => 'File',
     'hash_method' => 'sha256',

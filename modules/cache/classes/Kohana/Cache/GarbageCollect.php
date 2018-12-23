@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') or die('No direct script access.');
-
 /**
  * Garbage Collection interface for caches that have no GC methods
  * of their own, such as [Cache_File] and [Cache_Sqlite]. Memory based

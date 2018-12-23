@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') or die('No direct script access.');
-
 class Kohana_Minion_CLI
 {
     public static $wait_msg = 'Press any key to continue...';

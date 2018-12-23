@@ -1,5 +1,5 @@
 <?php
-defined('SYSPATH') or die('No direct access allowed.');
+
 /**
  * Codebench — A benchmarking module.
  *

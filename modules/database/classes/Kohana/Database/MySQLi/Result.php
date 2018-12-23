@@ -1,7 +1,5 @@
 <?php
 
-defined('SYSPATH') OR die('No direct script access.');
-
 /**
  * MySQLi database result.   See [Results](/database/results) for usage and examples.
  *
