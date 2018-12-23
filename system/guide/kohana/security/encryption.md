@@ -6,8 +6,8 @@ Encryption supports multiple instances of cryptography engines through a grouped
 
 ## Supported cryptography engines
 
- *  [OpenSSL] ([Encrypt_Openssl])
- *  [Mcrypt] ([Encrypt_Mcrypt])
+ *  OpenSSL ([Encrypt_Openssl])
+ *  Mcrypt ([Encrypt_Mcrypt])
 
 ## Encryption configuration
 
