@@ -17,8 +17,12 @@
 class Kohana_Core
 {
     // Release version and codename
-    const VERSION = '3.3.6';
-    const CODENAME = 'pharrell';
+    const VERSION = '3.4.0';
+
+    /**
+     * @deprecated 3.4.0
+     */
+    const CODENAME = 'korismas';
     // Common environment type constants for consistency and convenience
     const PRODUCTION = 10;
     const STAGING = 20;
@@ -935,7 +939,7 @@ class Kohana_Core
      */
     public static function version()
     {
-        return 'Kohana Framework ' . Kohana::VERSION . ' (' . Kohana::CODENAME . ')';
+        return 'Kohana Framework ' . Kohana::VERSION;
     }
 
 }
