@@ -3,7 +3,13 @@
 
 [Kohana](http://kohana.top) is an elegant, open source, and object oriented HMVC framework built using PHP, by a team of volunteers. It aims to be swift, secure, and small.
 
-Released under a [MIT license](https://kohana.top/license), Kohana can be used legally for any open source, commercial, or personal project.
+Released under an [MIT license](https://kohana.top/license), Kohana can be used legally for any open source, commercial, or personal project.
+
+## Supported versions
+| Version    | PHP Compatibility                  | Initial Release     |
+|------------|----------------------------------------------------------|
+| Kohana 3.3 | PHP 5.3, PHP 5.4, PHP 5.5, PHP 5.6 | October 23th, 2012  |
+| Kohana 3.4 | PHP 5.6, PHP 7.0                   | December 25th, 2018 |
 
 ## Documentation
 Kohana's documentation can be found at <https://kohana.top/documentation> which also contains an API browser.
