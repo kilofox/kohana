@@ -9,6 +9,7 @@
  * @author     Kohana Team
  * @copyright  (c) 2009-2012 Kohana Team
  * @license    https://kohana.top/license
+ * @deprecated 3.4.0
  */
 class Kohana_Cache_MemcacheTag extends Cache_Memcache implements Cache_Tagging
 {
