@@ -119,18 +119,6 @@ class Kohana_Validation implements ArrayAccess
     }
 
     /**
-     * Returns the array representation of the current object.
-     * Deprecated in favor of [Validation::data]
-     *
-     * @deprecated
-     * @return  array
-     */
-    public function as_array()
-    {
-        return $this->_data;
-    }
-
-    /**
      * Returns the array of data to be validated.
      *
      * @return  array
