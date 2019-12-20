@@ -1,5 +1,5 @@
 # Kohana PHP Framework
-[![Build Status](https://travis-ci.org/kilofox/kohana.svg?branch=master)](https://travis-ci.org/kilofox/kohana) [![Telegram](https://img.shields.io/badge/Telegram-joinChat-green.svg)](https://t.me/kohana)
+[![Build Status](https://travis-ci.org/kilofox/kohana.svg?branch=master)](https://travis-ci.org/kilofox/kohana) [![Telegram](https://img.shields.io/badge/Telegram-joinChat-green.svg)](https://t.me/kohana) [![Join the chat at https://gitter.im/kohana-framework/community](https://badges.gitter.im/kohana-framework/community.svg)](https://gitter.im/kohana-framework/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [Kohana](http://kohana.top) is an elegant, open source, and object oriented HMVC framework built using PHP, by a team of volunteers. It aims to be swift, secure, and small.
 
