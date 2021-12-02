@@ -596,7 +596,7 @@ class Kohana_TextTest extends Unittest_TestCase
         return [
             ['one', 1],
             ['twenty-three', 23],
-            ['fourty-two', 42],
+            ['forty-two', 42],
             ['five million, six hundred and thirty-two', 5000632],
             ['five million, six hundred and thirty', 5000630],
             ['nine hundred million', 900000000],
