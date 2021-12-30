@@ -72,7 +72,7 @@ There is no need to create separate branches for bugfixes, creating them in the 
 
 Tag names should be prefixed with a `v`.
 
-For example, if you were creating a tag for the `3.3.6` release the tag name would be `v3.3.6.
+For example, if you were creating a tag for the `3.3.6` release the tag name would be `v3.3.6`.
 
 # Merging changes from remote repositories
 
