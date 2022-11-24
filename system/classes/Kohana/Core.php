@@ -17,7 +17,7 @@
 class Kohana_Core
 {
     // Release version and codename
-    const VERSION = '3.4.0';
+    const VERSION = '3.4.1';
 
     /**
      * @deprecated 3.4.0
