@@ -11,4 +11,3 @@ build
 composer.lock
 composer.phar
 vendor/*
-package.json

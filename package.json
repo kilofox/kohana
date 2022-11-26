@@ -1,0 +1,19 @@
+{
+  "name": "kohana",
+  "version": "3.4.1",
+  "description": "The Kohana PHP framework",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kilofox/kohana.git"
+  },
+  "keywords": [
+    "framework",
+    "kohana"
+  ],
+  "author": "Muffet Lab",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kilofox/kohana/issues"
+  },
+  "homepage": "https://github.com/kilofox/kohana#readme"
+}
