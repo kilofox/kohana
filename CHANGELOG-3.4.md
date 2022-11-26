@@ -1,3 +1,17 @@
+## [3.4.1](https://github.com/kilofox/kohana/compare/v3.4.0...v3.4.1) (2022-11-26)
+
+
+### Bug Fixes
+
+* **public:** fix "No input file specified" error ([369bb8c](https://github.com/kilofox/kohana/commit/369bb8c353334594e30498b4ae26b8f4c20ae6cd))
+
+
+### Features
+
+* **public:** simplify the definition of directories ([1b0465e](https://github.com/kilofox/kohana/commit/1b0465e573bca4cebf1408b576b3884d8bec0ea4))
+
+
+
 # [3.4.0](https://github.com/kilofox/kohana/compare/v3.3.6...v3.4.0) (2018-12-25)
 
 
