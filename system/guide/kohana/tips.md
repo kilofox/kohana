@@ -38,4 +38,4 @@ There is a bug in php which can corrupt your session after a fatal error.  A pro
 
 ### Solution   {#orm-session-sleep-solution}
 
-To fix this, clear your cookies for that domain to reset your session.  This should never happen on a production server, so you won't have to explain to your clients how to clear their cookies.  You can see the [discussion on this issue](http://dev.kohanaframework.org/issues/3242) for more details.
+To fix this, clear your cookies for that domain to reset your session. This should never happen on a production server, so you won't have to explain to your clients how to clear their cookies.

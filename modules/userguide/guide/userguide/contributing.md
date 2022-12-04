@@ -8,8 +8,6 @@ Documentation should use complete sentences, good grammar, and be as clear as po
 
 Make sure your commit messages are clear and descriptive.  Bad: "docs(userguide): add docs",  Good: "docs(userguide): add initial draft of hello world tutorial".  Bad: "fix(database): fix typos",  Good: "fix(database): fix typos on the query builder page".
 
-If you feel a menu needs to be rearranged or a module needs new pages, please [post a topic](https://forum.kohana.top) to discuss it.
-
 ## Quick Method
 
 To quickly point out something that needs improvement, report a [bug report](https://github.com/kilofox/kohana/issues/new).

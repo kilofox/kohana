@@ -8,7 +8,7 @@
 
 # Download
 
-You can get the latest **stable** release on the [Kohana website](http://kohanaframework.org/). This will give you a fully functional application with an `application`, `modules`, and `system` directory.
+You can get the latest **stable** release on the [Kohana website](https://kohana.top/). This will give you a fully functional application with an `application`, `modules`, and `system` directory.
 
 [!!] You can find information about the file structure on the [Cascading Filesystem](files) page.
 
