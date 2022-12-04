@@ -2,7 +2,7 @@
 
 Kohana provides classes that make it easy to work with both cookies and sessions. At a high level both sessions and cookies provide the same functionality. They allow the developer to store temporary or persistent information about a specific client for later retrieval, usually to make something persistent between requests.
 
-Sessions should be used for storing temporary or private data.  Very sensitive data should be stored using the [Session] class with the "database" or "native" adapters. When using the "cookie" adapter, the session should always be encrypted.
+Sessions should be used for storing temporary or private data. Very sensitive data should be stored using the [Session] class with the "database" or "native" adapters. When using the "cookie" adapter, the session should always be encrypted.
 
 [!!] For more information on best practices with session variables see [the seven deadly sins of sessions](http://lists.nyphp.org/pipermail/talk/2006-December/020358.html).
 
@@ -80,7 +80,7 @@ Cookie
 
 The default adapter can be set by changing the value of [Session::$default]. The default adapter is "native".
 
-To access a Session using the default adapter, simply call [Session::instance()].  To access a Session using something other than the default, pass the adapter name to `instance()`, for example: `Session::instance('cookie')`
+To access a Session using the default adapter, simply call [Session::instance()]. To access a Session using something other than the default, pass the adapter name to `instance()`, for example: `Session::instance('cookie')`
 
 
 ### Session Adapter Settings

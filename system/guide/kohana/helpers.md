@@ -4,7 +4,7 @@ Kohana comes with many static "helper" functions to make certain tasks easier.
 
 You can make your own helpers by simply making a class and putting it in the `classes` directory, and you can also extend any helper to modify or add new functions using transparent extension.
 
- - **[Arr]** - Array functions.  Get an array key or default to a set value, get an array key by path, etc.
+ - **[Arr]** - Array functions. Get an array key or default to a set value, get an array key by path, etc.
 
  - **[CLI]** - Parse command line options.
 
@@ -28,7 +28,7 @@ You can make your own helpers by simply making a class and putting it in the `cl
  
  - **[Inflector]** - Change a word into plural or singular form, camelize or humanize a phrase, etc.
  
- - **[Kohana]** - The Kohana class is also a helper.  Debug variables (like print_r but better), file loading, etc.
+ - **[Kohana]** - The Kohana class is also a helper. Debug variables (like print_r but better), file loading, etc.
  
  - **[Num]** - Provides locale aware formating and english ordinals (th, st, nd, etc).
  

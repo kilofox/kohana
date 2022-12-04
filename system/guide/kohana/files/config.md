@@ -1,6 +1,6 @@
 # Config Files
 
-Configuration files are used to store any kind of configuration needed for a module, class, or anything else you want.  They are plain PHP files, stored in the `config/` directory, which return an associative array:
+Configuration files are used to store any kind of configuration needed for a module, class, or anything else you want. They are plain PHP files, stored in the `config/` directory, which return an associative array:
 
     <?php defined('SYSPATH') OR die('No direct script access.');
 
@@ -35,7 +35,7 @@ For example, if we wanted to change or add to an entry in the inflector configur
 
 ## Creating your own config files
 
-Let's say we want a config file to store and easily change things like the title of a website, or the google analytics code.  We would create a config file, let's call it `site.php`:
+Let's say we want a config file to store and easily change things like the title of a website, or the google analytics code. We would create a config file, let's call it `site.php`:
 
     // config/site.php
 
@@ -48,7 +48,7 @@ Let's say we want a config file to store and easily change things like the title
 
 We could now call `Kohana::$config->load('site.title')` to get the site name, and `Kohana::$config->load('site.analytics')` to get the analytics code.
 
-Let's say we want an archive of versions of some software.  We could use config files to store each version, and include links to download, documentation, and issue tracking.
+Let's say we want an archive of versions of some software. We could use config files to store each version, and include links to download, documentation, and issue tracking.
 
 	// config/versions.php
 

@@ -67,7 +67,7 @@ compression    | __NO__   | (_boolean_) Use data compression when caching
 Name             | Required | Description
 ---------------- | -------- | ---------------------------------------------------------------
 host             | __YES__  | (_string_) The host of the memcache server, i.e. __localhost__; or __127.0.0.1__; or __memcache.domain.tld__
-port             | __NO__   | (_integer_) Point to the port where memcached is listening for connections. Set this parameter to 0 when using UNIX domain sockets.  Default to __11211__
+port             | __NO__   | (_integer_) Point to the port where memcached is listening for connections. Set this parameter to 0 when using UNIX domain sockets. Default to __11211__
 persistent       | __NO__   | (_boolean_) Controls the use of a persistent connection. Default to __true__
 weight           | __NO__   | (_integer_) Number of buckets to create for this server which in turn control its probability of it being selected. The probability is relative to the total weight of all servers. Default to __1__
 timeout          | __NO__   | (_integer_) Value in seconds which will be used for connecting to the daemon. Think twice before changing the default value of 1 second - you can lose all the advantages of caching if your connection is too slow. Default to __1__

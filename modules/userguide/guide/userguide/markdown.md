@@ -1,6 +1,6 @@
 # Markdown Syntax
 
-The userguide uses [Markdown](http://daringfireball.net/projects/markdown/) and [Markdown Extra](http://michelf.com/projects/php-markdown/extra/) for the userguide pages, and the in-code comments used to generate the API browser.  This is a brief summary of most of Markdown and Markdown extra features.  It does not cover everything, and it does not cover all the caveats.
+The userguide uses [Markdown](http://daringfireball.net/projects/markdown/) and [Markdown Extra](http://michelf.com/projects/php-markdown/extra/) for the userguide pages, and the in-code comments used to generate the API browser. This is a brief summary of most of Markdown and Markdown extra features. It does not cover everything, and it does not cover all the caveats.
 
 [!!] Be sure to check out the **[Userguide Specific Syntax](#userguide-specific-syntax)** for things that Userguide adds to markdown.
 
@@ -22,7 +22,7 @@ allows for wrapping (especially for in-code
 comments).
 
 A new paragraph will start if there is a blank line between
-blocks of text.  Chars like > and & are escaped for you.
+blocks of text. Chars like > and & are escaped for you.
 
 To make a line break,  
 put two spaces at the  
@@ -34,7 +34,7 @@ allows for wrapping (especially for in-code
 comments).
 
 A new paragraph will start if there is a blank line between
-blocks of text.  Chars like > and & are escaped for you.
+blocks of text. Chars like > and & are escaped for you.
 
 To make a line break,  
 put two spaces at the  
@@ -77,25 +77,25 @@ This is sometimes useful when code is near lists
 
 ~~~
 *  To make a unordered list, put an asterisk, minus, or + at the beginning
--  of each line, surrounded by spaces.  You can mix * - and +, but it
+-  of each line, surrounded by spaces. You can mix * - and +, but it
 +  makes no difference.
 ~~~
 *  To make a unordered list, put an asterisk, minus, or + at the beginning
--  of each line, surrounded by spaces.  You can mix * - and +, but it
+-  of each line, surrounded by spaces. You can mix * - and +, but it
 +  makes no difference.
 
 ## Ordered Lists
 
 ~~~
-1.  For ordered lists, put a number and a period
-2.  On each line that you want numbered.
-9.  It doesn't actually have to be the correct number order
-5.  Just as long as each line has a number
+1. For ordered lists, put a number and a period
+2. On each line that you want numbered.
+9. It doesn't actually have to be the correct number order
+5. Just as long as each line has a number
 ~~~
-1.  For ordered lists, put a number and a period
-2.  On each line that you want numbered.
-9.  It doesn't actually have to be the correct number order
-5.  Just as long as each line has a number
+1. For ordered lists, put a number and a period
+2. On each line that you want numbered.
+9. It doesn't actually have to be the correct number order
+5. Just as long as each line has a number
 
 ## Nested Lists
 
@@ -184,11 +184,11 @@ In addition to the features and syntax of [Markdown](http://daringfireball.net/p
 
 ## Namespacing
 
-The first thing to note is that all links are "namespaced" to the current module.  For example, from anywhere within the Kohana core docs you do not need to include `kohana` at the beginning of a link url.  For example: `[Hello World Tutorial](tutorials/hello-world)` rather than `(kohana/tutorials/hello-world)`.
+The first thing to note is that all links are "namespaced" to the current module. For example, from anywhere within the Kohana core docs you do not need to include `kohana` at the beginning of a link url. For example: `[Hello World Tutorial](tutorials/hello-world)` rather than `(kohana/tutorials/hello-world)`.
 
 To link to a modules index page, have an empty url like: `[Kohana]()`.
 
-To link to page in a different module, prefix your url with `../` and the module name.  For example: `[Kohana Routes](../kohana/routing)`
+To link to page in a different module, prefix your url with `../` and the module name. For example: `[Kohana Routes](../kohana/routing)`
 
 **Images are also namespaced**, using `![Alt Text](imagename.jpg)` would look for `media/guide/<modulename>/imagename.jpg`.
 
@@ -196,7 +196,7 @@ To link to page in a different module, prefix your url with `../` and the module
 
 ## API Links
 
-You can make links to the api browser by wrapping any class name in brackets.  You may also include a function name, or propery name to link to that specifically.  All of the following will link to the API browser:
+You can make links to the api browser by wrapping any class name in brackets. You may also include a function name, or propery name to link to that specifically. All of the following will link to the API browser:
 
 	[Request]  
 	[Request::execute]  
@@ -218,7 +218,7 @@ If you want to have parameters and have the function be clickable, only put the 
 
 If you put `[!!]` in front of a line it will be a "note" and be placed in a box with a lightbulb.
 
-	[!!]  This is a note
+	[!!] This is a note
 
 will display as:
 	
@@ -232,6 +232,6 @@ Headers are automatically assigned an id, based on the content of the header, so
 
 ## Including Views
 
-If you need you may include a regular Kohana View file by placing the name of the view in double curly brackets.  **If the view is not found, no error or exception will be shown, the curly brackets and view name will simply remain there!**
+If you need you may include a regular Kohana View file by placing the name of the view in double curly brackets. **If the view is not found, no error or exception will be shown, the curly brackets and view name will simply remain there!**
 
 	{{some/view/file}}

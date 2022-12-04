@@ -1,6 +1,6 @@
 # Configuration
 
-The default config file is located in `MODPATH/database/config/database.php`.  You should copy this file to `APPPATH/config/database.php` and make changes there, in keeping with the [cascading filesystem](../kohana/files).
+The default config file is located in `MODPATH/database/config/database.php`. You should copy this file to `APPPATH/config/database.php` and make changes there, in keeping with the [cascading filesystem](../kohana/files).
 
 The database configuration file contains an array of configuration groups. The structure of each database configuration group, called an "instance", looks like this:
 
@@ -63,7 +63,7 @@ The example file below shows 2 MySQL connections, one local and one remote.
 
 ## Connections and Instances
 
-Each configuration group is referred to as a database instance. Each instance can be accessed by calling [Database::instance].  If you don't provide a parameter, the default instance is used.
+Each configuration group is referred to as a database instance. Each instance can be accessed by calling [Database::instance]. If you don't provide a parameter, the default instance is used.
 
 	// This would connect to the database defined as 'default'
 	$default = Database::instance();

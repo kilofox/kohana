@@ -48,7 +48,7 @@ To work on 3.0.x you'd do the following:
 	# Switched to branch 3.0.x
 
 It's important that you follow the last step, because unlike svn, git submodules point at a
-specific commit rather than the tip of a branch.  If you cd into the system folder after
+specific commit rather than the tip of a branch. If you cd into the system folder after
 a `git submodule update` and run `git status` you'll be told:
 
 	# Not currently on any branch.
@@ -131,7 +131,7 @@ You can do this using
 
 ### You've fixed something locally which someone else has already fixed but you also have separate commits you'd like to keep
 
-If this is the case then you'll want to use a tool called rebase.  First of all we need to
+If this is the case then you'll want to use a tool called rebase. First of all we need to
 get rid of the conflicts created due to the merge:
 
     > git reset --hard HEAD

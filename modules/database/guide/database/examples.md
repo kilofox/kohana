@@ -50,4 +50,4 @@ In this example, we loop through an array of whitelisted input fields and for ea
 
 TODO: example goes here
 
-[!!]  We could use more examples on this page. 
+[!!] We could use more examples on this page.

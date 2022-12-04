@@ -1,6 +1,6 @@
 # Testing workflows
 
-Having unittests for your application is a nice idea, but unless you actually use them they're about as useful as a chocolate firegaurd.  There are quite a few ways of getting tests "into" your development process and this guide aims to cover a few of them.
+Having unittests for your application is a nice idea, but unless you actually use them they're about as useful as a chocolate firegaurd. There are quite a few ways of getting tests "into" your development process and this guide aims to cover a few of them.
 
 ## Integrating with IDEs
 

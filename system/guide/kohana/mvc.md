@@ -1,1 +1,1 @@
-Discuss the MVC pattern, as it pertains to Kohana.  Perhaps have an image, etc.
+Discuss the MVC pattern, as it pertains to Kohana. Perhaps have an image, etc.

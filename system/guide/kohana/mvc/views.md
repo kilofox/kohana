@@ -2,7 +2,7 @@
 
 Views are files that contain the display information for your application. This is most commonly HTML, CSS and Javascript but can be anything you require such as XML or JSON for AJAX output. The purpose of views is to keep this information separate from your application logic for easy reusability and cleaner code.
 
-Views themselves can contain code used for displaying the data you pass into them. For example, looping through an array of product information and display each one on a new table row. Views are still PHP files so you can use any code you normally would.  However, you should try to keep your views as "dumb" as possible and retreive all data you need in your controllers, then pass it to the view.
+Views themselves can contain code used for displaying the data you pass into them. For example, looping through an array of product information and display each one on a new table row. Views are still PHP files so you can use any code you normally would. However, you should try to keep your views as "dumb" as possible and retreive all data you need in your controllers, then pass it to the view.
 
 # Creating View Files
 
@@ -52,9 +52,9 @@ Once view has been loaded, variables can be assigned to it using the [View::set]
         $this->response->body($view);
     }
 
-[!!] The only difference between `set()` and `bind()` is that `bind()` assigns the variable by reference. If you `bind()` a variable before it has been defined, the variable will be created with a value of `NULL`.  
+[!!] The only difference between `set()` and `bind()` is that `bind()` assigns the variable by reference. If you `bind()` a variable before it has been defined, the variable will be created with a value of `NULL`.
 
-You can also assign variables directly to the View object.  This is identical to calling `set()`;
+You can also assign variables directly to the View object. This is identical to calling `set()`;
 
 	public function action_roadtrip()
 	{
@@ -122,7 +122,7 @@ The other option is to include the view directly, which makes all of the current
     // Any variable defined in this view will be included in "views/message.php"
     <?php include Kohana::find_file('views', 'user/login') ?>
 
-You can also assign a variable of your parent view to be the child view from within your controller.  For example:
+You can also assign a variable of your parent view to be the child view from within your controller. For example:
 
 	// In your controller:
 

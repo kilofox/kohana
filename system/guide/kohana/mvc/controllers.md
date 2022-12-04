@@ -1,8 +1,8 @@
 # Controllers
 
-A Controller is a class file that stands in between the models and the views in an application. It passes information on to the model when data needs to be changed and it requests information from the model when data needs to be loaded. Controllers then pass on the information of the model to the views where the final output can be rendered for the users.  Controllers essentially control the flow of the application.
+A Controller is a class file that stands in between the models and the views in an application. It passes information on to the model when data needs to be changed and it requests information from the model when data needs to be loaded. Controllers then pass on the information of the model to the views where the final output can be rendered for the users. Controllers essentially control the flow of the application.
 
-Controllers are called by the [Request::execute()] function based on the [Route] that the url matched.  Be sure to read the [routing](routing) page to understand how to use routes to map urls to your controllers.
+Controllers are called by the [Request::execute()] function based on the [Route] that the url matched. Be sure to read the [routing](routing) page to understand how to use routes to map urls to your controllers.
 
 ## Creating Controllers
 
@@ -53,7 +53,7 @@ You can also have a controller extend another controller to share common things,
 		
 ## $this->request
 
-Every controller has the `$this->request` property which is the [Request] object that called the controller.  You can use this to get information about the current request, as well as set the response body via `$this->response->body($ouput)`.
+Every controller has the `$this->request` property which is the [Request] object that called the controller. You can use this to get information about the current request, as well as set the response body via `$this->response->body($ouput)`.
 
 Here is a partial list of the properties and methods available to `$this->request`. See the [Request] class for more information on any of these.
 
@@ -71,9 +71,9 @@ Property/method | What it does
 
 ## Actions
 
-You create actions for your controller by defining a public function with an `action_` prefix.  Any method that is not declared as `public` and prefixed with `action_` can NOT be called via routing.
+You create actions for your controller by defining a public function with an `action_` prefix. Any method that is not declared as `public` and prefixed with `action_` can NOT be called via routing.
 
-An action method will decide what should be done based on the current request, it *controls* the application.  Did the user want to save a blog post?  Did they provide the necessary fields?   Do they have permission to do that?  The controller will call other classes, including models, to accomplish this.  Every action should set `$this->response->body($view)` to the [view file](mvc/views) to be sent to the browser, unless it redirected or otherwise ended the script earlier.
+An action method will decide what should be done based on the current request, it *controls* the application. Did the user want to save a blog post?  Did they provide the necessary fields?   Do they have permission to do that?  The controller will call other classes, including models, to accomplish this. Every action should set `$this->response->body($view)` to the [view file](mvc/views) to be sent to the browser, unless it redirected or otherwise ended the script earlier.
 
 A very basic action method that simply loads a [view](mvc/views) file.
 
@@ -93,7 +93,7 @@ Parameters are accessed by calling `$this->request->param('name')` where `name` 
 		$id = $this->request->param('id');
 		$new = $this->request->param('new');
 
-If that parameter is not set it will be returned as NULL.  You can provide a second parameter to set a default value if that param is not set.
+If that parameter is not set it will be returned as NULL. You can provide a second parameter to set a default value if that param is not set.
 
 	public function action_foobar()
 	{
@@ -163,7 +163,7 @@ You can check what action has been requested (via `$this->request->action`) and 
 
 ### Custom __construct() function
 
-In general, you should not have to change the `__construct()` function, as anything you need for all actions can be done in `before()`.  If you need to change the controller constructor, you must preserve the parameters or PHP will complain.  This is so the Request object that called the controller is available.  *Again, in most cases you should probably be using `before()`, and not changing the constructor*, but if you really, *really* need to it should look like this:
+In general, you should not have to change the `__construct()` function, as anything you need for all actions can be done in `before()`. If you need to change the controller constructor, you must preserve the parameters or PHP will complain. This is so the Request object that called the controller is available. *Again, in most cases you should probably be using `before()`, and not changing the constructor*, but if you really, *really* need to it should look like this:
 
 	// You should almost never need to do this, use before() instead!
 

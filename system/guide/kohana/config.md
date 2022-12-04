@@ -1,7 +1,7 @@
 # Configuration
 
 By default Kohana is setup to load configuration values from [config files](files/config) in the
-cascading filesystem.  However, it is very easy to adapt it to load config values in other
+cascading filesystem. However, it is very easy to adapt it to load config values in other
 locations/formats.
 
 ## Sources
@@ -25,11 +25,11 @@ and is left to the developer's discretion.
 
 ## Groups
 
-In order to aid organisation config values are split up into logical "groups".  For example,
+In order to aid organisation config values are split up into logical "groups". For example,
 database related settings go in a `database` group, and session related settings go in a
 `session` group.
 
-How these groups are stored/organised is up to the config source.  For example, the file source
+How these groups are stored/organised is up to the config source. For example, the file source
 puts different config groups into different files (`database.php`, `session.php`) whereas
 the database source uses a column to distinguish between groups.
 
@@ -75,7 +75,7 @@ Which is equivalent to:
 	$hostname = $config['connection']['hostname'];
 
 Obviously this method is a lot more compact than the original. However, please bear in mind that using
-`dot.notation` is a _lot_ slower than calling `get()` and traversing the array yourself.  Dot notation
+`dot.notation` is a _lot_ slower than calling `get()` and traversing the array yourself. Dot notation
 can be useful if you only need one specific variable, but otherwise it's best to use `get()`.
 
 As [Config_Group] extends [Array_Object](http://php.net/manual/en/class.arrayobject.php) you can also use array
@@ -98,7 +98,7 @@ to the cascading filesystem, with configuration from lower sources lower down th
 merged with sources further up the stack.
 
 If two sources contain the same config variables then the one from the source further up the stack will
-override the one from the "lower" source.  However, if the source from higher up the stack does not contain
+override the one from the "lower" source. However, if the source from higher up the stack does not contain
 a particular config variable but a source lower down the stack does then the value from the lower source will
 be used.
 
@@ -189,5 +189,5 @@ To get around this you can attach a separate config file reader which loads its 
 		Kohana::$config->attach(new Config_File('config/testing'));
 	}
 
-During normal development the config source stack looks like `Config_Database, Config_File('config')`.  However,
+During normal development the config source stack looks like `Config_Database, Config_File('config')`. However,
 when `Kohana::$environment === Kohana::TESTING` the stack looks like `Config_File('config/testing'), Config_Database, Config_File('config')`

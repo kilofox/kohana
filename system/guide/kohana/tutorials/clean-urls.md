@@ -30,7 +30,7 @@ Rename `example.htaccess` to only `.htaccess` and alter the `RewriteBase` line t
 
     RewriteBase /myapp/
 
-The rest of the `.htaccess file` rewrites all requests through index.php, unless the file exists on the server (so your css, images, favicon, etc. are still loaded like normal).  In most cases, you are done!
+The rest of the `.htaccess file` rewrites all requests through index.php, unless the file exists on the server (so your css, images, favicon, etc. are still loaded like normal). In most cases, you are done!
 
 ### 404 errors
 

@@ -54,13 +54,13 @@ Now calling `Cookie::encrypt('secret', $data)` will create an encrypted cookie w
 
 ## How it works
 
-To understand how this works, let's look at what happens normally.  When you use the Cookie class, [Kohana::autoload] looks for `classes/Cookie.php` in the [cascading filesystem](files).  It looks in `application`, then each module, then `system`. The file is found in `system` and is included.  Of course, `system/classes/Cookie.php` is just an empty class which extends `Kohana_Cookie`.  Again, [Kohana::autoload] is called this time looking for `classes/Kohana/Cookie.php` which it finds in `system`.
+To understand how this works, let's look at what happens normally. When you use the Cookie class, [Kohana::autoload] looks for `classes/Cookie.php` in the [cascading filesystem](files). It looks in `application`, then each module, then `system`. The file is found in `system` and is included. Of course, `system/classes/Cookie.php` is just an empty class which extends `Kohana_Cookie`. Again, [Kohana::autoload] is called this time looking for `classes/Kohana/Cookie.php` which it finds in `system`.
 
-When you add your transparently extended cookie class at `application/classes/Cookie.php` this file essentially "replaces" the file at `system/classes/Cookie.php` without actually touching it.  This happens because this time when we use the Cookie class [Kohana::autoload] looks for `classes/Cookie.php` and finds the file in `application` and includes that one, instead of the one in system.
+When you add your transparently extended cookie class at `application/classes/Cookie.php` this file essentially "replaces" the file at `system/classes/Cookie.php` without actually touching it. This happens because this time when we use the Cookie class [Kohana::autoload] looks for `classes/Cookie.php` and finds the file in `application` and includes that one, instead of the one in system.
 
 ## Example: changing [Cookie] settings
 
-If you are using the [Cookie](cookies) class, and want to change a setting, you should do so using transparent extension, rather than editing the file in the system folder.  If you edit it directly, and in the future you upgrade your Kohana version by replacing the system folder, your changes will be reverted and your cookies will probably be invalid.  Instead, create a Cookie.php file either in `application/classes/Cookie.php` or a module (`MODPATH/<modulename>/classes/Cookie.php`).
+If you are using the [Cookie](cookies) class, and want to change a setting, you should do so using transparent extension, rather than editing the file in the system folder. If you edit it directly, and in the future you upgrade your Kohana version by replacing the system folder, your changes will be reverted and your cookies will probably be invalid. Instead, create a Cookie.php file either in `application/classes/Cookie.php` or a module (`MODPATH/<modulename>/classes/Cookie.php`).
 
 	class Cookie extends Kohana_Cookie {
 	

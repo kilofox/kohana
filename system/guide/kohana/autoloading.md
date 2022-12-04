@@ -16,7 +16,7 @@ Classes are loaded via the [Kohana::auto_load] method, which makes a simple conv
 
 When calling a class that has not been loaded (eg: `Session_Cookie`), Kohana will search the filesystem using [Kohana::find_file] for a file named `classes/Session/Cookie.php`.
 
-If your classes do not follow this convention, they cannot be autoloaded by Kohana.  You will have to manually included your files, or add your own [autoload function.](http://us3.php.net/manual/en/function.spl-autoload-register.php)
+If your classes do not follow this convention, they cannot be autoloaded by Kohana. You will have to manually included your files, or add your own [autoload function.](http://us3.php.net/manual/en/function.spl-autoload-register.php)
 
 ## Custom Autoloaders
 
@@ -31,7 +31,7 @@ This allows [Kohana::auto_load] to attempt to find and include any class that do
 
 ### Example: Zend
 
-You can easily gain access to other libraries if they include an autoloader.  For example, here is how to enable Zend's autoloader so you can use Zend libraries in your Kohana application.
+You can easily gain access to other libraries if they include an autoloader. For example, here is how to enable Zend's autoloader so you can use Zend libraries in your Kohana application.
 
 #### Download and install the Zend Framework files
 

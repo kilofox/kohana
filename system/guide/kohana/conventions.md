@@ -31,7 +31,7 @@ In order to produce highly consistent source code, we ask that everyone follow t
 
 ### Brackets
 
-Please use [BSD/Allman Style](http://en.wikipedia.org/wiki/Indent_style#BSD.2FAllman_style) bracketing.  
+Please use [BSD/Allman Style](http://en.wikipedia.org/wiki/Indent_style#BSD.2FAllman_style) bracketing.
 
 #### Curly Brackets
 

@@ -38,7 +38,7 @@ Below are two screenshots of Codebench in action. `Valid_Color` is a class made 
 
 Codebench is included in Kohana 3, but if you need you [can download it](http://github.com/kohana/codebench/) from GitHub. Be sure Codebench is activated in your `application/bootstrap.php`.
 
-Creating your own benchmarks is just a matter of creating a class that extends the Codebench class.  The class should go in `classes/bench` and the class name should have the `Bench_` prefix.  Put the code parts you want to compare into separate methods. Be sure to prefix those methods with `bench_`, other methods will not be benchmarked. Glance at the files in `modules/codebench/classes/bench/` for more examples.
+Creating your own benchmarks is just a matter of creating a class that extends the Codebench class. The class should go in `classes/bench` and the class name should have the `Bench_` prefix. Put the code parts you want to compare into separate methods. Be sure to prefix those methods with `bench_`, other methods will not be benchmarked. Glance at the files in `modules/codebench/classes/bench/` for more examples.
 
 Here is another short example with some extra explanations.
 	

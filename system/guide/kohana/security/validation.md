@@ -144,7 +144,7 @@ Next we need to process the POST'ed information using [Validation]. To start, we
         ->rule('username', 'regex', array(':value', '/^[a-z_.]++$/iD'))
         ->rule('password', 'not_empty')
         ->rule('password', 'min_length', array(':value', '6'))
-        ->rule('confirm',  'matches', array(':validation', 'confirm', 'password'))
+        ->rule('confirm', 'matches', array(':validation', 'confirm', 'password'))
         ->rule('use_ssl', 'not_empty');
 
 Any existing PHP function can also be used a rule. For instance, if we want to check if the user entered a proper value for the SSL question:
@@ -220,7 +220,7 @@ Next, we need a controller and action to process the registration, which will be
 
                 ->rule('password', 'not_empty')
                 ->rule('password', 'min_length', array(':value', 6))
-                ->rule('confirm',  'matches', array(':validation', ':field', 'password'))
+                ->rule('confirm', 'matches', array(':validation', ':field', 'password'))
 
                 ->rule('use_ssl', 'not_empty')
                 ->rule('use_ssl', 'in_array', array(':value', array('yes', 'no')));

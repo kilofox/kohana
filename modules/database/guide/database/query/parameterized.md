@@ -6,9 +6,9 @@ Using parameterized statements allows you to write SQL queries manually while st
 
 The [DB::query] method is just a shortcut that creates a new [Database_Query] class for us, to allow method chaining. The query contains a `:user` parameter, which we will get to in a second.
 
-The first parameter of [DB::query] is the type of query.  It should be `Database::SELECT`, `Database::INSERT`, `Database::UPDATE`, or `Database::DELETE`.  This is done for compatibility reasons for drivers, and to easily determine what `execute()` should return.
+The first parameter of [DB::query] is the type of query. It should be `Database::SELECT`, `Database::INSERT`, `Database::UPDATE`, or `Database::DELETE`. This is done for compatibility reasons for drivers, and to easily determine what `execute()` should return.
 
-The second parameter is the query itself.  Rather than trying to concatenate your query and variables together, you should make use of [Database_Query::param].  This will make your queries much easier to mantain, and will escape the values to prevent [SQL injection](http://wikipedia.org/wiki/SQL_Injection). 
+The second parameter is the query itself. Rather than trying to concatenate your query and variables together, you should make use of [Database_Query::param]. This will make your queries much easier to mantain, and will escape the values to prevent [SQL injection](http://wikipedia.org/wiki/SQL_Injection).
 
 ## Parameters
 
@@ -16,7 +16,7 @@ Our example query earlier contains a `:user` parameter, which we can assign to a
 
 	$query->param(':user', 'john');
 
-[!!] Parameter names can be any unique string, as they are replaced using [strtr](http://php.net/strtr). It is highly recommended to **not** use dollars signs as parameter names to prevent confusion.  Colons are commonly used.
+[!!] Parameter names can be any unique string, as they are replaced using [strtr](http://php.net/strtr). It is highly recommended to **not** use dollars signs as parameter names to prevent confusion. Colons are commonly used.
 
 You can also update the `:user` parameter by calling [Database_Query::param] again:
 
