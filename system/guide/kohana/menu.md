@@ -42,5 +42,4 @@
    - [Simple MVC](tutorials/simple-mvc)
    - [Custom Error Pages](tutorials/error-pages)
    - [Clean URLs](tutorials/clean-urls)
-   - [Sharing Kohana](tutorials/sharing-kohana)
    - [Kohana as a Library](tutorials/library-kohana)
