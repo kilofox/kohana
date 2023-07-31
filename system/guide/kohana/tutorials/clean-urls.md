@@ -38,11 +38,11 @@ If you get a "404 Not Found" error when trying to view a page then it's likely A
 
 In the main apache configuration file (usually `httpd.conf`), or in the virtual server configuration file, check that the `AccessFileName` directive is set to `.htaccess` and the `AllowOverride` directive is set to `All`.
 
-		AccessFileName .htaccess
+        AccessFileName .htaccess
 
-		<Directory "/var/www/html/myapp">
-				AllowOverride All
-		</Directory>
+        <Directory "/var/www/html/myapp">
+                AllowOverride All
+        </Directory>
 
 
 ### Failed!
@@ -65,7 +65,7 @@ To something more simple:
 
 ### Still Failed!
 
-If you are still getting errors, check to make sure that your host supports URL `mod_rewrite`. If you can change the Apache configuration, add these lines to the	 configuration, usually `httpd.conf`:
+If you are still getting errors, check to make sure that your host supports URL `mod_rewrite`. If you can change the Apache configuration, add these lines to the     configuration, usually `httpd.conf`:
 
     <Directory "/var/www/html/myapp">
         Order allow,deny

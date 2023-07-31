@@ -6,14 +6,14 @@ Kohana provides classes that make it easy to work with both cookies and sessions
 
 [!!] Kohana uses "signed" cookies. Every cookie that is stored is combined with a secure hash to prevent modification of the cookie. If a cookie is modified outside of Kohana the hash will be incorrect and the cookie will be deleted. This hash is generated using [Cookie::salt()], which uses the [Cookie::$salt] property. You must define this setting in your bootstrap.php:
 
-	Cookie::$salt = 'foobar';
+    Cookie::$salt = 'foobar';
 
 Or define an extended cookie class in your application:
 
-	class Cookie extends Kohana_Cookie
-	{
-		public static $salt = 'foobar';
-	}
+    class Cookie extends Kohana_Cookie
+    {
+        public static $salt = 'foobar';
+    }
 
 You should set the salt to a secure value. The example above is only for demonstrative purposes.
 
@@ -46,7 +46,7 @@ Getting session or cookie data is done using the [Cookie::get] method:
 ### Deleting Data
 
 Deleting session or cookie data is done using the [Cookie::delete] method:
-    
+
     // Delete cookie data
     Cookie::delete($key);
 
@@ -90,7 +90,7 @@ To only allow the cookie to be accessed over a secure (HTTPS) connection, use th
 
     // Allow cookies to be accessed only on a secure connection
     Cookie::$secure = TRUE;
-    
+
     // Allow cookies to be accessed on any connection
     Cookie::$secure = FALSE;
 

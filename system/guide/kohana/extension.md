@@ -62,15 +62,15 @@ When you add your transparently extended cookie class at `application/classes/Co
 
 If you are using the [Cookie](cookies) class, and want to change a setting, you should do so using transparent extension, rather than editing the file in the system folder. If you edit it directly, and in the future you upgrade your Kohana version by replacing the system folder, your changes will be reverted and your cookies will probably be invalid. Instead, create a Cookie.php file either in `application/classes/Cookie.php` or a module (`MODPATH/<modulename>/classes/Cookie.php`).
 
-	class Cookie extends Kohana_Cookie {
-	
-		// Set a new salt
-		public $salt = "some new better random salt phrase";
-		
-		// Don't allow javascript access to cookies
-		public $httponly = TRUE;
-		
-	}
+    class Cookie extends Kohana_Cookie {
+
+        // Set a new salt
+        public $salt = "some new better random salt phrase";
+
+        // Don't allow javascript access to cookies
+        public $httponly = TRUE;
+
+    }
 
 ## Example: TODO: an example
 
@@ -88,14 +88,14 @@ TODO: Provide some links to modules on github, etc that have examples of transpa
 
 If you are extending a Kohana class in a module, you should maintain transparent extensions. In other words, do not include any variables or function in the "base" class (eg. Cookie). Instead make your own namespaced class, and have the "base" class extend that one. With our Encrypted cookie example we can create `MODPATH/mymod/Encrypted/Cookie.php`:
 
-	class Encrypted_Cookie extends Kohana_Cookie {
+    class Encrypted_Cookie extends Kohana_Cookie {
 
-		// Use the same encrypt() and decrypt() methods as above
+        // Use the same encrypt() and decrypt() methods as above
 
-	}
+    }
 
 And create `MODPATH/mymod/Cookie.php`:
 
-	class Cookie extends Encrypted_Cookie {}
+    class Cookie extends Encrypted_Cookie {}
 
 This will still allow users to add their own extension to [Cookie] while leaving your extensions intact. To do that they would make a cookie class that extends `Encrypted_Cookie` (rather than `Kohana_Cookie`) in their application folder.

@@ -50,35 +50,35 @@ We could now call `Kohana::$config->load('site.title')` to get the site name, an
 
 Let's say we want an archive of versions of some software. We could use config files to store each version, and include links to download, documentation, and issue tracking.
 
-	// config/versions.php
+    // config/versions.php
 
-	<?php defined('SYSPATH') OR die('No direct script access.');
-	
+    <?php defined('SYSPATH') OR die('No direct script access.');
+
     return array(
-		'1.0.0' => array(
-			'codename' => 'Frog',
-			'download' => 'files/ourapp-1.0.0.tar.gz',
-			'documentation' => 'docs/1.0.0',
-			'released' => '06/05/2009',
-			'issues' => 'link/to/bug/tracker',
-		),
-		'1.1.0' => array(
-			'codename' => 'Lizard',
-			'download' => 'files/ourapp-1.1.0.tar.gz',
-			'documentation' => 'docs/1.1.0',
-			'released' => '10/15/2009',
-			'issues' => 'link/to/bug/tracker',
-		),
-		/// ... etc ...
-	);
+        '1.0.0' => array(
+            'codename' => 'Frog',
+            'download' => 'files/ourapp-1.0.0.tar.gz',
+            'documentation' => 'docs/1.0.0',
+            'released' => '06/05/2009',
+            'issues' => 'link/to/bug/tracker',
+        ),
+        '1.1.0' => array(
+            'codename' => 'Lizard',
+            'download' => 'files/ourapp-1.1.0.tar.gz',
+            'documentation' => 'docs/1.1.0',
+            'released' => '10/15/2009',
+            'issues' => 'link/to/bug/tracker',
+        ),
+        /// ... etc ...
+    );
 
 You could then do the following:
 
-	// In your controller
-	$view->versions = Kohana::$config->load('versions');
-	
-	// In your view:
-	foreach ($versions as $version)
-	{
-		// echo some html to display each version
-	}
+    // In your controller
+    $view->versions = Kohana::$config->load('versions');
+
+    // In your view:
+    foreach ($versions as $version)
+    {
+        // echo some html to display each version
+    }

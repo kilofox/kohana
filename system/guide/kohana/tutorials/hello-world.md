@@ -12,28 +12,28 @@ Create the file `application/classes/Controller/Hello.php` in your application f
 
     <?php defined('SYSPATH') OR die('No Direct Script Access');
 
-	Class Controller_Hello extends Controller
-	{
-		public function action_index()
-		{
-			echo 'hello, world!';
-		}
-	}
+    Class Controller_Hello extends Controller
+    {
+        public function action_index()
+        {
+            echo 'hello, world!';
+        }
+    }
 
 Lets see what's going on here:
 
 `<?php defined('SYSPATH') OR die('No Direct Script Access');`
-:	You should recognize the first tag as an opening php tag (if you don't you should probably [learn php](http://php.net)). What follows is a small check that makes sure that this file is being included by Kohana. It stops people from accessing files directly from the url.
+:    You should recognize the first tag as an opening php tag (if you don't you should probably [learn php](http://php.net)). What follows is a small check that makes sure that this file is being included by Kohana. It stops people from accessing files directly from the url.
 
 `Class Controller_Hello extends Controller`
-:	This line declares our controller, each controller class has to be prefixed with `Controller_` and an underscore delimited path to the folder the controller is in (see [Conventions and styles](about.conventions) for more info). Each controller should also extend the base `Controller` class which provides a standard structure for controllers.
+:    This line declares our controller, each controller class has to be prefixed with `Controller_` and an underscore delimited path to the folder the controller is in (see [Conventions and styles](about.conventions) for more info). Each controller should also extend the base `Controller` class which provides a standard structure for controllers.
 
 
 `public function action_index()`
-:	This defines the "index" action of our controller. Kohana will attempt to call this action if the user hasn't specified an action. (See [Routes, URLs and Links](tutorials.urls))
+:    This defines the "index" action of our controller. Kohana will attempt to call this action if the user hasn't specified an action. (See [Routes, URLs and Links](tutorials.urls))
 
 `echo 'hello, world!';`
-:	And this is the line which outputs the customary phrase!
+:    And this is the line which outputs the customary phrase!
 
 Now if you open your browser and go to http://localhost/index.php/hello you should see something like:
 
@@ -51,24 +51,24 @@ Lets change our original controller slightly:
 
     <?php defined('SYSPATH') OR die('No Direct Script Access');
 
-	Class Controller_Hello extends Controller_Template
-	{
-		public $template = 'site';
+    Class Controller_Hello extends Controller_Template
+    {
+        public $template = 'site';
 
-		public function action_index()
-		{
-			$this->template->message = 'hello, world!';
-		}
-	}
+        public function action_index()
+        {
+            $this->template->message = 'hello, world!';
+        }
+    }
 
 `extends Controller_Template`
-:	We're now extending the template controller, it makes it more convenient to use views within our controller.
+:    We're now extending the template controller, it makes it more convenient to use views within our controller.
 
 `public $template = 'site';`
-:	The template controller needs to know what template you want to use. It'll automatically load the view defined in this variable and assign the view object to it.
+:    The template controller needs to know what template you want to use. It'll automatically load the view defined in this variable and assign the view object to it.
 
 `$this->template->message = 'hello, world!';`
-:	`$this->template` is a reference to the view object for our site template. What we're doing here is assigning a variable called "message", with a value of "hello, world!" to the view.
+:    `$this->template` is a reference to the view object for our site template. What we're doing here is assigning a variable called "message", with a value of "hello, world!" to the view.
 
 Now lets try running our code...
 
@@ -80,20 +80,20 @@ If we look at the error message we can see that the View library wasn't able to 
 
 Let's go and make the view file `application/views/site.php` for our message:
 
-	<html>
-		<head>
-			<title>We've got a message for you!</title>
-			<style type="text/css">
-				body {font-family: Georgia;}
-				h1 {font-style: italic;}
+    <html>
+        <head>
+            <title>We've got a message for you!</title>
+            <style type="text/css">
+                body {font-family: Georgia;}
+                h1 {font-style: italic;}
 
-			</style>
-		</head>
-		<body>
-			<h1><?php echo $message; ?></h1>
-			<p>We just wanted to say it! :)</p>
-		</body>
-	</html>
+            </style>
+        </head>
+        <body>
+            <h1><?php echo $message; ?></h1>
+            <p>We just wanted to say it! :)</p>
+        </body>
+    </html>
 
 If we refresh the page then we can see the fruits of our labour:
 

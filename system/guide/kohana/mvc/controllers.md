@@ -15,42 +15,42 @@ In order to function, a controller must do the following:
 
 Some examples of controller names and file locations:
 
-	// classes/Controller/Foobar.php
-	class Controller_Foobar extends Controller {
-	
-	// classes/Controller/Admin.php
-	class Controller_Admin extends Controller {
+    // classes/Controller/Foobar.php
+    class Controller_Foobar extends Controller {
+
+    // classes/Controller/Admin.php
+    class Controller_Admin extends Controller {
 
 Controllers can be in sub-folders:
 
-	// classes/Controller/Baz/Bar.php
-	class Controller_Baz_Bar extends Controller {
-	
-	// classes/Controller/Product/Category.php
-	class Controller_Product_Category extends Controller {
-	
+    // classes/Controller/Baz/Bar.php
+    class Controller_Baz_Bar extends Controller {
+
+    // classes/Controller/Product/Category.php
+    class Controller_Product_Category extends Controller {
+
 [!!] Note that controllers in sub-folders can not be called by the default route, you will need to define a route that has a [directory](routing#directory) param or sets a default value for directory.
 
 Controllers can extend other controllers.
 
-	// classes/Controller/Users.php
-	class Controller_Users extends Controller_Template
-	
-	// classes/Controller/Api.php
-	class Controller_Api extends Controller_REST
-	
+    // classes/Controller/Users.php
+    class Controller_Users extends Controller_Template
+
+    // classes/Controller/Api.php
+    class Controller_Api extends Controller_REST
+
 [!!] [Controller_Template] is an example controller provided in Kohana.
 
 You can also have a controller extend another controller to share common things, such as requiring you to be logged in to use all of those controllers.
 
-	// classes/Controller/Admin.php
-	class Controller_Admin extends Controller {
-		// This controller would have a before() that checks if the user is logged in
-	
-	// classes/Controller/Admin/Plugins.php
-	class Controller_Admin_Plugins extends Controller_Admin {
-		// Because this controller extends Controller_Admin, it would have the same logged in check
-		
+    // classes/Controller/Admin.php
+    class Controller_Admin extends Controller {
+        // This controller would have a before() that checks if the user is logged in
+
+    // classes/Controller/Admin/Plugins.php
+    class Controller_Admin_Plugins extends Controller_Admin {
+        // Because this controller extends Controller_Admin, it would have the same logged in check
+
 ## $this->request
 
 Every controller has the `$this->request` property which is the [Request] object that called the controller. You can use this to get information about the current request, as well as set the response body via `$this->response->body($ouput)`.
@@ -77,65 +77,65 @@ An action method will decide what should be done based on the current request, i
 
 A very basic action method that simply loads a [view](mvc/views) file.
 
-	public function action_hello()
-	{
-		$this->response->body(View::factory('hello/world')); // This will load views/hello/world.php
-	}
+    public function action_hello()
+    {
+        $this->response->body(View::factory('hello/world')); // This will load views/hello/world.php
+    }
 
 ### Parameters
 
 Parameters are accessed by calling `$this->request->param('name')` where `name` is the name defined in the route.
 
-	// Assuming Route::set('example','<controller>(/<action>(/<id>(/<new>)))');
-	
-	public function action_foobar()
-	{
-		$id = $this->request->param('id');
-		$new = $this->request->param('new');
+    // Assuming Route::set('example','<controller>(/<action>(/<id>(/<new>)))');
+
+    public function action_foobar()
+    {
+        $id = $this->request->param('id');
+        $new = $this->request->param('new');
 
 If that parameter is not set it will be returned as NULL. You can provide a second parameter to set a default value if that param is not set.
 
-	public function action_foobar()
-	{
-		// $id will be false if it was not supplied in the url
-		$id = $this->request->param('user',FALSE);
+    public function action_foobar()
+    {
+        // $id will be false if it was not supplied in the url
+        $id = $this->request->param('user',FALSE);
 
 ### Examples
 
 A view action for a product page.
 
-	public function action_view()
-	{
-		$product = new Model_Product($this->request->param('id'));
+    public function action_view()
+    {
+        $product = new Model_Product($this->request->param('id'));
 
-		if ( ! $product->loaded())
-		{
-			throw HTTP_Exception::factory(404, 'Product not found!');
-		}
+        if ( ! $product->loaded())
+        {
+            throw HTTP_Exception::factory(404, 'Product not found!');
+        }
 
-		$this->response->body(View::factory('product/view')
-			->set('product', $product));
-	}
+        $this->response->body(View::factory('product/view')
+            ->set('product', $product));
+    }
 
 A user login action.
 
-	public function action_login()
-	{
-		$view = View::factory('user/login');
+    public function action_login()
+    {
+        $view = View::factory('user/login');
 
-		if ($this->request->post())
-		{
-			// Try to login
-			if (Auth::instance()->login($this->request->post('username'), $this->request->post('password')))
-			{
-				$this->redirect('home', 303);
-			}
+        if ($this->request->post())
+        {
+            // Try to login
+            if (Auth::instance()->login($this->request->post('username'), $this->request->post('password')))
+            {
+                $this->redirect('home', 303);
+            }
 
-			$view->errors = 'Invalid email or password';
-		}
+            $view->errors = 'Invalid email or password';
+        }
 
-		$this->response->body($view);
-	}
+        $this->response->body($view);
+    }
 
 ## Before and after
 
@@ -145,36 +145,36 @@ For example, if you look in `Controller_Template` you can see that in the be
 
 You can check what action has been requested (via `$this->request->action`) and do something based on that, such as requiring the user to be logged in to use a controller, unless they are using the login action.
 
-	// Checking auth/login in before, and redirecting if necessary:
+    // Checking auth/login in before, and redirecting if necessary:
 
-	Controller_Admin extends Controller {
+    Controller_Admin extends Controller {
 
-		public function before()
-		{
-			// If this user doesn't have the admin role, and is not trying to login, redirect to login
-			if ( ! Auth::instance()->logged_in('admin') AND $this->request->action !== 'login')
-			{
-				$this->redirect('admin/login', 302);
-			}
-		}
-		
-		public function action_login() {
-			...
+        public function before()
+        {
+            // If this user doesn't have the admin role, and is not trying to login, redirect to login
+            if ( ! Auth::instance()->logged_in('admin') AND $this->request->action !== 'login')
+            {
+                $this->redirect('admin/login', 302);
+            }
+        }
+
+        public function action_login() {
+            ...
 
 ### Custom __construct() function
 
 In general, you should not have to change the `__construct()` function, as anything you need for all actions can be done in `before()`. If you need to change the controller constructor, you must preserve the parameters or PHP will complain. This is so the Request object that called the controller is available. *Again, in most cases you should probably be using `before()`, and not changing the constructor*, but if you really, *really* need to it should look like this:
 
-	// You should almost never need to do this, use before() instead!
+    // You should almost never need to do this, use before() instead!
 
-	// Be sure Kohana_Request is in the params
-	public function __construct(Request $request, Response $response)
-	{
-		// You must call parent::__construct at some point in your function
-		parent::__construct($request, $response);
-		
-		// Do whatever else you want
-	}
+    // Be sure Kohana_Request is in the params
+    public function __construct(Request $request, Response $response)
+    {
+        // You must call parent::__construct at some point in your function
+        parent::__construct($request, $response);
+
+        // Do whatever else you want
+    }
 
 ## Extending other controllers
 

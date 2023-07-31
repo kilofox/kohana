@@ -33,7 +33,7 @@ Kohana is then initialized by calling [Kohana::init], and the log and [config](f
 
 Kohana::init(array('
     base_url' => '/kohana/',
-	index_file => false,
+    index_file => false,
 ));
 
 // Attach the file writer to logging. Multiple writers are supported.
@@ -54,11 +54,11 @@ You can add conditional statements to make the bootstrap have different values b
  */
 if (strpos($_SERVER['HTTP_HOST'], 'kohanaframework.org') !== FALSE)
 {
-	// We are live!
-	Kohana::$environment = Kohana::PRODUCTION;
+    // We are live!
+    Kohana::$environment = Kohana::PRODUCTION;
 
-	// Turn off notices and strict errors
-	error_reporting(E_ALL ^ E_NOTICE ^ E_STRICT);
+    // Turn off notices and strict errors
+    error_reporting(E_ALL ^ E_NOTICE ^ E_STRICT);
 }
 
 /**
@@ -66,10 +66,10 @@ if (strpos($_SERVER['HTTP_HOST'], 'kohanaframework.org') !== FALSE)
  ... [trimmed]
  */
 Kohana::init(array(
-	'base_url'   => Kohana::$environment === Kohana::PRODUCTION ? '/' : '/kohanaframework.org/',
-	'caching'    => Kohana::$environment === Kohana::PRODUCTION,
-	'profile'    => Kohana::$environment !== Kohana::PRODUCTION,
-	'index_file' => FALSE,
+    'base_url'   => Kohana::$environment === Kohana::PRODUCTION ? '/' : '/kohanaframework.org/',
+    'caching'    => Kohana::$environment === Kohana::PRODUCTION,
+    'profile'    => Kohana::$environment !== Kohana::PRODUCTION,
+    'index_file' => FALSE,
 ));
 
 ... [trimmed]
@@ -89,9 +89,9 @@ Each key in the array should be the name of the module, and the value is the pat
 // Example excerpt from bootstrap.php
 
 Kohana::modules(array(
-	'database'   => MODPATH.'database',
-	'orm'        => MODPATH.'orm',
-	'userguide'  => MODPATH.'userguide',
+    'database'   => MODPATH.'database',
+    'orm'        => MODPATH.'orm',
+    'userguide'  => MODPATH.'userguide',
 ));
 ~~~
 
@@ -104,8 +104,8 @@ Kohana::modules(array(
 ~~~
 // The default route that comes with Kohana 3
 Route::set('default', '(<controller>(/<action>(/<id>)))')
-	->defaults(array(
-		'controller' => 'Welcome',
-		'action'     => 'index',
-	));
+    ->defaults(array(
+        'controller' => 'Welcome',
+        'action'     => 'index',
+    ));
 ~~~

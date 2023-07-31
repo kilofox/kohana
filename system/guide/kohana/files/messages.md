@@ -6,29 +6,29 @@ Kohana has a robust key based lookup system so you can define system messages.
 
 Use the Kohana::message() method to get a message key:
 
-	Kohana::message('forms', 'foobar');
+    Kohana::message('forms', 'foobar');
 
 This will look in the `messages/forms.php` file for the `foobar` key:
 
-	<?php
-	
-	return array(
-		'foobar' => 'Hello, world!',
-	);
+    <?php
+
+    return array(
+        'foobar' => 'Hello, world!',
+    );
 
 You can also look in subfolders and sub-keys:
 
-	Kohana::message('forms/contact', 'foobar.bar');
+    Kohana::message('forms/contact', 'foobar.bar');
 
 This will look in the `messages/forms/contact.php` for the `[foobar][bar]` key:
 
-	<?php
-	
-	return array(
-		'foobar' => array(
-			'bar' => 'Hello, world!',
-		),
-	);
+    <?php
+
+    return array(
+        'foobar' => array(
+            'bar' => 'Hello, world!',
+        ),
+    );
 
 ## Notes
 

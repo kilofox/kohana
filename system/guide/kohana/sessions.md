@@ -24,7 +24,7 @@ You can also use this to overload the `$_SESSION` global to get and set data in 
 
     // Overload $_SESSION with the session data
     $_SESSION =& $session->as_array();
-    
+
     // Set session data
     $_SESSION[$key] = $value;
 
@@ -34,8 +34,8 @@ Storing session or cookie data is done using the `set` method:
 
     // Set session data
     $session->set($key, $value);
-	// Or
-	Session::instance()->set($key, $value);
+    // Or
+    Session::instance()->set($key, $value);
 
     // Store a user id
     $session->set('user_id', 10);
@@ -107,8 +107,8 @@ You can apply configuration settings to each of the session adapters by creating
             'table' => 'table_name',
             'columns' => array(
                 'session_id'  => 'session_id',
-        		'last_active' => 'last_active',
-        		'contents'    => 'contents'
+                'last_active' => 'last_active',
+                'contents'    => 'contents'
             ),
             'gc' => 500,
         ),

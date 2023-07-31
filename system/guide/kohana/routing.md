@@ -10,12 +10,12 @@ As mentioned in the [Request Flow](flow) section, a request is handled by the [R
 
 If you look in `APPPATH/bootstrap.php` you will see the "default" route as follows:
 
-	Route::set('default', '(<controller>(/<action>(/<id>)))')
-	->defaults(array(
-		'controller' => 'Welcome',
-		'action'     => 'index',
-	));
-	
+    Route::set('default', '(<controller>(/<action>(/<id>)))')
+    ->defaults(array(
+        'controller' => 'Welcome',
+        'action'     => 'index',
+    ));
+
 [!!] The default route is simply provided as a sample, you can remove it and replace it with your own routes.
 
 So this creates a route with the name `default` that will match urls in the format of `(<controller>(/<action>(/<id>)))`.
@@ -44,22 +44,22 @@ The Kohana route system uses [perl compatible regular expressions](http://perldo
 
 In this example, we have controllers in two directories, `admin` and `affiliate`. Because this route will only match urls that begin with `admin` or `affiliate`, the default route would still work for controllers in `classes/Controller`.
 
-	Route::set('sections', '<directory>(/<controller>(/<action>(/<id>)))',
-		array(
-			'directory' => '(admin|affiliate)'
-		))
-		->defaults(array(
-			'controller' => 'Home',
-			'action'     => 'index',
-		));
+    Route::set('sections', '<directory>(/<controller>(/<action>(/<id>)))',
+        array(
+            'directory' => '(admin|affiliate)'
+        ))
+        ->defaults(array(
+            'controller' => 'Home',
+            'action'     => 'index',
+        ));
 
 You can also use a less restrictive regex to match unlimited parameters, or to ignore overflow in a route. In this example, the url `foobar/baz/and-anything/else_that/is-on-the/url` would be routed to `Controller_Foobar::action_baz()` and the `"stuff"` parameter would be `"and-anything/else_that/is-on-the/url"`. If you wanted to use this for unlimited parameters, you could [explode](http://php.net/manual/en/function.explode.php) it, or you just ignore the overflow.
 
-	Route::set('default', '(<controller>(/<action>(/<stuff>)))', array('stuff' => '.*'))
-		->defaults(array(
-			'controller' => 'Welcome',
-			'action' => 'index',
-	  ));
+    Route::set('default', '(<controller>(/<action>(/<stuff>)))', array('stuff' => '.*'))
+        ->defaults(array(
+            'controller' => 'Welcome',
+            'action' => 'index',
+      ));
 
 
 ### Default values
@@ -84,32 +84,32 @@ TODO: example of either using directory or controller where it isn't in the rout
 
 In 3.3, you can specify advanced routing schemes by using filter callbacks. When you need to match a route based on more than just the URI of a request, for example, based on the method request (GET/POST/DELETE), a filter will allow you to do so. These filters will receive the `Route` object being tested, the currently matched `$params` array, and the `Request` object as the three parameters. Here's a simple example:
 
-	Route::set('save-form', 'save')
-		->filter(function($route, $params, $request)
-		{
-			if ($request->method() !== HTTP_Request::POST)
-			{
-				return FALSE; // This route only matches POST requests
-			}
-		});
+    Route::set('save-form', 'save')
+        ->filter(function($route, $params, $request)
+        {
+            if ($request->method() !== HTTP_Request::POST)
+            {
+                return FALSE; // This route only matches POST requests
+            }
+        });
 
 Filters can also replace or alter the array of parameters:
 
-	Route::set('rest-api', 'api/<action>')
-		->filter(function($route, $params, $request)
-		{
-			// Prefix the method to the action name
-			$params['action'] = strtolower($request->method()).'_'.$params['action'];
-			return $params; // Returning an array will replace the parameters
-		})
-		->defaults(array(
-			'controller' => 'api',
-		));
+    Route::set('rest-api', 'api/<action>')
+        ->filter(function($route, $params, $request)
+        {
+            // Prefix the method to the action name
+            $params['action'] = strtolower($request->method()).'_'.$params['action'];
+            return $params; // Returning an array will replace the parameters
+        })
+        ->defaults(array(
+            'controller' => 'api',
+        ));
 
 If you are using php 5.2, you can still use any valid callback for this behavior:
 
-	Route::set('testing', 'foo')
-		->filter(array('Class', 'method_to_process_my_uri'));
+    Route::set('testing', 'foo')
+        ->filter(array('Class', 'method_to_process_my_uri'));
 
 ## Examples
 
@@ -125,7 +125,7 @@ There are countless other possibilities for routes. Here are some more examples:
       ->defaults(array(
         'controller' => 'Auth'
       ));
-      
+
     /*
      * Multi-format feeds
      *   452346/comments.rss
@@ -140,7 +140,7 @@ There are countless other possibilities for routes. Here are some more examples:
         'controller' => 'Feeds',
         'action' => 'status',
       ));
-    
+
     /*
      * Static pages
      */
@@ -152,7 +152,7 @@ There are countless other possibilities for routes. Here are some more examples:
         'controller' => 'Static',
         'action' => 'index',
       ));
-      
+
     /*
      * You don't like slashes?
      *   EditGallery:bahamas
@@ -166,7 +166,7 @@ There are countless other possibilities for routes. Here are some more examples:
       ->defaults(array(
         'controller' => 'Slideshow',
       ));
-      
+
     /*
      * Quick search
      */
@@ -180,43 +180,43 @@ There are countless other possibilities for routes. Here are some more examples:
 
 The `directory`, `controller` and `action` can be accessed from the [Request] as public properties like so:
 
-	// From within a controller:
-	$this->request->action();
-	$this->request->controller();
-	$this->request->directory();
-	
-	// Can be used anywhere:
-	Request::current()->action();
-	Request::current()->controller();
-	Request::current()->directory();
+    // From within a controller:
+    $this->request->action();
+    $this->request->controller();
+    $this->request->directory();
+
+    // Can be used anywhere:
+    Request::current()->action();
+    Request::current()->controller();
+    Request::current()->directory();
 
 All other keys specified in a route can be accessed via [Request::param()]:
 
-	// From within a controller:
-	$this->request->param('key_name');
-	
-	// Can be used anywhere:
-	Request::current()->param('key_name');
+    // From within a controller:
+    $this->request->param('key_name');
+
+    // Can be used anywhere:
+    Request::current()->param('key_name');
 
 The [Request::param] method takes an optional second argument to specify a default return value in case the key is not set by the route. If no arguments are given, all keys are returned as an associative array. In addition, `action`, `controller` and `directory` are not accessible via [Request::param()].
 
 For example, with the following route:
 
-	Route::set('ads','ad/<ad>(/<affiliate>)')
-	->defaults(array(
-		'controller' => 'ads',
-		'action'     => 'index',
-	));
-	
+    Route::set('ads','ad/<ad>(/<affiliate>)')
+    ->defaults(array(
+        'controller' => 'ads',
+        'action'     => 'index',
+    ));
+
 If a url matches the route, then `Controller_Ads::index()` will be called. You can access the parameters by using the `param()` method of the controller's [Request]. Remember to define a default value (via the second, optional parameter of [Request::param]) if you didn't in `->defaults()`.
 
-	class Controller_Ads extends Controller {
-		public function action_index()
-		{
-			$ad = $this->request->param('ad');
-			$affiliate = $this->request->param('affiliate',NULL);
-		}
-	
+    class Controller_Ads extends Controller {
+        public function action_index()
+        {
+            $ad = $this->request->param('ad');
+            $affiliate = $this->request->param('affiliate',NULL);
+        }
+
 
 ## Where should routes be defined?
 

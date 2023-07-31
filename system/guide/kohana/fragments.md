@@ -31,10 +31,10 @@ In this example we will calculate pi to 1000 places, and cache the result using 
 
 ~~~
 if ( ! Fragment::load('pi1000', Date::HOUR * 4))
-{   
+{
     // Change function nesting limit
     ini_set('xdebug.max_nesting_level',1000);
-    
+
     // Source: http://mgccl.com/2007/01/22/php-calculate-pi-revisited
     function bcfact($n)
     {
@@ -52,10 +52,10 @@ if ( ! Fragment::load('pi1000', Date::HOUR * 4))
         }
         return bcdiv(1,(bcmul(12,($num))),$precision);
     }
-    
+
     echo bcpi(1000);
-    
-	Fragment::save();
+
+    Fragment::save();
 }
 
 echo View::factory('profiler/stats');
@@ -74,26 +74,26 @@ $limit = 50;
 // Displayed feeds are cached for 30 seconds (default)
 if ( ! Fragment::load('rss:'.$feed)):
 
-	// Parse the feed
-	$items = Feed::parse($feed, $limit);
-	
-	foreach ($items as $item):
-	
-		// Convert $item to object
-		$item = (object) $item;
-		
-		echo HTML::anchor($item->link,$item->title);
-		
-		?>
-		<blockquote>
-			<p>author: <?php echo $item->creator ?></p>
-			<p>date: <?php echo $item->pubDate ?></p>
-		</blockquote>
-		<?php
-		
-	endforeach;
+    // Parse the feed
+    $items = Feed::parse($feed, $limit);
 
-	Fragment::save();
+    foreach ($items as $item):
+
+        // Convert $item to object
+        $item = (object) $item;
+
+        echo HTML::anchor($item->link,$item->title);
+
+        ?>
+        <blockquote>
+            <p>author: <?php echo $item->creator ?></p>
+            <p>date: <?php echo $item->pubDate ?></p>
+        </blockquote>
+        <?php
+
+    endforeach;
+
+    Fragment::save();
 
 endif;
 
@@ -110,24 +110,24 @@ You can nest fragments with different lifetimes to provide more specific control
 // Cache homepage for five minutes
 if ( ! Fragment::load('homepage', Date::MINUTE * 5)):
 
-	echo "<p>Home page stuff</p>";
-	
-	// Pretend like we are actually doing something :)
-	sleep(2);
-	
-	// Cache this every hour since it doesn't change as often
-	if ( ! Fragment::load('homepage-subfragment', Date::HOUR)):
-	
-		echo "<p>Home page special thingy</p>";
-		
-		// Pretend like this takes a long time
-		sleep(5);
-		
-	Fragment::save(); endif;
-	
-	echo "<p>More home page stuff</p>";
-	
-	Fragment::save();
+    echo "<p>Home page stuff</p>";
+
+    // Pretend like we are actually doing something :)
+    sleep(2);
+
+    // Cache this every hour since it doesn't change as often
+    if ( ! Fragment::load('homepage-subfragment', Date::HOUR)):
+
+        echo "<p>Home page special thingy</p>";
+
+        // Pretend like this takes a long time
+        sleep(5);
+
+    Fragment::save(); endif;
+
+    echo "<p>More home page stuff</p>";
+
+    Fragment::save();
 
 endif;
 

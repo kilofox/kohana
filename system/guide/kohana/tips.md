@@ -4,7 +4,7 @@ This is a collection of tips and common mistakes or errors you may encounter.
 
 ## Never edit the `system` folder!
 
-You should (almost) never edit the system folder. Any change you want to make to files in system and modules can be made via the [cascading filesystem](files) and [transparent extension](extension) and won't break when you try to update your Kohana version. 
+You should (almost) never edit the system folder. Any change you want to make to files in system and modules can be made via the [cascading filesystem](files) and [transparent extension](extension) and won't break when you try to update your Kohana version.
 
 ## Don't try and use one route for everything
 
@@ -22,8 +22,8 @@ Sometimes your application is sufficiently complex that you have many routes and
 
 If you get a Reflection_Exception when setting up your site, it is almost certainly because your [Kohana::init] 'base_url' setting is wrong. If your base url is correct something is probably wrong with your [routes](routing).
 
-	ReflectionException [ -1 ]: Class controller_<something> does not exist
-	// where <something> is part of the url you entered in your browser
+    ReflectionException [ -1 ]: Class controller_<something> does not exist
+    // where <something> is part of the url you entered in your browser
 
 ### Solution  {#reflection-exception-solution}
 
@@ -33,8 +33,8 @@ Set your [Kohana::init] 'base_url' to the correct setting. The base url should b
 
 There is a bug in php which can corrupt your session after a fatal error. A production server shouldn't have uncaught fatal errors, so this bug should only happen during development, when you do something stupid and cause a fatal error. On the next page load you will get a database connection error, then all subsequent page loads will display the following error:
 
-	ErrorException [ Notice ]: Undefined index: id
-	MODPATH/orm/classes/kohana/orm.php [ 1308 ]
+    ErrorException [ Notice ]: Undefined index: id
+    MODPATH/orm/classes/kohana/orm.php [ 1308 ]
 
 ### Solution   {#orm-session-sleep-solution}
 

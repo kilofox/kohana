@@ -13,25 +13,25 @@ Kohana provides a very simple way to display statistics about your application:
 
 You can easily add profiling to your own functions and code. This is done using the [Profiler::start()] function. The first parameter is the group, the second parameter is the name of the benchmark.
 
-	public function foobar($input)
-	{
-		// Be sure to only profile if it's enabled
-		if (Kohana::$profiling === TRUE)
-		{
-			// Start a new benchmark
-			$benchmark = Profiler::start('Your Category', __FUNCTION__);
-		}
+    public function foobar($input)
+    {
+        // Be sure to only profile if it's enabled
+        if (Kohana::$profiling === TRUE)
+        {
+            // Start a new benchmark
+            $benchmark = Profiler::start('Your Category', __FUNCTION__);
+        }
 
-		// Do some stuff
+        // Do some stuff
 
-		if (isset($benchmark))
-		{
-			// Stop the benchmark
-			Profiler::stop($benchmark);
-		}
+        if (isset($benchmark))
+        {
+            // Stop the benchmark
+            Profiler::stop($benchmark);
+        }
 
-		return $something;
-	}
+        return $something;
+    }
 
 ## How to read the profiling report
 

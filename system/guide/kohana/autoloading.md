@@ -44,29 +44,29 @@ You can easily gain access to other libraries if they include an autoloader. For
 
 Somewhere in `application/bootstrap.php`, copy the following code:
 
-	/**
-	 * Enable Zend Framework autoloading
-	 */
-	if ($path = Kohana::find_file('vendor', 'Zend/Loader'))
-	{
-	    ini_set('include_path',
-	    ini_get('include_path').PATH_SEPARATOR.dirname(dirname($path)));
-	
-	    require_once 'Zend/Loader/Autoloader.php';
-	    Zend_Loader_Autoloader::getInstance();
-	}
-	
+    /**
+     * Enable Zend Framework autoloading
+     */
+    if ($path = Kohana::find_file('vendor', 'Zend/Loader'))
+    {
+        ini_set('include_path',
+        ini_get('include_path').PATH_SEPARATOR.dirname(dirname($path)));
+
+        require_once 'Zend/Loader/Autoloader.php';
+        Zend_Loader_Autoloader::getInstance();
+    }
+
 #### Usage example
 
 You can now autoload any Zend Framework classes from inside your Kohana application.
 
-	if ($validate($this->request->post()))
-	{
-		$mailer = new Zend_Mail;
-		
-		$mailer->setBodyHtml($view)
-			->setFrom(Kohana::$config->load('site')->email_from)
-			->addTo($email)
-			->setSubject($message)
-			->send();
-	}
+    if ($validate($this->request->post()))
+    {
+        $mailer = new Zend_Mail;
+
+        $mailer->setBodyHtml($view)
+            ->setFrom(Kohana::$config->load('site')->email_from)
+            ->addTo($email)
+            ->setSubject($message)
+            ->send();
+    }

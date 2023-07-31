@@ -30,7 +30,7 @@ date_default_timezone_set('America/Sao_Paulo');
  * Apache's DocumentRoot configured to /var/www
  */
 Kohana::init(array(
-	'base_url' => '/kohana/',
+    'base_url' => '/kohana/',
 ));
 ~~~
 
@@ -39,10 +39,10 @@ Kohana::init(array(
    [!!] Do not forget to escape your dots (.) as these are regex patterns. These patterns should always fully match, as they are prepended with `^` and appended with `$`.
 ~~~
 return array(
-	'trusted_hosts' => array(
-		'example\.org',
-		'.*\.example\.org',
-	),
+    'trusted_hosts' => array(
+        'example\.org',
+        '.*\.example\.org',
+    ),
 );
 ~~~
 
