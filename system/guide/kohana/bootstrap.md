@@ -52,8 +52,7 @@ You can add conditional statements to make the bootstrap have different values b
 /**
  * Set the environment status by the domain.
  */
-if (strpos($_SERVER['HTTP_HOST'], 'kohanaframework.org') !== FALSE)
-{
+if (strpos($_SERVER['HTTP_HOST'], 'kohanaframework.org') !== FALSE) {
     // We are live!
     Kohana::$environment = Kohana::PRODUCTION;
 
@@ -66,9 +65,9 @@ if (strpos($_SERVER['HTTP_HOST'], 'kohanaframework.org') !== FALSE)
  ... [trimmed]
  */
 Kohana::init(array(
-    'base_url'   => Kohana::$environment === Kohana::PRODUCTION ? '/' : '/kohanaframework.org/',
-    'caching'    => Kohana::$environment === Kohana::PRODUCTION,
-    'profile'    => Kohana::$environment !== Kohana::PRODUCTION,
+    'base_url' => Kohana::$environment === Kohana::PRODUCTION ? '/' : '/kohanaframework.org/',
+    'caching' => Kohana::$environment === Kohana::PRODUCTION,
+    'profile' => Kohana::$environment !== Kohana::PRODUCTION,
     'index_file' => FALSE,
 ));
 
@@ -89,9 +88,9 @@ Each key in the array should be the name of the module, and the value is the pat
 // Example excerpt from bootstrap.php
 
 Kohana::modules(array(
-    'database'   => MODPATH.'database',
-    'orm'        => MODPATH.'orm',
-    'userguide'  => MODPATH.'userguide',
+    'database' => MODPATH . 'database',
+    'orm' => MODPATH . 'orm',
+    'userguide' => MODPATH . 'userguide',
 ));
 ~~~
 
@@ -106,6 +105,6 @@ Kohana::modules(array(
 Route::set('default', '(<controller>(/<action>(/<id>)))')
     ->defaults(array(
         'controller' => 'Welcome',
-        'action'     => 'index',
+        'action' => 'index',
     ));
 ~~~

@@ -45,7 +45,7 @@ Once view has been loaded, variables can be assigned to it using the [View::set]
     public function action_roadtrip()
     {
         $view = View::factory('user/roadtrip')
-            ->set('places', array('Rome', 'Paris', 'London', 'New York', 'Tokyo'));
+            ->set('places', array('Rome', 'Paris', 'London', 'New York', 'Tokyo'))
             ->bind('user', $this->user);
 
         // The view will have $places and $user variables
@@ -76,7 +76,8 @@ An application may have several view files that need access to the same variable
 
 If the application has three views that are rendered for the home page: `template`, `template/sidebar`, and `pages/home`. First, an abstract controller to create the template will be created:
 
-    abstract class Controller_Website extends Controller_Template {
+    abstract class Controller_Website extends Controller_Template
+    {
 
         public $page_title;
 
@@ -95,7 +96,8 @@ If the application has three views that are rendered for the home page: `templat
 
 Next, the home controller will extend `Controller_Website`:
 
-    class Controller_Home extends Controller_Website {
+    class Controller_Home extends Controller_Website
+    {
 
         public function action_index()
         {
@@ -137,13 +139,12 @@ You can also assign a variable of your parent view to be the child view from wit
     // In views/common/template.php:
 
     <html>
-    <head>
-        <title><?php echo $title></title>
-    </head>
-
-    <body>
-        <?php echo $body ?>
-    </body>
+        <head>
+            <title><?php echo $title ?></title>
+        </head>
+        <body>
+            <?php echo $body ?>
+        </body>
     </html>
 
 Of course, you can also load an entire [Request] within a view:

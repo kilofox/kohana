@@ -45,8 +45,8 @@ Kohana comes with a robust system for handing http errors. It includes exception
 
 To register error pages for these, using 404 as an example:
 
-    class HTTP_Exception_404 extends Kohana_HTTP_Exception_404 {
-
+    class HTTP_Exception_404 extends Kohana_HTTP_Exception_404
+    {
         public function get_response()
         {
             $response = Response::factory();
@@ -60,5 +60,4 @@ To register error pages for these, using 404 as an example:
 
             return $response;
         }
-
     }

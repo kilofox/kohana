@@ -60,28 +60,24 @@ To execute a request, use the `execute()` method on it. This will give you a [re
 The request client supports header callbacks - an array of callbacks that will be triggered when a specified header is included in the response from a server. Header callbacks provide a powerful way to deal with scenarios including authentication, rate limiting, redirects and other application-specific use cases:
 
     $request = Request::factory('http://example.com/user', array(
-        'header_callbacks' => array(
-            'Content-Encoding' =>
-                function (Request $request, Response $response, Request_Client $client)
-                {
+            'header_callbacks' => array(
+                'Content-Encoding' => function (Request $request, Response $response, Request_Client $client) {
                     // Uncompress the response
                     $response->body(GZIP::expand($response->body()));
                 },
-            'X-Rate-Limited' =>
-                function (Request $request, Response $response, Request_Client $client)
-                {
+                'X-Rate-Limited' => function (Request $request, Response $response, Request_Client $client) {
                     // Log the rate limit event
                     // And perhaps set a deadlock in cache to prevent further requests
                 },
-            'WWW-Authenticate' =>
-                function (Request $request, Response $response, Request_Client $client)
-                {
+                'WWW-Authenticate' => function (Request $request, Response $response, Request_Client $client) {
                     // Execute a request to refresh your OAuth token somehow
                     // Have the original request resent
                     return Request::factory($request->uri())
-                            ->query($request->query())
-                            ->headers('Authorization', 'token'.$token);
-                }));
+                        ->query($request->query())
+                        ->headers('Authorization', 'token' . $token);
+                }
+            )
+    ));
 
 Where multiple headers are present in the response, callbacks will be executed in sequence. Callbacks can be any valid PHP callback type and have three possible return types:
 
@@ -100,24 +96,21 @@ If your callback executes a new request itself and returns the response, it is r
 Arbitrary parameters can be passed to the callbacks through the [Request_Client::callback_params()] property:
 
     $request = Request::factory('http://example.com/foo', array(
-        'header_callbacks' => array(
-            'X-Custom-1' =>
-                function (Request $request, Response $response, Request_Client $client)
-                {
+            'header_callbacks' => array(
+                'X-Custom-1' => function (Request $request, Response $response, Request_Client $client) {
                     // Do something that needs an external parameter
-                    if ($client->callback_params('foo') == 'bar')
-                    {
+                    if ($client->callback_params('foo') == 'bar') {
                         // etc
                     }
                 },
+            ),
+            'callback_params' => array(
+                'foo' => 'bar'
             )
-        'callback_params' => array(
-            'foo' => 'bar'
-            )
-        ));
+    ));
 
     // later on
-    $request->client()->callback_params('foo',FALSE);
+    $request->client()->callback_params('foo', FALSE);
 
 As with nested requests, callback_params will automatically be passed to subrequests if the callback returns a new Request object. If the callback returns a Response object, it is responsible for passing on any relevant parameters.
 
@@ -125,7 +118,8 @@ As with nested requests, callback_params will automatically be passed to subrequ
 The request client ships with a standard callback to automatically follow redirects - [Request_Client::on_header_location()]. This will recursively follow redirects that are specified with a Location header and a status code in 201, 301, 302, 303, 307. This behaviour is disabled by default, but can be enabled by passing a set of options to the Request's constructor:
 
     $request = Request::factory('http://example.com/redirectme', array(
-        'follow' => TRUE));
+            'follow' => TRUE
+    ));
 
 [!!] If you define additional header callbacks of your own, you will need to include the 'Location' callback in your callbacks array.
 
@@ -145,6 +139,6 @@ You can easily alter this behaviour by configuring your own 'Location' header ca
 
 You can cache requests for fast execution by passing a cache instance in as the second parameter of factory:
 
-    $request = Request::factory('welcome', array('cache'=>Cache::instance()));
+    $request = Request::factory('welcome', array('cache' => Cache::instance()));
 
 TODO

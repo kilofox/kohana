@@ -14,8 +14,10 @@ To create a new class, simply place a file in the `classes/` directory at any po
 
     // classes/Foobar.php
 
-    class Foobar {
-        static function magic() {
+    class Foobar
+    {
+        static function magic()
+        {
             // Does something
         }
     }
@@ -26,8 +28,10 @@ We can also put classes in subdirectories.
 
     // classes/Professor/Baxter.php
 
-    class Professor_Baxter {
-        static function teach() {
+    class Professor_Baxter
+    {
+        static function teach()
+        {
             // Does something
         }
     }

@@ -11,9 +11,9 @@ As mentioned in the [Request Flow](flow) section, a request is handled by the [R
 If you look in `APPPATH/bootstrap.php` you will see the "default" route as follows:
 
     Route::set('default', '(<controller>(/<action>(/<id>)))')
-    ->defaults(array(
-        'controller' => 'Welcome',
-        'action'     => 'index',
+        ->defaults(array(
+            'controller' => 'Welcome',
+            'action' => 'index',
     ));
 
 [!!] The default route is simply provided as a sample, you can remove it and replace it with your own routes.
@@ -44,14 +44,13 @@ The Kohana route system uses [perl compatible regular expressions](http://perldo
 
 In this example, we have controllers in two directories, `admin` and `affiliate`. Because this route will only match urls that begin with `admin` or `affiliate`, the default route would still work for controllers in `classes/Controller`.
 
-    Route::set('sections', '<directory>(/<controller>(/<action>(/<id>)))',
-        array(
+    Route::set('sections', '<directory>(/<controller>(/<action>(/<id>)))', array(
             'directory' => '(admin|affiliate)'
         ))
         ->defaults(array(
             'controller' => 'Home',
-            'action'     => 'index',
-        ));
+            'action' => 'index',
+    ));
 
 You can also use a less restrictive regex to match unlimited parameters, or to ignore overflow in a route. In this example, the url `foobar/baz/and-anything/else_that/is-on-the/url` would be routed to `Controller_Foobar::action_baz()` and the `"stuff"` parameter would be `"and-anything/else_that/is-on-the/url"`. If you wanted to use this for unlimited parameters, you could [explode](http://php.net/manual/en/function.explode.php) it, or you just ignore the overflow.
 
@@ -59,7 +58,7 @@ You can also use a less restrictive regex to match unlimited parameters, or to i
         ->defaults(array(
             'controller' => 'Welcome',
             'action' => 'index',
-      ));
+    ));
 
 
 ### Default values
@@ -85,10 +84,8 @@ TODO: example of either using directory or controller where it isn't in the rout
 In 3.3, you can specify advanced routing schemes by using filter callbacks. When you need to match a route based on more than just the URI of a request, for example, based on the method request (GET/POST/DELETE), a filter will allow you to do so. These filters will receive the `Route` object being tested, the currently matched `$params` array, and the `Request` object as the three parameters. Here's a simple example:
 
     Route::set('save-form', 'save')
-        ->filter(function($route, $params, $request)
-        {
-            if ($request->method() !== HTTP_Request::POST)
-            {
+        ->filter(function ($route, $params, $request) {
+            if ($request->method() !== HTTP_Request::POST) {
                 return FALSE; // This route only matches POST requests
             }
         });
@@ -96,15 +93,14 @@ In 3.3, you can specify advanced routing schemes by using filter callbacks. When
 Filters can also replace or alter the array of parameters:
 
     Route::set('rest-api', 'api/<action>')
-        ->filter(function($route, $params, $request)
-        {
+        ->filter(function ($route, $params, $request) {
             // Prefix the method to the action name
-            $params['action'] = strtolower($request->method()).'_'.$params['action'];
+            $params['action'] = strtolower($request->method()) . '_' . $params['action'];
             return $params; // Returning an array will replace the parameters
         })
         ->defaults(array(
             'controller' => 'api',
-        ));
+    ));
 
 If you are using php 5.2, you can still use any valid callback for this behavior:
 
@@ -115,66 +111,62 @@ If you are using php 5.2, you can still use any valid callback for this behavior
 
 There are countless other possibilities for routes. Here are some more examples:
 
-    /*
+    /**
      * Authentication shortcuts
      */
-    Route::set('auth', '<action>',
-      array(
-        'action' => '(login|logout)'
-      ))
-      ->defaults(array(
-        'controller' => 'Auth'
-      ));
+    Route::set('auth', '<action>', array(
+            'action' => '(login|logout)'
+        ))
+        ->defaults(array(
+            'controller' => 'Auth'
+    ));
 
-    /*
+    /**
      * Multi-format feeds
      *   452346/comments.rss
      *   5373.json
      */
-    Route::set('feeds', '<user_id>(/<action>).<format>',
-      array(
-        'user_id' => '\d+',
-        'format' => '(rss|atom|json)',
-      ))
-      ->defaults(array(
-        'controller' => 'Feeds',
-        'action' => 'status',
-      ));
+    Route::set('feeds', '<user_id>(/<action>).<format>', array(
+            'user_id' => '\d+',
+            'format' => '(rss|atom|json)',
+        ))
+        ->defaults(array(
+            'controller' => 'Feeds',
+            'action' => 'status',
+    ));
 
-    /*
+    /**
      * Static pages
      */
-    Route::set('static', '<path>.html',
-      array(
-        'path' => '[a-zA-Z0-9_/]+',
-      ))
-      ->defaults(array(
-        'controller' => 'Static',
-        'action' => 'index',
-      ));
+    Route::set('static', '<path>.html', array(
+            'path' => '[a-zA-Z0-9_/]+',
+        ))
+        ->defaults(array(
+            'controller' => 'Static',
+            'action' => 'index',
+    ));
 
-    /*
+    /**
      * You don't like slashes?
      *   EditGallery:bahamas
      *   Watch:wakeboarding
      */
-    Route::set('gallery', '<action>(<controller>):<id>',
-      array(
-        'controller' => '[A-Z][a-z]++',
-        'action'     => '[A-Z][a-z]++',
-      ))
-      ->defaults(array(
-        'controller' => 'Slideshow',
-      ));
+    Route::set('gallery', '<action>(<controller>):<id>', array(
+            'controller' => '[A-Z][a-z]++',
+            'action' => '[A-Z][a-z]++',
+        ))
+        ->defaults(array(
+            'controller' => 'Slideshow',
+    ));
 
-    /*
+    /**
      * Quick search
      */
     Route::set('search', ':<query>', array('query' => '.*'))
-      ->defaults(array(
-        'controller' => 'Search',
-        'action' => 'index',
-      ));
+        ->defaults(array(
+            'controller' => 'Search',
+            'action' => 'index',
+    ));
 
 ## Request parameters
 
@@ -202,19 +194,20 @@ The [Request::param] method takes an optional second argument to specify a defau
 
 For example, with the following route:
 
-    Route::set('ads','ad/<ad>(/<affiliate>)')
-    ->defaults(array(
-        'controller' => 'ads',
-        'action'     => 'index',
+    Route::set('ads', 'ad/<ad>(/<affiliate>)')
+        ->defaults(array(
+            'controller' => 'ads',
+            'action' => 'index',
     ));
 
 If a url matches the route, then `Controller_Ads::index()` will be called. You can access the parameters by using the `param()` method of the controller's [Request]. Remember to define a default value (via the second, optional parameter of [Request::param]) if you didn't in `->defaults()`.
 
-    class Controller_Ads extends Controller {
+    class Controller_Ads extends Controller
+    {
         public function action_index()
         {
             $ad = $this->request->param('ad');
-            $affiliate = $this->request->param('affiliate',NULL);
+            $affiliate = $this->request->param('affiliate', NULL);
         }
 
 
@@ -230,14 +223,14 @@ TODO: talk about how routes are compiled
 
 Along with Kohana's powerful routing capabilities are included some methods for generating URLs for your routes' uris. You can always specify your uris as a string using [URL::site] to create a full URL like so:
 
-    URL::site('admin/edit/user/'.$user_id);
+    URL::site('admin/edit/user/' . $user_id);
 
 However, Kohana also provides a method to generate the uri from the route's definition. This is extremely useful if your routing could ever change since it would relieve you from having to go back through your code and change everywhere that you specified a uri as a string. Here is an example of dynamic generation that corresponds to the `feeds` route example from above:
 
     Route::get('feeds')->uri(array(
-      'user_id' => $user_id,
-      'action' => 'comments',
-      'format' => 'rss'
+        'user_id' => $user_id,
+        'action' => 'comments',
+        'format' => 'rss'
     ));
 
 Let's say you decided later to make that route definition more verbose by changing it to `feeds/<user_id>(/<action>).<format>`. If you wrote your code with the above uri generation method you wouldn't have to change a single line! When a part of the uri is enclosed in parentheses and specifies a key for which there in no value provided for uri generation and no default value specified in the route, then that part will be removed from the uri. An example of this is the `(/<id>)` part of the default route; this will not be included in the generated uri if an id is not provided.

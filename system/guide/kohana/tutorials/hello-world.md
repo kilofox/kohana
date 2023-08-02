@@ -86,7 +86,6 @@ Let's go and make the view file `application/views/site.php` for our message:
             <style type="text/css">
                 body {font-family: Georgia;}
                 h1 {font-style: italic;}
-
             </style>
         </head>
         <body>

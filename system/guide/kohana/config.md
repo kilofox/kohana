@@ -184,8 +184,7 @@ To get around this you can attach a separate config file reader which loads its 
 
     Kohana::$config->attach(new Config_Database);
 
-    if (Kohana::$environment === Kohana::TESTING)
-    {
+    if (Kohana::$environment === Kohana::TESTING) {
         Kohana::$config->attach(new Config_File('config/testing'));
     }
 

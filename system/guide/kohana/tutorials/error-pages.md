@@ -17,8 +17,8 @@ For each [HTTP_Exception] class we can individually override the generation of t
 
 For example, to handle 404 pages we can do this in APPPATH/classes/HTTP/Exception/404.php:
 
-    class HTTP_Exception_404 extends Kohana_HTTP_Exception_404 {
-
+    class HTTP_Exception_404 extends Kohana_HTTP_Exception_404
+    {
         /**
          * Generate a Response for the 404 Exception.
          *
@@ -43,8 +43,8 @@ For example, to handle 404 pages we can do this in APPPATH/classes/HTTP/Exceptio
 
 Another example, this time to handle 401 Unauthorized errors (aka "Not Logged In") we can do this in APPPATH/classes/HTTP/Exception/401.php:
 
-    class HTTP_Exception_401 extends Kohana_HTTP_Exception_401 {
-
+    class HTTP_Exception_401 extends Kohana_HTTP_Exception_401
+    {
         /**
          * Generate a Response for the 401 Exception.
          *
@@ -64,8 +64,8 @@ Another example, this time to handle 401 Unauthorized errors (aka "Not Logged In
 
 Finally, to override the default [Response] for all [HTTP_Exception]'s without a more specific override we can do this in APPPATH/classes/HTTP/Exception.php:
 
-    class HTTP_Exception extends Kohana_HTTP_Exception {
-
+    class HTTP_Exception extends Kohana_HTTP_Exception
+    {
         /**
          * Generate a Response for all Exceptions without a more specific override
          *
@@ -79,13 +79,10 @@ Finally, to override the default [Response] for all [HTTP_Exception]'s without a
             // Lets log the Exception, Just in case it's important!
             Kohana_Exception::log($this);
 
-            if (Kohana::$environment >= Kohana::DEVELOPMENT)
-            {
+            if (Kohana::$environment >= Kohana::DEVELOPMENT) {
                 // Show the normal Kohana error page.
                 return parent::get_response();
-            }
-            else
-            {
+            } else {
                 // Generate a nicer looking "Oops" page.
                 $view = View::factory('errors/default');
 

@@ -16,18 +16,18 @@ In order to function, a controller must do the following:
 Some examples of controller names and file locations:
 
     // classes/Controller/Foobar.php
-    class Controller_Foobar extends Controller {
+    class Controller_Foobar extends Controller
 
     // classes/Controller/Admin.php
-    class Controller_Admin extends Controller {
+    class Controller_Admin extends Controller
 
 Controllers can be in sub-folders:
 
     // classes/Controller/Baz/Bar.php
-    class Controller_Baz_Bar extends Controller {
+    class Controller_Baz_Bar extends Controller
 
     // classes/Controller/Product/Category.php
-    class Controller_Product_Category extends Controller {
+    class Controller_Product_Category extends Controller
 
 [!!] Note that controllers in sub-folders can not be called by the default route, you will need to define a route that has a [directory](routing#directory) param or sets a default value for directory.
 
@@ -44,11 +44,13 @@ Controllers can extend other controllers.
 You can also have a controller extend another controller to share common things, such as requiring you to be logged in to use all of those controllers.
 
     // classes/Controller/Admin.php
-    class Controller_Admin extends Controller {
+    class Controller_Admin extends Controller
+    {
         // This controller would have a before() that checks if the user is logged in
 
     // classes/Controller/Admin/Plugins.php
-    class Controller_Admin_Plugins extends Controller_Admin {
+    class Controller_Admin_Plugins extends Controller_Admin
+    {
         // Because this controller extends Controller_Admin, it would have the same logged in check
 
 ## $this->request
@@ -98,7 +100,7 @@ If that parameter is not set it will be returned as NULL. You can provide a seco
     public function action_foobar()
     {
         // $id will be false if it was not supplied in the url
-        $id = $this->request->param('user',FALSE);
+        $id = $this->request->param('user', FALSE);
 
 ### Examples
 
@@ -108,13 +110,12 @@ A view action for a product page.
     {
         $product = new Model_Product($this->request->param('id'));
 
-        if ( ! $product->loaded())
-        {
+        if (!$product->loaded()) {
             throw HTTP_Exception::factory(404, 'Product not found!');
         }
 
         $this->response->body(View::factory('product/view')
-            ->set('product', $product));
+                ->set('product', $product));
     }
 
 A user login action.
@@ -123,11 +124,9 @@ A user login action.
     {
         $view = View::factory('user/login');
 
-        if ($this->request->post())
-        {
+        if ($this->request->post()) {
             // Try to login
-            if (Auth::instance()->login($this->request->post('username'), $this->request->post('password')))
-            {
+            if (Auth::instance()->login($this->request->post('username'), $this->request->post('password'))) {
                 $this->redirect('home', 303);
             }
 
@@ -147,19 +146,19 @@ You can check what action has been requested (via `$this->request->action`) and 
 
     // Checking auth/login in before, and redirecting if necessary:
 
-    Controller_Admin extends Controller {
-
+    Controller_Admin extends Controller
+    {
         public function before()
         {
             // If this user doesn't have the admin role, and is not trying to login, redirect to login
-            if ( ! Auth::instance()->logged_in('admin') AND $this->request->action !== 'login')
-            {
+            if (!Auth::instance()->logged_in('admin') AND $this->request->action !== 'login') {
                 $this->redirect('admin/login', 302);
             }
         }
 
-        public function action_login() {
-            ...
+        public function action_login()
+        {
+            // ...
 
 ### Custom __construct() function
 

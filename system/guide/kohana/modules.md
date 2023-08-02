@@ -15,17 +15,17 @@ Andrew Hutchings has created [kohana-modules](http://www.kohana-modules.com) whi
 Modules are enabled by calling [Kohana::modules] and passing an array of `'name' => 'path'`. The name isn't important, but the path obviously is. A module's path does not have to be in `MODPATH`, but usually is. You can only call [Kohana::modules] once.
 
     Kohana::modules(array(
-        'auth'       => MODPATH.'auth',       // Basic authentication
-        'cache'      => MODPATH.'cache',      // Caching with multiple backends
-        'codebench'  => MODPATH.'codebench',  // Benchmarking tool
-        'database'   => MODPATH.'database',   // Database access
-        'image'      => MODPATH.'image',      // Image manipulation
-        'orm'        => MODPATH.'orm',        // Object Relationship Mapping
-        'oauth'      => MODPATH.'oauth',      // OAuth authentication
-        'pagination' => MODPATH.'pagination', // Paging of results
-        'unittest'   => MODPATH.'unittest',   // Unit testing
-        'userguide'  => MODPATH.'userguide',  // User guide and API documentation
-        ));
+        'auth' => MODPATH . 'auth', // Basic authentication
+        'cache' => MODPATH . 'cache', // Caching with multiple backends
+        'codebench' => MODPATH . 'codebench', // Benchmarking tool
+        'database' => MODPATH . 'database', // Database access
+        'image' => MODPATH . 'image', // Image manipulation
+        'orm' => MODPATH . 'orm', // Object Relationship Mapping
+        'oauth' => MODPATH . 'oauth', // OAuth authentication
+        'pagination' => MODPATH . 'pagination', // Paging of results
+        'unittest' => MODPATH . 'unittest', // Unit testing
+        'userguide' => MODPATH . 'userguide', // User guide and API documentation
+    ));
 
 ## Init.php
 

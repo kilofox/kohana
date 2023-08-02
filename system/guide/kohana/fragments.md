@@ -18,8 +18,7 @@ You can force the deletion of a Fragment using [Fragment::delete()], or specify 
 
 ~~~
 // Cache for 5 minutes, and cache each language
-if ( ! Fragment::load('foobar', Date::MINUTE * 5, true))
-{
+if (!Fragment::load('foobar', Date::MINUTE * 5, true)) {
     // Anything that is echo'ed here will be saved
     Fragment::save();
 }
@@ -30,27 +29,26 @@ if ( ! Fragment::load('foobar', Date::MINUTE * 5, true))
 In this example we will calculate pi to 1000 places, and cache the result using a fragment. The first time you run this it will probably take a few seconds, but subsequent loads will be much faster, until the fragment lifetime runs out.
 
 ~~~
-if ( ! Fragment::load('pi1000', Date::HOUR * 4))
-{
+if (!Fragment::load('pi1000', Date::HOUR * 4)) {
     // Change function nesting limit
-    ini_set('xdebug.max_nesting_level',1000);
-
+    ini_set('xdebug.max_nesting_level', 1000);
     // Source: http://mgccl.com/2007/01/22/php-calculate-pi-revisited
     function bcfact($n)
     {
-      return ($n == 0 || $n== 1) ? 1 : bcmul($n,bcfact($n-1));
+        return ($n == 0 || $n == 1) ? 1 : bcmul($n, bcfact($n - 1));
     }
+
     function bcpi($precision)
     {
-        $num = 0;$k = 0;
-        bcscale($precision+3);
-        $limit = ($precision+3)/14;
-        while($k < $limit)
-        {
-            $num = bcadd($num, bcdiv(bcmul(bcadd('13591409',bcmul('545140134', $k)),bcmul(bcpow(-1, $k), bcfact(6*$k))),bcmul(bcmul(bcpow('640320',3*$k+1),bcsqrt('640320')), bcmul(bcfact(3*$k), bcpow(bcfact($k),3)))));
+        $num = 0;
+        $k = 0;
+        bcscale($precision + 3);
+        $limit = ($precision + 3) / 14;
+        while ($k < $limit) {
+            $num = bcadd($num, bcdiv(bcmul(bcadd('13591409', bcmul('545140134', $k)), bcmul(bcpow(-1, $k), bcfact(6 * $k))), bcmul(bcmul(bcpow('640320', 3 * $k + 1), bcsqrt('640320')), bcmul(bcfact(3 * $k), bcpow(bcfact($k), 3)))));
             ++$k;
         }
-        return bcdiv(1,(bcmul(12,($num))),$precision);
+        return bcdiv(1, (bcmul(12, ($num))), $precision);
     }
 
     echo bcpi(1000);
@@ -72,29 +70,24 @@ $feed = "http://en.wikipedia.org/w/index.php?title=Special:RecentChanges&feed=rs
 $limit = 50;
 
 // Displayed feeds are cached for 30 seconds (default)
-if ( ! Fragment::load('rss:'.$feed)):
-
+if (!Fragment::load('rss:' . $feed)):
     // Parse the feed
     $items = Feed::parse($feed, $limit);
 
     foreach ($items as $item):
-
         // Convert $item to object
         $item = (object) $item;
 
-        echo HTML::anchor($item->link,$item->title);
-
+        echo HTML::anchor($item->link, $item->title);
         ?>
         <blockquote>
             <p>author: <?php echo $item->creator ?></p>
             <p>date: <?php echo $item->pubDate ?></p>
         </blockquote>
         <?php
-
     endforeach;
 
     Fragment::save();
-
 endif;
 
 echo View::factory('profiler/stats');
@@ -108,27 +101,25 @@ You can nest fragments with different lifetimes to provide more specific control
 
 ~~~
 // Cache homepage for five minutes
-if ( ! Fragment::load('homepage', Date::MINUTE * 5)):
-
+if (!Fragment::load('homepage', Date::MINUTE * 5)):
     echo "<p>Home page stuff</p>";
 
     // Pretend like we are actually doing something :)
     sleep(2);
 
     // Cache this every hour since it doesn't change as often
-    if ( ! Fragment::load('homepage-subfragment', Date::HOUR)):
-
+    if (!Fragment::load('homepage-subfragment', Date::HOUR)):
         echo "<p>Home page special thingy</p>";
 
         // Pretend like this takes a long time
         sleep(5);
 
-    Fragment::save(); endif;
+        Fragment::save();
+    endif;
 
     echo "<p>More home page stuff</p>";
 
     Fragment::save();
-
 endif;
 
 echo View::factory('profiler/stats');

@@ -12,7 +12,7 @@ To keep your URLs clean, you will probably want to be able to access your app wi
 The first thing you will need to change is the `index_file` setting of [Kohana::init] to false:
 
     Kohana::init(array(
-        'base_url'   => '/myapp/',
+        'base_url' => '/myapp/',
         'index_file' => FALSE,
     ));
 

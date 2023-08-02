@@ -30,6 +30,7 @@ For example, if we wanted to change or add to an entry in the inflector configur
         'irregular' => array(
             'die' => 'dice', // does not exist in default config file
             'mouse' => 'mouses', // overrides 'mouse' => 'mice' in the default config file
+        )
     );
 
 
@@ -69,7 +70,7 @@ Let's say we want an archive of versions of some software. We could use config f
             'released' => '10/15/2009',
             'issues' => 'link/to/bug/tracker',
         ),
-        /// ... etc ...
+        // ... etc ...
     );
 
 You could then do the following:
@@ -78,7 +79,6 @@ You could then do the following:
     $view->versions = Kohana::$config->load('versions');
 
     // In your view:
-    foreach ($versions as $version)
-    {
+    foreach ($versions as $version) {
         // echo some html to display each version
     }

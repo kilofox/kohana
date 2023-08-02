@@ -77,19 +77,15 @@ To validate multiple fields together, you can do something like this:
         // If more than 1 field is set, bail.
         $matched = 0;
 
-        foreach ($fields as $field)
-        {
-            if (isset($validation[$field]))
-            {
+        foreach ($fields as $field) {
+            if (isset($validation[$field])) {
                 $matched++;
             }
         }
 
-        if ($matched > 0)
-        {
+        if ($matched > 0) {
             // Add the error to all concerned fields
-            foreach ($fields as $field)
-            {
+            foreach ($fields as $field) {
                 $validation->error($field, 'only_one');
             }
         }
@@ -121,8 +117,7 @@ Rules added to empty fields will run, but returning `FALSE` will not automatical
 
     public function the_rule($validation, $field)
     {
-        if (something went wrong)
-        {
+        if (something went wrong) {
             $validation->error($field, 'the_rule');
         }
     }
@@ -162,11 +157,11 @@ The method `User_Model::unique_username()` would be defined similar to:
     public static function unique_username($username)
     {
         // Check if the username already exists in the database
-        return ! DB::select(array(DB::expr('COUNT(username)'), 'total'))
-            ->from('users')
-            ->where('username', '=', $username)
-            ->execute()
-            ->get('total');
+        return !DB::select(array(DB::expr('COUNT(username)'), 'total'))
+                ->from('users')
+                ->where('username', '=', $username)
+                ->execute()
+                ->get('total');
     }
 
 [!!] Custom rules allow many additional checks to be reused for multiple purposes. These methods will almost always exist in a model, but may be defined in any class.
@@ -207,7 +202,8 @@ First, we need a [View] that contains the HTML form, which will be placed in `ap
 
 Next, we need a controller and action to process the registration, which will be placed in `application/classes/Controller/User.php`:
 
-    class Controller_User extends Controller {
+    class Controller_User extends Controller
+    {
 
         public function action_register()
         {
@@ -217,16 +213,13 @@ Next, we need a controller and action to process the registration, which will be
                 ->rule('username', 'not_empty')
                 ->rule('username', 'regex', array(':value', '/^[a-z_.]++$/iD'))
                 ->rule('username', array($user, 'unique_username'))
-
                 ->rule('password', 'not_empty')
                 ->rule('password', 'min_length', array(':value', 6))
                 ->rule('confirm', 'matches', array(':validation', ':field', 'password'))
-
                 ->rule('use_ssl', 'not_empty')
                 ->rule('use_ssl', 'in_array', array(':value', array('yes', 'no')));
 
-            if ($validation->check())
-            {
+            if ($validation->check()) {
                 // Data has been validated, register the user
                 $user->register($this->request->post());
 
@@ -247,7 +240,8 @@ Next, we need a controller and action to process the registration, which will be
 
 We will also need a user model, which will be placed in `application/classes/Model/User.php`:
 
-    class Model_User extends Model {
+    class Model_User extends Model
+    {
 
         public function register($array)
         {

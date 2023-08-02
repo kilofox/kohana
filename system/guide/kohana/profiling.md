@@ -16,16 +16,14 @@ You can easily add profiling to your own functions and code. This is done using 
     public function foobar($input)
     {
         // Be sure to only profile if it's enabled
-        if (Kohana::$profiling === TRUE)
-        {
+        if (Kohana::$profiling === TRUE) {
             // Start a new benchmark
             $benchmark = Profiler::start('Your Category', __FUNCTION__);
         }
 
         // Do some stuff
 
-        if (isset($benchmark))
-        {
+        if (isset($benchmark)) {
             // Stop the benchmark
             Profiler::stop($benchmark);
         }

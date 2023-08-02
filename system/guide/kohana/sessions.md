@@ -106,9 +106,9 @@ You can apply configuration settings to each of the session adapters by creating
             'group' => 'default',
             'table' => 'table_name',
             'columns' => array(
-                'session_id'  => 'session_id',
+                'session_id' => 'session_id',
                 'last_active' => 'last_active',
-                'contents'    => 'contents'
+                'contents' => 'contents'
             ),
             'gc' => 500,
         ),
