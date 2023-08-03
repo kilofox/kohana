@@ -79,12 +79,12 @@ Don't put any characters inside empty brackets.
 
 Arrays may be single line or multi-line.
 
-    array('a' => 'b', 'c' => 'd')
+    ['a' => 'b', 'c' => 'd']
 
-    array(
+    [
         'a' => 'b',
         'c' => 'd',
-    )
+    ]
 
 ##### Opening Parenthesis
 

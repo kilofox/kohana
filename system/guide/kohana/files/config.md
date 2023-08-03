@@ -4,12 +4,12 @@ Configuration files are used to store any kind of configuration needed for a mod
 
     <?php defined('SYSPATH') OR die('No direct script access.');
 
-    return array(
+    return [
         'setting' => 'value',
-        'options' => array(
+        'options' => [
             'foo' => 'bar',
-        ),
-    );
+        ],
+    ];
 
 If the above configuration file was called `myconf.php`, you could access it using:
 
@@ -26,12 +26,12 @@ For example, if we wanted to change or add to an entry in the inflector configur
 
     <?php defined('SYSPATH') OR die('No direct script access.');
 
-    return array(
-        'irregular' => array(
+    return [
+        'irregular' => [
             'die' => 'dice', // does not exist in default config file
             'mouse' => 'mouses', // overrides 'mouse' => 'mice' in the default config file
-        )
-    );
+        ]
+    ];
 
 
 ## Creating your own config files
@@ -42,10 +42,10 @@ Let's say we want a config file to store and easily change things like the title
 
     <?php defined('SYSPATH') OR die('No direct script access.');
 
-    return array(
+    return [
         'title' => 'Our Shiny Website',
         'analytics' => FALSE, // analytics code goes here, set to FALSE to disable
-    );
+    ];
 
 We could now call `Kohana::$config->load('site.title')` to get the site name, and `Kohana::$config->load('site.analytics')` to get the analytics code.
 
@@ -55,23 +55,23 @@ Let's say we want an archive of versions of some software. We could use config f
 
     <?php defined('SYSPATH') OR die('No direct script access.');
 
-    return array(
-        '1.0.0' => array(
+    return [
+        '1.0.0' => [
             'codename' => 'Frog',
             'download' => 'files/ourapp-1.0.0.tar.gz',
             'documentation' => 'docs/1.0.0',
             'released' => '06/05/2009',
             'issues' => 'link/to/bug/tracker',
-        ),
-        '1.1.0' => array(
+        ],
+        '1.1.0' => [
             'codename' => 'Lizard',
             'download' => 'files/ourapp-1.1.0.tar.gz',
             'documentation' => 'docs/1.1.0',
             'released' => '10/15/2009',
             'issues' => 'link/to/bug/tracker',
-        ),
+        ],
         // ... etc ...
-    );
+    ];
 
 You could then do the following:
 

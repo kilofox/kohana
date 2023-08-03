@@ -19,7 +19,7 @@ Click any of the links to toggle the display of additional information:
 
 If you do not want to use the internal error handling, you can disable it (highly discouraged) when calling [Kohana::init]:
 
-    Kohana::init(array('errors' => FALSE));
+    Kohana::init(['errors' => FALSE]);
 
 ## Error Reporting
 

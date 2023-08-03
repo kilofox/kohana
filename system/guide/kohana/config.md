@@ -56,13 +56,13 @@ In addition to the methods described above you can also access config values usi
 from the config group to the value you want:
 
     // Config file: database.php
-    return array(
-        'default' => array(
-            'connection' => array(
+    return [
+        'default' => [
+            'connection' => [
                 'hostname' => 'localhost'
-            )
-        )
-    );
+            ]
+        ]
+    ];
 
     // Code which needs hostname:
     $hostname = Kohana::$config->load('database.default.connection.hostname');

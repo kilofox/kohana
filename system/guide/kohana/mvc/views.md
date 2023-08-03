@@ -45,7 +45,7 @@ Once view has been loaded, variables can be assigned to it using the [View::set]
     public function action_roadtrip()
     {
         $view = View::factory('user/roadtrip')
-            ->set('places', array('Rome', 'Paris', 'London', 'New York', 'Tokyo'))
+            ->set('places', ['Rome', 'Paris', 'London', 'New York', 'Tokyo'])
             ->bind('user', $this->user);
 
         // The view will have $places and $user variables
@@ -60,7 +60,7 @@ You can also assign variables directly to the View object. This is identical to 
     {
         $view = View::factory('user/roadtrip');
 
-        $view->places = array('Rome', 'Paris', 'London', 'New York', 'Tokyo');
+        $view->places = ['Rome', 'Paris', 'London', 'New York', 'Tokyo'];
         $view->user = $this->user;
 
         // The view will have $places and $user variables

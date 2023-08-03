@@ -11,10 +11,10 @@ To keep your URLs clean, you will probably want to be able to access your app wi
 
 The first thing you will need to change is the `index_file` setting of [Kohana::init] to false:
 
-    Kohana::init(array(
+    Kohana::init([
         'base_url' => '/myapp/',
         'index_file' => FALSE,
-    ));
+    ]);
 
 This change will make it so all of the links generated using [URL::site], [URL::base], and [HTML::anchor] will no longer include "index.php" in the URL. All generated links will start with `/myapp/` instead of `/myapp/index.php/`.
 

@@ -89,30 +89,30 @@ You can apply configuration settings to each of the session adapters by creating
 
 [!!] As with cookies, a "lifetime" setting of "0" means that the session will expire when the browser is closed.
 
-    return array(
-        'native' => array(
+    return [
+        'native' => [
             'name' => 'session_name',
             'lifetime' => 43200,
-        ),
-        'cookie' => array(
+        ],
+        'cookie' => [
             'name' => 'cookie_name',
             'encrypted' => TRUE,
             'lifetime' => 43200,
-        ),
-        'database' => array(
+        ],
+        'database' => [
             'name' => 'cookie_name',
             'encrypted' => TRUE,
             'lifetime' => 43200,
             'group' => 'default',
             'table' => 'table_name',
-            'columns' => array(
+            'columns' => [
                 'session_id' => 'session_id',
                 'last_active' => 'last_active',
                 'contents' => 'contents'
-            ),
+            ],
             'gc' => 500,
-        ),
-    );
+        ],
+    ];
 
 #### Native Adapter
 

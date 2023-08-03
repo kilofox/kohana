@@ -18,7 +18,7 @@ date_default_timezone_set('America/Chicago');
 setlocale(LC_ALL, 'en_US.utf-8');
 
 // Enable the Kohana auto-loader.
-spl_autoload_register(array('Kohana', 'auto_load'));
+spl_autoload_register(['Kohana', 'auto_load']);
 
 // Enable the Kohana auto-loader for unserialization.
 ini_set('unserialize_callback_func', 'spl_autoload_call');
@@ -31,10 +31,10 @@ Kohana is then initialized by calling [Kohana::init], and the log and [config](f
 ~~~
 // Sample excerpt from bootstrap.php with comments trimmed down
 
-Kohana::init(array('
-    base_url' => '/kohana/',
-    index_file => false,
-));
+Kohana::init([
+    'base_url' => '/kohana/',
+    'index_file' => false,
+]);
 
 // Attach the file writer to logging. Multiple writers are supported.
 Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
@@ -64,12 +64,12 @@ if (strpos($_SERVER['HTTP_HOST'], 'kohanaframework.org') !== FALSE) {
  * Initialize Kohana, setting the default options.
  ... [trimmed]
  */
-Kohana::init(array(
+Kohana::init([
     'base_url' => Kohana::$environment === Kohana::PRODUCTION ? '/' : '/kohanaframework.org/',
     'caching' => Kohana::$environment === Kohana::PRODUCTION,
     'profile' => Kohana::$environment !== Kohana::PRODUCTION,
     'index_file' => FALSE,
-));
+]);
 
 ... [trimmed]
 
@@ -87,11 +87,11 @@ Each key in the array should be the name of the module, and the value is the pat
 ~~~
 // Example excerpt from bootstrap.php
 
-Kohana::modules(array(
+Kohana::modules([
     'database' => MODPATH . 'database',
     'orm' => MODPATH . 'orm',
     'userguide' => MODPATH . 'userguide',
-));
+]);
 ~~~
 
 ## Routes
@@ -103,8 +103,8 @@ Kohana::modules(array(
 ~~~
 // The default route that comes with Kohana 3
 Route::set('default', '(<controller>(/<action>(/<id>)))')
-    ->defaults(array(
+    ->defaults([
         'controller' => 'Welcome',
         'action' => 'index',
-    ));
+    ]);
 ~~~

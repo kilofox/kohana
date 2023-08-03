@@ -29,21 +29,21 @@ date_default_timezone_set('America/Sao_Paulo');
  * Example of kohana's installation at /var/www/kohana and
  * Apache's DocumentRoot configured to /var/www
  */
-Kohana::init(array(
+Kohana::init([
     'base_url' => '/kohana/',
-));
+]);
 ~~~
 
  - List your trusted hosts. Open `application/config/url.php` and add regex patterns of the hosts you expect your application to be accessible from.
 
    [!!] Do not forget to escape your dots (.) as these are regex patterns. These patterns should always fully match, as they are prepended with `^` and appended with `$`.
 ~~~
-return array(
-    'trusted_hosts' => array(
+return [
+    'trusted_hosts' => [
         'example\.org',
         '.*\.example\.org',
-    ),
-);
+    ],
+];
 ~~~
 
  - Define a salt for the `Cookie` class.

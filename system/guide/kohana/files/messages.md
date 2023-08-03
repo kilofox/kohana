@@ -12,9 +12,9 @@ This will look in the `messages/forms.php` file for the `foobar` key:
 
     <?php
 
-    return array(
+    return [
         'foobar' => 'Hello, world!',
-    );
+    ];
 
 You can also look in subfolders and sub-keys:
 
@@ -24,11 +24,11 @@ This will look in the `messages/forms/contact.php` for the `[foobar][bar]` key:
 
     <?php
 
-    return array(
-        'foobar' => array(
+    return [
+        'foobar' => [
             'bar' => 'Hello, world!',
-        ),
-    );
+        ],
+    ];
 
 ## Notes
 

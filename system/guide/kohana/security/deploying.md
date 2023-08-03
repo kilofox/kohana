@@ -18,9 +18,9 @@ There are a few things you'll want to do with your application before moving int
         /**
          * Initialise Kohana based on environment
          */
-        Kohana::init(array(
+        Kohana::init([
             'base_url' => '/',
             'index_file' => FALSE,
             'profile' => Kohana::$environment !== Kohana::PRODUCTION,
             'caching' => Kohana::$environment === Kohana::PRODUCTION,
-        ));
+        ]);

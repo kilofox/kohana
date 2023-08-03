@@ -52,25 +52,25 @@ Rule name                 | Function
 
 All validation rules are defined as a field name, a method, a function (using the [PHP callback](http://php.net/callback) syntax) or [closure](http://php.net/manual/functions.anonymous.php), and an array of parameters:
 
-    $object->rule($field, $callback, array($parameter1, $parameter2));
+    $object->rule($field, $callback, [$parameter1, $parameter2]);
 
 If no parameters are specified, the field value will be passed to the callback. The following two rules are equivalent:
 
     $object->rule($field, 'not_empty');
-    $object->rule($field, 'not_empty', array(':value'));
+    $object->rule($field, 'not_empty', [':value']);
 
 Rules defined in the [Valid] class can be added by using the method name alone. The following three rules are equivalent:
 
     $object->rule('number', 'phone');
-    $object->rule('number', array('Valid', 'phone'));
+    $object->rule('number', ['Valid', 'phone']);
     $object->rule('number', 'Valid::phone');
 
 ### Adding Rules for multiple fields together
 
 To validate multiple fields together, you can do something like this:
 
-    $object->rule('one', 'only_one', array(':validation', array('one', 'two')));
-    $object->rule('two', 'only_one', array(':validation', array('one', 'two')));
+    $object->rule('one', 'only_one', [':validation', ['one', 'two']]);
+    $object->rule('two', 'only_one', [':validation', ['one', 'two']]);
 
     public function only_one($validation, $fields)
     {
@@ -97,7 +97,7 @@ The [Validation] class allows you to bind variables to certain strings so that t
 
     $object->bind(':model', $user_model);
     // Future code will be able to use :model to reference the object
-    $object->rule('username', 'some_rule', array(':model'));
+    $object->rule('username', 'some_rule', [':model']);
 
 By default, the validation object will automatically bind the following values for you to use as rule parameters:
 
@@ -109,11 +109,11 @@ By default, the validation object will automatically bind the following values f
 
 The [Validation] class will add an error for a field if any of the rules associated to it return `FALSE`. This allows many built in PHP functions to be used as rules, like `in_array`.
 
-    $object->rule('color', 'in_array', array(':value', array('red', 'green', 'blue')));
+    $object->rule('color', 'in_array', [':value', ['red', 'green', 'blue']]);
 
 Rules added to empty fields will run, but returning `FALSE` will not automatically add an error for the field. In order for a rule to affect empty fields, you must add the error manually by calling the [Validation::error] method. In order to do this, you must pass the validation object to the rule.
 
-    $object->rule($field, 'the_rule', array(':validation', ':field'));
+    $object->rule($field, 'the_rule', [':validation', ':field']);
 
     public function the_rule($validation, $field)
     {
@@ -136,15 +136,15 @@ Next we need to process the POST'ed information using [Validation]. To start, we
 
     $object
         ->rule('username', 'not_empty')
-        ->rule('username', 'regex', array(':value', '/^[a-z_.]++$/iD'))
+        ->rule('username', 'regex', [':value', '/^[a-z_.]++$/iD'])
         ->rule('password', 'not_empty')
-        ->rule('password', 'min_length', array(':value', '6'))
-        ->rule('confirm', 'matches', array(':validation', 'confirm', 'password'))
+        ->rule('password', 'min_length', [':value', '6'])
+        ->rule('confirm', 'matches', [':validation', 'confirm', 'password'])
         ->rule('use_ssl', 'not_empty');
 
 Any existing PHP function can also be used a rule. For instance, if we want to check if the user entered a proper value for the SSL question:
 
-    $object->rule('use_ssl', 'in_array', array(':value', array('yes', 'no')));
+    $object->rule('use_ssl', 'in_array', [':value', ['yes', 'no']]);
 
 Note that all array parameters must still be wrapped in an array! Without the wrapping array, `in_array` would be called as `in_array($value, 'yes', 'no')`, which would result in a PHP error.
 
@@ -157,7 +157,7 @@ The method `User_Model::unique_username()` would be defined similar to:
     public static function unique_username($username)
     {
         // Check if the username already exists in the database
-        return !DB::select(array(DB::expr('COUNT(username)'), 'total'))
+        return !DB::select([DB::expr('COUNT(username)'), 'total'])
                 ->from('users')
                 ->where('username', '=', $username)
                 ->execute()
@@ -191,7 +191,7 @@ First, we need a [View] that contains the HTML form, which will be placed in `ap
         <dd><?php echo Form::password('confirm') ?></dd>
 
         <dt><?php echo Form::label('use_ssl', 'Use extra security?') ?></dt>
-        <dd><?php echo Form::select('use_ssl', array('yes' => 'Always', 'no' => 'Only when necessary'), $post['use_ssl']) ?></dd>
+        <dd><?php echo Form::select('use_ssl', ['yes' => 'Always', 'no' => 'Only when necessary'], $post['use_ssl']) ?></dd>
         <dd class="help">For security, SSL is always used when making payments.</dd>
     </dl>
 
@@ -211,13 +211,13 @@ Next, we need a controller and action to process the registration, which will be
 
             $validation = Validation::factory($this->request->post())
                 ->rule('username', 'not_empty')
-                ->rule('username', 'regex', array(':value', '/^[a-z_.]++$/iD'))
-                ->rule('username', array($user, 'unique_username'))
+                ->rule('username', 'regex', [':value', '/^[a-z_.]++$/iD'])
+                ->rule('username', [$user, 'unique_username'])
                 ->rule('password', 'not_empty')
-                ->rule('password', 'min_length', array(':value', 6))
-                ->rule('confirm', 'matches', array(':validation', ':field', 'password'))
+                ->rule('password', 'min_length', [':value', 6])
+                ->rule('confirm', 'matches', [':validation', ':field', 'password'])
                 ->rule('use_ssl', 'not_empty')
-                ->rule('use_ssl', 'in_array', array(':value', array('yes', 'no')));
+                ->rule('use_ssl', 'in_array', [':value', ['yes', 'no']]);
 
             if ($validation->check()) {
                 // Data has been validated, register the user

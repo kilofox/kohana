@@ -47,7 +47,7 @@ You can use this to scrape HTML from a remote site, or make a REST call to a thi
     $request = Request::factory('http://example.com/put_api')->method(Request::PUT)->body(json_encode('the body'))->headers('Content-Type', 'application/json');
 
     // This uses POST
-    $request = Request::factory('http://example.com/post_api')->method(Request::POST)->post(array('foo' => 'bar', 'bar' => 'baz'));
+    $request = Request::factory('http://example.com/post_api')->method(Request::POST)->post(['foo' => 'bar', 'bar' => 'baz']);
 
 ## Executing Requests
 
@@ -59,8 +59,8 @@ To execute a request, use the `execute()` method on it. This will give you a [re
 ### Header callbacks
 The request client supports header callbacks - an array of callbacks that will be triggered when a specified header is included in the response from a server. Header callbacks provide a powerful way to deal with scenarios including authentication, rate limiting, redirects and other application-specific use cases:
 
-    $request = Request::factory('http://example.com/user', array(
-            'header_callbacks' => array(
+    $request = Request::factory('http://example.com/user', [
+            'header_callbacks' => [
                 'Content-Encoding' => function (Request $request, Response $response, Request_Client $client) {
                     // Uncompress the response
                     $response->body(GZIP::expand($response->body()));
@@ -76,8 +76,8 @@ The request client supports header callbacks - an array of callbacks that will b
                         ->query($request->query())
                         ->headers('Authorization', 'token' . $token);
                 }
-            )
-    ));
+            ]
+    ]);
 
 Where multiple headers are present in the response, callbacks will be executed in sequence. Callbacks can be any valid PHP callback type and have three possible return types:
 
@@ -95,19 +95,19 @@ If your callback executes a new request itself and returns the response, it is r
 #### Callback parameters
 Arbitrary parameters can be passed to the callbacks through the [Request_Client::callback_params()] property:
 
-    $request = Request::factory('http://example.com/foo', array(
-            'header_callbacks' => array(
+    $request = Request::factory('http://example.com/foo', [
+            'header_callbacks' => [
                 'X-Custom-1' => function (Request $request, Response $response, Request_Client $client) {
                     // Do something that needs an external parameter
                     if ($client->callback_params('foo') == 'bar') {
                         // etc
                     }
                 },
-            ),
-            'callback_params' => array(
+            ],
+            'callback_params' => [
                 'foo' => 'bar'
-            )
-    ));
+            ]
+    ]);
 
     // later on
     $request->client()->callback_params('foo', FALSE);
@@ -117,9 +117,9 @@ As with nested requests, callback_params will automatically be passed to subrequ
 #### Following redirects
 The request client ships with a standard callback to automatically follow redirects - [Request_Client::on_header_location()]. This will recursively follow redirects that are specified with a Location header and a status code in 201, 301, 302, 303, 307. This behaviour is disabled by default, but can be enabled by passing a set of options to the Request's constructor:
 
-    $request = Request::factory('http://example.com/redirectme', array(
+    $request = Request::factory('http://example.com/redirectme', [
             'follow' => TRUE
-    ));
+    ]);
 
 [!!] If you define additional header callbacks of your own, you will need to include the 'Location' callback in your callbacks array.
 
@@ -128,7 +128,7 @@ A number of options are available to control the behaviour of the [Request_Clien
 Option           |Default                 |Function
 -----------------|------------------------|---------
 follow           | FALSE                  |Whether to follow redirects
-follow_headers   | array('Authorization') |The keys of headers that will be re-sent with the redirected request
+follow_headers   | ['Authorization']      |The keys of headers that will be re-sent with the redirected request
 strict_redirect  | TRUE                   |Whether to use the original request method following to a 302 redirect (see below)
 
 [!!] HTTP/1.1 specifies that a 302 redirect should be followed using the original request method. However, the vast majority of clients and servers get this wrong, with 302 widely used for 'POST - 302 redirect - GET' patterns. By default, Kohana's client is fully compliant with the HTTP spec. If you need to interact with non-compliant third party sites you may need to set strict_redirect FALSE to force the client to switch to GET following a 302 response.
@@ -139,6 +139,6 @@ You can easily alter this behaviour by configuring your own 'Location' header ca
 
 You can cache requests for fast execution by passing a cache instance in as the second parameter of factory:
 
-    $request = Request::factory('welcome', array('cache' => Cache::instance()));
+    $request = Request::factory('welcome', ['cache' => Cache::instance()]);
 
 TODO
