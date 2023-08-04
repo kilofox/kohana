@@ -41,36 +41,36 @@ Codebench is included in Kohana 3, but if you need you [can download it](http://
 Creating your own benchmarks is just a matter of creating a class that extends the Codebench class. The class should go in `classes/bench` and the class name should have the `Bench_` prefix. Put the code parts you want to compare into separate methods. Be sure to prefix those methods with `bench_`, other methods will not be benchmarked. Glance at the files in `modules/codebench/classes/bench/` for more examples.
 
 Here is another short example with some extra explanations.
-	
-	// classes/bench/ltrimdigits.php
-	class Bench_LtrimDigits extends Codebench {
-	
-		// Some optional explanatory comments about the benchmark file.
-		// HTML allowed. URLs will be converted to links automatically.
-		public $description = 'Chopping off leading digits: regex vs ltrim.';
-	
-		// How many times to execute each method per subject.
-		// Total loops = loops * number of methods * number of subjects
-		public $loops = 100000;
-	
-		// The subjects to supply iteratively to your benchmark methods.
-		public $subjects = array
-		(
-			'123digits',
-			'no-digits',
-		);
-	
-		public function bench_regex($subject)
-		{
-			return preg_replace('/^\d+/', '', $subject);
-		}
-	
-		public function bench_ltrim($subject)
-		{
-			return ltrim($subject, '0..9');
-		}
-	}
-	
-	
+
+    // classes/bench/ltrimdigits.php
+    class Bench_LtrimDigits extends Codebench {
+
+        // Some optional explanatory comments about the benchmark file.
+        // HTML allowed. URLs will be converted to links automatically.
+        public $description = 'Chopping off leading digits: regex vs ltrim.';
+
+        // How many times to execute each method per subject.
+        // Total loops = loops * number of methods * number of subjects
+        public $loops = 100000;
+
+        // The subjects to supply iteratively to your benchmark methods.
+        public $subjects = array
+        (
+            '123digits',
+            'no-digits',
+        );
+
+        public function bench_regex($subject)
+        {
+            return preg_replace('/^\d+/', '', $subject);
+        }
+
+        public function bench_ltrim($subject)
+        {
+            return ltrim($subject, '0..9');
+        }
+    }
+
+
 
 And the winner is… [ltrim](http://php.net/ltrim). Happy benchmarking!
