@@ -1,6 +1,6 @@
 # Usage
 
-	$ phpunit --bootstrap=modules/unittest/bootstrap.php modules/unittest/tests.php
+    $ phpunit --bootstrap=modules/unittest/bootstrap.php modules/unittest/tests.php
 
 Alternatively you can use a phpunit.xml to have a more fine grained control over which tests are included and which files are whitelisted.
 
@@ -22,26 +22,26 @@ Sometimes you want to be able to run a specific test with different sets of data
 
 Ordinarily you could use a foreach loop to iterate over an array of test data, however PHPUnit already can take care of this for us rather easily using "Data Providers". A data provider is a function that returns an array of arguments that can be passed to a test.
 
-	<?php
+    <?php
 
-	Class ReallyCoolTest extends Unittest_TestCase
-	{
-		public function providerStrLen()
-		{
-			return [
-				['One set of testcase data', 24],
-				['This is a different one', 23],
-			];
-		}
+    Class ReallyCoolTest extends Unittest_TestCase
+    {
+        public function providerStrLen()
+        {
+            return [
+                ['One set of testcase data', 24],
+                ['This is a different one', 23],
+            ];
+        }
 
-		/**
-		 * @dataProvider providerStrLen
-		 */
-		public function testStrLen($string, $length)
-		{
-			$this->assertSame($length, strlen($string));
-		}
-	}
+        /**
+         * @dataProvider providerStrLen
+         */
+        public function testStrLen($string, $length)
+        {
+            $this->assertSame($length, strlen($string));
+        }
+    }
 
 The key thing to notice is the `@dataProvider` tag in the DocComment, this is what tells PHPUnit to use a data provider. The provider prefix is totally optional but it's a nice standard to identify providers.
 
@@ -53,54 +53,54 @@ For more info see:
 
 To allow users to selectively run tests you need to organise your tests into groups. Here's an example test showing how to do this:
 
-	<?php
+    <?php
 
-	/**
-	 * This is a description for my testcase.
-	 *
-	 * @group somegroup
-	 * @group somegroup.morespecific
-	 */
-	Class AnotherReallyCoolTest extends Unittest_TestCase
-	{
-		/**
-		 * Tests can also be grouped too!
-		 *
-		 * @group somegroup.morespecific.annoyingstuff
-		 */
-		public function testSomeAnnoyingCase()
-		{
-			// CODE!!
-		}
-	}
+    /**
+     * This is a description for my testcase.
+     *
+     * @group somegroup
+     * @group somegroup.morespecific
+     */
+    Class AnotherReallyCoolTest extends Unittest_TestCase
+    {
+        /**
+         * Tests can also be grouped too!
+         *
+         * @group somegroup.morespecific.annoyingstuff
+         */
+        public function testSomeAnnoyingCase()
+        {
+            // CODE!!
+        }
+    }
 
 Our convention is to use lowercase group names, with more specific levels in a group separated by periods. For example, the Validate helper tests are part of the following groups:
 
-	kohana
-	kohana.validation
-	kohana.validation.helpers
+    kohana
+    kohana.validation
+    kohana.validation.helpers
 
 To actually limit your testing to the "somegroup" group, use:
 
-	$ phpunit --boostrap=modules/unittest/bootstrap.php --group=somegroup modules/unittest/tests.php
+    $ phpunit --boostrap=modules/unittest/bootstrap.php --group=somegroup modules/unittest/tests.php
 
 This functionality can be used to record which bug reports a test is for:
 
-	/**
-	 *
-	 * @group bugs.1477
-	 */
-	function testAccountCannotGoBelowZero()
-	{
-		// Some arbitary code
-	}
+    /**
+     *
+     * @group bugs.1477
+     */
+    function testAccountCannotGoBelowZero()
+    {
+        // Some arbitary code
+    }
 
 To see all groups that are available in your code run:
 
-	$ phpunit --boostrap=modules/unittest/bootstrap.php --list-groups modules/unittest/tests.php
+    $ phpunit --boostrap=modules/unittest/bootstrap.php --list-groups modules/unittest/tests.php
 
 *Note:* The `--list-groups` switch should appear before the path to the test suite loader.
 
 You can also exclude groups while testing using the `--exclude-group` switch. This can be useful if you want to ignore all kohana tests:
 
-	$ phpunit --bootstrap=modules/unittest/bootstrap.php --exclude-group=kohana modules/unittest/tests.php
+    $ phpunit --bootstrap=modules/unittest/bootstrap.php --exclude-group=kohana modules/unittest/tests.php

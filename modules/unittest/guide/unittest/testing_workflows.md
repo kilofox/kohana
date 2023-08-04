@@ -22,7 +22,7 @@ If you're developing in a text editor such as textmate, vim, gedit etc. chances 
 
 In such situations you can run a simple bash script to loop over the tests every X seconds, here's an example script:
 
-	while(true) do clear; phpunit; sleep 8; done;
+    while(true) do clear; phpunit; sleep 8; done;
 
 You will probably need to adjust the timeout (`sleep 8`) to suit your own workflow, but 8 seconds seems to be about enough time to see what's erroring before the tests are re-run.
 
