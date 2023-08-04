@@ -5,7 +5,7 @@ Kohana 3.x provides a simple yet powerful image manipulation module. The [Image]
 ## Drivers
 
 [Image] module ships with [Image_GD] driver which requires `GD` extension enabled in your PHP installation, and
-[Image_Imagick] driver which requires the `imagick` PHP extension. Additional drivers can be created by extending 
+[Image_Imagick] driver which requires the `imagick` PHP extension. Additional drivers can be created by extending
 the [Image] class.
 
 The [Image_GD] driver is the default. You can change this by providing an `image.default_driver` configuration option
@@ -20,8 +20,8 @@ return array(
 ~~~
 
 [!!] Older versions of Kohana allowed you to configure the driver with the `Image::$default_driver` static variable in
-the bootstrap, an extension class, or elsewhere. That variable is now deprecated and will be ignored if you set a 
-config value. 
+the bootstrap, an extension class, or elsewhere. That variable is now deprecated and will be ignored if you set a
+config value.
 
 ## Getting Started
 
