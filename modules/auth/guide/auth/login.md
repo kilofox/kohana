@@ -13,11 +13,11 @@ $success = Auth::instance()->login($post['email'], $post['password']);
 
 if ($success)
 {
-	// Login successful, send to app
+    // Login successful, send to app
 }
 else
 {
-	// Login failed, send back to form with error message
+    // Login failed, send back to form with error message
 }
 ~~~
 
@@ -28,11 +28,11 @@ There are two ways to check if a user is logged in. If you just need to check if
 ~~~
 if (Auth::instance()->logged_in())
 {
-	// User is logged in, continue on
+    // User is logged in, continue on
 }
 else
 {
-	// User isn't logged in, redirect to the login form.
+    // User isn't logged in, redirect to the login form.
 }
 ~~~
 
@@ -44,11 +44,11 @@ $user = Auth::instance()->get_user();
 // Check for a user (null if not user is found)
 if ($user !== null)
 {
-	 // User is found, continue on
+     // User is found, continue on
 }
 else
 {
-	// User was not found, redirect to the login form
+    // User was not found, redirect to the login form
 }
 ~~~
 
