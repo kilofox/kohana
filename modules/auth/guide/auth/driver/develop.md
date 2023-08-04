@@ -32,12 +32,12 @@ class Auth_Example extends Auth
 		// Check to see if the logged in user has the given password
 	}
 
-	public function logged_in($role = NULL)
+	public function logged_in($role = null)
 	{
 		// Check to see if the user is logged in, and if $role is set, has all roles
 	}
 
-	public function get_user($default = NULL)
+	public function get_user($default = null)
 	{
 		// Get the logged in user, or return the $default if a user is not found
 	}
@@ -69,9 +69,9 @@ Given that every auth system is going to check if users exist and if they have r
 Here are a few functions that you should pay attention to.
 
 ~~~
-public function logged_in($role = NULL)
+public function logged_in($role = null)
 
-public function get_user($default = NULL)
+public function get_user($default = null)
 ~~~
 
 ## Activating the Driver

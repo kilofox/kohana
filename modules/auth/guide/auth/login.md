@@ -41,7 +41,7 @@ You can also get the logged in user object by using [Auth::get_user]. If the use
 ~~~
 $user = Auth::instance()->get_user();
 
-// Check for a user (NULL if not user is found)
+// Check for a user (null if not user is found)
 if ($user !== null)
 {
 	 // User is found, continue on
