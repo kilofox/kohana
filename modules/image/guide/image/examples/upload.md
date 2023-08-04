@@ -24,8 +24,8 @@ class Controller_Avatar extends Controller {
 	public function action_upload()
 	{
 		$view = View::factory('avatar/upload');
-		$error_message = NULL;
-		$filename = NULL;
+		$error_message = null;
+		$filename = null;
 		
 		if ($this->request->method() == Request::POST)
 		{
@@ -53,12 +53,12 @@ class Controller_Avatar extends Controller {
 			! Upload::not_empty($image) OR
 			! Upload::type($image, array('jpg', 'jpeg', 'png', 'gif')))
 		{
-			return FALSE;
+			return false;
 		}
 		
 		$directory = DOCROOT.'uploads/';
 		
-		if ($file = Upload::save($image, NULL, $directory))
+		if ($file = Upload::save($image, null, $directory))
 		{
 			$filename = strtolower(Text::random('alnum', 20)).'.jpg';
 			
@@ -72,7 +72,7 @@ class Controller_Avatar extends Controller {
 			return $filename;
 		}
 		
-		return FALSE;
+		return false;
 	}
 	
 }

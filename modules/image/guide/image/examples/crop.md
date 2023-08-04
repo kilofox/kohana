@@ -20,8 +20,8 @@ class Controller_Crop extends Controller {
 	public function action_do()
 	{
 		$view = View::factory('crop/do');
-		$error_message = NULL;
-		$filename = NULL;
+		$error_message = null;
+		$filename = null;
 		
 		if ($this->request->method() == Request::POST)
 		{
@@ -49,12 +49,12 @@ class Controller_Crop extends Controller {
 			! Upload::not_empty($image) OR
 			! Upload::type($image, array('jpg', 'jpeg', 'png', 'gif')))
 		{
-			return FALSE;
+			return false;
 		}
 		
 		$directory = DOCROOT.'uploads/';
 		
-		if ($file = Upload::save($image, NULL, $directory))
+		if ($file = Upload::save($image, null, $directory))
 		{
 			$filename = strtolower(Text::random('alnum', 20)).'.jpg';
 			
@@ -72,7 +72,7 @@ class Controller_Crop extends Controller {
 			return $filename;
 		}
 		
-		return FALSE;
+		return false;
 	}
 	
 }

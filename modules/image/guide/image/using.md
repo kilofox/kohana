@@ -35,10 +35,10 @@ $img->resize(200, 200);
 $img->resize(200, 200, Image::INVERSE);
  
 // Resize to 500 pixel width, keeping aspect ratio
-$img->resize(500, NULL);
+$img->resize(500, null);
  
 // Resize to 500 pixel height, keeping aspect ratio
-$img->resize(NULL, 500);
+$img->resize(null, 500);
  
 // Resize to 200x500 pixels, ignoring aspect ratio
 $img->resize(200, 500, Image::NONE);
@@ -74,7 +74,7 @@ $this->response->body(
 
 ~~~
 // Render the image at 50% quality
-$img->render(NULL, 50);
+$img->render(null, 50);
  
 // Render the image as a PNG
 $img->render('png');
