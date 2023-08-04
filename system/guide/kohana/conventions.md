@@ -327,7 +327,7 @@ When possible, please use type casting instead of ternary operations:
     $foo = (bool) $bar;
 
     // Incorrect:
-    $foo = ($bar == TRUE) ? TRUE : FALSE;
+    $foo = ($bar == true) ? true : false;
 
 When casting type to integer or boolean, use the short format:
 
@@ -356,18 +356,18 @@ Always use uppercase for constants:
 Place constant comparisons at the end of tests:
 
     // Correct:
-    if ($foo !== FALSE)
+    if ($foo !== false)
 
     // Incorrect:
-    if (FALSE !== $foo)
+    if (false !== $foo)
 
 This is a slightly controversial choice, so I will explain the reasoning. If we were to write the previous example in plain English, the correct example would read:
 
-    if variable $foo is not exactly FALSE
+    if variable $foo is not exactly false
 
 And the incorrect example would read:
 
-    if FALSE is not exactly variable $foo
+    if false is not exactly variable $foo
 
 Since we are reading left to right, it simply doesn't make sense to put the constant first.
 
@@ -413,5 +413,5 @@ Finally, please note that the $ character for matching the position at the end o
 
     $str = "email@example.com\n";
 
-    preg_match('/^.+@.+$/', $str);  // TRUE
-    preg_match('/^.+@.+$/D', $str); // FALSE
+    preg_match('/^.+@.+$/', $str);  // true
+    preg_match('/^.+@.+$/D', $str); // false

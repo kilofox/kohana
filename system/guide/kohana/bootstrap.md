@@ -52,7 +52,7 @@ You can add conditional statements to make the bootstrap have different values b
 /**
  * Set the environment status by the domain.
  */
-if (strpos($_SERVER['HTTP_HOST'], 'kohanaframework.org') !== FALSE) {
+if (strpos($_SERVER['HTTP_HOST'], 'kohanaframework.org') !== false) {
     // We are live!
     Kohana::$environment = Kohana::PRODUCTION;
 
@@ -68,7 +68,7 @@ Kohana::init([
     'base_url' => Kohana::$environment === Kohana::PRODUCTION ? '/' : '/kohanaframework.org/',
     'caching' => Kohana::$environment === Kohana::PRODUCTION,
     'profile' => Kohana::$environment !== Kohana::PRODUCTION,
-    'index_file' => FALSE,
+    'index_file' => false,
 ]);
 
 ... [trimmed]

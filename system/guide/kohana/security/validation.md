@@ -12,7 +12,7 @@ rules
 
 [!!] Note that any valid [PHP callback](http://php.net/manual/language.pseudo-types.php#language.types.callback) can be used as a rule.
 
-Using `TRUE` as the field name when adding a rule will be applied to all named fields.
+Using `true` as the field name when adding a rule will be applied to all named fields.
 
 Creating a validation object is done using the [Validation::factory] method:
 
@@ -107,11 +107,11 @@ By default, the validation object will automatically bind the following values f
 
 ## Adding Errors
 
-The [Validation] class will add an error for a field if any of the rules associated to it return `FALSE`. This allows many built in PHP functions to be used as rules, like `in_array`.
+The [Validation] class will add an error for a field if any of the rules associated to it return `false`. This allows many built in PHP functions to be used as rules, like `in_array`.
 
     $object->rule('color', 'in_array', [':value', ['red', 'green', 'blue']]);
 
-Rules added to empty fields will run, but returning `FALSE` will not automatically add an error for the field. In order for a rule to affect empty fields, you must add the error manually by calling the [Validation::error] method. In order to do this, you must pass the validation object to the rule.
+Rules added to empty fields will run, but returning `false` will not automatically add an error for the field. In order for a rule to affect empty fields, you must add the error manually by calling the [Validation::error] method. In order to do this, you must pass the validation object to the rule.
 
     $object->rule($field, 'the_rule', [':validation', ':field']);
 
@@ -122,7 +122,7 @@ Rules added to empty fields will run, but returning `FALSE` will not automatical
         }
     }
 
-[!!] `not_empty` and `matches` are the only rules that will run on empty fields and add errors by returning `FALSE`.
+[!!] `not_empty` and `matches` are the only rules that will run on empty fields and add errors by returning `false`.
 
 ## Example
 
@@ -195,7 +195,7 @@ First, we need a [View] that contains the HTML form, which will be placed in `ap
         <dd class="help">For security, SSL is always used when making payments.</dd>
     </dl>
 
-    <?php echo Form::submit(NULL, 'Sign Up') ?>
+    <?php echo Form::submit(null, 'Sign Up') ?>
     <?php echo Form::close() ?>
 
 [!!] This example uses the [Form] helper extensively. Using [Form] instead of writing HTML ensures that all of the form inputs will properly handle input that includes HTML characters. If you prefer to write the HTML yourself, be sure to use [HTML::chars] to escape user input.

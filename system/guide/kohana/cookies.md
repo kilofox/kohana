@@ -89,12 +89,12 @@ If you want to make the cookie accessible on all subdomains, use a dot at the be
 To only allow the cookie to be accessed over a secure (HTTPS) connection, use the [Cookie::$secure] setting.
 
     // Allow cookies to be accessed only on a secure connection
-    Cookie::$secure = TRUE;
+    Cookie::$secure = true;
 
     // Allow cookies to be accessed on any connection
-    Cookie::$secure = FALSE;
+    Cookie::$secure = false;
 
 To prevent cookies from being accessed using Javascript, you can change the [Cookie::$httponly] setting.
 
     // Make cookies inaccessible to Javascript
-    Cookie::$httponly = TRUE;
+    Cookie::$httponly = true;

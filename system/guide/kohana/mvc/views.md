@@ -52,7 +52,7 @@ Once view has been loaded, variables can be assigned to it using the [View::set]
         $this->response->body($view);
     }
 
-[!!] The only difference between `set()` and `bind()` is that `bind()` assigns the variable by reference. If you `bind()` a variable before it has been defined, the variable will be created with a value of `NULL`.
+[!!] The only difference between `set()` and `bind()` is that `bind()` assigns the variable by reference. If you `bind()` a variable before it has been defined, the variable will be created with a value of `null`.
 
 You can also assign variables directly to the View object. This is identical to calling `set()`;
 

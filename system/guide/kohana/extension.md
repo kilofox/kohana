@@ -26,7 +26,7 @@ For instance, if you wanted to create method that sets encrypted cookies using t
          * @uses  Cookie::set
          * @uses  Encrypt::encode
          */
-        public static function encrypt($name, $value, $expiration = NULL)
+        public static function encrypt($name, $value, $expiration = null)
         {
             $value = Encrypt::instance(Cookie::$encrpytion)->encode((string) $value);
 
@@ -39,9 +39,9 @@ For instance, if you wanted to create method that sets encrypted cookies using t
          * @uses  Cookie::get
          * @uses  Encrypt::decode
          */
-        public static function decrypt($name, $default = NULL)
+        public static function decrypt($name, $default = null)
         {
-            if ($value = parent::get($name, NULL)) {
+            if ($value = parent::get($name, null)) {
                 $value = Encrypt::instance(Cookie::$encryption)->decode($value);
             }
 
@@ -69,7 +69,7 @@ If you are using the [Cookie](cookies) class, and want to change a setting, you 
         public $salt = "some new better random salt phrase";
 
         // Don't allow javascript access to cookies
-        public $httponly = TRUE;
+        public $httponly = true;
 
     }
 

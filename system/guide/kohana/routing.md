@@ -86,7 +86,7 @@ In 3.3, you can specify advanced routing schemes by using filter callbacks. When
     Route::set('save-form', 'save')
         ->filter(function ($route, $params, $request) {
             if ($request->method() !== HTTP_Request::POST) {
-                return FALSE; // This route only matches POST requests
+                return false; // This route only matches POST requests
             }
         });
 
@@ -207,7 +207,7 @@ If a url matches the route, then `Controller_Ads::index()` will be called. You c
         public function action_index()
         {
             $ad = $this->request->param('ad');
-            $affiliate = $this->request->param('affiliate', NULL);
+            $affiliate = $this->request->param('affiliate', null);
         }
 
 

@@ -13,7 +13,7 @@ The first thing you will need to change is the `index_file` setting of [Kohana::
 
     Kohana::init([
         'base_url' => '/myapp/',
-        'index_file' => FALSE,
+        'index_file' => false,
     ]);
 
 This change will make it so all of the links generated using [URL::site], [URL::base], and [HTML::anchor] will no longer include "index.php" in the URL. All generated links will start with `/myapp/` instead of `/myapp/index.php/`.

@@ -96,12 +96,12 @@ You can apply configuration settings to each of the session adapters by creating
         ],
         'cookie' => [
             'name' => 'cookie_name',
-            'encrypted' => TRUE,
+            'encrypted' => true,
             'lifetime' => 43200,
         ],
         'database' => [
             'name' => 'cookie_name',
-            'encrypted' => TRUE,
+            'encrypted' => true,
             'lifetime' => 43200,
             'group' => 'default',
             'table' => 'table_name',
@@ -126,7 +126,7 @@ Type      | Setting   | Description                                       | Defa
 Type      | Setting   | Description                                       | Default
 ----------|-----------|---------------------------------------------------|-----------
 `string`  | name      | name of the cookie used to store the session data | `"session"`
-`boolean` | encrypted | encrypt the session data using [Encrypt]?         | `FALSE`
+`boolean` | encrypted | encrypt the session data using [Encrypt]?         | `false`
 `integer` | lifetime  | number of seconds the session should live for     | `0`
 
 #### Database Adapter
@@ -138,7 +138,7 @@ Type      | Setting   | Description                                       | Defa
 `array`   | columns   | associative array of column aliases               | `array`
 `integer` | gc        | 1:x chance that garbage collection will be run    | `500`
 `string`  | name      | name of the cookie used to store the session data | `"session"`
-`boolean` | encrypted | encrypt the session data using [Encrypt]?         | `FALSE`
+`boolean` | encrypted | encrypt the session data using [Encrypt]?         | `false`
 `integer` | lifetime  | number of seconds the session should live for     | `0`
 
 ##### Table Schema

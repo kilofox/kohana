@@ -19,7 +19,7 @@ Click any of the links to toggle the display of additional information:
 
 If you do not want to use the internal error handling, you can disable it (highly discouraged) when calling [Kohana::init]:
 
-    Kohana::init(['errors' => FALSE]);
+    Kohana::init(['errors' => false]);
 
 ## Error Reporting
 
@@ -33,7 +33,7 @@ When you application is live and in production, a more conservative setting is r
 
 If you get a white screen when an error is triggered, your host probably has disabled displaying errors. You can turn it on again by adding this line just after your `error_reporting` call:
 
-    ini_set('display_errors', TRUE);
+    ini_set('display_errors', true);
 
 Errors should **always** be displayed, even in production, because it allows you to use [exception and error handling](debugging.errors) to serve a nice error page rather than a blank white screen when an error happens.
 

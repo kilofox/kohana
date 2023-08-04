@@ -95,12 +95,12 @@ Parameters are accessed by calling `$this->request->param('name')` where `name` 
         $id = $this->request->param('id');
         $new = $this->request->param('new');
 
-If that parameter is not set it will be returned as NULL. You can provide a second parameter to set a default value if that param is not set.
+If that parameter is not set it will be returned as null. You can provide a second parameter to set a default value if that param is not set.
 
     public function action_foobar()
     {
         // $id will be false if it was not supplied in the url
-        $id = $this->request->param('user', FALSE);
+        $id = $this->request->param('user', false);
 
 ### Examples
 

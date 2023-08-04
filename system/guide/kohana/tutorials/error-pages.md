@@ -4,7 +4,7 @@ Custom error pages allow you to display a friendly error message to users, rathe
 
 ## Prerequisites
 
-1. You will need `'errors' => TRUE` passed to [Kohana::init]. This will convert PHP-errors into exceptions which are easier to handle (The default value is `TRUE`).
+1. You will need `'errors' => true` passed to [Kohana::init]. This will convert PHP-errors into exceptions which are easier to handle (The default value is `true`).
 2. Custom error pages will only be used to handle throw [HTTP_Exception]'s. If you simply set a status of, for example, 404 via [Respose::status] the custom page will not be used.
 
 ## Extending the HTTP_Exception classes

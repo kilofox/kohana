@@ -136,13 +136,13 @@ For example, using the setup outlined above:
 
 [!!] **Note:** The above syntax is simply pseudo code to illustrate the concept of config merging.
 
-On some occasions you may want to append a config source to the bottom of the stack, to do this pass `FALSE`
+On some occasions you may want to append a config source to the bottom of the stack, to do this pass `false`
 as the second parameter to `attach()`:
 
     // Stack: <empty>
     Kohana::$config->attach(new Config_File);
     // Stack: Config_File
-    Kohana::$config->attach(new Config_Database, FALSE);
+    Kohana::$config->attach(new Config_Database, false);
     // Stack: Config_File, Config_Database
 
 In this example, any values found in the filesystem will override those found in the db. For example:
