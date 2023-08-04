@@ -32,27 +32,27 @@ Release branch names follow the same convention in both kohana/kohana and kohana
 
 To work on 3.0.x you'd do the following:
 
-	> git clone git://github.com/kohana/kohana.git
-	....
-	
-	> cd kohana
-	> git submodule update --init
-	....
+    > git clone git://github.com/kohana/kohana.git
+    ....
 
-	> git checkout 3.0.x
-	Switched to branch '3.0.x'
-	> git submodule update 
+    > cd kohana
+    > git submodule update --init
+    ....
 
-	> cd system
-	> git checkout 3.0.x
-	# Switched to branch 3.0.x
+    > git checkout 3.0.x
+    Switched to branch '3.0.x'
+    > git submodule update
+
+    > cd system
+    > git checkout 3.0.x
+    # Switched to branch 3.0.x
 
 It's important that you follow the last step, because unlike svn, git submodules point at a
 specific commit rather than the tip of a branch. If you cd into the system folder after
 a `git submodule update` and run `git status` you'll be told:
 
-	# Not currently on any branch.
-	nothing to commit (working directory clean)
+    # Not currently on any branch.
+    nothing to commit (working directory clean)
 
 Similarly, if you want to work on modules, make sure you checkout the correct branch before you start working.
 
@@ -66,33 +66,33 @@ until they're stable and **tests have been written for the feature**.
 
 The naming convention for feature branches is:
 
-	feature/{issue number}-{short hyphenated description}
-	
-	// i.e.
+    feature/{issue number}-{short hyphenated description}
 
-	feature/4045-rewriting-config-system
-	
+    // i.e.
+
+    feature/4045-rewriting-config-system
+
 When a new feature is complete and tested it can be merged into its respective release branch using
 `git pull --no-ff`. The `--no-ff` switch is important as it tells git to always create a commit
 detailing what branch you're merging from. This makes it a lot easier to analyse a feature's history.
 
 Here's a quick example:
 
-	> git status
-	# On branch feature/4045-rewriting-everything
-	
-	> git checkout 3.1.x
-	# Switched to branch '3.1.x'
+    > git status
+    # On branch feature/4045-rewriting-everything
 
-	> git merge --no-ff feature/4045-rewriting-everything
+    > git checkout 3.1.x
+    # Switched to branch '3.1.x'
+
+    > git merge --no-ff feature/4045-rewriting-everything
 
 **If a change you make intentionally breaks the api then please correct the relevant tests before pushing!**
 
-### Bug fixing 
+### Bug fixing
 
 If you're making a bugfix then before you start create a unit test which reproduces the bug,
 using the `@ticket` notation in the test to reference the bug's issue number
-(i.e. `@ticket 4045` for issue #4045). 
+(i.e. `@ticket 4045` for issue #4045).
 
 If you run the test then the one you've just made should fail.
 
@@ -125,7 +125,7 @@ section [in the git-scm book](http://book.git-scm.com/3_basic_branching_and_merg
 
 The simplest way to fix this is to remove all the changes that you've made locally.
 
-You can do this using 
+You can do this using
 
     > git reset --hard kohana
 
@@ -142,7 +142,7 @@ Then find the hash of the offending local commit and run:
 
 i.e.
 
-	> git rebase -i 57d0b28
+    > git rebase -i 57d0b28
 
 A text editor will open with a list of commits, delete the line containing the offending commit
 before saving the file & closing your editor.

@@ -36,26 +36,26 @@ Once your pull request has been accepted, you can delete your repository if you 
 
 2. Now you need to add your fork as a "git remote" to your application and ensure you are on the right branch.
 
-		cd my-kohana-app
+        cd my-kohana-app
 
-		# Add your repository as a new remote.
-		git remote add <your name> git://github.com/<your name>/kohana.git
-		
-		# Get the correct branch.
-		git checkout develop
+        # Add your repository as a new remote.
+        git remote add <your name> git://github.com/<your name>/kohana.git
+
+        # Get the correct branch.
+        git checkout develop
 
 3. Now go into the repo of the area of docs you want to contribute to and add your forked repo as a new remote, and push to it.
 
-		# Make some changes to the docs.
-		nano file.md
-		
-		# Commit your changes - Use a descriptive commit message! If there is a redmine ticket for the changes you are making include "Fixes #XXXXX" in the commit message so its tracked.
-		git commit -a -m "Corrected a typo in the ORM docs. Fixes #12345."	
-		
-		# Make sure we are up to date with the latest changes.
-		git merge origin/develop	
-		
-		# Now push your changes to your fork.
-		git push <your name> develop
+        # Make some changes to the docs.
+        nano file.md
+
+        # Commit your changes - Use a descriptive commit message! If there is a redmine ticket for the changes you are making include "Fixes #XXXXX" in the commit message so its tracked.
+        git commit -a -m "Corrected a typo in the ORM docs. Fixes #12345."
+
+        # Make sure we are up to date with the latest changes.
+        git merge origin/develop
+
+        # Now push your changes to your fork.
+        git push <your name> develop
 
 4. Finally, send a pull request on GitHub.

@@ -7,12 +7,12 @@ The userguide uses [Markdown](http://daringfireball.net/projects/markdown/) and 
 ## Headers
 
     # Header 1
-	
-	## Header 2
-	
-	### Header 3
-	
-	#### Header 4
+
+    ## Header 2
+
+    ### Header 3
+
+    #### Header 4
 
 ## Paragraphs
 ~~~
@@ -52,24 +52,24 @@ This link has a title: [Kohana](http://kohanaframework.org "The swift PHP framew
 
 ## Code blocks
 
-	For inline code simply surround some `text with tick marks.`
-	
+    For inline code simply surround some `text with tick marks.`
+
 For inline code simply surround some `text with tick marks.`
 
-	// For a block of code,
-	// indent in four spaces,
-	// or with a tab
+    // For a block of code,
+    // indent in four spaces,
+    // or with a tab
 
 You can also do a "fenced" code block:
 
-	~~~
-	A fenced code block has tildes
-	          above and below it
-	This is sometimes useful when code is near lists
-	~~~
+    ~~~
+    A fenced code block has tildes
+              above and below it
+    This is sometimes useful when code is near lists
+    ~~~
 ~~~
 A fenced code block has tildes
-		  above and below it
+          above and below it
 This is sometimes useful when code is near lists
 ~~~
 
@@ -101,17 +101,17 @@ This is sometimes useful when code is near lists
 
 ~~~
 *  To nest lists you just add four spaces before the * or number
-	1. Like this
-		*  It's pretty basic, this line has eight spaces, so its nested twice
-	1. And this line is back to the second level
-		*  Out to third level again
+    1. Like this
+        *  It's pretty basic, this line has eight spaces, so its nested twice
+    1. And this line is back to the second level
+        *  Out to third level again
 *  And back to the first level
 ~~~
 *  To nest lists you just add four spaces before the * or number
-	1. Like this
-		*  It's pretty basic, this line has eight spaces, so its nested twice
-	1. And this line is back to the second level
-		*  Out to third level again
+    1. Like this
+        *  It's pretty basic, this line has eight spaces, so its nested twice
+    1. And this line is back to the second level
+        *  Out to third level again
 *  And back to the first level
 
 ## Italics and Bold
@@ -145,9 +145,9 @@ _____________________
 
 Image syntax looks like this:
 
-	![Alt text](/path/to/img.jpg)
-	
-	![Alt text](/path/to/img.jpg "Optional title")
+    ![Alt text](/path/to/img.jpg)
+
+    ![Alt text](/path/to/img.jpg "Optional title")
 
 [!!] Note that the images in userguide are [namespaced](#namespacing).
 
@@ -198,40 +198,40 @@ To link to page in a different module, prefix your url with `../` and the module
 
 You can make links to the api browser by wrapping any class name in brackets. You may also include a function name, or propery name to link to that specifically. All of the following will link to the API browser:
 
-	[Request]  
-	[Request::execute]  
-	[Request::execute()]  
-	[Request::$status]  
+    [Request]
+    [Request::execute]
+    [Request::execute()]
+    [Request::$status]
 
-[Request]  
-[Request::execute]  
-[Request::execute()]  
-[Request::$status]  
+[Request]
+[Request::execute]
+[Request::execute()]
+[Request::$status]
 
 If you want to have parameters and have the function be clickable, only put the brackets around the class and function (not the params), and put a backslash in front of the opening parenthesis.
 
-	[Kohana::$config]\('foobar','baz')
-	
+    [Kohana::$config]\('foobar','baz')
+
 [Kohana::$config]\('foobar','baz')
 
 ## Notes
 
 If you put `[!!]` in front of a line it will be a "note" and be placed in a box with a lightbulb.
 
-	[!!] This is a note
+    [!!] This is a note
 
 will display as:
-	
+
 [!!] This is a note
 
 ## Headers automatically get IDs
 
 Headers are automatically assigned an id, based on the content of the header, so each header can be linked to. You can manually assign a different id using the syntax as defined in Markdown Extra. If multiple headers have the same content (e.g. more than one "Examples" header), only the first will get be automatically assigned an id, so you should manually assign more descriptive ids. For example:
 
-	### Examples     {#more-descriptive-id}
+    ### Examples     {#more-descriptive-id}
 
 ## Including Views
 
 If you need you may include a regular Kohana View file by placing the name of the view in double curly brackets. **If the view is not found, no error or exception will be shown, the curly brackets and view name will simply remain there!**
 
-	{{some/view/file}}
+    {{some/view/file}}
