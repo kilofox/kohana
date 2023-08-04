@@ -4,14 +4,14 @@ The default config file is located in `MODPATH/database/config/database.php`. Yo
 
 The database configuration file contains an array of configuration groups. The structure of each database configuration group, called an "instance", looks like this:
 
-	string INSTANCE_NAME => [
-		'type' => string DATABASE_TYPE,
-		'connection' => array CONNECTION_ARRAY,
-		'table_prefix' => string TABLE_PREFIX,
-		'charset' => string CHARACTER_SET,
-	],
+    string INSTANCE_NAME => [
+        'type' => string DATABASE_TYPE,
+        'connection' => array CONNECTION_ARRAY,
+        'table_prefix' => string TABLE_PREFIX,
+        'charset' => string CHARACTER_SET,
+    ],
 
-	
+
 Understanding each of these settings is important.
 
 INSTANCE_NAME
@@ -33,31 +33,31 @@ CHARACTER_SET
 
 The example file below shows 2 MySQL connections, one local and one remote.
 
-	return [
-		'default' => [
-			'type' => 'PDO',
-			'connection' => [
-				'dsn' => 'mysql:host=localhost;dbname=my_db_name',
-				'username' => 'dbuser',
-				'password' => 'mypassword',
-				'persistent' => false,
-			],
-			'table_prefix' => '',
-			'charset' => 'utf8',
-		],
-		'remote' => [
-			'type' => 'PDO',
-			'connection' => [
-				'dsn' => 'mysql:host=55.55.55.55;dbname=my_remote_db_name',
-				'username' => 'remote_user',
-				'password' => 'mypassword',
-				'persistent' => false,
-				'database' => 'my_remote_db_name',
-			],
-			'table_prefix' => '',
-			'charset' => 'utf8',
-		],
-	];
+    return [
+        'default' => [
+            'type' => 'PDO',
+            'connection' => [
+                'dsn' => 'mysql:host=localhost;dbname=my_db_name',
+                'username' => 'dbuser',
+                'password' => 'mypassword',
+                'persistent' => false,
+            ],
+            'table_prefix' => '',
+            'charset' => 'utf8',
+        ],
+        'remote' => [
+            'type' => 'PDO',
+            'connection' => [
+                'dsn' => 'mysql:host=55.55.55.55;dbname=my_remote_db_name',
+                'username' => 'remote_user',
+                'password' => 'mypassword',
+                'persistent' => false,
+                'database' => 'my_remote_db_name',
+            ],
+            'table_prefix' => '',
+            'charset' => 'utf8',
+        ],
+    ];
 
 [!!] Note that the 'type' parameter is case sensitive (e.g., 'PDO', 'MySQLi').
 
@@ -65,23 +65,23 @@ The example file below shows 2 MySQL connections, one local and one remote.
 
 Each configuration group is referred to as a database instance. Each instance can be accessed by calling [Database::instance]. If you don't provide a parameter, the default instance is used.
 
-	// This would connect to the database defined as 'default'
-	$default = Database::instance();
-	
-	// This would connect to the database defined as 'remote'
-	$remote  = Database::instance('remote');
+    // This would connect to the database defined as 'default'
+    $default = Database::instance();
+
+    // This would connect to the database defined as 'remote'
+    $remote  = Database::instance('remote');
 
 To disconnect the database, simply destroy the object:
 
-	unset($default);
-	
-	// Or
-	
-	unset(Database::$instances['default']);
+    unset($default);
+
+    // Or
+
+    unset(Database::$instances['default']);
 
 If you want to disconnect all of the database instances at once:
 
-	Database::$instances = [];
+    Database::$instances = [];
 
 ## Connection Settings
 

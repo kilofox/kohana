@@ -1,4 +1,4 @@
-# Database 
+# Database
 
 Kohana comes with a robust module for working with databases. By default, the database module supports drivers for [PDO](http://php.net/pdo) and [MySQLi](http://php.net/mysqli), but new drivers can be made for other database servers.
 
