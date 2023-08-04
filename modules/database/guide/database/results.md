@@ -19,7 +19,7 @@ Once you have a query object built, either through a parameterized statement or 
 
 ### Select - `as_object()` and `as_assoc()`
 
-When iterating over a result set, the default type will be an associative array with the column names or aliases as the keys. As an option, before calling `execute()`, you can specify to return the result rows as an object by using the `as_object()` method. The `as_object()` method takes one parameter, the name of the class of your choice, but will default to TRUE which uses the `stdClass`. Here is the example again using `stdClass`.
+When iterating over a result set, the default type will be an associative array with the column names or aliases as the keys. As an option, before calling `execute()`, you can specify to return the result rows as an object by using the `as_object()` method. The `as_object()` method takes one parameter, the name of the class of your choice, but will default to true which uses the `stdClass`. Here is the example again using `stdClass`.
 
 	$results = DB::select()
 		->from('users')
@@ -66,7 +66,7 @@ The second parameter, `$value`, will reference the column specified and return t
 	// Show a dropdown with all users in it.
 	echo Form::select('author', $users);
 
-To return a non-associative array, leave `$key` as NULL and just pass a `$value`.
+To return a non-associative array, leave `$key` as null and just pass a `$value`.
 
 	$results = DB::select('email')
 		->from('users')
@@ -78,7 +78,7 @@ To return a non-associative array, leave `$key` as NULL and just pass a `$value`
 
 ### Select - `get()`
 
-Sometime you only want a single value from a query. The `get()` method returns the value of the named column from the current row. The second parameter, `$default`, is used to supply a default value when the result is NULL.
+Sometime you only want a single value from a query. The `get()` method returns the value of the named column from the current row. The second parameter, `$default`, is used to supply a default value when the result is null.
 
 	$totalUsers = DB::select([DB::expr('COUNT(`username`)'), 'total_users'])
 		->from('users')

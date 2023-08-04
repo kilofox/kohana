@@ -71,7 +71,7 @@ This query would generate the following SQL:
 
 ### Select - DISTINCT
 
-Unique column values may be turned on or off (default) by passing TRUE or FALSE, respectively, to the `distinct()` method.
+Unique column values may be turned on or off (default) by passing true or false, respectively, to the `distinct()` method.
 
 	$query = DB::select('username')
 		->distinct(true)
