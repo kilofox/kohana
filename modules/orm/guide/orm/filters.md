@@ -6,36 +6,36 @@ Filters run as soon as the field is set in your model and should be used to form
 
     public function filters()
     {
-        return array(
+        return [
             // Field Filters
-            // $field_name => array(mixed $callback[, array $params = array(':value')]),
-            'username' => array(
+            // $field_name => [mixed $callback[, array $params = [':value']]],
+            'username' => [
                 // PHP Function Callback, default implicit param of ':value'
-                array('trim'),
-            ),
-            'password' => array(
+                ['trim'],
+            ],
+            'password' => [
                 // Callback method with object context and params
-                array(array($this, 'hash_password'), array(':value', Model_User::salt())),
-            ),
-            'created_on' => array(
+                [[$this, 'hash_password'], [':value', Model_User::salt()]],
+            ],
+            'created_on' => [
                 // Callback static method with params
-                array('Format::date', array(':value', 'Y-m-d H:i:s')),
-            ),
-            'other_field' => array(
+                ['Format::date', [':value', 'Y-m-d H:i:s']],
+            ],
+            'other_field' => [
                 // Callback static method with implicit param of ':value'
-                array('MyClass::static_method'),
+                ['MyClass::static_method'],
                 // Callback method with object context with implicit param of ':value'
-                array(array($this, 'change_other_field')),
+                [[$this, 'change_other_field']],
                 // PHP function callback with explicit params
-                array('str_replace', array('luango', 'thomas', ':value'),
+                ['str_replace', ['luango', 'thomas', ':value']],
                 // Function as the callback (PHP 5.3+)
-                array(function($value) {
+                [function($value) {
                     // Do something to $value and return it.
                     return some_function($value);
-                }),
-            ),
+                }],
+            ],
 
-        );
+        ];
     }
 
 [!!] When defining filters, you may use the parameters `:value`, `:field`, and `:model` to refer to the field value, field name, and the model instance respectively.

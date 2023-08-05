@@ -21,32 +21,32 @@ This is a simple example of a single ORM model, that has no relationships, but u
 
         public function rules()
         {
-            return array(
-                'username' => array(
-                    array('not_empty'),
-                    array('min_length', array(':value', 4)),
-                    array('max_length', array(':value', 32)),
-                    array('regex', array(':value', '/^[-\pL\pN_.]++$/uD')),
-                ),
-                'first_name' => array(
-                    array('not_empty'),
-                    array('min_length', array(':value', 4)),
-                    array('max_length', array(':value', 32)),
-                    array('regex', array(':value', '/^[-\pL\pN_.]++$/uD')),
-                ),
-                'last_name' => array(
-                    array('not_empty'),
-                    array('min_length', array(':value', 4)),
-                    array('max_length', array(':value', 32)),
-                    array('regex', array(':value', '/^[-\pL\pN_.]++$/uD')),
-                ),
-                'email' => array(
-                    array('not_empty'),
-                    array('min_length', array(':value', 4)),
-                    array('max_length', array(':value', 127)),
-                    array('email'),
-                ),
-            );
+            return [
+                'username' => [
+                    ['not_empty'],
+                    ['min_length', [':value', 4]],
+                    ['max_length', [':value', 32]],
+                    ['regex', [':value', '/^[-\pL\pN_.]++$/uD']],
+                ],
+                'first_name' => [
+                    ['not_empty'],
+                    ['min_length', [':value', 4]],
+                    ['max_length', [':value', 32]],
+                    ['regex', [':value', '/^[-\pL\pN_.]++$/uD']],
+                ],
+                'last_name' => [
+                    ['not_empty'],
+                    ['min_length', [':value', 4]],
+                    ['max_length', [':value', 32]],
+                    ['regex', [':value', '/^[-\pL\pN_.]++$/uD']],
+                ],
+                'email' => [
+                    ['not_empty'],
+                    ['min_length', [':value', 4]],
+                    ['max_length', [':value', 127]],
+                    ['email'],
+                ],
+            ];
         }
     }
 

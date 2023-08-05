@@ -19,32 +19,32 @@ This example will create user accounts and demonstrate how to handle model and c
 
         public function rules()
         {
-            return array(
-                'username' => array(
-                    array('not_empty'),
-                    array('min_length', array(':value', 4)),
-                    array('max_length', array(':value', 32)),
-                    array(array($this, 'username_available')),
-                ),
-                'password' => array(
-                    array('not_empty'),
-                ),
-            );
+            return [
+                'username' => [
+                    ['not_empty'],
+                    ['min_length', [':value', 4]],
+                    ['max_length', [':value', 32]],
+                    [[$this, 'username_available']],
+                ],
+                'password' => [
+                    ['not_empty'],
+                ],
+            ];
         }
 
         public function filters()
         {
-            return array(
-                'password' => array(
-                    array(array($this, 'hash_password')),
-                ),
-            );
+            return [
+                'password' => [
+                    [[$this, 'hash_password']],
+                ],
+            ];
         }
 
         public function username_available($username)
         {
             // There are simpler ways to do this, but I will use ORM for the sake of the example
-            return ORM::factory('Member', array('username' => $username))->loaded();
+            return ORM::factory('Member', ['username' => $username])->loaded();
         }
 
         public function hash_password($password)
@@ -87,15 +87,15 @@ Please forgive my slightly ugly form. I am trying not to use any modules or unre
         {
             $member = ORM::factory('Member')
                 // The ORM::values() method is a shortcut to assign many values at once
-                ->values($_POST, array('username', 'password'));
+                ->values($_POST, ['username', 'password']);
 
-            $external_values = array(
+            $external_values = [
                 // The unhashed password is needed for comparing to the password_confirm field
                 'password' => Arr::get($_POST, 'password'),
             // Add all external values
-            ) + Arr::get($_POST, '_external', array());
+            ] + Arr::get($_POST, '_external', []);
             $extra = Validation::factory($external_values)
-                ->rule('password_confirm', 'matches', array(':validation', ':field', 'password'));
+                ->rule('password_confirm', 'matches', [':validation', ':field', 'password']);
 
             try
             {
@@ -116,22 +116,22 @@ Please forgive my slightly ugly form. I am trying not to use any modules or unre
 
 **application/messages/models/member.php**
 
-    return array(
-        'username' => array(
+    return [
+        'username' => [
             'not_empty' => 'You must provide a username.',
             'min_length' => 'The username must be at least :param2 characters long.',
             'max_length' => 'The username must be less than :param2 characters long.',
             'username_available' => 'This username is not available.',
-        ),
-        'password' => array(
+        ],
+        'password' => [
             'not_empty' => 'You must provide a password.',
-        ),
-    );
+        ],
+    ];
 
 **application/messages/models/member/_external.php**
 
-    return array(
-        'password_confirm' => array(
+    return [
+        'password_confirm' => [
             'matches' => 'The password fields did not match.',
-        ),
-    );
+        ],
+    ];

@@ -8,21 +8,21 @@ Validation rules are defined in the `ORM::rules()` method. This method returns t
 
     public function rules()
     {
-        return array(
-            'username' => array(
+        return [
+            'username' => [
                 // Uses Valid::not_empty($value);
-                array('not_empty'),
+                ['not_empty'],
                 // Calls Some_Class::some_method('param1', 'param2');
-                array('Some_Class::some_method', array('param1', 'param2')),
+                ['Some_Class::some_method', ['param1', 'param2']],
                 // Calls A_Class::a_method($value);
-                array(array('A_Class', 'a_method')),
+                [['A_Class', 'a_method']],
                 // Calls the lambda function and passes the field value and the validation object
-                array(function($value, Validation $object)
+                [function($value, Validation $object)
                 {
                     $object->error('some_field', 'some_error');
-                }, array(':value', ':validation')),
-            ),
-        );
+                }, [':value', ':validation']],
+            ],
+        ];
     }
 
 ### Bound Values
@@ -84,9 +84,9 @@ Certain forms contain information that should not be validated by the model, but
             $user->password = $_POST['password'];
 
             $extra_rules = Validation::factory($_POST)
-                ->rule('password_confirm', 'matches', array(
+                ->rule('password_confirm', 'matches', [
                     ':validation', ':field', 'password'
-                ));
+                ]);
 
             // Pass the extra rules to be validated with the model
             $user->save($extra_rules);
@@ -99,12 +99,12 @@ Certain forms contain information that should not be validated by the model, but
 
 Because the validation object was passed as a parameter to the model, any errors found in that check will be namespaced into a sub-array called `_external`. The array of errors would look something like this:
 
-    array(
+    [
         'username'  => 'This field cannot be empty.',
-        '_external' => array(
+        '_external' => [
             'password_confirm' => 'The values you entered in the password fields did not match.',
-        ),
-    );
+        ],
+    ];
 
 This ensures that errors from multiple validation objects and models will never overwrite each other.
 
