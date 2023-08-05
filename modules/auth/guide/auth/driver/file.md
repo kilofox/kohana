@@ -6,7 +6,7 @@ Below are additional configuration options that can be set for this driver.
 
 Name | Type | Default | Description
 -----|------|---------|-------------
-users | `array` | array() | A user => password (_hashed_) array of all the users in your application
+users | `array` | [] | A user => password (_hashed_) array of all the users in your application
 
 ## Forcing Login
 
