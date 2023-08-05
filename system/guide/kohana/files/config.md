@@ -2,7 +2,7 @@
 
 Configuration files are used to store any kind of configuration needed for a module, class, or anything else you want. They are plain PHP files, stored in the `config/` directory, which return an associative array:
 
-    <?php defined('SYSPATH') OR die('No direct script access.');
+    <?php
 
     return [
         'setting' => 'value',
@@ -24,7 +24,7 @@ For example, if we wanted to change or add to an entry in the inflector configur
 
     // config/inflector.php
 
-    <?php defined('SYSPATH') OR die('No direct script access.');
+    <?php
 
     return [
         'irregular' => [
@@ -40,7 +40,7 @@ Let's say we want a config file to store and easily change things like the title
 
     // config/site.php
 
-    <?php defined('SYSPATH') OR die('No direct script access.');
+    <?php
 
     return [
         'title' => 'Our Shiny Website',
@@ -53,7 +53,7 @@ Let's say we want an archive of versions of some software. We could use config f
 
     // config/versions.php
 
-    <?php defined('SYSPATH') OR die('No direct script access.');
+    <?php
 
     return [
         '1.0.0' => [
