@@ -43,12 +43,9 @@ To find an object you can call the [ORM::find] method or pass the id into the OR
 
 Use the [ORM::loaded] method to check that ORM successfully loaded a record.
 
-    if ($user->loaded())
-    {
+    if ($user->loaded()) {
         // Load was successful
-    }
-    else
-    {
+    } else {
         // Error
     }
 
@@ -79,14 +76,11 @@ To delete an object, you can call the [ORM::delete] method on a loaded ORM model
 
 To set multiple values at once, use [ORM::values]
 
-    try
-    {
+    try {
         $user = ORM::factory('user')
-            ->values($this->request->post(), ['username','password'])
+            ->values($this->request->post(), ['username', 'password'])
             ->create();
-    }
-    catch (ORM_Validation_Exception $e)
-    {
+    } catch (ORM_Validation_Exception $e) {
         // Handle validation errors ...
     }
 

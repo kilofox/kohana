@@ -15,8 +15,8 @@ This example will create user accounts and demonstrate how to handle model and c
 
     <?php defined('SYSPATH') or die('No direct access allowed.');
 
-    class Model_Member extends ORM {
-
+    class Model_Member extends ORM
+    {
         public function rules()
         {
             return [

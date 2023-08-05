@@ -17,10 +17,12 @@ Validation rules are defined in the `ORM::rules()` method. This method returns t
                 // Calls A_Class::a_method($value);
                 [['A_Class', 'a_method']],
                 // Calls the lambda function and passes the field value and the validation object
-                [function($value, Validation $object)
-                {
-                    $object->error('some_field', 'some_error');
-                }, [':value', ':validation']],
+                [
+                    function ($value, Validation $object) {
+                        $object->error('some_field', 'some_error');
+                    },
+                    [':value', ':validation']
+                ],
             ],
         ];
     }
@@ -39,14 +41,11 @@ All models automatically validate their own data when `ORM::save()`, `ORM::updat
 
     public function action_create()
     {
-        try
-        {
+        try {
             $user = ORM::factory('User');
             $user->username = 'invalid username';
             $user->save();
-        }
-        catch (ORM_Validation_Exception $e)
-        {
+        } catch (ORM_Validation_Exception $e) {
             $errors = $e->errors();
         }
     }
@@ -59,14 +58,11 @@ In the below example, the error messages will be defined in `application/message
 
     public function action_create()
     {
-        try
-        {
+        try {
             $user = ORM::factory('User');
             $user->username = 'invalid username';
             $user->save();
-        }
-        catch (ORM_Validation_Exception $e)
-        {
+        } catch (ORM_Validation_Exception $e) {
             $errors = $e->errors('models');
         }
     }
@@ -77,22 +73,21 @@ Certain forms contain information that should not be validated by the model, but
 
     public function action_create()
     {
-        try
-        {
+        try {
             $user = ORM::factory('User');
             $user->username = $_POST['username'];
             $user->password = $_POST['password'];
 
             $extra_rules = Validation::factory($_POST)
                 ->rule('password_confirm', 'matches', [
-                    ':validation', ':field', 'password'
+                    ':validation',
+                    ':field',
+                    'password'
                 ]);
 
             // Pass the extra rules to be validated with the model
             $user->save($extra_rules);
-        }
-        catch (ORM_Validation_Exception $e)
-        {
+        } catch (ORM_Validation_Exception $e) {
             $errors = $e->errors('models');
         }
     }
@@ -100,7 +95,7 @@ Certain forms contain information that should not be validated by the model, but
 Because the validation object was passed as a parameter to the model, any errors found in that check will be namespaced into a sub-array called `_external`. The array of errors would look something like this:
 
     [
-        'username'  => 'This field cannot be empty.',
+        'username' => 'This field cannot be empty.',
         '_external' => [
             'password_confirm' => 'The values you entered in the password fields did not match.',
         ],

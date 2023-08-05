@@ -17,8 +17,8 @@ This is a simple example of a single ORM model, that has no relationships, but u
 
     <?php defined('SYSPATH') or die('No direct access allowed.');
 
-    class Model_Member extends ORM {
-
+    class Model_Member extends ORM
+    {
         public function rules()
         {
             return [
@@ -58,14 +58,13 @@ This is a simple example of a single ORM model, that has no relationships, but u
 
     <?php defined('SYSPATH') or die('No direct access allowed.');
 
-    class Controller_Member extends Controller_Template {
-
+    class Controller_Member extends Controller_Template
+    {
         public function action_index()
         {
             /**
              * Example 1
              */
-
             // Create an instance of a model
             $members = ORM::factory('Member');
 
@@ -79,7 +78,6 @@ This is a simple example of a single ORM model, that has no relationships, but u
             /**
              * Example 2
              */
-
             // Create an instance of a model
             $member = ORM::factory('Member');
 
@@ -90,7 +88,6 @@ This is a simple example of a single ORM model, that has no relationships, but u
             /**
              * Example 3
              */
-
             // Create an instance of a model
             $member = ORM::factory('Member');
 
@@ -103,7 +100,6 @@ This is a simple example of a single ORM model, that has no relationships, but u
             /**
              * Example 4
              */
-
             // Create an instance of a model where the
             // table field "id" is "1"
             $member = ORM::factory('Member', 1);

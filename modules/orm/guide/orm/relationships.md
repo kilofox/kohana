@@ -10,7 +10,7 @@ This is the base `belongs_to` relationship:
 
     protected $_belongs_to = [
         '[alias name]' => [
-            'model'       => '[model name]',
+            'model' => '[model name]',
             'foreign_key' => '[column]',
         ],
     ];
@@ -37,7 +37,7 @@ If you wanted access a post's author by using code like `$post->author` then you
 
     protected $_belongs_to = [
         'author' => [
-            'model'       => 'User',
+            'model' => 'User',
         ],
     ];
 
@@ -47,7 +47,7 @@ The standard `has_many` relationship will likely fall on the other side of a `be
 
     protected $_has_many = [
         '[alias name]' => [
-            'model'       => '[model name]',
+            'model' => '[model name]',
             'foreign_key' => '[column]',
         ],
     ];
@@ -68,7 +68,7 @@ Let's assume now you want to access the posts using the name `stories` instead, 
 
     protected $_has_many = [
         'stories' => [
-            'model'       => 'Post',
+            'model' => 'Post',
             'foreign_key' => 'author_id',
         ],
     ];
@@ -79,7 +79,7 @@ A `has_one` relationship is almost identical to a `has_many` relationship. In a 
 
     protected $_has_one = [
         'story' => [
-            'model'       => 'Post',
+            'model' => 'Post',
             'foreign_key' => 'author_id',
         ],
     ];
@@ -92,7 +92,7 @@ To define the `has_many` "through" relationship, the same syntax for standard ha
 
     protected $_has_many = [
         'categories' => [
-            'model'   => 'Category',
+            'model' => 'Category',
             'through' => 'categories_posts',
         ],
     ];
@@ -101,7 +101,7 @@ In the Category model:
 
     protected $_has_many = [
         'posts' => [
-            'model'   => 'Post',
+            'model' => 'Post',
             'through' => 'categories_posts',
         ],
     ];

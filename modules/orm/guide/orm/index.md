@@ -11,10 +11,10 @@ ORM is included with the Kohana 3.x install but needs to be enabled before you c
 Before we use ORM, we must enable the modules required
 
     Kohana::modules([
-        ...
-        'database' => MODPATH.'database',
-        'orm' => MODPATH.'orm',
-        ...
+        // ...
+        'database' => MODPATH . 'database',
+        'orm' => MODPATH . 'orm',
+        // ...
     ]);
 
 [!!] The database module is requried for the ORM module to work. Of course the database module has to be configured to use an existing database.

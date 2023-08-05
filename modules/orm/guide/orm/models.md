@@ -4,7 +4,7 @@ To create a model for the table `members` in your database, create the file `app
 
     class Model_Member extends ORM
     {
-        ...
+        // ...
     }
 
 (this should provide more examples)
