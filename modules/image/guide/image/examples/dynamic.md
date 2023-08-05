@@ -14,11 +14,11 @@ This is our [Route] definition:
 /**
  * Set route for image fly
  */
-Route::set('imagefly', 'imagefly/<image>/<width>/<height>', array('image' => '[-09a-zA-Z_]+', 'width' => '[0-9]+', 'height' => '[0-9]+'))
-    ->defaults(array(
+Route::set('imagefly', 'imagefly/<image>/<width>/<height>', ['image' => '[-09a-zA-Z_]+', 'width' => '[0-9]+', 'height' => '[0-9]+'])
+    ->defaults([
         'controller' => 'imagefly',
         'action' => 'index'
-    ));
+    ]);
 ~~~
 
 We ensure that the filename is only composed of letters, numbers and underscores, width and height must be numeric.

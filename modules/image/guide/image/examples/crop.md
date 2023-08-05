@@ -47,7 +47,7 @@ class Controller_Crop extends Controller {
         if (
             ! Upload::valid($image) OR
             ! Upload::not_empty($image) OR
-            ! Upload::type($image, array('jpg', 'jpeg', 'png', 'gif')))
+            ! Upload::type($image, ['jpg', 'jpeg', 'png', 'gif']))
         {
             return false;
         }

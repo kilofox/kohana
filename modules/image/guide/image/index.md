@@ -14,9 +14,9 @@ The [Image_GD] driver is the default. You can change this by providing an `image
 ~~~
 // application/config/image.php
 <?php
-return array(
+return [
     'default_driver' => 'Imagick'
-);
+];
 ~~~
 
 [!!] Older versions of Kohana allowed you to configure the driver with the `Image::$default_driver` static variable in
@@ -28,11 +28,11 @@ config value.
 Before using the image module, we must enable it first on `APPPATH/bootstrap.php`:
 
 ~~~
-Kohana::modules(array(
+Kohana::modules([
     ...
     'image' => MODPATH.'image',  // Image manipulation
     ...
-));
+]);
 ~~~
 
 Next: [Using the image module](using).
