@@ -43,22 +43,27 @@ Creating your own benchmarks is just a matter of creating a class that extends t
 Here is another short example with some extra explanations.
 
     // classes/bench/ltrimdigits.php
-    class Bench_LtrimDigits extends Codebench {
-
-        // Some optional explanatory comments about the benchmark file.
-        // HTML allowed. URLs will be converted to links automatically.
+    class Bench_LtrimDigits extends Codebench
+    {
+        /**
+         * Some optional explanatory comments about the benchmark file.
+         * HTML allowed. URLs will be converted to links automatically.
+         */
         public $description = 'Chopping off leading digits: regex vs ltrim.';
 
-        // How many times to execute each method per subject.
-        // Total loops = loops * number of methods * number of subjects
+        /**
+         * How many times to execute each method per subject.
+         * Total loops = loops * number of methods * number of subjects
+         */
         public $loops = 100000;
 
-        // The subjects to supply iteratively to your benchmark methods.
-        public $subjects = array
-        (
+        /**
+         * The subjects to supply iteratively to your benchmark methods.
+         */
+        public $subjects = [
             '123digits',
             'no-digits',
-        );
+        ];
 
         public function bench_regex($subject)
         {
