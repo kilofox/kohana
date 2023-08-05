@@ -9,8 +9,8 @@ We name our new controller as `Controller_Crop` and accessible through `/crop` U
 ~~~
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Crop extends Controller {
-
+class Controller_Crop extends Controller
+{
     public function action_index()
     {
         $view = View::factory('crop/index');
@@ -23,16 +23,13 @@ class Controller_Crop extends Controller {
         $error_message = null;
         $filename = null;
 
-        if ($this->request->method() == Request::POST)
-        {
-            if (isset($_FILES['avatar']))
-            {
+        if ($this->request->method() == Request::POST) {
+            if (isset($_FILES['avatar'])) {
                 $filename = $this->_save_image($_FILES['avatar']);
             }
         }
 
-        if ( ! $filename)
-        {
+        if (!$filename) {
             $error_message = 'There was a problem while uploading the image.
                 Make sure it is uploaded and must be JPG/PNG/GIF file.';
         }
@@ -45,18 +42,17 @@ class Controller_Crop extends Controller {
     protected function _save_image($image)
     {
         if (
-            ! Upload::valid($image) OR
-            ! Upload::not_empty($image) OR
-            ! Upload::type($image, ['jpg', 'jpeg', 'png', 'gif']))
-        {
+            !Upload::valid($image)
+            OR !Upload::not_empty($image)
+            OR !Upload::type($image, ['jpg', 'jpeg', 'png', 'gif'])
+        ) {
             return false;
         }
 
-        $directory = DOCROOT.'uploads/';
+        $directory = DOCROOT . 'uploads/';
 
-        if ($file = Upload::save($image, null, $directory))
-        {
-            $filename = strtolower(Text::random('alnum', 20)).'.jpg';
+        if ($file = Upload::save($image, null, $directory)) {
+            $filename = strtolower(Text::random('alnum', 20)) . '.jpg';
 
             $img = Image::factory($file);
 
@@ -64,7 +60,7 @@ class Controller_Crop extends Controller {
             $new_height = (int) $img->height / 2;
 
             $img->crop($new_height, $new_height)
-                ->save($directory.$filename);
+                ->save($directory . $filename);
 
             // Delete the temporary file
             unlink($file);
@@ -74,7 +70,6 @@ class Controller_Crop extends Controller {
 
         return false;
     }
-
 }
 ~~~
 

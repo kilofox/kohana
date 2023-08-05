@@ -13,8 +13,8 @@ For simplicity, the upload form will be on `index` action and `upload` action wi
 ~~~
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Controller_Avatar extends Controller {
-
+class Controller_Avatar extends Controller
+{
     public function action_index()
     {
         $view = View::factory('avatar/index');
@@ -27,16 +27,13 @@ class Controller_Avatar extends Controller {
         $error_message = null;
         $filename = null;
 
-        if ($this->request->method() == Request::POST)
-        {
-            if (isset($_FILES['avatar']))
-            {
+        if ($this->request->method() == Request::POST) {
+            if (isset($_FILES['avatar'])) {
                 $filename = $this->_save_image($_FILES['avatar']);
             }
         }
 
-        if ( ! $filename)
-        {
+        if (!$filename) {
             $error_message = 'There was a problem while uploading the image.
                 Make sure it is uploaded and must be JPG/PNG/GIF file.';
         }
@@ -49,22 +46,21 @@ class Controller_Avatar extends Controller {
     protected function _save_image($image)
     {
         if (
-            ! Upload::valid($image) OR
-            ! Upload::not_empty($image) OR
-            ! Upload::type($image, ['jpg', 'jpeg', 'png', 'gif']))
-        {
+            !Upload::valid($image)
+            OR !Upload::not_empty($image)
+            OR !Upload::type($image, ['jpg', 'jpeg', 'png', 'gif'])
+        ) {
             return false;
         }
 
-        $directory = DOCROOT.'uploads/';
+        $directory = DOCROOT . 'uploads/';
 
-        if ($file = Upload::save($image, null, $directory))
-        {
-            $filename = strtolower(Text::random('alnum', 20)).'.jpg';
+        if ($file = Upload::save($image, null, $directory)) {
+            $filename = strtolower(Text::random('alnum', 20)) . '.jpg';
 
             Image::factory($file)
                 ->resize(200, 200, Image::AUTO)
-                ->save($directory.$filename);
+                ->save($directory . $filename);
 
             // Delete the temporary file
             unlink($file);
@@ -74,7 +70,6 @@ class Controller_Avatar extends Controller {
 
         return false;
     }
-
 }
 ~~~
 

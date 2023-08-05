@@ -8,7 +8,7 @@ Shown here are the basic usage of this module. For full documentation about the 
 
 ~~~
 // Uses the image from upload directory
-$img = Image::factory(DOCROOT.'uploads/sample-image.jpg');
+$img = Image::factory(DOCROOT . 'uploads/sample-image.jpg');
 ~~~
 
 Once an instance is created, you can now manipulate the image by using the following instance methods.
@@ -49,7 +49,7 @@ $img->resize(200, 500, Image::NONE);
 You can render the image object directly to the browser using the [Image::render()] method.
 
 ~~~
-$img = Image::factory(DOCROOT.'uploads/colorado-farm-1920x1200.jpg');
+$img = Image::factory(DOCROOT . 'uploads/colorado-farm-1920x1200.jpg');
 
 header('Content-Type: image/jpeg');
 
@@ -60,7 +60,7 @@ echo $img->resize(300, 300)
 What it did is resize a 1920x1200 wallpaper image into 300x300 proportionally and render it to the browser. If you are trying to render the image in a controller action, you can do instead:
 
 ~~~
-$img = Image::factory(DOCROOT.'uploads/colorado-farm-1920x1200.jpg');
+$img = Image::factory(DOCROOT . 'uploads/colorado-farm-1920x1200.jpg');
 
 $this->response->headers('Content-Type', 'image/jpg');
 
@@ -87,9 +87,9 @@ $img->render('png');
 On our example above, instead of rendering the file to the browser, you may want to save it somewhere instead. To do so, you may:
 
 ~~~
-$img = Image::factory(DOCROOT.'uploads/colorado-farm-1920x1200.jpg');
+$img = Image::factory(DOCROOT . 'uploads/colorado-farm-1920x1200.jpg');
 
-$filename = DOCROOT.'uploads/img-'.uniqid().'.jpg';
+$filename = DOCROOT . 'uploads/img-' . uniqid() . '.jpg';
 
 $img->resize(300, 300)
     ->save($filename, 80);
