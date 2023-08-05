@@ -66,7 +66,7 @@ Certain cache drivers support setting values with tags. To set a value to cache 
     // Test for tagging interface
     if ($memcache instanceof Cache_Tagging) {
         // Set a value with some tags for 30 seconds
-        $memcache->set('foo', $object, 30, array('snafu', 'stfu', 'fubar'));
+        $memcache->set('foo', $object, 30, ['snafu', 'stfu', 'fubar']);
     }
     // Otherwise set without tags
     else {

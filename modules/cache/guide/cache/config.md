@@ -39,7 +39,7 @@ Name             | Required | Description
 host             | __YES__  | (_string_) The host of the memcache server, i.e. __localhost__; or __127.0.0.1__; or __memcache.domain.tld__
 port             | __NO__   | (_integer_) The port on which memcached is running. Set this parameter to 0 when using UNIX domain sockets. Default to __11211__
 weight           | __NO__   | (_integer_) The weight of the server relative to the total weight of all the servers in the pool. This controls the probability of the server being selected for operations. Default to __1__
-options          | __NO__   | (_array_) An associative array of options where the key is the option to set and the value is the new value for the option. Default to __array()__
+options          | __NO__   | (_array_) An associative array of options where the key is the option to set and the value is the new value for the option. Default to __[]__
 
     'memcached' => [
         'driver' => 'memcached',
