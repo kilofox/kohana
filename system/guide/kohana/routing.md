@@ -102,11 +102,6 @@ Filters can also replace or alter the array of parameters:
             'controller' => 'api',
     ]);
 
-If you are using php 5.2, you can still use any valid callback for this behavior:
-
-    Route::set('testing', 'foo')
-        ->filter(['Class', 'method_to_process_my_uri']);
-
 ## Examples
 
 There are countless other possibilities for routes. Here are some more examples:
