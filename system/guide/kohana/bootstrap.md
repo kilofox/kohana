@@ -33,26 +33,22 @@ Kohana is then initialized by calling [Kohana::init], and the log and [config](f
 
 Kohana::init([
     'base_url' => '/kohana/',
-    'index_file' => false,
 ]);
 
 // Attach the file writer to logging. Multiple writers are supported.
-Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
+Kohana::$log->attach(new Log_File(APPPATH . 'logs'));
 
 // Attach a file reader to config. Multiple readers are supported.
-Kohana::$config->attach(new Kohana_Config_File);
+Kohana::$config->attach(new Config_File);
 ~~~
 
 You can add conditional statements to make the bootstrap have different values based on certain settings. For example, detect whether we are live by checking `$_SERVER['HTTP_HOST']` and set caching, profiling, etc. accordingly. This is just an example, there are many different ways to accomplish the same thing.
 
 ~~~
-// Excerpt from http://github.com/isaiahdw/kohanaphp.com/blob/f2afe8e28b/application/bootstrap.php
-... [trimmed]
-
 /**
  * Set the environment status by the domain.
  */
-if (strpos($_SERVER['HTTP_HOST'], 'kohanaframework.org') !== false) {
+if (strpos($_SERVER['HTTP_HOST'], 'kohana.top') !== false) {
     // We are live!
     Kohana::$environment = Kohana::PRODUCTION;
 
@@ -62,7 +58,6 @@ if (strpos($_SERVER['HTTP_HOST'], 'kohanaframework.org') !== false) {
 
 /**
  * Initialize Kohana, setting the default options.
- ... [trimmed]
  */
 Kohana::init([
     'base_url' => Kohana::$environment === Kohana::PRODUCTION ? '/' : '/kohanaframework.org/',
@@ -70,9 +65,6 @@ Kohana::init([
     'profile' => Kohana::$environment !== Kohana::PRODUCTION,
     'index_file' => false,
 ]);
-
-... [trimmed]
-
 ~~~
 
 [!!] Note: The default bootstrap will set `Kohana::$environment = $_ENV['KOHANA_ENV']` if set. Docs on how to supply this variable are available in your web server's documentation (e.g. [Apache](http://httpd.apache.org/docs/1.3/mod/mod_env.html#setenv), [Lighttpd](http://redmine.lighttpd.net/wiki/1/Docs:ModSetEnv#Options)). This is considered better practice than many alternative methods to set `Kohana::$enviroment`, as you can change the setting per server, without having to rely on config options or hostnames.
