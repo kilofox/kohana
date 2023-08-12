@@ -101,7 +101,7 @@ Kohana::init([
 ]);
 
 /**
- * Attach the file write to logging. Multiple writers are supported.
+ * Attach the file writer to logging. Multiple writers are supported.
  */
 Kohana::$log->attach(new Log_File(APPPATH . 'logs'));
 
