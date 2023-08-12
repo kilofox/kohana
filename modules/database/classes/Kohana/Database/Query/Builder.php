@@ -196,7 +196,13 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
 
             if ($direction) {
                 // Make the direction uppercase
-                $direction = ' ' . strtoupper($direction);
+                $direction = strtoupper($direction);
+
+                if (!in_array($direction, ['ASC', 'DESC'])) {
+                    throw new Database_Exception('Order direction must be "ASC" or "DESC".');
+                }
+
+                $direction = ' ' . $direction;
             }
 
             $sort[] = $column . $direction;
