@@ -16,21 +16,31 @@
  */
 class Kohana_Core
 {
-    // Release version and codename
+    /** @var string Release version */
     const VERSION = '3.4.1';
 
     /**
+     * @var string Release codename
      * @deprecated 3.4.0
      */
     const CODENAME = 'korismas';
-    // Common environment type constants for consistency and convenience
+
+    /** @var int Production environment type constant */
     const PRODUCTION = 10;
+
+    /** @var int Staging environment type constant */
     const STAGING = 20;
+
+    /** @var int Testing environment type constant */
     const TESTING = 30;
+
+    /** @var int Development environment type constant */
     const DEVELOPMENT = 40;
-    // Security check that is added to all generated PHP files
+
+    /** @var string Security check that is added to all generated PHP files */
     const FILE_SECURITY = '<?php defined(\'SYSPATH\') OR die(\'No direct script access.\');';
-    // Format of cache files: header, cache name, and data
+
+    /** @var string Format of cache files: header, cache name, and data */
     const FILE_CACHE = ":header \n\n// :name\n\n:data\n";
 
     /**
@@ -535,8 +545,8 @@ class Kohana_Core
             } else {
                 // This module is invalid, remove it
                 throw new Kohana_Exception('Attempted to load an invalid or missing module \':module\' at \':path\'', [
-                ':module' => $name,
-                ':path' => Debug::path($path),
+                        ':module' => $name,
+                        ':path' => Debug::path($path),
                 ]);
             }
         }
@@ -941,5 +951,4 @@ class Kohana_Core
     {
         return 'Kohana Framework ' . Kohana::VERSION;
     }
-
 }
