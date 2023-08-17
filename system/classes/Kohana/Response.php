@@ -274,9 +274,8 @@ class Kohana_Response implements HTTP_Response
 
         // Handle the set cookie calls
         if (is_array($key)) {
-            reset($key);
-            while (list($_key, $_value) = each($key)) {
-                $this->cookie($_key, $_value);
+            foreach ($key as $k => $v) {
+                $this->cookie($k, $v);
             }
         } else {
             if (!is_array($value)) {
