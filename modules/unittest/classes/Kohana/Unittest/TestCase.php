@@ -137,9 +137,10 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
     {
         $dom = PHPUnit_Util_XML::load($actual, $isHtml);
         $tags = static::findNodes($dom, $matcher, $isHtml);
-        $matched = count($tags) > 0 && $tags[0] instanceof DOMNode;
-
-        self::assertFalse($matched, $message);
+        if (is_array($tags)) {
+			$matched = count($tags) > 0 && $tags[0] instanceof DOMNode;
+			self::assertFalse($matched, $message);
+		}
     }
 
     /**
