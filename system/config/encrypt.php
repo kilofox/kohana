@@ -11,8 +11,9 @@ return [
          */
         'method' => 'AES-256-CTR',
     ],
-    'mcrypt' => [
-        'driver' => 'mcrypt',
+    
+//    'mcrypt' => [
+//        'driver' => 'mcrypt',
         /**
          * The following options must be set:
          *
@@ -20,7 +21,8 @@ return [
          * integer  cipher  Encryption cipher, one of the Mcrpyt cipher constants.
          * integer  mode    Encryption mode, one of MCRYPT_MODE_*.
          */
-        'cipher' => MCRYPT_RIJNDAEL_128,
-        'mode' => MCRYPT_MODE_NOFB,
-    ]
+//        'cipher' => MCRYPT_RIJNDAEL_128,
+//        'mode' => MCRYPT_MODE_NOFB,
+//    ]
+    
 ];

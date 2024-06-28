@@ -29,10 +29,10 @@ class Kohana_Request_Client_HTTP extends Request_Client_External
     public function __construct(array $params = [])
     {
         // Check that PECL HTTP supports requests
-        if (!http_support(HTTP_SUPPORT_REQUESTS)) {
-            throw new Request_Exception('Need HTTP request support!');
-        }
-
+		//Deprecated  var_dump(get_extension_funcs('http'));
+      	//  if (!http_support(HTTP_SUPPORT_REQUESTS)) {
+       	//     throw new Request_Exception('Need HTTP request support!');
+       	// }
         // Carry on
         parent::__construct($params);
     }

@@ -118,10 +118,79 @@ Kohana currently uses PHPUnit for unit testing. This is installed with composer.
 
 ## How to run the tests
 
- * Install [Phing](https://phing.info).
  * Make sure you have the unittest module enabled.
  * Install [Composer](https://getcomposer.org).
  * Run `php composer.phar install` from the root of this repository.
- * Finally, run `phing test`.
 
-This will run the unit tests for core and all the modules and tell you if anything failed. If you haven't changed anything and you get failures, please [create a new issue on GitHub](https://github.com/kilofox/kohana/issues/new) and paste the output (including the error) in the issue.
+## How to run the tests ()
+ * Install [Composer](http://getcomposer.org)
+ * Run `composer install` from the root of this repository
+ * Finally, run  `vendor/bin/phpunit --bootstrap=modules/unittest/bootstrap.php modules/unittest/tests.php`
+
+## Docker 
+Prepare for
+https://hub.docker.com/r/kohanaworld/docker
+
+```shell
+
+Stop 
+docker ps -q | xargs --no-run-if-empty docker stop
+# Remove containers
+docker rm kohana-unittest
+docker rm memcached
+docker rm memcache
+docker rm redis
+
+# Run containers - need 2 seperate memcache
+docker run --name=memcache -d memcached
+docker run --name=memcached -d memcached
+#docker run --name=redis -d redis
+
+# go to main install directory
+cd .../kohana.top
+
+# Run kohana-unittest container
+docker run -v $PWD:/app -p 80:80 -p 443:443 -p 443:443/udp --name=kohana-unittest -d  unit:1.32.1-php7.3
+docker ps 
+
+
+# Log in containet
+docker exec -it kohana-unittest bash
+chown -R unit:unit /app/application/cache/
+chown -R unit:unit /app/application/logs/
+
+cd /app
+
+php -v
+composer diagnose
+composer validate
+composer install
+# Run unittest
+# docker network inspect bridge |  grep -3 memcache
+#echo '172.16.0.2 memcached' >> /etc/hosts
+#echo '172.16.0.4 memcache' >> /etc/hosts
+#echo '172.16.0.? redis' >> /etc/hosts
+
+# Short test memcache & etc
+vendor/bin/phpunit --bootstrap=modules/unittest/bootstrap.php modules/unittest/tests.php
+
+# Long test memcache & etc
+vendor/bin/phpunit --bootstrap=modules/unittest/bootstrap_all_modules.php modules/unittest/tests.php
+
+# Check Nginx Unit 
+curl -X GET --unix-socket /var/run/control.unit.sock http://localhost/status
+# Put Web config 
+curl -X PUT -d @unit.init.json  --unix-socket /var/run/control.unit.sock http://localhost/config/
+# Check greenline in http://localhost/
+# or check inside container
+curl -I localhost
+mv public/install.php public/install-ckeck.php
+
+#CTL + D or exit
+
+# Stop containers
+docker stop kohana-unittest
+docker stop memcached
+docker stop memcache
+#docker stop redis
+```

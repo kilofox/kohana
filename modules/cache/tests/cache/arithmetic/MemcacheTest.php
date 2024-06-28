@@ -41,7 +41,7 @@ class Kohana_CacheArithmeticMemcacheTest extends Kohana_CacheArithmeticMethodsTe
                     'compression' => false, // Use Zlib compression (can cause issues with integers)
                     'servers' => [
                         'local' => [
-                            'host' => 'localhost', // Memcache Server
+                            'host' => 'memcache', // Memcache Server
                             'port' => 11211, // Memcache port number
                             'persistent' => false, // Persistent connection
                             'weight' => 1,

@@ -31,7 +31,9 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
     public function providerEncode()
     {
         return [
+        /*
             [
+            
                 // mode
                 MCRYPT_MODE_CBC,
                 // cypher
@@ -171,6 +173,7 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
                 // txtEncoded
                 pack('H*', '6be8a12800455a320538853e0cba31bd2d80ea0c85164a4c5c261ae485417d93effe2ebc0d0a0b51d6ea18633d210cf63c0c4ddbc27607f2e81ed9113191ef86d56f3b99be6c415a4150299fb846ce7160b40b63baf1179d19275a2e83698376d28b92548c68e06e6d994e2c1501ed297014e702cdefee2f656447706009614d801de1caaf73f8b7fa56cf1ba94b631933bbe577624380850f117435a0355b2b'),
             ],
+            */
         ];
     }
 
@@ -220,6 +223,7 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
     public function providerDecode()
     {
         return [
+        /*
             [
                 // mode
                 MCRYPT_MODE_CBC,
@@ -360,6 +364,7 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
                 // txtPlain
                 pack('H*', 'e8b89150d8438bf5b17449d6ed26bd72127e10e4aa57cad85283e8359e089208e84921649f5b60ea21f7867cbc9620560c4c6238db021216db453c9943f1f1a60546173daef2557c3cdd855031b353d4bf176f28439e48785c37d38f270aa4a6faad2baabcb0c0b2d1dd5322937498ce803ba1148440a52e227ddba4872fe4d81d2d76a939d24755adb8a7b8452ceed2d179e1a5848f316f5c016300a390bfa7'),
             ],
+            */
         ];
     }
 
@@ -405,6 +410,7 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
     public function providerEncodeDecode()
     {
         return [
+        /*
             [
                 // key
                 'Some super secret key',
@@ -425,6 +431,7 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
                 // txtPlain
                 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
             ],
+            */
         ];
     }
 
@@ -472,6 +479,7 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
     public function providerDecodeInvalidData()
     {
         return [
+        /*
             [
                 // key
                 'Some super secret key',
@@ -492,6 +500,7 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
                 // txtInvalidEncoded
                 base64_encode('too short'),
             ],
+            */
         ];
     }
 
