@@ -23,7 +23,7 @@ jobs:
       memcache:
         image: memcached:1.6-alpine
         ports:
-          - 11211:11211
+          - 11212:11211
 
     steps:
       - name: Checkout

@@ -38,7 +38,7 @@ class Kohana_CacheArithmeticMemcachedTest extends Kohana_CacheArithmeticMethodsT
                 'default_expire' => 3600,
                 'servers' => [
                     'local' => [
-                        'host' => 'memcached',
+                        'host' => 'localhost',//'memcached',
                         'port' => 11211,
                         'weight' => 1,
                     ],
