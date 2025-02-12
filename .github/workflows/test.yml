@@ -30,7 +30,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           tools: composer
-          extensions: memcached
+          extensions: mcrypt, memcached
 
       - name: Get composer cache directory
         id: composer-cache
