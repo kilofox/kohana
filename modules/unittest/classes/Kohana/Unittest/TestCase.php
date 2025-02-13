@@ -189,7 +189,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             }
 
             if (empty($nodes)) {
-                return false;
+                return $nodes;
             }
         } // no tag selected, get them all
         else {
@@ -228,7 +228,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             }
 
             if (empty($nodes)) {
-                return false;
+                return $nodes;
             }
         }
 
@@ -278,7 +278,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             $filtered = [];
 
             if (empty($nodes)) {
-                return false;
+                return $nodes;
             }
         }
 
@@ -311,7 +311,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             $filtered = [];
 
             if (empty($nodes)) {
-                return false;
+                return $nodes;
             }
         }
 
@@ -332,7 +332,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             $filtered = [];
 
             if (empty($nodes)) {
-                return false;
+                return $nodes;
             }
         }
 
@@ -355,7 +355,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             $filtered = [];
 
             if (empty($nodes)) {
-                return false;
+                return $nodes;
             }
         }
 
@@ -387,7 +387,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             $filtered = [];
 
             if (empty($nodes)) {
-                return false;
+                return $nodes;
             }
         }
 
@@ -412,7 +412,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             $filtered = [];
 
             if (empty($nodes)) {
-                return false;
+                return $nodes;
             }
         }
 
@@ -435,7 +435,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             $filtered = [];
 
             if (empty($nodes)) {
-                return false;
+                return $nodes;
             }
         }
 
@@ -511,12 +511,12 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             $nodes = $filtered;
 
             if (empty($nodes)) {
-                return;
+                return $nodes;
             }
         }
 
         // return the first node that matches all criteria
-        return !empty($nodes) ? $nodes : [];
+        return $nodes;
     }
 
     /**
