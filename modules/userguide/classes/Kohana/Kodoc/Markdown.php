@@ -263,8 +263,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
         if (self::$show_toc AND Route::name(Request::current()->route()) == "docs/guide") {
             $toc = View::factory('userguide/page-toc')
                 ->set('array', self::$_toc)
-                ->render()
-            ;
+                ->render();
 
             if (($offset = strpos($text, '<p>')) !== false) {
                 // Insert the page TOC just before the first <p>, which every

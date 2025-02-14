@@ -621,8 +621,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
 
         $validation = Validation::factory($array)
             ->rule('email', 'not_empty')
-            ->rule('email', 'email')
-        ;
+            ->rule('email', 'email');
 
         $validation->check();
 
