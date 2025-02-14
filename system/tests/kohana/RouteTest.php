@@ -635,7 +635,8 @@ class Kohana_RouteTest extends Unittest_TestCase
     {
         $route = new Route($uri, $regex);
 
-        $this->setExpectedException('Kohana_Exception', 'controller');
+        $this->expectException('Kohana_Exception');
+        $this->expectExceptionMessage('controller');
         $route->uri($uri_array);
     }
 

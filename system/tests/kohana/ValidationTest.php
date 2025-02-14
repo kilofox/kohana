@@ -576,7 +576,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
     public function test_offsetSet_throws_exception()
     // @codingStandardsIgnoreEnd
     {
-        $this->setExpectedException('Kohana_Exception');
+        $this->expectException('Kohana_Exception');
 
         $validation = Validation::factory([]);
 
@@ -601,7 +601,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
     public function test_offsetUnset()
     // @codingStandardsIgnoreEnd
     {
-        $this->setExpectedException('Kohana_Exception');
+        $this->expectException('Kohana_Exception');
 
         $validation = Validation::factory(['one' => 'Hello, World!']);
 
