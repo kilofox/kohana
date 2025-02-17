@@ -142,9 +142,6 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         // Attach this module's menu to the template
         $this->template->menu = Kodoc_Markdown::markdown($this->_get_all_menu_markdown());
 
-        // Bind the breadcrumb
-        $this->template->bind('breadcrumb', $breadcrumb);
-
         // Bind the copyright
         $this->template->copyright = Kohana::$config->load('userguide.modules.' . $module . '.copyright');
 
@@ -158,6 +155,9 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         if ($page != 'index') {
             $breadcrumb[] = $this->template->title;
         }
+
+        // Bind the breadcrumb
+        $this->template->bind('breadcrumb', $breadcrumb);
     }
 
     public function action_api()
@@ -205,14 +205,14 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         // Attach the menu to the template
         $this->template->menu = Kodoc::menu();
 
-        // Bind the breadcrumb
-        $this->template->bind('breadcrumb', $breadcrumb);
-
         // Add the breadcrumb
         $breadcrumb = [];
         $breadcrumb[$this->guide->uri(['page' => null])] = 'User Guide';
         $breadcrumb[$this->request->route()->uri()] = 'API Browser';
         $breadcrumb[] = $this->template->title;
+
+        // Bind the breadcrumb
+        $this->template->bind('breadcrumb', $breadcrumb);
     }
 
     public function action_media()
