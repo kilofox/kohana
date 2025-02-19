@@ -123,8 +123,8 @@ class Kohana_DateTest extends Unittest_TestCase
      * @test
      * @covers Date::ampm
      * @dataProvider provider_am_pm
-     * @param <type> $hour
-     * @param <type> $expected
+     * @param int $hour
+     * @param string $expected
      */
     public function test_am_pm($hour, $expected)
     {

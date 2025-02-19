@@ -16,7 +16,7 @@ class Kohana_Unittest_Tests
 
     /**
      * Loads test files if they cannot be found by kohana
-     * @param <type> $class
+     * @param string $class
      */
     static function autoload($class)
     {

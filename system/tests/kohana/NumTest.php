@@ -92,7 +92,7 @@ class Kohana_NumTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_ordinal
      * @param integer $number
-     * @param <type> $expected
+     * @param string $expected
      */
     public function test_ordinal($number, $expected)
     {
