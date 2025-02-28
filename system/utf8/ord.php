@@ -13,7 +13,7 @@ function _ord($chr)
 {
     $ord0 = ord($chr);
 
-    if ($ord0 >= 0 AND $ord0 <= 127)
+    if ($ord0 <= 127)
         return $ord0;
 
     if (!isset($chr[1])) {
@@ -59,7 +59,7 @@ function _ord($chr)
     if ($ord0 >= 252 AND $ord0 <= 253)
         return ($ord0 - 252) * 1073741824 + ($ord1 - 128) * 16777216 + ($ord2 - 128) * 262144 + ($ord3 - 128) * 4096 + ($ord4 - 128) * 64 + (ord($chr[5]) - 128);
 
-    if ($ord0 >= 254 AND $ord0 <= 255) {
+    if ($ord0 >= 254) {
         throw new UTF8_Exception("Invalid UTF-8 with surrogate ordinal ':ordinal'", [
         ':ordinal' => $ord0,
         ]);
