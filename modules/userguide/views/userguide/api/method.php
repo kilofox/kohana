@@ -15,7 +15,7 @@
         <ul>
             <?php foreach ($doc->params as $param): ?>
                 <li>
-                    <code><?php echo ($param->reference ? 'byref ' : '') . ($param->type ? $param->type : 'unknown') ?></code>
+                    <code><?php echo ($param->reference ? 'byref ' : '') . ($param->type ?: 'unknown') ?></code>
                     <strong><?php echo '$' . $param->name ?></strong>
                     <?php echo $param->default ? '<small> = ' . $param->default . '</small>' : '<small>required</small>' ?>
                     <?php echo $param->description ? ' - ' . $param->description : '' ?>
