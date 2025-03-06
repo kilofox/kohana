@@ -355,14 +355,14 @@ class Kohana_Arr
     {
         foreach ($array as $key => $val) {
             if (is_array($val)) {
-                $array[$key] = Arr::map($callbacks, $array[$key], $keys);
+                $array[$key] = Arr::map($callbacks, $val, $keys);
             } elseif (!is_array($keys) OR in_array($key, $keys)) {
                 if (is_array($callbacks)) {
                     foreach ($callbacks as $cb) {
                         $array[$key] = call_user_func($cb, $array[$key]);
                     }
                 } else {
-                    $array[$key] = call_user_func($callbacks, $array[$key]);
+                    $array[$key] = call_user_func($callbacks, $val);
                 }
             }
         }
