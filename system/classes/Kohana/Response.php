@@ -381,7 +381,7 @@ class Kohana_Response implements HTTP_Response
             }
 
             // Force the data to be rendered if
-            $file_data = (string) $this->_body;
+            $file_data = $this->_body;
 
             // Get the content size
             $size = strlen($file_data);

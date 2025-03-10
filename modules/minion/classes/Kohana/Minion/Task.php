@@ -160,7 +160,7 @@ abstract class Kohana_Minion_Task
      */
     public function get_options()
     {
-        return (array) $this->_options;
+        return $this->_options;
     }
 
     /**
@@ -170,7 +170,7 @@ abstract class Kohana_Minion_Task
      */
     public function get_accepted_options()
     {
-        return (array) $this->_accepted_options;
+        return $this->_accepted_options;
     }
 
     /**

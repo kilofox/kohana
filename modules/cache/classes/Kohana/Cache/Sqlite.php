@@ -116,7 +116,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      */
     public function set($id, $data, $lifetime = null)
     {
-        return (bool) $this->set_with_tags($id, $data, $lifetime);
+        return $this->set_with_tags($id, $data, $lifetime);
     }
 
     /**

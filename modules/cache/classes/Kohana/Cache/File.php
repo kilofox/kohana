@@ -212,7 +212,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
         try {
             $data = $lifetime . "\n" . serialize($data);
             $file->fwrite($data, strlen($data));
-            return (bool) $file->fflush();
+            return $file->fflush();
         } catch (ErrorException $e) {
             // If serialize through an error exception
             if ($e->getCode() === E_NOTICE) {

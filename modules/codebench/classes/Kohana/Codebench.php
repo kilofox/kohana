@@ -71,8 +71,8 @@ abstract class Kohana_Codebench
             'class' => get_class($this),
             'description' => $this->description,
             'loops' => [
-                'base' => (int) $this->loops,
-                'total' => (int) $this->loops * count($this->subjects) * count($methods),
+                'base' => $this->loops,
+                'total' => $this->loops * count($this->subjects) * count($methods),
             ],
             'subjects' => $this->subjects,
             'benchmarks' => [],

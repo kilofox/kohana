@@ -1410,7 +1410,7 @@ class Kohana_ORM extends Model implements serializable
                 ->execute($this->_db)->get('records_found');
 
         // Rows found need to match the rows searched
-        return (int) $count;
+        return $count;
     }
 
     /**
