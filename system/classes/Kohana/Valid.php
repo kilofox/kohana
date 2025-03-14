@@ -73,11 +73,7 @@ class Kohana_Valid
     public static function exact_length($value, $length)
     {
         if (is_array($length)) {
-            foreach ($length as $strlen) {
-                if (UTF8::strlen($value) === $strlen)
-                    return true;
-            }
-            return false;
+            return in_array(UTF8::strlen($value), $length, true);
         }
 
         return UTF8::strlen($value) === $length;
