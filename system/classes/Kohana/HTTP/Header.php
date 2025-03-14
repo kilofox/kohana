@@ -272,7 +272,7 @@ class Kohana_HTTP_Header extends ArrayObject
          *
          * HTTP header declarations should be treated as case-insensitive
          */
-        $input = array_change_key_case((array) $input, CASE_LOWER);
+        $input = array_change_key_case((array) $input);
 
         parent::__construct($input, $flags, $iterator_class);
     }
@@ -390,7 +390,7 @@ class Kohana_HTTP_Header extends ArrayObject
          *
          * HTTP header declarations should be treated as case-insensitive
          */
-        $input = array_change_key_case((array) $input, CASE_LOWER);
+        $input = array_change_key_case((array) $input);
 
         return parent::exchangeArray($input);
     }
@@ -549,7 +549,7 @@ class Kohana_HTTP_Header extends ArrayObject
                 $charset_header = strtolower($this->offsetGet('Accept-Charset'));
                 $this->_accept_charset = HTTP_Header::parse_charset_header($charset_header);
             } else {
-                $this->_accept_charset = HTTP_Header::parse_charset_header(null);
+                $this->_accept_charset = HTTP_Header::parse_charset_header();
             }
         }
 

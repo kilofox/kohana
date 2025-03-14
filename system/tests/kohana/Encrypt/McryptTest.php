@@ -197,7 +197,7 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
         $e = $this->getMockBuilder('Encrypt_Mcrypt')
             ->enableOriginalConstructor()
             ->setConstructorArgs(['name' => 'mcrypt', 'config' => ['driver' => 'mcrypt', 'cipher' => $cipher, 'key' => $key, 'mode' => $mode, 'iv' => $iv]])
-            ->setMethods(null)
+            ->setMethods()
             ->getMock();
 
         // Prepare data.
@@ -386,7 +386,7 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
         $e = $this->getMockBuilder('Encrypt_Mcrypt')
             ->enableOriginalConstructor()
             ->setConstructorArgs(['name' => 'mcrypt', 'config' => ['driver' => 'mcrypt', 'cipher' => $cipher, 'key' => $key, 'mode' => $mode]])
-            ->setMethods(null)
+            ->setMethods()
             ->getMock();
 
         // Prepare data.
@@ -450,7 +450,7 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
         $e = $this->getMockBuilder('Encrypt_Mcrypt')
             ->enableOriginalConstructor()
             ->setConstructorArgs(['name' => 'mcrypt', 'config' => ['driver' => 'mcrypt', 'cipher' => $cipher, 'key' => $key, 'mode' => $mode]])
-            ->setMethods(null)
+            ->setMethods()
             ->getMock();
 
         // Encode.
@@ -516,7 +516,7 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
         $e = $this->getMockBuilder('Encrypt_Mcrypt')
             ->enableOriginalConstructor()
             ->setConstructorArgs(['name' => 'mcrypt', 'config' => ['driver' => 'mcrypt', 'cipher' => $cipher, 'key' => $key, 'mode' => $mode]])
-            ->setMethods(null)
+            ->setMethods()
             ->getMock();
 
         // Assert.
@@ -544,7 +544,7 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
         $e = $this->getMockBuilder('Encrypt_Mcrypt')
             ->enableOriginalConstructor()
             ->setConstructorArgs(['name' => 'mcrypt', 'config' => ['driver' => 'mcrypt', 'cipher' => $cipher, 'key' => $key, 'mode' => $mode]])
-            ->setMethods(null)
+            ->setMethods()
             ->getMock();
 
         $txtEncodedFirst = $e->encode($txtPlain);

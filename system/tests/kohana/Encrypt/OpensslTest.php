@@ -172,7 +172,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
         $e = $this->getMockBuilder('Encrypt_Openssl')
             ->enableOriginalConstructor()
             ->setConstructorArgs(['name' => 'openssl', 'config' => ['driver' => 'openssl', 'method' => $method, 'key' => $key, 'iv' => $iv]])
-            ->setMethods(null)
+            ->setMethods()
             ->getMock();
 
         // Prepare data.
@@ -336,7 +336,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
         $e = $this->getMockBuilder('Encrypt_Openssl')
             ->enableOriginalConstructor()
             ->setConstructorArgs(['name' => 'openssl', 'config' => ['driver' => 'openssl', 'method' => $method, 'key' => $key]])
-            ->setMethods(null)
+            ->setMethods()
             ->getMock();
 
         // Prepare data.
@@ -391,7 +391,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
         $e = $this->getMockBuilder('Encrypt_Openssl')
             ->enableOriginalConstructor()
             ->setConstructorArgs(['name' => 'openssl', 'config' => ['driver' => 'openssl', 'method' => $method, 'key' => $key]])
-            ->setMethods(null)
+            ->setMethods()
             ->getMock();
 
         // Encode.
@@ -448,7 +448,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
         $e = $this->getMockBuilder('Encrypt_Openssl')
             ->enableOriginalConstructor()
             ->setConstructorArgs(['name' => 'openssl', 'config' => ['driver' => 'openssl', 'cipher' => $method, 'key' => $key]])
-            ->setMethods(null)
+            ->setMethods()
             ->getMock();
 
         // Assert.
@@ -471,7 +471,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
         $e = $this->getMockBuilder('Encrypt_Openssl')
             ->enableOriginalConstructor()
             ->setConstructorArgs(['name' => 'openssl', 'config' => ['driver' => 'openssl', 'cipher' => $method, 'key' => $key]])
-            ->setMethods(null)
+            ->setMethods()
             ->getMock();
 
         $txtEncodedFirst = $e->encode($txtPlain);

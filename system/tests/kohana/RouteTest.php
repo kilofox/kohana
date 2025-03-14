@@ -183,7 +183,7 @@ class Kohana_RouteTest extends Unittest_TestCase
         $route->expects($this->never())
             ->method('compile');
 
-        $route->__construct(null, null);
+        $route->__construct();
 
         $this->assertAttributeSame('', '_uri', $route);
         $this->assertAttributeSame([], '_regex', $route);

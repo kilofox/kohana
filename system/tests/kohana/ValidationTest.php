@@ -399,7 +399,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
 
         $this->assertSame($expected, $validation->errors('Validation', false));
         // Should be able to get raw errors array
-        $this->assertAttributeSame($validation->errors(null), '_errors', $validation);
+        $this->assertAttributeSame($validation->errors(), '_errors', $validation);
     }
 
     /**
@@ -446,7 +446,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
 
         $validation->check();
 
-        $result_1 = $validation->errors('Validation', true);
+        $result_1 = $validation->errors('Validation');
         $result_2 = $validation->errors('Validation', 'en');
         $result_3 = $validation->errors('Validation', false);
 
@@ -478,7 +478,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
         $translated_expected = ['foo' => 'foo must equal Español'];
         $untranslated_expected = ['foo' => 'foo must equal Spanish'];
 
-        $result_1 = $validation->errors('Validation', true);
+        $result_1 = $validation->errors('Validation');
         $result_2 = $validation->errors('Validation', 'en');
         $result_3 = $validation->errors('Validation', false);
 

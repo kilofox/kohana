@@ -18,7 +18,7 @@ class Kohana_Session_Cookie extends Session
      */
     protected function _read($id = null)
     {
-        return Cookie::get($this->_name, null);
+        return Cookie::get($this->_name);
     }
 
     /**

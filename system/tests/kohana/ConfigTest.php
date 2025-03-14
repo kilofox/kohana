@@ -73,7 +73,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
         $config = new Config;
 
         $config->attach($reader1);
-        $config->attach($reader2, true);
+        $config->attach($reader2);
 
         $this->assertAttributeSame([$reader2, $reader1], '_sources', $config);
     }

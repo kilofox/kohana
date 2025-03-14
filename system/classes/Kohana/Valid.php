@@ -143,7 +143,7 @@ class Kohana_Valid
             return false; // Empty fields cause issues with checkdnsrr()
 
         // Check if the email domain has a valid MX record
-        return checkdnsrr(preg_replace('/^[^@]++@/', '', $email), 'MX');
+        return checkdnsrr(preg_replace('/^[^@]++@/', '', $email));
     }
 
     /**

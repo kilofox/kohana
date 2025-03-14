@@ -102,7 +102,7 @@ class Kohana_Config_GroupTest extends Kohana_Unittest_TestCase
     {
         $group = $this->get_mock_group('kohana');
 
-        $this->assertSame(null, $group->get('problems', null));
+        $this->assertSame(null, $group->get('problems'));
         $this->assertSame('nada', $group->get('problems', 'nada'));
     }
 

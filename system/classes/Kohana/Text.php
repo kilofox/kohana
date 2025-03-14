@@ -200,7 +200,7 @@ class Kohana_Text
         }
 
         // Split the pool into an array of characters
-        $pool = ($utf8 === true) ? UTF8::str_split($pool, 1) : str_split($pool, 1);
+        $pool = ($utf8 === true) ? UTF8::str_split($pool) : str_split($pool);
 
         // Largest pool key
         $max = count($pool) - 1;
