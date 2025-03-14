@@ -257,7 +257,7 @@ class Kohana_CoreTest extends Unittest_TestCase
             'bottom' => "$test_path/bottom_module"
         ]);
 
-        $this->assertEquals($expected, Kohana::message($file, $key, $default, $expected));
+        $this->assertEquals($expected, Kohana::message($file, $key, $default));
     }
 
     /**

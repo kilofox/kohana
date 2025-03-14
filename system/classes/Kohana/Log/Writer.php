@@ -76,7 +76,7 @@ abstract class Kohana_Log_Writer
      */
     public function format_message(array $message, $format = "time --- level: body in file:line")
     {
-        $message['time'] = Date::formatted_time('@' . $message['time'], Log_Writer::$timestamp, Log_Writer::$timezone, true);
+        $message['time'] = Date::formatted_time('@' . $message['time'], Log_Writer::$timestamp, Log_Writer::$timezone);
         $message['level'] = $this->_log_levels[$message['level']];
 
         $string = strtr($format, array_filter($message, 'is_scalar'));

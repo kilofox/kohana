@@ -168,7 +168,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     public function test_date($date, $expected)
     {
         $this->assertSame(
-            $expected, Valid::date($date, $expected)
+            $expected, Valid::date($date)
         );
     }
 
