@@ -16,8 +16,9 @@ class Kohana_Log_StdOut extends Log_Writer
      *
      *     $writer->write($messages);
      *
-     * @param   array   $messages
+     * @param array $messages
      * @return  void
+     * @throws Exception
      */
     public function write(array $messages)
     {

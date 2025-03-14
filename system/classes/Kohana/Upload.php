@@ -43,12 +43,13 @@ class Kohana_Upload
      *         Upload::save($array['file']);
      *     }
      *
-     * @param   array   $file       uploaded file data
-     * @param   string  $filename   new filename
-     * @param   string  $directory  new directory
-     * @param   integer $chmod      chmod mask
+     * @param array $file uploaded file data
+     * @param string $filename new filename
+     * @param string $directory new directory
+     * @param integer $chmod chmod mask
      * @return  string  on success, full path to new file
      * @return  false   on failure
+     * @throws Kohana_Exception
      */
     public static function save(array $file, $filename = null, $directory = null, $chmod = 0644)
     {
@@ -155,9 +156,10 @@ class Kohana_Upload
      *     $array->rule('file', 'Upload::size', [':value', '1M'])
      *     $array->rule('file', 'Upload::size', [':value', '2.5KiB'])
      *
-     * @param   array   $file   $_FILES item
-     * @param   string  $size   maximum file size allowed
+     * @param array $file $_FILES item
+     * @param string $size maximum file size allowed
      * @return  bool
+     * @throws Kohana_Exception
      */
     public static function size(array $file, $size)
     {

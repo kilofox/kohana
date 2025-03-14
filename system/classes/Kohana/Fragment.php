@@ -69,10 +69,11 @@ class Kohana_Fragment
      *         Fragment::save();
      *     }
      *
-     * @param   string  $name       fragment name
-     * @param   integer $lifetime   fragment cache lifetime
-     * @param   boolean $i18n       multilingual fragment support
+     * @param string $name fragment name
+     * @param integer $lifetime fragment cache lifetime
+     * @param boolean $i18n multilingual fragment support
      * @return  boolean
+     * @throws Kohana_Exception
      */
     public static function load($name, $lifetime = null, $i18n = null)
     {
@@ -104,6 +105,7 @@ class Kohana_Fragment
      *     Fragment::save();
      *
      * @return  void
+     * @throws Kohana_Exception
      */
     public static function save()
     {
@@ -130,9 +132,10 @@ class Kohana_Fragment
      *
      *     Fragment::delete($key);
      *
-     * @param   string  $name   fragment name
-     * @param   boolean $i18n   multilingual fragment support
+     * @param string $name fragment name
+     * @param boolean $i18n multilingual fragment support
      * @return  void
+     * @throws Kohana_Exception
      */
     public static function delete($name, $i18n = null)
     {

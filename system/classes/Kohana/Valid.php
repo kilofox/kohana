@@ -232,9 +232,10 @@ class Kohana_Valid
     /**
      * Validates a credit card number, with a Luhn check if possible.
      *
-     * @param   integer         $number credit card number
-     * @param   string|array    $type   card type, or an array of card types
+     * @param integer $number credit card number
+     * @param string|array $type card type, or an array of card types
      * @return  boolean
+     * @throws Kohana_Exception
      * @uses    Valid::luhn
      */
     public static function credit_card($number, $type = null)

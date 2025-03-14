@@ -46,10 +46,11 @@ class Kohana_Request_Client_ExternalTest extends Unittest_TestCase
      *
      * @dataProvider provider_factory
      *
-     * @param   array   $params  params
-     * @param   string  $client  client
-     * @param   Request_Client_External $expected expected
+     * @param array $params params
+     * @param string $client client
+     * @param Request_Client_External $expected expected
      * @return  void
+     * @throws Request_Exception
      */
     public function test_factory($params, $client, $expected)
     {
@@ -143,7 +144,13 @@ class Kohana_Request_Client_ExternalTest extends Unittest_TestCase
      *
      * @dataProvider provider_execute
      *
+     * @param $content_type
+     * @param $body
+     * @param $post
+     * @param $expected
      * @return  void
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      */
     public function test_execute($content_type, $body, $post, $expected)
     {

@@ -74,6 +74,7 @@ class Kohana_Request_Client_InternalTest extends Unittest_TestCase
      * @dataProvider provider_response_failure_status
      *
      * @return null
+     * @throws Kohana_Exception
      */
     public function test_response_failure_status($directory, $controller, $action, $uri, $expected)
     {

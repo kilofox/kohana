@@ -26,12 +26,13 @@ class Kohana_Form
      *     // When "file" inputs are present, you must include the "enctype"
      *     echo Form::open(null, ['enctype' => 'multipart/form-data']);
      *
-     * @param   mixed   $action     form action, defaults to the current request URI, or [Request] class to use
-     * @param   array   $attributes html attributes
+     * @param mixed $action form action, defaults to the current request URI, or [Request] class to use
+     * @param array $attributes html attributes
      * @return  string
-     * @uses    Request
+     * @throws Kohana_Exception
      * @uses    URL::site
      * @uses    HTML::attributes
+     * @uses    Request
      */
     public static function open($action = null, array $attributes = null)
     {
@@ -341,11 +342,12 @@ class Kohana_Form
      *
      *     echo Form::image(null, null, ['src' => 'media/img/login.png']);
      *
-     * @param   string  $name       input name
-     * @param   string  $value      input value
-     * @param   array   $attributes html attributes
-     * @param   boolean $index      add index file to URL?
+     * @param string $name input name
+     * @param string $value input value
+     * @param array $attributes html attributes
+     * @param boolean $index add index file to URL?
      * @return  string
+     * @throws Kohana_Exception
      * @uses    Form::input
      */
     public static function image($name, $value, array $attributes = null, $index = false)

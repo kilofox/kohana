@@ -26,9 +26,10 @@ abstract class Kohana_HTTP_Exception_Expected extends HTTP_Exception
      *         ':user' => $user
      *     ]);
      *
-     * @param   string  $message    status message, custom content to display with error
-     * @param   array   $variables  translation variables
+     * @param string $message status message, custom content to display with error
+     * @param array $variables translation variables
      * @return  void
+     * @throws Kohana_Exception
      */
     public function __construct($message = null, array $variables = null, Exception $previous = null)
     {
@@ -71,8 +72,9 @@ abstract class Kohana_HTTP_Exception_Expected extends HTTP_Exception
     /**
      * Generate a Response for the current Exception
      *
-     * @uses   Kohana_Exception::response()
      * @return Response
+     * @throws Kohana_Exception
+     * @uses   Kohana_Exception::response()
      */
     public function get_response()
     {

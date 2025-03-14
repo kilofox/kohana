@@ -65,11 +65,12 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_offset
-     * @covers Date::offset
+     * @covers       Date::offset
      * @param integer $expected Expected offset
-     * @param string  $remote   Remote TZ
-     * @param string  $local    Local TZ
-     * @param integer $now      Current timestamp
+     * @param string $remote Remote TZ
+     * @param string $local Local TZ
+     * @param integer $now Current timestamp
+     * @throws Exception
      */
     public function test_offset($expected, $remote, $local, $now = null)
     {
@@ -287,12 +288,13 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_formatted_time
-     * @covers Date::formatted_time
+     * @covers       Date::formatted_time
      * @ticket 3035 3902
-     * @param string         $expected         Expected output
-     * @param string|integer $datetime_str     The datetime timestamp / string
-     * @param string|null    $timestamp_format The output format
-     * @param string|null    $timezone         The timezone identifier
+     * @param string $expected Expected output
+     * @param string|integer $datetime_str The datetime timestamp / string
+     * @param string|null $timestamp_format The output format
+     * @param string|null $timezone The timezone identifier
+     * @throws Exception
      */
     public function test_formatted_time($expected, $datetime_str, $timestamp_format = null, $timezone = null)
     {

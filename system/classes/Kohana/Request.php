@@ -46,12 +46,13 @@ class Kohana_Request implements HTTP_Request
      * If $cache parameter is set, the response for the request will attempt to
      * be retrieved from the cache.
      *
-     * @param   string  $uri              URI of the request
-     * @param   array   $client_params    An array of params to pass to the request client
-     * @param   bool    $allow_external   Allow external requests? (deprecated in 3.3)
-     * @param   array   $injected_routes  An array of routes to use, for testing
+     * @param bool $uri URI of the request
+     * @param array $client_params An array of params to pass to the request client
+     * @param bool $allow_external Allow external requests? (deprecated in 3.3)
+     * @param array $injected_routes An array of routes to use, for testing
      * @return  void|Request
-     * @throws  Request_Exception
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      * @uses    Route::all
      * @uses    Route::matches
      */
@@ -280,10 +281,11 @@ class Kohana_Request implements HTTP_Request
     /**
      * Returns information about the initial user agent.
      *
-     * @param   mixed   $value  array or string to return: browser, version, robot, mobile, platform
+     * @param mixed $value array or string to return: browser, version, robot, mobile, platform
      * @return  mixed   requested information, false if nothing is found
-     * @uses    Request::$user_agent
+     * @throws Kohana_Exception
      * @uses    Text::user_agent
+     * @uses    Request::$user_agent
      */
     public static function user_agent($value)
     {
@@ -388,8 +390,9 @@ class Kohana_Request implements HTTP_Request
      * helps to solve that problem.
      *
      * @return  boolean
-     * @uses    Num::bytes
+     * @throws Kohana_Exception
      * @uses    Arr::get
+     * @uses    Num::bytes
      */
     public static function post_max_size_exceeded()
     {
@@ -686,10 +689,11 @@ class Kohana_Request implements HTTP_Request
      *
      *     echo URL::site($this->request->uri(), $protocol);
      *
-     * @param   mixed    $protocol  protocol string or Request object
+     * @param mixed $protocol protocol string or Request object
      * @return  string
-     * @since   3.0.7
+     * @throws Kohana_Exception
      * @uses    URL::site
+     * @since   3.0.7
      */
     public function url($protocol = null)
     {
@@ -868,8 +872,8 @@ class Kohana_Request implements HTTP_Request
      *     $request->execute();
      *
      * @return  Response
-     * @throws  Request_Exception
-     * @throws  HTTP_Exception_404
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      * @uses    [Kohana::$profiling]
      * @uses    [Profiler]
      */

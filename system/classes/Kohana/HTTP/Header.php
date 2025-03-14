@@ -434,9 +434,10 @@ class Kohana_HTTP_Header extends ArrayObject
      *     // $quality_explicit = false
      *     $quality_explicit = $request->headers()->accepts_at_quality('text/plain', true);
      *
-     * @param   string  $type
-     * @param   boolean $explicit   explicit check, excludes `*`
+     * @param string $type
+     * @param boolean $explicit explicit check, excludes `*`
      * @return  mixed
+     * @throws Kohana_Exception
      * @since   3.2.0
      */
     public function accepts_at_quality($type, $explicit = false)
@@ -505,9 +506,10 @@ class Kohana_HTTP_Header extends ArrayObject
      *     ], true); // $result = false (none matched explicitly)
      *
      *
-     * @param   array   $types      the content types to examine
-     * @param   boolean $explicit   only allow explicit references, no wildcards
+     * @param array $types the content types to examine
+     * @param boolean $explicit only allow explicit references, no wildcards
      * @return  string  name of the preferred content type
+     * @throws Kohana_Exception
      * @since   3.2.0
      */
     public function preferred_accept(array $types, $explicit = false)
@@ -765,10 +767,11 @@ class Kohana_HTTP_Header extends ArrayObject
      * [!!] if you supply a custom header handler via `$callback`, it is
      *  recommended that `$response` is returned
      *
-     * @param   HTTP_Response   $response   header to send
-     * @param   boolean         $replace    replace existing value
-     * @param   callback        $callback   optional callback to replace PHP header function
+     * @param HTTP_Response $response header to send
+     * @param boolean $replace replace existing value
+     * @param callback $callback optional callback to replace PHP header function
      * @return  mixed
+     * @throws Kohana_Exception
      * @since   3.2.0
      */
     public function send_headers(HTTP_Response $response = null, $replace = false, $callback = null)
@@ -816,9 +819,10 @@ class Kohana_HTTP_Header extends ArrayObject
      * Sends the supplied headers to the PHP output buffer. If cookies
      * are included in the message they will be handled appropriately.
      *
-     * @param   array   $headers    headers to send to php
-     * @param   boolean $replace    replace existing headers
+     * @param array $headers headers to send to php
+     * @param boolean $replace replace existing headers
      * @return  self
+     * @throws Kohana_Exception
      * @since   3.2.0
      */
     protected function _send_headers_to_php(array $headers, $replace)

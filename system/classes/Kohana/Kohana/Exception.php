@@ -77,9 +77,10 @@ class Kohana_Kohana_Exception extends Exception
      * Inline exception handler, displays the error message, source of the
      * exception, and the stack trace of the error.
      *
-     * @uses    Kohana_Exception::response
-     * @param   Throwable   $e
+     * @param Throwable $e
      * @return  void
+     * @throws Kohana_Exception
+     * @uses    Kohana_Exception::response
      */
     public static function handler($e)
     {
@@ -164,9 +165,10 @@ class Kohana_Kohana_Exception extends Exception
     /**
      * Get a Response object representing the exception
      *
-     * @uses    Kohana_Exception::text
-     * @param   Throwable   $e
+     * @param Throwable $e
      * @return  Response
+     * @throws Kohana_Exception
+     * @uses    Kohana_Exception::text
      */
     public static function response($e)
     {

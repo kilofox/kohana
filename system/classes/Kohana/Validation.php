@@ -256,6 +256,7 @@ class Kohana_Validation implements ArrayAccess
      *     }
      *
      * @return  boolean
+     * @throws ReflectionException
      */
     public function check()
     {

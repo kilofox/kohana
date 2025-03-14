@@ -60,8 +60,9 @@ class Kohana_FormTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_open
-     * @param boolean $input  Input for Form::open
+     * @param boolean $input Input for Form::open
      * @param boolean $expected Output for Form::open
+     * @throws Kohana_Exception
      */
     public function test_open($input, $expected)
     {
@@ -393,10 +394,11 @@ class Kohana_FormTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_image
-     * @param boolean $name         Input for Form::image
-     * @param boolean $value        Input for Form::image
-     * @param boolean $attributes  Input for Form::image
-     * @param boolean $expected    Output for Form::image
+     * @param boolean $name Input for Form::image
+     * @param boolean $value Input for Form::image
+     * @param boolean $attributes Input for Form::image
+     * @param boolean $expected Output for Form::image
+     * @throws Kohana_Exception
      */
     public function test_image($name, $value, $attributes, $expected)
     {

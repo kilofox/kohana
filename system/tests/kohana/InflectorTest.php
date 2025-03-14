@@ -38,8 +38,9 @@ class Kohana_InflectorTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_uncountable
-     * @param boolean $input  Input for File::mime
+     * @param boolean $input Input for File::mime
      * @param boolean $expected Output for File::mime
+     * @throws Kohana_Exception
      */
     public function test_uncountable($input, $expected)
     {
@@ -74,8 +75,9 @@ class Kohana_InflectorTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_singular
-     * @param boolean $input  Input for File::mime
+     * @param boolean $input Input for File::mime
      * @param boolean $expected Output for File::mime
+     * @throws Kohana_Exception
      */
     public function test_singular($input, $count, $expected)
     {
@@ -110,8 +112,9 @@ class Kohana_InflectorTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_plural
-     * @param boolean $input  Input for File::mime
+     * @param boolean $input Input for File::mime
      * @param boolean $expected Output for File::mime
+     * @throws Kohana_Exception
      */
     public function test_plural($input, $count, $expected)
     {

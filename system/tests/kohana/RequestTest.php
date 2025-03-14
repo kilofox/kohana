@@ -78,6 +78,9 @@ class Kohana_RequestTest extends Unittest_TestCase
      * Tests that the allow_external flag prevents an external request.
      *
      * @return null
+     * @throws Kohana_Exception
+     * @throws ReflectionException
+     * @throws Request_Exception
      */
     public function test_disable_external_tests()
     {
@@ -245,11 +248,13 @@ class Kohana_RequestTest extends Unittest_TestCase
      * Tests Request::accept_lang()
      *
      * @test
-     * @covers Request::accept_lang
+     * @covers       Request::accept_lang
      * @dataProvider provider_accept_lang
      * @param array $params Query string
      * @param string $expected Expected result
      * @param array $enviroment Set environment
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function test_accept_lang($params, $expected, $enviroment)
     {
@@ -279,10 +284,13 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_url
-     * @covers Request::url
+     * @covers       Request::url
      * @param string $uri the uri to use
      * @param string $protocol the protocol to use
      * @param array $expected The string we expect
+     * @throws Kohana_Exception
+     * @throws ReflectionException
+     * @throws Request_Exception
      */
     public function test_url($uri, $protocol, $expected)
     {
@@ -328,7 +336,11 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_set_protocol
      *
+     * @param $protocol
+     * @param $expected
      * @return null
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      */
     public function test_set_protocol($protocol, $expected)
     {
@@ -348,6 +360,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * Provides data for test_post_max_size_exceeded()
      *
      * @return  array
+     * @throws Kohana_Exception
      */
     public function provider_post_max_size_exceeded()
     {
@@ -366,9 +379,10 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_post_max_size_exceeded
      *
-     * @param   int      content_length
-     * @param   bool     expected
+     * @param int      content_length
+     * @param bool     expected
      * @return  void
+     * @throws Kohana_Exception
      */
     public function test_post_max_size_exceeded($content_length, $expected)
     {
@@ -386,6 +400,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * Provides data for test_uri_only_trimed_on_internal()
      *
      * @return  array
+     * @throws Request_Exception
      */
     public function provider_uri_only_trimed_on_internal()
     {
@@ -458,9 +473,10 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_options_set_to_external_client
      *
-     * @param   array    settings
-     * @param   array    expected
+     * @param array    settings
+     * @param array    expected
      * @return void
+     * @throws Request_Exception
      */
     public function test_options_set_to_external_client($settings, $expected)
     {
@@ -482,6 +498,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * Provides data for test_headers_get()
      *
      * @return  array
+     * @throws Request_Exception
      */
     public function provider_headers_get()
     {
@@ -549,9 +566,10 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_headers_set
      *
-     * @param   array      header(s) to set to the request object
-     * @param   string     expected http header
+     * @param array      header(s) to set to the request object
+     * @param string     expected http header
      * @return  void
+     * @throws Request_Exception
      */
     public function test_headers_set($headers, $expected)
     {
@@ -604,10 +622,11 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_query_parameter_parsing
      *
-     * @param   string    url
-     * @param   array     query
-     * @param   array    expected
+     * @param string    url
+     * @param array     query
+     * @param array    expected
      * @return  void
+     * @throws Request_Exception
      */
     public function test_query_parameter_parsing($url, $query, $expected)
     {
@@ -627,10 +646,11 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_query_parameter_parsing
      *
-     * @param   string    url
-     * @param   array     query
-     * @param   array    expected
+     * @param string    url
+     * @param array     query
+     * @param array    expected
      * @return  void
+     * @throws Request_Exception
      */
     public function test_query_parameter_parsing_in_subrequest($url, $query, $expected)
     {

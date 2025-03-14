@@ -135,8 +135,9 @@ class Kohana_Config
      *
      *     $config->copy($name);
      *
-     * @param   string  $group  configuration group name
+     * @param string $group configuration group name
      * @return  $this
+     * @throws Kohana_Exception
      */
     public function copy($group)
     {

@@ -22,8 +22,9 @@ class Kohana_Log_File extends Log_Writer
      *
      *     $writer = new Log_File($directory);
      *
-     * @param   string  $directory  log directory
+     * @param string $directory log directory
      * @return  void
+     * @throws Kohana_Exception
      */
     public function __construct($directory)
     {
@@ -42,8 +43,9 @@ class Kohana_Log_File extends Log_Writer
      *
      *     $writer->write($messages);
      *
-     * @param   array   $messages
+     * @param array $messages
      * @return  void
+     * @throws Exception
      */
     public function write(array $messages)
     {

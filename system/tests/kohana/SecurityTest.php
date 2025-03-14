@@ -40,6 +40,7 @@ class Kohana_SecurityTest extends Unittest_TestCase
      * Provides test data for Security::token()
      *
      * @return array Test data sets
+     * @throws Kohana_Exception
      */
     public function provider_csrf_token()
     {

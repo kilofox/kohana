@@ -180,8 +180,9 @@ class Kohana_Num
      *     echo Num::bytes('1000');  // 1000
      *     echo Num::bytes('2.5GB'); // 2684354560
      *
-     * @param   string  $bytes  file size in SB format
+     * @param string $bytes file size in SB format
      * @return  float
+     * @throws Kohana_Exception
      */
     public static function bytes($size)
     {

@@ -18,9 +18,10 @@ class Kohana_File
      *
      *     $mime = File::mime($file);
      *
-     * @param   string  $filename   file name or path
+     * @param string $filename file name or path
      * @return  string  mime type on success
      * @return  false   On failure
+     * @throws Kohana_Exception
      */
     public static function mime($filename)
     {
@@ -62,9 +63,10 @@ class Kohana_File
      *
      *     $mime = File::mime_by_ext('png'); // "image/png"
      *
-     * @param   string  $extension  php, pdf, txt, etc
+     * @param string $extension php, pdf, txt, etc
      * @return  string  mime type on success
      * @return  false   On failure
+     * @throws Kohana_Exception
      */
     public static function mime_by_ext($extension)
     {
@@ -77,9 +79,10 @@ class Kohana_File
     /**
      * Lookup MIME types for a file
      *
-     * @see Kohana_File::mime_by_ext()
      * @param string $extension Extension to lookup
      * @return array Array of MIMEs associated with the specified extension
+     * @throws Kohana_Exception
+     * @see Kohana_File::mime_by_ext()
      */
     public static function mimes_by_ext($extension)
     {
@@ -92,8 +95,9 @@ class Kohana_File
     /**
      * Lookup file extensions by MIME type
      *
-     * @param   string  $type File MIME type
+     * @param string $type File MIME type
      * @return  array   File extensions matching MIME type
+     * @throws Kohana_Exception
      */
     public static function exts_by_mime($type)
     {
@@ -123,8 +127,9 @@ class Kohana_File
     /**
      * Lookup a single file extension by MIME type.
      *
-     * @param   string  $type  MIME type to lookup
+     * @param string $type MIME type to lookup
      * @return  mixed          First file extension matching or false
+     * @throws Kohana_Exception
      */
     public static function ext_by_mime($type)
     {

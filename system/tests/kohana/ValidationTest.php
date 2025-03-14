@@ -275,17 +275,18 @@ class Kohana_ValidationTest extends Unittest_TestCase
      * Tests Validation::check()
      *
      * @test
-     * @covers Validation::check
-     * @covers Validation::rule
-     * @covers Validation::rules
-     * @covers Validation::errors
-     * @covers Validation::error
+     * @covers       Validation::check
+     * @covers       Validation::rule
+     * @covers       Validation::rules
+     * @covers       Validation::errors
+     * @covers       Validation::error
      * @dataProvider provider_check
-     * @param array   $array            The array of data
-     * @param array   $rules            The array of rules
-     * @param array   $labels           The array of labels
-     * @param boolean $expected         Is it valid?
-     * @param boolean $expected_errors  Array of expected errors
+     * @param array $array The array of data
+     * @param array $rules The array of rules
+     * @param array $labels The array of labels
+     * @param boolean $expected Is it valid?
+     * @param boolean $expected_errors Array of expected errors
+     * @throws ReflectionException
      */
     public function test_check($array, $rules, $labels, $expected, $expected_errors)
     {
@@ -379,11 +380,12 @@ class Kohana_ValidationTest extends Unittest_TestCase
      * Tests Validation::errors()
      *
      * @test
-     * @covers Validation::errors
+     * @covers       Validation::errors
      * @dataProvider provider_errors
-     * @param array $array     The array of data
-     * @param array $rules     The array of rules
-     * @param array $expected  Array of expected errors
+     * @param array $array The array of data
+     * @param array $rules The array of rules
+     * @param array $expected Array of expected errors
+     * @throws ReflectionException
      */
     public function test_errors($array, $rules, $expected)
     {
@@ -423,12 +425,13 @@ class Kohana_ValidationTest extends Unittest_TestCase
      * Tests Validation::errors()
      *
      * @test
-     * @covers Validation::errors
+     * @covers       Validation::errors
      * @dataProvider provider_translated_errors
-     * @param array   $data                   The array of data to test
-     * @param array   $rules                  The array of rules to add
-     * @param array   $translated_expected    The array of expected errors when translated
-     * @param array   $untranslated_expected  The array of expected errors when not translated
+     * @param array $data The array of data to test
+     * @param array $rules The array of rules to add
+     * @param array $translated_expected The array of expected errors when translated
+     * @param array $untranslated_expected The array of expected errors when not translated
+     * @throws ReflectionException
      */
     public function test_translated_errors($data, $rules, $translated_expected, $untranslated_expected)
     {

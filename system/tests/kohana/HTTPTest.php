@@ -90,10 +90,11 @@ class Kohana_HTTPTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_redirect
-     * @param array  $location            Location to redirect to
-     * @param array  $code                HTTP Code to use for the redirect
-     * @param string $expected_exception  Expected exception
-     * @param string $expected_location   Expected exception
+     * @param array $location Location to redirect to
+     * @param array $code HTTP Code to use for the redirect
+     * @param string $expected_exception Expected exception
+     * @param string $expected_location Expected exception
+     * @throws Kohana_Exception
      */
     public function test_redirect($location, $code, $expected_exception, $expected_location)
     {

@@ -572,9 +572,10 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
     /**
      * Helper method to test for private/protected properties.
      *
-     * @param   mixed   $expect Expected value.
-     * @param   mixed   $object Object that holds the private/protected property.
-     * @param   string  $name   The name of the private/protected property.
+     * @param mixed $expect Expected value.
+     * @param mixed $object Object that holds the private/protected property.
+     * @param string $name The name of the private/protected property.
+     * @throws ReflectionException
      */
     protected function assertSameProtectedProperty($expect, $object, $name)
     {

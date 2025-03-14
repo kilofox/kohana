@@ -30,9 +30,10 @@ abstract class Kohana_Session
      *
      * [!!] [Session::write] will automatically be called when the request ends.
      *
-     * @param   string  $type   type of session (native, cookie, etc)
-     * @param   string  $id     session identifier
+     * @param string $type type of session (native, cookie, etc)
+     * @param string $id session identifier
      * @return  Session
+     * @throws Kohana_Exception
      * @uses    Kohana::$config
      */
     public static function instance($type = null, $id = null)
@@ -89,9 +90,10 @@ abstract class Kohana_Session
      *
      * [!!] Sessions can only be created using the [Session::instance] method.
      *
-     * @param   array   $config configuration
-     * @param   string  $id     session id
+     * @param array $config configuration
+     * @param string $id session id
      * @return  void
+     * @throws Session_Exception
      * @uses    Session::read
      */
     public function __construct(array $config = null, $id = null)
@@ -128,6 +130,7 @@ abstract class Kohana_Session
      *     echo $session;
      *
      * @return  string
+     * @throws Kohana_Exception
      * @uses    Encrypt::encode
      */
     public function __toString()
@@ -279,8 +282,9 @@ abstract class Kohana_Session
      *
      *     $session->read();
      *
-     * @param   string  $id session id
+     * @param string $id session id
      * @return  void
+     * @throws Session_Exception
      */
     public function read($id = null)
     {

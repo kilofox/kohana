@@ -516,12 +516,13 @@ class Kohana_UTF8
      *
      *     $str = UTF8::str_pad($str, $length);
      *
-     * @author  Harry Fuecks <hfuecks@gmail.com>
-     * @param   string  $str                input string
-     * @param   integer $final_str_length   desired string length after padding
-     * @param   string  $pad_str            string to use as padding
-     * @param   string  $pad_type           padding type: STR_PAD_RIGHT, STR_PAD_LEFT, or STR_PAD_BOTH
+     * @param string $str input string
+     * @param integer $final_str_length desired string length after padding
+     * @param string $pad_str string to use as padding
+     * @param string $pad_type padding type: STR_PAD_RIGHT, STR_PAD_LEFT, or STR_PAD_BOTH
      * @return  string
+     * @throws UTF8_Exception
+     * @author  Harry Fuecks <hfuecks@gmail.com>
      */
     public static function str_pad($str, $final_str_length, $pad_str = ' ', $pad_type = STR_PAD_RIGHT)
     {
@@ -654,9 +655,10 @@ class Kohana_UTF8
      *
      *     $digit = UTF8::ord($character);
      *
-     * @author  Harry Fuecks <hfuecks@gmail.com>
-     * @param   string  $chr    UTF-8 encoded character
+     * @param string $chr UTF-8 encoded character
      * @return  integer
+     * @throws UTF8_Exception
+     * @author  Harry Fuecks <hfuecks@gmail.com>
      */
     public static function ord($chr)
     {
@@ -683,9 +685,10 @@ class Kohana_UTF8
      * Ported to PHP by Henri Sivonen <hsivonen@iki.fi>, see <http://hsivonen.iki.fi/php-utf8/>
      * Slight modifications to fit with phputf8 library by Harry Fuecks <hfuecks@gmail.com>
      *
-     * @param   string  $str    UTF-8 encoded string
+     * @param string $str UTF-8 encoded string
      * @return  array   unicode code points
      * @return  false   if the string is invalid
+     * @throws UTF8_Exception
      */
     public static function to_unicode($str)
     {
@@ -712,9 +715,10 @@ class Kohana_UTF8
      * Ported to PHP by Henri Sivonen <hsivonen@iki.fi>, see http://hsivonen.iki.fi/php-utf8/
      * Slight modifications to fit with phputf8 library by Harry Fuecks <hfuecks@gmail.com>.
      *
-     * @param   array   $str    unicode code points representing a string
+     * @param array $str unicode code points representing a string
      * @return  string  utf8 string of characters
      * @return  boolean false if a code point cannot be found
+     * @throws UTF8_Exception
      */
     public static function from_unicode($arr)
     {
