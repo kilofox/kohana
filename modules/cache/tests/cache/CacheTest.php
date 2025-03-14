@@ -65,7 +65,7 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
      */
     public function test_instance($group, $expected)
     {
-        if (in_array($group, [Kohana_CacheTest::BAD_GROUP_DEFINITION])) {
+        if ($group == Kohana_CacheTest::BAD_GROUP_DEFINITION) {
             $this->expectException('Cache_Exception');
         }
 
