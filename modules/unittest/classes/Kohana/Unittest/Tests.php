@@ -179,7 +179,7 @@ class Kohana_Unittest_Tests
             // value in the modules array of your app/config/unittest file
             if (array_search(true, $modules, true) === (count($modules) - 1)) {
                 $modules = $k_modules;
-            } elseif (array_search(false, $modules, true) === false) {
+            } elseif (!in_array(false, $modules, true)) {
                 $modules = array_intersect_key($k_modules, array_combine($modules, $modules));
             } else {
                 // modules are disabled
