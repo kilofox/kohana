@@ -251,7 +251,7 @@ abstract class Kohana_Database
         // Quote the table name
         $table = $this->quote_table($table);
 
-        return $this->query(Database::SELECT, 'SELECT COUNT(*) AS total_row_count FROM ' . $table, false)
+        return $this->query(Database::SELECT, 'SELECT COUNT(*) AS total_row_count FROM ' . $table)
                 ->get('total_row_count');
     }
 

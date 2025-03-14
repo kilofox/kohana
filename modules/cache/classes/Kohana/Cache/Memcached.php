@@ -121,7 +121,7 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
         $this->memcached = new Memcached;
 
         // Load servers from configuration.
-        $servers = Arr::get($this->_config, 'servers', null);
+        $servers = Arr::get($this->_config, 'servers');
 
         if (!$servers) {
             // Throw an exception if no server found.

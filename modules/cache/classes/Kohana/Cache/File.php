@@ -437,7 +437,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
     {
         // Open the file and parse data
         $created = $file->getMTime();
-        $data = $file->openFile("r");
+        $data = $file->openFile();
         $lifetime = (int) $data->fgets();
 
         // If we're at the EOF at this point, corrupted!

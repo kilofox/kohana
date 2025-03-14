@@ -105,11 +105,11 @@ class Kohana_CacheArithmeticMemcacheTest extends Kohana_CacheArithmeticMethodsTe
             false
         ];
 
-        $previous_set = $cache->get($id_set, null);
+        $previous_set = $cache->get($id_set);
 
         foreach ($data as $value) {
             // Use Equals over Sames as Objects will not be equal
-            $this->assertEquals($previous_set, $cache->get($id_set, null));
+            $this->assertEquals($previous_set, $cache->get($id_set));
             $cache->set($id_set, $value, $ttl);
 
             $previous_set = $value;

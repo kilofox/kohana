@@ -268,10 +268,10 @@ class Kohana_Database_MySQLi extends Database
     {
         if (is_string($like)) {
             // Search for table names
-            $result = $this->query(Database::SELECT, 'SHOW TABLES LIKE ' . $this->quote($like), false);
+            $result = $this->query(Database::SELECT, 'SHOW TABLES LIKE ' . $this->quote($like));
         } else {
             // Find all table names
-            $result = $this->query(Database::SELECT, 'SHOW TABLES', false);
+            $result = $this->query(Database::SELECT, 'SHOW TABLES');
         }
 
         $tables = [];
@@ -289,10 +289,10 @@ class Kohana_Database_MySQLi extends Database
 
         if (is_string($like)) {
             // Search for column names
-            $result = $this->query(Database::SELECT, 'SHOW FULL COLUMNS FROM ' . $table . ' LIKE ' . $this->quote($like), false);
+            $result = $this->query(Database::SELECT, 'SHOW FULL COLUMNS FROM ' . $table . ' LIKE ' . $this->quote($like));
         } else {
             // Find all column names
-            $result = $this->query(Database::SELECT, 'SHOW FULL COLUMNS FROM ' . $table, false);
+            $result = $this->query(Database::SELECT, 'SHOW FULL COLUMNS FROM ' . $table);
         }
 
         $count = 0;

@@ -1,7 +1,7 @@
 <h1>
     <?php echo $doc->modifiers, $doc->class->name ?>
     <?php foreach ($doc->parents as $parent): ?>
-        <br/><small>extends <?php echo HTML::anchor($route->uri(['class' => $parent->name]), $parent->name, null, null, true) ?></small>
+        <br/><small>extends <?php echo HTML::anchor($route->uri(['class' => $parent->name]), $parent->name) ?></small>
     <?php endforeach; ?>
 </h1>
 
@@ -10,7 +10,7 @@
             Implements:
             <?php
             for ($i = 0, $split = false, $count = count($interfaces); $i < $count; $i++, $split = " | ") {
-                echo $split . HTML::anchor($route->uri(['class' => $interfaces[$i]]), $interfaces[$i], null, null, true);
+                echo $split . HTML::anchor($route->uri(['class' => $interfaces[$i]]), $interfaces[$i]);
             }
             ?></small>
     </p>

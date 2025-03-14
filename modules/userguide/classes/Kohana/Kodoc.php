@@ -40,7 +40,7 @@ class Kohana_Kodoc
             }
         }
 
-        return HTML::anchor(Route::get('docs/api')->uri(['class' => $class]) . $member, $link, null, null, true);
+        return HTML::anchor(Route::get('docs/api')->uri(['class' => $class]) . $member, $link);
     }
 
     public static function factory($class)

@@ -903,7 +903,7 @@ class Kohana_ORM extends Model implements serializable
 
         $this->_build(Database::SELECT);
 
-        return $this->_load_result(false);
+        return $this->_load_result();
     }
 
     /**
