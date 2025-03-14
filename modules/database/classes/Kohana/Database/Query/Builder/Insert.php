@@ -21,9 +21,10 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
     /**
      * Set the table and columns for an insert.
      *
-     * @param   mixed  $table    table name or [$table, $alias] or object
-     * @param   array  $columns  column names
+     * @param mixed $table table name or [$table, $alias] or object
+     * @param array $columns column names
      * @return  void
+     * @throws Kohana_Exception
      */
     public function __construct($table = null, array $columns = null)
     {
@@ -44,8 +45,9 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
     /**
      * Sets the table to insert into.
      *
-     * @param   string  $table  table name
+     * @param string $table table name
      * @return  $this
+     * @throws Kohana_Exception
      */
     public function table($table)
     {
@@ -73,9 +75,10 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
     /**
      * Adds or overwrites values. Multiple value sets can be added.
      *
-     * @param   array   $values  values list
+     * @param array $values values list
      * @param   ...
      * @return  $this
+     * @throws Kohana_Exception
      */
     public function values(array $values)
     {
@@ -96,8 +99,9 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
     /**
      * Use a sub-query to for the inserted values.
      *
-     * @param   object  $query  Database_Query of SELECT type
+     * @param object $query Database_Query of SELECT type
      * @return  $this
+     * @throws Kohana_Exception
      */
     public function select(Database_Query $query)
     {
@@ -113,8 +117,9 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
     /**
      * Compile the SQL query and return it.
      *
-     * @param   mixed  $db  Database instance or name of instance
+     * @param mixed $db Database instance or name of instance
      * @return  string
+     * @throws Kohana_Exception
      */
     public function compile($db = null)
     {

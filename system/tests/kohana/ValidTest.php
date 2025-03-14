@@ -314,11 +314,12 @@ class Kohana_ValidTest extends Unittest_TestCase
      * Tests Valid::credit_card()
      *
      * @test
-     * @covers Valid::credit_card
+     * @covers        Valid::credit_card
      * @dataProvider  provider_credit_card()
-     * @param string  $number   Credit card number
-     * @param string  $type	    Credit card type
+     * @param string $number Credit card number
+     * @param string $type Credit card type
      * @param boolean $expected
+     * @throws Kohana_Exception
      */
     public function test_credit_card($number, $type, $expected)
     {

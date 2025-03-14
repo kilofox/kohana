@@ -24,6 +24,8 @@ class Kohana_CacheArithmeticMemcacheTest extends Kohana_CacheArithmeticMethodsTe
      *  - Call the parent setup method, `parent::setUp()`
      *
      * @return  void
+     * @throws Cache_Exception
+     * @throws Kohana_Exception
      */
     public function setUp()
     {
@@ -84,6 +86,7 @@ class Kohana_CacheArithmeticMemcacheTest extends Kohana_CacheArithmeticMethodsTe
      *
      * @link    http://dev.kohanaframework.org/issues/4110
      * @return  void
+     * @throws Cache_Exception
      */
     public function test_multiple_set()
     {

@@ -24,6 +24,8 @@ class Kohana_Cache_FileTest extends Kohana_CacheBasicMethodsTest
      *  - Call the parent setup method, `parent::setUp()`
      *
      * @return  void
+     * @throws Cache_Exception
+     * @throws Kohana_Exception
      */
     public function setUp()
     {
@@ -52,6 +54,7 @@ class Kohana_Cache_FileTest extends Kohana_CacheBasicMethodsTest
      * Tests that ignored files are not removed from file cache
      *
      * @return  void
+     * @throws Kohana_Exception
      */
     public function test_ignore_delete_file()
     {
@@ -98,6 +101,7 @@ class Kohana_Cache_FileTest extends Kohana_CacheBasicMethodsTest
      * @dataProvider provider_utf8
      *
      * @return  void
+     * @throws Cache_Exception
      */
     public function test_utf8($input, $expected)
     {
@@ -137,6 +141,7 @@ class Kohana_Cache_FileTest extends Kohana_CacheBasicMethodsTest
      *
      * @param string $id cache id
      * @return boolean true if file exists false otherwise
+     * @throws ReflectionException
      */
     protected function is_file($id)
     {

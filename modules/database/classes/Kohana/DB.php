@@ -83,9 +83,10 @@ class Kohana_DB
      *     // INSERT INTO users (id, username)
      *     $query = DB::insert('users', ['id', 'username']);
      *
-     * @param   string  $table    table to insert into
-     * @param   array   $columns  list of column names or [$column, $alias] or object
+     * @param string $table table to insert into
+     * @param array $columns list of column names or [$column, $alias] or object
      * @return  Database_Query_Builder_Insert
+     * @throws Kohana_Exception
      */
     public static function insert($table = null, array $columns = null)
     {

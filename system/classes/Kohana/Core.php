@@ -525,8 +525,9 @@ class Kohana_Core
      *
      *     Kohana::modules(['modules/foo', MODPATH . 'bar']);
      *
-     * @param   array   $modules    list of module paths
+     * @param array $modules list of module paths
      * @return  array   enabled modules
+     * @throws Kohana_Exception
      */
     public static function modules(array $modules = null)
     {

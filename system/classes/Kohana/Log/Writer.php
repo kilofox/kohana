@@ -69,9 +69,10 @@ abstract class Kohana_Log_Writer
     /**
      * Formats a log entry.
      *
-     * @param   array   $message
-     * @param   string  $format
+     * @param array $message
+     * @param string $format
      * @return  string
+     * @throws Exception
      */
     public function format_message(array $message, $format = "time --- level: body in file:line")
     {

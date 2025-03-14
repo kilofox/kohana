@@ -44,10 +44,11 @@ class Kohana_Date
      * [!!] A list of time zones that PHP supports can be found at
      * <http://php.net/timezones>.
      *
-     * @param   string  $remote timezone that to find the offset of
-     * @param   string  $local  timezone used as the baseline
-     * @param   mixed   $now    UNIX timestamp or date string
+     * @param string $remote timezone that to find the offset of
+     * @param string $local timezone used as the baseline
+     * @param mixed $now UNIX timestamp or date string
      * @return  integer
+     * @throws Exception
      */
     public static function offset($remote, $local = null, $now = null)
     {
@@ -510,10 +511,11 @@ class Kohana_Date
      *     $time = Date::formatted_time('5 minutes ago');
      *
      * @link    http://www.php.net/manual/datetime.construct
-     * @param   string  $datetime_str       datetime string
-     * @param   string  $timestamp_format   timestamp format
-     * @param   string  $timezone           timezone identifier
+     * @param string $datetime_str datetime string
+     * @param string $timestamp_format timestamp format
+     * @param string $timezone timezone identifier
      * @return  string
+     * @throws Exception
      */
     public static function formatted_time($datetime_str = 'now', $timestamp_format = null, $timezone = null)
     {

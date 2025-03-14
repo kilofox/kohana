@@ -60,8 +60,9 @@ abstract class Kohana_HTTP_Exception extends Kohana_Exception
     /**
      * Generate a Response for the current Exception
      *
-     * @uses   Kohana_Exception::response()
      * @return Response
+     * @throws Kohana_Exception
+     * @uses   Kohana_Exception::response()
      */
     public function get_response()
     {

@@ -24,6 +24,8 @@ class Kohana_ApcuTest extends Kohana_CacheArithmeticMethodsTest
      *  - Call the parent setup method, `parent::setUp()`
      *
      * @return  void
+     * @throws Cache_Exception
+     * @throws Kohana_Exception
      */
     public function setUp()
     {
@@ -66,9 +68,10 @@ class Kohana_ApcuTest extends Kohana_CacheArithmeticMethodsTest
      *
      * @dataProvider provider_set_get
      *
-     * @param   array    data
-     * @param   mixed    expected
+     * @param array    data
+     * @param mixed    expected
      * @return  void
+     * @throws Cache_Exception
      */
     public function test_set_get(array $data, $expected)
     {

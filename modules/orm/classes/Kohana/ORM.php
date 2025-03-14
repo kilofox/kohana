@@ -248,7 +248,8 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Constructs a new model and loads a record if given
      *
-     * @param   mixed $id Parameter for find or object to load
+     * @param mixed $id Parameter for find or object to load
+     * @throws Kohana_Exception
      */
     public function __construct($id = null)
     {
@@ -279,6 +280,7 @@ class Kohana_ORM extends Model implements serializable
      * and loads column information.
      *
      * @return void
+     * @throws Kohana_Exception
      */
     protected function _initialize()
     {
@@ -457,6 +459,7 @@ class Kohana_ORM extends Model implements serializable
      *
      * @chainable
      * @return ORM
+     * @throws Kohana_Exception
      */
     public function reload()
     {
@@ -543,6 +546,7 @@ class Kohana_ORM extends Model implements serializable
      *
      * @param string $data String for unserialization
      * @return  void
+     * @throws Kohana_Exception
      */
     public function unserialize($data)
     {
@@ -563,8 +567,9 @@ class Kohana_ORM extends Model implements serializable
      * Handles retrieval of all model values, relationships, and metadata.
      * [!!] This should not be overridden.
      *
-     * @param   string $column Column name
+     * @param string $column Column name
      * @return  mixed
+     * @throws Kohana_Exception
      */
     public function __get($column)
     {
@@ -643,9 +648,11 @@ class Kohana_ORM extends Model implements serializable
      * Base set method.
      * [!!] This should not be overridden.
      *
-     * @param  string $column  Column name
-     * @param  mixed  $value   Column value
+     * @param string $column Column name
+     * @param mixed $value Column value
      * @return void
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function __set($column, $value)
     {
@@ -656,10 +663,11 @@ class Kohana_ORM extends Model implements serializable
      * Handles setting of columns
      * Override this method to add custom set behavior
      *
-     * @param  string $column Column name
-     * @param  mixed  $value  Column value
-     * @throws Kohana_Exception
+     * @param string $column Column name
+     * @param mixed $value Column value
      * @return ORM
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function set($column, $value)
     {
@@ -748,6 +756,7 @@ class Kohana_ORM extends Model implements serializable
      * models that have already been loaded using with()
      *
      * @return array
+     * @throws Kohana_Exception
      */
     public function as_array()
     {
@@ -942,8 +951,9 @@ class Kohana_ORM extends Model implements serializable
      * an iterator for multiple rows.
      *
      * @chainable
-     * @param  bool $multiple Return an iterator or load a single row
+     * @param bool $multiple Return an iterator or load a single row
      * @return ORM|Database_Result
+     * @throws Kohana_Exception
      */
     protected function _load_result($multiple = false)
     {
@@ -1058,9 +1068,10 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Filters a value for a specific column
      *
-     * @param  string $field  The column name
-     * @param  string $value  The value to filter
+     * @param string $field The column name
+     * @param string $value The value to filter
      * @return string
+     * @throws ReflectionException
      */
     protected function run_filter($field, $value)
     {
@@ -1141,9 +1152,10 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Validates the current model's data
      *
-     * @param  Validation $extra_validation Validation object
-     * @throws ORM_Validation_Exception
+     * @param Validation $extra_validation Validation object
      * @return ORM
+     * @throws ORM_Validation_Exception
+     * @throws ReflectionException
      */
     public function check(Validation $extra_validation = null)
     {
@@ -1170,9 +1182,11 @@ class Kohana_ORM extends Model implements serializable
 
     /**
      * Insert a new object to the database
-     * @param  Validation $validation Validation object
-     * @throws Kohana_Exception
+     * @param Validation $validation Validation object
      * @return ORM
+     * @throws Kohana_Exception
+     * @throws ORM_Validation_Exception
+     * @throws ReflectionException
      */
     public function create(Validation $validation = null)
     {
@@ -1224,9 +1238,11 @@ class Kohana_ORM extends Model implements serializable
      * Updates a single record or multiple records
      *
      * @chainable
-     * @param  Validation $validation Validation object
-     * @throws Kohana_Exception
+     * @param Validation $validation Validation object
      * @return ORM
+     * @throws Kohana_Exception
+     * @throws ORM_Validation_Exception
+     * @throws ReflectionException
      */
     public function update(Validation $validation = null)
     {
@@ -1285,8 +1301,11 @@ class Kohana_ORM extends Model implements serializable
      * Updates or Creates the record depending on loaded()
      *
      * @chainable
-     * @param  Validation $validation Validation object
+     * @param Validation $validation Validation object
      * @return ORM
+     * @throws Kohana_Exception
+     * @throws ORM_Validation_Exception
+     * @throws ReflectionException
      */
     public function save(Validation $validation = null)
     {
@@ -1331,9 +1350,10 @@ class Kohana_ORM extends Model implements serializable
      *     // Check if $model has any roles
      *     $model->has('roles')
      *
-     * @param  string  $alias    Alias of the has_many "through" relationship
-     * @param  mixed   $far_keys Related model, primary key, or an array of primary keys
+     * @param string $alias Alias of the has_many "through" relationship
+     * @param mixed $far_keys Related model, primary key, or an array of primary keys
      * @return boolean
+     * @throws Kohana_Exception
      */
     public function has($alias, $far_keys = null)
     {
@@ -1359,9 +1379,10 @@ class Kohana_ORM extends Model implements serializable
      *     // Check if $model has any roles
      *     $model->has('roles')
      *
-     * @param  string  $alias    Alias of the has_many "through" relationship
-     * @param  mixed   $far_keys Related model, primary key, or an array of primary keys
+     * @param string $alias Alias of the has_many "through" relationship
+     * @param mixed $far_keys Related model, primary key, or an array of primary keys
      * @return boolean
+     * @throws Kohana_Exception
      */
     public function has_any($alias, $far_keys = null)
     {
@@ -1381,9 +1402,10 @@ class Kohana_ORM extends Model implements serializable
      *     // Counts the number roles attached to $model
      *     $model->count_relations('roles')
      *
-     * @param  string  $alias    Alias of the has_many "through" relationship
-     * @param  mixed   $far_keys Related model, primary key, or an array of primary keys
+     * @param string $alias Alias of the has_many "through" relationship
+     * @param mixed $far_keys Related model, primary key, or an array of primary keys
      * @return integer
+     * @throws Kohana_Exception
      */
     public function count_relations($alias, $far_keys = null)
     {
@@ -1410,7 +1432,7 @@ class Kohana_ORM extends Model implements serializable
                 ->execute($this->_db)->get('records_found');
 
         // Rows found need to match the rows searched
-        return (int) $count;
+        return $count;
     }
 
     /**
@@ -1423,9 +1445,10 @@ class Kohana_ORM extends Model implements serializable
      *     // Add multiple roles (for example, from checkboxes on a form)
      *     $model->add('roles', [1, 2, 3, 4]);
      *
-     * @param  string  $alias    Alias of the has_many "through" relationship
-     * @param  mixed   $far_keys Related model, primary key, or an array of primary keys
+     * @param string $alias Alias of the has_many "through" relationship
+     * @param mixed $far_keys Related model, primary key, or an array of primary keys
      * @return ORM
+     * @throws Kohana_Exception
      */
     public function add($alias, $far_keys)
     {
@@ -1457,9 +1480,10 @@ class Kohana_ORM extends Model implements serializable
      *     // Remove all related roles
      *     $model->remove('roles');
      *
-     * @param  string $alias    Alias of the has_many "through" relationship
-     * @param  mixed  $far_keys Related model, primary key, or an array of primary keys
+     * @param string $alias Alias of the has_many "through" relationship
+     * @param mixed $far_keys Related model, primary key, or an array of primary keys
      * @return ORM
+     * @throws Kohana_Exception
      */
     public function remove($alias, $far_keys = null)
     {
@@ -1482,6 +1506,7 @@ class Kohana_ORM extends Model implements serializable
      * Count the number of records in the table.
      *
      * @return integer
+     * @throws Kohana_Exception
      */
     public function count_all()
     {
@@ -2189,9 +2214,10 @@ class Kohana_ORM extends Model implements serializable
      * Checks whether a column value is unique.
      * Excludes itself if loaded.
      *
-     * @param   string   $field  the field to check for uniqueness
-     * @param   mixed    $value  the value to check for uniqueness
+     * @param string $field the field to check for uniqueness
+     * @param mixed $value the value to check for uniqueness
      * @return  bool     whteher the value is unique
+     * @throws Kohana_Exception
      */
     public function unique($field, $value)
     {

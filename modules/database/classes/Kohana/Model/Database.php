@@ -38,8 +38,9 @@ abstract class Kohana_Model_Database extends Model
      *
      *     $model = new Foo_Model($db);
      *
-     * @param   mixed  $db  Database instance object or string
+     * @param mixed $db Database instance object or string
      * @return  void
+     * @throws Kohana_Exception
      */
     public function __construct($db = null)
     {

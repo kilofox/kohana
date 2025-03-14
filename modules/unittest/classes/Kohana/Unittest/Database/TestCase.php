@@ -68,6 +68,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
      * Creates a connection to the unittesting database
      *
      * @return PDO
+     * @throws Kohana_Exception
      */
     public function getConnection()
     {
@@ -91,6 +92,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
      * Gets a connection to the unittest database
      *
      * @return Kohana_Database The database connection
+     * @throws Kohana_Exception
      */
     public function getKohanaConnection()
     {
@@ -127,6 +129,9 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
      * * Config option
      *
      * @param array $environment List of environment to set
+     * @return false|null
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function setEnvironment(array $environment)
     {

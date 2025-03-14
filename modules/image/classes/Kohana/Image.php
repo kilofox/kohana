@@ -35,9 +35,10 @@ abstract class Kohana_Image
      *
      *     $image = Image::factory('upload/test.jpg');
      *
-     * @param   string   $file    image file path
-     * @param   string   $driver  driver type: GD, ImageMagick, etc
+     * @param string $file image file path
+     * @param string $driver driver type: GD, ImageMagick, etc
      * @return  Image
+     * @throws Kohana_Exception
      * @uses    Image::$default_driver
      */
     public static function factory($file, $driver = null)

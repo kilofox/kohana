@@ -288,6 +288,7 @@ class Kohana_Profiler
      *     list($time, $memory) = Profiler::application();
      *
      * @return  array  execution time, memory
+     * @throws Kohana_Exception
      * @uses    Kohana::cache
      */
     public static function application()

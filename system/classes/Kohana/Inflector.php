@@ -40,8 +40,9 @@ class Kohana_Inflector
      * been defined as uncountable in `config/inflector.php`. If this is the
      * case, please report [an issue](http://dev.kohanaphp.com/projects/kohana3/issues).
      *
-     * @param   string  $str    word to check
+     * @param string $str word to check
      * @return  boolean
+     * @throws Kohana_Exception
      */
     public static function uncountable($str)
     {
@@ -70,9 +71,10 @@ class Kohana_Inflector
      *
      * [!!] Special inflections are defined in `config/inflector.php`.
      *
-     * @param   string  $str    word to make singular
-     * @param   integer $count  count of thing
+     * @param string $str word to make singular
+     * @param integer $count count of thing
      * @return  string
+     * @throws Kohana_Exception
      * @uses    Inflector::uncountable
      */
     public static function singular($str, $count = null)
@@ -134,9 +136,10 @@ class Kohana_Inflector
      *
      * [!!] Special inflections are defined in `config/inflector.php`.
      *
-     * @param   string  $str    word to pluralize
-     * @param   integer $count  count of thing
+     * @param string $str word to pluralize
+     * @param integer $count count of thing
      * @return  string
+     * @throws Kohana_Exception
      * @uses    Inflector::uncountable
      */
     public static function plural($str, $count = null)

@@ -27,8 +27,9 @@ class Kohana_Config_Database_Writer extends Config_Database_Reader implements Ko
      *
      * Returns false if group does not exist or an array if it does
      *
-     * @param  string $group Configuration group
+     * @param string $group Configuration group
      * @return boolean|array
+     * @throws Kohana_Exception
      */
     public function load($group)
     {
@@ -47,10 +48,11 @@ class Kohana_Config_Database_Writer extends Config_Database_Reader implements Ko
      * Returns chainable instance on success or throws
      * Kohana_Config_Exception on failure
      *
-     * @param string      $group  The config group
-     * @param string      $key    The config key to write to
-     * @param array       $config The configuration to write
+     * @param string $group The config group
+     * @param string $key The config key to write to
+     * @param array $config The configuration to write
      * @return boolean
+     * @throws Kohana_Exception
      */
     public function write($group, $key, $config)
     {
@@ -77,10 +79,11 @@ class Kohana_Config_Database_Writer extends Config_Database_Reader implements Ko
     /**
      * Insert the config values into the table
      *
-     * @param string      $group  The config group
-     * @param string      $key    The config key to write to
-     * @param array       $config The serialized configuration to write
+     * @param string $group The config group
+     * @param string $key The config key to write to
+     * @param array $config The serialized configuration to write
      * @return boolean
+     * @throws Kohana_Exception
      */
     protected function _insert($group, $key, $config)
     {
@@ -94,10 +97,11 @@ class Kohana_Config_Database_Writer extends Config_Database_Reader implements Ko
     /**
      * Update the config values in the table
      *
-     * @param string      $group  The config group
-     * @param string      $key    The config key to write to
-     * @param array       $config The serialized configuration to write
+     * @param string $group The config group
+     * @param string $key The config key to write to
+     * @param array $config The serialized configuration to write
      * @return boolean
+     * @throws Kohana_Exception
      */
     protected function _update($group, $key, $config)
     {

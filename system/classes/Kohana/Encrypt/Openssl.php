@@ -56,8 +56,9 @@ class Kohana_Encrypt_Openssl
     /**
      * Creates a new mcrypt wrapper.
      *
-     * @param   string  $name   Configuration group name.
-     * @param   string  $config Configuration parameters.
+     * @param string $name configuration group name
+     * @param array $config configuration options
+     * @throws Kohana_Exception
      */
     public function __construct($name, $config)
     {

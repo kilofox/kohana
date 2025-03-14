@@ -78,8 +78,10 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
     /**
      * Compile the SQL query and return it.
      *
-     * @param   mixed  $db  Database instance or name of instance
+     * @param mixed $db Database instance or name of instance
      * @return  string
+     * @throws Database_Exception
+     * @throws Kohana_Exception
      */
     public function compile($db = null)
     {

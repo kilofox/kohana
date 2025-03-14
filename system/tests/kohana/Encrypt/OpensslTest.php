@@ -530,9 +530,11 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
      * Test to multiple calls to the instance() method returns same instance.
      * Also test if the instances are appropriately configured.
      *
-     * @param   string  $instanceName   Instance name.
-     * @param   array   $configArray    Array of config variables missing from config.
+     * @param string $instanceName Instance name.
+     * @param array $configArray Array of config variables missing from config.
      *
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      * @dataProvider providerInstanceReturnsSingleton
      */
     public function testInstanceReturnsSingleton($instanceName, array $configArray)
@@ -569,9 +571,10 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
     /**
      * Helper method to test for private/protected properties.
      *
-     * @param   mixed   $expect Expected value.
-     * @param   mixed   $object Object that holds the private/protected property.
-     * @param   string  $name   The name of the private/protected property.
+     * @param mixed $expect Expected value.
+     * @param mixed $object Object that holds the private/protected property.
+     * @param string $name The name of the private/protected property.
+     * @throws ReflectionException
      */
     protected function assertSameProtectedProperty($expect, $object, $name)
     {

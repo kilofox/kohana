@@ -29,9 +29,10 @@ abstract class Kohana_Encrypt
      *
      *     $encrypt = Encrypt::instance();
      *
-     * @param   string  $name   Configuration group name.
-     * @param   array   $config Configuration parameters.
+     * @param string $name configuration group name
+     * @param array $config configuration options
      * @return  Encrypt
+     * @throws Kohana_Exception
      */
     public static function instance($name = null, array $config = null)
     {

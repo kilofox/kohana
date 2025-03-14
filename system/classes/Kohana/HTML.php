@@ -94,12 +94,13 @@ class Kohana_HTML
      *
      *     echo HTML::anchor('/user/profile', 'My Profile');
      *
-     * @param   string  $uri        URL or URI string
-     * @param   string  $title      link text
-     * @param   array   $attributes HTML anchor attributes
-     * @param   mixed   $protocol   protocol to pass to URL::base()
-     * @param   boolean $index      include the index page
+     * @param string $uri URL or URI string
+     * @param string $title link text
+     * @param array $attributes HTML anchor attributes
+     * @param mixed $protocol protocol to pass to URL::base()
+     * @param boolean $index include the index page
      * @return  string
+     * @throws Kohana_Exception
      * @uses    URL::base
      * @uses    URL::site
      * @uses    HTML::attributes
@@ -138,14 +139,15 @@ class Kohana_HTML
      *
      *     echo HTML::file_anchor('media/doc/user_guide.pdf', 'User Guide');
      *
-     * @param   string  $file       name of file to link to
-     * @param   string  $title      link text
-     * @param   array   $attributes HTML anchor attributes
-     * @param   mixed   $protocol   protocol to pass to URL::base()
-     * @param   boolean $index      include the index page
+     * @param string $file name of file to link to
+     * @param string $title link text
+     * @param array $attributes HTML anchor attributes
+     * @param mixed $protocol protocol to pass to URL::base()
+     * @param boolean $index include the index page
      * @return  string
-     * @uses    URL::base
+     * @throws Kohana_Exception
      * @uses    HTML::attributes
+     * @uses    URL::base
      */
     public static function file_anchor($file, $title = null, array $attributes = null, $protocol = null, $index = false)
     {
@@ -187,13 +189,14 @@ class Kohana_HTML
      *
      *     echo HTML::style('media/css/screen.css');
      *
-     * @param   string  $file       file name
-     * @param   array   $attributes default attributes
-     * @param   mixed   $protocol   protocol to pass to URL::base()
-     * @param   boolean $index      include the index page
+     * @param string $file file name
+     * @param array $attributes default attributes
+     * @param mixed $protocol protocol to pass to URL::base()
+     * @param boolean $index include the index page
      * @return  string
-     * @uses    URL::base
+     * @throws Kohana_Exception
      * @uses    HTML::attributes
+     * @uses    URL::base
      */
     public static function style($file, array $attributes = null, $protocol = null, $index = false)
     {
@@ -219,13 +222,14 @@ class Kohana_HTML
      *
      *     echo HTML::script('media/js/jquery.min.js');
      *
-     * @param   string  $file       file name
-     * @param   array   $attributes default attributes
-     * @param   mixed   $protocol   protocol to pass to URL::base()
-     * @param   boolean $index      include the index page
+     * @param string $file file name
+     * @param array $attributes default attributes
+     * @param mixed $protocol protocol to pass to URL::base()
+     * @param boolean $index include the index page
      * @return  string
-     * @uses    URL::base
+     * @throws Kohana_Exception
      * @uses    HTML::attributes
+     * @uses    URL::base
      */
     public static function script($file, array $attributes = null, $protocol = null, $index = false)
     {
@@ -248,13 +252,14 @@ class Kohana_HTML
      *
      *     echo HTML::image('media/img/logo.png', ['alt' => 'My Company']);
      *
-     * @param   string  $file       file name
-     * @param   array   $attributes default attributes
-     * @param   mixed   $protocol   protocol to pass to URL::base()
-     * @param   boolean $index      include the index page
+     * @param string $file file name
+     * @param array $attributes default attributes
+     * @param mixed $protocol protocol to pass to URL::base()
+     * @param boolean $index include the index page
      * @return  string
-     * @uses    URL::base
+     * @throws Kohana_Exception
      * @uses    HTML::attributes
+     * @uses    URL::base
      */
     public static function image($file, array $attributes = null, $protocol = null, $index = false)
     {

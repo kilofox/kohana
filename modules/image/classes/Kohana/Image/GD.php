@@ -25,6 +25,7 @@ class Kohana_Image_GD extends Image
      * bundled.
      *
      * @return  boolean
+     * @throws Kohana_Exception
      */
     public static function check()
     {
@@ -224,8 +225,9 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a rotation.
      *
-     * @param   integer  $degrees  degrees to rotate
+     * @param integer $degrees degrees to rotate
      * @return  void
+     * @throws Kohana_Exception
      */
     protected function _do_rotate($degrees)
     {
@@ -298,8 +300,9 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a sharpen.
      *
-     * @param   integer  $amount  amount to sharpen
+     * @param integer $amount amount to sharpen
      * @return  void
+     * @throws Kohana_Exception
      */
     protected function _do_sharpen($amount)
     {
@@ -331,10 +334,11 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a reflection.
      *
-     * @param   integer   $height   reflection height
-     * @param   integer   $opacity  reflection opacity
-     * @param   boolean   $fade_in  true to fade out, false to fade in
+     * @param integer $height reflection height
+     * @param integer $opacity reflection opacity
+     * @param boolean $fade_in true to fade out, false to fade in
      * @return  void
+     * @throws Kohana_Exception
      */
     protected function _do_reflection($height, $opacity, $fade_in)
     {
@@ -402,11 +406,12 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a watermarking.
      *
-     * @param   Image    $image     watermarking Image
-     * @param   integer  $offset_x  offset from the left
-     * @param   integer  $offset_y  offset from the top
-     * @param   integer  $opacity   opacity of watermark
+     * @param Image $image watermarking Image
+     * @param integer $offset_x offset from the left
+     * @param integer $offset_y offset from the top
+     * @param integer $opacity opacity of watermark
      * @return  void
+     * @throws Kohana_Exception
      */
     protected function _do_watermark(Image $watermark, $offset_x, $offset_y, $opacity)
     {
@@ -489,9 +494,10 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a save.
      *
-     * @param   string   $file     new image filename
-     * @param   integer  $quality  quality
+     * @param string $file new image filename
+     * @param integer $quality quality
      * @return  boolean
+     * @throws Kohana_Exception
      */
     protected function _do_save($file, $quality)
     {
@@ -519,9 +525,10 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a render.
      *
-     * @param   string    $type     image type: png, jpg, gif, etc
-     * @param   integer   $quality  quality
+     * @param string $type image type: png, jpg, gif, etc
+     * @param integer $quality quality
      * @return  string
+     * @throws Kohana_Exception
      */
     protected function _do_render($type, $quality)
     {

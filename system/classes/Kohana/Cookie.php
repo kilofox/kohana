@@ -49,9 +49,10 @@ class Kohana_Cookie
      *     // Get the "theme" cookie, or use "blue" if the cookie does not exist
      *     $theme = Cookie::get('theme', 'blue');
      *
-     * @param   string  $key        cookie name
-     * @param   mixed   $default    default value to return
+     * @param string $key cookie name
+     * @param mixed $default default value to return
      * @return  string
+     * @throws Kohana_Exception
      */
     public static function get($key, $default = null)
     {
@@ -94,10 +95,11 @@ class Kohana_Cookie
      *     // Set the "theme" cookie
      *     Cookie::set('theme', 'red');
      *
-     * @param   string  $name       name of cookie
-     * @param   string  $value      value of cookie
-     * @param   integer $lifetime   lifetime in seconds
+     * @param string $name name of cookie
+     * @param string $value value of cookie
+     * @param integer $lifetime lifetime in seconds
      * @return  boolean
+     * @throws Kohana_Exception
      * @uses    Cookie::salt
      */
     public static function set($name, $value, $lifetime = null)

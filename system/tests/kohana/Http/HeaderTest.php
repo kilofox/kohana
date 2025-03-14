@@ -489,10 +489,11 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_offsetSet
      *
-     * @param   array  $constructor  constructor
-     * @param   array  $to_set       to_set
-     * @param   array  $expected     expected
+     * @param array $constructor constructor
+     * @param array $to_set to_set
+     * @param array $expected expected
      * @return  void
+     * @throws ReflectionException
      */
     // @codingStandardsIgnoreStart
     public function test_offsetSet(array $constructor, array $to_set, array $expected)
@@ -860,11 +861,12 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_accepts_at_quality
      *
-     * @param   array     starting state
-     * @param   string    accept header to test
-     * @param   boolean   explicitly check
-     * @param   mixed     expected output
+     * @param array     starting state
+     * @param string    accept header to test
+     * @param boolean   explicitly check
+     * @param mixed     expected output
      * @return  void
+     * @throws Kohana_Exception
      */
     public function test_accepts_at_quality(array $state, $accept, $explicit, $expected)
     {
@@ -921,11 +923,12 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_preferred_accept
      *
-     * @param   array     state
-     * @param   array     accepts
-     * @param   string    explicit
-     * @param   string    expected
+     * @param array     state
+     * @param array     accepts
+     * @param string    explicit
+     * @param string    expected
      * @return  void
+     * @throws Kohana_Exception
      */
     public function test_preferred_accept(array $state, array $accepts, $explicit, $expected)
     {
@@ -1380,9 +1383,10 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_send_headers
      *
-     * @param   array     state in
-     * @param   array     expected out
+     * @param array     state in
+     * @param array     expected out
      * @return  void
+     * @throws Kohana_Exception
      */
     public function test_send_headers(array $state, array $expected, $expose)
     {

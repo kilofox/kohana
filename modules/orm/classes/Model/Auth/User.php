@@ -52,6 +52,7 @@ class Model_Auth_User extends ORM
      * automatically hashes the password when it's set in the model.
      *
      * @return array Filters
+     * @throws Kohana_Exception
      */
     public function filters()
     {
@@ -80,6 +81,9 @@ class Model_Auth_User extends ORM
      * Complete the login for a user by incrementing the logins and saving login timestamp
      *
      * @return void
+     * @throws Kohana_Exception
+     * @throws ORM_Validation_Exception
+     * @throws ReflectionException
      */
     public function complete_login()
     {
@@ -98,9 +102,10 @@ class Model_Auth_User extends ORM
     /**
      * Tests if a unique key value exists in the database.
      *
-     * @param   mixed    the value to test
-     * @param   string   field name
+     * @param mixed    the value to test
+     * @param string   field name
      * @return  boolean
+     * @throws Kohana_Exception
      */
     public function unique_key_exists($value, $field = NULL)
     {
@@ -158,7 +163,10 @@ class Model_Auth_User extends ORM
      *
      * @param array $values
      * @param array $expected
+     * @return ORM
+     * @throws Kohana_Exception
      * @throws ORM_Validation_Exception
+     * @throws ReflectionException
      */
     public function create_user($values, $expected)
     {
@@ -188,7 +196,10 @@ class Model_Auth_User extends ORM
      *
      * @param array $values
      * @param array $expected
+     * @return ORM
+     * @throws Kohana_Exception
      * @throws ORM_Validation_Exception
+     * @throws ReflectionException
      */
     public function update_user($values, $expected = NULL)
     {

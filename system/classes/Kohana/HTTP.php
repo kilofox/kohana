@@ -25,9 +25,10 @@ abstract class Kohana_HTTP
     /**
      * Issues a HTTP redirect.
      *
-     * @param  string    $uri       URI to redirect to
-     * @param  int       $code      HTTP Status code to use for the redirect
-     * @throws HTTP_Exception
+     * @param string $uri URI to redirect to
+     * @param int $code HTTP Status code to use for the redirect
+     * @throws HTTP_Exception_Redirect
+     * @throws Kohana_Exception
      */
     public static function redirect($uri = '', $code = 302)
     {
@@ -44,11 +45,11 @@ abstract class Kohana_HTTP
      * execution will halt and a 304 Not Modified will be sent if the
      * browser cache is up to date.
      *
-     * @param  Request   $request   Request
-     * @param  Response  $response  Response
-     * @param  string    $etag      Resource ETag
-     * @throws HTTP_Exception_304
+     * @param Request $request Request
+     * @param Response $response Response
+     * @param string $etag Resource ETag
      * @return Response
+     * @throws Request_Exception
      */
     public static function check_cache(Request $request, Response $response, $etag = null)
     {

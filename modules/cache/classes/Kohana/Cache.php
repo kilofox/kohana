@@ -110,9 +110,10 @@ abstract class Kohana_Cache
      *     // Access an instantiated group directly
      *     $foo_group = Cache::$instances['default'];
      *
-     * @param   string  $group  the name of the cache group to use [Optional]
+     * @param string $group the name of the cache group to use [Optional]
      * @return  Cache
-     * @throws  Cache_Exception
+     * @throws Cache_Exception
+     * @throws Kohana_Exception
      */
     public static function instance($group = null)
     {

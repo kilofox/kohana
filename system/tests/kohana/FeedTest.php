@@ -57,9 +57,12 @@ class Kohana_FeedTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_parse
-     * @covers feed::parse
-     * @param string  $source   URL to test
-     * @param integer $expected Count of items
+     * @covers       feed::parse
+     * @param string $source URL to test
+     * @param $expected_titles
+     * @throws HTTP_Exception_404
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      */
     public function test_parse($source, $expected_titles)
     {
@@ -138,11 +141,15 @@ class Kohana_FeedTest extends Unittest_TestCase
      *
      * @dataProvider provider_create
      *
-     * @covers feed::create
+     * @covers       feed::create
      *
-     * @param string  $info     info to pass
-     * @param integer $items    items to add
-     * @param integer $matcher  output
+     * @param string $info info to pass
+     * @param integer $items items to add
+     * @param $enviroment
+     * @param $matcher_item
+     * @param $matchers_image
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function test_create($info, $items, $enviroment, $matcher_item, $matchers_image)
     {

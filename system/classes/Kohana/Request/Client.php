@@ -363,6 +363,9 @@ abstract class Kohana_Request_Client
      * @param Request $request
      * @param Response $response
      * @param Request_Client $client
+     * @return null
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      */
     public static function on_header_location(Request $request, Response $response, Request_Client $client)
     {

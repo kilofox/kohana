@@ -716,6 +716,8 @@ class Kohana_RouteTest extends Unittest_TestCase
      * @param string $expected
      * @param array $params
      * @param boolean $protocol
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function test_composing_url_from_route($expected, $params = null, $protocol = null)
     {

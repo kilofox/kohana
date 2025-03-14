@@ -595,9 +595,10 @@ class Kohana_Text
      *
      * When using an array for the value, an associative array will be returned.
      *
-     * @param   string  $agent  user_agent
-     * @param   mixed   $value  array or string to return: browser, version, robot, mobile, platform
+     * @param string $agent user_agent
+     * @param mixed $value array or string to return: browser, version, robot, mobile, platform
      * @return  mixed   requested information, false if nothing is found
+     * @throws Kohana_Exception
      * @uses    Kohana::$config
      */
     public static function user_agent($agent, $value)

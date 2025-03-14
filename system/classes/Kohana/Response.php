@@ -184,8 +184,9 @@ class Kohana_Response implements HTTP_Response
      *      // Get the current status
      *      $status = $response->status();
      *
-     * @param   integer  $status Status to set to this response
+     * @param integer $status Status to set to this response
      * @return  mixed
+     * @throws Kohana_Exception
      */
     public function status($status = null)
     {
@@ -319,9 +320,10 @@ class Kohana_Response implements HTTP_Response
     /**
      * Sends the response status and all set headers.
      *
-     * @param   boolean     $replace    replace existing headers
-     * @param   callback    $callback   function to handle header output
+     * @param boolean $replace replace existing headers
+     * @param callback $callback function to handle header output
      * @return  mixed
+     * @throws Kohana_Exception
      */
     public function send_headers($replace = false, $callback = null)
     {
@@ -381,7 +383,7 @@ class Kohana_Response implements HTTP_Response
             }
 
             // Force the data to be rendered if
-            $file_data = (string) $this->_body;
+            $file_data = $this->_body;
 
             // Get the content size
             $size = strlen($file_data);

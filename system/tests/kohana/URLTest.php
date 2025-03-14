@@ -43,10 +43,13 @@ class Kohana_URLTest extends Unittest_TestCase
     ];
 
     // @codingStandardsIgnoreEnd
+
     /**
      * Provides test data for test_base()
      *
      * @return array
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      */
     public function provider_base()
     {
@@ -153,10 +156,12 @@ class Kohana_URLTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_base
-     * @param boolean $protocol    Parameter for Url::base()
-     * @param boolean $index       Parameter for Url::base()
-     * @param string  $expected    Expected url
-     * @param array   $enviroment  Array of enviroment vars to change @see Kohana_URLTest::setEnvironment()
+     * @param boolean $protocol Parameter for Url::base()
+     * @param boolean $index Parameter for Url::base()
+     * @param string $expected Expected url
+     * @param array $enviroment Array of enviroment vars to change @see Kohana_URLTest::setEnvironment()
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function test_base($protocol, $index, $expected, array $enviroment = [])
     {
@@ -264,10 +269,12 @@ class Kohana_URLTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_site
-     * @param string          $uri         URI to use
-     * @param boolean|string  $protocol    Protocol to use
-     * @param string          $expected    Expected result
-     * @param array           $enviroment  Array of enviroment vars to set
+     * @param string $uri URI to use
+     * @param boolean|string $protocol Protocol to use
+     * @param string $expected Expected result
+     * @param array $enviroment Array of enviroment vars to set
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function test_site($uri, $protocol, $expected, array $enviroment = [])
     {
@@ -495,6 +502,8 @@ class Kohana_URLTest extends Unittest_TestCase
      * @param string $expected Expected result
      * @param array $params Query string
      * @param boolean $use_get Combine with GET parameters
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function test_query($enviroment, $expected, $params, $use_get = true)
     {
@@ -547,6 +556,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @param string $host the given host
      * @param array $trusted_hosts list of trusted hosts
      * @param boolean $expected true if host is trusted, false otherwise
+     * @throws Kohana_Exception
      */
     public function test_is_trusted_host($host, $trusted_hosts, $expected)
     {

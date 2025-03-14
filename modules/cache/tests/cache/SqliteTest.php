@@ -16,14 +16,16 @@ class Kohana_SqliteTest extends Kohana_CacheBasicMethodsTest
     /**
      * This method MUST be implemented by each driver to setup the `Cache`
      * instance for each test.
-     * 
+     *
      * This method should do the following tasks for each driver test:
-     * 
+     *
      *  - Test the Cache instance driver is available, skip test otherwise
      *  - Setup the Cache instance
      *  - Call the parent setup method, `parent::setUp()`
      *
      * @return  void
+     * @throws Cache_Exception
+     * @throws Kohana_Exception
      */
     public function setUp()
     {
