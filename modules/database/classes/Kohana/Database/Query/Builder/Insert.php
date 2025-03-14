@@ -154,7 +154,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
             $query .= 'VALUES ' . implode(', ', $groups);
         } else {
             // Add the sub-query
-            $query .= (string) $this->_values;
+            $query .= $this->_values;
         }
 
         $this->_sql = $query;
