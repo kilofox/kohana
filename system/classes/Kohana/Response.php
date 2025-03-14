@@ -568,7 +568,7 @@ class Kohana_Response implements HTTP_Response
         }
 
         $output = $this->_protocol . ' ' . $this->_status . ' ' . Response::$messages[$this->_status] . "\r\n";
-        $output .= (string) $this->_header;
+        $output .= $this->_header;
         $output .= $this->_body;
 
         return $output;
