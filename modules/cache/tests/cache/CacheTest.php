@@ -18,6 +18,8 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
      * Data provider for test_instance
      *
      * @return  array
+     * @throws Cache_Exception
+     * @throws Kohana_Exception
      */
     public function provider_instance()
     {
@@ -55,7 +57,11 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
      *
      * @dataProvider provider_instance
      *
+     * @param $group
+     * @param $expected
      * @return  void
+     * @throws Cache_Exception
+     * @throws Kohana_Exception
      */
     public function test_instance($group, $expected)
     {
@@ -207,9 +213,10 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
      *
      * @dataProvider provider_sanitize_id
      *
-     * @param   string    id
-     * @param   string    expected
+     * @param string    id
+     * @param string    expected
      * @return  void
+     * @throws ReflectionException
      */
     public function test_sanitize_id($id, $expected)
     {

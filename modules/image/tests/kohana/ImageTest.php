@@ -22,6 +22,7 @@ class Kohana_ImageTest extends PHPUnit_Framework_TestCase
      * Tests the Image::save() method for files that don't have extensions
      *
      * @return  void
+     * @throws Kohana_Exception
      */
     public function test_save_without_extension()
     {

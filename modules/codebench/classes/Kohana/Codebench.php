@@ -43,6 +43,7 @@ abstract class Kohana_Codebench
      * Constructor.
      *
      * @return  void
+     * @throws Kohana_Exception
      */
     public function __construct()
     {
@@ -54,6 +55,7 @@ abstract class Kohana_Codebench
      * Runs Codebench on the extending class.
      *
      * @return  array  benchmark output
+     * @throws ReflectionException
      */
     public function run()
     {

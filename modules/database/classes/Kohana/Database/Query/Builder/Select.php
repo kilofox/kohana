@@ -276,10 +276,11 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
     /**
      * Adds an other UNION clause.
      *
-     * @param mixed $select  if string, it must be the name of a table. Else
+     * @param mixed $select if string, it must be the name of a table. Else
      *  must be an instance of Database_Query_Builder_Select
-     * @param boolean $all  decides if it's an UNION or UNION ALL clause
+     * @param boolean $all decides if it's an UNION or UNION ALL clause
      * @return $this
+     * @throws Kohana_Exception
      */
     public function union($select, $all = true)
     {
@@ -308,8 +309,10 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
     /**
      * Compile the SQL query and return it.
      *
-     * @param   mixed  $db  Database instance or name of instance
+     * @param mixed $db Database instance or name of instance
      * @return  string
+     * @throws Database_Exception
+     * @throws Kohana_Exception
      */
     public function compile($db = null)
     {

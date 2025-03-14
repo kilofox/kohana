@@ -30,6 +30,8 @@ if (isset($_ENV['TRAVIS'])) {
          *  - Call the parent setup method, `parent::setUp()`
          *
          * @return  void
+         * @throws Cache_Exception
+         * @throws Kohana_Exception
          */
         public function setUp()
         {

@@ -79,6 +79,9 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
      * * Config option
      *
      * @param array $environment List of environment to set
+     * @return false|null
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function setEnvironment(array $environment)
     {

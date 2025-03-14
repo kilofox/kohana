@@ -243,9 +243,10 @@ TESTTEXT;
      *
      * @dataProvider provider_set_get
      *
-     * @param   array    data
-     * @param   mixed    expected
+     * @param array    data
+     * @param mixed    expected
      * @return  void
+     * @throws Cache_Exception
      */
     public function test_set_get(array $data, $expected)
     {
@@ -274,6 +275,7 @@ TESTTEXT;
      *  - The cache returns a false value if no value exists to delete
      *
      * @return  void
+     * @throws Cache_Exception
      */
     public function test_delete()
     {
@@ -298,6 +300,7 @@ TESTTEXT;
      * Tests [Cache::delete_all()] works as specified
      *
      * @return  void
+     * @throws Cache_Exception
      * @uses    Kohana_CacheBasicMethodsTest::provider_set_get()
      */
     public function test_delete_all()

@@ -30,10 +30,12 @@ class Kohana_HTTP_Cache
      *      // Create HTTP_Cache with supplied cache engine
      *      $http_cache = HTTP_Cache::factory(Cache::instance('memcache'), ['allow_private_cache' => false]);
      *
-     * @uses    Cache
-     * @param   mixed   $cache      cache engine to use
-     * @param   array   $options    options to set to this class
+     * @param mixed $cache cache engine to use
+     * @param array $options options to set to this class
      * @return  HTTP_Cache
+     * @throws Cache_Exception
+     * @throws Kohana_Exception
+     * @uses    Cache
      */
     public static function factory($cache, array $options = [])
     {
@@ -97,7 +99,8 @@ class Kohana_HTTP_Cache
      * Constructor method for this class. Allows dependency injection of the
      * required components such as `Cache` and the cache key generator.
      *
-     * @param   array $options
+     * @param array $options
+     * @throws Kohana_Exception
      */
     public function __construct(array $options = [])
     {
@@ -119,9 +122,10 @@ class Kohana_HTTP_Cache
      * cache completely and ensure the response is not cached. All other
      * Request methods will allow caching, if the rules are met.
      *
-     * @param   Request_Client  $client     client to execute with Cache-Control
-     * @param   Request         $request    request to execute with client
+     * @param Request_Client $client client to execute with Cache-Control
+     * @param Request $request request to execute with client
      * @return  [Response]
+     * @throws Cache_Exception
      */
     public function execute(Request_Client $client, Request $request, Response $response)
     {
@@ -247,9 +251,9 @@ class Kohana_HTTP_Cache
      *            return sha1($request->render());
      *      });
      *
-     * @param   callback    $callback
+     * @param callback $callback
      * @return  mixed
-     * @throws  HTTP_Exception
+     * @throws Kohana_Exception
      */
     public function cache_key_callback($callback = null)
     {
@@ -332,10 +336,11 @@ class Kohana_HTTP_Cache
      * If not response is supplied, the cache will be checked for an existing
      * one that is available.
      *
-     * @param   string      $key        the cache key to use
-     * @param   Request     $request    the HTTP Request
-     * @param   Response    $response   the HTTP Response
+     * @param string $key the cache key to use
+     * @param Request $request the HTTP Request
+     * @param Response $response the HTTP Response
      * @return  mixed
+     * @throws Cache_Exception
      */
     public function cache_response($key, Request $request, Response $response = null)
     {

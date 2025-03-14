@@ -247,14 +247,15 @@ class Kohana_Minion_CLI
      * Returns the given text with the correct color codes for a foreground and
      * optionally a background color.
      *
-     * @author     Fuel Development Team
-     * @license    MIT License
-     * @copyright  2010 - 2011 Fuel Development Team
-     * @link       http://fuelphp.com
      * @param string $text the text to color
      * @param string $foreground the foreground color
      * @param string $background the background color
      * @return string the color coded string
+     * @throws Kohana_Exception
+     * @license    MIT License
+     * @copyright  2010 - 2011 Fuel Development Team
+     * @link       http://fuelphp.com
+     * @author     Fuel Development Team
      */
     public static function color($text, $foreground, $background = null)
     {

@@ -19,8 +19,9 @@ class Kohana_Kodoc
     /**
      * Make a class#member API link using an array of matches from [Kodoc::$regex_class_member]
      *
-     * @param   array   $matches    [1 => 'link text', 2 => 'class name', [3 => 'member name']]
+     * @param array $matches [1 => 'link text', 2 => 'class name', [3 => 'member name']]
      * @return  string
+     * @throws Kohana_Exception
      */
     public static function link_class_member($matches)
     {
@@ -51,6 +52,7 @@ class Kohana_Kodoc
      * Creates an html list of all classes sorted by category (or package if no category)
      *
      * @return   string   the html for the menu
+     * @throws Kohana_Exception
      */
     public static function menu()
     {
@@ -177,9 +179,10 @@ class Kohana_Kodoc
     /**
      * Generate HTML for the content of a tag.
      *
-     * @param   string  $tag    Name of the tag without @
-     * @param   string  $text   Content of the tag
+     * @param string $tag Name of the tag without @
+     * @param string $text Content of the tag
      * @return  string  HTML
+     * @throws Kohana_Exception
      */
     public static function format_tag($tag, $text)
     {
@@ -221,10 +224,11 @@ class Kohana_Kodoc
      *
      * [!!] Converting the output to HTML in this method is deprecated in 3.3
      *
-     * @param   string  $comment    The DocBlock to parse
-     * @param   boolean $html       Whether or not to convert the return values
+     * @param string $comment The DocBlock to parse
+     * @param boolean $html Whether or not to convert the return values
      *   to HTML (deprecated)
      * @return  array   [string $description, array $tags]
+     * @throws Kohana_Exception
      */
     public static function parse($comment, $html = true)
     {
@@ -240,9 +244,10 @@ class Kohana_Kodoc
         /**
          * Process a tag and add it to $tags
          *
-         * @param   string  $tag    Name of the tag without @
-         * @param   string  $text   Content of the tag
+         * @param string $tag Name of the tag without @
+         * @param string $text Content of the tag
          * @return  void
+         * @throws Kohana_Exception
          */
         $add_tag = function ($tag, $text) use ($html, & $tags) {
             // Don't show @access lines, they are shown elsewhere
@@ -327,8 +332,9 @@ class Kohana_Kodoc
     /**
      * Test whether a class should be shown, based on the api_packages config option
      *
-     * @param  Kodoc_Class  the class to test
+     * @param Kodoc_Class  the class to test
      * @return  bool  whether this class should be shown
+     * @throws Kohana_Exception
      */
     public static function show_class(Kodoc_Class $class)
     {
@@ -370,11 +376,10 @@ class Kohana_Kodoc
      * Module developers can therefore add their own transparent extension
      * namespaces and exclude them from the userguide.
      *
-     * @param   string  $class            The name of the class to check for transparency
-     * @param   array   $classes          An optional list of all defined classes
+     * @param string $class The name of the class to check for transparency
+     * @param array $classes An optional list of all defined classes
      * @return  false                     If this is not a transparent extension class
-     * @return  string                    The name of the class that extends this (in the case provided)
-     * @throws  InvalidArgumentException  If the $classes array is provided and the $class variable is not lowercase
+     * @throws Kohana_Exception
      */
     public static function is_transparent($class, $classes = null)
     {

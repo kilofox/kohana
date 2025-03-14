@@ -46,8 +46,9 @@ class Kohana_Kodoc_Class extends Kodoc
      * the class. Reads the class modifiers, constants and comment. Parses the
      * comment to find the description and tags.
      *
-     * @param   string  Class name
-     * @return  void
+     * @param string  Class name
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function __construct($class)
     {
@@ -246,6 +247,7 @@ class Kohana_Kodoc_Class extends Kodoc
      * Get the tags of this class as HTML.
      *
      * @return  array
+     * @throws Kohana_Exception
      */
     public function tags()
     {

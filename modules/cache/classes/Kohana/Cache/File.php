@@ -114,10 +114,11 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *     // Retrieve cache entry from file group and return 'bar' if miss
      *     $data = Cache::instance('file')->get('foo', 'bar');
      *
-     * @param   string   $id       id of cache to entry
-     * @param   string   $default  default value to return if cache miss
+     * @param string $id id of cache to entry
+     * @param string $default default value to return if cache miss
      * @return  mixed
-     * @throws  Cache_Exception
+     * @throws Cache_Exception
+     * @throws ErrorException
      */
     public function get($id, $default = null)
     {
@@ -181,10 +182,12 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *     // Set 'bar' to 'foo' in file group for 30 seconds
      *     Cache::instance('file')->set('foo', $data, 30);
      *
-     * @param   string   $id        id of cache entry
-     * @param   string   $data      data to set to cache
-     * @param   integer  $lifetime  lifetime in seconds
+     * @param string $id id of cache entry
+     * @param string $data data to set to cache
+     * @param integer $lifetime lifetime in seconds
      * @return  boolean
+     * @throws Cache_Exception
+     * @throws ErrorException
      */
     public function set($id, $data, $lifetime = null)
     {
@@ -231,8 +234,9 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *     // Delete 'foo' entry from the file group
      *     Cache::instance('file')->delete('foo');
      *
-     * @param   string   $id  id to remove from cache
+     * @param string $id id to remove from cache
      * @return  boolean
+     * @throws Cache_Exception
      */
     public function delete($id)
     {
@@ -253,6 +257,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *     Cache::instance('file')->delete_all();
      *
      * @return  boolean
+     * @throws Cache_Exception
      */
     public function delete_all()
     {
@@ -264,6 +269,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * cache entries from the cache.
      *
      * @return  void
+     * @throws Cache_Exception
      */
     public function garbage_collect()
     {
@@ -425,6 +431,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *
      * @param SplFileInfo $file the cache file
      * @return boolean true if expired false otherwise
+     * @throws Cache_Exception
      */
     protected function _is_expired(SplFileInfo $file)
     {

@@ -110,8 +110,9 @@ class Kohana_Database_Expression
      * Compile the SQL expression and return it. Replaces any parameters with
      * their given values.
      *
-     * @param   mixed    Database instance or name of instance
+     * @param mixed    Database instance or name of instance
      * @return  string
+     * @throws Kohana_Exception
      */
     public function compile($db = null)
     {

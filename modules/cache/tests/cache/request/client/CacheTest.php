@@ -37,6 +37,8 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
      * is present
      *
      * @return void
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      */
     public function test_cache_not_called_with_no_cache()
     {
@@ -60,6 +62,9 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
      * cache library, but fails.
      *
      * @return void
+     * @throws Cache_Exception
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      */
     public function test_cache_miss()
     {
@@ -88,6 +93,8 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
      * Tests the client saves a response if the correct headers are set
      *
      * @return void
+     * @throws Cache_Exception
+     * @throws Kohana_Exception
      */
     public function test_cache_save()
     {
@@ -123,6 +130,8 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
      * Tests the client handles a cache HIT event correctly
      *
      * @return void
+     * @throws Cache_Exception
+     * @throws Kohana_Exception
      */
     public function test_cache_hit()
     {

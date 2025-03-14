@@ -34,8 +34,9 @@ class Kohana_Image_Imagick extends Image
     /**
      * Runs [Image_Imagick::check] and loads the image.
      *
-     * @return  void
-     * @throws  Kohana_Exception
+     * @param $file
+     * @throws ImagickException
+     * @throws Kohana_Exception
      */
     public function __construct($file)
     {

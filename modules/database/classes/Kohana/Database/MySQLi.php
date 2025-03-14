@@ -220,8 +220,9 @@ class Kohana_Database_MySQLi extends Database
      *
      * @link http://dev.mysql.com/doc/refman/5.0/en/set-transaction.html
      *
-     * @param string $mode  Isolation level
+     * @param string $mode Isolation level
      * @return boolean
+     * @throws Database_Exception
      */
     public function begin($mode = null)
     {
@@ -239,6 +240,7 @@ class Kohana_Database_MySQLi extends Database
      * Commit a SQL transaction
      *
      * @return boolean
+     * @throws Database_Exception
      */
     public function commit()
     {
@@ -252,6 +254,7 @@ class Kohana_Database_MySQLi extends Database
      * Rollback a SQL transaction
      *
      * @return boolean
+     * @throws Database_Exception
      */
     public function rollback()
     {

@@ -89,6 +89,9 @@ class Kohana_Unittest_Helpers
      * * Config option
      *
      * @param array $environment List of environment to set
+     * @return false|void
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function set_environment(array $environment)
     {
@@ -148,6 +151,8 @@ class Kohana_Unittest_Helpers
      *
      * @chainable
      * @return Kohana_Unittest_Helpers $this
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function restore_environment()
     {

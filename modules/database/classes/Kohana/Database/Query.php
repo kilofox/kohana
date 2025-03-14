@@ -166,8 +166,9 @@ class Kohana_Database_Query
      * Compile the SQL query and return it. Replaces any parameters with their
      * given values.
      *
-     * @param   mixed  $db  Database instance or name of instance
+     * @param mixed $db Database instance or name of instance
      * @return  string
+     * @throws Kohana_Exception
      */
     public function compile($db = null)
     {
@@ -193,12 +194,13 @@ class Kohana_Database_Query
     /**
      * Execute the current query on the given database.
      *
-     * @param   mixed    $db  Database instance or name of instance
-     * @param   string   result object classname, true for stdClass or false for array
-     * @param   array    result object constructor arguments
+     * @param mixed $db Database instance or name of instance
+     * @param string   result object classname, true for stdClass or false for array
+     * @param array    result object constructor arguments
      * @return  object   Database_Result for SELECT queries
      * @return  mixed    the insert id for INSERT queries
      * @return  integer  number of affected rows for all other queries
+     * @throws Kohana_Exception
      */
     public function execute($db = null, $as_object = null, $object_params = null)
     {

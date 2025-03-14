@@ -210,6 +210,8 @@ abstract class Kohana_Minion_Task
      * Execute the task with the specified set of options
      *
      * @return null
+     * @throws ReflectionException
+     * @throws View_Exception
      */
     public function execute()
     {
@@ -231,10 +233,12 @@ abstract class Kohana_Minion_Task
     }
 
     abstract protected function _execute(array $params);
+
     /**
      * Outputs help for this task
      *
      * @return null
+     * @throws View_Exception
      */
     protected function _help(array $params)
     {

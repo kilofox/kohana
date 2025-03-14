@@ -50,6 +50,7 @@ class Kohana_Unittest_Tests
      * Creates the test suite for kohana
      *
      * @return Unittest_TestSuite
+     * @throws Kohana_Exception
      */
     static function suite()
     {
