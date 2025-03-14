@@ -273,7 +273,7 @@ class Kohana_Valid
             return false;
 
         // No Luhn check required
-        if ($cards[$type]['luhn'] == false)
+        if (!$cards[$type]['luhn'])
             return true;
 
         return Valid::luhn($number);
