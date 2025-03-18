@@ -775,7 +775,7 @@ class Kohana_RequestTest_Header_Spying_Request_Client_External extends Request_C
 {
     private $headers;
 
-    protected function _send_message(\Request $request, \Response $response)
+    protected function _send_message(Request $request, Response $response)
     {
         $this->headers = $request->headers();
 
