@@ -1,5 +1,8 @@
 <?php
 
+use http\Env;
+use http\Header;
+
 /**
  * Contains the most low-level helpers methods in Kohana:
  *
@@ -90,7 +93,7 @@ abstract class Kohana_HTTP
         if (extension_loaded('http')) {
             // Use the fast method to parse header string
             $headers = version_compare(phpversion('http'), '2.0.0', '>=') ?
-                \http\Header::parse($header_string) :
+                Header::parse($header_string) :
                 http_parse_headers($header_string);
             return new HTTP_Header($headers);
         }
@@ -150,7 +153,7 @@ abstract class Kohana_HTTP
         elseif (extension_loaded('http')) {
             // Return the much faster method
             $headers = version_compare(phpversion('http'), '2.0.0', '>=') ?
-                \http\Env::getRequestHeader() :
+                Env::getRequestHeader() :
                 http_get_request_headers();
             return new HTTP_Header($headers);
         }
