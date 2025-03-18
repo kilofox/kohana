@@ -560,10 +560,10 @@ class Kohana_HTTP_Header extends ArrayObject
         } elseif (isset($this->_accept_charset['*'])) {
             return $this->_accept_charset['*'];
         } elseif ($charset === 'iso-8859-1') {
-            return (float) 1;
+            return 1.0;
         }
 
-        return (float) 0;
+        return 0.0;
     }
 
     /**
@@ -638,7 +638,7 @@ class Kohana_HTTP_Header extends ArrayObject
             }
         }
 
-        return (float) 0;
+        return 0.0;
     }
 
     /**
@@ -725,7 +725,7 @@ class Kohana_HTTP_Header extends ArrayObject
             return $this->_accept_language['*'];
         }
 
-        return (float) 0;
+        return 0.0;
     }
 
     /**
