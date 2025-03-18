@@ -106,10 +106,10 @@ class Kohana_Arr
             }
 
             // Remove starting delimiters and spaces
-            $path = ltrim($path, "{$delimiter} ");
+            $path = ltrim($path, "$delimiter ");
 
             // Remove ending delimiters, spaces, and wildcards
-            $path = rtrim($path, "{$delimiter} *");
+            $path = rtrim($path, "$delimiter *");
 
             // Split the keys by delimiter
             $keys = explode($delimiter, $path);

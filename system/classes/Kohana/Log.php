@@ -80,7 +80,7 @@ class Kohana_Log
             $levels = range($min_level, $levels);
         }
 
-        $this->_writers["{$writer}"] = [
+        $this->_writers["$writer"] = [
             'object' => $writer,
             'levels' => $levels
         ];
@@ -99,7 +99,7 @@ class Kohana_Log
     public function detach(Log_Writer $writer)
     {
         // Remove the writer
-        unset($this->_writers["{$writer}"]);
+        unset($this->_writers["$writer"]);
 
         return $this;
     }

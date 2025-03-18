@@ -130,7 +130,7 @@ class Kohana_Database_MySQLi extends Database
 
         if (Kohana::$profiling) {
             // Benchmark this query for the current instance
-            $benchmark = Profiler::start("Database ({$this->_instance})", $sql);
+            $benchmark = Profiler::start("Database ($this->_instance)", $sql);
         }
 
         // Execute the query

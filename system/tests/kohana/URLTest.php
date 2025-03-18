@@ -307,7 +307,7 @@ class Kohana_URLTest extends Unittest_TestCase
             // ... from a URI that is not encoded
             $uri = implode('/', $params);
 
-            $provider[$i] = ["/kohana/index.php/{$expected}", $uri];
+            $provider[$i] = ["/kohana/index.php/$expected", $uri];
         }
 
         return $provider;

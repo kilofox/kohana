@@ -216,7 +216,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
 
         // Try to delete
         try {
-            $statement->execute([':tag' => "%<{$tag}>%"]);
+            $statement->execute([':tag' => "%<$tag>%"]);
         } catch (PDOException $e) {
             throw new Cache_Exception('There was a problem querying the local SQLite3 cache. :error', [':error' => $e->getMessage()]);
         }
@@ -238,7 +238,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
 
         // Try to find
         try {
-            if (!$statement->execute([':tag' => "%<{$tag}>%"])) {
+            if (!$statement->execute([':tag' => "%<$tag>%"])) {
                 return [];
             }
         } catch (PDOException $e) {

@@ -62,7 +62,7 @@
             <h2><?php echo HTML::anchor($link, $class) ?></h2>
             <ul class="methods">
                 <?php foreach ($methods as $method): ?>
-                    <li><?php echo HTML::anchor("{$link}#{$method}", "{$class}::{$method}") ?></li>
+                    <li><?php echo HTML::anchor("$link#$method", "$class::$method") ?></li>
                 <?php endforeach ?>
             </ul>
         </div>

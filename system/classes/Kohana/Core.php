@@ -620,7 +620,7 @@ class Kohana_Core
             $ext = EXT;
         } elseif ($ext) {
             // Prefix the extension with a period
-            $ext = ".{$ext}";
+            $ext = ".$ext";
         } else {
             // Use no extension
             $ext = '';

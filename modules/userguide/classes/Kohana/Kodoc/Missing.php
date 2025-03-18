@@ -29,7 +29,7 @@ abstract class Kohana_Kodoc_Missing
     {
         if (!class_exists($class)) {
             // Create a new missing class
-            eval("class {$class} extends Kodoc_Missing {}");
+            eval("class $class extends Kodoc_Missing {}");
         }
 
         return true;

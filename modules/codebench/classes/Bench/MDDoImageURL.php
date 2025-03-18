@@ -35,7 +35,7 @@ class Bench_MDDoImageURL extends Codebench
         }
 
         // Recreate the link
-        return "![{$matches[1]}]({$matches[2]})";
+        return "![$matches[1]]($matches[2])";
     }
 
     public function bench_optimized_callback($subject)
@@ -50,7 +50,7 @@ class Bench_MDDoImageURL extends Codebench
         $matches[2] = 'http://BASE/' . $matches[2];
 
         // Recreate the link
-        return "![{$matches[1]}]({$matches[2]})";
+        return "![$matches[1]]($matches[2])";
     }
 
     public function bench_callback_gone($subject)
