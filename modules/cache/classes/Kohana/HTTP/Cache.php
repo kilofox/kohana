@@ -189,8 +189,6 @@ class Kohana_HTTP_Cache
         if (($cache = $this->cache()) instanceof Cache) {
             $cache->delete($this->create_cache_key($request, $this->_cache_key_callback));
         }
-
-        return;
     }
 
     /**

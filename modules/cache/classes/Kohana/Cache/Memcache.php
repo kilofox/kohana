@@ -299,7 +299,6 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
             if ($hostname == $server['host'] and $port == $server['port']) {
                 // Server to disable, since it failed
                 $host = $server;
-                continue;
             }
         }
 

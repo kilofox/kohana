@@ -274,7 +274,6 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
     public function garbage_collect()
     {
         $this->_delete_file($this->_cache_dir, true, false, true);
-        return;
     }
 
     /**
