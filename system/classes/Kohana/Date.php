@@ -520,7 +520,7 @@ class Kohana_Date
         $timestamp_format = ($timestamp_format == null) ? Date::$timestamp_format : $timestamp_format;
         $timezone = ($timezone === null) ? Date::$timezone : $timezone;
 
-        $tz = new DateTimeZone($timezone ? $timezone : date_default_timezone_get());
+        $tz = new DateTimeZone($timezone ?: date_default_timezone_get());
         $time = new DateTime($datetime_str, $tz);
 
         // Convert the time back to the expected timezone if required (in case the datetime_str provided a timezone,

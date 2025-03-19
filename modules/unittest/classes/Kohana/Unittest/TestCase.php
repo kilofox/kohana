@@ -630,7 +630,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
     protected static function getDescendants(DOMNode $node)
     {
         $allChildren = [];
-        $childNodes = $node->childNodes ? $node->childNodes : [];
+        $childNodes = $node->childNodes ?: [];
 
         foreach ($childNodes as $child) {
             if ($child->nodeType === XML_CDATA_SECTION_NODE ||
