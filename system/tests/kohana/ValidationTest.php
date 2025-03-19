@@ -156,7 +156,6 @@ class Kohana_ValidationTest extends Unittest_TestCase
     public function test_bind_adds_and_overwrites_multiple_variables_and_returns_this()
     {
         $validation = new Validation([]);
-        $data = ['kung fu' => 'fighting', 'fast' => 'cheetah'];
         $bound = [':foo' => 'some value'];
 
         // Test binding an array of values
