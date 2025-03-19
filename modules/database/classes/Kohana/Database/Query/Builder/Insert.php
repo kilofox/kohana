@@ -160,7 +160,6 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
         $this->_sql = $query;
 
         return parent::compile($db);
-        ;
     }
 
     public function reset()
