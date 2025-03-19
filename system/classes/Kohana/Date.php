@@ -71,9 +71,7 @@ class Kohana_Date
         $time_local = new DateTime($now, $zone_local);
 
         // Find the offset
-        $offset = $zone_remote->getOffset($time_remote) - $zone_local->getOffset($time_local);
-
-        return $offset;
+        return $zone_remote->getOffset($time_remote) - $zone_local->getOffset($time_local);
     }
 
     /**

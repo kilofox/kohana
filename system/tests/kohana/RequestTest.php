@@ -449,7 +449,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      */
     public function provider_options_set_to_external_client()
     {
-        $provider = [
+        return [
             [
                 [
                     CURLOPT_PROXYPORT => 8080,
@@ -463,8 +463,6 @@ class Kohana_RequestTest extends Unittest_TestCase
                 ]
             ],
         ];
-
-        return $provider;
     }
 
     /**

@@ -107,9 +107,7 @@ class Kohana_Kohana_Exception extends Exception
             Kohana_Exception::log($e);
 
             // Generate the response
-            $response = Kohana_Exception::response($e);
-
-            return $response;
+            return Kohana_Exception::response($e);
         } catch (Exception $e) {
             /**
              * Things are going *really* badly for us, We now have no choice

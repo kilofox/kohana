@@ -859,7 +859,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      */
     public function provider_url()
     {
-        $data = [
+        return [
             ['http://google.com', true],
             ['http://google.com/', true],
             ['http://google.com/?q=abc', true],
@@ -894,8 +894,6 @@ class Kohana_ValidTest extends Unittest_TestCase
             // 254 chars
             ['http://' . str_repeat('123456789.', 25) . 'info/', false],
         ];
-
-        return $data;
     }
 
     /**

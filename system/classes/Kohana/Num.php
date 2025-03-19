@@ -206,9 +206,7 @@ class Kohana_Num
         $unit = Arr::get($matches, 2, 'B');
 
         // Convert the size into bytes
-        $bytes = $size * pow(2, Num::$byte_units[$unit]);
-
-        return $bytes;
+        return $size * pow(2, Num::$byte_units[$unit]);
     }
 
 }

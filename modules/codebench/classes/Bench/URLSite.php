@@ -97,9 +97,7 @@ class Bench_URLSite extends Codebench
     public function bench_less_is_more($uri)
     {
         // Chop off possible scheme, host, port, user and pass parts
-        $path = preg_replace('~^[-a-z0-9+.]++://[^/]++/?~', '', trim($uri, '/'));
-
-        return $path;
+        return preg_replace('~^[-a-z0-9+.]++://[^/]++/?~', '', trim($uri, '/'));
     }
 
     public function bench_less_is_more_with_strpos_optimization($uri)
