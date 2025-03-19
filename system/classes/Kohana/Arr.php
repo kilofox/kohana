@@ -487,7 +487,7 @@ class Kohana_Arr
     public static function callback($str)
     {
         // Overloaded as parts are found
-        $command = $params = null;
+        $params = null;
 
         // command[param,param]
         if (preg_match('/^([^\(]*+)\((.*)\)$/', $str, $match)) {

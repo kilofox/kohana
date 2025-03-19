@@ -418,9 +418,8 @@ class Kohana_Request implements HTTP_Request
     {
         // Load routes
         $routes = (empty($routes)) ? Route::all() : $routes;
-        $params = null;
 
-        foreach ($routes as $name => $route) {
+        foreach ($routes as $route) {
             // Use external routes for reverse routing only
             if ($route->is_external()) {
                 continue;

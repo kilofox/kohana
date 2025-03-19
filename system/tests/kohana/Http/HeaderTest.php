@@ -68,7 +68,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
     {
         $out = HTTP_Header::accept_quality($parts);
 
-        foreach ($out as $key => $value) {
+        foreach ($out as $value) {
             $this->assertInternalType('float', $value);
         }
 

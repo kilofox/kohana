@@ -134,7 +134,6 @@ class Kohana_Date
         // Default values
         $step = (int) $step;
         $long = (bool) $long;
-        $hours = [];
 
         // Set the default start if none was specified.
         if ($start === null) {

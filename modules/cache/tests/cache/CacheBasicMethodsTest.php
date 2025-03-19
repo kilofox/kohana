@@ -320,7 +320,7 @@ TESTTEXT;
         // Test delete_all is successful
         $this->assertTrue($cache->delete_all());
 
-        foreach ($data as $key => $values) {
+        foreach ($data as $values) {
             // Verify data has been purged
             $this->assertSame('Cache Deleted!', $cache->get($values[0]['id'], 'Cache Deleted!'));
         }

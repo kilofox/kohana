@@ -408,7 +408,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
         $this->requests_executed = 0;
 
         try {
-            $response = Request::factory($uri, [
+            Request::factory($uri, [
                     'header_callbacks' => [
                         'x-cb' => function ($request, $response, $client) {
                             $client->callback_params('testcase')->requests_executed++;

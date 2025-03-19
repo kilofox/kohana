@@ -242,7 +242,7 @@ abstract class Kohana_Minion_Task
      */
     protected function _help(array $params)
     {
-        $tasks = $this->_compile_task_list(Kohana::list_files('classes/task'));
+        $this->_compile_task_list(Kohana::list_files('classes/task'));
 
         $inspector = new ReflectionClass($this);
 

@@ -25,9 +25,6 @@ class Kohana_Request_Client_Curl extends Request_Client_External
      */
     public function _send_message(Request $request, Response $response)
     {
-        // Response headers
-        $response_headers = [];
-
         $options = [];
 
         // Set the request method

@@ -288,8 +288,6 @@ abstract class Kohana_Session
      */
     public function read($id = null)
     {
-        $data = null;
-
         try {
             if (is_string($data = $this->_read($id))) {
                 if ($this->_encrypted) {

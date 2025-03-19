@@ -23,8 +23,6 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
      */
     public function provider_instance()
     {
-        $tmp = realpath(sys_get_temp_dir());
-
         $base = [];
 
         if (Kohana::$config->load('cache.file')) {

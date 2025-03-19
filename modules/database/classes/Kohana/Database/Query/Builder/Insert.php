@@ -135,9 +135,6 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
         $query .= ' (' . implode(', ', array_map([$db, 'quote_column'], $this->_columns)) . ') ';
 
         if (is_array($this->_values)) {
-            // Callback for quoting values
-            $quote = [$db, 'quote'];
-
             $groups = [];
             foreach ($this->_values as $group) {
                 foreach ($group as $offset => $value) {

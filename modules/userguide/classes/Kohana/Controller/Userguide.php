@@ -61,7 +61,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         $this->template->show_comments = false;
 
         // If we are in a module and that module has a menu, show that
-        if ($module = $this->request->param('module') AND $menu = $this->file($module . '/menu') AND Kohana::$config->load('userguide.modules.' . $module . '.enabled')) {
+        if ($module = $this->request->param('module') AND $this->file($module . '/menu') AND Kohana::$config->load('userguide.modules.' . $module . '.enabled')) {
             // Namespace the markdown parser
             Kodoc_Markdown::$base_url = URL::site($this->guide->uri()) . '/' . $module . '/';
             Kodoc_Markdown::$image_url = URL::site($this->media->uri()) . '/' . $module . '/';

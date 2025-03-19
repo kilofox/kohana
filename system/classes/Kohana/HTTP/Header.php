@@ -408,8 +408,6 @@ class Kohana_HTTP_Header extends ArrayObject
      */
     public function parse_header_string($resource, $header_line)
     {
-        $headers = [];
-
         if (preg_match_all('/(\w[^\s:]*):[ ]*([^\r\n]*(?:\r\n[ \t][^\r\n]*)*)/', $header_line, $matches)) {
             foreach ($matches[0] as $key => $value) {
                 $this->offsetSet($matches[1][$key], $matches[2][$key], false);
