@@ -447,7 +447,7 @@ class Kohana_Request implements HTTP_Request
      * @param   array    $accepts  Default values
      * @return  array
      */
-    protected static function _parse_accept($header, array $accepts = null)
+    protected static function _parse_accept(& $header, array $accepts = null)
     {
         if (!empty($header)) {
             // Get all of the types
