@@ -36,7 +36,7 @@ class Kohana_Unittest_Tests
      * * Restores exception phpunit error handlers (for cli)
      * * registeres an autoloader to load test files
      */
-    static public function configure_environment($do_whitelist = true, $do_blacklist = true)
+    static public function configure_environment()
     {
         restore_exception_handler();
         restore_error_handler();
