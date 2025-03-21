@@ -31,7 +31,7 @@ class Kohana_Database_MySQLi extends Database
             Database_MySQLi::$_set_names = !function_exists('mysqli_set_charset');
         }
 
-        // Extract the connection parameters, adding required variabels
+        // Extract the connection parameters, adding required variables
         extract($this->_config['connection'] + [
             'database' => '',
             'hostname' => '',

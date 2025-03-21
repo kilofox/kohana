@@ -4,7 +4,7 @@ Shown here are the basic usage of this module. For full documentation about the 
 
 ## Creating Instance
 
-[Image::factory()] creates an instance of the image object and prepares it for manipulation. It accepts the `filename` as an arguement and an optional `driver` parameter. When `driver` is not specified, the default driver `GD` is used.
+[Image::factory()] creates an instance of the image object and prepares it for manipulation. It accepts the `filename` as an argument and an optional `driver` parameter. When `driver` is not specified, the default driver `GD` is used.
 
 ~~~
 // Uses the image from upload directory
@@ -99,7 +99,7 @@ What we do is resize the image and save it to file reducing quality to 80% and s
 
 ## Other Methods
 
-There are more methods available for the [Image] module which provides powerfull features that are best describe in the API documentation. Here are some of them:
+There are more methods available for the [Image] module which provides powerful features that are best describe in the API documentation. Here are some of them:
 
 * [Image::background()] - Set the background color of an image.
 * [Image::crop()] - Crop an image to the given size.

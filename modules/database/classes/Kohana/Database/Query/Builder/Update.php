@@ -25,7 +25,7 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
     public function __construct($table = null)
     {
         if ($table) {
-            // Set the inital table name
+            // Set the initial table name
             $this->_table = $table;
         }
 

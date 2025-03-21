@@ -8,7 +8,7 @@ The [DB::query] method is just a shortcut that creates a new [Database_Query] cl
 
 The first parameter of [DB::query] is the type of query. It should be `Database::SELECT`, `Database::INSERT`, `Database::UPDATE`, or `Database::DELETE`. This is done for compatibility reasons for drivers, and to easily determine what `execute()` should return.
 
-The second parameter is the query itself. Rather than trying to concatenate your query and variables together, you should make use of [Database_Query::param]. This will make your queries much easier to mantain, and will escape the values to prevent [SQL injection](http://wikipedia.org/wiki/SQL_Injection).
+The second parameter is the query itself. Rather than trying to concatenate your query and variables together, you should make use of [Database_Query::param]. This will make your queries much easier to maintain, and will escape the values to prevent [SQL injection](http://wikipedia.org/wiki/SQL_Injection).
 
 ## Parameters
 

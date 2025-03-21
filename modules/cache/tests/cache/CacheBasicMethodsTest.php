@@ -292,7 +292,7 @@ TESTTEXT;
         $this->assertTrue($cache->delete('test_delete_1'));
         $this->assertNull($cache->get('test_delete_1'));
 
-        // Test non-existant cache value returns false if no error
+        // Test non-existent cache value returns false if no error
         $this->assertFalse($cache->delete('test_delete_1'));
     }
 

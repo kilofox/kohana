@@ -92,7 +92,7 @@ class Bench_URLSite extends Codebench
         return $path . $query . $fragment;
     }
 
-    // And then I thought, why do all the work of extracting the query and fragment parts and then reappending them?
+    // And then I thought, why do all the work of extracting the query and fragment parts and then re-appending them?
     // Just leaving them alone should be fine, right? As a bonus we get a very nice speed boost.
     public function bench_less_is_more($uri)
     {

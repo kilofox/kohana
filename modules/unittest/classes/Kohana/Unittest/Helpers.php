@@ -80,7 +80,7 @@ class Kohana_Unittest_Helpers
     protected $_environment_backup = [];
 
     /**
-     * Allows easy setting & backing up of enviroment config
+     * Allows easy setting & backing up of environment config
      *
      * Option types are checked in the following order:
      *

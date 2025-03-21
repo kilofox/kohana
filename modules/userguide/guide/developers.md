@@ -97,7 +97,7 @@ using the `@ticket` notation in the test to reference the bug's issue number
 If you run the test then the one you've just made should fail.
 
 Once you've written the bugfix, run the tests again before you commit to make sure that the
-fix actually works,then commiti both the fix and the test.
+fix actually works,then commit both the fix and the test.
 
 There is no need to create separate branches for bugfixes, creating them in the main release
 branch is perfectly acceptable.

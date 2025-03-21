@@ -117,7 +117,7 @@ abstract class Kohana_Minion_Task
     }
 
     /**
-     * The file that get's passes to Validation::errors() when validation fails
+     * The file passed to Validation::errors() when validation fails
      * @var string|null
      */
     protected $_errors_file = 'validation';
@@ -264,7 +264,7 @@ abstract class Kohana_Minion_Task
     }
 
     /**
-     * Parses a doccomment, extracting both the comment and any tags associated
+     * Parses a doc comment, extracting both the comment and any tags associated
      *
      * Based on the code in Kodoc::parse()
      *

@@ -149,7 +149,7 @@ class Kohana_Image_GD extends Image
      */
     protected function _do_resize($width, $height)
     {
-        // Presize width and height
+        // Pre-size width and height
         $pre_width = $this->width;
         $pre_height = $this->height;
 

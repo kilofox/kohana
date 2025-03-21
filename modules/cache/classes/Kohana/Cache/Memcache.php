@@ -120,9 +120,9 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      */
     protected function __construct(array $config)
     {
-        // Check for the memcache extention
+        // Check for the memcache extension
         if (!extension_loaded('memcache')) {
-            throw new Cache_Exception('Memcache PHP extention not loaded');
+            throw new Cache_Exception('Memcache PHP extension not loaded');
         }
 
         parent::__construct($config);

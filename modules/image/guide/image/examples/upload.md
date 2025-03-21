@@ -119,7 +119,7 @@ Take note of the action attribute. It points to our `avatar/upload` action whose
 </html>
 ~~~
 
-When the upload is successfull, a success message is displayed with the uploaded image displayed. Otherwise, when it fails, it displays an error message.
+When the upload is successful, a success message is displayed with the uploaded image displayed. Otherwise, when it fails, it displays an error message.
 
 ## Screenshots
 

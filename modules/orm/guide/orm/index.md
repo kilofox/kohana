@@ -17,6 +17,6 @@ Before we use ORM, we must enable the modules required
         // ...
     ]);
 
-[!!] The database module is requried for the ORM module to work. Of course the database module has to be configured to use an existing database.
+[!!] The database module is required for the ORM module to work. Of course the database module has to be configured to use an existing database.
 
 You can now create your [models](models) and [use ORM](using).

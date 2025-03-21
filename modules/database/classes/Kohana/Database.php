@@ -7,7 +7,7 @@
  * name is the [config](database/config) group.
  *
  * This class provides connection instance management via Database Drivers, as
- * well as quoting, escaping and other related functions. Querys are done using
+ * well as quoting, escaping and other related functions. Queries are done using
  * [Database_Query] and [Database_Query_Builder] objects, which can be easily
  * created using the [DB] helper class.
  *

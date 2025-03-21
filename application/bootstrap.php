@@ -130,7 +130,7 @@ Kohana::modules([
  * @see  https://kohana.top/3.3/guide/kohana/cookies
  *
  * If you have not defined a cookie salt in your Cookie class then
- * uncomment the line below and define a preferrably long salt.
+ * uncomment the line below and define a preferably long salt.
  */
 // Cookie::$salt = null;
 

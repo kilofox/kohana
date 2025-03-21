@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Help task to display general instructons and list all tasks
+ * Help task to display general instructions and list all tasks
  *
  * @package    Kohana
  * @category   Helpers

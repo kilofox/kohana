@@ -29,7 +29,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
     public function __construct($table = null, array $columns = null)
     {
         if ($table) {
-            // Set the inital table name
+            // Set the initial table name
             $this->table($table);
         }
 

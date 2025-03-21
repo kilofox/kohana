@@ -116,7 +116,7 @@ class Kohana_Kodoc_Class extends Kodoc
             if ($parent->name == 'Kodoc_Missing') {
                 $result .= "[!!] **This class, or a class parent, could not be
 				           found or loaded. This could be caused by a missing
-				           module or other dependancy. The documentation for
+				           module or other dependency. The documentation for
 				           class may not be complete!**";
             }
         }

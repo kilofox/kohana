@@ -38,7 +38,7 @@ class Bench_MDDoIncludeViews extends Codebench
 
     public function bench_lookaround($subject)
     {
-        // Using lookaround to move $mathes[1] into $matches[0]
+        // Using lookaround to move $matches[1] into $matches[0]
         preg_match_all('/(?<={{)[^\s{}]++(?=}})/', $subject, $matches, PREG_SET_ORDER);
         return $matches;
     }

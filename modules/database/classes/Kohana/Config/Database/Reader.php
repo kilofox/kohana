@@ -33,7 +33,7 @@ class Kohana_Config_Database_Reader implements Kohana_Config_Reader
     }
 
     /**
-     * Tries to load the specificed configuration group
+     * Tries to load the specified configuration group
      *
      * Returns false if group does not exist or an array if it does
      *

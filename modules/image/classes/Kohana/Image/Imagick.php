@@ -190,7 +190,7 @@ class Kohana_Image_Imagick extends Image
 
     protected function _do_watermark(Image $image, $offset_x, $offset_y, $opacity)
     {
-        // Convert the Image intance into an Imagick instance
+        // Convert the Image instance into an Imagick instance
         $watermark = new Imagick;
         $watermark->readImageBlob($image->render(), $image->file);
 
