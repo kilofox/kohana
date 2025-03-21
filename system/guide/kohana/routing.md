@@ -28,7 +28,7 @@ The name of the route must be a **unique** string. If it is not it will overwrit
 
 ### URI
 
-The uri is a string that represents the format of urls that should be matched. The tokens surrounded with `<>` are *keys* and anything surrounded with `()` are *optional* parts of the uri. In Kohana routes, any character is allowed and treated literally aside from `()<>`. The `/` has no meaning besides being a character that must match in the uri. Usually the `/` is used as a static seperator but as long as the regex makes sense, there are no restrictions to how you can format your routes.
+The uri is a string that represents the format of urls that should be matched. The tokens surrounded with `<>` are *keys* and anything surrounded with `()` are *optional* parts of the uri. In Kohana routes, any character is allowed and treated literally aside from `()<>`. The `/` has no meaning besides being a character that must match in the uri. Usually the `/` is used as a static separator but as long as the regex makes sense, there are no restrictions to how you can format your routes.
 
 Lets look at the default route again, the uri is `(<controller>(/<action>(/<id>)))`. We have three keys or params: controller, action, and id. In this case, the entire uri is optional, so a blank uri would match and the default controller and action (set by defaults(), [covered below](#defaults)) would be assumed resulting in the `Controller_Welcome` class being loaded and the `action_index` method being called to handle the request.
 

@@ -20,7 +20,7 @@ class Kohana_DateTest extends Unittest_TestCase
     protected $default_locale;
 
     /**
-     * Ensures we have a consistant timezone for testing.
+     * Ensures we have a consistent timezone for testing.
      */
     // @codingStandardsIgnoreStart
     public function setUp()
@@ -720,7 +720,7 @@ class Kohana_DateTest extends Unittest_TestCase
 
     /**
      * This tests that the minutes helper defaults to using a $step of 5
-     * and thus returns an array of 5 minute itervals
+     * and thus returns an array of 5 minute intervals
      *
      * @test
      * @covers Date::minutes
@@ -740,7 +740,7 @@ class Kohana_DateTest extends Unittest_TestCase
     }
 
     /**
-     * Provids for test_unix2dos
+     * Provides test data for test_unix2dos
      *
      * @return array Test Data
      */
@@ -756,7 +756,7 @@ class Kohana_DateTest extends Unittest_TestCase
      * Test Date::unix2dos()
      *
      * You should always pass a timestamp as otherwise the current
-     * date/time would be used and that's oviously variable
+     * date/time would be used and that's obviously variable
      *
      * Geert seems to be the only person who knows how unix2dos() works
      * so we just throw in some random values and see what happens

@@ -24,7 +24,7 @@ Kohana's default autoloader is enabled in `application/bootstrap.php` using [spl
 
     spl_autoload_register(['Kohana', 'auto_load']);
 
-This allows [Kohana::auto_load] to attempt to find and include any class that does not yet exist when the class is first used as long as it follows the PSR-0 specification. If you wish to support the previous Kohana filename convention (using lowercase filesnames), an additional autoloader is provided by Kohana:
+This allows [Kohana::auto_load] to attempt to find and include any class that does not yet exist when the class is first used as long as it follows the PSR-0 specification. If you wish to support the previous Kohana filename convention (using lowercase filenames), an additional autoloader is provided by Kohana:
 
     spl_autoload_register(['Kohana', 'auto_load_lowercase']);
 

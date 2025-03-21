@@ -85,7 +85,7 @@ class Kohana_SessionTest extends Unittest_TestCase
 
     /**
      * Check that the constructor will load a session if it's provided
-     * witha session id
+     * with a session id
      *
      * @test
      * @covers Session::__construct
@@ -354,7 +354,7 @@ class Kohana_SessionTest extends Unittest_TestCase
                 'the_it_crowd',
                 ['the it' => 'crowd'],
             ],
-            // If it's a string an encrpytion is disabled (by default) base64decode and unserialize
+            // If it's a string and encryption is disabled (by default), base64_decode and unserialize it
             [
                 ['dead' => 'arrival'],
                 'lolums',

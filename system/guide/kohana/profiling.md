@@ -35,7 +35,7 @@ You can easily add profiling to your own functions and code. This is done using 
 
 The benchmarks are sorted into groups. Each benchmark will show its name, how many times it was run (show in parenthesis after the benchmark name), and then the min, max, average, and total time and memory spent on that benchmark. The total column will have shaded backgrounds to show the relative times between benchmarks in the same group.
 
-At the very end is a group called "Application Execution". This keeps track of how long each execution has taken. The number in parenthesis is how many executions are being compared. It shows the fastest, slowest, and average time and memory usage of the last several requsets. The last box is the time and memory usage of the current request.
+At the very end is a group called "Application Execution". This keeps track of how long each execution has taken. The number in parenthesis is how many executions are being compared. It shows the fastest, slowest, and average time and memory usage of the last several requests. The last box is the time and memory usage of the current request.
 
 ((This could use a picture of a profiler with some database queries, etc. with annotations to point out each area as just described.))
 

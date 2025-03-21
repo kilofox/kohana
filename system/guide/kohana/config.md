@@ -177,7 +177,7 @@ In this case you still need access to the config settings stored in the `config`
 settings that are needed whatever environment your application is in (e.g. encryption settings),
 so replacing the default `Config_File` source isn't really an option.
 
-To get around this you can attach a separate config file reader which loads its config from a subdir of `config` called
+To get around this you can attach a separate config file reader which loads its config from a subdirectory of `config` called
 "testing":
 
     Kohana::$config->attach(new Config_File);

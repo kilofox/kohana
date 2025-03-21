@@ -284,7 +284,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
 
     /**
      * Config sources are stored in a stack, make sure that config at the bottom
-     * of the stack is overriden by config at the top
+     * of the stack is overridden by config at the top
      *
      * @test
      * @covers Config::load

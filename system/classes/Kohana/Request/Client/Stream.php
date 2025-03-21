@@ -86,7 +86,7 @@ class Kohana_Request_Client_Stream extends Request_Client_External
             $status = null;
         }
 
-        // Get any exisiting response headers
+        // Get any existing response headers
         $response_header = $response->headers();
 
         // Process headers

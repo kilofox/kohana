@@ -24,13 +24,13 @@ You can make your own helpers by simply making a class and putting it in the `cl
 
  - **[HTML]** - Useful HTML functions. Encode, obfuscate, create script, anchor, and image tags, etc.
 
- - **[I18n]** - Internationalization helper for creating multilanguage sites.
+ - **[I18n]** - Internationalization helper for creating multilingual sites.
 
  - **[Inflector]** - Change a word into plural or singular form, camelize or humanize a phrase, etc.
 
  - **[Kohana]** - The Kohana class is also a helper. Debug variables (like print_r but better), file loading, etc.
 
- - **[Num]** - Provides locale aware formating and english ordinals (th, st, nd, etc).
+ - **[Num]** - Provides locale aware formatting and english ordinals (th, st, nd, etc).
 
  - **[Profiler]** - Covered in more detail on the [Profiling](profiling) page.
 

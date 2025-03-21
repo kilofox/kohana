@@ -42,7 +42,7 @@
 &lt;p&gt;Moving to composer is a nice idea. This will allow Kohana modules to define a wide range of dependencies.&lt;/p&gt;
 
 
-	&lt;p&gt;Although, I think that modules designed specifically for Kohana should end in modules and external libraries in application/vendor. This makes a clear dinsinction between what gets autoloaded by the CFS and what gets loaded by composer. Technically, we add "vendor-dir": "application/vendor" in "config" in composer.json.&lt;/p&gt;
+	&lt;p&gt;Although, I think that modules designed specifically for Kohana should end in modules and external libraries in application/vendor. This makes a clear distinction between what gets autoloaded by the CFS and what gets loaded by composer. Technically, we add "vendor-dir": "application/vendor" in "config" in composer.json.&lt;/p&gt;
 
 
 	&lt;p&gt;Then, only add a line after the modules loading in bootstrap.php&lt;/p&gt;

@@ -207,7 +207,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *     // Parse the cache control header
      *     if ($cache_control = HTTP_Header::parse_cache_control($response->headers('cache-control'))) {
      *          // Cache-Control header was found
-     *          $maxage = $cache_control['max-age'];
+     *          $maxAge = $cache_control['max-age'];
      *     }
      *
      * @param   array   $cache_control Array of headers

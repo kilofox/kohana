@@ -182,7 +182,7 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
      * @param   string  $key        Encryption key.
      * @param   string  $iv         Initialization vector.
      * @param   string  $txtPlain   Plain text to be encrypted.
-     * @param   string  $txtEncoded Known ecrypted text.
+     * @param   string  $txtEncoded Known encrypted text.
      *
      * @dataProvider providerEncode
      * @covers Encrypt_Mcrypt::encode
@@ -370,7 +370,7 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
      * @param   string  $cipher     Encryption cipher.
      * @param   string  $key        Encryption key.
      * @param   string  $iv         Initialization vector.
-     * @param   string  $txtEncoded Ecrypted text.
+     * @param   string  $txtEncoded Encrypted text.
      * @param   string  $txtPlain   Known plain text that is decrypted.
      *
      * @dataProvider providerDecode

@@ -230,7 +230,7 @@ class Kohana_Kohana_Exception extends Exception
              * The stack trace becomes unmanageable inside PHPUnit.
              *
              * The error view ends up several GB in size, taking
-             * serveral minutes to render.
+             * several minutes to render.
              */
             if (
                 defined('PHPUnit_MAIN_METHOD')

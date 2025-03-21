@@ -91,7 +91,7 @@ class Kohana_ArrTest extends Unittest_TestCase
                     'symfony' => null
                 ]
             ],
-            // I realise noone should EVER code like this in real life,
+            // I realise no one should EVER code like this in real life,
             // but unit testing is very very very very boring
             [
                 [
@@ -530,7 +530,7 @@ class Kohana_ArrTest extends Unittest_TestCase
                 $array,
                 'users.*'
             ],
-            // Now we check that keys after a wilcard will be processed
+            // Now we check that keys after a wildcard will be processed
             [
                 [0 => [0 => 2]],
                 $array,
@@ -721,7 +721,7 @@ class Kohana_ArrTest extends Unittest_TestCase
     }
 
     /**
-     * Provies test data for test_overwrite
+     * Provides test data for test_overwrite
      *
      * @return array Test Data
      */

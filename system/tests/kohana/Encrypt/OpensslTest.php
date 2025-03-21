@@ -324,7 +324,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
      * @param   string  $method     Encryption cipher.
      * @param   string  $key        Encryption key.
      * @param   string  $iv         Initialization vector.
-     * @param   string  $txtEncoded Ecrypted text.
+     * @param   string  $txtEncoded Encrypted text.
      * @param   string  $txtPlain   Known plain text that is decrypted.
      *
      * @dataProvider providerDecode

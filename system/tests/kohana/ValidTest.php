@@ -204,7 +204,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     public function test_decimal($decimal, $places, $digits, $expected)
     {
         $this->assertSame(
-            $expected, Valid::decimal($decimal, $places, $digits), 'Decimal: "' . $decimal . '" to ' . $places . ' places and ' . $digits . ' digits (preceeding period)'
+            $expected, Valid::decimal($decimal, $places, $digits), 'Decimal: "' . $decimal . '" to ' . $places . ' places and ' . $digits . ' digits (preceding period)'
         );
     }
 

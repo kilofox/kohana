@@ -279,20 +279,20 @@ class Kohana_Text
         $regex = '(' . implode('|', $badwords) . ')';
 
         if ($replace_partial_words === false) {
-            // Just using \b isn't sufficient when we need to replace a badword that already contains word boundaries itself
+            // Just using \b isn't sufficient when we need to replace a bad word that already contains word boundaries itself
             $regex = '(?<=\b|\s|^)' . $regex . '(?=\b|\s|$)';
         }
 
         $regex = '!' . $regex . '!ui';
 
-        // if $replacement is a single character: replace each of the characters of the badword with $replacement
+        // if $replacement is a single character: replace each of the characters of the bad word with $replacement
         if (UTF8::strlen($replacement) == 1) {
             return preg_replace_callback($regex, function($matches) use ($replacement) {
                 return str_repeat($replacement, UTF8::strlen($matches[1]));
             }, $str);
         }
 
-        // if $replacement is not a single character, fully replace the badword with $replacement
+        // if $replacement is not a single character, fully replace the bad word with $replacement
         return preg_replace($regex, $replacement, $str);
     }
 
@@ -517,7 +517,7 @@ class Kohana_Text
             if ($number / $unit >= 1) {
                 // $value = the number of times the number is divisible by unit
                 $number -= $unit * ($value = (int) floor($number / $unit));
-                // Temporary var for textifying the current unit
+                // Temporary variable for converting the current unit to text
                 $item = '';
 
                 if ($unit < 100) {
