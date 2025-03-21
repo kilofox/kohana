@@ -58,7 +58,7 @@ The contents of the `menu.md` file is what shows up in the side column and shoul
 
 You can have items that are not linked pages (a category that doesn't have a corresponding page).
 
-Guide pages can be named or arranged any way you want within that folder (with the exception of `index.md` and `menu.md` which must appear directly below the `guide/` folder).
+Guide pages can be named or arranged in any way you want within that folder, except for `index.md` and `menu.md`, which must appear directly under the `guide/` folder.
 
 ## Formatting page titles and links
 
