@@ -211,7 +211,7 @@ abstract class Kohana_Cache
      *     // Retrieve cache entry from default group
      *     $data = Cache::instance()->get('foo');
      *
-     *     // Retrieve cache entry from default group and return 'bar' if miss
+     *     // Retrieve cache entry from default group and return 'bar' if missing
      *     $data = Cache::instance()->get('foo', 'bar');
      *
      *     // Retrieve cache entry from memcache group

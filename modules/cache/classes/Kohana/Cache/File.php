@@ -111,7 +111,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *     // Retrieve cache entry from file group
      *     $data = Cache::instance('file')->get('foo');
      *
-     *     // Retrieve cache entry from file group and return 'bar' if miss
+     *     // Retrieve cache entry from file group and return 'bar' if missing
      *     $data = Cache::instance('file')->get('foo', 'bar');
      *
      * @param string $id id of cache to entry

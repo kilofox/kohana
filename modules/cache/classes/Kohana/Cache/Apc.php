@@ -64,7 +64,7 @@ class Kohana_Cache_Apc extends Cache implements Cache_Arithmetic
      *     // Retrieve cache entry from apc group
      *     $data = Cache::instance('apc')->get('foo');
      *
-     *     // Retrieve cache entry from apc group and return 'bar' if miss
+     *     // Retrieve cache entry from apc group and return 'bar' if missing
      *     $data = Cache::instance('apc')->get('foo', 'bar');
      *
      * @param   string  $id       id of cache to entry

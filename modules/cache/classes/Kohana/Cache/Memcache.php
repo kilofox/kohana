@@ -171,7 +171,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      *     // Retrieve cache entry from memcache group
      *     $data = Cache::instance('memcache')->get('foo');
      *
-     *     // Retrieve cache entry from memcache group and return 'bar' if miss
+     *     // Retrieve cache entry from memcache group and return 'bar' if missing
      *     $data = Cache::instance('memcache')->get('foo', 'bar');
      *
      * @param   string  $id       id of cache to entry
