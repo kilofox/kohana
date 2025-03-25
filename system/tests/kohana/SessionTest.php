@@ -96,7 +96,7 @@ class Kohana_SessionTest extends Unittest_TestCase
         $config = [];
         $session_id = 'lolums';
 
-        // Don't auto-call constructor, we need to setup the mock first
+        // Don't auto-call constructor, we need to set up the mock first
         $session = $this->getMockBuilder('Session')
             ->disableOriginalConstructor()
             ->setMethods(['read'])

@@ -3,7 +3,7 @@
 /**
  * URL helper class.
  *
- * [!!] You need to setup the list of trusted hosts in the `url.php` config file, before starting using this helper class.
+ * [!!] You need to set up the list of trusted hosts in the `url.php` config file, before starting using this helper class.
  *
  * @package    Kohana
  * @category   Helpers

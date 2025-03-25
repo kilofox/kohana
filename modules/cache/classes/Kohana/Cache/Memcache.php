@@ -161,7 +161,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
             }
         }
 
-        // Setup the flags
+        // Set up the flags
         $this->_flags = Arr::get($this->_config, 'compression', false) ? MEMCACHE_COMPRESSED : false;
     }
 

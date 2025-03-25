@@ -158,7 +158,7 @@ abstract class Kohana_HTTP
             return new HTTP_Header($headers);
         }
 
-        // Setup the output
+        // Set up the output
         $headers = [];
 
         // Parse the content type

@@ -24,7 +24,7 @@ class Kohana_Response implements HTTP_Response
      *      // Create a new response with headers
      *      $response = Response::factory(['status' => 200]);
      *
-     * @param   array    $config Setup the response object
+     * @param   array    $config Set up the response object
      * @return  Response
      */
     public static function factory(array $config = [])
@@ -111,7 +111,7 @@ class Kohana_Response implements HTTP_Response
     /**
      * Sets up the response object
      *
-     * @param   array $config Setup the response object
+     * @param   array $config Set up the response object
      * @return  void
      */
     public function __construct(array $config = [])

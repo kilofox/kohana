@@ -647,7 +647,7 @@ class Kohana_Request implements HTTP_Request
             // Set external state
             $this->_external = true;
 
-            // Setup the client
+            // Set up the client
             $this->_client = Request_Client_External::factory($client_params);
         }
     }
