@@ -154,7 +154,7 @@ This query would generate the following SQL:
 
 Multiple tables can be joined using the `join()` and `on()` methods. The `join()` method takes two parameters. The first is either a table name, an array containing the table and alias, or an object (subquery or expression). The second parameter is the join type: LEFT, RIGHT, INNER, etc.
 
-The `on()` method sets the conditions for the previous `join()` method and is very similar to the `where()` method in that it takes three parameters; left column (name or object), an operator, and the right column (name or object). Multiple `on()` methods may be used to supply multiple conditions and they will be appended with an 'AND' operator.
+The `on()` method sets the conditions for the previous `join()` method and is very similar to the `where()` method in that it takes three parameters; left column (name or object), an operator, and the right column (name or object). Multiple `on()` methods may be used to supply multiple conditions, and they will be appended with an 'AND' operator.
 
     // This query will find all the posts related to "smith" with JOIN
     $query = DB::select('authors.name', 'posts.content')
@@ -193,7 +193,7 @@ This looks almost exactly the same as a standard `AS` alias, but note how the co
 
     SELECT COUNT(`username`) AS `total_users` FROM `users`
 
-[!!] When building complex queries and you need to get a count of the total rows that will be returned, build the expression with an empty column list first. Then clone the query and add the COUNT function to one copy and the columns list to the other. This will cut down on the total lines of code and make updating the query easier.
+[!!] When building complex queries, and you need to get a count of the total rows that will be returned, build the expression with an empty column list first. Then clone the query and add the COUNT function to one copy and the columns list to the other. This will cut down on the total lines of code and make updating the query easier.
 
     $query = DB::select()
         ->from('users')

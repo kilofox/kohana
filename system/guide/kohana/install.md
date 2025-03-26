@@ -65,7 +65,7 @@ You should see the installation page. If it reports any errors, you will need to
 
 ![Install Page](install.png "Example of install page")
 
-Once your install page reports that your environment is set up correctly you need to either rename or delete `install.php`. Kohana is now installed and you should see the output of the welcome controller:
+Once your install page reports that your environment is set up correctly you need to either rename or delete `install.php`. Kohana is now installed, and you should see the output of the welcome controller:
 
 ![Welcome Page](welcome.png "Example of welcome page")
 

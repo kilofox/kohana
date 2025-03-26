@@ -118,7 +118,7 @@ abstract class Kohana_Image
      *     echo $image;
      *
      * [!!] The output of this function is binary and must be rendered with the
-     * appropriate Content-Type header or it will not be displayed correctly!
+     * appropriate Content-Type header, or it will not be displayed correctly!
      *
      * @return  string
      */

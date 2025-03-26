@@ -84,7 +84,7 @@ Now that you have a remote repository, you can pull changes in the remote "kohan
 
 Sometimes a commit you've made locally will conflict with one made in the remote "kohana" repo. There are a couple of scenarios where this might happen:
 
-##### The conflict is due to a few unrelated commits and you want to keep changes made in both commits
+##### The conflict is due to a few unrelated commits, and you want to keep changes made in both commits
 
 You'll need to manually modify the files to resolve the conflict, see the "Basic Merge Conflicts" section in the [Git SCM book](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging) for more info.
 
@@ -94,7 +94,7 @@ The simplest way to fix this is to remove all the changes that you've made local
 
     $ git reset --hard kohana
 
-##### You've fixed something locally which someone else has already fixed but you also have separate commits you'd like to keep
+##### You've fixed something locally which someone else has already fixed, but you also have separate commits you'd like to keep
 
 If this is the case then you'll want to use a tool called rebase. First of all we need to get rid of the conflicts created due to the merge:
 
@@ -110,7 +110,7 @@ e.g.
 
 A text editor will open with a list of commits. Delete the line containing the offending commit before saving the file and closing your editor.
 
-Git will remove the commit and you can then pull/merge the remote changes.
+Git will remove the commit, and you can then pull/merge the remote changes.
 
 # Unit Testing
 
@@ -124,4 +124,4 @@ Kohana currently uses PHPUnit for unit testing. This is installed with composer.
  * Run `php composer.phar install` from the root of this repository.
  * Finally, run `phing test`.
 
-This will run the unit tests for core and all the modules and tell you if anything failed. If you haven't changed anything and you get failures, please [create a new issue on GitHub](https://github.com/kilofox/kohana/issues/new) and paste the output (including the error) in the issue.
+This will run the unit tests for core and all the modules and tell you if anything failed. If you haven't changed anything, and you get failures, please [create a new issue on GitHub](https://github.com/kilofox/kohana/issues/new) and paste the output (including the error) in the issue.

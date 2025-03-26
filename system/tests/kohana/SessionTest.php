@@ -323,7 +323,7 @@ class Kohana_SessionTest extends Unittest_TestCase
 
         unset($copy['a']);
 
-        // We could test against $data but then we'd be testing
+        // We could test against $data, but then we'd be testing
         // that as_array() is returning by ref
         $this->assertAttributeSame($copy, '_data', $session);
 

@@ -63,7 +63,7 @@ class Kohana_Config_Database_Writer extends Config_Database_Reader implements Ko
             $this->_update($group, $key, $config);
         } else {
             // Attempt to run an insert query
-            // This may fail if the config key already exists in the table
+            // This may fail if the config key already exists in the table,
             // and we don't know about it
             try {
                 $this->_insert($group, $key, $config);

@@ -1083,14 +1083,14 @@ class Kohana_ORM extends Model implements serializable
         // Merge in the wildcards
         $filters = empty($filters[$field]) ? $wildcards : array_merge($wildcards, $filters[$field]);
 
-        // Bind the field name and model so they can be used in the filter method
+        // Bind the field name and model, so they can be used in the filter method
         $_bound = [
             ':field' => $field,
             ':model' => $this,
         ];
 
         foreach ($filters as $array) {
-            // Value needs to be bound inside the loop so we are always using the
+            // Value needs to be bound inside the loop, so we are always using the
             // version that was modified by the filters that already ran
             $_bound[':value'] = $value;
 
@@ -1249,7 +1249,7 @@ class Kohana_ORM extends Model implements serializable
         if (!$this->_loaded)
             throw new Kohana_Exception('Cannot update :model model because it is not loaded.', [':model' => $this->_object_name]);
 
-        // Run validation if the model isn't valid or we have additional validation rules.
+        // Run validation if the model isn't valid, or we have additional validation rules.
         if (!$this->_valid OR $validation) {
             $this->check($validation);
         }
@@ -1421,7 +1421,7 @@ class Kohana_ORM extends Model implements serializable
         // We need an array to simplify the logic
         $far_keys = (array) $far_keys;
 
-        // Nothing to check if the model isn't loaded or we don't have any far_keys
+        // Nothing to check if the model isn't loaded, or we don't have any far_keys
         if (!$far_keys OR ! $this->_loaded)
             return 0;
 

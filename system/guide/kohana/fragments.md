@@ -95,7 +95,7 @@ echo View::factory('profiler/stats');
 
 ## Example: Nested Fragments
 
-You can nest fragments with different lifetimes to provide more specific control. For example, let's say your page has lots of dynamic content so we want to cache it with a lifetime of five minutes, but one of the pieces takes much longer to generate, and only changes every hour anyways. No reason to generate it every 5 minutes, so we will use a nested fragment.
+You can nest fragments with different lifetimes to provide more specific control. For example, let's say your page has lots of dynamic content, so we want to cache it with a lifetime of five minutes, but one of the pieces takes much longer to generate, and only changes every hour anyways. No reason to generate it every 5 minutes, so we will use a nested fragment.
 
 [!!] If a nested fragment has a shorter lifetime than the parent, it will only get processed when the parent has expired.
 

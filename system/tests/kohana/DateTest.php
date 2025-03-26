@@ -758,7 +758,7 @@ class Kohana_DateTest extends Unittest_TestCase
      * You should always pass a timestamp as otherwise the current
      * date/time would be used and that's obviously variable
      *
-     * Geert seems to be the only person who knows how unix2dos() works
+     * Geert seems to be the only person who knows how unix2dos() works,
      * so we just throw in some random values and see what happens
      *
      * @test

@@ -116,7 +116,7 @@ Sometimes a commit you've made locally will conflict with one made in the "kohan
 
 There are a couple of scenarios where this might happen:
 
-### The conflict is to do with a few unrelated commits and you want to keep changes made in both commits
+### The conflict is to do with a few unrelated commits, and you want to keep changes made in both commits
 
 You'll need to manually modify the files to resolve the conflict, see the "Resolving a merge"
 section [in the git-scm book](http://book.git-scm.com/3_basic_branching_and_merging.html) for more info
@@ -129,7 +129,7 @@ You can do this using
 
     > git reset --hard kohana
 
-### You've fixed something locally which someone else has already fixed but you also have separate commits you'd like to keep
+### You've fixed something locally which someone else has already fixed, but you also have separate commits you'd like to keep
 
 If this is the case then you'll want to use a tool called rebase. First of all we need to
 get rid of the conflicts created due to the merge:
@@ -147,4 +147,4 @@ i.e.
 A text editor will open with a list of commits, delete the line containing the offending commit
 before saving the file & closing your editor.
 
-Git will remove the commit and you can then pull/merge the remote changes.
+Git will remove the commit, and you can then pull/merge the remote changes.

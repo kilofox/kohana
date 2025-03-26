@@ -43,7 +43,7 @@ Ordinarily you could use a foreach loop to iterate over an array of test data, h
         }
     }
 
-The key thing to notice is the `@dataProvider` tag in the DocComment, this is what tells PHPUnit to use a data provider. The provider prefix is totally optional but it's a nice standard to identify providers.
+The key thing to notice is the `@dataProvider` tag in the DocComment, this is what tells PHPUnit to use a data provider. The provider prefix is totally optional, but it's a nice standard to identify providers.
 
 For more info see:
 

@@ -1,6 +1,6 @@
 # Controllers
 
-A Controller is a class file that stands in between the models and the views in an application. It passes information on to the model when data needs to be changed and it requests information from the model when data needs to be loaded. Controllers then pass on the information of the model to the views where the final output can be rendered for the users. Controllers essentially control the flow of the application.
+A Controller is a class file that stands in between the models and the views in an application. It passes information on to the model when data needs to be changed, and it requests information from the model when data needs to be loaded. Controllers then pass on the information of the model to the views where the final output can be rendered for the users. Controllers essentially control the flow of the application.
 
 Controllers are called by the [Request::execute()] function based on the [Route] that the url matched. Be sure to read the [routing](routing) page to understand how to use routes to map urls to your controllers.
 
