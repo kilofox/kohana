@@ -30,7 +30,7 @@ if (Auth::instance()->logged_in()) {
 }
 ~~~
 
-You can also get the logged in user object by using [Auth::get_user]. If the user is null, then no user was found.
+You can also get the logged-in user object by using [Auth::get_user]. If the user is null, then no user was found.
 
 ~~~
 $user = Auth::instance()->get_user();
