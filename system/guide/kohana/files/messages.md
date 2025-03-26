@@ -1,6 +1,6 @@
 # Messages
 
-Kohana has a robust key based lookup system so you can define system messages.
+Kohana has a robust key based lookup system, so you can define system messages.
 
 ## Getting a message
 

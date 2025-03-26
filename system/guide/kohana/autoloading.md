@@ -31,7 +31,7 @@ This allows [Kohana::auto_load] to attempt to find and include any class that do
 
 ### Example: Zend
 
-You can easily gain access to other libraries if they include an autoloader. For example, here is how to enable Zend's autoloader so you can use Zend libraries in your Kohana application.
+You can easily gain access to other libraries if they include an autoloader. For example, here is how to enable Zend's autoloader, so you can use Zend libraries in your Kohana application.
 
 #### Download and install the Zend Framework files
 
