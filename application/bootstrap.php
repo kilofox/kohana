@@ -29,7 +29,7 @@ date_default_timezone_set('America/Chicago');
 setlocale(LC_ALL, 'en_US.utf-8');
 
 /**
- * Enable the Kohana auto-loader.
+ * Enable the Kohana autoloader.
  *
  * @link https://kohana.top/guide/using.autoloading
  * @link http://www.php.net/manual/function.spl-autoload-register
@@ -37,7 +37,7 @@ setlocale(LC_ALL, 'en_US.utf-8');
 spl_autoload_register(['Kohana', 'auto_load']);
 
 /**
- * Optionally, you can enable a compatibility auto-loader for use with
+ * Optionally, you can enable a compatibility autoloader for use with
  * older modules that have not been updated for PSR-0.
  *
  * It is recommended to not enable this unless absolutely necessary.
@@ -45,7 +45,7 @@ spl_autoload_register(['Kohana', 'auto_load']);
 //spl_autoload_register(['Kohana', 'auto_load_lowercase']);
 
 /**
- * Enable the Kohana auto-loader for unserialization.
+ * Enable the Kohana autoloader for unserialization.
  *
  * @link http://www.php.net/manual/function.spl-autoload-call
  * @link http://www.php.net/manual/var.configuration#unserialize-callback-func

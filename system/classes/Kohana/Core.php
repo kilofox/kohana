@@ -442,7 +442,7 @@ class Kohana_Core
     }
 
     /**
-     * Provides auto-loading support of classes that follow Kohana's [class
+     * Provides autoloading support of classes that follow Kohana's [class
      * naming conventions](kohana/conventions#class-names-and-file-location).
      * See [Loading Classes](kohana/autoloading) for more information.
      *
@@ -493,7 +493,7 @@ class Kohana_Core
     }
 
     /**
-     * Provides auto-loading support of classes that follow Kohana's old class
+     * Provides autoloading support of classes that follow Kohana's old class
      * naming conventions.
      *
      * This is included for compatibility purposes with older modules.

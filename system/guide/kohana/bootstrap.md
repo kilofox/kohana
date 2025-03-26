@@ -17,10 +17,10 @@ date_default_timezone_set('America/Chicago');
 // Set the default locale.
 setlocale(LC_ALL, 'en_US.utf-8');
 
-// Enable the Kohana auto-loader.
+// Enable the Kohana autoloader.
 spl_autoload_register(['Kohana', 'auto_load']);
 
-// Enable the Kohana auto-loader for unserialization.
+// Enable the Kohana autoloader for unserialization.
 ini_set('unserialize_callback_func', 'spl_autoload_call');
 ~~~
 
