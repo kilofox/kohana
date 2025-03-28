@@ -257,7 +257,7 @@ This will generate the following query:
 
 ### Boolean Operators and Nested Clauses
 
-Multiple Where and Having clauses are added to the query with Boolean operators connecting each expression. The default operator for both methods is AND which is the same as the and_ prefixed method. The OR operator can be specified by prefixing the methods with or_. Where and Having clauses can be nested or grouped by post fixing either method with _open and then followed by a method with a _close.
+Multiple Where and Having clauses are added to the query with Boolean operators connecting each expression. The default operator for both methods is AND which is the same as the `and_` prefixed method. The OR operator can be specified by prefixing the methods with `or_`. Where and Having clauses can be nested or grouped by post fixing either method with `_open` and then followed by a method with a `_close`.
 
     $query = DB::select()->from('users')
         ->where_open()
