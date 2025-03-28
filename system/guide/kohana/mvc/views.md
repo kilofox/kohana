@@ -110,14 +110,14 @@ Next, the home controller will extend `Controller_Website`:
 
 ## Views Within Views
 
-If you want to include another view within a view, there are two choices. By calling [View::factory] you can sandbox the included view. This means that you will have to provide all of the variables to the view using [View::set] or [View::bind]:
+If you want to include another view within a view, there are two choices. By calling [View::factory] you can sandbox the included view. This means that you will have to provide all the variables to the view using [View::set] or [View::bind]:
 
     // In your view file:
 
     // Only the $user variable will be available in "views/user/login.php"
     <?php echo View::factory('user/login')->bind('user', $user) ?>
 
-The other option is to include the view directly, which makes all of the current variables available to the included view:
+The other option is to include the view directly, which makes all the current variables available to the included view:
 
     // In your view file:
 

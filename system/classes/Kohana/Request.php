@@ -450,7 +450,7 @@ class Kohana_Request implements HTTP_Request
     protected static function _parse_accept(& $header, array $accepts = null)
     {
         if (!empty($header)) {
-            // Get all of the types
+            // Get all the types
             $types = explode(',', $header);
 
             foreach ($types as $type) {

@@ -684,7 +684,7 @@ class Kohana_Core
     }
 
     /**
-     * Recursively finds all of the files in the specified directory at any
+     * Recursively finds all the files in the specified directory at any
      * location in the [Cascading Filesystem](kohana/files), and returns an
      * array of all the files found, sorted alphabetically.
      *
@@ -881,7 +881,7 @@ class Kohana_Core
         }
 
         if ($path === null) {
-            // Return all of the messages
+            // Return all the messages
             return $messages[$file];
         } else {
             // Get a message using the path

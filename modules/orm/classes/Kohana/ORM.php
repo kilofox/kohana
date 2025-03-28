@@ -1345,7 +1345,7 @@ class Kohana_ORM extends Model implements serializable
      *     $model->has('roles', ORM::factory('role', ['name' => 'login']));
      *     // Check for the login role if you know the roles.id is 5
      *     $model->has('roles', 5);
-     *     // Check for all of the following roles
+     *     // Check for all the following roles
      *     $model->has('roles', [1, 2, 3, 4]);
      *     // Check if $model has any roles
      *     $model->has('roles')

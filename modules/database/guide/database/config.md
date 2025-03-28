@@ -79,7 +79,7 @@ To disconnect the database, simply destroy the object:
 
     unset(Database::$instances['default']);
 
-If you want to disconnect all of the database instances at once:
+If you want to disconnect all the database instances at once:
 
     Database::$instances = [];
 

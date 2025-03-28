@@ -124,7 +124,7 @@ class Kohana_Database_Expression
         $value = $this->value();
 
         if (!empty($this->_parameters)) {
-            // Quote all of the parameter values
+            // Quote all the parameter values
             $params = array_map([$db, 'quote'], $this->_parameters);
 
             // Replace the values in the expression

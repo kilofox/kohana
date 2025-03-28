@@ -369,7 +369,7 @@ class Kohana_Route
 
     /**
      * Tests if the route matches a given Request. A successful match will return
-     * all of the routed parameters as an array. A failed match will return
+     * all the routed parameters as an array. A failed match will return
      * boolean false.
      *
      *     // Params: controller = users, action = edit, id = 10

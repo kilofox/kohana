@@ -215,7 +215,7 @@ PHPUnit provides some MockObject stubs out of the box, you can access them via (
 
 `$this->returnCallback($callback)`
 : Returns the value of the callback, useful for more complicated mocking.
-: `$callback` should a valid callback (i.e. `is_callable($callback) === true`). PHPUnit will pass the callback all of the parameters that the mocked method was passed, in the same order / argument index (i.e. the callback is invoked by `call_user_func_array()`).
+: `$callback` should a valid callback (i.e. `is_callable($callback) === true`). PHPUnit will pass the callback all the parameters that the mocked method was passed, in the same order / argument index (i.e. the callback is invoked by `call_user_func_array()`).
 : You can usually create the callback in your testcase, as long as doesn't begin with "test".
 
 Obviously if you really want to you can create your own MockObject stub, but these three should cover most situations.

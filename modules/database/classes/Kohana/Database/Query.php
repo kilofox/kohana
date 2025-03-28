@@ -181,7 +181,7 @@ class Kohana_Database_Query
         $sql = $this->_sql;
 
         if (!empty($this->_parameters)) {
-            // Quote all of the values
+            // Quote all the values
             $values = array_map([$db, 'quote'], $this->_parameters);
 
             // Replace the values in the SQL

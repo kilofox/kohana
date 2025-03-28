@@ -322,7 +322,7 @@ abstract class Kohana_Database
     }
 
     /**
-     * List all of the tables in the database. Optionally, a LIKE string can
+     * List all the tables in the database. Optionally, a LIKE string can
      * be used to search for specific tables.
      *
      *     // Get all tables in the current database
@@ -336,7 +336,7 @@ abstract class Kohana_Database
      */
     abstract public function list_tables($like = null);
     /**
-     * Lists all of the columns in a table. Optionally, a LIKE string can be
+     * Lists all the columns in a table. Optionally, a LIKE string can be
      * used to search for specific fields.
      *
      *     // Get all columns from the "users" table

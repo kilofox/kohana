@@ -198,7 +198,7 @@ First, we need a [View] that contains the HTML form, which will be placed in `ap
     <?php echo Form::submit(null, 'Sign Up') ?>
     <?php echo Form::close() ?>
 
-[!!] This example uses the [Form] helper extensively. Using [Form] instead of writing HTML ensures that all of the form inputs will properly handle input that includes HTML characters. If you prefer to write the HTML yourself, be sure to use [HTML::chars] to escape user input.
+[!!] This example uses the [Form] helper extensively. Using [Form] instead of writing HTML ensures that all the form inputs will properly handle input that includes HTML characters. If you prefer to write the HTML yourself, be sure to use [HTML::chars] to escape user input.
 
 Next, we need a controller and action to process the registration, which will be placed in `application/classes/Controller/User.php`:
 

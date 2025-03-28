@@ -284,7 +284,7 @@ class Kohana_Arr
     /**
      * Retrieves multiple single-key values from a list of arrays.
      *
-     *     // Get all of the "id" values from a result
+     *     // Get all the "id" values from a result
      *     $ids = Arr::pluck($result, 'id');
      *
      * [!!] A list of arrays is an array that contains arrays, eg: [array $a, array $b, array $c, ...]

@@ -86,7 +86,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
             throw new Kohana_Exception('INSERT INTO ... SELECT statements cannot be combined with INSERT INTO ... VALUES');
         }
 
-        // Get all of the passed values
+        // Get all the passed values
         $values = func_get_args();
 
         foreach ($values as $value) {

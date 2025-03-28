@@ -15,9 +15,9 @@ Accessing the session instance is done using the [Session::instance] method:
     // Get the session instance
     $session = Session::instance();
 
-When using sessions, you can also get all of the current session data using the [Session::as_array] method:
+When using sessions, you can also get all the current session data using the [Session::as_array] method:
 
-    // Get all of the session data as an array
+    // Get all the session data as an array
     $data = $session->as_array();
 
 You can also use this to overload the `$_SESSION` global to get and set data in a way more similar to standard PHP:

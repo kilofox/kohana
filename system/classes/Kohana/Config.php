@@ -131,7 +131,7 @@ class Kohana_Config
     }
 
     /**
-     * Copy one configuration group to all of the other writers.
+     * Copy one configuration group to all the other writers.
      *
      *     $config->copy($name);
      *

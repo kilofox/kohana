@@ -46,7 +46,7 @@ class Kohana_Minion_CLI
      */
     public static function options($options = null)
     {
-        // Get all of the requested options
+        // Get all the requested options
         $options = func_get_args();
 
         // Found option values
