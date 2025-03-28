@@ -2,7 +2,7 @@
 
 Just about every framework ever written has some kind of hello world example included, so it'd be pretty rude of us to break this tradition!
 
-We'll start out by creating a very very basic hello world, and then we'll expand it to follow MVC principles.
+We'll start out by creating a very, very basic hello world, and then we'll expand it to follow MVC principles.
 
 ## Bare bones
 

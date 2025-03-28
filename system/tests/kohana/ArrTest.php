@@ -92,7 +92,7 @@ class Kohana_ArrTest extends Unittest_TestCase
                 ]
             ],
             // I realise no one should EVER code like this in real life,
-            // but unit testing is very very very very boring
+            // but unit testing is very, very boring
             [
                 [
                     'chocolate cake' => 'in stock',
