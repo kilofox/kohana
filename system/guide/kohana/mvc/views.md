@@ -16,7 +16,7 @@ View files are stored in the `views` directory of the [filesystem](files). You c
 
 ## Loading Views
 
-[View] objects will typically be created inside a [Controller](mvc/controllers) using the [View::factory] method. Typically the view is then assigned as the [Request::$response] property or to another view.
+[View] objects will typically be created inside a [Controller](mvc/controllers) using the [View::factory] method. Typically, the view is then assigned as the [Request::$response] property or to another view.
 
     public function action_about()
     {

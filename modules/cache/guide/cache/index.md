@@ -32,7 +32,7 @@ Getting and setting values to cache is very simple when using the _Kohana Cache_
  1. __Does the cache need to be distributed?__
     This is an important consideration as it will severely limit the options available to solutions such as Memcached when a distributed solution is required.
  2. __Does the cache need to be fast?__
-    In almost all cases retrieving data from a cache is faster than execution. However generally memory based caching is considerably faster than disk based caching (see table below).
+    In almost all cases retrieving data from a cache is faster than execution. However, generally memory based caching is considerably faster than disk based caching (see table below).
  3. __How much cache is required?__
     Cache is not endless, and memory based caches are subject to a considerably more limited storage resource.
 

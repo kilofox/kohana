@@ -146,7 +146,7 @@ class Kohana_URL
      *     // Returns "?sort=title&limit=10" combined with any existing GET values
      *     $query = URL::query(['sort' => 'title', 'limit' => 10]);
      *
-     * Typically you would use this when you are sorting query results,
+     * Typically, you would use this when you are sorting query results,
      * or something similar.
      *
      * [!!] Parameters with a null value are left out.

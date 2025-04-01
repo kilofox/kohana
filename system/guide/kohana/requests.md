@@ -24,7 +24,7 @@ Since Kohana uses HMVC, you can call many requests inside each other. The first 
 
     Request::initial();
 
-You should only use this method if you are absolutely sure you want the initial request. Otherwise you should use the `Request::current()` method.
+You should only use this method if you are absolutely sure you want the initial request. Otherwise, you should use the `Request::current()` method.
 
 #### Sub-requests
 

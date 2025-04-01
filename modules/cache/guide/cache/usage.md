@@ -127,7 +127,7 @@ To delete a specific value by its associated key:
         // Cache entry successfully deleted, do something
     }
 
-By default a `true` value will be returned. However a `false` value will be returned in instances where the key did not exist in the cache.
+By default a `true` value will be returned. However, a `false` value will be returned in instances where the key did not exist in the cache.
 
 #### Delete all values
 
@@ -162,7 +162,7 @@ Some of the caching drivers support deleting by tag. This will remove all the ca
 
 #### Garbage Collection
 
-Garbage Collection (GC) is the cleaning of expired cache entries. For the most part, caching engines will take care of garbage collection internally. However a few of the file based systems do not handle this task and in these circumstances it would be prudent to garbage collect at a predetermined frequency. If no garbage collection is executed, the resource storing the cache entries will eventually fill and become unusable.
+Garbage Collection (GC) is the cleaning of expired cache entries. For the most part, caching engines will take care of garbage collection internally. However, a few of the file based systems do not handle this task and in these circumstances it would be prudent to garbage collect at a predetermined frequency. If no garbage collection is executed, the resource storing the cache entries will eventually fill and become unusable.
 
 When not automated, garbage collection is the responsibility of the developer. It is prudent to have a GC probability value that dictates how likely the garbage collection routing will be run. An example of such a system is demonstrated below.
 

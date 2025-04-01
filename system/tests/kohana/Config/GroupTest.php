@@ -59,7 +59,7 @@ class Kohana_Config_GroupTest extends Kohana_Unittest_TestCase
         // Now usually we'd just use assertAttributeSame, but that tries to get at protected properties
         // by casting the object in question into an array.  This usually works fine, but as Kohana_Config_Group
         // is a subclass of ArrayObject, casting to an array returns the config items!
-        // Therefore we have to use this little workaround
+        // Therefore, we have to use this little workaround
         $this->assertSame($group_name, $group->group_name());
         $this->assertSame($group_values, $group->getArrayCopy());
     }

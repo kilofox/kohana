@@ -161,7 +161,7 @@ abstract class Kohana_Cache
 
     /**
      * Getter and setter for the configuration. If no argument provided, the
-     * current configuration is returned. Otherwise the configuration is set
+     * current configuration is returned. Otherwise, the configuration is set
      * to this class.
      *
      *     // Overwrite all configuration
