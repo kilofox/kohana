@@ -69,7 +69,7 @@
  * -------------- | -------- | ---------------------------------------------------------------
  * driver         | __YES__  | (_string_) The driver type to use
  *
- * Details of the settings specific to each driver are available within the drivers documentation.
+ * Details of the settings specific to each driver are available within the driver's documentation.
  *
  * ### System requirements
  *
