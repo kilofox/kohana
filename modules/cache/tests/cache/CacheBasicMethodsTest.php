@@ -270,7 +270,7 @@ TESTTEXT;
     /**
      * Tests the [Cache::delete()] method, testing;
      *
-     *  - The a cached value is deleted from cache
+     *  - A cached value is deleted from cache
      *  - The cache returns a true value upon deletion
      *  - The cache returns a false value if no value exists to delete
      *
