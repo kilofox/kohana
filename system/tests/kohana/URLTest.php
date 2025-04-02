@@ -101,7 +101,7 @@ class Kohana_URLTest extends Unittest_TestCase
                     'Request::$initial' => Request::factory('/')->protocol('cli')
                 ]
             ],
-            // Change base url'
+            // Change base url
             [
                 'https',
                 false,

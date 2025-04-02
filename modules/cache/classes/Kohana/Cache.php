@@ -171,7 +171,7 @@ abstract class Kohana_Cache
      *     $cache->config('servers', ['foo' => 'bar', '...']);
      *
      *     // Get a configuration setting
-     *     $servers = $cache->config('servers);
+     *     $servers = $cache->config('servers');
      *
      * @param   mixed    key to set to array, either array or config path
      * @param   mixed    value to associate with key
