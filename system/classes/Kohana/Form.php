@@ -338,7 +338,7 @@ class Kohana_Form
     }
 
     /**
-     * Creates a image form input.
+     * Creates an image form input.
      *
      *     echo Form::image(null, null, ['src' => 'media/img/login.png']);
      *

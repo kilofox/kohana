@@ -80,7 +80,7 @@ This is sometimes useful when code is near lists
 -  of each line, surrounded by spaces. You can mix * - and +, but it
 +  makes no difference.
 ~~~
-*  To make a unordered list, put an asterisk, minus, or + at the beginning
+*  To make an unordered list, put an asterisk, minus, or + at the beginning
 -  of each line, surrounded by spaces. You can mix * - and +, but it
 +  makes no difference.
 

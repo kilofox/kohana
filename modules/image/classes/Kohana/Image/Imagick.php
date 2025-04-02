@@ -212,7 +212,7 @@ class Kohana_Image_Imagick extends Image
 
     protected function _do_background($r, $g, $b, $opacity)
     {
-        // Create a RGB color for the background
+        // Create an RGB color for the background
         $color = sprintf('rgb(%d, %d, %d)', $r, $g, $b);
 
         // Create a new image for the background

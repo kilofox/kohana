@@ -6,7 +6,7 @@ Say for example you're testing a model - you want to make sure that the model is
 
 The `createMock()` and `getMockBuilder()` methods provided by PHPUnit can be used to automatically generate an object that can act as a test double for the specified original interface or class name.
 
-## Creating an mock object
+## Creating a mock object
 
 Most of the time you'll only need to use the createMock() method, i.e.:
 

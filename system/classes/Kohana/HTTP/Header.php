@@ -396,7 +396,7 @@ class Kohana_HTTP_Header extends ArrayObject
     }
 
     /**
-     * Parses a HTTP Message header line and applies it to this HTTP_Header
+     * Parses an HTTP Message header line and applies it to this HTTP_Header
      *
      *     $header = $response->headers();
      *     $header->parse_header_string(null, 'content-type: application/json');

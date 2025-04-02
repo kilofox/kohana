@@ -111,7 +111,7 @@ abstract class Kohana_Controller
     }
 
     /**
-     * Issues a HTTP redirect.
+     * Issues an HTTP redirect.
      *
      * Proxies to the [HTTP::redirect] method.
      *

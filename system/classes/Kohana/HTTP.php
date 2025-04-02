@@ -26,7 +26,7 @@ abstract class Kohana_HTTP
     public static $protocol = 'HTTP/1.1';
 
     /**
-     * Issues a HTTP redirect.
+     * Issues an HTTP redirect.
      *
      * @param string $uri URI to redirect to
      * @param int $code HTTP Status code to use for the redirect
@@ -82,7 +82,7 @@ abstract class Kohana_HTTP
     }
 
     /**
-     * Parses a HTTP header string into an associative array
+     * Parses an HTTP header string into an associative array
      *
      * @param   string   $header_string  Header string to parse
      * @return  HTTP_Header

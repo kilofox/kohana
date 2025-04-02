@@ -309,7 +309,7 @@ class Kohana_HTTP_Cache
                 if (!isset($cache_control['s-maxage']))
                     return false;
 
-                // If there is a s-maxage directive we can use that
+                // If there is an s-maxage directive we can use that
                 $cache_control['max-age'] = $cache_control['s-maxage'];
             }
 

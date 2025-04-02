@@ -47,7 +47,7 @@ In the main apache configuration file (usually `httpd.conf`), or in the virtual 
 
 ### Failed!
 
-If you get a "Internal Server Error" or "No input file specified" error, try changing:
+If you get an "Internal Server Error" or "No input file specified" error, try changing:
 
     RewriteRule ^(?:application|modules|system)\b - [F,L]
 

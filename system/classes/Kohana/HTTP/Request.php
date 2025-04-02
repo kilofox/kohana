@@ -1,7 +1,7 @@
 <?php
 
 /**
- * A HTTP Request specific interface that adds the methods required
+ * An HTTP Request specific interface that adds the methods required
  * by HTTP requests. Over and above [Kohana_HTTP_Interaction], this
  * interface provides method, uri, get and post methods.
  *

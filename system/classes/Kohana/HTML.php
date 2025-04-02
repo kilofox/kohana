@@ -248,7 +248,7 @@ class Kohana_HTML
     }
 
     /**
-     * Creates a image link.
+     * Creates an image link.
      *
      *     echo HTML::image('media/img/logo.png', ['alt' => 'My Company']);
      *

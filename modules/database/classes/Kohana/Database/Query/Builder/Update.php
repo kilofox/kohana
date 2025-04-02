@@ -17,7 +17,7 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
     protected $_set = [];
 
     /**
-     * Set the table for a update.
+     * Set the table for an update.
      *
      * @param   mixed  $table  table name or [$table, $alias] or object
      * @return  void
