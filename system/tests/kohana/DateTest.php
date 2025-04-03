@@ -111,7 +111,7 @@ class Kohana_DateTest extends Unittest_TestCase
             [22, 'PM'],
             [23, 'PM'],
             [24, 'PM'],
-            // ampm doesn't validate the hour, so I don't think we should test it..
+            // ampm doesn't validate the hour, so I don't think we should test it.
             // test strings are converted
             ['0', 'AM'],
             ['12', 'PM'],

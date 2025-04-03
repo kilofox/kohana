@@ -331,7 +331,7 @@ class Kohana_URLTest extends Unittest_TestCase
     public function provider_title()
     {
         return [
-            // Tests that..
+            // Tests that…
             // Title is converted to lowercase
             [
                 'we-shall-not-be-moved',
