@@ -32,7 +32,7 @@ class Kohana_Kodoc_Class extends Kodoc
     public $tags = [];
 
     /**
-     * @var  array  array of this classes constants
+     * @var  array  array of this class's constants
      */
     public $constants = [];
 
@@ -226,7 +226,7 @@ class Kohana_Kodoc_Class extends Kodoc
         if ($b->name == $this->class->name)
             return 1;
 
-        // Otherwise, get the parents of each methods declaring class, then compare which function has more "ancestors"
+        // Otherwise, get the parents of each method's declaring class, then compare which function has more "ancestors"
         $adepth = 0;
         $bdepth = 0;
 
