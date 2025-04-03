@@ -134,7 +134,7 @@ For example, using the setup outlined above:
                 name:  Kohana Bot
             method: smtp
 
-[!!] **Note:** The above syntax is simply pseudo code to illustrate the concept of config merging.
+[!!] **Note:** The above syntax is simply pseudocode to illustrate the concept of config merging.
 
 On some occasions you may want to append a config source to the bottom of the stack, to do this pass `false`
 as the second parameter to `attach()`:
