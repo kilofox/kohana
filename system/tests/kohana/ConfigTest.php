@@ -49,8 +49,8 @@ class Kohana_ConfigTest extends Unittest_TestCase
     }
 
     /**
-     * By default (or by passing true as the second parameter) the config object
-     * should prepend the reader to the front of the readers queue
+     * By default, or by passing `true` as the second parameter, the config object
+     * should add the reader to the front of the queue of readers.
      *
      * @test
      * @covers Config::attach
