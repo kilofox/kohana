@@ -22,7 +22,7 @@ To create a new class, simply place a file in the `classes/` directory at any po
         }
     }
 
-We can now call `Foobar::magic()` any where and Kohana will [autoload](autoloading) the file for us.
+We can now call `Foobar::magic()` anywhere and Kohana will [autoload](autoloading) the file for us.
 
 We can also put classes in subdirectories.
 
@@ -36,7 +36,7 @@ We can also put classes in subdirectories.
         }
     }
 
-We could now call `Professor_Baxter::teach()` any where we want.
+We could now call `Professor_Baxter::teach()` anywhere we want.
 
 For examples of how to create and use classes, simply look at the 'classes' folder in `system` or any module.
 
