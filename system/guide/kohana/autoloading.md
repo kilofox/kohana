@@ -14,7 +14,7 @@ Classes are loaded via the [Kohana::auto_load] method, which makes a simple conv
 2. Any underscore characters in the class name are converted to slashes
 2. The filename must match the case of the class
 
-When calling a class that has not been loaded (eg: `Session_Cookie`), Kohana will search the filesystem using [Kohana::find_file] for a file named `classes/Session/Cookie.php`.
+When calling a class that has not been loaded (e.g., `Session_Cookie`), Kohana will search the filesystem using [Kohana::find_file] for a file named `classes/Session/Cookie.php`.
 
 If your classes do not follow this convention, they cannot be autoloaded by Kohana. You will have to manually included your files, or add your own [autoload function.](http://us3.php.net/manual/en/function.spl-autoload-register.php)
 

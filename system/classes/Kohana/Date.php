@@ -455,7 +455,7 @@ class Kohana_Date
 
     /**
      * Converts a UNIX timestamp to DOS format. There are very few cases where
-     * this is needed, but some binary formats use it (eg: zip files.)
+     * this is needed, but some binary formats use it (e.g., zip files).
      * Converting the other direction is done using {@link Date::dos2unix}.
      *
      *     $dos = Date::unix2dos($unix);
@@ -482,7 +482,7 @@ class Kohana_Date
 
     /**
      * Converts a DOS timestamp to UNIX format.There are very few cases where
-     * this is needed, but some binary formats use it (eg: zip files.)
+     * this is needed, but some binary formats use it (e.g., zip files).
      * Converting the other direction is done using {@link Date::unix2dos}.
      *
      *     $unix = Date::dos2unix($dos);

@@ -287,7 +287,7 @@ class Kohana_Arr
      *     // Get all the "id" values from a result
      *     $ids = Arr::pluck($result, 'id');
      *
-     * [!!] A list of arrays is an array that contains arrays, eg: [array $a, array $b, array $c, ...]
+     * [!!] A list of arrays is an array that contains arrays, e.g., [array $a, array $b, array $c, ...]
      *
      * @param   array   $array  list of arrays to check
      * @param   string  $key    key to pluck

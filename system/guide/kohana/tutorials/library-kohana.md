@@ -109,7 +109,7 @@ The new file creates the initial request object, rather than fully executing the
         Minion_Task::factory(Minion_CLI::options())->execute();
     } else {
         /**
-         * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
+         * Execute the main request. A source of the URI can be passed, e.g., $_SERVER['PATH_INFO'].
          * If no source is specified, the URI will be automatically detected.
          */
         Request::factory(true, [], false); // Changes were made here
@@ -128,7 +128,7 @@ Having moved most of the code from Kohana's `index.php` to `common.php`, the new
     require_once 'common.php';
 
     /**
-     * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
+     * Execute the main request. A source of the URI can be passed, e.g., $_SERVER['PATH_INFO'].
      * If no source is specified, the URI will be automatically detected.
      */
     Request::$initial->execute()

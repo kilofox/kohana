@@ -87,7 +87,7 @@ TODO: Provide some links to modules on github, etc that have examples of transpa
 
 ## Multiple Levels of Extension
 
-If you are extending a Kohana class in a module, you should maintain transparent extensions. In other words, do not include any variables or function in the "base" class (eg. Cookie). Instead, make your own namespaced class, and have the "base" class extend that one. With our Encrypted cookie example we can create `MODPATH/mymod/Encrypted/Cookie.php`:
+If you are extending a Kohana class in a module, you should maintain transparent extensions. In other words, do not include any variables or function in the "base" class (e.g. Cookie). Instead, make your own namespaced class, and have the "base" class extend that one. With our Encrypted cookie example we can create `MODPATH/mymod/Encrypted/Cookie.php`:
 
     class Encrypted_Cookie extends Kohana_Cookie
     {
