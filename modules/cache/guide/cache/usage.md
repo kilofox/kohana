@@ -127,7 +127,7 @@ To delete a specific value by its associated key:
         // Cache entry successfully deleted, do something
     }
 
-By default a `true` value will be returned. However, a `false` value will be returned in instances where the key did not exist in the cache.
+By default, a `true` value will be returned. However, a `false` value will be returned in instances where the key did not exist in the cache.
 
 #### Delete all values
 

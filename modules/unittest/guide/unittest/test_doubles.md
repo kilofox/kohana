@@ -193,7 +193,7 @@ So far PHPUnit knows that we want the `check()` method to be called once, with n
 
 This is the final stage of mocking a method.
 
-By default PHPUnit can return either
+By default, PHPUnit can return either
 
 * A fixed value
 * One of the parameters that were passed to it

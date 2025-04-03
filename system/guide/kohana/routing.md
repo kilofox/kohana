@@ -40,7 +40,7 @@ You can use any name you want for your keys, but the following keys have special
 
 ### Regex
 
-The Kohana route system uses [perl compatible regular expressions](http://perldoc.perl.org/perlre.html) in its matching process. By default each key (surrounded by `<>`) will match `[^/.,;?\n]++` (or in english: anything that is not a slash, period, comma, semicolon, question mark, or newline). You can define your own patterns for each key by passing an associative array of keys and patterns as an additional third argument to Route::set.
+The Kohana route system uses [perl compatible regular expressions](http://perldoc.perl.org/perlre.html) in its matching process. By default, each key (surrounded by `<>`) will match `[^/.,;?\n]++` (or in english: anything that is not a slash, period, comma, semicolon, question mark, or newline). You can define your own patterns for each key by passing an associative array of keys and patterns as an additional third argument to Route::set.
 
 In this example, we have controllers in two directories, `admin` and `affiliate`. Because this route will only match urls that begin with `admin` or `affiliate`, the default route would still work for controllers in `classes/Controller`.
 

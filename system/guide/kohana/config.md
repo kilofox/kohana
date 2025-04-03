@@ -1,6 +1,6 @@
 # Configuration
 
-By default Kohana is setup to load configuration values from [config files](files/config) in the
+By default, Kohana is setup to load configuration values from [config files](files/config) in the
 cascading filesystem. However, it is very easy to adapt it to load config values in other
 locations/formats.
 
@@ -103,7 +103,7 @@ a particular config variable but a source lower down the stack does then the val
 be used.
 
 The position of sources in the stack is determined by how they are loaded in your bootstrap.
-By default when you load a source it is pushed to the top of a stack:
+By default, when you load a source it is pushed to the top of a stack:
 
     // Stack: <empty>
     Kohana::$config->attach(new Config_File);

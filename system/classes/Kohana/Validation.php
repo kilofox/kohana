@@ -422,7 +422,7 @@ class Kohana_Validation implements ArrayAccess
      * exists, "field/default" will be used. If neither is set, the returned
      * message will be "file/field/rule".
      *
-     * By default all messages are translated using the default language.
+     * By default, all messages are translated using the default language.
      * A string can be used as the second parameter to specified the language
      * that the message was written in.
      *

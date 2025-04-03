@@ -161,7 +161,7 @@ class Kohana_SessionTest extends Unittest_TestCase
     }
 
     /**
-     * By default sessions are unencrypted
+     * By default, sessions are unencrypted
      *
      * @test
      * @covers Session::__construct
@@ -216,7 +216,7 @@ class Kohana_SessionTest extends Unittest_TestCase
     }
 
     /**
-     * By default get() should be using null as the var DNX return value
+     * By default, get() should be using null as the var DNX return value
      *
      * @test
      * @covers Session::get

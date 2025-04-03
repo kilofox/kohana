@@ -241,7 +241,7 @@ class Kohana_Date
      * Number of months in a year. Typically used as a shortcut for generating
      * a list that can be used in a form.
      *
-     * By default a mirrored array of $month_number => $month_number is returned
+     * By default, a mirrored array of $month_number => $month_number is returned
      *
      *     Date::months();
      *     // [1 => 1, 2 => 2, 3 => 3, ..., 12 => 12]
