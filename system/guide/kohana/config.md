@@ -1,6 +1,6 @@
 # Configuration
 
-By default, Kohana is setup to load configuration values from [config files](files/config) in the
+By default, Kohana is set up to load configuration values from [config files](files/config) in the
 cascading filesystem. However, it is very easy to adapt it to load config values in other
 locations/formats.
 
