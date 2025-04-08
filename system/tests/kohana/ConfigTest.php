@@ -170,7 +170,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
 
     /**
      * If we've already loaded a config group then the correct variable
-     * should be returned if we use the dot path notation to to request
+     * should be returned if we use the dot path notation to request
      * a var
      *
      * @test
