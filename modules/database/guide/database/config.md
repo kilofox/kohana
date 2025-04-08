@@ -18,7 +18,7 @@ INSTANCE_NAME
 :  Connections can be named anything you want, but you should always have at least one connection called "default".
 
 DATABASE_TYPE
-:  One of the installed database drivers. Kohana comes with "PDO" and "MySQLi" drivers. Drivers must extend the Database class. This parameter is case sensitive.
+:  One of the installed database drivers. Kohana comes with "PDO" and "MySQLi" drivers. Drivers must extend the Database class. This parameter is case-sensitive.
 
 CONNECTION_ARRAY
 :  Specific driver options for connecting to your database. (Driver options are explained [below](#connection-settings).)
@@ -59,7 +59,7 @@ The example file below shows 2 MySQL connections, one local and one remote.
         ],
     ];
 
-[!!] Note that the 'type' parameter is case sensitive (e.g., 'PDO', 'MySQLi').
+[!!] Note that the 'type' parameter is case-sensitive (e.g., 'PDO', 'MySQLi').
 
 ## Connections and Instances
 
