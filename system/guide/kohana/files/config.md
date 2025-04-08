@@ -36,7 +36,7 @@ For example, if we wanted to change or add to an entry in the inflector configur
 
 ## Creating your own config files
 
-Let's say we want a config file to store and easily change things like the title of a website, or the google analytics code. We would create a config file, let's call it `site.php`:
+Let's say we want a config file to store and easily change things like the title of a website, or the Google Analytics code. We would create a config file, let's call it `site.php`:
 
     // config/site.php
 
