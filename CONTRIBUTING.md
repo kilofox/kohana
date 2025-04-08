@@ -29,7 +29,7 @@ It's highly recommended that you write/run unit tests during development as it c
 
 ## Creating new features
 
-New features should be developed in separate branches so as to isolate them until they're stable.
+New features should be developed in separate branches to isolate them until they're stable.
 
 **Features without tests written will be rejected! There are NO exceptions.**
 

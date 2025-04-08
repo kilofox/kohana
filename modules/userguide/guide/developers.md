@@ -61,7 +61,7 @@ ensure that any changes you make do not break the api. *See TESTING.md for more 
 
 ### Creating new features
 
-New features or API breaking modifications should be developed in separate branches so as to isolate them
+New features or API breaking modifications should be developed in separate branches to isolate them
 until they're stable and **tests have been written for the feature**.
 
 The naming convention for feature branches is:
