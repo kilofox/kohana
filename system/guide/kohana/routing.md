@@ -34,7 +34,7 @@ Lets look at the default route again, the uri is `(<controller>(/<action>(/<id>)
 
 You can use any name you want for your keys, but the following keys have special meaning to the [Request] object, and will influence which controller and action are called:
 
- * **Directory** - The sub-directory of `classes/Controller` to look for the controller (\[covered below]\(#directory))
+ * **Directory** - The subdirectory of `classes/Controller` to look for the controller (\[covered below]\(#directory))
  * **Controller** - The controller that the request should execute.
  * **Action** - The action method to call.
 

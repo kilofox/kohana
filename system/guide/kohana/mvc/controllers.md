@@ -8,7 +8,7 @@ Controllers are called by the [Request::execute()] function based on the [Route]
 
 In order to function, a controller must do the following:
 
-* Reside in `classes/Controller` (or a sub-directory)
+* Reside in `classes/Controller` (or a subdirectory)
 * Filename must match the class name exactly, e.g. `Articles.php`
 * The class name must map to the filename (with `/` replaced with `_`) and each word is capitalized
 * Must have the Controller class as a (grand)parent

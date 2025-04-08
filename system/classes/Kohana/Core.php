@@ -730,10 +730,10 @@ class Kohana_Core
                     if ($file->isDir()) {
                         if ($sub_dir = Kohana::list_files($key, $paths)) {
                             if (isset($found[$key])) {
-                                // Append the sub-directory list
+                                // Append the subdirectory list
                                 $found[$key] += $sub_dir;
                             } else {
-                                // Create a new sub-directory list
+                                // Create a new subdirectory list
                                 $found[$key] = $sub_dir;
                             }
                         }

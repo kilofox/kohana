@@ -890,7 +890,7 @@ class Kohana_Request implements HTTP_Request
                 $this->_external = $this->_route->is_external();
 
                 if (isset($params['directory'])) {
-                    // Controllers are in a sub-directory
+                    // Controllers are in a subdirectory
                     $this->_directory = $params['directory'];
                 }
 
