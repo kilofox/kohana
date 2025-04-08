@@ -129,7 +129,7 @@ abstract class Kohana_Controller
     /**
      * Checks the browser cache to see the response needs to be returned,
      * execution will halt and a 304 Not Modified will be sent if the
-     * browser cache is up to date.
+     * browser cache is up-to-date.
      *
      *     $this->check_cache(sha1($content));
      *
