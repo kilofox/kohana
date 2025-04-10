@@ -92,7 +92,7 @@ class Kohana_Cookie
      *      configured Cookie::$expiration.
      *
      *
-     *     // Set the "theme" cookie
+     *     // Set the "theme" cookie.
      *     Cookie::set('theme', 'red');
      *
      * @param string $name name of cookie
