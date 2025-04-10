@@ -140,7 +140,7 @@ A user login action.
 
 You can use the `before()` and `after()` functions to have code executed before or after the action is executed. For example, you could check if the user is logged in, set a template view, loading a required file, etc.
 
-For example, if you look in `Controller_Template` you can see that in the be
+For example, if you look in `Controller_Template` you can see that in the `before()` function.
 
 You can check what action has been requested (via `$this->request->action`) and do something based on that, such as requiring the user to be logged in to use a controller, unless they are using the login action.
 
