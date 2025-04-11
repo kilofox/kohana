@@ -196,7 +196,7 @@ To link to page in a different module, prefix your url with `../` and the module
 
 ## API Links
 
-You can make links to the api browser by wrapping any class name in brackets. You may also include a function name, or property name to link to that specifically. All of the following will link to the API browser:
+You can make links to the api browser by wrapping any class name in brackets. You may also include a function name, or property name to link to that specifically. All the following will link to the API browser:
 
     [Request]
     [Request::execute]

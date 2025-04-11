@@ -28,7 +28,7 @@ You should only use this method if you are absolutely sure you want the initial 
 
 #### Sub-requests
 
-You can call a request at any time in your application by using the `Request::factory()` syntax. All of these requests will be considered sub-requests.
+You can call a request at any time in your application by using the `Request::factory()` syntax. All these requests will be considered sub-requests.
 
 Other than this difference, they are exactly the same. You can detect if the request is a sub-request in your controller with the is_initial() method:
 

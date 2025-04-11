@@ -9,7 +9,7 @@ The Kohana filesystem is a hierarchy of similar directory structures that cascad
    This is set as an associative array using [Kohana::modules] in `APPPATH/bootstrap.php`. Each of the values of the array will be searched **in the order that the modules are defined**.
 
 3. **System Path**
-   Defined as `SYSPATH` in `index.php`. The default value is `system`. All of the main or "core" files and classes are defined here.
+   Defined as `SYSPATH` in `index.php`. The default value is `system`. All the main or "core" files and classes are defined here.
 
 Files that are in directories higher up the include path order take precedence over files of the same name lower down the order, which makes it is possible to overload any file by placing a file with the same name in a "higher" directory:
 
