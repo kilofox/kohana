@@ -55,7 +55,7 @@ Deleting session or cookie data is done using the [Cookie::delete] method:
 
 ## Cookie Settings
 
-All the cookie settings are changed using static properties. You can either change these settings in `bootstrap.php` or by using [transparent extension](extension). Always check these settings before making your application live, as many of them will have a direct affect on the security of your application.
+All the cookie settings are changed using static properties. You can either change these settings in `bootstrap.php` or by using [transparent extension](extension). Always check these settings before making your application live, as many of them will have a direct effect on the security of your application.
 
 The most important setting is [Cookie::$salt], which is used for secure signing. This value should be changed and kept secret:
 
