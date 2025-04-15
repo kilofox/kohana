@@ -37,7 +37,7 @@ class Kohana_CookieTest extends Unittest_TestCase
     }
 
     /**
-     * Tests that cookies are set with the global path, domain, etc options.
+     * Tests that cookies are set with the global path, domain, and other options.
      *
      * @covers Cookie::set
      */
