@@ -24,29 +24,29 @@ Creating a validation object is done using the [Validation::factory] method:
 
 Kohana provides a set of useful rules in the [Valid] class:
 
-Rule name                 | Function
-------------------------- |-------------------------------------------------
-[Valid::not_empty]     | Value must be a non-empty value
-[Valid::regex]         | Match the value against a regular expression
-[Valid::min_length]    | Minimum number of characters for value
-[Valid::max_length]    | Maximum number of characters for value
-[Valid::exact_length]  | Value must be an exact number of characters
-[Valid::email]         | An email address is required
-[Valid::email_domain]  | Check that the domain of the email exists
-[Valid::url]           | Value must be a URL
-[Valid::ip]            | Value must be an IP address
-[Valid::phone]         | Value must be a phone number
-[Valid::credit_card]   | Require a credit card number
-[Valid::date]          | Value must be a date (and time)
-[Valid::alpha]         | Only alpha characters allowed
-[Valid::alpha_dash]    | Only alpha and hyphens allowed
-[Valid::alpha_numeric] | Only alpha and numbers allowed
-[Valid::digit]         | Value must be an integer digit
-[Valid::decimal]       | Value must be a decimal or float value
-[Valid::numeric]       | Only numeric characters allowed
-[Valid::range]         | Value must be within a range
-[Valid::color]         | Value must be a valid HEX color
-[Valid::matches]       | Value matches another field value
+| Rule name              | Function                                     |
+|------------------------|----------------------------------------------|
+| [Valid::not_empty]     | Value must be a non-empty value              |
+| [Valid::regex]         | Match the value against a regular expression |
+| [Valid::min_length]    | Minimum number of characters for value       |
+| [Valid::max_length]    | Maximum number of characters for value       |
+| [Valid::exact_length]  | Value must be an exact number of characters  |
+| [Valid::email]         | An email address is required                 |
+| [Valid::email_domain]  | Check that the domain of the email exists    |
+| [Valid::url]           | Value must be a URL                          |
+| [Valid::ip]            | Value must be an IP address                  |
+| [Valid::phone]         | Value must be a phone number                 |
+| [Valid::credit_card]   | Require a credit card number                 |
+| [Valid::date]          | Value must be a date (and time)              |
+| [Valid::alpha]         | Only alpha characters allowed                |
+| [Valid::alpha_dash]    | Only alpha and hyphens allowed               |
+| [Valid::alpha_numeric] | Only alpha and numbers allowed               |
+| [Valid::digit]         | Value must be an integer digit               |
+| [Valid::decimal]       | Value must be a decimal or float value       |
+| [Valid::numeric]       | Only numeric characters allowed              |
+| [Valid::range]         | Value must be within a range                 |
+| [Valid::color]         | Value must be a valid HEX color              |
+| [Valid::matches]       | Value matches another field value            |
 
 ## Adding Rules
 

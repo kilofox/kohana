@@ -59,11 +59,11 @@ Every controller has the `$this->request` property which is the [Request] object
 
 Here is a partial list of the properties and methods available to `$this->request`. See the [Request] class for more information on any of these.
 
-Property/method | What it does
---- | ---
-[$this->request->route()](../api/Request#property:route) | The [Route] that matched the current request url
-[$this->request->directory()](../api/Request#property:directory), <br /> [$this->request->controller](../api/Request#property:controller), <br /> [$this->request->action](../api/Request#property:action) | The directory, controller and action that matched for the current route
-[$this->request->param()](../api/Request#param) | Any other params defined in your route
+| Property/method                                                                                                                                                                                            | What it does                                                            |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| [$this->request->route()](../api/Request#property:route)                                                                                                                                                   | The [Route] that matched the current request url                        |
+| [$this->request->directory()](../api/Request#property:directory), <br /> [$this->request->controller](../api/Request#property:controller), <br /> [$this->request->action](../api/Request#property:action) | The directory, controller and action that matched for the current route |
+| [$this->request->param()](../api/Request#param)                                                                                                                                                            | Any other params defined in your route                                  |
 
 ## $this->response
 [$this->response->body()](../api/Response#property:body) | The content to return for this request

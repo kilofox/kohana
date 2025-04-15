@@ -4,9 +4,9 @@ The [Auth::File] driver is included with the auth module.
 
 Below are additional configuration options that can be set for this driver.
 
-Name | Type | Default | Description
------|------|---------|-------------
-users | `array` | [] | A user => password (_hashed_) array of all the users in your application
+| Name  | Type    | Default | Description                                                              |
+|-------|---------|---------|--------------------------------------------------------------------------|
+| users | `array` | []      | A user => password (_hashed_) array of all the users in your application |
 
 ## Forcing Login
 
