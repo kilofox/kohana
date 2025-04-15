@@ -10,7 +10,7 @@ Each module has an index page at `guide/<module>/index.md`.
 
 Each module's menu is at `guide/<module>/menu.md`.
 
-All other pages are are in `guide/<module>` and can be organized in subfolders and named however you want.
+All other pages are in `guide/<module>` and can be organized in subfolders and named however you want.
 
 For more info on how to make your module have userguide pages, see [Adding your module](adding).
 

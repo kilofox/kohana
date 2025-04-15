@@ -115,7 +115,7 @@ class Kohana_Session_Database extends Session
             // Create a new session id
             $id = str_replace('.', '-', uniqid(null, true));
 
-            // Get the the id from the database
+            // Get the id from the database
             $result = $query->execute($this->_db);
         } while ($result->count());
 

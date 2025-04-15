@@ -642,7 +642,7 @@ class Kohana_Response implements HTTP_Response
         // Normalize values.
         $start = abs(intval($start));
 
-        // Keep the the end value in bounds and normalize it.
+        // Keep the end value in bounds and normalize it.
         $end = min(abs(intval($end)), $size - 1);
 
         // Keep the start in bounds.

@@ -1004,7 +1004,7 @@ class Kohana_ORM extends Model implements serializable
     }
 
     /**
-     * Loads an array of values into into the current object.
+     * Loads an array of values into the current object.
      *
      * @chainable
      * @param  array $values Values to load

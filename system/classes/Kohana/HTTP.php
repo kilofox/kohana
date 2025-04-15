@@ -133,7 +133,7 @@ abstract class Kohana_HTTP
     }
 
     /**
-     * Parses the the HTTP request headers and returns an array containing
+     * Parses the HTTP request headers and returns an array containing
      * key value pairs. This method is slow, but provides an accurate
      * representation of the HTTP request.
      *

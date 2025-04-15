@@ -19,7 +19,7 @@
  *             'driver' => 'memcache',
  *             // Available server definitions
  *             'servers' => [
- *                 // First memcache server server
+ *                 // First memcache server
  *                 [
  *                     'host' => 'localhost',
  *                     'port' => 11211,

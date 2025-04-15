@@ -277,7 +277,7 @@ class Kohana_Date
 
     /**
      * Returns an array of years between a starting and ending year. By default,
-     * the the current year - 5 and current year + 5 will be used. Typically used
+     * the current year - 5 and current year + 5 will be used. Typically used
      * as a shortcut for generating a list that can be used in a form.
      *
      *     $years = Date::years(2000, 2010); // 2000, 2001, ..., 2009, 2010

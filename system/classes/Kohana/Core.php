@@ -159,7 +159,7 @@ class Kohana_Core
     protected static $_files = [];
 
     /**
-     * @var  boolean  Has the file path cache changed during this execution?  Used internally when when caching is true in [Kohana::init]
+     * @var  boolean  Has the file path cache changed during this execution?  Used internally when caching is true in [Kohana::init]
      */
     protected static $_files_changed = false;
 
@@ -574,7 +574,7 @@ class Kohana_Core
     }
 
     /**
-     * Returns the the currently active include paths, including the
+     * Returns the currently active include paths, including the
      * application, system, and each module's path.
      *
      * @return  array
