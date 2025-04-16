@@ -178,7 +178,7 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_adjust
-     * @param integer $hour       Hour in 12 hour format
+     * @param integer $hour       Hour in 12-hour format
      * @param string  $ampm       Either am or pm
      * @param string  $expected   Expected result
      */
