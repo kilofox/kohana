@@ -153,7 +153,7 @@ class Kohana_Date
     }
 
     /**
-     * Returns AM or PM, based on a given hour (in 24 hour format).
+     * Returns AM or PM, based on a given hour (in 24-hour format).
      *
      *     $type = Date::ampm(12); // PM
      *     $type = Date::ampm(1);  // AM
