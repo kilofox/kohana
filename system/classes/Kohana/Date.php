@@ -302,7 +302,7 @@ class Kohana_Date
     }
 
     /**
-     * Returns time difference between two timestamps, in human readable format.
+     * Returns the time difference between two timestamps in a human-readable format.
      * If the second timestamp is not given, the current time will be used.
      * Also consider using [Date::fuzzy_span] when displaying a span.
      *
