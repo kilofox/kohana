@@ -57,7 +57,7 @@ class Kohana_Num
     ];
 
     /**
-     * Returns the English ordinal suffix (th, st, nd, etc) of a number.
+     * Returns the English ordinal suffix (th, st, nd, etc.) of a number.
      *
      *     echo 2, Num::ordinal(2);   // "2nd"
      *     echo 10, Num::ordinal(10); // "10th"

@@ -30,7 +30,7 @@ You can make your own helpers by simply making a class and putting it in the `cl
 
  - **[Kohana]** - The Kohana class is also a helper. Debug variables (like print_r but better), file loading, etc.
 
- - **[Num]** - Provides locale aware formatting and english ordinals (th, st, nd, etc).
+ - **[Num]** - Provides locale aware formatting and english ordinals (th, st, nd, etc.).
 
  - **[Profiler]** - Covered in more detail on the [Profiling](profiling) page.
 

@@ -367,7 +367,7 @@ class Kohana_Core
 
     /**
      * Reverts the effects of the `register_globals` PHP setting by unsetting
-     * all global variables except for the default super globals (GPCS, etc),
+     * all global variables except for the default super globals (GPCS, etc.),
      * which is a [potential security hole.][ref-wikibooks]
      *
      * This is called automatically by [Kohana::init] if `register_globals` is

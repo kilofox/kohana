@@ -266,7 +266,7 @@ class Kohana_Text
      * @param   string  $str                    phrase to replace words in
      * @param   array   $badwords               words to replace
      * @param   string  $replacement            replacement string
-     * @param   boolean $replace_partial_words  replace words across word boundaries (space, period, etc)
+     * @param   boolean $replace_partial_words  replace words across word boundaries (space, period, etc.)
      * @return  string
      * @uses    UTF8::strlen
      */
