@@ -15,7 +15,7 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where
     protected $_table;
 
     /**
-     * Set the table for a delete.
+     * Set the table for a deletion.
      *
      * @param   mixed  $table  table name or [$table, $alias] or object
      * @return  void
