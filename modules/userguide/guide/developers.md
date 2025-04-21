@@ -1,6 +1,6 @@
 # Distributed Source Control Management
 
-Unlike SVN, git does not used a central repository. This is why git is "distributed" and SVN is
+Unlike SVN, git does not use a central repository. This is why git is "distributed" and SVN is
 "centralized". Although this makes git an extremely powerful system for collaborators, tracking
 changes between various collaborators can quickly become difficult as multiple forks are created.
 
