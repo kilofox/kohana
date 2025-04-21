@@ -54,7 +54,7 @@ a `git submodule update` and run `git status` you'll be told:
     # Not currently on any branch.
     nothing to commit (working directory clean)
 
-Similarly, if you want to work on modules, make sure you checkout the correct branch before you start working.
+Similarly, if you want to work on modules, make sure you check out the correct branch before you start working.
 
 **IMPORTANT:** It is highly recommended that you run the unit tests whilst developing to
 ensure that any changes you make do not break the api. *See TESTING.md for more info*
