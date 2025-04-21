@@ -23,7 +23,7 @@ fetching changes from the repository.
 
 There are 3 branches in all the kohana repositories:
 
-* **master** This branch always points to the latest release tag. In essence it points to the last stable edition of the codebase
+* **master** This branch always points to the latest release tag. In essence, it points to the last stable edition of the codebase
 * **3.0.x**  This is a release branch for development of the 3.0.x series, i.e. 3.0, 3.0.3, 3.0.8 etc.
 * **3.1.x**  This is a release branch for development of the 3.1.x series, i.e. 3.1, 3.1.4, 3.1.14 etc.
 
