@@ -192,7 +192,7 @@ To link to page in a different module, prefix your url with `../` and the module
 
 **Images are also namespaced**, using `![Alt Text](imagename.jpg)` would look for `media/guide/<modulename>/imagename.jpg`.
 
-[!!] If you want your userguide pages to be browsable on github or similar sites outside Kohana's own userguide module, specify the optional .md file extension in your links
+[!!] If you want your userguide pages to be browsable on GitHub or similar sites outside Kohana's own userguide module, specify the optional .md file extension in your links
 
 ## API Links
 

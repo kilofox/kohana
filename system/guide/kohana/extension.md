@@ -83,7 +83,7 @@ Just post the code and brief description of what function it adds, you don't hav
 
 ## More examples
 
-TODO: Provide some links to modules on github, etc that have examples of transparent extension in use.
+TODO: Provide some links to modules on GitHub, etc that have examples of transparent extension in use.
 
 ## Multiple Levels of Extension
 

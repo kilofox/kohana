@@ -8,7 +8,7 @@ Please read the following before working with this code:
 
 1. [Dealing with newlines](http://github.com/guides/dealing-with-newlines-in-git)
 2. [Submitting changes from your fork](http://github.com/guides/fork-a-project-and-submit-your-modifications)
-3. [Using SSH keys with github](http://github.com/guides/how-to-not-have-to-type-your-password-for-every-push)
+3. [Using SSH keys with GitHub](http://github.com/guides/how-to-not-have-to-type-your-password-for-every-push)
 
 ## Managing Remote Repositories
 
