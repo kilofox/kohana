@@ -21,7 +21,7 @@ This image is only shows certain files, but we can use it to illustrate some exa
 
 * If we used `View::factory('welcome')` it would call `Kohana::find_file('views','welcome')` which would return `application/views/welcome.php` because it takes precedence over `modules/common/views/welcome.php`. By doing this, you can overwrite things in a module without editing the modules files.
 
-* If use the Cookie class, [Kohana::auto_load] will call `Kohana::find_file('classes', 'Cookie')` which will return `application/classes/Cookie.php`. Assuming Cookie extends Kohana_Cookie, the autoloader would then call `Kohana::find_file('classes','Kohana/Cookie')` which will return `system/classes/Kohana/Cookie.php` because that file does not exist anywhere higher in the cascade. This is an example of [transparent extension](extension).
+* If the Cookie class is used, [Kohana::auto_load] will call `Kohana::find_file('classes', 'Cookie')` which will return `application/classes/Cookie.php`. Assuming Cookie extends Kohana_Cookie, the autoloader would then call `Kohana::find_file('classes','Kohana/Cookie')` which will return `system/classes/Kohana/Cookie.php` because that file does not exist anywhere higher in the cascade. This is an example of [transparent extension](extension).
 
 * If you used `View::factory('user')` it would call `Kohana::find_file('views','user')` which would return `modules/common/views/user.php`.
 
