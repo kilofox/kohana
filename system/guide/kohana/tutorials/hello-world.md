@@ -20,7 +20,7 @@ Create the file `application/classes/Controller/Hello.php` in your application f
         }
     }
 
-Lets see what's going on here:
+Let's see what's going on here:
 
 `<?php`
 :    You should recognize the first tag as an opening php tag (if you don't you should probably [learn php](http://php.net)). What follows is a small check that makes sure that this file is being included by Kohana. It stops people from accessing files directly from the url.
@@ -47,7 +47,7 @@ If you've ever heard anything about MVC you'll probably have realised that echoi
 
 The proper way to code with an MVC framework is to use _views_ to handle the presentation of your application, and allow the controller to do what it does best – control the flow of the request!
 
-Lets change our original controller slightly:
+Let's change our original controller slightly:
 
     <?php
 
@@ -70,7 +70,7 @@ Lets change our original controller slightly:
 `$this->template->message = 'hello, world!';`
 :    `$this->template` is a reference to the view object for our site template. What we're doing here is assigning a variable called "message", with a value of "hello, world!" to the view.
 
-Now lets try running our code...
+Now let's try running our code...
 
 ![Hello, World!](hello_world_2_error.png "Hello, World!")
 

@@ -10,7 +10,7 @@ Kohana 3 does not differentiate between "helper" classes and "library" classes l
 
 ## Creating a class
 
-To create a new class, simply place a file in the `classes/` directory at any point in the [Cascading Filesystem](files), that follows the [Class naming conventions](conventions#class-names-and-file-location). For example, lets create a `Foobar` class.
+To create a new class, simply place a file in the `classes/` directory at any point in the [Cascading Filesystem](files), that follows the [Class naming conventions](conventions#class-names-and-file-location). For example, let's create a `Foobar` class.
 
     // classes/Foobar.php
 

@@ -67,7 +67,7 @@ class Kohana_HTTP_Header extends ArrayObject
     {
         $accepts = explode(',', (string) $accepts);
 
-        // If there is no accept, lets accept everything
+        // If there is no accept, let's accept everything
         if ($accepts === null)
             return ['*' => ['*' => (float) HTTP_Header::DEFAULT_QUALITY]];
 

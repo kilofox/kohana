@@ -108,7 +108,7 @@ class Kohana_RouteTest extends Unittest_TestCase
         // First we create the cache
         Route::cache(true);
 
-        // Now lets modify the "current" routes
+        // Now let's modify the "current" routes
         Route::set('nonsensical_route', 'flabbadaga/ding_dong');
 
         // Then try and load said cache
@@ -134,7 +134,7 @@ class Kohana_RouteTest extends Unittest_TestCase
         // First we create the cache
         Route::cache(true);
 
-        // Now lets modify the "current" routes
+        // Now let's modify the "current" routes
         Route::set('nonsensical_route', 'flabbadaga/ding_dong');
 
         $modified = Route::all();

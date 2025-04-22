@@ -62,7 +62,7 @@ class Kohana_Cache_FileTest extends Kohana_CacheBasicMethodsTest
         $config = Kohana::$config->load('cache')->file;
         $file = $config['cache_dir'] . '/file_we_want_to_keep.cache';
 
-        // Lets pollute the cache folder
+        // Let's pollute the cache folder
         file_put_contents($file, 'foobar');
 
         $this->assertTrue($cache->delete_all());

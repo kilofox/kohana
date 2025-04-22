@@ -441,7 +441,7 @@ class Kohana_TextTest extends Unittest_TestCase
             ['1.02 kB', 1024, null, null, true],
             // In case you need to know the size of a floppy disk in petabytes
             ['0.00147 GB', 1.44 * 1000 * 1024, 'GB', '%01.5f %s', true],
-            // SI is the standard, but lets deviate slightly
+            // SI is the standard, but let's deviate slightly
             ['1.00 MiB', 1024 * 1024, 'MiB', null, false],
         ];
     }
