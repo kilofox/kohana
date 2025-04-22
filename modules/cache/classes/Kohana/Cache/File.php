@@ -293,7 +293,6 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
     {
         // Allow graceful error handling
         try {
-            // If is file
             if ($file->isFile()) {
                 try {
                     // Handle ignore files
@@ -322,9 +321,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
                         throw new Cache_Exception(__METHOD__ . ' failed to delete file : :file', [':file' => $file->getRealPath()]);
                     }
                 }
-            }
-            // Else, is directory
-            elseif ($file->isDir()) {
+            } elseif ($file->isDir()) {
                 // Create new DirectoryIterator
                 $files = new DirectoryIterator($file->getPathname());
 
