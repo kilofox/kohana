@@ -82,7 +82,7 @@ $img->render('png');
 
 ## Save To File
 
-[Image::save()] let's you save the image object to a file. It has two parameters: `filename` and `quality`. If `filename` is omitted, the original file used will be overwritten instead. The `quality` parameter is an integer from 1-100 which indicates the quality of image to save which defaults to 100.
+[Image::save()] lets you save the image object to a file. It has two parameters: `filename` and `quality`. If `filename` is omitted, the original file used will be overwritten instead. The `quality` parameter is an integer from 1-100 which indicates the quality of image to save which defaults to 100.
 
 On our example above, instead of rendering the file to the browser, you may want to save it somewhere instead. To do so, you may:
 
