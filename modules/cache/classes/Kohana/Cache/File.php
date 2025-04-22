@@ -89,7 +89,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
             $this->_cache_dir = $this->_make_directory($directory, 0777, true);
         }
 
-        // If the defined directory is a file, get outta here
+        // If the defined directory is a file, get out of here
         if ($this->_cache_dir->isFile()) {
             throw new Cache_Exception('Unable to create cache directory as a file already exists : :resource', [':resource' => $this->_cache_dir->getRealPath()]);
         }
