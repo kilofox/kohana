@@ -390,7 +390,7 @@ class Kohana_Image_GD extends Image
             // Colorize the line to add the correct alpha level
             imagefilter($line, IMG_FILTER_COLORIZE, 0, 0, 0, $dst_opacity);
 
-            // Copy a the line into the reflection
+            // Copy the line into the reflection
             imagecopy($reflection, $line, 0, $dst_y, 0, 0, $this->width, 1);
         }
 
