@@ -629,7 +629,7 @@ abstract class Kohana_Image
      */
     abstract protected function _do_flip($direction);
     /**
-     * Execute a sharpen.
+     * Execute a sharpening.
      *
      * @param   integer  $amount  amount to sharpen
      * @return  void

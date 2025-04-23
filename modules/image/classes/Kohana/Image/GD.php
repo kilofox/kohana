@@ -298,7 +298,7 @@ class Kohana_Image_GD extends Image
     }
 
     /**
-     * Execute a sharpen.
+     * Execute a sharpening.
      *
      * @param integer $amount amount to sharpen
      * @return  void
@@ -323,7 +323,7 @@ class Kohana_Image_GD extends Image
             [-1, -1, -1],
         ];
 
-        // Perform the sharpen
+        // Perform the sharpening
         if (imageconvolution($this->_image, $matrix, $amount - 8, 0)) {
             // Reset the width and height
             $this->width = imagesx($this->_image);
