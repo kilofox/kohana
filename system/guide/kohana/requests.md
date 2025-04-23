@@ -32,7 +32,7 @@ You can call a request at any time in your application by using the `Request::fa
 
 Other than this difference, they are exactly the same. You can detect if the request is a sub-request in your controller with the is_initial() method:
 
-    $sub_request = ! $this->request->is_initial()
+    $sub_request = !$this->request->is_initial()
 
 ### External Requests
 

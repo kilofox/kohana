@@ -925,7 +925,7 @@ class Kohana_Request implements HTTP_Request
      * Returns whether this request is the initial request Kohana received.
      * Can be used to test for sub requests.
      *
-     *     if ( ! $request->is_initial())
+     *     if (!$request->is_initial())
      *         // This is a sub request
      *
      * @return  boolean
@@ -938,7 +938,7 @@ class Kohana_Request implements HTTP_Request
     /**
      * Readonly access to the [Request::$_external] property.
      *
-     *     if ( ! $request->is_external())
+     *     if (!$request->is_external())
      *          // This is an internal request
      *
      * @return  boolean
