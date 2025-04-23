@@ -35,7 +35,7 @@ The following file will serve as our (insultingly simple) demo application for t
 
 ## Create a common setup file
 
-Since `index.php` and `include.php` will duplicate a lot of code, we're going to move that code to a third file, `common.php`. The bulk of the code is unchanged; we've changed the install check to exit rather than return after rendering, and removed the request execution.
+Since `index.php` and `include.php` will duplicate a lot of code, we're going to move that code to a third file, `common.php`. The bulk of the code is unchanged; we've changed the installation check to exit rather than return after rendering, and removed the request execution.
 
 The new file creates the initial request object, rather than fully executing the request, so that, if you do define routes, the `Request::$initial` variable will be set up correctly.
 

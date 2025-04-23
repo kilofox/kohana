@@ -41,7 +41,7 @@ class Kohana_Image_Imagick extends Image
     public function __construct($file)
     {
         if (!Image_Imagick::$_checked) {
-            // Run the install check
+            // Run the installation check
             Image_Imagick::check();
         }
 

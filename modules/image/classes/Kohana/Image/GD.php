@@ -78,7 +78,7 @@ class Kohana_Image_GD extends Image
     public function __construct($file)
     {
         if (!Image_GD::$_checked) {
-            // Run the install check
+            // Run the installation check
             Image_GD::check();
         }
 
