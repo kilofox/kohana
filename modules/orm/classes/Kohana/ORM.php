@@ -1160,7 +1160,7 @@ class Kohana_ORM extends Model implements serializable
     public function check(Validation $extra_validation = null)
     {
         // Determine if any external validation failed
-        $extra_errors = ($extra_validation AND ! $extra_validation->check());
+        $extra_errors = ($extra_validation AND !$extra_validation->check());
 
         // Always build a new validation object
         $this->_validation();
@@ -1422,7 +1422,7 @@ class Kohana_ORM extends Model implements serializable
         $far_keys = (array) $far_keys;
 
         // Nothing to check if the model isn't loaded, or we don't have any far_keys
-        if (!$far_keys OR ! $this->_loaded)
+        if (!$far_keys OR !$this->_loaded)
             return 0;
 
         // Rows found need to match the rows searched
