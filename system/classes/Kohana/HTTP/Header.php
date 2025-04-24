@@ -82,7 +82,7 @@ class Kohana_HTTP_Header extends ArrayObject
             // Extract the parts
             $parts = explode('/', $key, 2);
 
-            // Invalid content type- bail
+            // Invalid content type—bail
             if (!isset($parts[1]))
                 continue;
 
@@ -156,7 +156,7 @@ class Kohana_HTTP_Header extends ArrayObject
             // Extract the parts
             $parts = explode('-', $key, 2);
 
-            // Invalid content type- bail
+            // Invalid content type—bail
             if (!isset($parts[1])) {
                 $parsed_language[$parts[0]]['*'] = $language[$key];
             } else {
