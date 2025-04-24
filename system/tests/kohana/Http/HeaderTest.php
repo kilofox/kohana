@@ -862,7 +862,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @dataProvider provider_accepts_at_quality
      *
      * @param array     starting state
-     * @param string    accept header to test
+     * @param string    Accept header to test
      * @param boolean   explicitly check
      * @param mixed     expected output
      * @return  void

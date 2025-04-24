@@ -438,7 +438,7 @@ class Kohana_Request implements HTTP_Request
     }
 
     /**
-     * Parses an accept header and returns an array (type => quality) of the
+     * Parses an Accept header and returns an array (type => quality) of the
      * accepted types, ordered by quality.
      *
      *     $accept = Request::_parse_accept($header, $defaults);
