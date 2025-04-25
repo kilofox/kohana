@@ -6,7 +6,7 @@ Views themselves can contain code used for displaying the data you pass into the
 
 # Creating View Files
 
-View files are stored in the `views` directory of the [filesystem](files). You can also create sub-directories within the `views` directory to organize your files. All the following examples are reasonable view files:
+View files are stored in the `views` directory of the [filesystem](files). You can also create subdirectories within the `views` directory to organize your files. All the following examples are reasonable view files:
 
     APPPATH/views/home.php
     APPPATH/views/pages/about.php
