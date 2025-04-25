@@ -81,7 +81,7 @@ class Kohana_HTTP_Cache
 
     /**
      * @var    boolean   Defines whether this client should cache `private` cache directives
-     * @link   http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9
+     * @link   https://www.rfc-editor.org/rfc/rfc9111#name-private
      */
     protected $_allow_private_cache = false;
 
@@ -213,7 +213,7 @@ class Kohana_HTTP_Cache
      * If set to `true`, the client will also cache cache-control directives
      * that have the `private` setting.
      *
-     * @link    http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9
+     * @link    https://www.rfc-editor.org/rfc/rfc9111#name-private
      * @param   boolean $setting    allow caching of privately marked responses
      * @return  boolean
      * @return  [Request_Client]
@@ -288,7 +288,7 @@ class Kohana_HTTP_Cache
      * Controls whether the response can be cached. Uses HTTP
      * protocol to determine whether the response can be cached.
      *
-     * @link    http://www.w3.org/Protocols/rfc2616/rfc2616.html RFC 2616
+     * @link    https://www.rfc-editor.org/rfc/rfc9111#name-storing-responses-in-caches RFC 9111
      * @param   Response  $response The Response
      * @return  boolean
      */

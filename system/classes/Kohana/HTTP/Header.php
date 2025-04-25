@@ -58,7 +58,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * Parses the Accept header to provide the correct quality values
      * for each supplied media type.
      *
-     * @link    http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1
+     * @link    https://www.rfc-editor.org/rfc/rfc9110.html#name-accept
      * @param   string  $accepts    Accept header string to parse
      * @return  array
      * @since   3.2.0
@@ -97,7 +97,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * Parses the `Accept-Charset:` HTTP header and returns an array containing
      * the charset and associated quality.
      *
-     * @link    http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.2
+     * @link    https://www.rfc-editor.org/rfc/rfc9110.html#name-accept-charset
      * @param   string  $charset    charset string to parse
      * @return  array
      * @since   3.2.0
@@ -115,7 +115,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * Parses the `Accept-Encoding:` HTTP header and returns an array containing
      * the charsets and associated quality.
      *
-     * @link    http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3
+     * @link    https://www.rfc-editor.org/rfc/rfc9110.html#name-accept-encoding
      * @param   string  $encoding   charset string to parse
      * @return  array
      * @since   3.2.0
@@ -136,7 +136,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * Parses the `Accept-Language:` HTTP header and returns an array containing
      * the languages and associated quality.
      *
-     * @link    http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4
+     * @link    https://www.rfc-editor.org/rfc/rfc9110.html#name-accept-language
      * @param   string  $language   charset string to parse
      * @return  array
      * @since   3.2.0
@@ -182,7 +182,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *     // cache-control: max-age=3600, must-revalidate, public
      *     $response->headers('Cache-Control', HTTP_Header::create_cache_control($cache_control);
      *
-     * @link    http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13
+     * @link    https://www.rfc-editor.org/rfc/rfc9111.html#name-cache-control
      * @param   array   $cache_control  Cache-Control to render to string
      * @return  string
      */
@@ -268,8 +268,6 @@ class Kohana_HTTP_Header extends ArrayObject
     public function __construct(array $input = [], $flags = 0, $iterator_class = 'ArrayIterator')
     {
         /**
-         * @link http://www.w3.org/Protocols/rfc2616/rfc2616.html
-         *
          * HTTP header declarations should be treated as case-insensitive
          */
         $input = array_change_key_case((array) $input);
@@ -386,8 +384,6 @@ class Kohana_HTTP_Header extends ArrayObject
     public function exchangeArray($input)
     {
         /**
-         * @link http://www.w3.org/Protocols/rfc2616/rfc2616.html
-         *
          * HTTP header declarations should be treated as case-insensitive
          */
         $input = array_change_key_case((array) $input);

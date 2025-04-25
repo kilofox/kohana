@@ -595,7 +595,7 @@ class Kohana_Response implements HTTP_Response
      * Parse the byte ranges from the HTTP_RANGE header used for
      * resumable downloads.
      *
-     * @link   http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35
+     * @link   https://www.rfc-editor.org/rfc/rfc9110.html#name-byte-ranges
      * @return array|false
      */
     protected function _parse_byte_range()
