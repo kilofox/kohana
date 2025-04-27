@@ -534,7 +534,7 @@ class Kohana_ORM extends Model implements serializable
      * If $field is specified, checks whether that field was modified.
      *
      * @param string  $field  field to check for changes
-     * @return  bool  Whether or not the field has changed
+     * @return  bool  Whether the field has changed
      */
     public function changed($field = null)
     {

@@ -8,7 +8,7 @@ labels
 :  A label is a human-readable version of the field name.
 
 rules
-:  A rule is a callback or closure used to decide whether or not to add an error to a field
+:  A rule is a callback or closure used to decide whether to add an error to a field
 
 [!!] Note that any valid [PHP callback](http://php.net/manual/language.pseudo-types.php#language.types.callback) can be used as a rule.
 
