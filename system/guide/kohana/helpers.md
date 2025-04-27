@@ -48,6 +48,6 @@ You can make your own helpers by simply making a class and putting it in the `cl
 
  - **[URL]** - Create a relative or absolute URL, make a URL-safe title, etc.
 
- - **[UTF8]** - Provides multi-byte aware string functions like strlen, strpos, substr, etc.
+ - **[UTF8]** - Provides multibyte aware string functions like strlen, strpos, substr, etc.
 
  - **[Upload]** - Helper for uploading files from a form.

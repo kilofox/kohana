@@ -2,7 +2,7 @@
 
 /**
  * A port of [phputf8](http://phputf8.sourceforge.net/) to a unified set
- * of files. Provides multi-byte aware replacement string functions.
+ * of files. Provides multibyte aware replacement string functions.
  *
  * For UTF-8 support to work correctly, the following requirements must be met:
  *
