@@ -107,7 +107,7 @@ By default, the validation object will automatically bind the following values f
 
 ## Adding Errors
 
-The [Validation] class will add an error for a field if any of the rules associated to it return `false`. This allows many built in PHP functions to be used as rules, like `in_array`.
+The [Validation] class will add an error for a field if any of the rules associated to it return `false`. This allows many built-in PHP functions to be used as rules, like `in_array`.
 
     $object->rule('color', 'in_array', [':value', ['red', 'green', 'blue']]);
 
