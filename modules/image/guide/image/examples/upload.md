@@ -2,7 +2,7 @@
 
 The following example shows how to handle uploading of an image, resize it and save it to a file. Be sure you have enabled the [Image] module as discussed in getting started guide.
 
-Assuming you are creating a web application that allows your members to upload their profile picture (avatar), the steps below explains it how.
+Assuming you are creating a web application that allows your members to upload their profile picture (avatar), the steps below explain how to do this.
 
 ## Controller
 
