@@ -423,7 +423,7 @@ class Kohana_Validation implements ArrayAccess
      * message will be "file/field/rule".
      *
      * By default, all messages are translated using the default language.
-     * A string can be used as the second parameter to specified the language
+     * A string can be used as the second parameter to specify the language
      * that the message was written in.
      *
      *     // Get errors from messages/forms/login.php
