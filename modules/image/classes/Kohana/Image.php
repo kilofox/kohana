@@ -413,7 +413,7 @@ abstract class Kohana_Image
      *     // Create a 50 pixel reflection that fades from 0-60% opacity
      *     $image->reflection(50, 60, true);
      *
-     * [!!] By default, the reflection will be go from transparent at the top
+     * [!!] By default, the reflection will go from transparent at the top
      * to opaque at the bottom.
      *
      * @param   integer   $height   reflection height
