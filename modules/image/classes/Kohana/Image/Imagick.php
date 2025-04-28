@@ -123,7 +123,7 @@ class Kohana_Image_Imagick extends Image
 
     protected function _do_sharpen($amount)
     {
-        // IM not support $amount under 5 (0.15)
+        // ImageMagick does not support $amount under 5 (0.15)
         $amount = ($amount < 5) ? 5 : $amount;
 
         // Amount should be in the range of 0.0 to 3.0
