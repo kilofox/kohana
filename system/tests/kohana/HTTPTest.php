@@ -33,7 +33,7 @@ class Kohana_HTTPTest extends Unittest_TestCase
     }
 
     /**
-     * Tears down whatever is setUp
+     * Tears down whatever is set up
      */
     // @codingStandardsIgnoreStart
     public function tearDown()
