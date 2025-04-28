@@ -90,7 +90,7 @@ class Kohana_HTML
 
     /**
      * Create HTML link anchors. Note that the title is not escaped, to allow
-     * HTML elements within links (images, etc).
+     * HTML elements within links (images, etc.).
      *
      *     echo HTML::anchor('/user/profile', 'My Profile');
      *
@@ -135,7 +135,7 @@ class Kohana_HTML
 
     /**
      * Creates an HTML anchor to a file. Note that the title is not escaped,
-     * to allow HTML elements within links (images, etc).
+     * to allow HTML elements within links (images, etc.).
      *
      *     echo HTML::file_anchor('media/doc/user_guide.pdf', 'User Guide');
      *
@@ -164,7 +164,7 @@ class Kohana_HTML
 
     /**
      * Creates an email (mailto:) anchor. Note that the title is not escaped,
-     * to allow HTML elements within links (images, etc).
+     * to allow HTML elements within links (images, etc.).
      *
      *     echo HTML::mailto($address);
      *
