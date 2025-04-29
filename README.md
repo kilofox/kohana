@@ -1,7 +1,7 @@
 # Kohana PHP Framework
 [![Build Status](https://img.shields.io/github/actions/workflow/status/kilofox/kohana/test.yml?branch=develop)](https://github.com/kilofox/kohana/actions/workflows/test.yml) [![Packagist Downloads](https://img.shields.io/packagist/dt/kilofox/kohana)](https://packagist.org/packages/kilofox/kohana) [![Telegram](https://img.shields.io/badge/chat-on_Telegram-blue)](https://t.me/kohana)
 
-[Kohana](https://kohana.top) is an elegant, open source, and object oriented HMVC framework built using PHP, by a team of volunteers. It aims to be swift, secure, and small.
+[Kohana](https://kohana.top) is an elegant, open source, and object-oriented HMVC framework built using PHP, by a team of volunteers. It aims to be swift, secure, and small.
 
 Released under an [MIT license](https://kohana.top/license), Kohana can be used legally for any open source, commercial, or personal project.
 
