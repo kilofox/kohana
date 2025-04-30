@@ -27,7 +27,7 @@ class Kohana_Form
      *     echo Form::open(null, ['enctype' => 'multipart/form-data']);
      *
      * @param mixed $action form action, defaults to the current request URI, or [Request] class to use
-     * @param array $attributes html attributes
+     * @param array $attributes HTML attributes
      * @return  string
      * @throws Kohana_Exception
      * @uses    URL::site
@@ -83,7 +83,7 @@ class Kohana_Form
      *
      * @param   string  $name       input name
      * @param   string  $value      input value
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    HTML::attributes
      */
@@ -110,7 +110,7 @@ class Kohana_Form
      *
      * @param   string  $name       input name
      * @param   string  $value      input value
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -128,7 +128,7 @@ class Kohana_Form
      *
      * @param   string  $name       input name
      * @param   string  $value      input value
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -145,7 +145,7 @@ class Kohana_Form
      *     echo Form::file('image');
      *
      * @param   string  $name       input name
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -164,7 +164,7 @@ class Kohana_Form
      * @param   string  $name       input name
      * @param   string  $value      input value
      * @param   boolean $checked    checked status
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -189,7 +189,7 @@ class Kohana_Form
      * @param   string  $name       input name
      * @param   string  $value      input value
      * @param   boolean $checked    checked status
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -212,7 +212,7 @@ class Kohana_Form
      *
      * @param   string  $name           textarea name
      * @param   string  $body           textarea body
-     * @param   array   $attributes     html attributes
+     * @param   array   $attributes     HTML attributes
      * @param   boolean $double_encode  encode existing HTML characters
      * @return  string
      * @uses    HTML::attributes
@@ -239,7 +239,7 @@ class Kohana_Form
      * @param   string  $name       input name
      * @param   array   $options    available options
      * @param   mixed   $selected   selected option string, or an array of selected options
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    HTML::attributes
      */
@@ -326,7 +326,7 @@ class Kohana_Form
      *
      * @param   string  $name       input name
      * @param   string  $value      input value
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -344,7 +344,7 @@ class Kohana_Form
      *
      * @param string $name input name
      * @param string $value input value
-     * @param array $attributes html attributes
+     * @param array $attributes HTML attributes
      * @param boolean $index add index file to URL?
      * @return  string
      * @throws Kohana_Exception
@@ -372,7 +372,7 @@ class Kohana_Form
      *
      * @param   string  $name       input name
      * @param   string  $body       input value
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    HTML::attributes
      */
@@ -391,7 +391,7 @@ class Kohana_Form
      *
      * @param   string  $input      target input
      * @param   string  $text       label text
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    HTML::attributes
      */

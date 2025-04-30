@@ -80,5 +80,5 @@ You could then do the following:
 
     // In your view:
     foreach ($versions as $version) {
-        // echo some html to display each version
+        // echo some HTML to display each version
     }

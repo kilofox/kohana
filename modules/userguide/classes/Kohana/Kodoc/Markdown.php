@@ -90,7 +90,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      * =========
      *
      * @param   array   Matches from regex call
-     * @return  string  Generated html
+     * @return  string  Generated HTML
      */
     function _doHeaders_callback_setext($matches)
     {
@@ -117,7 +117,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      * # Heading 1
      *
      * @param   array   Matches from regex call
-     * @return  string  Generated html
+     * @return  string  Generated HTML
      */
     function _doHeaders_callback_atx($matches)
     {

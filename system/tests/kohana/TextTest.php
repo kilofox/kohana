@@ -505,7 +505,7 @@ class Kohana_TextTest extends Unittest_TestCase
                 '<h1><a href="#">In a link</a> followed by other&nbsp;text</h1>',
                 '<h1><a href="#">In a link</a> followed by other text</h1>'
             ],
-            // empty html, with no text inside
+            // empty HTML, with no text inside
             [
                 '<h1><a href="#"></a></h1>',
                 '<h1><a href="#"></a></h1>'

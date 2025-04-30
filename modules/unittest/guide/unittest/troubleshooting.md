@@ -12,6 +12,6 @@ A good way of testing is to create a "vanilla" testing environment for your modu
 
 Try the following:
 
-1. Generate a html report from the command line using `phpunit {bootstrap info} --coverage-html ./report {insert path to tests.php}`. If any error messages show up, fix them and try to generate the report again.
+1. Generate a HTML report from the command line using `phpunit {bootstrap info} --coverage-html ./report {insert path to tests.php}`. If any error messages show up, fix them and try to generate the report again.
 2. Increase the php memory limit.
 3. Make sure that display_errors is set to "on" in your php.ini config file (this value can sometimes be overridden in a .htaccess file).
