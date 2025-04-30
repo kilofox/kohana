@@ -55,7 +55,7 @@ class Bench_MDDoBaseURL extends Codebench
 
     public function bench_callback_gone($subject)
     {
-        // All the optimized callback was doing now, is prepend some text to the URL.
+        // What the optimized callback was doing is prepending some text to the URL.
         // We don't need a callback for that, and that should be clearly faster.
         return preg_replace('~(?<!!)(\[.+?\]\()(?!\w++://)([^#]\S*(?:\s*+".+?")?\))~', '$1http://BASE/$2', $subject);
     }
