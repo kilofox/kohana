@@ -24,7 +24,7 @@ Throwing valuable benchmark data away every time I needed to optimize another re
 
 ### Visualize the benchmarks
 
-Obviously providing a visual representation of the benchmark results, via simple graphs, would make interpreting them easier. Having not to think about Internet Explorer for once, made writing CSS a whole lot more easy and fun. It resulted in some fine graphs which are fully resizable.
+Obviously providing a visual representation of the benchmark results, via simple graphs, would make interpreting them easier. Having not to think about Internet Explorer for once, made writing CSS a lot more easy and fun. It resulted in some fine graphs which are fully resizable.
 
 Below are two screenshots of Codebench in action. `Valid_Color` is a class made for benchmarking different ways to validate hexadecimal HTML color values, e.g. `#FFF`.
 
