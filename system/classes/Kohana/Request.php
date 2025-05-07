@@ -438,7 +438,7 @@ class Kohana_Request implements HTTP_Request
     }
 
     /**
-     * Parses an accept header and returns an array (type => quality) of the
+     * Parses an Accept header and returns an array (type => quality) of the
      * accepted types, ordered by quality.
      *
      *     $accept = Request::_parse_accept($header, $defaults);
@@ -447,10 +447,10 @@ class Kohana_Request implements HTTP_Request
      * @param   array    $accepts  Default values
      * @return  array
      */
-    protected static function _parse_accept($header, array $accepts = null)
+    protected static function _parse_accept(& $header, array $accepts = null)
     {
         if (!empty($header)) {
-            // Get all of the types
+            // Get all the types
             $types = explode(',', $header);
 
             foreach ($types as $type) {
@@ -647,7 +647,7 @@ class Kohana_Request implements HTTP_Request
             // Set external state
             $this->_external = true;
 
-            // Setup the client
+            // Set up the client
             $this->_client = Request_Client_External::factory($client_params);
         }
     }
@@ -890,7 +890,7 @@ class Kohana_Request implements HTTP_Request
                 $this->_external = $this->_route->is_external();
 
                 if (isset($params['directory'])) {
-                    // Controllers are in a sub-directory
+                    // Controllers are in a subdirectory
                     $this->_directory = $params['directory'];
                 }
 
@@ -925,7 +925,7 @@ class Kohana_Request implements HTTP_Request
      * Returns whether this request is the initial request Kohana received.
      * Can be used to test for sub requests.
      *
-     *     if ( ! $request->is_initial())
+     *     if (!$request->is_initial())
      *         // This is a sub request
      *
      * @return  boolean
@@ -938,7 +938,7 @@ class Kohana_Request implements HTTP_Request
     /**
      * Readonly access to the [Request::$_external] property.
      *
-     *     if ( ! $request->is_external())
+     *     if (!$request->is_external())
      *          // This is an internal request
      *
      * @return  boolean

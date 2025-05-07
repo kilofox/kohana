@@ -46,7 +46,7 @@ class Kohana_Minion_CLI
      */
     public static function options($options = null)
     {
-        // Get all of the requested options
+        // Get all the requested options
         $options = func_get_args();
 
         // Found option values
@@ -188,7 +188,7 @@ class Kohana_Minion_CLI
     }
 
     /**
-     * Outputs a replacable line to the cli. You can continue replacing the
+     * Outputs a replaceable line to the cli. You can continue replacing the
      * line until `true` is passed as the second parameter in order to indicate
      * you are done modifying the line.
      *

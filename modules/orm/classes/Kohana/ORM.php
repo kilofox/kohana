@@ -534,7 +534,7 @@ class Kohana_ORM extends Model implements serializable
      * If $field is specified, checks whether that field was modified.
      *
      * @param string  $field  field to check for changes
-     * @return  bool  Whether or not the field has changed
+     * @return  bool  Whether the field has changed
      */
     public function changed($field = null)
     {
@@ -1004,7 +1004,7 @@ class Kohana_ORM extends Model implements serializable
     }
 
     /**
-     * Loads an array of values into into the current object.
+     * Loads an array of values into the current object.
      *
      * @chainable
      * @param  array $values Values to load
@@ -1083,14 +1083,14 @@ class Kohana_ORM extends Model implements serializable
         // Merge in the wildcards
         $filters = empty($filters[$field]) ? $wildcards : array_merge($wildcards, $filters[$field]);
 
-        // Bind the field name and model so they can be used in the filter method
+        // Bind the field name and model, so they can be used in the filter method
         $_bound = [
             ':field' => $field,
             ':model' => $this,
         ];
 
         foreach ($filters as $array) {
-            // Value needs to be bound inside the loop so we are always using the
+            // Value needs to be bound inside the loop, so we are always using the
             // version that was modified by the filters that already ran
             $_bound[':value'] = $value;
 
@@ -1160,7 +1160,7 @@ class Kohana_ORM extends Model implements serializable
     public function check(Validation $extra_validation = null)
     {
         // Determine if any external validation failed
-        $extra_errors = ($extra_validation AND ! $extra_validation->check());
+        $extra_errors = ($extra_validation AND !$extra_validation->check());
 
         // Always build a new validation object
         $this->_validation();
@@ -1249,7 +1249,7 @@ class Kohana_ORM extends Model implements serializable
         if (!$this->_loaded)
             throw new Kohana_Exception('Cannot update :model model because it is not loaded.', [':model' => $this->_object_name]);
 
-        // Run validation if the model isn't valid or we have additional validation rules.
+        // Run validation if the model isn't valid, or we have additional validation rules.
         if (!$this->_valid OR $validation) {
             $this->check($validation);
         }
@@ -1345,7 +1345,7 @@ class Kohana_ORM extends Model implements serializable
      *     $model->has('roles', ORM::factory('role', ['name' => 'login']));
      *     // Check for the login role if you know the roles.id is 5
      *     $model->has('roles', 5);
-     *     // Check for all of the following roles
+     *     // Check for all the following roles
      *     $model->has('roles', [1, 2, 3, 4]);
      *     // Check if $model has any roles
      *     $model->has('roles')
@@ -1421,8 +1421,8 @@ class Kohana_ORM extends Model implements serializable
         // We need an array to simplify the logic
         $far_keys = (array) $far_keys;
 
-        // Nothing to check if the model isn't loaded or we don't have any far_keys
-        if (!$far_keys OR ! $this->_loaded)
+        // Nothing to check if the model isn't loaded, or we don't have any far_keys
+        if (!$far_keys OR !$this->_loaded)
             return 0;
 
         // Rows found need to match the rows searched
@@ -1950,7 +1950,7 @@ class Kohana_ORM extends Model implements serializable
      * Adds addition tables to "JOIN ...".
      *
      * @param   mixed   $table  column name or [$column, $alias] or object
-     * @param   string  $type   join type (LEFT, RIGHT, INNER, etc)
+     * @param   string  $type   join type (LEFT, RIGHT, INNER, etc.)
      * @return  $this
      */
     public function join($table, $type = null)
@@ -2214,7 +2214,7 @@ class Kohana_ORM extends Model implements serializable
      *
      * @param string $field the field to check for uniqueness
      * @param mixed $value the value to check for uniqueness
-     * @return  bool     whteher the value is unique
+     * @return  bool     whether the value is unique
      * @throws Kohana_Exception
      */
     public function unique($field, $value)

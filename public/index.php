@@ -64,7 +64,7 @@ if (PHP_SAPI === 'cli') {
     Minion_Task::factory(Minion_CLI::options())->execute();
 } else {
     /**
-     * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
+     * Execute the main request. A source of the URI can be passed, e.g., $_SERVER['PATH_INFO'].
      * If no source is specified, the URI will be automatically detected.
      */
     echo Request::factory(true, [], false)

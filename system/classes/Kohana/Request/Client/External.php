@@ -21,7 +21,7 @@
  *
  *       // Add client to request
  *       $request = Request::factory('http://some.host.tld/foo/bar')
- *           ->client(Request_Client_External::factory('Request_Client_HTTP));
+ *           ->client(Request_Client_External::factory('Request_Client_HTTP'));
  *
  * @package    Kohana
  * @category   Base

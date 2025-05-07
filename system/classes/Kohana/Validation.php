@@ -422,8 +422,8 @@ class Kohana_Validation implements ArrayAccess
      * exists, "field/default" will be used. If neither is set, the returned
      * message will be "file/field/rule".
      *
-     * By default all messages are translated using the default language.
-     * A string can be used as the second parameter to specified the language
+     * By default, all messages are translated using the default language.
+     * A string can be used as the second parameter to specify the language
      * that the message was written in.
      *
      *     // Get errors from messages/forms/login.php
@@ -483,7 +483,7 @@ class Kohana_Validation implements ArrayAccess
 
                     // Check if a label for this parameter exists
                     if (isset($this->_labels[$value])) {
-                        // Use the label as the value, eg: related field name for "matches"
+                        // Use the label as the value, e.g., related field name for "matches"
                         $value = $this->_labels[$value];
 
                         if ($translate) {

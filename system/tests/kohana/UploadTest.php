@@ -104,7 +104,7 @@ class Kohana_UploadTest extends Unittest_TestCase
     }
 
     /**
-     * size() should throw an exception of the supplied max size is invalid
+     * size() should throw an exception if the supplied max size is invalid
      *
      * @test
      * @covers upload::size
@@ -128,7 +128,7 @@ class Kohana_UploadTest extends Unittest_TestCase
     }
 
     /**
-     * Provides test data for test_vali()
+     * Provides test data for test_valid()
      *
      * @test
      * @return array

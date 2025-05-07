@@ -369,7 +369,7 @@ class Kohana_Route
 
     /**
      * Tests if the route matches a given Request. A successful match will return
-     * all of the routed parameters as an array. A failed match will return
+     * all the routed parameters as an array. A failed match will return
      * boolean false.
      *
      *     // Params: controller = users, action = edit, id = 10
@@ -482,8 +482,8 @@ class Kohana_Route
          * the specified parameters and any optional parameters that are needed.
          *
          * @param string $portion Part of the URI specification
-         * @param boolean $required Whether or not parameters are required (initially)
-         * @return  array   Tuple of the compiled portion and whether or not it contained specified parameters
+         * @param boolean $required Whether parameters are required (initially)
+         * @return  array   Tuple of the compiled portion and whether it contained specified parameters
          * @throws Kohana_Exception
          */
         $compile = function ($portion, $required) use (&$compile, $defaults, $params) {

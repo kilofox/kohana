@@ -159,7 +159,7 @@ class Kohana_Core
     protected static $_files = [];
 
     /**
-     * @var  boolean  Has the file path cache changed during this execution?  Used internally when when caching is true in [Kohana::init]
+     * @var  boolean  Has the file path cache changed during this execution?  Used internally when caching is true in [Kohana::init]
      */
     protected static $_files_changed = false;
 
@@ -367,7 +367,7 @@ class Kohana_Core
 
     /**
      * Reverts the effects of the `register_globals` PHP setting by unsetting
-     * all global variables except for the default super globals (GPCS, etc),
+     * all global variables except for the default super globals (GPCS, etc.),
      * which is a [potential security hole.][ref-wikibooks]
      *
      * This is called automatically by [Kohana::init] if `register_globals` is
@@ -442,7 +442,7 @@ class Kohana_Core
     }
 
     /**
-     * Provides auto-loading support of classes that follow Kohana's [class
+     * Provides autoloading support of classes that follow Kohana's [class
      * naming conventions](kohana/conventions#class-names-and-file-location).
      * See [Loading Classes](kohana/autoloading) for more information.
      *
@@ -493,7 +493,7 @@ class Kohana_Core
     }
 
     /**
-     * Provides auto-loading support of classes that follow Kohana's old class
+     * Provides autoloading support of classes that follow Kohana's old class
      * naming conventions.
      *
      * This is included for compatibility purposes with older modules.
@@ -574,7 +574,7 @@ class Kohana_Core
     }
 
     /**
-     * Returns the the currently active include paths, including the
+     * Returns the currently active include paths, including the
      * application, system, and each module's path.
      *
      * @return  array
@@ -684,7 +684,7 @@ class Kohana_Core
     }
 
     /**
-     * Recursively finds all of the files in the specified directory at any
+     * Recursively finds all the files in the specified directory at any
      * location in the [Cascading Filesystem](kohana/files), and returns an
      * array of all the files found, sorted alphabetically.
      *
@@ -730,10 +730,10 @@ class Kohana_Core
                     if ($file->isDir()) {
                         if ($sub_dir = Kohana::list_files($key, $paths)) {
                             if (isset($found[$key])) {
-                                // Append the sub-directory list
+                                // Append the subdirectory list
                                 $found[$key] += $sub_dir;
                             } else {
-                                // Create a new sub-directory list
+                                // Create a new subdirectory list
                                 $found[$key] = $sub_dir;
                             }
                         }
@@ -881,7 +881,7 @@ class Kohana_Core
         }
 
         if ($path === null) {
-            // Return all of the messages
+            // Return all the messages
             return $messages[$file];
         } else {
             // Get a message using the path

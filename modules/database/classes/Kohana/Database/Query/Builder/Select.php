@@ -107,7 +107,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      * Adds addition tables to "JOIN ...".
      *
      * @param   mixed   $table  column name or [$column, $alias] or object
-     * @param   string  $type   join type (LEFT, RIGHT, INNER, etc)
+     * @param   string  $type   join type (LEFT, RIGHT, INNER, etc.)
      * @return  $this
      */
     public function join($table, $type = null)
@@ -278,7 +278,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      *
      * @param mixed $select if string, it must be the name of a table. Else
      *  must be an instance of Database_Query_Builder_Select
-     * @param boolean $all decides if it's an UNION or UNION ALL clause
+     * @param boolean $all decides if it's a UNION or UNION ALL clause
      * @return $this
      * @throws Kohana_Exception
      */

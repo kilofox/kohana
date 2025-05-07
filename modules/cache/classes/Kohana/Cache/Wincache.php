@@ -68,7 +68,7 @@ class Kohana_Cache_Wincache extends Cache
      *     // Retrieve cache entry from wincache group
      *     $data = Cache::instance('wincache')->get('foo');
      *
-     *     // Retrieve cache entry from wincache group and return 'bar' if miss
+     *     // Retrieve cache entry from wincache group and return 'bar' if missing
      *     $data = Cache::instance('wincache')->get('foo', 'bar');
      *
      * @param   string  $id       id of cache to entry

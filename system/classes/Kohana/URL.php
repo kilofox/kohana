@@ -3,7 +3,7 @@
 /**
  * URL helper class.
  *
- * [!!] You need to setup the list of trusted hosts in the `url.php` config file, before starting using this helper class.
+ * [!!] You need to set up the list of trusted hosts in the `url.php` config file, before starting using this helper class.
  *
  * @package    Kohana
  * @category   Helpers
@@ -146,7 +146,7 @@ class Kohana_URL
      *     // Returns "?sort=title&limit=10" combined with any existing GET values
      *     $query = URL::query(['sort' => 'title', 'limit' => 10]);
      *
-     * Typically you would use this when you are sorting query results,
+     * Typically, you would use this when you are sorting query results,
      * or something similar.
      *
      * [!!] Parameters with a null value are left out.

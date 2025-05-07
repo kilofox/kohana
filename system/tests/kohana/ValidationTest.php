@@ -93,7 +93,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
      * Adding a label to a field should set it in the labels array
      * If the label already exists it should overwrite it
      *
-     * In both cases thefunction should return a reference to $this
+     * In both cases the function should return a reference to $this
      *
      * @test
      * @covers Validation::label

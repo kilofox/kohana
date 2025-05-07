@@ -18,7 +18,7 @@ class Kohana_NumTest extends Unittest_TestCase
     protected $default_locale;
 
     /**
-     * SetUp test enviroment
+     * SetUp test environment
      */
     // @codingStandardsIgnoreStart
     public function setUp()

@@ -2,7 +2,7 @@
 
 The bootstrap is located at `application/bootstrap.php`. It is responsible for setting up the Kohana environment and executing the main response. It is included by `index.php` (see [Request flow](flow))
 
-[!!] The bootstrap is responsible for the flow of your application. In previous versions of Kohana the bootstrap was in `system` and was somewhat of an unseen, uneditible force. In Kohana 3 the bootstrap takes on a much more integral and versatile role. Do not be afraid to edit and change your bootstrap however you see fit.
+[!!] The bootstrap is responsible for the flow of your application. In previous versions of Kohana the bootstrap was in `system` and was somewhat of an unseen, uneditable force. In Kohana 3 the bootstrap takes on a much more integral and versatile role. Do not be afraid to edit and change your bootstrap however you see fit.
 
 ## Environment setup
 
@@ -17,10 +17,10 @@ date_default_timezone_set('America/Chicago');
 // Set the default locale.
 setlocale(LC_ALL, 'en_US.utf-8');
 
-// Enable the Kohana auto-loader.
+// Enable the Kohana autoloader.
 spl_autoload_register(['Kohana', 'auto_load']);
 
-// Enable the Kohana auto-loader for unserialization.
+// Enable the Kohana autoloader for unserialization.
 ini_set('unserialize_callback_func', 'spl_autoload_call');
 ~~~
 

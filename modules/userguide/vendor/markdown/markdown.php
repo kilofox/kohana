@@ -543,7 +543,7 @@ class Markdown_Parser
         # to be wrapped into paragraph tags at the end, ":" is used for elements
         # that are word separators and "X" is used in the general case.
         #
-		# Swap back any tag hash found in $text so we do not have to `unhash`
+		# Swap back any tag hash found in $text, so we do not have to `unhash`
         # multiple times at the end.
         $text = $this->unhash($text);
 
@@ -1992,7 +1992,7 @@ class MarkdownExtra_Parser extends Markdown_Parser
 
                 if ($depth < 0) {
                     #
-                    # Going out of parent element. Clean up and break so we
+                    # Going out of parent element. Clean up and break, so we
                     # return to the calling function.
                     #
 					$text = $tag . $text;

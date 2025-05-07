@@ -68,7 +68,7 @@ class Kohana_Database_Query
      * Enables the query to be cached for a specified amount of time.
      *
      * @param   integer  $lifetime  number of seconds to cache, 0 deletes it from the cache
-     * @param   boolean  whether or not to execute the query during a cache hit
+     * @param   boolean  whether to execute the query during a cache hit
      * @return  $this
      * @uses    Kohana::$cache_life
      */
@@ -181,7 +181,7 @@ class Kohana_Database_Query
         $sql = $this->_sql;
 
         if (!empty($this->_parameters)) {
-            // Quote all of the values
+            // Quote all the values
             $values = array_map([$db, 'quote'], $this->_parameters);
 
             // Replace the values in the SQL
@@ -225,8 +225,7 @@ class Kohana_Database_Query
             $cache_key = 'Database::query("' . $db . '", "' . $sql . '")';
 
             // Read the cache first to delete a possible hit with lifetime <= 0
-            if (($result = Kohana::cache($cache_key, null, $this->_lifetime)) !== null
-                AND ! $this->_force_execute) {
+            if (($result = Kohana::cache($cache_key, null, $this->_lifetime)) !== null AND !$this->_force_execute) {
                 // Return a cached result
                 return new Database_Result_Cached($result, $sql, $as_object, $object_params);
             }

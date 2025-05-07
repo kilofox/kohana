@@ -74,7 +74,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
     }
 
     /**
-     * Return all of the rows in the result as an array.
+     * Return all the rows in the result as an array.
      *
      *     // Indexed array of all rows
      *     $rows = $result->as_array();

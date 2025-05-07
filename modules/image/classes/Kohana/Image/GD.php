@@ -78,7 +78,7 @@ class Kohana_Image_GD extends Image
     public function __construct($file)
     {
         if (!Image_GD::$_checked) {
-            // Run the install check
+            // Run the installation check
             Image_GD::check();
         }
 
@@ -149,7 +149,7 @@ class Kohana_Image_GD extends Image
      */
     protected function _do_resize($width, $height)
     {
-        // Presize width and height
+        // Pre-size width and height
         $pre_width = $this->width;
         $pre_height = $this->height;
 
@@ -298,7 +298,7 @@ class Kohana_Image_GD extends Image
     }
 
     /**
-     * Execute a sharpen.
+     * Execute a sharpening.
      *
      * @param integer $amount amount to sharpen
      * @return  void
@@ -323,7 +323,7 @@ class Kohana_Image_GD extends Image
             [-1, -1, -1],
         ];
 
-        // Perform the sharpen
+        // Perform the sharpening
         if (imageconvolution($this->_image, $matrix, $amount - 8, 0)) {
             // Reset the width and height
             $this->width = imagesx($this->_image);
@@ -390,7 +390,7 @@ class Kohana_Image_GD extends Image
             // Colorize the line to add the correct alpha level
             imagefilter($line, IMG_FILTER_COLORIZE, 0, 0, 0, $dst_opacity);
 
-            // Copy a the line into the reflection
+            // Copy the line into the reflection
             imagecopy($reflection, $line, 0, $dst_y, 0, 0, $this->width, 1);
         }
 

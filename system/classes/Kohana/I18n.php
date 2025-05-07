@@ -4,7 +4,7 @@
  * Internationalization (i18n) class. Provides language loading and translation
  * methods without dependencies on [gettext](http://php.net/gettext).
  *
- * Typically this class would never be used directly, but used via the __()
+ * Typically, this class would never be used directly, but used via the __()
  * function, which loads the message and replaces parameters:
  *
  *     // Display a translated message

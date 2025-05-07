@@ -4,7 +4,7 @@ Shown here are the basic usage of this module. For full documentation about the 
 
 ## Creating Instance
 
-[Image::factory()] creates an instance of the image object and prepares it for manipulation. It accepts the `filename` as an arguement and an optional `driver` parameter. When `driver` is not specified, the default driver `GD` is used.
+[Image::factory()] creates an instance of the image object and prepares it for manipulation. It accepts the `filename` as an argument and an optional `driver` parameter. When `driver` is not specified, the default driver `GD` is used.
 
 ~~~
 // Uses the image from upload directory
@@ -82,7 +82,7 @@ $img->render('png');
 
 ## Save To File
 
-[Image::save()] let's you save the image object to a file. It has two parameters: `filename` and `quality`. If `filename` is omitted, the original file used will be overwritten instead. The `quality` parameter is an integer from 1-100 which indicates the quality of image to save which defaults to 100.
+[Image::save()] lets you save the image object to a file. It has two parameters: `filename` and `quality`. If `filename` is omitted, the original file used will be overwritten instead. The `quality` parameter is an integer from 1-100 which indicates the quality of image to save which defaults to 100.
 
 On our example above, instead of rendering the file to the browser, you may want to save it somewhere instead. To do so, you may:
 
@@ -99,7 +99,7 @@ What we do is resize the image and save it to file reducing quality to 80% and s
 
 ## Other Methods
 
-There are more methods available for the [Image] module which provides powerfull features that are best describe in the API documentation. Here are some of them:
+There are more methods available for the [Image] module which provides powerful features that are best describe in the API documentation. Here are some of them:
 
 * [Image::background()] - Set the background color of an image.
 * [Image::crop()] - Crop an image to the given size.

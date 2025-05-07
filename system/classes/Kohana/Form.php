@@ -184,7 +184,7 @@ class Kohana_Form
      * Creates a radio form input.
      *
      *     echo Form::radio('like_cats', 1, $cats);
-     *     echo Form::radio('like_cats', 0, ! $cats);
+     *     echo Form::radio('like_cats', 0, !$cats);
      *
      * @param   string  $name       input name
      * @param   string  $value      input value
@@ -338,7 +338,7 @@ class Kohana_Form
     }
 
     /**
-     * Creates a image form input.
+     * Creates an image form input.
      *
      *     echo Form::image(null, null, ['src' => 'media/img/login.png']);
      *

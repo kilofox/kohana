@@ -8,7 +8,7 @@ labels
 :  A label is a human-readable version of the field name.
 
 rules
-:  A rule is a callback or closure used to decide whether or not to add an error to a field
+:  A rule is a callback or closure used to decide whether to add an error to a field
 
 [!!] Note that any valid [PHP callback](http://php.net/manual/language.pseudo-types.php#language.types.callback) can be used as a rule.
 
@@ -24,29 +24,29 @@ Creating a validation object is done using the [Validation::factory] method:
 
 Kohana provides a set of useful rules in the [Valid] class:
 
-Rule name                 | Function
-------------------------- |-------------------------------------------------
-[Valid::not_empty]     | Value must be a non-empty value
-[Valid::regex]         | Match the value against a regular expression
-[Valid::min_length]    | Minimum number of characters for value
-[Valid::max_length]    | Maximum number of characters for value
-[Valid::exact_length]  | Value must be an exact number of characters
-[Valid::email]         | An email address is required
-[Valid::email_domain]  | Check that the domain of the email exists
-[Valid::url]           | Value must be a URL
-[Valid::ip]            | Value must be an IP address
-[Valid::phone]         | Value must be a phone number
-[Valid::credit_card]   | Require a credit card number
-[Valid::date]          | Value must be a date (and time)
-[Valid::alpha]         | Only alpha characters allowed
-[Valid::alpha_dash]    | Only alpha and hyphens allowed
-[Valid::alpha_numeric] | Only alpha and numbers allowed
-[Valid::digit]         | Value must be an integer digit
-[Valid::decimal]       | Value must be a decimal or float value
-[Valid::numeric]       | Only numeric characters allowed
-[Valid::range]         | Value must be within a range
-[Valid::color]         | Value must be a valid HEX color
-[Valid::matches]       | Value matches another field value
+| Rule name              | Function                                     |
+|------------------------|----------------------------------------------|
+| [Valid::not_empty]     | Value must be a non-empty value              |
+| [Valid::regex]         | Match the value against a regular expression |
+| [Valid::min_length]    | Minimum number of characters for value       |
+| [Valid::max_length]    | Maximum number of characters for value       |
+| [Valid::exact_length]  | Value must be an exact number of characters  |
+| [Valid::email]         | An email address is required                 |
+| [Valid::email_domain]  | Check that the domain of the email exists    |
+| [Valid::url]           | Value must be a URL                          |
+| [Valid::ip]            | Value must be an IP address                  |
+| [Valid::phone]         | Value must be a phone number                 |
+| [Valid::credit_card]   | Require a credit card number                 |
+| [Valid::date]          | Value must be a date (and time)              |
+| [Valid::alpha]         | Only alpha characters allowed                |
+| [Valid::alpha_dash]    | Only alpha and hyphens allowed               |
+| [Valid::alpha_numeric] | Only alpha and numbers allowed               |
+| [Valid::digit]         | Value must be an integer digit               |
+| [Valid::decimal]       | Value must be a decimal or float value       |
+| [Valid::numeric]       | Only numeric characters allowed              |
+| [Valid::range]         | Value must be within a range                 |
+| [Valid::color]         | Value must be a valid HEX color              |
+| [Valid::matches]       | Value matches another field value            |
 
 ## Adding Rules
 
@@ -107,7 +107,7 @@ By default, the validation object will automatically bind the following values f
 
 ## Adding Errors
 
-The [Validation] class will add an error for a field if any of the rules associated to it return `false`. This allows many built in PHP functions to be used as rules, like `in_array`.
+The [Validation] class will add an error for a field if any of the rules associated to it return `false`. This allows many built-in PHP functions to be used as rules, like `in_array`.
 
     $object->rule('color', 'in_array', [':value', ['red', 'green', 'blue']]);
 
@@ -198,7 +198,7 @@ First, we need a [View] that contains the HTML form, which will be placed in `ap
     <?php echo Form::submit(null, 'Sign Up') ?>
     <?php echo Form::close() ?>
 
-[!!] This example uses the [Form] helper extensively. Using [Form] instead of writing HTML ensures that all of the form inputs will properly handle input that includes HTML characters. If you prefer to write the HTML yourself, be sure to use [HTML::chars] to escape user input.
+[!!] This example uses the [Form] helper extensively. Using [Form] instead of writing HTML ensures that all the form inputs will properly handle input that includes HTML characters. If you prefer to write the HTML yourself, be sure to use [HTML::chars] to escape user input.
 
 Next, we need a controller and action to process the registration, which will be placed in `application/classes/Controller/User.php`:
 

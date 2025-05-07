@@ -3,7 +3,7 @@
 /**
  * [Request_Client_External] Stream driver performs external requests using php
  * sockets. To use this driver, ensure the following is completed
- * before executing an external request- ideally in the application bootstrap.
+ * before executing an external request—ideally in the application bootstrap.
  *
  * @example
  *
@@ -86,7 +86,7 @@ class Kohana_Request_Client_Stream extends Request_Client_External
             $status = null;
         }
 
-        // Get any exisiting response headers
+        // Get any existing response headers
         $response_header = $response->headers();
 
         // Process headers

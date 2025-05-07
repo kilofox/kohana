@@ -49,8 +49,8 @@ class Kohana_ConfigTest extends Unittest_TestCase
     }
 
     /**
-     * By default (or by passing true as the second parameter) the config object
-     * should prepend the reader to the front of the readers queue
+     * By default, or by passing `true` as the second parameter, the config object
+     * should add the reader to the front of the queue of readers.
      *
      * @test
      * @covers Config::attach
@@ -170,7 +170,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
 
     /**
      * If we've already loaded a config group then the correct variable
-     * should be returned if we use the dot path notation to to request
+     * should be returned if we use the dot path notation to request
      * a var
      *
      * @test
@@ -284,7 +284,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
 
     /**
      * Config sources are stored in a stack, make sure that config at the bottom
-     * of the stack is overriden by config at the top
+     * of the stack is overridden by config at the top
      *
      * @test
      * @covers Config::load

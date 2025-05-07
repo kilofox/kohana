@@ -242,7 +242,7 @@
                     Kohana_Request->execute()
                 </p>
                 <pre id="error4ac2453378034source5" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">71</span> /**
-</span><span class="line"><span class="number">72</span>  * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
+</span><span class="line"><span class="number">72</span>  * Execute the main request. A source of the URI can be passed, e.g., $_SERVER['PATH_INFO'].
 </span><span class="line"><span class="number">73</span>  * If no source is specified, the URI will be automatically detected.
 
 </span><span class="line"><span class="number">74</span>  */

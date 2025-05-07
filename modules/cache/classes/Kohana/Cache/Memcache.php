@@ -19,7 +19,7 @@
  *             'driver' => 'memcache',
  *             // Available server definitions
  *             'servers' => [
- *                 // First memcache server server
+ *                 // First memcache server
  *                 [
  *                     'host' => 'localhost',
  *                     'port' => 11211,
@@ -120,9 +120,9 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      */
     protected function __construct(array $config)
     {
-        // Check for the memcache extention
+        // Check for the memcache extension
         if (!extension_loaded('memcache')) {
-            throw new Cache_Exception('Memcache PHP extention not loaded');
+            throw new Cache_Exception('Memcache PHP extension not loaded');
         }
 
         parent::__construct($config);
@@ -161,7 +161,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
             }
         }
 
-        // Setup the flags
+        // Set up the flags
         $this->_flags = Arr::get($this->_config, 'compression', false) ? MEMCACHE_COMPRESSED : false;
     }
 
@@ -171,7 +171,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      *     // Retrieve cache entry from memcache group
      *     $data = Cache::instance('memcache')->get('foo');
      *
-     *     // Retrieve cache entry from memcache group and return 'bar' if miss
+     *     // Retrieve cache entry from memcache group and return 'bar' if missing
      *     $data = Cache::instance('memcache')->get('foo', 'bar');
      *
      * @param   string  $id       id of cache to entry

@@ -62,7 +62,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
 
         // If we are in a module and that module has a menu, show that
         if ($module = $this->request->param('module') AND $this->file($module . '/menu') AND Kohana::$config->load('userguide.modules.' . $module . '.enabled')) {
-            // Namespace the markdown parser
+            // Namespace the Markdown parser
             Kodoc_Markdown::$base_url = URL::site($this->guide->uri()) . '/' . $module . '/';
             Kodoc_Markdown::$image_url = URL::site($this->media->uri()) . '/' . $module . '/';
 
@@ -119,7 +119,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
             $page = 'index';
         }
 
-        // Find the markdown file for this page
+        // Find the Markdown file for this page
         $file = $this->file($module . '/' . $page);
 
         // If it's not found, show the error page
@@ -127,7 +127,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
             return $this->error('Userguide page not found');
         }
 
-        // Namespace the markdown parser
+        // Namespace the Markdown parser
         Kodoc_Markdown::$base_url = URL::site($this->guide->uri()) . '/' . $module . '/';
         Kodoc_Markdown::$image_url = URL::site($this->media->uri()) . '/' . $module . '/';
 
@@ -275,7 +275,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
     }
 
     /**
-     * Locates the appropriate markdown file for a given guide page. Page URLS
+     * Locates the appropriate Markdown file for a given guide page. Page URLS
      * can be specified in one of three forms:
      *
      *  * userguide/adding
@@ -342,7 +342,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         return $markdown;
     }
 
-    // Get the list of modules from the config, and reverses it so it displays in the order the modules are added, but move Kohana to the top.
+    // Get the list of modules from the config, and reverses it, so it displays in the order the modules are added, but move Kohana to the top.
     protected function _modules()
     {
         $modules = array_reverse(Kohana::$config->load('userguide.modules'));

@@ -17,13 +17,13 @@ abstract class Kohana_CacheBasicMethodsTest extends PHPUnit_Framework_TestCase
     protected $_cache_driver;
 
     /**
-     * This method MUST be implemented by each driver to setup the `Cache`
+     * This method MUST be implemented by each driver to set up the `Cache`
      * instance for each test.
      *
      * This method should do the following tasks for each driver test:
      *
      *  - Test the Cache instance driver is available, skip test otherwise
-     *  - Setup the Cache instance
+     *  - Set up the Cache instance
      *  - Call the parent setup method, `parent::setUp()`
      *
      * @return  void
@@ -270,7 +270,7 @@ TESTTEXT;
     /**
      * Tests the [Cache::delete()] method, testing;
      *
-     *  - The a cached value is deleted from cache
+     *  - A cached value is deleted from cache
      *  - The cache returns a true value upon deletion
      *  - The cache returns a false value if no value exists to delete
      *
@@ -292,7 +292,7 @@ TESTTEXT;
         $this->assertTrue($cache->delete('test_delete_1'));
         $this->assertNull($cache->get('test_delete_1'));
 
-        // Test non-existant cache value returns false if no error
+        // Test non-existent cache value returns false if no error
         $this->assertFalse($cache->delete('test_delete_1'));
     }
 

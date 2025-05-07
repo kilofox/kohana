@@ -21,7 +21,7 @@ class Kohana_HTTP_Header extends ArrayObject
     /**
      * Parses an Accept(-*) header and detects the quality
      *
-     * @param   array   $parts  accept header parts
+     * @param   array   $parts  Accept header parts
      * @return  array
      * @since   3.2.0
      */
@@ -55,11 +55,11 @@ class Kohana_HTTP_Header extends ArrayObject
     }
 
     /**
-     * Parses the accept header to provide the correct quality values
-     * for each supplied accept type.
+     * Parses the Accept header to provide the correct quality values
+     * for each supplied media type.
      *
-     * @link    http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1
-     * @param   string  $accepts    accept content header string to parse
+     * @link    https://www.rfc-editor.org/rfc/rfc9110.html#name-accept
+     * @param   string  $accepts    Accept header string to parse
      * @return  array
      * @since   3.2.0
      */
@@ -67,11 +67,11 @@ class Kohana_HTTP_Header extends ArrayObject
     {
         $accepts = explode(',', (string) $accepts);
 
-        // If there is no accept, lets accept everything
+        // If there is no accept, let's accept everything
         if ($accepts === null)
             return ['*' => ['*' => (float) HTTP_Header::DEFAULT_QUALITY]];
 
-        // Parse the accept header qualities
+        // Parse the Accept header qualities
         $accepts = HTTP_Header::accept_quality($accepts);
 
         $parsed_accept = [];
@@ -82,7 +82,7 @@ class Kohana_HTTP_Header extends ArrayObject
             // Extract the parts
             $parts = explode('/', $key, 2);
 
-            // Invalid content type- bail
+            // Invalid content type—bail
             if (!isset($parts[1]))
                 continue;
 
@@ -97,7 +97,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * Parses the `Accept-Charset:` HTTP header and returns an array containing
      * the charset and associated quality.
      *
-     * @link    http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.2
+     * @link    https://www.rfc-editor.org/rfc/rfc9110.html#name-accept-charset
      * @param   string  $charset    charset string to parse
      * @return  array
      * @since   3.2.0
@@ -115,7 +115,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * Parses the `Accept-Encoding:` HTTP header and returns an array containing
      * the charsets and associated quality.
      *
-     * @link    http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3
+     * @link    https://www.rfc-editor.org/rfc/rfc9110.html#name-accept-encoding
      * @param   string  $encoding   charset string to parse
      * @return  array
      * @since   3.2.0
@@ -136,7 +136,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * Parses the `Accept-Language:` HTTP header and returns an array containing
      * the languages and associated quality.
      *
-     * @link    http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4
+     * @link    https://www.rfc-editor.org/rfc/rfc9110.html#name-accept-language
      * @param   string  $language   charset string to parse
      * @return  array
      * @since   3.2.0
@@ -156,7 +156,7 @@ class Kohana_HTTP_Header extends ArrayObject
             // Extract the parts
             $parts = explode('-', $key, 2);
 
-            // Invalid content type- bail
+            // Invalid content type—bail
             if (!isset($parts[1])) {
                 $parsed_language[$parts[0]]['*'] = $language[$key];
             } else {
@@ -182,7 +182,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *     // cache-control: max-age=3600, must-revalidate, public
      *     $response->headers('Cache-Control', HTTP_Header::create_cache_control($cache_control);
      *
-     * @link    http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13
+     * @link    https://www.rfc-editor.org/rfc/rfc9111.html#name-cache-control
      * @param   array   $cache_control  Cache-Control to render to string
      * @return  string
      */
@@ -207,7 +207,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *     // Parse the cache control header
      *     if ($cache_control = HTTP_Header::parse_cache_control($response->headers('cache-control'))) {
      *          // Cache-Control header was found
-     *          $maxage = $cache_control['max-age'];
+     *          $maxAge = $cache_control['max-age'];
      *     }
      *
      * @param   array   $cache_control Array of headers
@@ -268,8 +268,6 @@ class Kohana_HTTP_Header extends ArrayObject
     public function __construct(array $input = [], $flags = 0, $iterator_class = 'ArrayIterator')
     {
         /**
-         * @link http://www.w3.org/Protocols/rfc2616/rfc2616.html
-         *
          * HTTP header declarations should be treated as case-insensitive
          */
         $input = array_change_key_case((array) $input);
@@ -321,7 +319,7 @@ class Kohana_HTTP_Header extends ArrayObject
         // Ensure the index is lowercase
         $index = strtolower($index);
 
-        if ($replace OR ! $this->offsetExists($index)) {
+        if ($replace OR !$this->offsetExists($index)) {
             return parent::offsetSet($index, $newval);
         }
 
@@ -386,8 +384,6 @@ class Kohana_HTTP_Header extends ArrayObject
     public function exchangeArray($input)
     {
         /**
-         * @link http://www.w3.org/Protocols/rfc2616/rfc2616.html
-         *
          * HTTP header declarations should be treated as case-insensitive
          */
         $input = array_change_key_case((array) $input);
@@ -396,7 +392,7 @@ class Kohana_HTTP_Header extends ArrayObject
     }
 
     /**
-     * Parses a HTTP Message header line and applies it to this HTTP_Header
+     * Parses an HTTP Message header line and applies it to this HTTP_Header
      *
      *     $header = $response->headers();
      *     $header->parse_header_string(null, 'content-type: application/json');
@@ -486,7 +482,7 @@ class Kohana_HTTP_Header extends ArrayObject
     }
 
     /**
-     * Returns the preferred response content type based on the accept header
+     * Returns the preferred response content type based on the Accept header
      * quality settings. If items have the same quality value, the first item
      * found in the array supplied as `$types` will be returned.
      *

@@ -180,7 +180,7 @@ class Kohana_Auth_ORM extends Auth
     }
 
     /**
-     * Gets the currently logged in user from the session (with auto_login check).
+     * Gets the currently logged-in user from the session (with auto_login check).
      * Returns $default if no user is currently logged in.
      *
      * @param mixed $default to return in case user isn't logged in

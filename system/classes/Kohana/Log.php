@@ -166,7 +166,7 @@ class Kohana_Log
     }
 
     /**
-     * Write and clear all of the messages.
+     * Write and clear all the messages.
      *
      *     $log->write();
      *
@@ -187,7 +187,7 @@ class Kohana_Log
 
         foreach ($this->_writers as $writer) {
             if (empty($writer['levels'])) {
-                // Write all of the messages
+                // Write all the messages
                 $writer['object']->write($messages);
             } else {
                 // Filtered messages

@@ -52,7 +52,7 @@ This is a simple example of a single ORM model, that has no relationships, but u
 
 [!!] The array returned by `ORM::rules()` will be passed to a [Validation] object and tested when you call `ORM::save()`.
 
-[!!] Please notice that defining the primary key "id" in the model is not necessary. Also the table name in the database is plural and the model name is singular.
+[!!] Please notice that defining the primary key "id" in the model is not necessary. Also, the table name in the database is plural and the model name is singular.
 
 ## Controller
 

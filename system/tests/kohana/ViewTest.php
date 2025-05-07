@@ -49,7 +49,7 @@ class Kohana_ViewTest extends Unittest_TestCase
     }
 
     /**
-     * Provider for test_instaniate
+     * Provider for test_instantiate
      *
      * @return array
      */

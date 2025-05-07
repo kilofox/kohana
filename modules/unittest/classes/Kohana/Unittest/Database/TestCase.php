@@ -52,7 +52,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
     }
 
     /**
-     * Restores the original environment overriden with setEnvironment()
+     * Restores the original environment overridden with setEnvironment()
      *
      * Extending classes that have their own tearDown()
      * should call parent::tearDown()
@@ -108,7 +108,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
     }
 
     /**
-     * Helper function that replaces all occurences of '/' with
+     * Helper function that replaces all occurrences of '/' with
      * the OS-specific directory separator
      *
      * @param string $path The path to act on
@@ -120,7 +120,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
     }
 
     /**
-     * Allows easy setting & backing up of enviroment config
+     * Allows easy setting & backing up of environment config
      *
      * Option types are checked in the following order:
      *

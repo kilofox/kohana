@@ -15,7 +15,7 @@ class Bench_MDDoBaseURL extends Codebench
         '[filesystem](about.filesystem)',
         '[filesystem](about.filesystem "Optional title")',
         '[same page link](#id)',
-        '[object oriented](http://wikipedia.org/wiki/Object-Oriented_Programming)',
+        '[object-oriented](http://wikipedia.org/wiki/Object-Oriented_Programming)',
         // Invalid matches
         '![this is image syntax](about.filesystem)',
         '[filesystem](about.filesystem',

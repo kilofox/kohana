@@ -14,13 +14,13 @@ include_once(Kohana::find_file('tests/cache', 'CacheBasicMethodsTest'));
 class Kohana_Cache_FileTest extends Kohana_CacheBasicMethodsTest
 {
     /**
-     * This method MUST be implemented by each driver to setup the `Cache`
+     * This method MUST be implemented by each driver to set up the `Cache`
      * instance for each test.
      *
      * This method should do the following tasks for each driver test:
      *
      *  - Test the Cache instance driver is available, skip test otherwise
-     *  - Setup the Cache instance
+     *  - Set up the Cache instance
      *  - Call the parent setup method, `parent::setUp()`
      *
      * @return  void
@@ -62,7 +62,7 @@ class Kohana_Cache_FileTest extends Kohana_CacheBasicMethodsTest
         $config = Kohana::$config->load('cache')->file;
         $file = $config['cache_dir'] . '/file_we_want_to_keep.cache';
 
-        // Lets pollute the cache folder
+        // Let's pollute the cache folder
         file_put_contents($file, 'foobar');
 
         $this->assertTrue($cache->delete_all());

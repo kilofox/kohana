@@ -29,7 +29,7 @@ class Kohana_Database_PDO extends Database
         if ($this->_connection)
             return;
 
-        // Extract the connection parameters, adding required variabels
+        // Extract the connection parameters, adding required variables
         extract($this->_config['connection'] + [
             'dsn' => '',
             'username' => null,

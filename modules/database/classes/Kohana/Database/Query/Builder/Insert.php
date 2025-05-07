@@ -29,7 +29,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
     public function __construct($table = null, array $columns = null)
     {
         if ($table) {
-            // Set the inital table name
+            // Set the initial table name
             $this->table($table);
         }
 
@@ -86,7 +86,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
             throw new Kohana_Exception('INSERT INTO ... SELECT statements cannot be combined with INSERT INTO ... VALUES');
         }
 
-        // Get all of the passed values
+        // Get all the passed values
         $values = func_get_args();
 
         foreach ($values as $value) {

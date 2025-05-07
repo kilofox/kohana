@@ -30,7 +30,7 @@ abstract class Kohana_Session
      *
      * [!!] [Session::write] will automatically be called when the request ends.
      *
-     * @param string $type type of session (native, cookie, etc)
+     * @param string $type type of session (native, cookie, etc.)
      * @param string $id session identifier
      * @return  Session
      * @throws Kohana_Exception

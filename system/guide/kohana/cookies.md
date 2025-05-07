@@ -4,7 +4,7 @@ Kohana provides classes that make it easy to work with both cookies and sessions
 
 [Cookies](http://en.wikipedia.org/wiki/HTTP_cookie) should be used for storing non-private data that is persistent for a long period of time. For example storing a user preference or a language setting. Use the [Cookie] class for getting and setting cookies.
 
-[!!] Kohana uses "signed" cookies. Every cookie that is stored is combined with a secure hash to prevent modification of the cookie. If a cookie is modified outside of Kohana the hash will be incorrect and the cookie will be deleted. This hash is generated using [Cookie::salt()], which uses the [Cookie::$salt] property. You must define this setting in your bootstrap.php:
+[!!] Kohana uses "signed" cookies. Every cookie that is stored is combined with a secure hash to prevent modification of the cookie. If a cookie is modified outside Kohana the hash will be incorrect and the cookie will be deleted. This hash is generated using [Cookie::salt()], which uses the [Cookie::$salt] property. You must define this setting in your bootstrap.php:
 
     Cookie::$salt = 'foobar';
 
@@ -55,7 +55,7 @@ Deleting session or cookie data is done using the [Cookie::delete] method:
 
 ## Cookie Settings
 
-All of the cookie settings are changed using static properties. You can either change these settings in `bootstrap.php` or by using [transparent extension](extension). Always check these settings before making your application live, as many of them will have a direct affect on the security of your application.
+All the cookie settings are changed using static properties. You can either change these settings in `bootstrap.php` or by using [transparent extension](extension). Always check these settings before making your application live, as many of them will have a direct effect on the security of your application.
 
 The most important setting is [Cookie::$salt], which is used for secure signing. This value should be changed and kept secret:
 

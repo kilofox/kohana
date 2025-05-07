@@ -28,19 +28,19 @@ The name of the route must be a **unique** string. If it is not it will overwrit
 
 ### URI
 
-The uri is a string that represents the format of urls that should be matched. The tokens surrounded with `<>` are *keys* and anything surrounded with `()` are *optional* parts of the uri. In Kohana routes, any character is allowed and treated literally aside from `()<>`. The `/` has no meaning besides being a character that must match in the uri. Usually the `/` is used as a static seperator but as long as the regex makes sense, there are no restrictions to how you can format your routes.
+The uri is a string that represents the format of urls that should be matched. The tokens surrounded with `<>` are *keys* and anything surrounded with `()` are *optional* parts of the uri. In Kohana routes, any character is allowed and treated literally aside from `()<>`. The `/` has no meaning besides being a character that must match in the uri. Usually the `/` is used as a static separator but as long as the regex makes sense, there are no restrictions to how you can format your routes.
 
-Lets look at the default route again, the uri is `(<controller>(/<action>(/<id>)))`. We have three keys or params: controller, action, and id. In this case, the entire uri is optional, so a blank uri would match and the default controller and action (set by defaults(), [covered below](#defaults)) would be assumed resulting in the `Controller_Welcome` class being loaded and the `action_index` method being called to handle the request.
+Let's look at the default route again, the uri is `(<controller>(/<action>(/<id>)))`. We have three keys or params: controller, action, and id. In this case, the entire uri is optional, so a blank uri would match and the default controller and action (set by defaults(), [covered below](#defaults)) would be assumed resulting in the `Controller_Welcome` class being loaded and the `action_index` method being called to handle the request.
 
 You can use any name you want for your keys, but the following keys have special meaning to the [Request] object, and will influence which controller and action are called:
 
- * **Directory** - The sub-directory of `classes/Controller` to look for the controller (\[covered below]\(#directory))
+ * **Directory** - The subdirectory of `classes/Controller` to look for the controller (\[covered below]\(#directory))
  * **Controller** - The controller that the request should execute.
  * **Action** - The action method to call.
 
 ### Regex
 
-The Kohana route system uses [perl compatible regular expressions](http://perldoc.perl.org/perlre.html) in its matching process. By default each key (surrounded by `<>`) will match `[^/.,;?\n]++` (or in english: anything that is not a slash, period, comma, semicolon, question mark, or newline). You can define your own patterns for each key by passing an associative array of keys and patterns as an additional third argument to Route::set.
+The Kohana route system uses [perl compatible regular expressions](http://perldoc.perl.org/perlre.html) in its matching process. By default, each key (surrounded by `<>`) will match `[^/.,;?\n]++` (or in english: anything that is not a slash, period, comma, semicolon, question mark, or newline). You can define your own patterns for each key by passing an associative array of keys and patterns as an additional third argument to Route::set.
 
 In this example, we have controllers in two directories, `admin` and `affiliate`. Because this route will only match urls that begin with `admin` or `affiliate`, the default route would still work for controllers in `classes/Controller`.
 

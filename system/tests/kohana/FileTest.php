@@ -67,7 +67,7 @@ class Kohana_FileTest extends Unittest_TestCase
      * @dataProvider provider_split_join
      * @param boolean $input    Input for File::split
      * @param boolean $peices   Input for File::split
-     * @param boolean $expected Output for File::splut
+     * @param boolean $expected Output for File::split
      */
     public function test_split_join($input, $peices, $expected)
     {

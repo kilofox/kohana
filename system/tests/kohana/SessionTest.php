@@ -85,7 +85,7 @@ class Kohana_SessionTest extends Unittest_TestCase
 
     /**
      * Check that the constructor will load a session if it's provided
-     * witha session id
+     * with a session id
      *
      * @test
      * @covers Session::__construct
@@ -96,7 +96,7 @@ class Kohana_SessionTest extends Unittest_TestCase
         $config = [];
         $session_id = 'lolums';
 
-        // Don't auto-call constructor, we need to setup the mock first
+        // Don't auto-call constructor, we need to set up the mock first
         $session = $this->getMockBuilder('Session')
             ->disableOriginalConstructor()
             ->setMethods(['read'])
@@ -161,7 +161,7 @@ class Kohana_SessionTest extends Unittest_TestCase
     }
 
     /**
-     * By default sessions are unencrypted
+     * By default, sessions are unencrypted
      *
      * @test
      * @covers Session::__construct
@@ -216,7 +216,7 @@ class Kohana_SessionTest extends Unittest_TestCase
     }
 
     /**
-     * By default get() should be using null as the var DNX return value
+     * By default, get() should be using null as the var DNX return value
      *
      * @test
      * @covers Session::get
@@ -323,7 +323,7 @@ class Kohana_SessionTest extends Unittest_TestCase
 
         unset($copy['a']);
 
-        // We could test against $data but then we'd be testing
+        // We could test against $data, but then we'd be testing
         // that as_array() is returning by ref
         $this->assertAttributeSame($copy, '_data', $session);
 
@@ -354,7 +354,7 @@ class Kohana_SessionTest extends Unittest_TestCase
                 'the_it_crowd',
                 ['the it' => 'crowd'],
             ],
-            // If it's a string an encrpytion is disabled (by default) base64decode and unserialize
+            // If it's a string and encryption is disabled (by default), base64_decode and unserialize it
             [
                 ['dead' => 'arrival'],
                 'lolums',

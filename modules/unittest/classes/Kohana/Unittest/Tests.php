@@ -34,9 +34,9 @@ class Kohana_Unittest_Tests
      *
      * * Loads the phpunit framework (for the web ui)
      * * Restores exception phpunit error handlers (for cli)
-     * * registeres an autoloader to load test files
+     * * Registers an autoloader to load test files
      */
-    static public function configure_environment($do_whitelist = true, $do_blacklist = true)
+    static public function configure_environment()
     {
         restore_exception_handler();
         restore_error_handler();
@@ -134,7 +134,7 @@ class Kohana_Unittest_Tests
     /**
      * Sets the whitelist
      *
-     * If no directories are provided then the function'll load the whitelist
+     * If no directories are provided then the function will load the whitelist
      * set in the config file
      *
      * @param array $directories Optional directories to whitelist

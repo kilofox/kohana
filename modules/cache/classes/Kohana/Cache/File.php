@@ -89,7 +89,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
             $this->_cache_dir = $this->_make_directory($directory, 0777, true);
         }
 
-        // If the defined directory is a file, get outta here
+        // If the defined directory is a file, get out of here
         if ($this->_cache_dir->isFile()) {
             throw new Cache_Exception('Unable to create cache directory as a file already exists : :resource', [':resource' => $this->_cache_dir->getRealPath()]);
         }
@@ -111,7 +111,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *     // Retrieve cache entry from file group
      *     $data = Cache::instance('file')->get('foo');
      *
-     *     // Retrieve cache entry from file group and return 'bar' if miss
+     *     // Retrieve cache entry from file group and return 'bar' if missing
      *     $data = Cache::instance('file')->get('foo', 'bar');
      *
      * @param string $id id of cache to entry
@@ -293,7 +293,6 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
     {
         // Allow graceful error handling
         try {
-            // If is file
             if ($file->isFile()) {
                 try {
                     // Handle ignore files
@@ -322,9 +321,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
                         throw new Cache_Exception(__METHOD__ . ' failed to delete file : :file', [':file' => $file->getRealPath()]);
                     }
                 }
-            }
-            // Else, is directory
-            elseif ($file->isDir()) {
+            } elseif ($file->isDir()) {
                 // Create new DirectoryIterator
                 $files = new DirectoryIterator($file->getPathname());
 

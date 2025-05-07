@@ -96,7 +96,7 @@ function _to_unicode($str)
                     }
 
                     if (0xFEFF != $m_ucs4) {
-                        // BOM is legal but we don't want to output it
+                        // BOM is legal, but we don't want to output it
                         $out[] = $m_ucs4;
                     }
 

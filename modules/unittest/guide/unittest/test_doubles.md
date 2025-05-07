@@ -6,7 +6,7 @@ Say for example you're testing a model - you want to make sure that the model is
 
 The `createMock()` and `getMockBuilder()` methods provided by PHPUnit can be used to automatically generate an object that can act as a test double for the specified original interface or class name.
 
-## Creating an mock object
+## Creating a mock object
 
 Most of the time you'll only need to use the createMock() method, i.e.:
 
@@ -60,7 +60,7 @@ In our example we want `check()` to be called once on our mock object, so if we 
 
 ### What is the method we're mocking?
 
-Although we told PHPUnit what methods we want to mock, we haven't actually told it what method these rules we're specifiying apply to.
+Although we told PHPUnit what methods we want to mock, we haven't actually told it what method these rules we're specifying apply to.
 You do this by calling `method()` on the returned from `expects()`:
 
     $mock->expects($matcher)
@@ -105,16 +105,16 @@ PHPUnit has a fairly complex way of comparing parameters passed to the mock meth
 * If the values are of different types they are not equal.
 * If the values are numbers they they are considered equal if their difference is equal to zero (this level of accuracy can be changed).
 * If the values are objects then they are converted to arrays and are compared as arrays.
-* If the values are arrays then any sub-arrays deeper than x levels (default 10) are ignored in the comparision.
+* If the values are arrays then any sub-arrays deeper than x levels (default 10) are ignored in the comparison.
 * If the values are arrays and one contains more than elements that the other (at any depth up to the max depth), then they are not equal.
 
-#### More advanced parameter comparisions
+#### More advanced parameter comparisons
 
 Sometimes you need to be more specific about how PHPUnit should compare parameters, i.e. if you want to make sure that one of the parameters is an instance of an object, yet isn't necessarily identical to a particular instance.
 
-In PHPUnit, the logic for validating objects and datatypes has been refactored into "constraint objects". If you look in any of the assertX() methods you can see that they are nothing more than wrappers for associating constraint objects with tests.
+In PHPUnit, the logic for validating objects and data types has been refactored into "constraint objects". If you look in any of the assertX() methods you can see that they are nothing more than wrappers for associating constraint objects with tests.
 
-If a parameter passed to `with()` is not an instance of a constraint object (one which extends `PHPUnit_Framework_Constraint`) then PHPUnit creates a new `IsEqual` comparision object for it.
+If a parameter passed to `with()` is not an instance of a constraint object (one which extends `PHPUnit_Framework_Constraint`) then PHPUnit creates a new `IsEqual` comparison object for it.
 
 i.e., the following methods produce the same result:
 
@@ -142,8 +142,8 @@ Here are some of the wrappers PHPUnit provides for creating constraint objects:
 `$this->equalTo($value, $delta = 0, $canonicalizeEOL = false, $ignoreCase = false)`
 : Asserts that the parameter is equal to `$value` (same as not passing a constraint object to `with()`).
 : `$delta` is the degree of accuracy to use when comparing numbers. i.e. 0 means numbers need to be identical, 1 means numbers can be within a distance of one from each other.
-: If `$canonicalizeEOL` is true then all newlines in string values will be converted to `\n` before comparision.
-: If `$ignoreCase` is true then both strings will be converted to lowercase before comparision.
+: If `$canonicalizeEOL` is true then all newlines in string values will be converted to `\n` before comparison.
+: If `$ignoreCase` is true then both strings will be converted to lowercase before comparison.
 
 `$this->identicalTo($value)`
 : Asserts that the parameter is identical to `$value`.
@@ -158,13 +158,13 @@ Here are some of the wrappers PHPUnit provides for creating constraint objects:
 : Asserts that the parameter is less than `$value`.
 
 `$this->objectHasAttribute($attribute)`
-: Asserts that the paramater (which is assumed to be an object) has an attribute `$attribute`.
+: Asserts that the parameter (which is assumed to be an object) has an attribute `$attribute`.
 
 `$this->matchesRegularExpression($pattern)`
 : Asserts that the parameter matches the PCRE pattern `$pattern` (using `preg_match()`).
 
 `$this->stringContains($string, $ignoreCase = false)`
-: Asserts that the parameter contains the string `$string`. If `$ignoreCase` is true then a case insensitive comparision is done.
+: Asserts that the parameter contains the string `$string`. If `$ignoreCase` is true then a case insensitive comparison is done.
 
 `$this->stringEndsWith($suffix)`
 : Asserts that the parameter ends with `$suffix` (assumes parameter is a string).
@@ -193,7 +193,7 @@ So far PHPUnit knows that we want the `check()` method to be called once, with n
 
 This is the final stage of mocking a method.
 
-By default PHPUnit can return either
+By default, PHPUnit can return either
 
 * A fixed value
 * One of the parameters that were passed to it
@@ -215,7 +215,7 @@ PHPUnit provides some MockObject stubs out of the box, you can access them via (
 
 `$this->returnCallback($callback)`
 : Returns the value of the callback, useful for more complicated mocking.
-: `$callback` should a valid callback (i.e. `is_callable($callback) === true`). PHPUnit will pass the callback all of the parameters that the mocked method was passed, in the same order / argument index (i.e. the callback is invoked by `call_user_func_array()`).
+: `$callback` should a valid callback (i.e. `is_callable($callback) === true`). PHPUnit will pass the callback all the parameters that the mocked method was passed, in the same order / argument index (i.e. the callback is invoked by `call_user_func_array()`).
 : You can usually create the callback in your testcase, as long as doesn't begin with "test".
 
 Obviously if you really want to you can create your own MockObject stub, but these three should cover most situations.

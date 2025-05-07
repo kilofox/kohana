@@ -1,6 +1,6 @@
 # Controllers
 
-A Controller is a class file that stands in between the models and the views in an application. It passes information on to the model when data needs to be changed and it requests information from the model when data needs to be loaded. Controllers then pass on the information of the model to the views where the final output can be rendered for the users. Controllers essentially control the flow of the application.
+A Controller is a class file that stands in between the models and the views in an application. It passes information on to the model when data needs to be changed, and it requests information from the model when data needs to be loaded. Controllers then pass on the information of the model to the views where the final output can be rendered for the users. Controllers essentially control the flow of the application.
 
 Controllers are called by the [Request::execute()] function based on the [Route] that the url matched. Be sure to read the [routing](routing) page to understand how to use routes to map urls to your controllers.
 
@@ -8,7 +8,7 @@ Controllers are called by the [Request::execute()] function based on the [Route]
 
 In order to function, a controller must do the following:
 
-* Reside in `classes/Controller` (or a sub-directory)
+* Reside in `classes/Controller` (or a subdirectory)
 * Filename must match the class name exactly, e.g. `Articles.php`
 * The class name must map to the filename (with `/` replaced with `_`) and each word is capitalized
 * Must have the Controller class as a (grand)parent
@@ -59,11 +59,11 @@ Every controller has the `$this->request` property which is the [Request] object
 
 Here is a partial list of the properties and methods available to `$this->request`. See the [Request] class for more information on any of these.
 
-Property/method | What it does
---- | ---
-[$this->request->route()](../api/Request#property:route) | The [Route] that matched the current request url
-[$this->request->directory()](../api/Request#property:directory), <br /> [$this->request->controller](../api/Request#property:controller), <br /> [$this->request->action](../api/Request#property:action) | The directory, controller and action that matched for the current route
-[$this->request->param()](../api/Request#param) | Any other params defined in your route
+| Property/method                                                                                                                                                                                            | What it does                                                            |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| [$this->request->route()](../api/Request#property:route)                                                                                                                                                   | The [Route] that matched the current request url                        |
+| [$this->request->directory()](../api/Request#property:directory), <br /> [$this->request->controller](../api/Request#property:controller), <br /> [$this->request->action](../api/Request#property:action) | The directory, controller and action that matched for the current route |
+| [$this->request->param()](../api/Request#param)                                                                                                                                                            | Any other params defined in your route                                  |
 
 ## $this->response
 [$this->response->body()](../api/Response#property:body) | The content to return for this request
@@ -140,7 +140,7 @@ A user login action.
 
 You can use the `before()` and `after()` functions to have code executed before or after the action is executed. For example, you could check if the user is logged in, set a template view, loading a required file, etc.
 
-For example, if you look in `Controller_Template` you can see that in the be
+For example, if you look in `Controller_Template` you can see that in the `before()` function.
 
 You can check what action has been requested (via `$this->request->action`) and do something based on that, such as requiring the user to be logged in to use a controller, unless they are using the login action.
 

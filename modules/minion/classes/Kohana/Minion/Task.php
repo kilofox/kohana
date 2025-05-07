@@ -117,7 +117,7 @@ abstract class Kohana_Minion_Task
     }
 
     /**
-     * The file that get's passes to Validation::errors() when validation fails
+     * The file passed to Validation::errors() when validation fails
      * @var string|null
      */
     protected $_errors_file = 'validation';
@@ -221,7 +221,7 @@ abstract class Kohana_Minion_Task
         $validation = Validation::factory($options);
         $validation = $this->build_validation($validation);
 
-        if ($this->_method != '_help' AND ! $validation->check()) {
+        if ($this->_method != '_help' AND !$validation->check()) {
             echo View::factory('minion/error/validation')
                 ->set('task', Minion_Task::convert_class_to_task($this))
                 ->set('errors', $validation->errors($this->get_errors_file()));
@@ -264,7 +264,7 @@ abstract class Kohana_Minion_Task
     }
 
     /**
-     * Parses a doccomment, extracting both the comment and any tags associated
+     * Parses a doc comment, extracting both the comment and any tags associated
      *
      * Based on the code in Kodoc::parse()
      *

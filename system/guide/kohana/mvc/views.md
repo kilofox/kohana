@@ -2,11 +2,11 @@
 
 Views are files that contain the display information for your application. This is most commonly HTML, CSS and Javascript but can be anything you require such as XML or JSON for AJAX output. The purpose of views is to keep this information separate from your application logic for easy reusability and cleaner code.
 
-Views themselves can contain code used for displaying the data you pass into them. For example, looping through an array of product information and display each one on a new table row. Views are still PHP files so you can use any code you normally would. However, you should try to keep your views as "dumb" as possible and retreive all data you need in your controllers, then pass it to the view.
+Views themselves can contain code used for displaying the data you pass into them. For example, looping through an array of product information and display each one on a new table row. Views are still PHP files, so you can use any code you normally would. However, you should try to keep your views as "dumb" as possible and retrieve all data you need in your controllers, then pass it to the view.
 
 # Creating View Files
 
-View files are stored in the `views` directory of the [filesystem](files). You can also create sub-directories within the `views` directory to organize your files. All of the following examples are reasonable view files:
+View files are stored in the `views` directory of the [filesystem](files). You can also create subdirectories within the `views` directory to organize your files. All the following examples are reasonable view files:
 
     APPPATH/views/home.php
     APPPATH/views/pages/about.php
@@ -16,7 +16,7 @@ View files are stored in the `views` directory of the [filesystem](files). You c
 
 ## Loading Views
 
-[View] objects will typically be created inside a [Controller](mvc/controllers) using the [View::factory] method. Typically the view is then assigned as the [Request::$response] property or to another view.
+[View] objects will typically be created inside a [Controller](mvc/controllers) using the [View::factory] method. Typically, the view is then assigned as the [Request::$response] property or to another view.
 
     public function action_about()
     {
@@ -110,14 +110,14 @@ Next, the home controller will extend `Controller_Website`:
 
 ## Views Within Views
 
-If you want to include another view within a view, there are two choices. By calling [View::factory] you can sandbox the included view. This means that you will have to provide all of the variables to the view using [View::set] or [View::bind]:
+If you want to include another view within a view, there are two choices. By calling [View::factory] you can sandbox the included view. This means that you will have to provide all the variables to the view using [View::set] or [View::bind]:
 
     // In your view file:
 
     // Only the $user variable will be available in "views/user/login.php"
     <?php echo View::factory('user/login')->bind('user', $user) ?>
 
-The other option is to include the view directly, which makes all of the current variables available to the included view:
+The other option is to include the view directly, which makes all the current variables available to the included view:
 
     // In your view file:
 

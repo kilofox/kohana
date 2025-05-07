@@ -2,7 +2,7 @@
 
 /**
  * A port of [phputf8](http://phputf8.sourceforge.net/) to a unified set
- * of files. Provides multi-byte aware replacement string functions.
+ * of files. Provides multibyte aware replacement string functions.
  *
  * For UTF-8 support to work correctly, the following requirements must be met:
  *
@@ -673,7 +673,7 @@ class Kohana_UTF8
     }
 
     /**
-     * Takes an UTF-8 string and returns an array of ints representing the Unicode characters.
+     * Takes a UTF-8 string and returns an array of ints representing the Unicode characters.
      * Astral planes are supported i.e. the ints in the output can be > 0xFFFF.
      * Occurrences of the BOM are ignored. Surrogates are not allowed.
      *

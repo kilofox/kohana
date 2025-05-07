@@ -65,12 +65,12 @@ You should see the installation page. If it reports any errors, you will need to
 
 ![Install Page](install.png "Example of install page")
 
-Once your install page reports that your environment is set up correctly you need to either rename or delete `install.php`. Kohana is now installed and you should see the output of the welcome controller:
+Once your installation page reports that your environment is set up correctly you need to either rename or delete `install.php`. Kohana is now installed, and you should see the output of the welcome controller:
 
 ![Welcome Page](welcome.png "Example of welcome page")
 
 ## Installing Kohana From GitHub
 
-The [source code](http://github.com/kohana/kohana) for Kohana is hosted with [GitHub](http://github.com). To install Kohana using the github source code first you need to install [git](http://git-scm.com/). Visit [http://help.github.com](http://help.github.com) for details on how to install git on your platform.
+The [source code](http://github.com/kohana/kohana) for Kohana is hosted with [GitHub](http://github.com). To install Kohana using the GitHub source code first you need to install [git](http://git-scm.com/). Visit [http://help.github.com](http://help.github.com) for details on how to install git on your platform.
 
 [!!] For more information on installing Kohana using git, see the [Working with Git](tutorials/git) tutorial.

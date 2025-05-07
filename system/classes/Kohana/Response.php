@@ -24,7 +24,7 @@ class Kohana_Response implements HTTP_Response
      *      // Create a new response with headers
      *      $response = Response::factory(['status' => 200]);
      *
-     * @param   array    $config Setup the response object
+     * @param   array    $config Set up the response object
      * @return  Response
      */
     public static function factory(array $config = [])
@@ -111,7 +111,7 @@ class Kohana_Response implements HTTP_Response
     /**
      * Sets up the response object
      *
-     * @param   array $config Setup the response object
+     * @param   array $config Set up the response object
      * @return  void
      */
     public function __construct(array $config = [])
@@ -270,7 +270,7 @@ class Kohana_Response implements HTTP_Response
         // Handle the get cookie calls
         if ($key === null)
             return $this->_cookies;
-        elseif (!is_array($key) AND ! $value)
+        elseif (!is_array($key) AND !$value)
             return Arr::get($this->_cookies, $key);
 
         // Handle the set cookie calls
@@ -595,7 +595,7 @@ class Kohana_Response implements HTTP_Response
      * Parse the byte ranges from the HTTP_RANGE header used for
      * resumable downloads.
      *
-     * @link   http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35
+     * @link   https://www.rfc-editor.org/rfc/rfc9110.html#name-byte-ranges
      * @return array|false
      */
     protected function _parse_byte_range()
@@ -642,7 +642,7 @@ class Kohana_Response implements HTTP_Response
         // Normalize values.
         $start = abs(intval($start));
 
-        // Keep the the end value in bounds and normalize it.
+        // Keep the end value in bounds and normalize it.
         $end = min(abs(intval($end)), $size - 1);
 
         // Keep the start in bounds.

@@ -91,9 +91,9 @@ abstract class Kohana_Codebench
 
             // Benchmark each subject on each method
             foreach ($this->subjects as $subject_key => $subject) {
-                // Prerun each method/subject combo before the actual benchmark loop.
+                // Pre-run each method/subject combo before the actual benchmark loop.
                 // This way relatively expensive initial processes won't be benchmarked, e.g. autoloading.
-                // At the same time we capture the return here so we don't have to do that in the loop anymore.
+                // At the same time we capture the return here, so we don't have to do that in the loop anymore.
                 $return = $reflection->invoke($this, $subject);
 
                 // Start the timer for one subject

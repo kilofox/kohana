@@ -27,7 +27,7 @@ By default, Kohana displays all errors, including strict mode warnings. This is 
 
     error_reporting(E_ALL | E_STRICT);
 
-When you application is live and in production, a more conservative setting is recommended, such as ignoring notices:
+When your application is live and in production, a more conservative setting is recommended, such as ignoring notices:
 
     error_reporting(E_ALL & ~E_NOTICE);
 

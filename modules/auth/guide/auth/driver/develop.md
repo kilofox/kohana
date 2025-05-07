@@ -29,7 +29,7 @@ class Auth_Example extends Auth
 
     public function check_password($password)
     {
-        // Check to see if the logged in user has the given password
+        // Check to see if the logged-in user has the given password
     }
 
     public function logged_in($role = null)
@@ -39,7 +39,7 @@ class Auth_Example extends Auth
 
     public function get_user($default = null)
     {
-        // Get the logged in user, or return the $default if a user is not found
+        // Get the logged-in user, or return the $default if a user is not found
     }
 }
 ~~~
@@ -76,4 +76,4 @@ public function get_user($default = null)
 
 ## Activating the Driver
 
-After you create your driver you will want to use it. It is a easy as setting the `driver` [configuration](config) option to the name of your driver (in our case `example`).
+After you create your driver you will want to use it. It is as easy as setting the `driver` [configuration](config) option to the name of your driver (in our case `example`).

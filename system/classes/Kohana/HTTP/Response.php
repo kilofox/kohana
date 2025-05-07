@@ -1,7 +1,7 @@
 <?php
 
 /**
- * A HTTP Response specific interface that adds the methods required
+ * An HTTP Response specific interface that adds the methods required
  * by HTTP responses. Over and above [Kohana_HTTP_Interaction], this
  * interface provides status.
  *

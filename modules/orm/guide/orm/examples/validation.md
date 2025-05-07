@@ -75,7 +75,7 @@ Please forgive my slightly ugly form. I am trying not to use any modules or unre
 
 ## Controller
 
-[!!] Remember that the `password` will be hashed as soon as it is set in the model, for this reason, it is impossible to validate it's length or the fact that it matches the `password_confirm` field. The model should not care about validating the `password_confirm` field, so we add that logic to the controller and simply ask the model to bundle the errors into one tidy array. Read the [filters](filters) section to understand how those work.
+[!!] Remember that the `password` will be hashed as soon as it is set in the model, for this reason, it is impossible to validate its length or the fact that it matches the `password_confirm` field. The model should not care about validating the `password_confirm` field, so we add that logic to the controller and simply ask the model to bundle the errors into one tidy array. Read the [filters](filters) section to understand how those work.
 
     public function action_create()
     {

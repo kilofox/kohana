@@ -4,9 +4,9 @@ Modules are simply an addition to the [Cascading Filesystem](files). A module ca
 
 ## Where to find modules
 
-Kolanos has created [kohana-universe](http://github.com/kolanos/kohana-universe/tree/master/modules/), a fairly comprehensive list of modules that are available on Github. To get your module listed there, send him a message via Github.
+Kolanos has created [kohana-universe](http://github.com/kolanos/kohana-universe/tree/master/modules/), a fairly comprehensive list of modules that are available on GitHub. To get your module listed there, send him a message via GitHub.
 
-Mon Geslani created a [very nice site](http://kohana.mongeslani.com/) that allows you to sort Github modules by activity, watchers, forks, etc. It seems to not be as comprehensive as kohana-universe.
+Mon Geslani created a [very nice site](http://kohana.mongeslani.com/) that allows you to sort GitHub modules by activity, watchers, forks, etc. It seems to not be as comprehensive as kohana-universe.
 
 Andrew Hutchings has created [kohana-modules](http://www.kohana-modules.com) which is similar to the above sites.
 
@@ -37,4 +37,4 @@ A file in an enabled module is virtually the same as having that exact file in t
 
 ## Creating your own module
 
-To create a module simply create a folder (usually in `DOCROOT/modules`) and place the files you want to be in the module there, and activate that module in your bootstrap. To share your module, you can upload it to [Github](http://github.com). You can look at examples of modules made by [Kohana](http://github.com/kohana) or [other users](#where-to-find-modules).
+To create a module simply create a folder (usually in `DOCROOT/modules`) and place the files you want to be in the module there, and activate that module in your bootstrap. To share your module, you can upload it to [GitHub](http://github.com). You can look at examples of modules made by [Kohana](http://github.com/kohana) or [other users](#where-to-find-modules).

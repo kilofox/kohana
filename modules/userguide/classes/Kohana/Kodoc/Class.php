@@ -32,7 +32,7 @@ class Kohana_Kodoc_Class extends Kodoc
     public $tags = [];
 
     /**
-     * @var  array  array of this classes constants
+     * @var  array  array of this class's constants
      */
     public $constants = [];
 
@@ -116,7 +116,7 @@ class Kohana_Kodoc_Class extends Kodoc
             if ($parent->name == 'Kodoc_Missing') {
                 $result .= "[!!] **This class, or a class parent, could not be
 				           found or loaded. This could be caused by a missing
-				           module or other dependancy. The documentation for
+				           module or other dependency. The documentation for
 				           class may not be complete!**";
             }
         }
@@ -226,7 +226,7 @@ class Kohana_Kodoc_Class extends Kodoc
         if ($b->name == $this->class->name)
             return 1;
 
-        // Otherwise, get the parents of each methods declaring class, then compare which function has more "ancestors"
+        // Otherwise, get the parents of each method's declaring class, then compare which function has more "ancestors"
         $adepth = 0;
         $bdepth = 0;
 

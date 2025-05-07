@@ -13,7 +13,7 @@
 class Kohana_TextTest extends Unittest_TestCase
 {
     /**
-     * Sets up the test enviroment
+     * Sets up the test environment
      */
     // @codingStandardsIgnoreStart
     function setUp()
@@ -263,7 +263,7 @@ class Kohana_TextTest extends Unittest_TestCase
     }
 
     /**
-     * Provides test data for test_reducde_slashes()
+     * Provides test data for test_reduce_slashes()
      *
      * @returns array Array of test data
      */
@@ -441,7 +441,7 @@ class Kohana_TextTest extends Unittest_TestCase
             ['1.02 kB', 1024, null, null, true],
             // In case you need to know the size of a floppy disk in petabytes
             ['0.00147 GB', 1.44 * 1000 * 1024, 'GB', '%01.5f %s', true],
-            // SI is the standard, but lets deviate slightly
+            // SI is the standard, but let's deviate slightly
             ['1.00 MiB', 1024 * 1024, 'MiB', null, false],
         ];
     }
@@ -565,9 +565,9 @@ class Kohana_TextTest extends Unittest_TestCase
 
     /**
      * This checks that auto_link_emails() respects word boundaries and does not
-     * just blindly replace all occurences of the email address in the text.
+     * just blindly replace all occurrences of the email address in the text.
      *
-     * In the sample below the algorithm was replacing all occurences of voorzitter@xxxx.com
+     * In the sample below the algorithm was replacing all occurrences of voorzitter@xxxx.com
      * inc the copy in the second list item.
      *
      * It was updated in 6c199366efc1115545ba13108b876acc66c54b2d to respect word boundaries

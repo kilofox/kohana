@@ -86,7 +86,7 @@ class Kohana_Config_File_ReaderTest extends Kohana_Unittest_TestCase
 
         // Due to the way the cascading filesystem works there could be
         // any number of modifications to the system config in the
-        // actual output.  Therefore to increase compatability we just
+        // actual output. Therefore, to increase compatability we just
         // check that we've got an array and that it's not empty
         $this->assertNotSame([], $values);
         $this->assertInternalType('array', $values);

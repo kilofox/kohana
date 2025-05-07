@@ -13,7 +13,7 @@
 class Kohana_SecurityTest extends Unittest_TestCase
 {
     /**
-     * Provides test data for test_envode_php_tags()
+     * Provides test data for test_encode_php_tags()
      *
      * @return array Test data sets
      */

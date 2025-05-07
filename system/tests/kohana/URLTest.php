@@ -54,7 +54,7 @@ class Kohana_URLTest extends Unittest_TestCase
     public function provider_base()
     {
         return [
-            // $protocol, $index, $expected, $enviroment
+            // $protocol, $index, $expected, $environment
             // Test with different combinations of parameters for max code coverage
             [
                 null,
@@ -101,7 +101,7 @@ class Kohana_URLTest extends Unittest_TestCase
                     'Request::$initial' => Request::factory('/')->protocol('cli')
                 ]
             ],
-            // Change base url'
+            // Change base url
             [
                 'https',
                 false,
@@ -159,7 +159,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @param boolean $protocol Parameter for Url::base()
      * @param boolean $index Parameter for Url::base()
      * @param string $expected Expected url
-     * @param array $enviroment Array of enviroment vars to change @see Kohana_URLTest::setEnvironment()
+     * @param array $enviroment Array of environment vars to change @see Kohana_URLTest::setEnvironment()
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
@@ -272,7 +272,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @param string $uri URI to use
      * @param boolean|string $protocol Protocol to use
      * @param string $expected Expected result
-     * @param array $enviroment Array of enviroment vars to set
+     * @param array $enviroment Array of environment vars to set
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
@@ -331,7 +331,7 @@ class Kohana_URLTest extends Unittest_TestCase
     public function provider_title()
     {
         return [
-            // Tests that..
+            // Tests that…
             // Title is converted to lowercase
             [
                 'we-shall-not-be-moved',
@@ -410,7 +410,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_title
      * @param string $title        Input to convert
-     * @param string $separator    Seperate to replace invalid characters with
+     * @param string $separator    Separator to replace invalid characters with
      * @param string $expected     Expected result
      */
     public function test_title($expected, $title, $separator, $ascii_only = false)

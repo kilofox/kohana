@@ -14,10 +14,10 @@ The default cache group is loaded based on the `Cache::$default` setting. It is 
 
 Below are the default cache configuration groups for each supported driver. Add to or override these settings within the `application/config/cache.php` file.
 
-Name           | Required | Description
--------------- | -------- | ---------------------------------------------------------------
-driver         | __YES__  | (_string_) The driver type to use
-default_expire | __NO__   | (_integer_) The default expiration value
+| Name           | Required | Description                              |
+|----------------|----------|------------------------------------------|
+| driver         | __YES__  | (_string_) The driver type to use        |
+| default_expire | __NO__   | (_integer_) The default expiration value |
 
     'file' => [
         'driver' => 'file',
@@ -27,19 +27,19 @@ default_expire | __NO__   | (_integer_) The default expiration value
 
 ## Memcached settings
 
-Name           | Required | Description
--------------- | -------- | ---------------------------------------------------------------
-driver         | __YES__  | (_string_) The driver type to use
-servers        | __YES__  | (_array_) Associative array of server details, must include a __host__ key. (See _Memcached server configuration_ below)
+| Name    | Required | Description                                                                                                              |
+|---------|----------|--------------------------------------------------------------------------------------------------------------------------|
+| driver  | __YES__  | (_string_) The driver type to use                                                                                        |
+| servers | __YES__  | (_array_) Associative array of server details, must include a __host__ key. (See _Memcached server configuration_ below) |
 
 ### Memcached server configuration
 
-Name             | Required | Description
----------------- | -------- | ---------------------------------------------------------------
-host             | __YES__  | (_string_) The host of the memcache server, i.e. __localhost__; or __127.0.0.1__; or __memcache.domain.tld__
-port             | __NO__   | (_integer_) The port on which memcached is running. Set this parameter to 0 when using UNIX domain sockets. Default to __11211__
-weight           | __NO__   | (_integer_) The weight of the server relative to the total weight of all the servers in the pool. This controls the probability of the server being selected for operations. Default to __1__
-options          | __NO__   | (_array_) An associative array of options where the key is the option to set and the value is the new value for the option. Default to __[]__
+| Name    | Required | Description                                                                                                                                                                                   |
+|---------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| host    | __YES__  | (_string_) The host of the memcache server, i.e. __localhost__; or __127.0.0.1__; or __memcache.domain.tld__                                                                                  |
+| port    | __NO__   | (_integer_) The port on which memcached is running. Set this parameter to 0 when using UNIX domain sockets. Default to __11211__                                                              |
+| weight  | __NO__   | (_integer_) The weight of the server relative to the total weight of all the servers in the pool. This controls the probability of the server being selected for operations. Default to __1__ |
+| options | __NO__   | (_array_) An associative array of options where the key is the option to set and the value is the new value for the option. Default to __[]__                                                 |
 
     'memcached' => [
         'driver' => 'memcached',
@@ -56,24 +56,24 @@ options          | __NO__   | (_array_) An associative array of options where th
 
 ## Memcache & Memcached-tag settings
 
-Name           | Required | Description
--------------- | -------- | ---------------------------------------------------------------
-driver         | __YES__  | (_string_) The driver type to use
-servers        | __YES__  | (_array_) Associative array of server details, must include a __host__ key. (see _Memcache server configuration_ below)
-compression    | __NO__   | (_boolean_) Use data compression when caching
+| Name        | Required | Description                                                                                                             |
+|-------------|----------|-------------------------------------------------------------------------------------------------------------------------|
+| driver      | __YES__  | (_string_) The driver type to use                                                                                       |
+| servers     | __YES__  | (_array_) Associative array of server details, must include a __host__ key. (see _Memcache server configuration_ below) |
+| compression | __NO__   | (_boolean_) Use data compression when caching                                                                           |
 
 ### Memcache server configuration
 
-Name             | Required | Description
----------------- | -------- | ---------------------------------------------------------------
-host             | __YES__  | (_string_) The host of the memcache server, i.e. __localhost__; or __127.0.0.1__; or __memcache.domain.tld__
-port             | __NO__   | (_integer_) Point to the port where memcached is listening for connections. Set this parameter to 0 when using UNIX domain sockets. Default to __11211__
-persistent       | __NO__   | (_boolean_) Controls the use of a persistent connection. Default to __true__
-weight           | __NO__   | (_integer_) Number of buckets to create for this server which in turn control its probability of it being selected. The probability is relative to the total weight of all servers. Default to __1__
-timeout          | __NO__   | (_integer_) Value in seconds which will be used for connecting to the daemon. Think twice before changing the default value of 1 second - you can lose all the advantages of caching if your connection is too slow. Default to __1__
-retry_interval   | __NO__   | (_integer_) Controls how often a failed server will be retried, the default value is 15 seconds. Setting this parameter to -1 disables automatic retry. Default to __15__
-status           | __NO__   | (_boolean_) Controls if the server should be flagged as online. Default to __true__
-failure_callback | __NO__   | (_[callback](http://www.php.net/manual/en/language.pseudo-types.php#language.types.callback)_) Allows the user to specify a callback function to run upon encountering an error. The callback is run before failover is attempted. The function takes two parameters, the hostname and port of the failed server. Default to __null__
+| Name             | Required | Description                                                                                                                                                                                                                                                                                                                           |
+|------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| host             | __YES__  | (_string_) The host of the memcache server, i.e. __localhost__; or __127.0.0.1__; or __memcache.domain.tld__                                                                                                                                                                                                                          |
+| port             | __NO__   | (_integer_) Point to the port where memcached is listening for connections. Set this parameter to 0 when using UNIX domain sockets. Default to __11211__                                                                                                                                                                              |
+| persistent       | __NO__   | (_boolean_) Controls the use of a persistent connection. Default to __true__                                                                                                                                                                                                                                                          |
+| weight           | __NO__   | (_integer_) Number of buckets to create for this server which in turn control its probability of it being selected. The probability is relative to the total weight of all servers. Default to __1__                                                                                                                                  |
+| timeout          | __NO__   | (_integer_) Value in seconds which will be used for connecting to the daemon. Think twice before changing the default value of 1 second - you can lose all the advantages of caching if your connection is too slow. Default to __1__                                                                                                 |
+| retry_interval   | __NO__   | (_integer_) Controls how often a failed server will be retried, the default value is 15 seconds. Setting this parameter to -1 disables automatic retry. Default to __15__                                                                                                                                                             |
+| status           | __NO__   | (_boolean_) Controls if the server should be flagged as online. Default to __true__                                                                                                                                                                                                                                                   |
+| failure_callback | __NO__   | (_[callback](http://www.php.net/manual/en/language.pseudo-types.php#language.types.callback)_) Allows the user to specify a callback function to run upon encountering an error. The callback is run before failover is attempted. The function takes two parameters, the hostname and port of the failed server. Default to __null__ |
 
     'memcache' => [
         'driver' => 'memcache',

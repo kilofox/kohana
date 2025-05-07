@@ -16,7 +16,7 @@ The first thing you will need to change is the `index_file` setting of [Kohana::
         'index_file' => false,
     ]);
 
-This change will make it so all of the links generated using [URL::site], [URL::base], and [HTML::anchor] will no longer include "index.php" in the URL. All generated links will start with `/myapp/` instead of `/myapp/index.php/`.
+This change will make it so all the links generated using [URL::site], [URL::base], and [HTML::anchor] will no longer include "index.php" in the URL. All generated links will start with `/myapp/` instead of `/myapp/index.php/`.
 
 ## 2. URL Rewriting
 
@@ -47,7 +47,7 @@ In the main apache configuration file (usually `httpd.conf`), or in the virtual 
 
 ### Failed!
 
-If you get a "Internal Server Error" or "No input file specified" error, try changing:
+If you get an "Internal Server Error" or "No input file specified" error, try changing:
 
     RewriteRule ^(?:application|modules|system)\b - [F,L]
 

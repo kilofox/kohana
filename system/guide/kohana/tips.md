@@ -16,7 +16,7 @@ As of Kohana 3.3, classes are autoloaded using the case-sensitive PSR-0 autoload
 
 ## Handling lots of routes
 
-Sometimes your application is sufficiently complex that you have many routes and it becomes unmanageable to put them all in bootstrap.php. If this is the case, simply make a `routes.php` file in APPPATH and require that in your bootstrap: `require_once APPPATH.'routes'.EXT;`
+Sometimes your application is sufficiently complex that you have many routes, and it becomes unmanageable to put them all in bootstrap.php. If this is the case, simply make a `routes.php` file in APPPATH and require that in your bootstrap: `require_once APPPATH.'routes'.EXT;`
 
 ## Reflection_Exception
 

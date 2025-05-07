@@ -30,7 +30,7 @@ class Kohana_Config_File_Reader implements Kohana_Config_Reader
     }
 
     /**
-     * Load and merge all of the configuration files in this group.
+     * Load and merge all the configuration files in this group.
      *
      *     $config->load($name);
      *

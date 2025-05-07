@@ -1,6 +1,6 @@
 # Configuration
 
-By default Kohana is setup to load configuration values from [config files](files/config) in the
+By default, Kohana is set up to load configuration values from [config files](files/config) in the
 cascading filesystem. However, it is very easy to adapt it to load config values in other
 locations/formats.
 
@@ -103,7 +103,7 @@ a particular config variable but a source lower down the stack does then the val
 be used.
 
 The position of sources in the stack is determined by how they are loaded in your bootstrap.
-By default when you load a source it is pushed to the top of a stack:
+By default, when you load a source it is pushed to the top of a stack:
 
     // Stack: <empty>
     Kohana::$config->attach(new Config_File);
@@ -134,7 +134,7 @@ For example, using the setup outlined above:
                 name:  Kohana Bot
             method: smtp
 
-[!!] **Note:** The above syntax is simply pseudo code to illustrate the concept of config merging.
+[!!] **Note:** The above syntax is simply pseudocode to illustrate the concept of config merging.
 
 On some occasions you may want to append a config source to the bottom of the stack, to do this pass `false`
 as the second parameter to `attach()`:
@@ -177,7 +177,7 @@ In this case you still need access to the config settings stored in the `config`
 settings that are needed whatever environment your application is in (e.g. encryption settings),
 so replacing the default `Config_File` source isn't really an option.
 
-To get around this you can attach a separate config file reader which loads its config from a subdir of `config` called
+To get around this you can attach a separate config file reader which loads its config from a subdirectory of `config` called
 "testing":
 
     Kohana::$config->attach(new Config_File);

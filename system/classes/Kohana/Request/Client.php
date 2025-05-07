@@ -258,9 +258,9 @@ abstract class Kohana_Request_Client
     /**
      * Getter and setter for the maximum callback depth property.
      *
-     * This protects the main execution from recursive callback execution (eg
-     * following infinite redirects, conflicts between callbacks causing loops
-     * etc). Requests will only be allowed to nest to the level set by this
+     * This protects the main execution from recursive callback execution (e.g.,
+     * following infinite redirects, and conflicts between callbacks causing loops).
+     * Requests will only be allowed to nest to the level set by this
      * param before execution is aborted with a Request_Client_Recursion_Exception.
      *
      * @param int $depth  Maximum number of callback requests to execute before aborting

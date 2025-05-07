@@ -69,7 +69,7 @@
  * -------------- | -------- | ---------------------------------------------------------------
  * driver         | __YES__  | (_string_) The driver type to use
  *
- * Details of the settings specific to each driver are available within the drivers documentation.
+ * Details of the settings specific to each driver are available within the driver's documentation.
  *
  * ### System requirements
  *
@@ -161,7 +161,7 @@ abstract class Kohana_Cache
 
     /**
      * Getter and setter for the configuration. If no argument provided, the
-     * current configuration is returned. Otherwise the configuration is set
+     * current configuration is returned. Otherwise, the configuration is set
      * to this class.
      *
      *     // Overwrite all configuration
@@ -171,7 +171,7 @@ abstract class Kohana_Cache
      *     $cache->config('servers', ['foo' => 'bar', '...']);
      *
      *     // Get a configuration setting
-     *     $servers = $cache->config('servers);
+     *     $servers = $cache->config('servers');
      *
      * @param   mixed    key to set to array, either array or config path
      * @param   mixed    value to associate with key
@@ -211,7 +211,7 @@ abstract class Kohana_Cache
      *     // Retrieve cache entry from default group
      *     $data = Cache::instance()->get('foo');
      *
-     *     // Retrieve cache entry from default group and return 'bar' if miss
+     *     // Retrieve cache entry from default group and return 'bar' if missing
      *     $data = Cache::instance()->get('foo', 'bar');
      *
      *     // Retrieve cache entry from memcache group

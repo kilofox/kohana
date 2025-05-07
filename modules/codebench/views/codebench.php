@@ -137,7 +137,7 @@
                 // Highlight clicked rows
                 $bench_rows.click(function() {
                     $(this).toggleClass('highlight');
-                    // Highlight doubleclicked rows globally
+                    // Highlight double-clicked rows globally
                 }).dblclick(function() {
                     var nth_row = $(this).parent().children().index(this) + 1;
                     if ($(this).hasClass('highlight')) {

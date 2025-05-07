@@ -118,7 +118,7 @@ abstract class Kohana_Image
      *     echo $image;
      *
      * [!!] The output of this function is binary and must be rendered with the
-     * appropriate Content-Type header or it will not be displayed correctly!
+     * appropriate Content-Type header, or it will not be displayed correctly!
      *
      * @return  string
      */
@@ -413,7 +413,7 @@ abstract class Kohana_Image
      *     // Create a 50 pixel reflection that fades from 0-60% opacity
      *     $image->reflection(50, 60, true);
      *
-     * [!!] By default, the reflection will be go from transparent at the top
+     * [!!] By default, the reflection will go from transparent at the top
      * to opaque at the bottom.
      *
      * @param   integer   $height   reflection height
@@ -629,7 +629,7 @@ abstract class Kohana_Image
      */
     abstract protected function _do_flip($direction);
     /**
-     * Execute a sharpen.
+     * Execute a sharpening.
      *
      * @param   integer  $amount  amount to sharpen
      * @return  void

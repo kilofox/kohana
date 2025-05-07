@@ -26,7 +26,7 @@ abstract class Kohana_HTTP
     public static $protocol = 'HTTP/1.1';
 
     /**
-     * Issues a HTTP redirect.
+     * Issues an HTTP redirect.
      *
      * @param string $uri URI to redirect to
      * @param int $code HTTP Status code to use for the redirect
@@ -46,7 +46,7 @@ abstract class Kohana_HTTP
     /**
      * Checks the browser cache to see the response needs to be returned,
      * execution will halt and a 304 Not Modified will be sent if the
-     * browser cache is up to date.
+     * browser cache is up-to-date.
      *
      * @param Request $request Request
      * @param Response $response Response
@@ -82,7 +82,7 @@ abstract class Kohana_HTTP
     }
 
     /**
-     * Parses a HTTP header string into an associative array
+     * Parses an HTTP header string into an associative array
      *
      * @param   string   $header_string  Header string to parse
      * @return  HTTP_Header
@@ -133,7 +133,7 @@ abstract class Kohana_HTTP
     }
 
     /**
-     * Parses the the HTTP request headers and returns an array containing
+     * Parses the HTTP request headers and returns an array containing
      * key value pairs. This method is slow, but provides an accurate
      * representation of the HTTP request.
      *
@@ -158,7 +158,7 @@ abstract class Kohana_HTTP
             return new HTTP_Header($headers);
         }
 
-        // Setup the output
+        // Set up the output
         $headers = [];
 
         // Parse the content type

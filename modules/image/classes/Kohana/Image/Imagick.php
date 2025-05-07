@@ -41,7 +41,7 @@ class Kohana_Image_Imagick extends Image
     public function __construct($file)
     {
         if (!Image_Imagick::$_checked) {
-            // Run the install check
+            // Run the installation check
             Image_Imagick::check();
         }
 
@@ -123,7 +123,7 @@ class Kohana_Image_Imagick extends Image
 
     protected function _do_sharpen($amount)
     {
-        // IM not support $amount under 5 (0.15)
+        // ImageMagick does not support $amount under 5 (0.15)
         $amount = ($amount < 5) ? 5 : $amount;
 
         // Amount should be in the range of 0.0 to 3.0
@@ -190,7 +190,7 @@ class Kohana_Image_Imagick extends Image
 
     protected function _do_watermark(Image $image, $offset_x, $offset_y, $opacity)
     {
-        // Convert the Image intance into an Imagick instance
+        // Convert the Image instance into an Imagick instance
         $watermark = new Imagick;
         $watermark->readImageBlob($image->render(), $image->file);
 
@@ -212,7 +212,7 @@ class Kohana_Image_Imagick extends Image
 
     protected function _do_background($r, $g, $b, $opacity)
     {
-        // Create a RGB color for the background
+        // Create an RGB color for the background
         $color = sprintf('rgb(%d, %d, %d)', $r, $g, $b);
 
         // Create a new image for the background
