@@ -11,7 +11,7 @@ return [
         'app' => true,
         // Set to [true] to include all modules, or use an array of module names
         // (the keys of the array passed to Kohana::modules() in the bootstrap)
-        // Or set to false to exclude all modules
+        // Or set to "false" to exclude all modules
         'modules' => [true],
         // If you don't want the Kohana code coverage reports to pollute your app's,
         // then set this to false

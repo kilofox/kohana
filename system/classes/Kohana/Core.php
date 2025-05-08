@@ -590,7 +590,7 @@ class Kohana_Core
      * can be included.
      *
      * When searching the "config", "messages", or "i18n" directories, or when
-     * the `$array` flag is set to true, an array of all the files that match
+     * the `$array` flag is set to "true", an array of all the files that match
      * that path in the [Cascading Filesystem](kohana/files) will be returned.
      * These files will return arrays which must be merged together.
      *

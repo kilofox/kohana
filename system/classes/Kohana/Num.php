@@ -124,7 +124,7 @@ class Kohana_Num
      * @param float $value Number to round
      * @param integer $precision Desired precision
      * @param integer $mode Tie breaking mode, accepts the PHP_ROUND_HALF_* constants
-     * @param boolean $native Set to false to force use of the userland implementation
+     * @param boolean $native Set to "false" to force use of the userland implementation
      * @return float Rounded number
      */
     public static function round($value, $precision = 0, $mode = self::ROUND_HALF_UP, $native = true)

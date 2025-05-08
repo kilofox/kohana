@@ -176,7 +176,7 @@ Here are some of the wrappers PHPUnit provides for creating constraint objects:
 : Asserts that the parameter contains at least one value that is identical to `$value` (assumes parameter is array or `SplObjectStorage`).
 
 `$this->containsOnly($type, $isNativeType = true)`
-: Asserts that the parameter only contains items of type `$type`. `$isNativeType` should be set to true when `$type` refers to a built in PHP data type (i.e. int, string etc.) (assumes parameter is array).
+: Asserts that the parameter only contains items of type `$type`. `$isNativeType` should be set to "true" when `$type` refers to a built in PHP data type (i.e. int, string etc.) (assumes parameter is array).
 
 
 There are more constraint objects than listed here, look in `PHPUnit_Framework_Assert` and `PHPUnit/Framework/Constraint` if you need more constraints.
