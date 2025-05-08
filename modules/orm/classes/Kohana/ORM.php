@@ -30,7 +30,7 @@ class Kohana_ORM extends Model implements serializable
 
     /**
      * Creates and returns a new model.
-     * Model name must be passed with its' original casing, e.g.
+     * Model name must be passed with its original casing, e.g.
      *
      *    $model = ORM::factory('User_Token');
      *
