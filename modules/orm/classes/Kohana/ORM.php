@@ -1343,12 +1343,12 @@ class Kohana_ORM extends Model implements serializable
      *
      *     // Check if $model has the login role
      *     $model->has('roles', ORM::factory('role', ['name' => 'login']));
-     *     // Check for the login role if you know the roles.id is 5
+     *     // Check for the login role if you know the role id is 5
      *     $model->has('roles', 5);
      *     // Check for all the following roles
      *     $model->has('roles', [1, 2, 3, 4]);
      *     // Check if $model has any roles
-     *     $model->has('roles')
+     *     $model->has('roles');
      *
      * @param string $alias Alias of the has_many "through" relationship
      * @param mixed $far_keys Related model, primary key, or an array of primary keys
@@ -1371,13 +1371,13 @@ class Kohana_ORM extends Model implements serializable
      * only checks that at least one of the relationships is satisfied.
      *
      *     // Check if $model has the login role
-     *     $model->has('roles', ORM::factory('role', ['name' => 'login']));
-     *     // Check for the login role if you know the roles.id is 5
-     *     $model->has('roles', 5);
+     *     $model->has_any('roles', ORM::factory('role', ['name' => 'login']));
+     *     // Check for the login role if you know the role id is 5
+     *     $model->has_any('roles', 5);
      *     // Check for any of the following roles
-     *     $model->has('roles', [1, 2, 3, 4]);
+     *     $model->has_any('roles', [1, 2, 3, 4]);
      *     // Check if $model has any roles
-     *     $model->has('roles')
+     *     $model->has_any('roles');
      *
      * @param string $alias Alias of the has_many "through" relationship
      * @param mixed $far_keys Related model, primary key, or an array of primary keys
@@ -1392,15 +1392,14 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Returns the number of relationships
      *
-     *     // Counts the number of times the login role is attached to $model
+     *     // Counts the number of times the login role is attached to current model
      *     $model->count_relations('roles', ORM::factory('role', ['name' => 'login']));
-     *     // Counts the number of times role 5 is attached to $model
+     *     // Counts the number of times role 5 is attached to current model
      *     $model->count_relations('roles', 5);
-     *     // Counts the number of times any of roles 1, 2, 3, or 4 are attached to
-     *     // $model
+     *     // Counts the number of times any of roles 1, 2, 3, or 4 are attached to current model
      *     $model->count_relations('roles', [1, 2, 3, 4]);
-     *     // Counts the number roles attached to $model
-     *     $model->count_relations('roles')
+     *     // Counts the number roles attached to current model
+     *     $model->count_relations('roles');
      *
      * @param string $alias Alias of the has_many "through" relationship
      * @param mixed $far_keys Related model, primary key, or an array of primary keys
@@ -1438,7 +1437,7 @@ class Kohana_ORM extends Model implements serializable
      *
      *     // Add the login role using a model instance
      *     $model->add('roles', ORM::factory('role', ['name' => 'login']));
-     *     // Add the login role if you know the roles.id is 5
+     *     // Add the login role if you know the role id is 5
      *     $model->add('roles', 5);
      *     // Add multiple roles (for example, from checkboxes on a form)
      *     $model->add('roles', [1, 2, 3, 4]);
