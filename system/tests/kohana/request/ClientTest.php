@@ -488,7 +488,7 @@ class Controller_RequestClientDummy extends Controller
 {
     /**
      * Takes a urlencoded 'data' parameter from the route and uses it to craft a
-     * response. Redirect chains can be tested by passing another encoded uri
+     * response. Redirect chains can be tested by passing another encoded URI
      * as a location header with an appropriate status code.
      */
     public function action_fake()

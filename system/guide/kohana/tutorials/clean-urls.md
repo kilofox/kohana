@@ -1,6 +1,6 @@
 # Clean URLs
 
-Removing `index.php` from your urls.
+Removing `index.php` from your URLs.
 
 To keep your URLs clean, you will probably want to be able to access your app without having `/index.php/` in the URL. There are two steps to remove `index.php` from the URL.
 
@@ -22,7 +22,7 @@ This change will make it so all the links generated using [URL::site], [URL::bas
 
 Enabling rewriting is done differently, depending on your web server.
 
-Rewriting will make it so urls will be passed to index.php.
+Rewriting will make it so URLs will be passed to index.php.
 
 ## Apache
 

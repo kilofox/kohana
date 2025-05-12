@@ -30,7 +30,7 @@ class Bench_MDDoImageURL extends Codebench
     protected function _add_image_url_original($matches)
     {
         if ($matches[2] AND strpos($matches[2], '://') === false) {
-            // Add the base url to the link URL
+            // Add the base URL to the link URL
             $matches[2] = 'http://BASE/' . $matches[2];
         }
 
@@ -46,7 +46,7 @@ class Bench_MDDoImageURL extends Codebench
 
     protected function _add_image_url_optimized($matches)
     {
-        // Add the base url to the link URL
+        // Add the base URL to the link URL
         $matches[2] = 'http://BASE/' . $matches[2];
 
         // Recreate the link

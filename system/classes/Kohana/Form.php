@@ -42,7 +42,7 @@ class Kohana_Form
         }
 
         if (!$action) {
-            // Allow empty form actions (submits back to the current url).
+            // Allow empty form actions (submits back to the current URL).
             $action = '';
         } elseif (strpos($action, '://') === false) {
             // Make the URI absolute

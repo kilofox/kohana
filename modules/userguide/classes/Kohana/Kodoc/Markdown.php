@@ -12,12 +12,12 @@
 class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
 {
     /**
-     * @var  string  base url for links
+     * @var  string  base URL for links
      */
     public static $base_url = '';
 
     /**
-     * @var  string  base url for images
+     * @var  string  base URL for images
      */
     public static $image_url = '';
 
@@ -61,10 +61,10 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
 
     public function __construct()
     {
-        // doImage is 10, add image url just before
+        // doImage is 10, add image URL just before
         $this->span_gamut['doImageURL'] = 9;
 
-        // doLink is 20, add base url just before
+        // doLink is 20, add base URL just before
         $this->span_gamut['doBaseURL'] = 19;
 
         // Add API links
@@ -191,7 +191,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
     }
 
     /**
-     * Add the current base url to all local links.
+     * Add the current base URL to all local links.
      *
      *     [filesystem](about.filesystem "Optional title")
      *
@@ -205,7 +205,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
     }
 
     /**
-     * Add the current base url to all local images.
+     * Add the current base URL to all local images.
      *
      *     ![Install Page](img/install.png "Optional title")
      *

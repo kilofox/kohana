@@ -901,7 +901,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_url
-     * @param string  $url       The url to test
+     * @param string  $url       The URL to test
      * @param boolean $expected  Is it valid?
      */
     public function test_url($url, $expected)

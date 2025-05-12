@@ -665,7 +665,7 @@ class Kohana_Request implements HTTP_Request
     }
 
     /**
-     * Sets and gets the uri from the request.
+     * Sets and gets the URI from the request.
      *
      * @param   string $uri
      * @return  mixed

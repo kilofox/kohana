@@ -624,12 +624,12 @@ class Kohana_TextTest extends Unittest_TestCase
     public function provider_auto_link_urls()
     {
         return [
-            // First we try with the really obvious url
+            // First we try with the really obvious URL
             [
                 'Some random text <a href="http://www.google.com">http://www.google.com</a>',
                 'Some random text http://www.google.com'
             ],
-            // Then we try with varying urls
+            // Then we try with varying URLs
             [
                 'Some random <a href="http://www.google.com">www.google.com</a>',
                 'Some random www.google.com'
@@ -638,7 +638,7 @@ class Kohana_TextTest extends Unittest_TestCase
                 'Some random google.com',
                 'Some random google.com'
             ],
-            // Check that it doesn't link urls in a href
+            // Check that it doesn't link URLs in a href
             [
                 'Look at me <a href="http://google.com">Awesome stuff</a>',
                 'Look at me <a href="http://google.com">Awesome stuff</a>'
@@ -780,7 +780,7 @@ class Kohana_TextTest extends Unittest_TestCase
             $this->assertNotContains('http://', $linked_text);
         } elseif (count($urls)) {
             foreach ($urls as $url) {
-                // Assert that all the urls have been caught by text auto_link_urls()
+                // Assert that all the URLs have been caught by text auto_link_urls()
                 $this->assertContains(Text::auto_link_urls($url), $linked_text);
             }
         }

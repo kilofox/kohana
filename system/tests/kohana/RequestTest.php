@@ -138,7 +138,7 @@ class Kohana_RequestTest extends Unittest_TestCase
         $this->assertArrayNotHasKey('foo', $request->param());
         $this->assertEquals($request->uri(), $uri);
 
-        // Ensure the params do not contain contamination from controller, action, route, uri etc etc
+        // Ensure the params do not contain contamination from controller, action, route, URI etc etc
         $params = $request->param();
 
         // Test for illegal components
@@ -285,7 +285,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_url
      * @covers       Request::url
-     * @param string $uri the uri to use
+     * @param string $uri the URI to use
      * @param string $protocol the protocol to use
      * @param array $expected The string we expect
      * @throws Kohana_Exception
@@ -430,7 +430,7 @@ class Kohana_RequestTest extends Unittest_TestCase
     }
 
     /**
-     * Tests that the uri supplied to Request is only trimed
+     * Tests that the URI supplied to Request is only trimed
      * for internal requests.
      *
      * @dataProvider provider_uri_only_trimed_on_internal
@@ -620,7 +620,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_query_parameter_parsing
      *
-     * @param string    url
+     * @param string    URL
      * @param array     query
      * @param array    expected
      * @return  void
@@ -644,7 +644,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_query_parameter_parsing
      *
-     * @param string    url
+     * @param string    URL
      * @param array     query
      * @param array    expected
      * @return  void

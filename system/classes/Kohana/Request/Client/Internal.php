@@ -50,7 +50,7 @@ class Kohana_Request_Client_Internal extends Request_Client
             $benchmark = '"' . $request->uri() . '"';
 
             if ($request !== Request::$initial AND Request::$current) {
-                // Add the parent request uri
+                // Add the parent request URI
                 $benchmark .= ' « "' . Request::$current->uri() . '"';
             }
 

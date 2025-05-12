@@ -101,7 +101,7 @@ class Kohana_URLTest extends Unittest_TestCase
                     'Request::$initial' => Request::factory('/')->protocol('cli')
                 ]
             ],
-            // Change base url
+            // Change base URL
             [
                 'https',
                 false,
@@ -110,7 +110,7 @@ class Kohana_URLTest extends Unittest_TestCase
                     'Kohana::$base_url' => 'omglol://example.com/kohana/'
                 ]
             ],
-            // Use port in base url, issue #3307
+            // Use port in base URL, issue #3307
             [
                 'http',
                 false,
@@ -119,7 +119,7 @@ class Kohana_URLTest extends Unittest_TestCase
                     'Kohana::$base_url' => 'example.com:8080/'
                 ]
             ],
-            // Use protocol from base url if none specified
+            // Use protocol from base URL if none specified
             [
                 null,
                 false,
@@ -158,7 +158,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @dataProvider provider_base
      * @param boolean $protocol Parameter for Url::base()
      * @param boolean $index Parameter for Url::base()
-     * @param string $expected Expected url
+     * @param string $expected Expected URL
      * @param array $enviroment Array of environment vars to change @see Kohana_URLTest::setEnvironment()
      * @throws Kohana_Exception
      * @throws ReflectionException
