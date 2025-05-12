@@ -104,7 +104,7 @@ class Kohana_RequestTest extends Unittest_TestCase
     }
 
     /**
-     * Ensures the create class is created with the correct client
+     * Ensures the created request is initialized with the correct client
      *
      * @test
      * @dataProvider provider_create
