@@ -67,7 +67,7 @@ If a key in a route is optional (or not present in the route), you can provide a
 
 [!!] The `controller` and `action` key must always have a value, so they either need to be required in your route (not inside of parentheses) or have a default value provided.
 
-[!!] Kohana automatically converts controllers to follow the standard naming convention. For example /blog/view/123 would look for the controller Controller_Blog in classes/Controller/Blog.php and trigger the action_view() method on it.
+[!!] Kohana automatically converts controllers to follow the standard naming convention. For example `/blog/view/123` would look for the controller `Controller_Blog` in classes/Controller/Blog.php and trigger the `action_view()` method on it.
 
 In the default route, all the keys are optional, and the controller and action are given a default. If we called an empty URL, the defaults would fill in and `Controller_Welcome::action_index()` would be called. If we called `foobar` then only the default for action would be used, so it would call `Controller_Foobar::action_index()` and finally, if we called `foobar/baz` then neither default would be used and `Controller_Foobar::action_baz()` would be called.
 
