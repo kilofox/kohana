@@ -276,9 +276,9 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
     /**
      * Adds a UNION clause.
      *
-     * @param mixed $select if string, it must be the name of a table. Else
-     *  must be an instance of Database_Query_Builder_Select
-     * @param boolean $all decides if it's a UNION or UNION ALL clause
+     * @param mixed $select If a string, it must be the name of a table.
+     * Otherwise, it must be an instance of Database_Query_Builder_Select.
+     * @param boolean $all Determines if it's a UNION or UNION ALL clause.
      * @return $this
      * @throws Kohana_Exception
      */
