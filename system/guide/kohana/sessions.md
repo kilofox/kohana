@@ -63,7 +63,7 @@ Deleting session or cookie data is done using the `delete` method:
 
 ## Session Configuration
 
-Always check these settings before making your application live, as many of them will have a direct affect on the security of your application.
+Always check these settings before making your application live, as many of them will have a direct effect on the security of your application.
 
 ## Session Adapters
 
