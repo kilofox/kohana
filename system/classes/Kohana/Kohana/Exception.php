@@ -12,7 +12,7 @@
 class Kohana_Kohana_Exception extends Exception
 {
     /**
-     * @var  array  PHP error code => human readable name
+     * @var  array  PHP error code => human-readable name
      */
     public static $php_errors = [
         E_ERROR => 'Fatal Error',

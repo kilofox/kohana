@@ -450,7 +450,7 @@ class Kohana_Text
     }
 
     /**
-     * Returns human readable sizes. Based on original functions written by
+     * Returns human-readable sizes. Based on original functions written by
      * [Aidan Lister](http://aidanlister.com/repos/v/function.size_readable.php)
      * and [Quentin Zervaas](http://www.phpriot.com/d/code/strings/filesize-format/).
      *
