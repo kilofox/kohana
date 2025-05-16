@@ -164,7 +164,7 @@ Here are some of the wrappers PHPUnit provides for creating constraint objects:
 : Asserts that the parameter matches the PCRE pattern `$pattern` (using `preg_match()`).
 
 `$this->stringContains($string, $ignoreCase = false)`
-: Asserts that the parameter contains the string `$string`. If `$ignoreCase` is true then a case insensitive comparison is done.
+: Asserts that the parameter contains the string `$string`. If `$ignoreCase` is true then a case-insensitive comparison is done.
 
 `$this->stringEndsWith($suffix)`
 : Asserts that the parameter ends with `$suffix` (assumes parameter is a string).
@@ -176,7 +176,7 @@ Here are some of the wrappers PHPUnit provides for creating constraint objects:
 : Asserts that the parameter contains at least one value that is identical to `$value` (assumes parameter is array or `SplObjectStorage`).
 
 `$this->containsOnly($type, $isNativeType = true)`
-: Asserts that the parameter only contains items of type `$type`. `$isNativeType` should be set to "true" when `$type` refers to a built in PHP data type (i.e. int, string etc.) (assumes parameter is array).
+: Asserts that the parameter only contains items of type `$type`. `$isNativeType` should be set to "true" when `$type` refers to a built-in PHP data type (i.e. int, string etc.) (assumes parameter is array).
 
 
 There are more constraint objects than listed here, look in `PHPUnit_Framework_Assert` and `PHPUnit/Framework/Constraint` if you need more constraints.
