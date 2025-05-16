@@ -102,10 +102,10 @@ Calling `with()` without any parameters will force the mock method to accept no 
 PHPUnit has a fairly complex way of comparing parameters passed to the mock method with the expected values, which can be summarised like so -
 
 * If the values are identical, they are equal.
-* If the values are of different types they are not equal.
-* If the values are numbers they they are considered equal if their difference is equal to zero (this level of accuracy can be changed).
-* If the values are objects then they are converted to arrays and are compared as arrays.
-* If the values are arrays then any sub-arrays deeper than x levels (default 10) are ignored in the comparison.
+* If the values are of different types, they are not equal.
+* If the values are numbers, then they are considered equal if their difference is equal to zero (this level of accuracy can be changed).
+* If the values are objects, then they are converted to arrays and are compared as arrays.
+* If the values are arrays, then any sub-arrays deeper than x levels (default 10) are ignored in the comparison.
 * If the values are arrays and one contains more than elements that the other (at any depth up to the max depth), then they are not equal.
 
 #### More advanced parameter comparisons
