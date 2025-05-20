@@ -572,7 +572,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     public function provider_max_length()
     {
         return [
-            // Border line
+            // Borderline
             ['some', 4, true],
             // Exceeds
             ['KOHANARULLLES', 2, false],
