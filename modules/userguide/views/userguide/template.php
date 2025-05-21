@@ -24,7 +24,7 @@
         <div id="kodoc-header">
             <div class="container">
                 <a href="https://kohana.top/" id="kodoc-logo">
-                    <img src="<?php echo Route::url('docs/media', ['file' => 'img/kohana.png']) ?>" />
+                    <img src="<?php echo Route::url('docs/media', ['file' => 'img/kohana.png']) ?>" alt="Kohana Framework Logo"/>
                 </a>
                 <div id="kodoc-menu">
                     <ul>
