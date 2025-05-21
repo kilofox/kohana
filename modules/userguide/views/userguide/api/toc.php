@@ -1,6 +1,6 @@
 <h1><?php echo 'Available Classes' ?></h1>
 
-<label>Filter:</label>
+<label for="kodoc-api-filter-box">Filter:</label>
 <input type="text" id="kodoc-api-filter-box" />
 
 <script type="text/javascript">
