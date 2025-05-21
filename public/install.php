@@ -6,7 +6,7 @@ defined('SYSPATH') or exit('Installation tests must be loaded from within index.
 clearstatcache(true);
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <title>Kohana Installation</title>
