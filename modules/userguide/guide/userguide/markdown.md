@@ -159,10 +159,10 @@ Content Cell  | Content Cell
 Content Cell  | Content Cell
 ~~~
 
-First Header  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
+| First Header | Second Header |
+|--------------|---------------|
+| Content Cell | Content Cell  |
+| Content Cell | Content Cell  |
 
 Note that the pipes on the very left and very right side are optional, and you can change the text-alignment by adding a colon on the right, or on both sides for center.
 ~~~
@@ -172,11 +172,11 @@ Note that the pipes on the very left and very right side are optional, and you c
 | Phone     |   $12 |   30%   |
 | Pipe      |    $1 |    0%   |
 ~~~
-| Item      | Value | Savings |
-| --------- | -----:|:-------:|
-| Computer  | $1600 |   40%   |
-| Phone     |   $12 |   30%   |
-| Pipe      |    $1 |    0%   |
+| Item     | Value | Savings |
+|----------|------:|:-------:|
+| Computer | $1600 |   40%   |
+| Phone    |   $12 |   30%   |
+| Pipe     |    $1 |   0%    |
 
 # Userguide Specific Syntax
 

@@ -91,13 +91,13 @@ Every database driver has different connection settings.
 
 A [PDO database](http://php.net/manual/en/book.pdo.php) can accept these options in the `connection` array:
 
-Type      | Option     |  Description               | Default value
-----------|------------|----------------------------| -------------------------
-`string`  | dsn        | PDO data source identifier | `mysql:host=localhost;dbname=kohana`
-`string`  | username   | Database username          | empty
-`string`  | password   | Database password          | empty
-`array`   | options    | Driver-specific options    | none
-`boolean` | persistent | Persistent connections     | `false`
+| Type      | Option     | Description                | Default value                        |
+|-----------|------------|----------------------------|--------------------------------------|
+| `string`  | dsn        | PDO data source identifier | `mysql:host=localhost;dbname=kohana` |
+| `string`  | username   | Database username          | empty                                |
+| `string`  | password   | Database password          | empty                                |
+| `array`   | options    | Driver-specific options    | none                                 |
+| `boolean` | persistent | Persistent connections     | `false`                              |
 
 The connection character set should be configured using the DSN string or `options` array.
 
@@ -107,16 +107,16 @@ The connection character set should be configured using the DSN string or `optio
 
 A [MySQL database](http://php.net/manual/en/book.mysqli.php) can accept the following options in the `connection` array:
 
-Type      | Option     |  Description               | Default value
-----------|------------|----------------------------| -------------------------
-`string`  | hostname   | Hostname of the database   | `localhost`
-`integer` | port       | Port number                | `null`
-`string`  | socket     | UNIX socket                | `null`
-`string`  | username   | Database username          | empty
-`string`  | password   | Database password          | empty
-`boolean` | persistent | Persistent connections     | `false`
-`string`  | database   | Database name              | `kohana`
-`array`   | ssl        | SSL parameters             | `null`
+| Type      | Option     | Description              | Default value |
+|-----------|------------|--------------------------|---------------|
+| `string`  | hostname   | Hostname of the database | `localhost`   |
+| `integer` | port       | Port number              | `null`        |
+| `string`  | socket     | UNIX socket              | `null`        |
+| `string`  | username   | Database username        | empty         |
+| `string`  | password   | Database password        | empty         |
+| `boolean` | persistent | Persistent connections   | `false`       |
+| `string`  | database   | Database name            | `kohana`      |
+| `array`   | ssl        | SSL parameters           | `null`        |
 
 SSL parameters should be specified as `key` => `value` pairs.
 Available keys: client_key_path, client_cert_path, ca_cert_path, ca_dir_path, cipher
