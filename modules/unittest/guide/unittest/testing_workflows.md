@@ -8,11 +8,11 @@ Modern IDEs have come a long way in the last couple of years and ones like NetBe
 
 ### NetBeans (8.2+)
 
-0. Open the Options window by choosing **Tools** > **Options** from the main menu. (If you are running on Mac OS X, choose NetBeans > Preferences.)
-1. Select the **PHP** category in the upper pane and click the **Frameworks & Tools** tab. Select **PHPUnit** in the left pane of the tab and specify the path to the PHPUnit script. Click **Apply** and close the Options window.
-2. Right-click the project node and select **Properties**.
-3. Select **Testing** in the Categories pane. Select **PHPUnit** as a Testing Provider and specify the location of the test directories for the project.
-4. Select **PHPUnit** under the Testing node in the Categories pane and specify the Bootstrap path to your `modules/unittest/bootstrap.php` file.
+1. Open the Options window by choosing **Tools** > **Options** from the main menu. (If you are running on Mac OS X, choose NetBeans > Preferences.)
+2. Select the **PHP** category in the upper pane and click the **Frameworks & Tools** tab. Select **PHPUnit** in the left pane of the tab and specify the path to the PHPUnit script. Click **Apply** and close the Options window.
+3. Right-click the project node and select **Properties**.
+4. Select **Testing** in the Categories pane. Select **PHPUnit** as a Testing Provider and specify the location of the test directories for the project.
+5. Select **PHPUnit** under the Testing node in the Categories pane and specify the Bootstrap path to your `modules/unittest/bootstrap.php` file.
 
 You can also specify a custom test suite loader (enter the path to your `modules/unittest/tests.php` file) and/or a custom configuration file (enter the path to your phpunit.xml file).
 
