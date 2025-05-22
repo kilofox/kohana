@@ -1,4 +1,4 @@
-<style type="text/css">
+<style>
     #kohana_error { background: #ddd; font-size: 1em; font-family:sans-serif; text-align: left; color: #111; }
     #kohana_error h1,
     #kohana_error h2 { margin: 0; padding: 1em; font-size: 1em; font-weight: normal; background: #911; color: #fff; }
@@ -20,7 +20,7 @@
     #kohana_error ol.trace li { margin: 0; padding: 0; }
 </style>
 <script type="text/javascript">
-    document.write('<style type="text/css"> .collapsed { display: none; } </style>');
+    document.write('<style> .collapsed { display: none; } </style>');
     function koggle(elem)
     {
         elem = document.getElementById(elem);
@@ -68,7 +68,7 @@
                     Kohana_View->set_filename(<a href="#error4ac2453378034args0" onclick="return koggle('error4ac2453378034args0')">arguments</a>)
                 </p>
                 <div id="error4ac2453378034args0" class="collapsed">
-                    <table cellspacing="0">
+                    <table>
 
                         <tr>
                             <td><code>file</code></td>
@@ -102,7 +102,7 @@
                 </p>
 
                 <div id="error4ac2453378034args1" class="collapsed">
-                    <table cellspacing="0">
+                    <table>
                         <tr>
                             <td><code>file</code></td>
                             <td><pre><small>string</small><span>(4)</span> "site"</pre></td>
@@ -139,7 +139,7 @@
                     Kohana_View::factory(<a href="#error4ac2453378034args2" onclick="return koggle('error4ac2453378034args2')">arguments</a>)
                 </p>
                 <div id="error4ac2453378034args2" class="collapsed">
-                    <table cellspacing="0">
+                    <table>
 
                         <tr>
                             <td><code>file</code></td>
@@ -183,7 +183,7 @@
                 </p>
 
                 <div id="error4ac2453378034args4" class="collapsed">
-                    <table cellspacing="0">
+                    <table>
                         <tr>
                             <td><code>object</code></td>
                             <td><pre><small>object</small> <span>Controller_Hello(3)</span> <code>{
@@ -263,7 +263,7 @@
                 </p>
 
                 <div id="error4ac2453378034args6" class="collapsed">
-                    <table cellspacing="0">
+                    <table>
                         <tr>
                             <td><code>0</code></td>
                             <td><pre><small>string</small><span>(49)</span> "/var/www/kohana/testing/application/bootstrap.php"</pre></td>
@@ -287,7 +287,7 @@
         <h3><a href="#error4ac2453378034environment_included" onclick="return koggle('error4ac2453378034environment_included')">Included files</a> (31)</h3>
 
         <div id="error4ac2453378034environment_included" class="collapsed">
-            <table cellspacing="0">
+            <table>
                 <tr>
                     <td><code>DOCROOT/index.php</code></td>
                 </tr>
@@ -398,7 +398,7 @@
         <h3><a href="#error4ac2453378034environment_loaded" onclick="return koggle('error4ac2453378034environment_loaded')">Loaded extensions</a> (41)</h3>
 
         <div id="error4ac2453378034environment_loaded" class="collapsed">
-            <table cellspacing="0">
+            <table>
                 <tr>
                     <td><code>zip</code></td>
                 </tr>
@@ -543,7 +543,7 @@
         <h3><a href="#error4ac2453378034environment_server" onclick="return koggle('error4ac2453378034environment_server')">$_SERVER</a></h3>
         <div id="error4ac2453378034environment_server" class="collapsed">
 
-            <table cellspacing="0">
+            <table>
                 <tr>
                     <td><code>HTTP_HOST</code></td>
                     <td><pre><small>string</small><span>(9)</span> "localhost"</pre></td>

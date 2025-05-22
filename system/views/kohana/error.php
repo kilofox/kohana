@@ -2,7 +2,7 @@
 // Unique error identifier
 $error_id = uniqid('error');
 ?>
-<style type="text/css">
+<style>
     #kohana_error { background: #ddd; font-size: 1em; font-family:sans-serif; text-align: left; color: #111; }
     #kohana_error h1,
     #kohana_error h2 { margin: 0; padding: 1em; font-size: 1em; font-weight: normal; background: #911; color: #fff; }
@@ -66,7 +66,7 @@ $error_id = uniqid('error');
                     </p>
                     <?php if (isset($args_id)): ?>
                         <div id="<?php echo $args_id ?>" class="collapsed">
-                            <table cellspacing="0">
+                            <table>
                                 <?php foreach ($step['args'] as $name => $arg): ?>
                                     <tr>
                                         <td><code><?php echo $name ?></code></td>
@@ -89,7 +89,7 @@ $error_id = uniqid('error');
         <?php $included = get_included_files() ?>
         <h3><a href="#<?php echo $env_id = $error_id . 'environment_included' ?>" onclick="return koggle('<?php echo $env_id ?>')"><?php echo __('Included files') ?></a> (<?php echo count($included) ?>)</h3>
         <div id="<?php echo $env_id ?>" class="collapsed">
-            <table cellspacing="0">
+            <table>
                 <?php foreach ($included as $file): ?>
                     <tr>
                         <td><code><?php echo Debug::path($file) ?></code></td>
@@ -100,7 +100,7 @@ $error_id = uniqid('error');
         <?php $included = get_loaded_extensions() ?>
         <h3><a href="#<?php echo $env_id = $error_id . 'environment_loaded' ?>" onclick="return koggle('<?php echo $env_id ?>')"><?php echo __('Loaded extensions') ?></a> (<?php echo count($included) ?>)</h3>
         <div id="<?php echo $env_id ?>" class="collapsed">
-            <table cellspacing="0">
+            <table>
                 <?php foreach ($included as $file): ?>
                     <tr>
                         <td><code><?php echo Debug::path($file) ?></code></td>
@@ -112,7 +112,7 @@ $error_id = uniqid('error');
             <?php if (empty($GLOBALS[$var]) OR ! is_array($GLOBALS[$var])) continue ?>
             <h3><a href="#<?php echo $env_id = $error_id . 'environment' . strtolower($var) ?>" onclick="return koggle('<?php echo $env_id ?>')">$<?php echo $var ?></a></h3>
             <div id="<?php echo $env_id ?>" class="collapsed">
-                <table cellspacing="0">
+                <table>
                     <?php foreach ($GLOBALS[$var] as $key => $value): ?>
                         <tr>
                             <td><code><?php echo htmlspecialchars((string) $key, ENT_QUOTES, Kohana::$charset); ?></code></td>
