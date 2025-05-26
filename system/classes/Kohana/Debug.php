@@ -275,7 +275,7 @@ class Kohana_Debug
         // Close the file
         fclose($file);
 
-        return '<pre class="source"><code>' . $source . '</code></pre>';
+        return $source;
     }
 
     /**

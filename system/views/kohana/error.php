@@ -49,7 +49,9 @@ $error_id = uniqid('error');
     <h1><span class="type"><?php echo $class ?> [ <?php echo $code ?> ]:</span> <span class="message"><?php echo htmlspecialchars((string) $message, ENT_QUOTES | ENT_IGNORE, Kohana::$charset); ?></span></h1>
     <div id="<?php echo $error_id ?>" class="content">
         <p><span class="file"><?php echo Debug::path($file) ?> [ <?php echo $line ?> ]</span></p>
-        <?php echo Debug::source($file, $line) ?>
+        <pre class="source">
+            <code><?php echo Debug::source($file, $line) ?></code>
+        </pre>
         <ol class="trace">
             <?php foreach (Debug::trace($trace) as $i => $step): ?>
                 <li>
