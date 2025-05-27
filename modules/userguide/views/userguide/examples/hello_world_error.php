@@ -77,7 +77,7 @@
                     </table>
                 </div>
 
-                <pre id="error4ac2453378034source0" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">110</span> 	 */
+                <pre id="error4ac2453378034source0" class="source collapsed"><code><span class="line"><span class="number">110</span> 	 */
 </span><span class="line"><span class="number">111</span> 	public function __construct($file = null, array $data = null)
 </span><span class="line"><span class="number">112</span> 	{
 </span><span class="line"><span class="number">113</span> 		if ($file !== null)
@@ -89,7 +89,7 @@
 </span><span class="line"><span class="number">118</span> 		if ( $data !== null)
 </span><span class="line"><span class="number">119</span> 		{
 </span><span class="line"><span class="number">120</span> 			// Add the values to the current data
-</span></code></pre></code></pre>
+</span></code></pre>
             </li>
 
             <li>
@@ -114,7 +114,7 @@
                         </tr>
                     </table>
                 </div>
-                <pre id="error4ac2453378034source1" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">21</span> 	 * @param   array   array of values
+                <pre id="error4ac2453378034source1" class="source collapsed"><code><span class="line"><span class="number">21</span> 	 * @param   array   array of values
 
 </span><span class="line"><span class="number">22</span> 	 * @return  View
 </span><span class="line"><span class="number">23</span> 	 */
@@ -127,7 +127,7 @@
 </span><span class="line"><span class="number">29</span> 	/**
 </span><span class="line"><span class="number">30</span> 	 * Captures the output that is generated when a view is included.
 </span><span class="line"><span class="number">31</span> 	 * The view data will be extracted to make local variables. This method
-</span></code></pre></code></pre>
+</span></code></pre>
             </li>
             <li>
                 <p>
@@ -148,7 +148,7 @@
                     </table>
                 </div>
 
-                <pre id="error4ac2453378034source2" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">27</span> 	public function before()
+                <pre id="error4ac2453378034source2" class="source collapsed"><code><span class="line"><span class="number">27</span> 	public function before()
 </span><span class="line"><span class="number">28</span> 	{
 </span><span class="line"><span class="number">29</span> 		if ($this-&gt;auto_render === true)
 </span><span class="line"><span class="number">30</span> 		{
@@ -161,7 +161,7 @@
 </span><span class="line"><span class="number">36</span> 	/**
 </span><span class="line"><span class="number">37</span> 	 * Assigns the template as the request response.
 
-</span></code></pre></code></pre>
+</span></code></pre>
             </li>
             <li>
                 <p>
@@ -217,7 +217,7 @@
                         </tr>
                     </table>
                 </div>
-                <pre id="error4ac2453378034source4" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">835</span>
+                <pre id="error4ac2453378034source4" class="source collapsed"><code><span class="line"><span class="number">835</span>
 </span><span class="line"><span class="number">836</span> 			// Create a new instance of the controller
 </span><span class="line"><span class="number">837</span> 			$controller = $class-&gt;newInstance($this);
 
@@ -230,7 +230,7 @@
 
 </span><span class="line"><span class="number">844</span>
 </span><span class="line"><span class="number">845</span> 			// Execute the main action with the parameters
-</span></code></pre></code></pre>
+</span></code></pre>
             </li>
             <li>
                 <p>
@@ -241,7 +241,7 @@
                     &raquo;
                     Kohana_Request->execute()
                 </p>
-                <pre id="error4ac2453378034source5" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">71</span> /**
+                <pre id="error4ac2453378034source5" class="source collapsed"><code><span class="line"><span class="number">71</span> /**
 </span><span class="line"><span class="number">72</span>  * Execute the main request. A source of the URI can be passed, e.g., $_SERVER['PATH_INFO'].
 </span><span class="line"><span class="number">73</span>  * If no source is specified, the URI will be automatically detected.
 
@@ -251,7 +251,7 @@
 </span><span class="line"><span class="number">77</span> 	-&gt;send_headers()
 </span><span class="line"><span class="number">78</span> 	-&gt;response;
 
-</span></code></pre></code></pre>
+</span></code></pre>
             </li>
             <li>
                 <p>
@@ -271,14 +271,14 @@
 
                     </table>
                 </div>
-                <pre id="error4ac2453378034source6" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">101</span> 	// Load empty core extension
+                <pre id="error4ac2453378034source6" class="source collapsed"><code><span class="line"><span class="number">101</span> 	// Load empty core extension
 </span><span class="line"><span class="number">102</span> 	require SYSPATH.'classes/kohana'.EXT;
 </span><span class="line"><span class="number">103</span> }
 </span><span class="line"><span class="number">104</span>
 </span><span class="line"><span class="number">105</span> // Bootstrap the application
 
 </span><span class="line highlight"><span class="number">106</span> require APPPATH.'bootstrap'.EXT;
-</span></code></pre></code></pre>
+</span></code></pre>
             </li>
         </ol>
     </div>
