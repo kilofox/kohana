@@ -42,7 +42,7 @@
             }
 
         // Toggle the state of the "display" style
-        elem.style.display = disp == 'block' ? 'none' : 'block';
+        elem.style.display = disp === 'block' ? 'none' : 'block';
         return false;
     }
 </script>

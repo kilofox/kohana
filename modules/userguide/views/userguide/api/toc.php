@@ -30,7 +30,7 @@
                     const search = $this.val();
                     const search_regex = new RegExp(search, 'gi');
 
-                    if (search == '') {
+                    if (search === '') {
                         $methods.show();
                         $classes.show();
                     } else {

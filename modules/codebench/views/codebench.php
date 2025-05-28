@@ -125,11 +125,11 @@
                     const expanded_bench_titles = $bench_titles.filter('.expanded').length;
 
                     // If no benchmark details are expanded, change "Collapse all" to "Expand all"
-                    if (expanded_bench_titles == 0 && $toggle_all.data('expanded')) {
+                    if (expanded_bench_titles === 0 && $toggle_all.data('expanded')) {
                         $toggle_all.click();
                     }
                     // If all benchmark details are expanded, change "Expand all" to "Collapse all"
-                    else if (expanded_bench_titles == total_bench_titles && !$toggle_all.data('expanded')) {
+                    else if (expanded_bench_titles === total_bench_titles && !$toggle_all.data('expanded')) {
                         $toggle_all.click();
                     }
                 });
