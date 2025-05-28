@@ -7,16 +7,16 @@
     (function($) {
         $.fn.extend({
             api_filter: function(api_container_selector) {
-                var $api_container = $(api_container_selector);
-                var $this = this;
+                const $api_container = $(api_container_selector);
+                const $this = this;
+                const $classes = $('.class', $api_container);
+                const $methods = $('.methods li', $classes);
+                const text = $methods.map(function() {
+                    return $(this).text();
+                });
 
                 if ($api_container.length) {
-                    var $classes = $('.class', $api_container);
-                    var $methods = $('.methods li', $classes);
-                    var text = $methods.map(function() {
-                        return $(this).text();
-                    });
-                    var timeout = null;
+                    let timeout = null;
 
                     this.keyup(function() {
                         clearTimeout(timeout);
@@ -27,8 +27,8 @@
                 }
 
                 function filter_content() {
-                    var search = $this.val();
-                    var search_regex = new RegExp(search, 'gi');
+                    const search = $this.val();
+                    const search_regex = new RegExp(search, 'gi');
 
                     if (search == '') {
                         $methods.show();

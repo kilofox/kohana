@@ -64,9 +64,9 @@
 <?php if ($show_comments): ?>
                             <div id="disqus_thread" class="clear"></div>
                             <script type="text/javascript">
-                                var disqus_identifier = '<?php echo HTML::chars(Request::current()->uri()) ?>';
+                                const disqus_identifier = '<?php echo HTML::chars(Request::current()->uri()) ?>';
                                 (function() {
-                                    var dsq = document.createElement('script');
+                                    const dsq = document.createElement('script');
                                     dsq.type = 'text/javascript';
                                     dsq.async = true;
                                     dsq.src = 'http://kohana.disqus.com/embed.js';
@@ -100,9 +100,9 @@
             <script type="text/javascript">
                 //<![CDATA[
                 (function() {
-                    var links = document.getElementsByTagName('a');
-                    var query = '?';
-                    for (var i = 0; i < links.length; i++) {
+                    const links = document.getElementsByTagName('a');
+                    let query = '?';
+                    for (let i = 0; i < links.length; i++) {
                         if (links[i].href.indexOf('#disqus_thread') >= 0) {
                             query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
                         }

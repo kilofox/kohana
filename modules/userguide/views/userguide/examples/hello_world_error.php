@@ -23,17 +23,23 @@
     document.write('<style> .collapsed { display: none; } </style>');
     function koggle(elem)
     {
+        // Only works with the "style" attr
+        let disp;
         elem = document.getElementById(elem);
 
-        if (elem.style && elem.style['display'])
-            // Only works with the "style" attr
-            var disp = elem.style['display'];
+        if (elem.style && elem.style['display']) {
+            disp = elem.style['display'];
+        }
         else if (elem.currentStyle)
             // For MSIE, naturally
-            var disp = elem.currentStyle['display'];
+            {
+                disp = elem.currentStyle['display'];
+            }
         else if (window.getComputedStyle)
             // For most other browsers
-            var disp = document.defaultView.getComputedStyle(elem, null).getPropertyValue('display');
+            {
+                disp = document.defaultView.getComputedStyle(elem, null).getPropertyValue('display');
+            }
 
         // Toggle the state of the "display" style
         elem.style.display = disp == 'block' ? 'none' : 'block';
