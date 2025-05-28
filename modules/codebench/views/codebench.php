@@ -99,7 +99,7 @@
                 });
 
                 // Toggle details for all benchmarks
-                $('#toggle_all').click(function() {
+                $toggle_all.click(function() {
                     if ($(this).data('expanded')) {
                         $(this).data('expanded', false);
                         $(this).text(expand_all_text);
