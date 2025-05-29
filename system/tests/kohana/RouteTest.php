@@ -177,11 +177,11 @@ class Kohana_RouteTest extends Unittest_TestCase
     {
         // We use a mock object to make sure that the route wasn't recompiled
         $route = $this->getMockBuilder('Route')
-            ->setMethods(['compile'])
+            ->setMethods(['_compile'])
             ->getMock();
 
         $route->expects($this->never())
-            ->method('compile');
+            ->method('_compile');
 
         $route->__construct();
 
