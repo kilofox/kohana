@@ -2,7 +2,7 @@
 
 A Controller is a class file that stands in between the models and the views in an application. It passes information on to the model when data needs to be changed, and it requests information from the model when data needs to be loaded. Controllers then pass on the information of the model to the views where the final output can be rendered for the users. Controllers essentially control the flow of the application.
 
-Controllers are called by the [Request::execute()] function based on the [Route] that the url matched. Be sure to read the [routing](routing) page to understand how to use routes to map urls to your controllers.
+Controllers are called by the [Request::execute()] function based on the [Route] that the URL matched. Be sure to read the [routing](routing) page to understand how to use routes to map URLs to your controllers.
 
 ## Creating Controllers
 
@@ -61,7 +61,7 @@ Here is a partial list of the properties and methods available to `$this->reques
 
 | Property/method                                                                                                                                                                                            | What it does                                                            |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [$this->request->route()](../api/Request#property:route)                                                                                                                                                   | The [Route] that matched the current request url                        |
+| [$this->request->route()](../api/Request#property:route)                                                                                                                                                   | The [Route] that matched the current request URL                        |
 | [$this->request->directory()](../api/Request#property:directory), <br /> [$this->request->controller](../api/Request#property:controller), <br /> [$this->request->action](../api/Request#property:action) | The directory, controller and action that matched for the current route |
 | [$this->request->param()](../api/Request#param)                                                                                                                                                            | Any other params defined in your route                                  |
 
@@ -99,7 +99,7 @@ If that parameter is not set it will be returned as null. You can provide a seco
 
     public function action_foobar()
     {
-        // $id will be false if it was not supplied in the url
+        // $id will be false if it was not supplied in the URL
         $id = $this->request->param('user', false);
 
 ### Examples

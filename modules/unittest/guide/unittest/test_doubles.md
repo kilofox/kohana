@@ -102,10 +102,10 @@ Calling `with()` without any parameters will force the mock method to accept no 
 PHPUnit has a fairly complex way of comparing parameters passed to the mock method with the expected values, which can be summarised like so -
 
 * If the values are identical, they are equal.
-* If the values are of different types they are not equal.
-* If the values are numbers they they are considered equal if their difference is equal to zero (this level of accuracy can be changed).
-* If the values are objects then they are converted to arrays and are compared as arrays.
-* If the values are arrays then any sub-arrays deeper than x levels (default 10) are ignored in the comparison.
+* If the values are of different types, they are not equal.
+* If the values are numbers, then they are considered equal if their difference is equal to zero (this level of accuracy can be changed).
+* If the values are objects, then they are converted to arrays and are compared as arrays.
+* If the values are arrays, then any sub-arrays deeper than x levels (default 10) are ignored in the comparison.
 * If the values are arrays and one contains more than elements that the other (at any depth up to the max depth), then they are not equal.
 
 #### More advanced parameter comparisons
@@ -164,7 +164,7 @@ Here are some of the wrappers PHPUnit provides for creating constraint objects:
 : Asserts that the parameter matches the PCRE pattern `$pattern` (using `preg_match()`).
 
 `$this->stringContains($string, $ignoreCase = false)`
-: Asserts that the parameter contains the string `$string`. If `$ignoreCase` is true then a case insensitive comparison is done.
+: Asserts that the parameter contains the string `$string`. If `$ignoreCase` is true then a case-insensitive comparison is done.
 
 `$this->stringEndsWith($suffix)`
 : Asserts that the parameter ends with `$suffix` (assumes parameter is a string).
@@ -176,7 +176,7 @@ Here are some of the wrappers PHPUnit provides for creating constraint objects:
 : Asserts that the parameter contains at least one value that is identical to `$value` (assumes parameter is array or `SplObjectStorage`).
 
 `$this->containsOnly($type, $isNativeType = true)`
-: Asserts that the parameter only contains items of type `$type`. `$isNativeType` should be set to true when `$type` refers to a built in PHP data type (i.e. int, string etc.) (assumes parameter is array).
+: Asserts that the parameter only contains items of type `$type`. `$isNativeType` should be set to "true" when `$type` refers to a built-in PHP data type (i.e. int, string etc.) (assumes parameter is array).
 
 
 There are more constraint objects than listed here, look in `PHPUnit_Framework_Assert` and `PHPUnit/Framework/Constraint` if you need more constraints.

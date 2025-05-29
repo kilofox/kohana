@@ -49,9 +49,9 @@ class Kohana_Kodoc
     }
 
     /**
-     * Creates an html list of all classes sorted by category (or package if no category)
+     * Creates an HTML list of all classes sorted by category (or package if no category)
      *
-     * @return   string   the html for the menu
+     * @return   string   the HTML for the menu
      * @throws Kohana_Exception
      */
     public static function menu()

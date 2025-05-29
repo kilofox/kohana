@@ -78,7 +78,7 @@ To return a non-associative array, leave `$key` as null and just pass a `$value`
 
 ### Select - `get()`
 
-Sometime you only want a single value from a query. The `get()` method returns the value of the named column from the current row. The second parameter, `$default`, is used to supply a default value when the result is null.
+Sometimes you only want a single value from a query. The `get()` method returns the value of the named column from the current row. The second parameter, `$default`, is used to supply a default value when the result is null.
 
     $totalUsers = DB::select([DB::expr('COUNT(`username`)'), 'total_users'])
         ->from('users')

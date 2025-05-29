@@ -1,4 +1,4 @@
-<style type="text/css">
+<style>
 <?php include Kohana::find_file('views', 'profiler/style', 'css') ?>
 </style>
 

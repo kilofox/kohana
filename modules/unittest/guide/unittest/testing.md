@@ -2,7 +2,7 @@
 
     $ phpunit --bootstrap=modules/unittest/bootstrap.php modules/unittest/tests.php
 
-Alternatively you can use a phpunit.xml to have a more fine grained control over which tests are included and which files are whitelisted.
+Alternatively you can use a phpunit.xml to have a more fine-grained control over which tests are included and which files are whitelisted.
 
 Make sure you only whitelist the highest files in the cascading filesystem, else you could end up with a lot of "class cannot be redefined" errors.
 

@@ -147,7 +147,7 @@ class Kohana_HTMLTest extends Unittest_TestCase
      * @param string $file URL to script
      * @param array $attributes HTML attributes for the anchor
      * @param string $protocol Protocol to use
-     * @param bool $index Should the index file be included in url?
+     * @param bool $index Should the index file be included in URL?
      * @throws Kohana_Exception
      */
     public function test_script($expected, $file, array $attributes = null, $protocol = null, $index = false)

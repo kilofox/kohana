@@ -150,10 +150,8 @@ class Kohana_Request implements HTTP_Request
                 $request->secure($secure);
             }
 
-            if (isset($method)) {
-                // Set the request method
-                $request->method($method);
-            }
+            // Set the request method
+            $request->method($method);
 
             if (isset($referrer)) {
                 // Set the referrer
@@ -205,8 +203,8 @@ class Kohana_Request implements HTTP_Request
                  *
                  *  http://localhost/http://example.com/judge.php
                  *
-                 * which parse_url can't handle. So rather than leave empty
-                 * handed, we'll use this.
+                 * which parse_url can't handle. So rather than leave
+                 * empty-handed, we'll use this.
                  */
                 $uri = $_SERVER['REQUEST_URI'];
 
@@ -665,7 +663,7 @@ class Kohana_Request implements HTTP_Request
     }
 
     /**
-     * Sets and gets the uri from the request.
+     * Sets and gets the URI from the request.
      *
      * @param   string $uri
      * @return  mixed

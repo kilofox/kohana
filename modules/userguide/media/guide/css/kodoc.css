@@ -62,8 +62,7 @@ table tr:nth-child(even) {
 .container .colborder { border-color: #d3d8bc; }
 
 .note {
-    padding: 1.5em;
-    padding-left: 5em;
+    padding: 1.5em 1.5em 1.5em 5em;
     background: #e8efcf url('../img/lightbulb_48.png') no-repeat 1em center;
     border-radius: 0.6em;
     overflow: auto;
@@ -112,8 +111,8 @@ h6:hover a.permalink {
 
 #kodoc-content { background: #f1f8db url(../img/content.png) center top repeat-x; }
 #kodoc-content .wrapper { min-height: 390px; padding: 1em 0; background: transparent url(../img/wrapper.png) center top no-repeat; }
-#kodoc-content div.page-toc { float: right; margin: 1em; margin-top: 0; padding: 1em; background: #fff; border: solid 0.1em #e8efcf; border-radius: 0.6em; }
-#kodoc-content p.intro { padding: 1em 20px; padding-left: 20px; margin: 0 -20px; font-size: 1.2em; }
+#kodoc-content div.page-toc { float: right; margin: 0 1em 1em; padding: 1em; background: #fff; border: solid 0.1em #e8efcf; border-radius: 0.6em; }
+#kodoc-content p.intro { padding: 1em 20px; margin: 0 -20px; font-size: 1.2em; }
 #kodoc-content a { color: #004352; }
 #kodoc-content a:hover { color: #00758f; }
 #kodoc-content a:active { text-decoration: none; }
@@ -127,7 +126,7 @@ h6:hover a.permalink {
 #kodoc-topics ul,
 #kodoc-topics ol { list-style-type:none; margin: 0 0 0 0; padding: 0;}
 #kodoc-topics ul li,
-#kodoc-topics ol li { margin:0; padding: 0; margin-left: 1em; }
+#kodoc-topics ol li { margin: 0 0 0 1em; padding: 0; }
 #kodoc-topics ul li a.current,
 #kodoc-topics ol li a.current { font-weight: bold; }
 

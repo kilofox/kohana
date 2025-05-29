@@ -167,7 +167,7 @@ class Kohana_RouteTest extends Unittest_TestCase
     }
 
     /**
-     * If the constructor is passed a null uri then it should assume it's
+     * If the constructor is passed a null URI then it should assume it's
      * being loaded from the cache & therefore shouldn't override the cached attributes
      *
      * @test
@@ -177,11 +177,11 @@ class Kohana_RouteTest extends Unittest_TestCase
     {
         // We use a mock object to make sure that the route wasn't recompiled
         $route = $this->getMockBuilder('Route')
-            ->setMethods(['compile'])
+            ->setMethods(['_compile'])
             ->getMock();
 
         $route->expects($this->never())
-            ->method('compile');
+            ->method('_compile');
 
         $route->__construct();
 
@@ -264,7 +264,7 @@ class Kohana_RouteTest extends Unittest_TestCase
     }
 
     /**
-     * Route::matches() should return false if the route doesn't match against a uri
+     * Route::matches() should return false if the route doesn't match against a URI
      *
      * @dataProvider provider_matches_returns_false_on_failure
      *
@@ -275,7 +275,7 @@ class Kohana_RouteTest extends Unittest_TestCase
     {
         $route = new Route($uri);
 
-        // Mock a request class with the $match uri
+        // Mock a request class with the $match URI
         $stub = $this->get_request_mock($match);
 
         $this->assertSame(false, $route->matches($stub));
@@ -311,7 +311,7 @@ class Kohana_RouteTest extends Unittest_TestCase
     {
         $route = new Route($uri);
 
-        // Mock a request class with the $m uri
+        // Mock a request class with the $m URI
         $request = $this->get_request_mock($m);
 
         $matches = $route->matches($request);
@@ -358,7 +358,7 @@ class Kohana_RouteTest extends Unittest_TestCase
 
     /**
      * Defaults specified with defaults() should be used if their values aren't
-     * present in the uri
+     * present in the URI
      *
      * @dataProvider provider_defaults_are_used_if_params_arent_specified
      *
@@ -527,7 +527,7 @@ class Kohana_RouteTest extends Unittest_TestCase
     }
 
     /**
-     * This tests that routes with required parameters will not match uris without them present
+     * This tests that routes with required parameters will not match URIs without them present
      *
      * @dataProvider provider_required_parameters_are_needed
      *
@@ -538,7 +538,7 @@ class Kohana_RouteTest extends Unittest_TestCase
     {
         $route = new Route($uri);
 
-        // Mock a request class that will return empty uri
+        // Mock a request class that will return empty URI
         $request = $this->get_request_mock('');
 
         $this->assertFalse($route->matches($request));
@@ -550,7 +550,7 @@ class Kohana_RouteTest extends Unittest_TestCase
 
         $this->assertInternalType('array', $matches);
 
-        // Mock a request class that will return route2 uri
+        // Mock a request class that will return route2 URI
         $request = $this->get_request_mock($matches_route2);
 
         $matches = $route->matches($request);
@@ -579,7 +579,7 @@ class Kohana_RouteTest extends Unittest_TestCase
     }
 
     /**
-     * This tests the reverse routing returns the uri specified in the route
+     * This tests the reverse routing returns the URI specified in the route
      * if it's a static route
      *
      * A static route is a route without any parameters
@@ -622,7 +622,7 @@ class Kohana_RouteTest extends Unittest_TestCase
     }
 
     /**
-     * When Route::uri is working on a uri that requires certain parameters to be present
+     * When Route::uri is working on a URI that requires certain parameters to be present
      * (i.e. <controller> in '<controller(/<action)') then it should throw an exception
      * if the param was not provided
      *
@@ -709,7 +709,7 @@ class Kohana_RouteTest extends Unittest_TestCase
     /**
      * Tests Route::url()
      *
-     * Checks the url composing from specific route via Route::url() shortcut
+     * Checks the URL composing from specific route via Route::url() shortcut
      *
      * @test
      * @dataProvider provider_composing_url_from_route
@@ -919,7 +919,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      */
     public function get_request_mock($uri)
     {
-        // Mock a request class with the $uri uri
+        // Mock a request class with the $uri URI
         $request = $this->getMockBuilder('Request')
             ->setMethods(['uri', 'method'])
             ->setConstructorArgs([$uri])

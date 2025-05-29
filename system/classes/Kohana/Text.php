@@ -353,7 +353,7 @@ class Kohana_Text
      */
     public static function auto_link_urls($text)
     {
-        // Find and replace all http/https/ftp/ftps links that are not part of an existing html anchor
+        // Find and replace all http/https/ftp/ftps links that are not part of an existing HTML anchor
         $text = preg_replace_callback('~\b(?<!href="|">)(?:ht|f)tps?://[^<\s]+(?:/|\b)~i', 'Text::_auto_link_urls_callback1', $text);
 
         // Find and replace all naked www.links.com (without http://)
@@ -384,9 +384,9 @@ class Kohana_Text
      */
     public static function auto_link_emails($text)
     {
-        // Find and replace all email addresses that are not part of an existing html mailto anchor
-        // Note: The "58;" negative lookbehind prevents matching of existing encoded html mailto anchors
-        //       The html entity for a colon (:) is &#58; or &#058; or &#0058; etc.
+        // Find and replace all email addresses that are not part of an existing HTML mailto anchor
+        // Note: The "58;" negative lookbehind prevents matching of existing encoded HTML mailto anchors
+        //       The HTML entity for a colon (:) is &#58; or &#058; or &#0058; etc.
         return preg_replace_callback('~\b(?<!href="mailto:|58;)(?!\.)[-+_a-z0-9.]++(?<!\.)@(?![-.])[-a-z0-9.]+(?<!\.)\.[a-z]{2,6}\b(?!</a>)~i', 'Text::_auto_link_emails_callback', $text);
     }
 
@@ -420,7 +420,7 @@ class Kohana_Text
         $str = preg_replace('~^[ \t]+~m', '', $str);
         $str = preg_replace('~[ \t]+$~m', '', $str);
 
-        // The following regexes only need to be executed if the string contains html
+        // The following regexes only need to be executed if the string contains HTML
         if ($html_found = (strpos($str, '<') !== false)) {
             // Elements that should not be surrounded by p tags
             $no_p = '(?:p|div|h[1-6r]|ul|ol|li|blockquote|d[dlt]|pre|t[dhr]|t(?:able|body|foot|head)|c(?:aption|olgroup)|form|s(?:elect|tyle)|a(?:ddress|rea)|ma(?:p|th))';
@@ -434,7 +434,7 @@ class Kohana_Text
         $str = '<p>' . trim($str) . '</p>';
         $str = preg_replace('~\n{2,}~', "</p>\n\n<p>", $str);
 
-        // The following regexes only need to be executed if the string contains html
+        // The following regexes only need to be executed if the string contains HTML
         if ($html_found !== false) {
             // Remove p tags around $no_p elements
             $str = preg_replace('~<p>(?=</?' . $no_p . '[^>]*+>)~i', '', $str);
@@ -450,7 +450,7 @@ class Kohana_Text
     }
 
     /**
-     * Returns human readable sizes. Based on original functions written by
+     * Returns human-readable sizes. Based on original functions written by
      * [Aidan Lister](http://aidanlister.com/repos/v/function.size_readable.php)
      * and [Quentin Zervaas](http://www.phpriot.com/d/code/strings/filesize-format/).
      *

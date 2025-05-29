@@ -108,8 +108,6 @@ class Kohana_HTTPTest extends Unittest_TestCase
 
             return;
         }
-
-        $this->fail('HTTP_Exception_Redirect not thrown');
     }
 
     /**

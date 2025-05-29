@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8"/>
 
         <title><?php echo $title ?> | Kohana <?php echo 'User Guide'; ?></title>
 
@@ -14,17 +14,13 @@
         foreach ($scripts as $script)
             echo HTML::script($script, null, null, true), "\n"
             ?>
-
-        <!--[if lt IE 9]>
-        <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
-        <![endif]-->
     </head>
     <body>
 
         <div id="kodoc-header">
             <div class="container">
                 <a href="https://kohana.top/" id="kodoc-logo">
-                    <img src="<?php echo Route::url('docs/media', ['file' => 'img/kohana.png']) ?>" />
+                    <img src="<?php echo Route::url('docs/media', ['file' => 'img/kohana.png']) ?>" alt="Kohana Framework Logo"/>
                 </a>
                 <div id="kodoc-menu">
                     <ul>
@@ -68,9 +64,9 @@
 <?php if ($show_comments): ?>
                             <div id="disqus_thread" class="clear"></div>
                             <script type="text/javascript">
-                                var disqus_identifier = '<?php echo HTML::chars(Request::current()->uri()) ?>';
+                                const disqus_identifier = '<?php echo HTML::chars(Request::current()->uri()) ?>';
                                 (function() {
-                                    var dsq = document.createElement('script');
+                                    const dsq = document.createElement('script');
                                     dsq.type = 'text/javascript';
                                     dsq.async = true;
                                     dsq.src = 'http://kohana.disqus.com/embed.js';
@@ -104,9 +100,9 @@
             <script type="text/javascript">
                 //<![CDATA[
                 (function() {
-                    var links = document.getElementsByTagName('a');
-                    var query = '?';
-                    for (var i = 0; i < links.length; i++) {
+                    const links = document.getElementsByTagName('a');
+                    let query = '?';
+                    for (let i = 0; i < links.length; i++) {
                         if (links[i].href.indexOf('#disqus_thread') >= 0) {
                             query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
                         }

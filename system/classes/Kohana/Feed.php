@@ -98,7 +98,7 @@ class Kohana_Feed
                 $image = $feed->channel->addChild('image');
 
                 if (!isset($value['link'], $value['url'], $value['title'])) {
-                    throw new Kohana_Exception('Feed images require a link, url, and title');
+                    throw new Kohana_Exception('Feed images require a link, URL, and title');
                 }
 
                 if (strpos($value['link'], '://') === false) {

@@ -12,7 +12,7 @@ Classes are loaded via the [Kohana::auto_load] method, which makes a simple conv
 
 1. Classes are placed in the `classes/` directory of the [filesystem](files)
 2. Any underscore characters in the class name are converted to slashes
-2. The filename must match the case of the class
+3. The filename must match the case of the class
 
 When calling a class that has not been loaded (e.g., `Session_Cookie`), Kohana will search the filesystem using [Kohana::find_file] for a file named `classes/Session/Cookie.php`.
 

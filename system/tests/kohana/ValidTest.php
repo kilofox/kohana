@@ -572,7 +572,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     public function provider_max_length()
     {
         return [
-            // Border line
+            // Borderline
             ['some', 4, true],
             // Exceeds
             ['KOHANARULLLES', 2, false],
@@ -901,7 +901,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_url
-     * @param string  $url       The url to test
+     * @param string  $url       The URL to test
      * @param boolean $expected  Is it valid?
      */
     public function test_url($url, $expected)

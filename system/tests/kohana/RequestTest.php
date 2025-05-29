@@ -59,19 +59,19 @@ class Kohana_RequestTest extends Unittest_TestCase
 
         $this->assertEquals(Request::$initial, $request);
 
-        $this->assertEquals(Request::$client_ip, '127.0.0.1');
+        $this->assertEquals('127.0.0.1', Request::$client_ip);
 
-        $this->assertEquals(Request::$user_agent, 'whatever (Mozilla 5.0/compatible)');
+        $this->assertEquals('whatever (Mozilla 5.0/compatible)', Request::$user_agent);
 
-        $this->assertEquals($request->protocol(), 'HTTP/1.1');
+        $this->assertEquals('HTTP/1.1', $request->protocol());
 
-        $this->assertEquals($request->referrer(), 'http://example.com/');
+        $this->assertEquals('http://example.com/', $request->referrer());
 
-        $this->assertEquals($request->requested_with(), 'ajax-or-something');
+        $this->assertEquals('ajax-or-something', $request->requested_with());
 
-        $this->assertEquals($request->query(), []);
+        $this->assertEquals([], $request->query());
 
-        $this->assertEquals($request->post(), []);
+        $this->assertEquals([], $request->post());
     }
 
     /**
@@ -88,7 +88,7 @@ class Kohana_RequestTest extends Unittest_TestCase
 
         $request = new Request('http://www.google.com/', [], false);
 
-        $this->assertEquals(false, $request->is_external());
+        $this->assertFalse($request->is_external());
     }
 
     /**
@@ -104,7 +104,7 @@ class Kohana_RequestTest extends Unittest_TestCase
     }
 
     /**
-     * Ensures the create class is created with the correct client
+     * Ensures the created request is initialized with the correct client
      *
      * @test
      * @dataProvider provider_create
@@ -138,7 +138,7 @@ class Kohana_RequestTest extends Unittest_TestCase
         $this->assertArrayNotHasKey('foo', $request->param());
         $this->assertEquals($request->uri(), $uri);
 
-        // Ensure the params do not contain contamination from controller, action, route, uri etc etc
+        // Ensure the params do not contain contamination from controller, action, route, URI etc etc
         $params = $request->param();
 
         // Test for illegal components
@@ -173,9 +173,9 @@ class Kohana_RequestTest extends Unittest_TestCase
     {
         $request = Request::factory('foo/bar');
 
-        $this->assertEquals($request->method(), 'GET');
-        $this->assertEquals(($request->method('post') === $request), true);
-        $this->assertEquals(($request->method() === 'POST'), true);
+        $this->assertEquals('GET', $request->method());
+        $this->assertSame($request, $request->method('post'));
+        $this->assertSame('POST', $request->method());
     }
 
     /**
@@ -205,7 +205,7 @@ class Kohana_RequestTest extends Unittest_TestCase
     {
         $request = Request::factory(''); // This should always match something, no matter what changes people make
         // The route should be null since the request has not been executed yet
-        $this->assertEquals($request->route(), null);
+        $this->assertNull($request->route());
     }
 
     /**
@@ -285,7 +285,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_url
      * @covers       Request::url
-     * @param string $uri the uri to use
+     * @param string $uri the URI to use
      * @param string $protocol the protocol to use
      * @param array $expected The string we expect
      * @throws Kohana_Exception
@@ -430,7 +430,7 @@ class Kohana_RequestTest extends Unittest_TestCase
     }
 
     /**
-     * Tests that the uri supplied to Request is only trimed
+     * Tests that the URI supplied to Request is only trimed
      * for internal requests.
      *
      * @dataProvider provider_uri_only_trimed_on_internal
@@ -620,7 +620,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_query_parameter_parsing
      *
-     * @param string    url
+     * @param string    URL
      * @param array     query
      * @param array    expected
      * @return  void
@@ -644,7 +644,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_query_parameter_parsing
      *
-     * @param string    url
+     * @param string    URL
      * @param array     query
      * @param array    expected
      * @return  void
@@ -716,8 +716,8 @@ class Kohana_RequestTest extends Unittest_TestCase
 
         $client = $request->client();
 
-        $this->assertEquals($client->follow(), true);
-        $this->assertEquals($client->strict_redirect(), false);
+        $this->assertTrue($client->follow());
+        $this->assertFalse($client->strict_redirect());
     }
 
     /**

@@ -650,7 +650,7 @@ class Kohana_UTF8
     }
 
     /**
-     * Returns the unicode ordinal for a character. This is a UTF8-aware
+     * Returns the Unicode ordinal for a character. This is a UTF8-aware
      * version of [ord](http://php.net/ord).
      *
      *     $digit = UTF8::ord($character);
@@ -686,7 +686,7 @@ class Kohana_UTF8
      * Slight modifications to fit with phputf8 library by Harry Fuecks <hfuecks@gmail.com>
      *
      * @param string $str UTF-8 encoded string
-     * @return  array   unicode code points
+     * @return  array   Unicode code points
      * @return  false   if the string is invalid
      * @throws UTF8_Exception
      */
@@ -715,7 +715,7 @@ class Kohana_UTF8
      * Ported to PHP by Henri Sivonen <hsivonen@iki.fi>, see http://hsivonen.iki.fi/php-utf8/
      * Slight modifications to fit with phputf8 library by Harry Fuecks <hfuecks@gmail.com>.
      *
-     * @param array $str unicode code points representing a string
+     * @param array $str Unicode code points representing a string
      * @return  string  utf8 string of characters
      * @return  boolean false if a code point cannot be found
      * @throws UTF8_Exception

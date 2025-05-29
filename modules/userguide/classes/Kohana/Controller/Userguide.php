@@ -99,7 +99,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         // Trim trailing slash
         $page = rtrim($page, '/');
 
-        // If no module provided in the url, show the user guide index page, which lists the modules.
+        // If no module provided in the URL, show the user guide index page, which lists the modules.
         if (!$module) {
             return $this->index();
         }
@@ -114,7 +114,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
             return $this->error('Userguide page not found');
         }
 
-        // If a module is set, but no page was provided in the url, show the index page
+        // If a module is set, but no page was provided in the URL, show the index page
         if (!$page) {
             $page = 'index';
         }
@@ -169,7 +169,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         // Get the class from the request
         $class = $this->request->param('class');
 
-        // If no class was passed to the url, display the API index page
+        // If no class was passed to the URL, display the API index page
         if (!$class) {
             $this->template->title = 'Table of Contents';
 
@@ -188,7 +188,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
 
             // If this classes immediate parent is Kodoc_Missing, then it should 404
             if ($_class->class->getParentClass() AND $_class->class->getParentClass()->name == 'Kodoc_Missing')
-                return $this->error('That class was not found. Check your url and make sure that the module with that class is enabled.');
+                return $this->error('That class was not found. Check your URL and make sure that the module with that class is enabled.');
 
             // If this classes package has been disabled via the config, 404
             if (!Kodoc::show_class($_class))

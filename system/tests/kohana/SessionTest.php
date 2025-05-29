@@ -304,7 +304,7 @@ class Kohana_SessionTest extends Unittest_TestCase
     {
         $session = $this->getMockSession();
 
-        // Bit of a hack for mass-loading session data
+        // A bit of a hack for mass-loading session data
         $data = & $session->as_array();
 
         $data += [

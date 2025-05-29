@@ -904,7 +904,7 @@
 	    var oldSizzle = Sizzle, div = document.createElement("div");
 	    div.innerHTML = "<p class='TEST'></p>";
 
-	    // Safari can't handle uppercase or unicode characters when
+	    // Safari can't handle uppercase or Unicode characters when
 	    // in quirks mode.
 	    if (div.querySelectorAll && div.querySelectorAll(".TEST").length === 0) {
 		return;

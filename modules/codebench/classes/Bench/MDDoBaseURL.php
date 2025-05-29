@@ -31,7 +31,7 @@ class Bench_MDDoBaseURL extends Codebench
     public function _add_base_url_original($matches)
     {
         if ($matches[2] AND strpos($matches[2], '://') === false) {
-            // Add the base url to the link URL
+            // Add the base URL to the link URL
             $matches[2] = 'http://BASE/' . $matches[2];
         }
 
@@ -46,7 +46,7 @@ class Bench_MDDoBaseURL extends Codebench
 
     public function _add_base_url_optimized($matches)
     {
-        // Add the base url to the link URL
+        // Add the base URL to the link URL
         $matches[2] = 'http://BASE/' . $matches[2];
 
         // Recreate the link
@@ -55,7 +55,7 @@ class Bench_MDDoBaseURL extends Codebench
 
     public function bench_callback_gone($subject)
     {
-        // All the optimized callback was doing now, is prepend some text to the URL.
+        // What the optimized callback was doing is prepending some text to the URL.
         // We don't need a callback for that, and that should be clearly faster.
         return preg_replace('~(?<!!)(\[.+?\]\()(?!\w++://)([^#]\S*(?:\s*+".+?")?\))~', '$1http://BASE/$2', $subject);
     }

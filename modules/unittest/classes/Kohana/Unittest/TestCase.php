@@ -190,10 +190,6 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             foreach ($elements as $element) {
                 $nodes[] = $element;
             }
-
-            if (empty($nodes)) {
-                return $nodes;
-            }
         } // no tag selected, get them all
         else {
             $tags = [
@@ -229,10 +225,10 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
                     $nodes[] = $element;
                 }
             }
+        }
 
-            if (empty($nodes)) {
-                return $nodes;
-            }
+        if (empty($nodes)) {
+            return $nodes;
         }
 
         // filter by attributes
@@ -569,7 +565,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Gets elements by case insensitive tag name.
+     * Gets elements by case-insensitive tag name.
      *
      * TODO:
      * This should be removed when [phpunit-dom-assertions](https://github.com/phpunit/phpunit-dom-assertions) gets released.
@@ -642,7 +638,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             $allChildren = array_merge($allChildren, $children, [$child]);
         }
 
-        return isset($allChildren) ? $allChildren : [];
+        return $allChildren;
     }
 
 }

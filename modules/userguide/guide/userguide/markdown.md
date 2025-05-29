@@ -159,10 +159,10 @@ Content Cell  | Content Cell
 Content Cell  | Content Cell
 ~~~
 
-First Header  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
+| First Header | Second Header |
+|--------------|---------------|
+| Content Cell | Content Cell  |
+| Content Cell | Content Cell  |
 
 Note that the pipes on the very left and very right side are optional, and you can change the text-alignment by adding a colon on the right, or on both sides for center.
 ~~~
@@ -172,11 +172,11 @@ Note that the pipes on the very left and very right side are optional, and you c
 | Phone     |   $12 |   30%   |
 | Pipe      |    $1 |    0%   |
 ~~~
-| Item      | Value | Savings |
-| --------- | -----:|:-------:|
-| Computer  | $1600 |   40%   |
-| Phone     |   $12 |   30%   |
-| Pipe      |    $1 |    0%   |
+| Item     | Value | Savings |
+|----------|------:|:-------:|
+| Computer | $1600 |   40%   |
+| Phone    |   $12 |   30%   |
+| Pipe     |    $1 |   0%    |
 
 # Userguide Specific Syntax
 
@@ -184,11 +184,11 @@ In addition to the features and syntax of [Markdown](http://daringfireball.net/p
 
 ## Namespacing
 
-The first thing to note is that all links are "namespaced" to the current module. For example, from anywhere within the Kohana core docs you do not need to include `kohana` at the beginning of a link url. For example: `[Hello World Tutorial](tutorials/hello-world)` rather than `(kohana/tutorials/hello-world)`.
+The first thing to note is that all links are "namespaced" to the current module. For example, from anywhere within the Kohana core docs you do not need to include `kohana` at the beginning of a link URL. For example: `[Hello World Tutorial](tutorials/hello-world)` rather than `(kohana/tutorials/hello-world)`.
 
-To link to a modules index page, have an empty url like: `[Kohana]()`.
+To link to a modules index page, have an empty URL like: `[Kohana]()`.
 
-To link to page in a different module, prefix your url with `../` and the module name. For example: `[Kohana Routes](../kohana/routing)`
+To link to page in a different module, prefix your URL with `../` and the module name. For example: `[Kohana Routes](../kohana/routing)`
 
 **Images are also namespaced**, using `![Alt Text](imagename.jpg)` would look for `media/guide/<modulename>/imagename.jpg`.
 

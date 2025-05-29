@@ -85,7 +85,7 @@ Getting variables back from cache is achieved using the [Cache::get] method usin
 
 In cases where the requested key is not available or the entry has expired, a default value will be returned (__null__ by default). It is possible to define the default value as the key is requested.
 
-    // If the cache key is available (with default value set to false)
+    // If the cache key is available (with default value set to "false")
     if ($object = Cache::instance()->get('foo', false)) {
         // Do something
     } else {

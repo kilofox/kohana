@@ -6,7 +6,7 @@ defined('SYSPATH') or exit('Installation tests must be loaded from within index.
 clearstatcache(true);
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <title>Kohana Installation</title>
@@ -35,7 +35,7 @@ clearstatcache(true);
             for more information on how to correct the problem.
         </p>
         <?php $failed = false ?>
-        <table cellspacing="0">
+        <table>
             <tr>
                 <th>PHP Version</th>
                 <?php if (PHP_VERSION_ID >= 50600): ?>
@@ -155,7 +155,7 @@ clearstatcache(true);
         <p>
             The following extensions are not required to run the Kohana core, but if enabled can provide access to additional classes.
         </p>
-        <table cellspacing="0">
+        <table>
             <tr>
                 <th>PECL HTTP Enabled</th>
                 <?php if (extension_loaded('http')): ?>

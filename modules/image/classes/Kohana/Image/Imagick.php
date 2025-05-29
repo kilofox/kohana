@@ -309,7 +309,6 @@ class Kohana_Image_Imagick extends Image
                 break;
             default:
                 throw new Kohana_Exception('Installed ImageMagick does not support :type images', [':type' => $extension]);
-                break;
         }
 
         return [$format, $type];

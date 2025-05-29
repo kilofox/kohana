@@ -1,4 +1,4 @@
-<style type="text/css">
+<style>
     #kohana_error { background: #ddd; font-size: 1em; font-family:sans-serif; text-align: left; color: #111; }
     #kohana_error h1,
     #kohana_error h2 { margin: 0; padding: 1em; font-size: 1em; font-weight: normal; background: #911; color: #fff; }
@@ -20,23 +20,29 @@
     #kohana_error ol.trace li { margin: 0; padding: 0; }
 </style>
 <script type="text/javascript">
-    document.write('<style type="text/css"> .collapsed { display: none; } </style>');
+    document.write('<style> .collapsed { display: none; } </style>');
     function koggle(elem)
     {
+        // Only works with the "style" attr
+        let disp;
         elem = document.getElementById(elem);
 
-        if (elem.style && elem.style['display'])
-            // Only works with the "style" attr
-            var disp = elem.style['display'];
+        if (elem.style && elem.style['display']) {
+            disp = elem.style['display'];
+        }
         else if (elem.currentStyle)
             // For MSIE, naturally
-            var disp = elem.currentStyle['display'];
+            {
+                disp = elem.currentStyle['display'];
+            }
         else if (window.getComputedStyle)
             // For most other browsers
-            var disp = document.defaultView.getComputedStyle(elem, null).getPropertyValue('display');
+            {
+                disp = document.defaultView.getComputedStyle(elem, null).getPropertyValue('display');
+            }
 
         // Toggle the state of the "display" style
-        elem.style.display = disp == 'block' ? 'none' : 'block';
+        elem.style.display = disp === 'block' ? 'none' : 'block';
         return false;
     }
 </script>
@@ -68,7 +74,7 @@
                     Kohana_View->set_filename(<a href="#error4ac2453378034args0" onclick="return koggle('error4ac2453378034args0')">arguments</a>)
                 </p>
                 <div id="error4ac2453378034args0" class="collapsed">
-                    <table cellspacing="0">
+                    <table>
 
                         <tr>
                             <td><code>file</code></td>
@@ -77,7 +83,7 @@
                     </table>
                 </div>
 
-                <pre id="error4ac2453378034source0" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">110</span> 	 */
+                <pre id="error4ac2453378034source0" class="source collapsed"><code><span class="line"><span class="number">110</span> 	 */
 </span><span class="line"><span class="number">111</span> 	public function __construct($file = null, array $data = null)
 </span><span class="line"><span class="number">112</span> 	{
 </span><span class="line"><span class="number">113</span> 		if ($file !== null)
@@ -89,7 +95,7 @@
 </span><span class="line"><span class="number">118</span> 		if ( $data !== null)
 </span><span class="line"><span class="number">119</span> 		{
 </span><span class="line"><span class="number">120</span> 			// Add the values to the current data
-</span></code></pre></code></pre>
+</span></code></pre>
             </li>
 
             <li>
@@ -102,7 +108,7 @@
                 </p>
 
                 <div id="error4ac2453378034args1" class="collapsed">
-                    <table cellspacing="0">
+                    <table>
                         <tr>
                             <td><code>file</code></td>
                             <td><pre><small>string</small><span>(4)</span> "site"</pre></td>
@@ -114,7 +120,7 @@
                         </tr>
                     </table>
                 </div>
-                <pre id="error4ac2453378034source1" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">21</span> 	 * @param   array   array of values
+                <pre id="error4ac2453378034source1" class="source collapsed"><code><span class="line"><span class="number">21</span> 	 * @param   array   array of values
 
 </span><span class="line"><span class="number">22</span> 	 * @return  View
 </span><span class="line"><span class="number">23</span> 	 */
@@ -127,7 +133,7 @@
 </span><span class="line"><span class="number">29</span> 	/**
 </span><span class="line"><span class="number">30</span> 	 * Captures the output that is generated when a view is included.
 </span><span class="line"><span class="number">31</span> 	 * The view data will be extracted to make local variables. This method
-</span></code></pre></code></pre>
+</span></code></pre>
             </li>
             <li>
                 <p>
@@ -139,7 +145,7 @@
                     Kohana_View::factory(<a href="#error4ac2453378034args2" onclick="return koggle('error4ac2453378034args2')">arguments</a>)
                 </p>
                 <div id="error4ac2453378034args2" class="collapsed">
-                    <table cellspacing="0">
+                    <table>
 
                         <tr>
                             <td><code>file</code></td>
@@ -148,7 +154,7 @@
                     </table>
                 </div>
 
-                <pre id="error4ac2453378034source2" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">27</span> 	public function before()
+                <pre id="error4ac2453378034source2" class="source collapsed"><code><span class="line"><span class="number">27</span> 	public function before()
 </span><span class="line"><span class="number">28</span> 	{
 </span><span class="line"><span class="number">29</span> 		if ($this-&gt;auto_render === true)
 </span><span class="line"><span class="number">30</span> 		{
@@ -161,7 +167,7 @@
 </span><span class="line"><span class="number">36</span> 	/**
 </span><span class="line"><span class="number">37</span> 	 * Assigns the template as the request response.
 
-</span></code></pre></code></pre>
+</span></code></pre>
             </li>
             <li>
                 <p>
@@ -183,7 +189,7 @@
                 </p>
 
                 <div id="error4ac2453378034args4" class="collapsed">
-                    <table cellspacing="0">
+                    <table>
                         <tr>
                             <td><code>object</code></td>
                             <td><pre><small>object</small> <span>Controller_Hello(3)</span> <code>{
@@ -217,7 +223,7 @@
                         </tr>
                     </table>
                 </div>
-                <pre id="error4ac2453378034source4" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">835</span>
+                <pre id="error4ac2453378034source4" class="source collapsed"><code><span class="line"><span class="number">835</span>
 </span><span class="line"><span class="number">836</span> 			// Create a new instance of the controller
 </span><span class="line"><span class="number">837</span> 			$controller = $class-&gt;newInstance($this);
 
@@ -230,7 +236,7 @@
 
 </span><span class="line"><span class="number">844</span>
 </span><span class="line"><span class="number">845</span> 			// Execute the main action with the parameters
-</span></code></pre></code></pre>
+</span></code></pre>
             </li>
             <li>
                 <p>
@@ -241,7 +247,7 @@
                     &raquo;
                     Kohana_Request->execute()
                 </p>
-                <pre id="error4ac2453378034source5" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">71</span> /**
+                <pre id="error4ac2453378034source5" class="source collapsed"><code><span class="line"><span class="number">71</span> /**
 </span><span class="line"><span class="number">72</span>  * Execute the main request. A source of the URI can be passed, e.g., $_SERVER['PATH_INFO'].
 </span><span class="line"><span class="number">73</span>  * If no source is specified, the URI will be automatically detected.
 
@@ -251,7 +257,7 @@
 </span><span class="line"><span class="number">77</span> 	-&gt;send_headers()
 </span><span class="line"><span class="number">78</span> 	-&gt;response;
 
-</span></code></pre></code></pre>
+</span></code></pre>
             </li>
             <li>
                 <p>
@@ -263,7 +269,7 @@
                 </p>
 
                 <div id="error4ac2453378034args6" class="collapsed">
-                    <table cellspacing="0">
+                    <table>
                         <tr>
                             <td><code>0</code></td>
                             <td><pre><small>string</small><span>(49)</span> "/var/www/kohana/testing/application/bootstrap.php"</pre></td>
@@ -271,14 +277,14 @@
 
                     </table>
                 </div>
-                <pre id="error4ac2453378034source6" class="source collapsed"><code><pre class="source"><code><span class="line"><span class="number">101</span> 	// Load empty core extension
+                <pre id="error4ac2453378034source6" class="source collapsed"><code><span class="line"><span class="number">101</span> 	// Load empty core extension
 </span><span class="line"><span class="number">102</span> 	require SYSPATH.'classes/kohana'.EXT;
 </span><span class="line"><span class="number">103</span> }
 </span><span class="line"><span class="number">104</span>
 </span><span class="line"><span class="number">105</span> // Bootstrap the application
 
 </span><span class="line highlight"><span class="number">106</span> require APPPATH.'bootstrap'.EXT;
-</span></code></pre></code></pre>
+</span></code></pre>
             </li>
         </ol>
     </div>
@@ -287,7 +293,7 @@
         <h3><a href="#error4ac2453378034environment_included" onclick="return koggle('error4ac2453378034environment_included')">Included files</a> (31)</h3>
 
         <div id="error4ac2453378034environment_included" class="collapsed">
-            <table cellspacing="0">
+            <table>
                 <tr>
                     <td><code>DOCROOT/index.php</code></td>
                 </tr>
@@ -398,7 +404,7 @@
         <h3><a href="#error4ac2453378034environment_loaded" onclick="return koggle('error4ac2453378034environment_loaded')">Loaded extensions</a> (41)</h3>
 
         <div id="error4ac2453378034environment_loaded" class="collapsed">
-            <table cellspacing="0">
+            <table>
                 <tr>
                     <td><code>zip</code></td>
                 </tr>
@@ -543,7 +549,7 @@
         <h3><a href="#error4ac2453378034environment_server" onclick="return koggle('error4ac2453378034environment_server')">$_SERVER</a></h3>
         <div id="error4ac2453378034environment_server" class="collapsed">
 
-            <table cellspacing="0">
+            <table>
                 <tr>
                     <td><code>HTTP_HOST</code></td>
                     <td><pre><small>string</small><span>(9)</span> "localhost"</pre></td>

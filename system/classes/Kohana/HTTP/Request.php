@@ -38,7 +38,7 @@ interface Kohana_HTTP_Request extends HTTP_Message
      * If no parameters are passed, the request will use the
      * default values defined in the Route.
      *
-     * @param   array    $params  Optional parameters to include in uri generation
+     * @param   array    $params  Optional parameters to include in URI generation
      * @return  string
      */
     public function uri();

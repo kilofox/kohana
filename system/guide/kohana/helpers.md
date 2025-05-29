@@ -36,7 +36,7 @@ You can make your own helpers by simply making a class and putting it in the `cl
 
  - **[Remote]** - Remote server access helper using [CURL](http://php.net/curl).
 
- - **[Request]** - Get the current request url, create expire tags, send a file, get the user agent, etc.
+ - **[Request]** - Get the current request URL, create expire tags, send a file, get the user agent, etc.
 
  - **[Route]** - Create routes, create an internal link using a route.
 
