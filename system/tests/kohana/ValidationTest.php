@@ -187,7 +187,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
             ->rule('fast', [':class', 'max_length'], [':value', 2]);
 
         // The rule should have run and check() should fail
-        $this->assertSame($validation->check(), false);
+        $this->assertFalse($validation->check());
     }
 
     /**

@@ -174,8 +174,8 @@ class Kohana_RequestTest extends Unittest_TestCase
         $request = Request::factory('foo/bar');
 
         $this->assertEquals('GET', $request->method());
-        $this->assertEquals(true, ($request->method('post') === $request));
-        $this->assertEquals(true, ($request->method() === 'POST'));
+        $this->assertSame($request, $request->method('post'));
+        $this->assertSame('POST', $request->method());
     }
 
     /**
@@ -205,7 +205,7 @@ class Kohana_RequestTest extends Unittest_TestCase
     {
         $request = Request::factory(''); // This should always match something, no matter what changes people make
         // The route should be null since the request has not been executed yet
-        $this->assertEquals(null, $request->route());
+        $this->assertNull($request->route());
     }
 
     /**
@@ -716,8 +716,8 @@ class Kohana_RequestTest extends Unittest_TestCase
 
         $client = $request->client();
 
-        $this->assertEquals(true, $client->follow());
-        $this->assertEquals(false, $client->strict_redirect());
+        $this->assertTrue($client->follow());
+        $this->assertFalse($client->strict_redirect());
     }
 
     /**
