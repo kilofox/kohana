@@ -88,7 +88,7 @@ class Kohana_RequestTest extends Unittest_TestCase
 
         $request = new Request('http://www.google.com/', [], false);
 
-        $this->assertEquals(false, $request->is_external());
+        $this->assertFalse($request->is_external());
     }
 
     /**

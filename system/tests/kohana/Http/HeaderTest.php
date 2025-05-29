@@ -414,7 +414,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
             if (is_int($key)) {
                 $this->assertTrue(in_array($value, $parsed));
             } else {
-                $this->assertTrue(array_key_exists($key, $parsed));
+                $this->assertArrayHasKey($key, $parsed);
                 $this->assertSame($value, $parsed[$key]);
             }
         }
