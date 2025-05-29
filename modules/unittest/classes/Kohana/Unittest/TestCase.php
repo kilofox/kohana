@@ -638,7 +638,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             $allChildren = array_merge($allChildren, $children, [$child]);
         }
 
-        return isset($allChildren) ? $allChildren : [];
+        return $allChildren;
     }
 
 }

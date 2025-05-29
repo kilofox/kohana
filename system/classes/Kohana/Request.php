@@ -150,10 +150,8 @@ class Kohana_Request implements HTTP_Request
                 $request->secure($secure);
             }
 
-            if (isset($method)) {
-                // Set the request method
-                $request->method($method);
-            }
+            // Set the request method
+            $request->method($method);
 
             if (isset($referrer)) {
                 // Set the referrer
