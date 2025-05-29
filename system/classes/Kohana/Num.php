@@ -164,7 +164,6 @@ class Kohana_Num
                     } else {
                         return round($value, $precision);
                     }
-                    break;
             }
         }
     }
