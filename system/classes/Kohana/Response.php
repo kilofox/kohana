@@ -552,7 +552,6 @@ class Kohana_Response implements HTTP_Response
                 $cookies = version_compare(phpversion('http'), '2.0.0', '>=') ?
                     (string) new \http\Cookie($this->_cookies) :
                     http_build_cookie($this->_cookies);
-                $this->_header['set-cookie'] = $cookies;
             } else {
                 $cookies = [];
 
@@ -561,10 +560,10 @@ class Kohana_Response implements HTTP_Response
                     $string = $key . '=' . $value['value'] . '; expires=' . date('l, d M Y H:i:s T', $value['expiration']);
                     $cookies[] = $string;
                 }
-
-                // Create the cookie string
-                $this->_header['set-cookie'] = $cookies;
             }
+
+            // Create the cookie string
+            $this->_header['set-cookie'] = $cookies;
         }
 
         $output = $this->_protocol . ' ' . $this->_status . ' ' . Response::$messages[$this->_status] . "\r\n";

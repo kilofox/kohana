@@ -190,10 +190,6 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             foreach ($elements as $element) {
                 $nodes[] = $element;
             }
-
-            if (empty($nodes)) {
-                return $nodes;
-            }
         } // no tag selected, get them all
         else {
             $tags = [
@@ -229,10 +225,10 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
                     $nodes[] = $element;
                 }
             }
+        }
 
-            if (empty($nodes)) {
-                return $nodes;
-            }
+        if (empty($nodes)) {
+            return $nodes;
         }
 
         // filter by attributes

@@ -631,12 +631,11 @@ class Kohana_ORM extends Model implements serializable
 
                 // Through table's source foreign key (foreign_key) should be this model's primary key
                 $col = $through . '.' . $this->_has_many[$column]['foreign_key'];
-                $val = $this->pk();
             } else {
                 // Simple has_many relationship, search where target model's foreign key is this model's primary key
                 $col = $model->_object_name . '.' . $this->_has_many[$column]['foreign_key'];
-                $val = $this->pk();
             }
+            $val = $this->pk();
 
             return $model->where($col, '=', $val);
         } else {
