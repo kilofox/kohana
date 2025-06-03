@@ -10,7 +10,7 @@ labels
 rules
 :  A rule is a callback or closure used to decide whether to add an error to a field
 
-[!!] Note that any valid [PHP callback](http://php.net/manual/language.pseudo-types.php#language.types.callback) can be used as a rule.
+[!!] Note that any valid [PHP callback](https://www.php.net/manual/en/language.types.callable.php) can be used as a rule.
 
 Using `true` as the field name when adding a rule will be applied to all named fields.
 
@@ -50,7 +50,7 @@ Kohana provides a set of useful rules in the [Valid] class:
 
 ## Adding Rules
 
-All validation rules are defined as a field name, a method, a function (using the [PHP callback](http://php.net/callback) syntax) or [closure](http://php.net/manual/functions.anonymous.php), and an array of parameters:
+All validation rules are defined as a field name, a method, a function (using the [PHP callback](https://www.php.net/manual/en/language.types.callable.php) syntax) or [closure](https://www.php.net/manual/en/functions.anonymous.php), and an array of parameters:
 
     $object->rule($field, $callback, [$parameter1, $parameter2]);
 
@@ -148,7 +148,7 @@ Any existing PHP function can also be used a rule. For instance, if we want to c
 
 Note that all array parameters must still be wrapped in an array! Without the wrapping array, `in_array` would be called as `in_array($value, 'yes', 'no')`, which would result in a PHP error.
 
-Any custom rules can be added using a [PHP callback](http://php.net/manual/language.pseudo-types.php#language.types.callback]:
+Any custom rules can be added using a [PHP callback](https://www.php.net/manual/en/language.types.callable.php]:
 
     $object->rule('username', 'User_Model::unique_username');
 

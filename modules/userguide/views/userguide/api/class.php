@@ -40,7 +40,7 @@
     <?php if ($path = $doc->class->getFilename()): ?>
         Class declared in <samp><?php echo Debug::path($path) ?></samp> on line <?php echo $doc->class->getStartLine() ?>.
 <?php else: ?>
-    Class is not declared in a file, it is probably an internal <?php echo html::anchor('http://php.net/manual/class.' . strtolower($doc->class->name) . '.php', 'PHP class') ?>.
+    Class is not declared in a file, it is probably an internal <?php echo html::anchor('https://www.php.net/manual/en/class.' . strtolower($doc->class->name) . '.php', 'PHP class') ?>.
 <?php endif ?>
 </p>
 

@@ -7,9 +7,9 @@
  * For UTF-8 support to work correctly, the following requirements must be met:
  *
  * - PCRE needs to be compiled with UTF-8 support (--enable-utf8)
- * - Support for [Unicode properties](http://php.net/manual/reference.pcre.pattern.modifiers.php)
+ * - Support for [Unicode properties](https://www.php.net/manual/en/reference.pcre.pattern.modifiers.php)
  *   is highly recommended (--enable-unicode-properties)
- * - The [mbstring extension](http://php.net/mbstring) is highly recommended,
+ * - The [mbstring extension](https://www.php.net/mbstring) is highly recommended,
  *   but must not be overloading string functions
  *
  * [!!] This file is licensed differently from the rest of Kohana. As a port of
@@ -150,7 +150,7 @@ class Kohana_UTF8
 
     /**
      * Returns the length of the given string. This is a UTF8-aware version
-     * of [strlen](http://php.net/strlen).
+     * of [strlen](https://www.php.net/strlen).
      *
      *     $length = UTF8::strlen($str);
      *
@@ -176,7 +176,7 @@ class Kohana_UTF8
 
     /**
      * Finds position of first occurrence of a UTF-8 string. This is a
-     * UTF8-aware version of [strpos](http://php.net/strpos).
+     * UTF8-aware version of [strpos](https://www.php.net/strpos).
      *
      *     $position = UTF8::strpos($str, $search);
      *
@@ -206,7 +206,7 @@ class Kohana_UTF8
 
     /**
      * Finds position of last occurrence of a char in a UTF-8 string. This is
-     * a UTF8-aware version of [strrpos](http://php.net/strrpos).
+     * a UTF8-aware version of [strrpos](https://www.php.net/strrpos).
      *
      *     $position = UTF8::strrpos($str, $search);
      *
@@ -235,7 +235,7 @@ class Kohana_UTF8
 
     /**
      * Returns part of a UTF-8 string. This is a UTF8-aware version
-     * of [substr](http://php.net/substr).
+     * of [substr](https://www.php.net/substr).
      *
      *     $sub = UTF8::substr($str, $offset);
      *
@@ -264,7 +264,7 @@ class Kohana_UTF8
 
     /**
      * Replaces text within a portion of a UTF-8 string. This is a UTF8-aware
-     * version of [substr_replace](http://php.net/substr_replace).
+     * version of [substr_replace](https://www.php.net/substr_replace).
      *
      *     $str = UTF8::substr_replace($str, $replacement, $offset);
      *
@@ -288,7 +288,7 @@ class Kohana_UTF8
 
     /**
      * Makes a UTF-8 string lowercase. This is a UTF8-aware version
-     * of [strtolower](http://php.net/strtolower).
+     * of [strtolower](https://www.php.net/strtolower).
      *
      *     $str = UTF8::strtolower($str);
      *
@@ -315,7 +315,7 @@ class Kohana_UTF8
 
     /**
      * Makes a UTF-8 string uppercase. This is a UTF8-aware version
-     * of [strtoupper](http://php.net/strtoupper).
+     * of [strtoupper](https://www.php.net/strtoupper).
      *
      * @author  Andreas Gohr <andi@splitbrain.org>
      * @param   string  $str mixed case string
@@ -340,7 +340,7 @@ class Kohana_UTF8
 
     /**
      * Makes a UTF-8 string's first character uppercase. This is a UTF8-aware
-     * version of [ucfirst](http://php.net/ucfirst).
+     * version of [ucfirst](https://www.php.net/ucfirst).
      *
      *     $str = UTF8::ucfirst($str);
      *
@@ -362,7 +362,7 @@ class Kohana_UTF8
 
     /**
      * Makes the first character of every word in a UTF-8 string uppercase.
-     * This is a UTF8-aware version of [ucwords](http://php.net/ucwords).
+     * This is a UTF8-aware version of [ucwords](https://www.php.net/ucwords).
      *
      *     $str = UTF8::ucwords($str);
      *
@@ -384,7 +384,7 @@ class Kohana_UTF8
 
     /**
      * Case-insensitive UTF-8 string comparison. This is a UTF8-aware version
-     * of [strcasecmp](http://php.net/strcasecmp).
+     * of [strcasecmp](https://www.php.net/strcasecmp).
      *
      *     $compare = UTF8::strcasecmp($str1, $str2);
      *
@@ -410,7 +410,7 @@ class Kohana_UTF8
     /**
      * Returns a string or an array with all occurrences of search in subject
      * (ignoring case) and replaced with the given replace value. This is a
-     * UTF8-aware version of [str_ireplace](http://php.net/str_ireplace).
+     * UTF8-aware version of [str_ireplace](https://www.php.net/str_ireplace).
      *
      * [!!] This function is very slow compared to the native version. Avoid
      * using it when possible.
@@ -438,7 +438,7 @@ class Kohana_UTF8
     /**
      * Case-insensitive UTF-8 version of strstr. Returns all of input string
      * from the first occurrence of needle to the end. This is a UTF8-aware
-     * version of [stristr](http://php.net/stristr).
+     * version of [stristr](https://www.php.net/stristr).
      *
      *     $found = UTF8::stristr($str, $search);
      *
@@ -462,7 +462,7 @@ class Kohana_UTF8
 
     /**
      * Finds the length of the initial segment matching mask. This is a
-     * UTF8-aware version of [strspn](http://php.net/strspn).
+     * UTF8-aware version of [strspn](https://www.php.net/strspn).
      *
      *     $found = UTF8::strspn($str, $mask);
      *
@@ -487,7 +487,7 @@ class Kohana_UTF8
 
     /**
      * Finds the length of the initial segment not matching mask. This is a
-     * UTF8-aware version of [strcspn](http://php.net/strcspn).
+     * UTF8-aware version of [strcspn](https://www.php.net/strcspn).
      *
      *     $found = UTF8::strcspn($str, $mask);
      *
@@ -512,7 +512,7 @@ class Kohana_UTF8
 
     /**
      * Pads a UTF-8 string to a certain length with another string. This is a
-     * UTF8-aware version of [str_pad](http://php.net/str_pad).
+     * UTF8-aware version of [str_pad](https://www.php.net/str_pad).
      *
      *     $str = UTF8::str_pad($str, $length);
      *
@@ -538,7 +538,7 @@ class Kohana_UTF8
 
     /**
      * Converts a UTF-8 string to an array. This is a UTF8-aware version of
-     * [str_split](http://php.net/str_split).
+     * [str_split](https://www.php.net/str_split).
      *
      *     $array = UTF8::str_split($str);
      *
@@ -560,7 +560,7 @@ class Kohana_UTF8
     }
 
     /**
-     * Reverses a UTF-8 string. This is a UTF8-aware version of [strrev](http://php.net/strrev).
+     * Reverses a UTF-8 string. This is a UTF8-aware version of [strrev](https://www.php.net/strrev).
      *
      *     $str = UTF8::strrev($str);
      *
@@ -582,7 +582,7 @@ class Kohana_UTF8
 
     /**
      * Strips whitespace (or other UTF-8 characters) from the beginning and
-     * end of a string. This is a UTF8-aware version of [trim](http://php.net/trim).
+     * end of a string. This is a UTF8-aware version of [trim](https://www.php.net/trim).
      *
      *     $str = UTF8::trim($str);
      *
@@ -605,7 +605,7 @@ class Kohana_UTF8
 
     /**
      * Strips whitespace (or other UTF-8 characters) from the beginning of
-     * a string. This is a UTF8-aware version of [ltrim](http://php.net/ltrim).
+     * a string. This is a UTF8-aware version of [ltrim](https://www.php.net/ltrim).
      *
      *     $str = UTF8::ltrim($str);
      *
@@ -628,7 +628,7 @@ class Kohana_UTF8
 
     /**
      * Strips whitespace (or other UTF-8 characters) from the end of a string.
-     * This is a UTF8-aware version of [rtrim](http://php.net/rtrim).
+     * This is a UTF8-aware version of [rtrim](https://www.php.net/rtrim).
      *
      *     $str = UTF8::rtrim($str);
      *
@@ -651,7 +651,7 @@ class Kohana_UTF8
 
     /**
      * Returns the Unicode ordinal for a character. This is a UTF8-aware
-     * version of [ord](http://php.net/ord).
+     * version of [ord](https://www.php.net/ord).
      *
      *     $digit = UTF8::ord($character);
      *

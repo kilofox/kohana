@@ -7,7 +7,7 @@
  *
  * ### Supported cache engines
  *
- * *  [APC](http://php.net/manual/en/book.apc.php)
+ * *  [APC](https://pecl.php.net/package/apc)
  * *  [eAccelerator](http://eaccelerator.net/)
  * *  File
  * *  [Memcache](http://memcached.org/)

@@ -1,6 +1,6 @@
 # What is Kohana?
 
-Kohana is an open source, [object-oriented](http://en.wikipedia.org/wiki/Object-oriented_programming) [MVC](http://en.wikipedia.org/wiki/Model–view–controller "Model View Controller") [web framework](http://en.wikipedia.org/wiki/Web_application_framework) built using [PHP](http://php.net/manual/intro-whatis "PHP Hypertext Preprocessor") by a team of volunteers that aims to be swift, secure, and small.
+Kohana is an open source, [object-oriented](http://en.wikipedia.org/wiki/Object-oriented_programming) [MVC](http://en.wikipedia.org/wiki/Model–view–controller "Model View Controller") [web framework](http://en.wikipedia.org/wiki/Web_application_framework) built using [PHP](https://www.php.net/introduction "PHP Hypertext Preprocessor") by a team of volunteers that aims to be swift, secure, and small.
 
 [!!] Kohana is licensed under a [MIT license](https://kohana.top/license), so you can legally use it for any kind of open source, commercial, or personal project.
 

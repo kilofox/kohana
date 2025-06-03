@@ -3,8 +3,8 @@
 [!!] Before continuing, make sure you have a web server (like Apache) configured with the following requirements.
 
  - PHP 5.6 or newer.
- - [Iconv Extension](http://php.net/iconv)
- - [Character Type (CTYPE) Extension](http://php.net/ctype)
+ - [Iconv Extension](https://www.php.net/iconv)
+ - [Character Type (CTYPE) Extension](https://www.php.net/ctype)
 
 # Download
 
@@ -18,7 +18,7 @@ Once downloaded, you should extract the Kohana application to a directory where 
 
 Before the application can be run, you will need to make a few changes to the `application/bootstrap.php` file. This file is the first one to be included by `index.php` and sets up most of the global options for the application. Open `application/bootstrap.php` and make the following changes:
 
- - Set the default [timezone](http://php.net/timezones) for your application.
+ - Set the default [timezone](https://www.php.net/timezones) for your application.
 ~~~
 // Example of changing timezone to Sao Paulo, Brazil
 date_default_timezone_set('America/Sao_Paulo');

@@ -132,7 +132,7 @@ class Kohana_Valid
      * Validate the domain of an email address by checking if the domain has a
      * valid MX record.
      *
-     * @link  http://php.net/checkdnsrr  not added to Windows until PHP 5.3.0
+     * @link  https://www.php.net/checkdnsrr  not added to Windows until PHP 5.3.0
      *
      * @param   string  $email  email address
      * @return  boolean
@@ -422,7 +422,7 @@ class Kohana_Valid
     /**
      * Checks whether a string is a valid number (negative and decimal numbers allowed).
      *
-     * Uses {@link http://www.php.net/manual/en/function.localeconv.php locale conversion}
+     * Uses {@link https://www.php.net/manual/en/function.localeconv.php locale conversion}
      * to allow decimal point to be locale specific.
      *
      * @param   string  $str    input string

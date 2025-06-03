@@ -54,7 +54,7 @@ The new file creates the initial request object, rather than fully executing the
 
     /**
      * Set the PHP error reporting level. If you set this in php.ini, you remove this.
-     * @link http://www.php.net/manual/errorfunc.configuration#ini.error-reporting
+     * @link https://www.php.net/errorfunc.configuration#ini.error-reporting
      *
      * When developing your application, it is highly recommended to enable notices
      * and warnings. Enable them by using: E_ALL

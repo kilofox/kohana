@@ -54,7 +54,7 @@ class Kohana_Core
     public static $is_windows = false;
 
     /**
-     * @var  boolean  True if [magic quotes](http://php.net/manual/en/security.magicquotes.php) is enabled.
+     * @var  boolean  True if [magic quotes](https://wiki.php.net/rfc/magicquotes) is enabled.
      */
     public static $magic_quotes = false;
 
@@ -781,7 +781,7 @@ class Kohana_Core
      *
      * The cache directory and default cache lifetime is set by [Kohana::init]
      *
-     * [ref-var]: http://php.net/var_export
+     * [ref-var]: https://www.php.net/var_export
      *
      * @throws  Kohana_Exception
      * @param   string  $name       name of the cache

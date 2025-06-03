@@ -70,7 +70,7 @@ Always check these settings before making your application live, as many of them
 When creating or accessing an instance of the [Session] class you can decide which session adapter or driver you wish to use. The session adapters that are available to you are:
 
 Native
-: Stores session data in the default location for your web server. The storage location is defined by [session.save_path](http://php.net/manual/session.configuration.php#ini.session.save-path) in `php.ini` or defined by [ini_set](http://php.net/ini_set).
+: Stores session data in the default location for your web server. The storage location is defined by [session.save_path](https://www.php.net/session.configuration#ini.session.save-path) in `php.ini` or defined by [ini_set](https://www.php.net/ini_set).
 
 Database
 : Stores session data in a database table using the [Session_Database] class. Requires the [Database] module to be enabled.

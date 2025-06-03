@@ -8,7 +8,7 @@ Fragments are typically used in view files.
 
 ## Usage
 
-Fragments are used by calling [Fragment::load()] in an `if` statement at the beginning of what you want cached, and [Fragment::save()] at the end. They use [output buffering](http://www.php.net/manual/en/function.ob-start.php) to capture the output between the two function calls.
+Fragments are used by calling [Fragment::load()] in an `if` statement at the beginning of what you want cached, and [Fragment::save()] at the end. They use [output buffering](https://www.php.net/manual/en/function.ob-start.php) to capture the output between the two function calls.
 
 You can specify the lifetime (in seconds) of the Fragment using the second parameter of [Fragment::load()]. The default lifetime is 30 seconds. You can use the [Date] helper to make more readable times.
 

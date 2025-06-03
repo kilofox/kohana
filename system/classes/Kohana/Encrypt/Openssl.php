@@ -2,7 +2,7 @@
 
 /**
  * [Kohana Encrypt](api/Kohana_Encrypt) OpenSSL driver. Provides two-way
- * encryption of text and binary strings using the [OpenSSL](http://php.net/openssl)
+ * encryption of text and binary strings using the [OpenSSL](https://www.php.net/openssl)
  * extension.
  *
  * @package     Kohana
@@ -94,7 +94,7 @@ class Kohana_Encrypt_Openssl
      *
      *     $data = $encrypt->encode($data);
      *
-     * The encrypted binary data is encoded using [base64](http://php.net/base64_encode)
+     * The encrypted binary data is encoded using [base64](https://www.php.net/base64_encode)
      * to convert it to a string. This string can be stored in a database,
      * displayed, and passed using most other means without corruption.
      *

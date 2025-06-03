@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Support for image manipulation using [GD](http://php.net/GD).
+ * Support for image manipulation using [GD](https://www.php.net/manual/en/book.image.php).
  *
  * @package    Kohana/Image
  * @category   Drivers

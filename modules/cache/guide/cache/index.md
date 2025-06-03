@@ -13,7 +13,7 @@
 
 ## Introduction to caching
 
-Caching should be implemented with consideration. Generally, caching the result of resources is faster than reprocessing them. Choosing what, how and when to cache is vital. [PHP APCu](http://php.net/manual/en/book.apcu.php) is one of the fastest caching systems available, closely followed by [Memcached](http://memcached.org/). [SQLite](http://www.sqlite.org/) and File caching are two of the slowest cache methods, however usually faster than reprocessing a complex set of instructions.
+Caching should be implemented with consideration. Generally, caching the result of resources is faster than reprocessing them. Choosing what, how and when to cache is vital. [PHP APCu](https://www.php.net/manual/en/book.apcu.php) is one of the fastest caching systems available, closely followed by [Memcached](http://memcached.org/). [SQLite](http://www.sqlite.org/) and File caching are two of the slowest cache methods, however usually faster than reprocessing a complex set of instructions.
 
 Caching engines that use memory are considerably faster than file based alternatives. But memory is limited whereas disk space is plentiful. If caching large datasets, such as large database result sets, it is best to use file caching.
 

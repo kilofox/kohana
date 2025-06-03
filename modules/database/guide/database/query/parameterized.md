@@ -16,7 +16,7 @@ Our example query earlier contains a `:user` parameter, which we can assign to a
 
     $query->param(':user', 'john');
 
-[!!] Parameter names can be any unique string, as they are replaced using [strtr](http://php.net/strtr). It is highly recommended to **not** use dollars signs as parameter names to prevent confusion. Colons are commonly used.
+[!!] Parameter names can be any unique string, as they are replaced using [strtr](https://www.php.net/strtr). It is highly recommended to **not** use dollars signs as parameter names to prevent confusion. Colons are commonly used.
 
 You can also update the `:user` parameter by calling [Database_Query::param] again:
 
@@ -31,7 +31,7 @@ If you want to set multiple parameters at once, you can use [Database_Query::par
         ':status' => 'active',
     ]);
 
-It is also possible to bind a parameter to a variable, using a [variable reference]((http://php.net/language.references.whatdo)). This can be extremely useful when running the same query many times:
+It is also possible to bind a parameter to a variable, using a [variable reference]((https://www.php.net/language.references.whatdo)). This can be extremely useful when running the same query many times:
 
     $query = DB::query(Database::INSERT, 'INSERT INTO users (username, password) VALUES (:user, :pass)')
         ->bind(':user', $username)

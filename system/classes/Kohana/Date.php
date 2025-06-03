@@ -30,7 +30,7 @@ class Kohana_Date
 
     /**
      * Timezone for formatted_time
-     * @link http://uk2.php.net/manual/en/timezones.php
+     * @link https://www.php.net/timezones
      * @var  string
      */
     public static $timezone;
@@ -42,7 +42,7 @@ class Kohana_Date
      *     $seconds = Date::offset('America/Chicago', 'GMT');
      *
      * [!!] A list of time zones that PHP supports can be found at
-     * <http://php.net/timezones>.
+     * <https://www.php.net/timezones>.
      *
      * @param string $remote timezone that to find the offset of
      * @param string $local timezone used as the baseline
@@ -507,7 +507,7 @@ class Kohana_Date
      *
      *     $time = Date::formatted_time('5 minutes ago');
      *
-     * @link    http://www.php.net/manual/datetime.construct
+     * @link    https://www.php.net/datetime.construct
      * @param string $datetime_str datetime string
      * @param string $timestamp_format timestamp format
      * @param string $timezone timezone identifier

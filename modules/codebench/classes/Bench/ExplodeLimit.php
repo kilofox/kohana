@@ -7,7 +7,7 @@
  */
 class Bench_ExplodeLimit extends Codebench
 {
-    public $description = 'Having a look at the effect of adding a limit to the <a href="http://php.net/explode">explode</a> function.<br />
+    public $description = 'Having a look at the effect of adding a limit to the <a href="https://www.php.net/explode">explode</a> function.<br />
 		 http://stackoverflow.com/questions/1308149/how-to-get-a-part-of-url-between-4th-and-5th-slashes';
     public $loops = 10000;
     public $subjects = [

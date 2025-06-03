@@ -42,7 +42,7 @@ class Kohana_Kodoc_Class extends Kodoc
     public $parents = [];
 
     /**
-     * Loads a class and uses [reflection](http://php.net/reflection) to parse
+     * Loads a class and uses [reflection](https://www.php.net/reflection) to parse
      * the class. Reads the class modifiers, constants and comment. Parses the
      * comment to find the description and tags.
      *

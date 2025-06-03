@@ -66,7 +66,7 @@ class Kohana_Database_PDO extends Database
      *
      * [!!] Works only with SQLite
      *
-     * @link http://php.net/manual/function.pdo-sqlitecreateaggregate
+     * @link https://www.php.net/manual/en/pdo.sqlitecreateaggregate.php
      *
      * @param string $name Name of the SQL function to be created or redefined
      * @param callback $step Called for each row of a result set
@@ -90,7 +90,7 @@ class Kohana_Database_PDO extends Database
      *
      * [!!] Works only with SQLite
      *
-     * @link http://php.net/manual/function.pdo-sqlitecreatefunction
+     * @link https://www.php.net/manual/en/pdo.sqlitecreatefunction.php
      *
      * @param string $name Name of the SQL function to be created or redefined
      * @param callback $callback Callback which implements the SQL function

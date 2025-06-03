@@ -89,7 +89,7 @@ Every database driver has different connection settings.
 
 ### PDO
 
-A [PDO database](http://php.net/manual/en/book.pdo.php) can accept these options in the `connection` array:
+A [PDO database](https://www.php.net/manual/en/book.pdo.php) can accept these options in the `connection` array:
 
 | Type      | Option     | Description                | Default value                        |
 |-----------|------------|----------------------------|--------------------------------------|
@@ -101,11 +101,11 @@ A [PDO database](http://php.net/manual/en/book.pdo.php) can accept these options
 
 The connection character set should be configured using the DSN string or `options` array.
 
-[!!] If you are using PDO and are not sure what to use for the `dsn` option, review [PDO::__construct](http://php.net/pdo.construct).
+[!!] If you are using PDO and are not sure what to use for the `dsn` option, review [PDO::__construct](https://www.php.net/pdo.construct).
 
 ### MySQLi
 
-A [MySQL database](http://php.net/manual/en/book.mysqli.php) can accept the following options in the `connection` array:
+A [MySQL database](https://www.php.net/manual/en/book.mysqli.php) can accept the following options in the `connection` array:
 
 | Type      | Option     | Description              | Default value |
 |-----------|------------|--------------------------|---------------|

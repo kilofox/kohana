@@ -34,7 +34,7 @@ You can make your own helpers by simply making a class and putting it in the `cl
 
  - **[Profiler]** - Covered in more detail on the [Profiling](profiling) page.
 
- - **[Remote]** - Remote server access helper using [CURL](http://php.net/curl).
+ - **[Remote]** - Remote server access helper using [CURL](https://www.php.net/curl).
 
  - **[Request]** - Get the current request URL, create expire tags, send a file, get the user agent, etc.
 

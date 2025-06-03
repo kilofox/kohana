@@ -78,7 +78,7 @@ Obviously this method is a lot more compact than the original. However, please b
 `dot.notation` is a _lot_ slower than calling `get()` and traversing the array yourself. Dot notation
 can be useful if you only need one specific variable, but otherwise it's best to use `get()`.
 
-As [Config_Group] extends [Array_Object](http://php.net/manual/en/class.arrayobject.php) you can also use array
+As [Config_Group] extends [Array_Object](https://www.php.net/manual/en/class.arrayobject.php) you can also use array
 syntax to get/set config vars:
 
     $config = Kohana::$config->load('database');

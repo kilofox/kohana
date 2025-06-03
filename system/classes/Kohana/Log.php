@@ -106,7 +106,7 @@ class Kohana_Log
 
     /**
      * Adds a message to the log. Replacement values must be passed in to be
-     * replaced using [strtr](http://php.net/strtr).
+     * replaced using [strtr](https://www.php.net/strtr).
      *
      *     $log->add(Log::ERROR, 'Could not locate user: :user', [
      *         ':user' => $username,

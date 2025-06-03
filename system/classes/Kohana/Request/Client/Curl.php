@@ -9,7 +9,7 @@
  * @author     Kohana Team
  * @copyright  (c) 2008-2012 Kohana Team
  * @license    https://kohana.top/license
- * @uses       [PHP cURL](http://php.net/manual/en/book.curl.php)
+ * @uses       [PHP cURL](https://www.php.net/manual/en/book.curl.php)
  */
 class Kohana_Request_Client_Curl extends Request_Client_External
 {
@@ -77,7 +77,7 @@ class Kohana_Request_Client_Curl extends Request_Client_External
 
         // Set connection options
         if (!curl_setopt_array($curl, $options)) {
-            throw new Request_Exception('Failed to set CURL options, check CURL documentation: :url', [':url' => 'http://php.net/curl_setopt_array']);
+            throw new Request_Exception('Failed to set CURL options, check CURL documentation: :url', [':url' => 'https://www.php.net/curl_setopt_array']);
         }
 
         // Get the response body

@@ -52,7 +52,7 @@ In this example, we have controllers in two directories, `admin` and `affiliate`
             'action' => 'index',
     ]);
 
-You can also use a less restrictive regex to match unlimited parameters, or to ignore overflow in a route. In this example, the URL `foobar/baz/and-anything/else_that/is-on-the/url` would be routed to `Controller_Foobar::action_baz()` and the `"stuff"` parameter would be `"and-anything/else_that/is-on-the/url"`. If you wanted to use this for unlimited parameters, you could [explode](http://php.net/manual/en/function.explode.php) it, or you just ignore the overflow.
+You can also use a less restrictive regex to match unlimited parameters, or to ignore overflow in a route. In this example, the URL `foobar/baz/and-anything/else_that/is-on-the/url` would be routed to `Controller_Foobar::action_baz()` and the `"stuff"` parameter would be `"and-anything/else_that/is-on-the/url"`. If you wanted to use this for unlimited parameters, you could [explode](https://www.php.net/function.explode) it, or you just ignore the overflow.
 
     Route::set('default', '(<controller>(/<action>(/<stuff>)))', ['stuff' => '.*'])
         ->defaults([

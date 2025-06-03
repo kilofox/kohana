@@ -2,19 +2,19 @@
 
 /**
  * [Kohana Encrypt](api/Kohana_Encrypt) Mcrypt driver. Provides two-way
- * encryption of text and binary strings using the [Mcrypt](http://php.net/mcrypt)
+ * encryption of text and binary strings using the [Mcrypt](https://www.php.net/mcrypt)
  * extension, which consists of three parts: the key, the cipher, and the mode.
  *
  * The Key
  * :  A secret passphrase that is used for encoding and decoding.
  *
  * The Cipher
- * :  A [cipher](http://php.net/mcrypt.ciphers) determines how the encryption
+ * :  A [cipher](https://www.php.net/mcrypt.ciphers) determines how the encryption
  *    is mathematically calculated. By default, the "rijndael-128" cipher
  *    is used. This is commonly known as "AES-128" and is an industry standard.
  *
  * The Mode
- * :  The [mode](http://php.net/mcrypt.constants) determines how the encrypted
+ * :  The [mode](https://www.php.net/mcrypt.constants) determines how the encrypted
  *    data is written in binary form. By default, the "nofb" mode is used,
  *    which produces short output with high entropy.
  *
@@ -113,7 +113,7 @@ class Kohana_Encrypt_Mcrypt
      *
      *     $data = $encrypt->encode($data);
      *
-     * The encrypted binary data is encoded using [base64](http://php.net/base64_encode)
+     * The encrypted binary data is encoded using [base64](https://www.php.net/base64_encode)
      * to convert it to a string. This string can be stored in a database,
      * displayed, and passed using most other means without corruption.
      *
