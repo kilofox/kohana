@@ -63,10 +63,10 @@ echo View::factory('profiler/stats');
 
 ## Example: Recent Wikipedia edits
 
-In this example we will use the [Feed] class to retrieve and parse an RSS feed of recent edits to [http://en.wikipedia.org](http://en.wikipedia.org), then use Fragment to cache the results.
+In this example we will use the [Feed] class to retrieve and parse an RSS feed of recent edits to [https://en.wikipedia.org](https://en.wikipedia.org), then use Fragment to cache the results.
 
 ~~~
-$feed = "http://en.wikipedia.org/w/index.php?title=Special:RecentChanges&feed=rss";
+$feed = "https://en.wikipedia.org/w/api.php?hidebots=1&hidecategorization=1&hideWikibase=1&urlversion=1&days=7&limit=50&action=feedrecentchanges&feedformat=rss";
 $limit = 50;
 
 // Displayed feeds are cached for 30 seconds (default)

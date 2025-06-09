@@ -195,7 +195,7 @@ class Kohana_Valid
             return true;
 
         // Check maximum length of the whole hostname
-        // http://en.wikipedia.org/wiki/Domain_name#cite_note-0
+        // https://en.wikipedia.org/wiki/Domain_name#Domain_name_syntax
         if (strlen($matches[1]) > 253)
             return false;
 
@@ -280,7 +280,7 @@ class Kohana_Valid
     }
 
     /**
-     * Validate a number against the [Luhn](http://en.wikipedia.org/wiki/Luhn_algorithm)
+     * Validate a number against the [Luhn](https://en.wikipedia.org/wiki/Domain_name#Domain_name_syntax)
      * (mod10) formula.
      *
      * @param   string  $number number to check

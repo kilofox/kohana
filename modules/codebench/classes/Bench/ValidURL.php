@@ -88,7 +88,7 @@ class Bench_ValidURL extends Codebench
             return true;
 
         // Check maximum length of the whole hostname
-        // http://en.wikipedia.org/wiki/Domain_name#cite_note-0
+        // https://en.wikipedia.org/wiki/Domain_name#Domain_name_syntax
         if (strlen($matches[1]) > 253)
             return false;
 

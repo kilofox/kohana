@@ -6,8 +6,8 @@
  * with object properties representing row data. ORM in Kohana generally follows
  * the [Active Record][ref-act] pattern.
  *
- * [ref-orm]: http://wikipedia.org/wiki/Object-relational_mapping
- * [ref-act]: http://wikipedia.org/wiki/Active_record
+ * [ref-orm]: https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping
+ * [ref-act]: https://en.wikipedia.org/wiki/Active_record_pattern
  *
  * @package    Kohana/ORM
  * @author     Kohana Team
