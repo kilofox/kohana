@@ -23,8 +23,8 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
      * Provider for test_encode.
      *
      * AES Multiblock Message Test (MMT) Sample Vectors - Known Answer Test (KAT).
-     * @link http://csrc.nist.gov/groups/STM/cavp/index.html NIST - Cryptographic Algorithm Validation Program
-     * @link http://csrc.nist.gov/groups/STM/cavp/documents/aes/aesmmt.zip file used CBCMMT128.rsp
+     * @link https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program NIST - Cryptographic Algorithm Validation Program
+     * @link https://csrc.nist.gov/csrc/media/projects/cryptographic-algorithm-validation-program/documents/aes/aesmmt.zip file used CBCMMT128.rsp
      *
      * @return  array   Array of $mode, $cipher, $key, $iv, $txtPlain, $txtEncoded.
      */
@@ -212,8 +212,8 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
      * Provider for test_decode.
      *
      * AES Multiblock Message Test (MMT) Sample Vectors - Known Answer Test (KAT).
-     * @link http://csrc.nist.gov/groups/STM/cavp/index.html NIST - Cryptographic Algorithm Validation Program
-     * @link http://csrc.nist.gov/groups/STM/cavp/documents/aes/aesmmt.zip file used CBCMMT128.rsp
+     * @link https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program NIST - Cryptographic Algorithm Validation Program
+     * @link https://csrc.nist.gov/csrc/media/projects/cryptographic-algorithm-validation-program/documents/aes/aesmmt.zip file used CBCMMT128.rsp
      *
      * @return  array   Array of $mode, $cipher, $key, $iv, $txtEncoded, $txtPlain.
      */
