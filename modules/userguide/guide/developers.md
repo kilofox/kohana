@@ -118,8 +118,8 @@ There are a couple of scenarios where this might happen:
 
 ### The conflict is to do with a few unrelated commits, and you want to keep changes made in both commits
 
-You'll need to manually modify the files to resolve the conflict, see the "Resolving a merge"
-section [in the git-scm book](http://book.git-scm.com/3_basic_branching_and_merging.html) for more info
+You'll need to manually modify the files to resolve the conflict, see the "Basic Merge Conflicts"
+section [in the git-scm book](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging) for more info
 
 ### You've fixed something locally which someone else has already done in the remote repo
 
