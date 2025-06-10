@@ -30,7 +30,7 @@ clearstatcache(true);
     <body>
         <h1>Environment Tests</h1>
         <p>
-            The following tests have been run to determine if <a href="http://kohana.top">Kohana</a> will work in your environment.
+            The following tests have been run to determine if <a href="https://kohana.top">Kohana</a> will work in your environment.
             If any of the tests have failed, consult the <a href="https://kohana.top/guide/about.install">documentation</a>
             for more information on how to correct the problem.
         </p>
