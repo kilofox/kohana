@@ -69,12 +69,12 @@
                                     const dsq = document.createElement('script');
                                     dsq.type = 'text/javascript';
                                     dsq.async = true;
-                                    dsq.src = 'http://kohana.disqus.com/embed.js';
+                                    dsq.src = 'https://kohana.disqus.com/embed.js';
                                     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
                                 })();
                             </script>
-                            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=kohana">comments powered by Disqus.</a></noscript>
-                            <a href="http://disqus.com" class="dsq-brlink">Documentation comments powered by <span class="logo-disqus">Disqus</span></a>
+                            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript=kohana">comments powered by Disqus.</a></noscript>
+                            <a href="https://disqus.com" class="dsq-brlink">Documentation comments powered by <span class="logo-disqus">Disqus</span></a>
 <?php endif ?>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                             query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
                         }
                     }
-                    document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/kohana/get_num_replies.js' + query + '"></' + 'script>');
+                    document.write('<script charset="utf-8" type="text/javascript" src="https://disqus.com/forums/kohana/get_num_replies.js' + query + '"></' + 'script>');
                 })();
                 //]]>
             </script>
