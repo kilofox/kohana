@@ -16,4 +16,4 @@ We are working very hard to provide complete documentation. To help improve the 
 
 ## Unofficial Documentation
 
-If you are having trouble finding an answer here, search [Stack Overflow](http://stackoverflow.com/questions/tagged/kohana), followed by asking your question on it. Additionally, you can chat with the community of developers on the freenode [#kohana](irc://irc.freenode.net/kohana) IRC channel.
+If you are having trouble finding an answer here, search [Stack Overflow](https://stackoverflow.com/questions/tagged/kohana), followed by asking your question on it. Additionally, you can chat with the community of developers on the freenode [#kohana](irc://irc.freenode.net/kohana) IRC channel.
