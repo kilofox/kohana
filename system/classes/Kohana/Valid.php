@@ -154,7 +154,7 @@ class Kohana_Valid
      */
     public static function url($url)
     {
-        // Based on http://www.apps.ietf.org/rfc/rfc1738.html#sec-5
+        // Based on https://datatracker.ietf.org/doc/html/rfc1738#section-5
         if (!preg_match(
                 '~^
 
