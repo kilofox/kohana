@@ -42,13 +42,13 @@ end of a line.
 
 ## Links
 ~~~
-This is a normal link: [Kohana](http://kohanaframework.org).
+This is a normal link: [Kohana](https://kohanaframework.org).
 
-This link has a title: [Kohana](http://kohanaframework.org "The swift PHP framework")
+This link has a title: [Kohana](https://kohanaframework.org "The swift PHP framework")
 ~~~
-This is a normal link: [Kohana](http://kohanaframework.org)
+This is a normal link: [Kohana](https://kohanaframework.org)
 
-This link has a title: [Kohana](http://kohanaframework.org "The swift PHP framework")
+This link has a title: [Kohana](https://kohanaframework.org "The swift PHP framework")
 
 ## Code blocks
 
