@@ -6,9 +6,9 @@ changes between various collaborators can quickly become difficult as multiple f
 
 Please read the following before working with this code:
 
-1. [Dealing with newlines](http://github.com/guides/dealing-with-newlines-in-git)
-2. [Submitting changes from your fork](http://github.com/guides/fork-a-project-and-submit-your-modifications)
-3. [Using SSH keys with GitHub](http://github.com/guides/how-to-not-have-to-type-your-password-for-every-push)
+1. [Configuring Git to handle line endings](https://docs.github.com/en/get-started/git-basics/configuring-git-to-handle-line-endings)
+2. [Fork a repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
+3. [Working with SSH key passphrases](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases)
 
 ## Managing Remote Repositories
 
