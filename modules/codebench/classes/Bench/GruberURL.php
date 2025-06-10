@@ -7,7 +7,7 @@
  */
 class Bench_GruberURL extends Codebench
 {
-    public $description = 'Optimization for http://daringfireball.net/2009/11/liberal_regex_for_matching_urls';
+    public $description = 'Optimization for https://daringfireball.net/2009/11/liberal_regex_for_matching_urls';
     public $loops = 10000;
     public $subjects = [
         'http://foo.com/blah_blah',

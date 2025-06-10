@@ -1,6 +1,6 @@
 # Markdown Syntax
 
-The userguide uses [Markdown](http://daringfireball.net/projects/markdown/) and [Markdown Extra](http://michelf.com/projects/php-markdown/extra/) for the userguide pages, and the in-code comments used to generate the API browser. This is a brief summary of most of Markdown and Markdown extra features. It does not cover everything, and it does not cover all the caveats.
+The userguide uses [Markdown](https://daringfireball.net/projects/markdown/) and [Markdown Extra](http://michelf.com/projects/php-markdown/extra/) for the userguide pages, and the in-code comments used to generate the API browser. This is a brief summary of most of Markdown and Markdown extra features. It does not cover everything, and it does not cover all the caveats.
 
 [!!] Be sure to check out the **[Userguide Specific Syntax](#userguide-specific-syntax)** for things that Userguide adds to Markdown.
 
@@ -180,7 +180,7 @@ Note that the pipes on the very left and very right side are optional, and you c
 
 # Userguide Specific Syntax
 
-In addition to the features and syntax of [Markdown](http://daringfireball.net/projects/markdown/) and [Markdown Extra](http://michelf.com/projects/php-markdown/extra/) the following apply to userguide pages and api documentation:
+In addition to the features and syntax of [Markdown](https://daringfireball.net/projects/markdown/) and [Markdown Extra](http://michelf.com/projects/php-markdown/extra/) the following apply to userguide pages and api documentation:
 
 ## Namespacing
 
