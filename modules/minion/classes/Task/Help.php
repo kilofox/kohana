@@ -22,7 +22,7 @@ class Task_Help extends Minion_Task
 
         $view = new View('minion/help/list');
 
-        $view->tasks = $tasks;
+        $view->set('tasks', $tasks);
 
         echo $view;
     }
