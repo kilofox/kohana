@@ -260,7 +260,6 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
             // Add scripts
             $this->template->scripts = [
                 $media->uri(['file' => 'js/jquery.min.js']),
-                $media->uri(['file' => 'js/jquery.cookie.js']),
                 $media->uri(['file' => 'js/kodoc.js']),
                 // Syntax Highlighter
                 $media->uri(['file' => 'js/shCore.js']),
