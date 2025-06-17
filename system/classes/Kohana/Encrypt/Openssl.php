@@ -54,7 +54,7 @@ class Kohana_Encrypt_Openssl
     protected $iv;
 
     /**
-     * Creates a new mcrypt wrapper.
+     * Creates a new OpenSSL wrapper.
      *
      * @param string $name configuration group name
      * @param array $config configuration options
