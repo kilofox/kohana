@@ -179,7 +179,7 @@ clearstatcache(true);
                 <?php else: ?>
                     <td class="fail">Kohana can use the <a href="https://www.php.net/openssl">OpenSSL</a> extension for the Encrypt class.</td>
                 <?php endif ?>
-            </tr>q
+            </tr>
             <tr>
                 <th>Mcrypt Enabled</th>
                 <?php if (extension_loaded('mcrypt')): ?>
