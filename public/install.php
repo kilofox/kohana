@@ -181,14 +181,6 @@ clearstatcache(true);
                 <?php endif ?>
             </tr>
             <tr>
-                <th>Mcrypt Enabled</th>
-                <?php if (extension_loaded('mcrypt')): ?>
-                    <td class="pass">Pass</td>
-                <?php else: ?>
-                    <td class="fail">Kohana can use the <a href="https://www.php.net/mcrypt">Mcrypt</a> extension for the Encrypt class.</td>
-                <?php endif ?>
-            </tr>
-            <tr>
                 <th>GD Enabled</th>
                 <?php if (function_exists('gd_info')): ?>
                     <td class="pass">Pass</td>
