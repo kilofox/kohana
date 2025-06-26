@@ -24,7 +24,7 @@ class Kohana_Cache_MemcacheTag extends Cache_Memcache implements Cache_Tagging
         parent::__construct($config);
 
         if (!method_exists($this->_memcache, 'tag_add')) {
-            throw new Cache_Exception('Memcached-tags PHP plugin not present. Please see http://code.google.com/p/memcached-tags/ for more information');
+            throw new Cache_Exception('Memcached-tags PHP plugin not present. Please see https://code.google.com/archive/p/memcached-tags/ for more information');
         }
     }
 
