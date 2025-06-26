@@ -6,7 +6,7 @@
  * ### Supported cache engines
  *
  * *  [Memcache](https://www.php.net/manual/en/book.memcache.php)
- * *  [Memcached-tags](http://code.google.com/p/memcached-tags/)
+ * *  [Memcached-tags](https://code.google.com/archive/p/memcached-tags/)
  *
  * ### Configuration example
  *
