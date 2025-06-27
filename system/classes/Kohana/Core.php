@@ -19,12 +19,6 @@ class Kohana_Core
     /** @var string Release version */
     const VERSION = '3.4.3';
 
-    /**
-     * @var string Release codename
-     * @deprecated 3.4.0
-     */
-    const CODENAME = 'korismas';
-
     /** @var int Production environment type constant */
     const PRODUCTION = 10;
 
