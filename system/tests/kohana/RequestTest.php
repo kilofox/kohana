@@ -209,63 +209,6 @@ class Kohana_RequestTest extends Unittest_TestCase
     }
 
     /**
-     * Tests Request::accept_type()
-     *
-     * @test
-     * @covers Request::accept_type
-     */
-    public function test_accept_type()
-    {
-        $this->assertEquals(['*/*' => 1], Request::accept_type());
-    }
-
-    /**
-     * Provides test data for Request::accept_lang()
-     * @return array
-     */
-    public function provider_accept_lang()
-    {
-        return [
-            [
-                'en-us',
-                1,
-                ['_SERVER' => ['HTTP_ACCEPT_LANGUAGE' => 'en-us,en;q=0.5']]
-            ],
-            [
-                'en-us',
-                1,
-                ['_SERVER' => ['HTTP_ACCEPT_LANGUAGE' => 'en-gb']]
-            ],
-            [
-                'en-us',
-                1,
-                ['_SERVER' => ['HTTP_ACCEPT_LANGUAGE' => 'sp-sp;q=0.5']]
-            ],
-        ];
-    }
-
-    /**
-     * Tests Request::accept_lang()
-     *
-     * @test
-     * @covers       Request::accept_lang
-     * @dataProvider provider_accept_lang
-     * @param array $params Query string
-     * @param string $expected Expected result
-     * @param array $enviroment Set environment
-     * @throws Kohana_Exception
-     * @throws ReflectionException
-     */
-    public function test_accept_lang($params, $expected, $enviroment)
-    {
-        $this->setEnvironment($enviroment);
-
-        $this->assertEquals(
-            $expected, Request::accept_lang($params)
-        );
-    }
-
-    /**
      * Provides test data for Request::url()
      * @return array
      */

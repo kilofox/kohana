@@ -28,7 +28,7 @@
  * @author     Kohana Team
  * @copyright  (c) 2008-2012 Kohana Team
  * @license    https://kohana.top/license
- * @uses       [PECL HTTP](http://php.net/manual/en/book.http.php)
+ * @uses       [PECL HTTP](https://wiki.php.net/rfc/pecl_http)
  */
 abstract class Kohana_Request_Client_External extends Request_Client
 {
@@ -71,8 +71,7 @@ abstract class Kohana_Request_Client_External extends Request_Client
 
     /**
      * @var     array     curl options
-     * @link    http://www.php.net/manual/function.curl-setopt
-     * @link    http://www.php.net/manual/http.request.options
+     * @link    https://www.php.net/manual/en/function.curl-setopt
      */
     protected $_options = [];
 

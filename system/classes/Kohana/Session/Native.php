@@ -33,8 +33,8 @@ class Kohana_Session_Native extends Session
          *
          * see issue #3604
          *
-         * see http://www.php.net/manual/en/function.session-set-cookie-params.php
-         * see http://www.php.net/manual/en/session.configuration.php#ini.session.cookie-domain
+         * see https://www.php.net/function.session-set-cookie-params
+         * see https://www.php.net/session.configuration#ini.session.cookie-domain
          *
          * set to Cookie::$domain if available, otherwise default to ini setting
          */

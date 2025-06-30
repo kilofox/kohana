@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Support for image manipulation using [Imagick](http://php.net/Imagick).
+ * Support for image manipulation using [Imagick](https://www.php.net/Imagick).
  *
  * @package    Kohana/Image
  * @category   Drivers

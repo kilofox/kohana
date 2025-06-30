@@ -1,6 +1,6 @@
 # Parameterized Statements
 
-Using parameterized statements allows you to write SQL queries manually while still escaping the query values automatically to prevent [SQL injection](http://wikipedia.org/wiki/SQL_Injection). Creating a query is simple:
+Using parameterized statements allows you to write SQL queries manually while still escaping the query values automatically to prevent [SQL injection](https://en.wikipedia.org/wiki/SQL_injection). Creating a query is simple:
 
     $query = DB::query(Database::SELECT, 'SELECT * FROM users WHERE username = :user');
 
@@ -8,7 +8,7 @@ The [DB::query] method is just a shortcut that creates a new [Database_Query] cl
 
 The first parameter of [DB::query] is the type of query. It should be `Database::SELECT`, `Database::INSERT`, `Database::UPDATE`, or `Database::DELETE`. This is done for compatibility reasons for drivers, and to easily determine what `execute()` should return.
 
-The second parameter is the query itself. Rather than trying to concatenate your query and variables together, you should make use of [Database_Query::param]. This will make your queries much easier to maintain, and will escape the values to prevent [SQL injection](http://wikipedia.org/wiki/SQL_Injection).
+The second parameter is the query itself. Rather than trying to concatenate your query and variables together, you should make use of [Database_Query::param]. This will make your queries much easier to maintain, and will escape the values to prevent [SQL injection](https://en.wikipedia.org/wiki/SQL_injection).
 
 ## Parameters
 
@@ -16,7 +16,7 @@ Our example query earlier contains a `:user` parameter, which we can assign to a
 
     $query->param(':user', 'john');
 
-[!!] Parameter names can be any unique string, as they are replaced using [strtr](http://php.net/strtr). It is highly recommended to **not** use dollars signs as parameter names to prevent confusion. Colons are commonly used.
+[!!] Parameter names can be any unique string, as they are replaced using [strtr](https://www.php.net/strtr). It is highly recommended to **not** use dollars signs as parameter names to prevent confusion. Colons are commonly used.
 
 You can also update the `:user` parameter by calling [Database_Query::param] again:
 
@@ -31,7 +31,7 @@ If you want to set multiple parameters at once, you can use [Database_Query::par
         ':status' => 'active',
     ]);
 
-It is also possible to bind a parameter to a variable, using a [variable reference]((http://php.net/language.references.whatdo)). This can be extremely useful when running the same query many times:
+It is also possible to bind a parameter to a variable, using a [variable reference]((https://www.php.net/language.references.whatdo)). This can be extremely useful when running the same query many times:
 
     $query = DB::query(Database::INSERT, 'INSERT INTO users (username, password) VALUES (:user, :pass)')
         ->bind(':user', $username)

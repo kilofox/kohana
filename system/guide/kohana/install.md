@@ -3,8 +3,8 @@
 [!!] Before continuing, make sure you have a web server (like Apache) configured with the following requirements.
 
  - PHP 5.6 or newer.
- - [Iconv Extension](http://php.net/iconv)
- - [Character Type (CTYPE) Extension](http://php.net/ctype)
+ - [Iconv Extension](https://www.php.net/iconv)
+ - [Character Type (CTYPE) Extension](https://www.php.net/ctype)
 
 # Download
 
@@ -18,7 +18,7 @@ Once downloaded, you should extract the Kohana application to a directory where 
 
 Before the application can be run, you will need to make a few changes to the `application/bootstrap.php` file. This file is the first one to be included by `index.php` and sets up most of the global options for the application. Open `application/bootstrap.php` and make the following changes:
 
- - Set the default [timezone](http://php.net/timezones) for your application.
+ - Set the default [timezone](https://www.php.net/timezones) for your application.
 ~~~
 // Example of changing timezone to Sao Paulo, Brazil
 date_default_timezone_set('America/Sao_Paulo');
@@ -71,6 +71,6 @@ Once your installation page reports that your environment is set up correctly yo
 
 ## Installing Kohana From GitHub
 
-The [source code](http://github.com/kohana/kohana) for Kohana is hosted with [GitHub](http://github.com). To install Kohana using the GitHub source code first you need to install [git](http://git-scm.com/). Visit [http://help.github.com](http://help.github.com) for details on how to install git on your platform.
+The [source code](https://github.com/kilofox/kohana) for Kohana is hosted with [GitHub](https://github.com). To install Kohana using the GitHub source code first you need to install [git](https://git-scm.com/). Visit [https://support.github.com/](https://support.github.com/) for details on how to install git on your platform.
 
 [!!] For more information on installing Kohana using git, see the [Working with Git](tutorials/git) tutorial.

@@ -18,7 +18,7 @@ class Kohana_Security
 
     /**
      * Generate and store a unique token which can be used to help prevent
-     * [CSRF](http://wikipedia.org/wiki/Cross_Site_Request_Forgery) attacks.
+     * [CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery) attacks.
      *
      *     $token = Security::token();
      *

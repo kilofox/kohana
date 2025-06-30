@@ -15,7 +15,7 @@
  * @author     Kohana Team
  * @copyright  (c) 2008-2012 Kohana Team
  * @license    https://kohana.top/license
- * @uses       [PHP Streams](http://php.net/manual/en/book.stream.php)
+ * @uses       [PHP Streams](https://www.php.net/manual/en/book.stream.php)
  */
 class Kohana_Request_Client_Stream extends Request_Client_External
 {
@@ -27,7 +27,7 @@ class Kohana_Request_Client_Stream extends Request_Client_External
      * @param Response $request response to send
      * @return  Response
      * @throws Kohana_Exception
-     * @uses    [PHP cURL](http://php.net/manual/en/book.curl.php)
+     * @uses    [PHP cURL](https://www.php.net/manual/en/book.curl.php)
      */
     public function _send_message(Request $request, Response $response)
     {

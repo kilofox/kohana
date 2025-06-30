@@ -36,6 +36,11 @@ class Kohana_Kodoc_Property extends Kodoc
      */
     public $default;
 
+    /**
+     * @var string
+     */
+    public $description;
+
     public function __construct($class, $property, $default = null)
     {
         $property = new ReflectionProperty($class, $property);

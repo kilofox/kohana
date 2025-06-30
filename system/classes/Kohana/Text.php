@@ -397,7 +397,7 @@ class Kohana_Text
 
     /**
      * Automatically applies "p" and "br" markup to text.
-     * Basically [nl2br](http://php.net/nl2br) on steroids.
+     * Basically [nl2br](https://www.php.net/nl2br) on steroids.
      *
      *     echo Text::auto_p($text);
      *

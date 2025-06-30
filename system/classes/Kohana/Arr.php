@@ -328,7 +328,7 @@ class Kohana_Arr
     }
 
     /**
-     * Recursive version of [array_map](http://php.net/array_map), applies one or more
+     * Recursive version of [array_map](https://www.php.net/array_map), applies one or more
      * callbacks to all elements in an array, including sub-arrays.
      *
      *     // Apply "strip_tags" to every element in the array
@@ -375,7 +375,7 @@ class Kohana_Arr
      * overwrite previous values with the same key. Values in an indexed array
      * are appended, but only when they do not already exist in the result.
      *
-     * Note that this does not work the same as [array_merge_recursive](http://php.net/array_merge_recursive)!
+     * Note that this does not work the same as [array_merge_recursive](https://www.php.net/array_merge_recursive)!
      *
      *     $john = ['name' => 'john', 'children' => ['fred', 'paul', 'sally', 'jane']];
      *     $mary = ['name' => 'mary', 'children' => ['jane']];

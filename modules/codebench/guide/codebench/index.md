@@ -2,7 +2,7 @@
 
 [!!] The contents of this page are taken (with some minor changes) from <http://www.geertdedeckere.be/article/introducing-codebench> and are copyright Geert De Deckere.
 
-For a long time I have been using a quick-and-dirty `benchmark.php` file to optimize bits of PHP code, many times regex-related stuff. The file contained not much more than a [gettimeofday](http://php.net/gettimeofday) function wrapped around a `for` loop. It worked, albeit not very efficiently. Something more solid was needed. I set out to create a far more usable piece of software to aid in the everlasting quest to squeeze every millisecond out of those regular expressions.
+For a long time I have been using a quick-and-dirty `benchmark.php` file to optimize bits of PHP code, many times regex-related stuff. The file contained not much more than a [gettimeofday](https://www.php.net/gettimeofday) function wrapped around a `for` loop. It worked, albeit not very efficiently. Something more solid was needed. I set out to create a far more usable piece of software to aid in the everlasting quest to squeeze every millisecond out of those regular expressions.
 
 ## Codebench Goals
 
@@ -16,7 +16,7 @@ What gets overlooked too often when testing and optimizing regular expressions i
 
 ### Make it flexible enough to work for all PCRE functions
 
-Initially I named the module “Regexbench”. I quickly realized, though, it would be flexible enough to benchmark all kinds of PHP code, hence the change to “Codebench”. While tools specifically built to help profiling PCRE functions, like [preg_match](http://php.net/preg_match) or [preg_replace](http://php.net/preg_replace), definitely have their use, more flexibility was needed here. You should be able to compare all kinds of constructions like combinations of PCRE functions and native PHP string functions.
+Initially I named the module “Regexbench”. I quickly realized, though, it would be flexible enough to benchmark all kinds of PHP code, hence the change to “Codebench”. While tools specifically built to help profiling PCRE functions, like [preg_match](https://www.php.net/preg_match) or [preg_replace](https://www.php.net/preg_replace), definitely have their use, more flexibility was needed here. You should be able to compare all kinds of constructions like combinations of PCRE functions and native PHP string functions.
 
 ### Create clean and portable benchmark cases
 
@@ -36,7 +36,7 @@ Below are two screenshots of Codebench in action. `Valid_Color` is a class made 
 
 ## Working with Codebench
 
-Codebench is included in Kohana 3, but if you need you [can download it](http://github.com/kohana/codebench/) from GitHub. Be sure Codebench is activated in your `application/bootstrap.php`.
+Codebench is included in Kohana 3, but if you need you [can download it](https://github.com/kohana/codebench/) from GitHub. Be sure Codebench is activated in your `application/bootstrap.php`.
 
 Creating your own benchmarks is just a matter of creating a class that extends the Codebench class. The class should go in `classes/bench` and the class name should have the `Bench_` prefix. Put the code parts you want to compare into separate methods. Be sure to prefix those methods with `bench_`, other methods will not be benchmarked. Glance at the files in `modules/codebench/classes/bench/` for more examples.
 
@@ -78,4 +78,4 @@ Here is another short example with some extra explanations.
 
 
 
-And the winner is… [ltrim](http://php.net/ltrim). Happy benchmarking!
+And the winner is… [ltrim](https://www.php.net/ltrim). Happy benchmarking!

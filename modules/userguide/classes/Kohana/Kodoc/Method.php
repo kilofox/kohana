@@ -31,6 +31,26 @@ class Kohana_Kodoc_Method extends Kodoc
      */
     public $source;
 
+    /**
+     * @var ReflectionClass
+     */
+    public $class;
+
+    /**
+     * @var string
+     */
+    public $modifiers;
+
+    /**
+     * @var string
+     */
+    public $description;
+
+    /**
+     * @var array
+     */
+    public $tags;
+
     public function __construct($class, $method)
     {
         $this->method = new ReflectionMethod($class, $method);

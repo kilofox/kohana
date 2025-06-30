@@ -73,7 +73,7 @@ Below are the default cache configuration groups for each supported driver. Add 
 | timeout          | __NO__   | (_integer_) Value in seconds which will be used for connecting to the daemon. Think twice before changing the default value of 1 second - you can lose all the advantages of caching if your connection is too slow. Default to __1__                                                                                                 |
 | retry_interval   | __NO__   | (_integer_) Controls how often a failed server will be retried, the default value is 15 seconds. Setting this parameter to -1 disables automatic retry. Default to __15__                                                                                                                                                             |
 | status           | __NO__   | (_boolean_) Controls if the server should be flagged as online. Default to __true__                                                                                                                                                                                                                                                   |
-| failure_callback | __NO__   | (_[callback](http://www.php.net/manual/en/language.pseudo-types.php#language.types.callback)_) Allows the user to specify a callback function to run upon encountering an error. The callback is run before failover is attempted. The function takes two parameters, the hostname and port of the failed server. Default to __null__ |
+| failure_callback | __NO__   | (_[callback](https://www.php.net/manual/en/language.types.callable.php)_) Allows the user to specify a callback function to run upon encountering an error. The callback is run before failover is attempted. The function takes two parameters, the hostname and port of the failed server. Default to __null__ |
 
     'memcache' => [
         'driver' => 'memcache',
@@ -117,13 +117,6 @@ Below are the default cache configuration groups for each supported driver. Add 
             ],
         ],
         'instant_death' => true,
-    ],
-
-## APC settings
-
-    'apc' => [
-        'driver' => 'apc',
-        'default_expire' => 3600,
     ],
 
 ## APCu settings

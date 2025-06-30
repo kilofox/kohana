@@ -8,7 +8,7 @@ Fragments are typically used in view files.
 
 ## Usage
 
-Fragments are used by calling [Fragment::load()] in an `if` statement at the beginning of what you want cached, and [Fragment::save()] at the end. They use [output buffering](http://www.php.net/manual/en/function.ob-start.php) to capture the output between the two function calls.
+Fragments are used by calling [Fragment::load()] in an `if` statement at the beginning of what you want cached, and [Fragment::save()] at the end. They use [output buffering](https://www.php.net/manual/en/function.ob-start.php) to capture the output between the two function calls.
 
 You can specify the lifetime (in seconds) of the Fragment using the second parameter of [Fragment::load()]. The default lifetime is 30 seconds. You can use the [Date] helper to make more readable times.
 
@@ -63,10 +63,10 @@ echo View::factory('profiler/stats');
 
 ## Example: Recent Wikipedia edits
 
-In this example we will use the [Feed] class to retrieve and parse an RSS feed of recent edits to [http://en.wikipedia.org](http://en.wikipedia.org), then use Fragment to cache the results.
+In this example we will use the [Feed] class to retrieve and parse an RSS feed of recent edits to [https://en.wikipedia.org](https://en.wikipedia.org), then use Fragment to cache the results.
 
 ~~~
-$feed = "http://en.wikipedia.org/w/index.php?title=Special:RecentChanges&feed=rss";
+$feed = "https://en.wikipedia.org/w/api.php?hidebots=1&hidecategorization=1&hideWikibase=1&urlversion=1&days=7&limit=50&action=feedrecentchanges&feedformat=rss";
 $limit = 50;
 
 // Displayed feeds are cached for 30 seconds (default)

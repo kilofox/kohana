@@ -77,7 +77,9 @@
             .help { cursor:help; }
         </style>
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <?php foreach ($scripts as $script)
+            echo HTML::script($script, null, null, true), "\n";
+        ?>
         <script>
             $(document).ready(function() {
                 // Insert "Toggle All" button
@@ -251,7 +253,7 @@
         <p id="footer">
             Page executed in <strong><?php echo round(microtime(true) - KOHANA_START_TIME, 2) ?>&nbsp;s</strong>
             using <strong><?php echo Text::widont(Text::bytes(memory_get_usage(), 'MB')) ?></strong> of memory.<br />
-            <a href="http://github.com/kohana/codebench">Codebench</a>, a <a href="https://kohana.top/">Kohana</a> module
+            <a href="https://github.com/kohana/codebench">Codebench</a>, a <a href="https://kohana.top/">Kohana</a> module
             by <a href="http://www.geertdedeckere.be/article/introducing-codebench">Geert De Deckere</a>.
         </p>
 

@@ -132,7 +132,7 @@ class Kohana_Valid
      * Validate the domain of an email address by checking if the domain has a
      * valid MX record.
      *
-     * @link  http://php.net/checkdnsrr  not added to Windows until PHP 5.3.0
+     * @link  https://www.php.net/checkdnsrr  not added to Windows until PHP 5.3.0
      *
      * @param   string  $email  email address
      * @return  boolean
@@ -154,7 +154,7 @@ class Kohana_Valid
      */
     public static function url($url)
     {
-        // Based on http://www.apps.ietf.org/rfc/rfc1738.html#sec-5
+        // Based on https://datatracker.ietf.org/doc/html/rfc1738#section-5
         if (!preg_match(
                 '~^
 
@@ -195,7 +195,7 @@ class Kohana_Valid
             return true;
 
         // Check maximum length of the whole hostname
-        // http://en.wikipedia.org/wiki/Domain_name#cite_note-0
+        // https://en.wikipedia.org/wiki/Domain_name#Domain_name_syntax
         if (strlen($matches[1]) > 253)
             return false;
 
@@ -280,7 +280,7 @@ class Kohana_Valid
     }
 
     /**
-     * Validate a number against the [Luhn](http://en.wikipedia.org/wiki/Luhn_algorithm)
+     * Validate a number against the [Luhn](https://en.wikipedia.org/wiki/Domain_name#Domain_name_syntax)
      * (mod10) formula.
      *
      * @param   string  $number number to check
@@ -422,7 +422,7 @@ class Kohana_Valid
     /**
      * Checks whether a string is a valid number (negative and decimal numbers allowed).
      *
-     * Uses {@link http://www.php.net/manual/en/function.localeconv.php locale conversion}
+     * Uses {@link https://www.php.net/manual/en/function.localeconv.php locale conversion}
      * to allow decimal point to be locale specific.
      *
      * @param   string  $str    input string

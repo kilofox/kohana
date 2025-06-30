@@ -21,7 +21,7 @@ use http\Header;
 abstract class Kohana_HTTP
 {
     /**
-     * @var  The default protocol to use if it cannot be detected
+     * @var string The default protocol to use if it cannot be detected
      */
     public static $protocol = 'HTTP/1.1';
 

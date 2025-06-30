@@ -6,9 +6,9 @@ changes between various collaborators can quickly become difficult as multiple f
 
 Please read the following before working with this code:
 
-1. [Dealing with newlines](http://github.com/guides/dealing-with-newlines-in-git)
-2. [Submitting changes from your fork](http://github.com/guides/fork-a-project-and-submit-your-modifications)
-3. [Using SSH keys with GitHub](http://github.com/guides/how-to-not-have-to-type-your-password-for-every-push)
+1. [Configuring Git to handle line endings](https://docs.github.com/en/get-started/git-basics/configuring-git-to-handle-line-endings)
+2. [Fork a repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
+3. [Working with SSH key passphrases](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases)
 
 ## Managing Remote Repositories
 
@@ -118,8 +118,8 @@ There are a couple of scenarios where this might happen:
 
 ### The conflict is to do with a few unrelated commits, and you want to keep changes made in both commits
 
-You'll need to manually modify the files to resolve the conflict, see the "Resolving a merge"
-section [in the git-scm book](http://book.git-scm.com/3_basic_branching_and_merging.html) for more info
+You'll need to manually modify the files to resolve the conflict, see the "Basic Merge Conflicts"
+section [in the git-scm book](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging) for more info
 
 ### You've fixed something locally which someone else has already done in the remote repo
 

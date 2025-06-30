@@ -16,7 +16,7 @@ if (is_file(APPPATH . 'classes/Kohana' . EXT)) {
  * Set the default time zone.
  *
  * @link https://kohana.top/guide/using.configuration
- * @link http://www.php.net/manual/timezones
+ * @link https://www.php.net/timezones
  */
 date_default_timezone_set('America/Chicago');
 
@@ -24,7 +24,7 @@ date_default_timezone_set('America/Chicago');
  * Set the default locale.
  *
  * @link https://kohana.top/guide/using.configuration
- * @link http://www.php.net/manual/function.setlocale
+ * @link https://www.php.net/function.setlocale
  */
 setlocale(LC_ALL, 'en_US.utf-8');
 
@@ -32,7 +32,7 @@ setlocale(LC_ALL, 'en_US.utf-8');
  * Enable the Kohana autoloader.
  *
  * @link https://kohana.top/guide/using.autoloading
- * @link http://www.php.net/manual/function.spl-autoload-register
+ * @link https://www.php.net/function.spl-autoload-register
  */
 spl_autoload_register(['Kohana', 'auto_load']);
 
@@ -47,15 +47,15 @@ spl_autoload_register(['Kohana', 'auto_load']);
 /**
  * Enable the Kohana autoloader for unserialization.
  *
- * @link http://www.php.net/manual/function.spl-autoload-call
- * @link http://www.php.net/manual/var.configuration#unserialize-callback-func
+ * @link https://www.php.net/function.spl-autoload-call
+ * @link https://www.php.net/var.configuration#unserialize-callback-func
  */
 ini_set('unserialize_callback_func', 'spl_autoload_call');
 
 /**
  * Set the mb_substitute_character to "none"
  *
- * @link http://www.php.net/manual/function.mb-substitute-character.php
+ * @link https://www.php.net/manual/en/function.mb-substitute-character.php
  */
 mb_substitute_character('none');
 

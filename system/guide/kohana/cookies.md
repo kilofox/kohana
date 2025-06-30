@@ -2,7 +2,7 @@
 
 Kohana provides classes that make it easy to work with both cookies and sessions. At a high level both sessions and cookies provide the same functionality. They allow the developer to store temporary or persistent information about a specific client for later retrieval, usually to make something persistent between requests.
 
-[Cookies](http://en.wikipedia.org/wiki/HTTP_cookie) should be used for storing non-private data that is persistent for a long period of time. For example storing a user preference or a language setting. Use the [Cookie] class for getting and setting cookies.
+[Cookies](https://en.wikipedia.org/wiki/HTTP_cookie) should be used for storing non-private data that is persistent for a long period of time. For example storing a user preference or a language setting. Use the [Cookie] class for getting and setting cookies.
 
 [!!] Kohana uses "signed" cookies. Every cookie that is stored is combined with a secure hash to prevent modification of the cookie. If a cookie is modified outside Kohana the hash will be incorrect and the cookie will be deleted. This hash is generated using [Cookie::salt()], which uses the [Cookie::$salt] property. You must define this setting in your bootstrap.php:
 

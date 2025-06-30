@@ -54,7 +54,7 @@ The new file creates the initial request object, rather than fully executing the
 
     /**
      * Set the PHP error reporting level. If you set this in php.ini, you remove this.
-     * @link http://www.php.net/manual/errorfunc.configuration#ini.error-reporting
+     * @link https://www.php.net/errorfunc.configuration#ini.error-reporting
      *
      * When developing your application, it is highly recommended to enable notices
      * and warnings. Enable them by using: E_ALL
@@ -165,7 +165,7 @@ Now that we're set up, we can add Kohana into our application using a single inc
         require_once 'kohana/public/include.php';
 
         $content = 'Hello World';
-        $content = HTML::anchor('http://kohanaframework.org/', $content);
+        $content = HTML::anchor('https://kohanaframework.org/', $content);
     ?>
     <html>
         <head>

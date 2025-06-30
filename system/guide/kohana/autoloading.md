@@ -1,6 +1,6 @@
 # Loading Classes
 
-Kohana supports the [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) autoloading specification as of version 3.3. This allows you to take advantage of PHP [autoloading](http://php.net/manual/language.oop5.autoload.php), removing the need to call [include](http://php.net/include) or [require](http://php.net/require) before using a class. When you use a class Kohana will find and include the class file for you. For instance, when you want to use the [Cookie::set] method, you simply call:
+Kohana supports the [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) autoloading specification as of version 3.3. This allows you to take advantage of PHP [autoloading](https://www.php.net/manual/en/language.oop5.autoload.php), removing the need to call [include](https://www.php.net/manual/en/function.include.php) or [require](https://www.php.net/require) before using a class. When you use a class Kohana will find and include the class file for you. For instance, when you want to use the [Cookie::set] method, you simply call:
 
     Cookie::set('mycookie', 'any string value');
 
@@ -20,7 +20,7 @@ If your classes do not follow this convention, they cannot be autoloaded by Koha
 
 ## Custom Autoloaders
 
-Kohana's default autoloader is enabled in `application/bootstrap.php` using [spl_autoload_register](http://php.net/spl_autoload_register):
+Kohana's default autoloader is enabled in `application/bootstrap.php` using [spl_autoload_register](https://www.php.net/spl_autoload_register):
 
     spl_autoload_register(['Kohana', 'auto_load']);
 

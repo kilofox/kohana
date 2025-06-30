@@ -2,7 +2,7 @@
 
 /**
  * Internationalization (i18n) class. Provides language loading and translation
- * methods without dependencies on [gettext](http://php.net/gettext).
+ * methods without dependencies on [gettext](https://www.php.net/gettext).
  *
  * Typically, this class would never be used directly, but used via the __()
  * function, which loads the message and replaces parameters:
@@ -133,7 +133,7 @@ class Kohana_I18n
 if (!function_exists('__')) {
     /**
      * Kohana translation/internationalization function. The PHP function
-     * [strtr](http://php.net/strtr) is used for replacing parameters.
+     * [strtr](https://www.php.net/strtr) is used for replacing parameters.
      *
      *    __('Welcome back, :user', [':user' => $username]);
      *

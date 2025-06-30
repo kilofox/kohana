@@ -17,13 +17,7 @@
 class Kohana_Core
 {
     /** @var string Release version */
-    const VERSION = '3.4.2';
-
-    /**
-     * @var string Release codename
-     * @deprecated 3.4.0
-     */
-    const CODENAME = 'korismas';
+    const VERSION = '3.4.3';
 
     /** @var int Production environment type constant */
     const PRODUCTION = 10;
@@ -54,7 +48,8 @@ class Kohana_Core
     public static $is_windows = false;
 
     /**
-     * @var  boolean  True if [magic quotes](http://php.net/manual/en/security.magicquotes.php) is enabled.
+     * @var  boolean  True if [magic quotes](https://wiki.php.net/rfc/magicquotes) is enabled.
+     * @deprecated 3.5.0
      */
     public static $magic_quotes = false;
 
@@ -177,7 +172,7 @@ class Kohana_Core
      * Type      | Setting    | Description                                    | Default Value
      * ----------|------------|------------------------------------------------|---------------
      * `string`  | base_url   | The base URL for your application.  This should be the *relative* path from your DOCROOT to your `index.php` file, in other words, if Kohana is in a subfolder, set this to the subfolder name, otherwise leave it as the default.  **The leading slash is required**, trailing slash is optional.   | `"/"`
-     * `string`  | index_file | The name of the [front controller](http://en.wikipedia.org/wiki/Front_Controller_pattern).  This is used by Kohana to generate relative URLs like [HTML::anchor()] and [URL::base()]. This is usually `index.php`.  To [remove index.php from your URLs](tutorials/clean-urls), set this to `false`. | `"index.php"`
+     * `string`  | index_file | The name of the [front controller](https://en.wikipedia.org/wiki/Front_controller).  This is used by Kohana to generate relative URLs like [HTML::anchor()] and [URL::base()]. This is usually `index.php`.  To [remove index.php from your URLs](tutorials/clean-urls), set this to `false`. | `"index.php"`
      * `string`  | charset    | Character set used for all input and output    | `"utf-8"`
      * `string`  | cache_dir  | Kohana's cache directory.  Used by [Kohana::cache] for simple internal caching, like [Fragments](kohana/fragments) and **\[caching database queries](this should link somewhere)**.  This has nothing to do with the [Cache module](cache). | `APPPATH."cache"`
      * `integer` | cache_life | Lifetime, in seconds, of items cached by [Kohana::cache]         | `60`
@@ -310,7 +305,9 @@ class Kohana_Core
         }
 
         // Determine if the extremely evil magic quotes are enabled
-        Kohana::$magic_quotes = (bool) get_magic_quotes_gpc();
+        if (PHP_VERSION_ID < 70400) {
+            Kohana::$magic_quotes = (bool) get_magic_quotes_gpc();
+        }
 
         // Sanitize all request variables
         $_GET = Kohana::sanitize($_GET);
@@ -781,7 +778,7 @@ class Kohana_Core
      *
      * The cache directory and default cache lifetime is set by [Kohana::init]
      *
-     * [ref-var]: http://php.net/var_export
+     * [ref-var]: https://www.php.net/var_export
      *
      * @throws  Kohana_Exception
      * @param   string  $name       name of the cache
