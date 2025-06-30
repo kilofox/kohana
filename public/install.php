@@ -38,10 +38,10 @@ clearstatcache(true);
         <table>
             <tr>
                 <th>PHP Version</th>
-                <?php if (PHP_VERSION_ID >= 50600): ?>
+                <?php if (PHP_VERSION_ID >= 70100): ?>
                     <td class="pass"><?= PHP_VERSION ?></td>
                 <?php else: $failed = true ?>
-                    <td class="fail">Kohana requires PHP 5.6.0 or newer, this version is <?= PHP_VERSION ?>.</td>
+                    <td class="fail">Kohana requires PHP 7.1.0 or newer, this version is <?= PHP_VERSION ?>.</td>
                 <?php endif ?>
             </tr>
             <tr>
