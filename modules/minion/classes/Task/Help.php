@@ -14,7 +14,7 @@ class Task_Help extends Minion_Task
     /**
      * Generates a help list for all tasks
      *
-     * @return null
+     * @return void
      */
     protected function _execute(array $params)
     {

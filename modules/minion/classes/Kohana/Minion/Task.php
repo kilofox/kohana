@@ -209,7 +209,7 @@ abstract class Kohana_Minion_Task
     /**
      * Execute the task with the specified set of options
      *
-     * @return null
+     * @return void
      * @throws ReflectionException
      * @throws View_Exception
      */
@@ -237,7 +237,7 @@ abstract class Kohana_Minion_Task
     /**
      * Outputs help for this task
      *
-     * @return null
+     * @return void
      * @throws View_Exception
      */
     protected function _help(array $params)

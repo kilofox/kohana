@@ -194,7 +194,7 @@ abstract class Kohana_HTTP
     public static function www_form_urlencode(array $params = [])
     {
         if (!$params)
-            return;
+            return '';
 
         $encoded = [];
 

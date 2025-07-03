@@ -77,7 +77,7 @@ class Kohana_RequestTest extends Unittest_TestCase
     /**
      * Tests that the allow_external flag prevents an external request.
      *
-     * @return null
+     * @return void
      * @throws Kohana_Exception
      * @throws ReflectionException
      * @throws Request_Exception
@@ -338,7 +338,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @param $protocol
      * @param $expected
-     * @return null
+     * @return void
      * @throws Kohana_Exception
      * @throws Request_Exception
      */

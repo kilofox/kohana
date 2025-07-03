@@ -150,7 +150,7 @@ class Kohana_Unittest_Helpers
      * Restores the environment to the original state
      *
      * @chainable
-     * @return Kohana_Unittest_Helpers $this
+     * @return void
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
