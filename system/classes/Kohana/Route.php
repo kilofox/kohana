@@ -526,6 +526,8 @@ class Kohana_Route
 
                     // Do not add optional groups to this result
                 }
+
+                return '';
             }, $portion);
 
             if ($required AND $missing) {
