@@ -270,7 +270,7 @@ class Kohana_Auth_ORM extends Auth
     {
         $user->complete_login();
 
-        return parent::complete_login($user);
+        parent::complete_login($user);
     }
 
     /**
