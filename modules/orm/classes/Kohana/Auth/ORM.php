@@ -58,6 +58,8 @@ class Kohana_Auth_ORM extends Auth
 
             return $user->has('roles', $roles);
         }
+
+        return false;
     }
 
     /**
