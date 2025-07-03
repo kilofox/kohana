@@ -39,8 +39,7 @@ class Kohana_ResponseTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_body
-     *
-     * @return null
+     * @return void
      */
     public function test_body($source, $expected)
     {
