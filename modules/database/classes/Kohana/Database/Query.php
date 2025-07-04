@@ -227,7 +227,7 @@ class Kohana_Database_Query
             // Read the cache first to delete a possible hit with lifetime <= 0
             if (($result = Kohana::cache($cache_key, null, $this->_lifetime)) !== null AND !$this->_force_execute) {
                 // Return a cached result
-                return new Database_Result_Cached($result, $sql, $as_object, $object_params);
+                return new Database_Result_Cached($result, $sql, $as_object);
             }
         }
 
