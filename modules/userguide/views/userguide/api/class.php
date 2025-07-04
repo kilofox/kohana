@@ -1,7 +1,7 @@
 <h1>
     <?php echo $doc->modifiers, $doc->class->name ?>
     <?php foreach ($doc->parents as $parent): ?>
-        <br/><small>extends <?php echo HTML::anchor($route->uri(['class' => $parent->name]), $parent->name, null, null, true) ?></small>
+        <br/><small>extends <?php echo HTML::anchor($route->uri(['class' => $parent->name]), $parent->name) ?></small>
     <?php endforeach; ?>
 </h1>
 
@@ -10,7 +10,7 @@
             Implements:
             <?php
             for ($i = 0, $split = false, $count = count($interfaces); $i < $count; $i++, $split = " | ") {
-                echo $split . HTML::anchor($route->uri(['class' => $interfaces[$i]]), $interfaces[$i], null, null, true);
+                echo $split . HTML::anchor($route->uri(['class' => $interfaces[$i]]), $interfaces[$i]);
             }
             ?></small>
     </p>
@@ -38,9 +38,9 @@
 
 <p class="note">
     <?php if ($path = $doc->class->getFilename()): ?>
-        Class declared in <tt><?php echo Debug::path($path) ?></tt> on line <?php echo $doc->class->getStartLine() ?>.
+        Class declared in <samp><?php echo Debug::path($path) ?></samp> on line <?php echo $doc->class->getStartLine() ?>.
 <?php else: ?>
-    Class is not declared in a file, it is probably an internal <?php echo html::anchor('http://php.net/manual/class.' . strtolower($doc->class->name) . '.php', 'PHP class') ?>.
+    Class is not declared in a file, it is probably an internal <?php echo html::anchor('https://www.php.net/manual/en/class.' . strtolower($doc->class->name) . '.php', 'PHP class') ?>.
 <?php endif ?>
 </p>
 

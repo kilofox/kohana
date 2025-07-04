@@ -43,6 +43,7 @@ abstract class Kohana_Codebench
      * Constructor.
      *
      * @return  void
+     * @throws Kohana_Exception
      */
     public function __construct()
     {
@@ -54,6 +55,7 @@ abstract class Kohana_Codebench
      * Runs Codebench on the extending class.
      *
      * @return  array  benchmark output
+     * @throws ReflectionException
      */
     public function run()
     {
@@ -71,8 +73,8 @@ abstract class Kohana_Codebench
             'class' => get_class($this),
             'description' => $this->description,
             'loops' => [
-                'base' => (int) $this->loops,
-                'total' => (int) $this->loops * count($this->subjects) * count($methods),
+                'base' => $this->loops,
+                'total' => $this->loops * count($this->subjects) * count($methods),
             ],
             'subjects' => $this->subjects,
             'benchmarks' => [],
@@ -89,9 +91,9 @@ abstract class Kohana_Codebench
 
             // Benchmark each subject on each method
             foreach ($this->subjects as $subject_key => $subject) {
-                // Prerun each method/subject combo before the actual benchmark loop.
+                // Pre-run each method/subject combo before the actual benchmark loop.
                 // This way relatively expensive initial processes won't be benchmarked, e.g. autoloading.
-                // At the same time we capture the return here so we don't have to do that in the loop anymore.
+                // At the same time we capture the return here, so we don't have to do that in the loop anymore.
                 $return = $reflection->invoke($this, $subject);
 
                 // Start the timer for one subject

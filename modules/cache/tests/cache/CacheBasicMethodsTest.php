@@ -17,13 +17,13 @@ abstract class Kohana_CacheBasicMethodsTest extends PHPUnit_Framework_TestCase
     protected $_cache_driver;
 
     /**
-     * This method MUST be implemented by each driver to setup the `Cache`
+     * This method MUST be implemented by each driver to set up the `Cache`
      * instance for each test.
      *
      * This method should do the following tasks for each driver test:
      *
      *  - Test the Cache instance driver is available, skip test otherwise
-     *  - Setup the Cache instance
+     *  - Set up the Cache instance
      *  - Call the parent setup method, `parent::setUp()`
      *
      * @return  void
@@ -243,9 +243,10 @@ TESTTEXT;
      *
      * @dataProvider provider_set_get
      *
-     * @param   array    data
-     * @param   mixed    expected
+     * @param array    data
+     * @param mixed    expected
      * @return  void
+     * @throws Cache_Exception
      */
     public function test_set_get(array $data, $expected)
     {
@@ -269,11 +270,12 @@ TESTTEXT;
     /**
      * Tests the [Cache::delete()] method, testing;
      *
-     *  - The a cached value is deleted from cache
+     *  - A cached value is deleted from cache
      *  - The cache returns a true value upon deletion
      *  - The cache returns a false value if no value exists to delete
      *
      * @return  void
+     * @throws Cache_Exception
      */
     public function test_delete()
     {
@@ -290,7 +292,7 @@ TESTTEXT;
         $this->assertTrue($cache->delete('test_delete_1'));
         $this->assertNull($cache->get('test_delete_1'));
 
-        // Test non-existant cache value returns false if no error
+        // Test non-existent cache value returns false if no error
         $this->assertFalse($cache->delete('test_delete_1'));
     }
 
@@ -298,6 +300,7 @@ TESTTEXT;
      * Tests [Cache::delete_all()] works as specified
      *
      * @return  void
+     * @throws Cache_Exception
      * @uses    Kohana_CacheBasicMethodsTest::provider_set_get()
      */
     public function test_delete_all()
@@ -317,7 +320,7 @@ TESTTEXT;
         // Test delete_all is successful
         $this->assertTrue($cache->delete_all());
 
-        foreach ($data as $key => $values) {
+        foreach ($data as $values) {
             // Verify data has been purged
             $this->assertSame('Cache Deleted!', $cache->get($values[0]['id'], 'Cache Deleted!'));
         }

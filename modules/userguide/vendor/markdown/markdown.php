@@ -543,7 +543,7 @@ class Markdown_Parser
         # to be wrapped into paragraph tags at the end, ":" is used for elements
         # that are word separators and "X" is used in the general case.
         #
-		# Swap back any tag hash found in $text so we do not have to `unhash`
+		# Swap back any tag hash found in $text, so we do not have to `unhash`
         # multiple times at the end.
         $text = $this->unhash($text);
 
@@ -1426,7 +1426,6 @@ class Markdown_Parser
             # Ampersand-encoding based entirely on Nat Irons's Amputator
             # MT plugin: <http://bumppo.net/projects/amputator/>
             $text = preg_replace('/&(?!#?[xX]?(?:[0-9a-fA-F]+|\w+);)/', '&amp;', $text);
-            ;
         }
         # Encode remaining <'s
         $text = str_replace('<', '&lt;', $text);
@@ -1993,7 +1992,7 @@ class MarkdownExtra_Parser extends Markdown_Parser
 
                 if ($depth < 0) {
                     #
-                    # Going out of parent element. Clean up and break so we
+                    # Going out of parent element. Clean up and break, so we
                     # return to the calling function.
                     #
 					$text = $tag . $text;

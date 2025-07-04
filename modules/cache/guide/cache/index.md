@@ -4,7 +4,7 @@
 
 ## Supported cache engines
 
- *  APCu/APC ([Cache_Apcu])
+ *  APCu ([Cache_Apcu])
  *  File ([Cache_File])
  *  Memcached ([Cache_Memcached])
  *  Memcached-tags ([Cache_MemcacheTag])
@@ -13,7 +13,7 @@
 
 ## Introduction to caching
 
-Caching should be implemented with consideration. Generally, caching the result of resources is faster than reprocessing them. Choosing what, how and when to cache is vital. [PHP APCu](http://php.net/manual/en/book.apcu.php) is one of the fastest caching systems available, closely followed by [Memcached](http://memcached.org/). [SQLite](http://www.sqlite.org/) and File caching are two of the slowest cache methods, however usually faster than reprocessing a complex set of instructions.
+Caching should be implemented with consideration. Generally, caching the result of resources is faster than reprocessing them. Choosing what, how and when to cache is vital. [PHP APCu](https://www.php.net/manual/en/book.apcu.php) is one of the fastest caching systems available, closely followed by [Memcached](http://memcached.org/). [SQLite](http://www.sqlite.org/) and File caching are two of the slowest cache methods, however usually faster than reprocessing a complex set of instructions.
 
 Caching engines that use memory are considerably faster than file based alternatives. But memory is limited whereas disk space is plentiful. If caching large datasets, such as large database result sets, it is best to use file caching.
 
@@ -32,16 +32,16 @@ Getting and setting values to cache is very simple when using the _Kohana Cache_
  1. __Does the cache need to be distributed?__
     This is an important consideration as it will severely limit the options available to solutions such as Memcached when a distributed solution is required.
  2. __Does the cache need to be fast?__
-    In almost all cases retrieving data from a cache is faster than execution. However generally memory based caching is considerably faster than disk based caching (see table below).
+    In almost all cases retrieving data from a cache is faster than execution. However, generally memory based caching is considerably faster than disk based caching (see table below).
  3. __How much cache is required?__
     Cache is not endless, and memory based caches are subject to a considerably more limited storage resource.
 
-Driver           | Storage      | Speed     | Tags     | Distributed | Automatic Garbage Collection | Notes
----------------- | ------------ | --------- | -------- | ----------- | ---------------------------- | -----------------------
-APCu             | __Memory__   | Excellent | No       | No          | Yes | Widely available PHP opcode caching solution, improves php execution performance
-Wincache         | __Memory__   | Excellent | No       | No          | Yes | Windows variant of APC
-File             | __Disk__     | Poor      | No       | No          | No  | Marginally faster than execution
-Memcached        | __Memory__   | Good      | No       | No          | Yes | Generally fast distributed solution, but has a speed hit due to variable network latency and serialization
-Sqlite           | __Disk__     | Poor      | Yes      | No          | No  | Marginally faster than execution
+| Driver    | Storage    | Speed     | Tags | Distributed | Automatic Garbage Collection | Notes                                                                                                      |
+|-----------|------------|-----------|------|-------------|------------------------------|------------------------------------------------------------------------------------------------------------|
+| APCu      | __Memory__ | Excellent | No   | No          | Yes                          | Widely available PHP opcode caching solution, improves php execution performance                           |
+| Wincache  | __Memory__ | Excellent | No   | No          | Yes                          | Windows variant of APC                                                                                     |
+| File      | __Disk__   | Poor      | No   | No          | No                           | Marginally faster than execution                                                                           |
+| Memcached | __Memory__ | Good      | No   | No          | Yes                          | Generally fast distributed solution, but has a speed hit due to variable network latency and serialization |
+| Sqlite    | __Disk__   | Poor      | Yes  | No          | No                           | Marginally faster than execution                                                                           |
 
 It is possible to have hybrid cache solutions that use a combination of the engines above in different contexts. This is supported with _Kohana Cache_ as well.

@@ -13,16 +13,18 @@
 class Kohana_CacheArithmeticMemcachedTest extends Kohana_CacheArithmeticMethodsTest
 {
     /**
-     * This method MUST be implemented by each driver to setup the `Cache`
+     * This method MUST be implemented by each driver to set up the `Cache`
      * instance for each test.
      *
      * This method should do the following tasks for each driver test:
      *
      *  - Test the Cache instance driver is available, skip test otherwise
-     *  - Setup the Cache instance
+     *  - Set up the Cache instance
      *  - Call the parent setup method, `parent::setUp()`
      *
      * @return  void
+     * @throws Cache_Exception
+     * @throws Kohana_Exception
      */
     public function setUp()
     {
@@ -32,7 +34,7 @@ class Kohana_CacheArithmeticMemcachedTest extends Kohana_CacheArithmeticMethodsT
             $this->markTestSkipped('Memcached PHP Extension is not available');
         }
 
-        if (!$config = Kohana::$config->load('cache.memcached')) {
+        if (!Kohana::$config->load('cache.memcached')) {
             Kohana::$config->load('cache')->set('memcached', [
                 'driver' => 'memcached',
                 'default_expire' => 3600,
@@ -44,7 +46,7 @@ class Kohana_CacheArithmeticMemcachedTest extends Kohana_CacheArithmeticMethodsT
                     ],
                 ]
             ]);
-            $config = Kohana::$config->load('cache.memcached');
+            Kohana::$config->load('cache.memcached');
         }
 
         $this->cache(Cache::instance('memcached'));

@@ -22,11 +22,6 @@ abstract class Kohana_Image
     const HORIZONTAL = 0x11;
     const VERTICAL = 0x12;
 
-    /**
-     * @deprecated - provide an image.default_driver value in your configuration instead
-     * @var  string  default driver: GD, ImageMagick, etc
-     */
-    public static $default_driver = 'GD';
     // Status of the driver check
     protected static $_checked = false;
 
@@ -35,17 +30,20 @@ abstract class Kohana_Image
      *
      *     $image = Image::factory('upload/test.jpg');
      *
-     * @param   string   $file    image file path
-     * @param   string   $driver  driver type: GD, ImageMagick, etc
+     * @param string $file image file path
+     * @param string $driver driver type: GD, ImageMagick, etc
      * @return  Image
-     * @uses    Image::$default_driver
+     * @throws Kohana_Exception
      */
     public static function factory($file, $driver = null)
     {
         if ($driver === null) {
-            // Use the driver from configuration file or default one
-            $configured_driver = Kohana::$config->load('image.default_driver');
-            $driver = ($configured_driver) ? $configured_driver : Image::$default_driver;
+            // Use the driver from configuration file
+            $driver = Kohana::$config->load('image.default_driver');
+        }
+
+        if (!isset($driver)) {
+            throw new Kohana_Exception('Image driver not defined');
         }
 
         // Set the class name
@@ -117,7 +115,7 @@ abstract class Kohana_Image
      *     echo $image;
      *
      * [!!] The output of this function is binary and must be rendered with the
-     * appropriate Content-Type header or it will not be displayed correctly!
+     * appropriate Content-Type header, or it will not be displayed correctly!
      *
      * @return  string
      */
@@ -412,7 +410,7 @@ abstract class Kohana_Image
      *     // Create a 50 pixel reflection that fades from 0-60% opacity
      *     $image->reflection(50, 60, true);
      *
-     * [!!] By default, the reflection will be go from transparent at the top
+     * [!!] By default, the reflection will go from transparent at the top
      * to opaque at the bottom.
      *
      * @param   integer   $height   reflection height
@@ -628,7 +626,7 @@ abstract class Kohana_Image
      */
     abstract protected function _do_flip($direction);
     /**
-     * Execute a sharpen.
+     * Execute a sharpening.
      *
      * @param   integer  $amount  amount to sharpen
      * @return  void

@@ -10,7 +10,7 @@ Each module has an index page at `guide/<module>/index.md`.
 
 Each module's menu is at `guide/<module>/menu.md`.
 
-All other pages are are in `guide/<module>` and can be organized in subfolders and named however you want.
+All other pages are in `guide/<module>` and can be organized in subfolders and named however you want.
 
 For more info on how to make your module have userguide pages, see [Adding your module](adding).
 
@@ -20,6 +20,6 @@ Any images used in the userguide pages must be in `media/guide/<module>/`. For e
 
 ### API browser
 
-The API browser is generated from the actual source code. The descriptions for classes, constants, properties, and methods is extracted from the comments and parsed in Markdown. For example if you look in the comment for [Kohana_Core::init](http://github.com/kohana/core/blob/c443c44922ef13421f4a/classes/kohana/core.php#L5) you can see a markdown list and table. These are parsed and show correctly in the API browser. `@param`, `@uses`, `@throws`, `@returns` and other tags are parsed as well.
+The API browser is generated from the actual source code. The descriptions for classes, constants, properties, and methods is extracted from the comments and parsed in Markdown. For example if you look in the comment for [Kohana_Core::init](https://github.com/kohana/core/blob/c443c44922ef13421f4a/classes/kohana/core.php#L5) you can see a Markdown list and table. These are parsed and show correctly in the API browser. `@param`, `@uses`, `@throws`, `@returns` and other tags are parsed as well.
 
 TODO: give more specific details on how to comment your classes, constants, methods, etc. including package and how it relates to the api module.

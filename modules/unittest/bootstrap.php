@@ -42,7 +42,7 @@ define('DOCROOT', realpath(dirname(__FILE__) . '/../../') . DIRECTORY_SEPARATOR)
 
 /**
  * Set the PHP error reporting level. If you set this in php.ini, you remove this.
- * @link http://www.php.net/manual/errorfunc.configuration#ini.error-reporting
+ * @link https://www.php.net/errorfunc.configuration#ini.error-reporting
  *
  * When developing your application, it is highly recommended to enable notices
  * and strict warnings. Enable them by using: E_ALL | E_STRICT

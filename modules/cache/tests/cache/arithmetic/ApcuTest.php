@@ -14,16 +14,18 @@ include_once(Kohana::find_file('tests/cache/arithmetic', 'CacheArithmeticMethods
 class Kohana_ApcuTest extends Kohana_CacheArithmeticMethodsTest
 {
     /**
-     * This method MUST be implemented by each driver to setup the `Cache`
+     * This method MUST be implemented by each driver to set up the `Cache`
      * instance for each test.
      *
      * This method should do the following tasks for each driver test:
      *
      *  - Test the Cache instance driver is available, skip test otherwise
-     *  - Setup the Cache instance
+     *  - Set up the Cache instance
      *  - Call the parent setup method, `parent::setUp()`
      *
      * @return  void
+     * @throws Cache_Exception
+     * @throws Kohana_Exception
      */
     public function setUp()
     {
@@ -66,9 +68,10 @@ class Kohana_ApcuTest extends Kohana_CacheArithmeticMethodsTest
      *
      * @dataProvider provider_set_get
      *
-     * @param   array    data
-     * @param   mixed    expected
+     * @param array    data
+     * @param mixed    expected
      * @return  void
+     * @throws Cache_Exception
      */
     public function test_set_get(array $data, $expected)
     {

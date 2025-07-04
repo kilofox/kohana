@@ -79,17 +79,11 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
         try {
             $directory = Arr::get($this->_config, 'cache_dir', Kohana::$cache_dir);
             $this->_cache_dir = new SplFileInfo($directory);
-        }
-        // PHP < 5.3 exception handle
-        catch (ErrorException $e) {
-            $this->_cache_dir = $this->_make_directory($directory, 0777, true);
-        }
-        // PHP >= 5.3 exception handle
-        catch (UnexpectedValueException $e) {
+        } catch (UnexpectedValueException $e) {
             $this->_cache_dir = $this->_make_directory($directory, 0777, true);
         }
 
-        // If the defined directory is a file, get outta here
+        // If the defined directory is a file, get out of here
         if ($this->_cache_dir->isFile()) {
             throw new Cache_Exception('Unable to create cache directory as a file already exists : :resource', [':resource' => $this->_cache_dir->getRealPath()]);
         }
@@ -111,13 +105,14 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *     // Retrieve cache entry from file group
      *     $data = Cache::instance('file')->get('foo');
      *
-     *     // Retrieve cache entry from file group and return 'bar' if miss
+     *     // Retrieve cache entry from file group and return 'bar' if missing
      *     $data = Cache::instance('file')->get('foo', 'bar');
      *
-     * @param   string   $id       id of cache to entry
-     * @param   string   $default  default value to return if cache miss
+     * @param string $id id of cache to entry
+     * @param string $default default value to return if cache miss
      * @return  mixed
-     * @throws  Cache_Exception
+     * @throws Cache_Exception
+     * @throws ErrorException
      */
     public function get($id, $default = null)
     {
@@ -181,10 +176,12 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *     // Set 'bar' to 'foo' in file group for 30 seconds
      *     Cache::instance('file')->set('foo', $data, 30);
      *
-     * @param   string   $id        id of cache entry
-     * @param   string   $data      data to set to cache
-     * @param   integer  $lifetime  lifetime in seconds
+     * @param string $id id of cache entry
+     * @param string $data data to set to cache
+     * @param integer $lifetime lifetime in seconds
      * @return  boolean
+     * @throws Cache_Exception
+     * @throws ErrorException
      */
     public function set($id, $data, $lifetime = null)
     {
@@ -212,7 +209,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
         try {
             $data = $lifetime . "\n" . serialize($data);
             $file->fwrite($data, strlen($data));
-            return (bool) $file->fflush();
+            return $file->fflush();
         } catch (ErrorException $e) {
             // If serialize through an error exception
             if ($e->getCode() === E_NOTICE) {
@@ -231,8 +228,9 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *     // Delete 'foo' entry from the file group
      *     Cache::instance('file')->delete('foo');
      *
-     * @param   string   $id  id to remove from cache
+     * @param string $id id to remove from cache
      * @return  boolean
+     * @throws Cache_Exception
      */
     public function delete($id)
     {
@@ -253,6 +251,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *     Cache::instance('file')->delete_all();
      *
      * @return  boolean
+     * @throws Cache_Exception
      */
     public function delete_all()
     {
@@ -264,11 +263,11 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * cache entries from the cache.
      *
      * @return  void
+     * @throws Cache_Exception
      */
     public function garbage_collect()
     {
         $this->_delete_file($this->_cache_dir, true, false, true);
-        return;
     }
 
     /**
@@ -288,7 +287,6 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
     {
         // Allow graceful error handling
         try {
-            // If is file
             if ($file->isFile()) {
                 try {
                     // Handle ignore files
@@ -317,9 +315,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
                         throw new Cache_Exception(__METHOD__ . ' failed to delete file : :file', [':file' => $file->getRealPath()]);
                     }
                 }
-            }
-            // Else, is directory
-            elseif ($file->isDir()) {
+            } elseif ($file->isDir()) {
                 // Create new DirectoryIterator
                 $files = new DirectoryIterator($file->getPathname());
 
@@ -394,7 +390,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * Makes the cache directory if it doesn't exist. Simply a wrapper for
      * `mkdir` to ensure DRY principles
      *
-     * @link    http://php.net/manual/en/function.mkdir.php
+     * @link    https://www.php.net/manual/en/function.mkdir.php
      * @param   string    $directory    directory path
      * @param   integer   $mode         chmod mode
      * @param   boolean   $recursive    allows nested directories creation
@@ -425,12 +421,13 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *
      * @param SplFileInfo $file the cache file
      * @return boolean true if expired false otherwise
+     * @throws Cache_Exception
      */
     protected function _is_expired(SplFileInfo $file)
     {
         // Open the file and parse data
         $created = $file->getMTime();
-        $data = $file->openFile("r");
+        $data = $file->openFile();
         $lifetime = (int) $data->fgets();
 
         // If we're at the EOF at this point, corrupted!

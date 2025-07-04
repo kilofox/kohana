@@ -7,7 +7,7 @@
  * @author     Kohana Team
  * @copyright  (c) 2007-2012 Kohana Team
  * @copyright  (c) 2005 Harry Fuecks
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt
+ * @license    https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt
  */
 function _to_unicode($str)
 {
@@ -96,7 +96,7 @@ function _to_unicode($str)
                     }
 
                     if (0xFEFF != $m_ucs4) {
-                        // BOM is legal but we don't want to output it
+                        // BOM is legal, but we don't want to output it
                         $out[] = $m_ucs4;
                     }
 

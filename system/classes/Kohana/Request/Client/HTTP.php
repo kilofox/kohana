@@ -3,7 +3,7 @@
 /**
  * [Request_Client_External] HTTP driver performs external requests using the
  * php-http extension. To use this driver, ensure the following is completed
- * before executing an external request- ideally in the application bootstrap.
+ * before executing an external request—ideally in the application bootstrap.
  *
  * @example
  *
@@ -15,7 +15,7 @@
  * @author     Kohana Team
  * @copyright  (c) 2008-2012 Kohana Team
  * @license    https://kohana.top/license
- * @uses       [PECL HTTP](http://php.net/manual/en/book.http.php)
+ * @uses       [PECL HTTP](https://wiki.php.net/rfc/pecl_http)
  */
 class Kohana_Request_Client_HTTP extends Request_Client_External
 {
@@ -39,7 +39,7 @@ class Kohana_Request_Client_HTTP extends Request_Client_External
 
     /**
      * @var     array     curl options
-     * @link    http://www.php.net/manual/function.curl-setopt
+     * @link    https://www.php.net/function.curl-setopt
      */
     protected $_options = [];
 
@@ -47,9 +47,11 @@ class Kohana_Request_Client_HTTP extends Request_Client_External
      * Sends the HTTP message [Request] to a remote server and processes
      * the response.
      *
-     * @param   Request   $request  request to send
-     * @param   Response  $request  response to send
+     * @param Request $request response to send
+     * @param Response $response
      * @return  Response
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      */
     public function _send_message(Request $request, Response $response)
     {

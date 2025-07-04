@@ -52,7 +52,7 @@ Once your pull request has been accepted, you can delete your repository if you 
         # Commit your changes - Use a descriptive commit message! If there is a redmine ticket for the changes you are making include "Fixes #XXXXX" in the commit message so its tracked.
         git commit -a -m "Corrected a typo in the ORM docs. Fixes #12345."
 
-        # Make sure we are up to date with the latest changes.
+        # Make sure we are up-to-date with the latest changes.
         git merge origin/develop
 
         # Now push your changes to your fork.

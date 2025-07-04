@@ -168,7 +168,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     public function test_date($date, $expected)
     {
         $this->assertSame(
-            $expected, Valid::date($date, $expected)
+            $expected, Valid::date($date)
         );
     }
 
@@ -204,7 +204,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     public function test_decimal($decimal, $places, $digits, $expected)
     {
         $this->assertSame(
-            $expected, Valid::decimal($decimal, $places, $digits), 'Decimal: "' . $decimal . '" to ' . $places . ' places and ' . $digits . ' digits (preceeding period)'
+            $expected, Valid::decimal($decimal, $places, $digits), 'Decimal: "' . $decimal . '" to ' . $places . ' places and ' . $digits . ' digits (preceding period)'
         );
     }
 
@@ -314,11 +314,12 @@ class Kohana_ValidTest extends Unittest_TestCase
      * Tests Valid::credit_card()
      *
      * @test
-     * @covers Valid::credit_card
+     * @covers        Valid::credit_card
      * @dataProvider  provider_credit_card()
-     * @param string  $number   Credit card number
-     * @param string  $type	    Credit card type
+     * @param string $number Credit card number
+     * @param string $type Credit card type
      * @param boolean $expected
+     * @throws Kohana_Exception
      */
     public function test_credit_card($number, $type, $expected)
     {
@@ -447,13 +448,7 @@ class Kohana_ValidTest extends Unittest_TestCase
             $this->markTestSkipped('An internet connection is required for this test');
         }
 
-        if (!Kohana::$is_windows OR version_compare(PHP_VERSION, '5.3.0', '>=')) {
-            $this->assertSame(
-                $correct, Valid::email_domain($email)
-            );
-        } else {
-            $this->markTestSkipped('checkdnsrr() was not added on windows until PHP 5.3');
-        }
+        $this->assertSame($correct, Valid::email_domain($email));
     }
 
     /**
@@ -541,8 +536,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     {
         return [
             ['75.125.175.50', false, true],
-            // PHP 5.3.6 fixed a bug that allowed 127.0.0.1 as a public ip: http://bugs.php.net/53150
-            ['127.0.0.1', false, version_compare(PHP_VERSION, '5.3.6', '<')],
+            ['127.0.0.1', false, false],
             ['256.257.258.259', false, false],
             ['255.255.255.255', false, false],
             ['192.168.0.1', false, false],
@@ -578,7 +572,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     public function provider_max_length()
     {
         return [
-            // Border line
+            // Borderline
             ['some', 4, true],
             // Exceeds
             ['KOHANARULLLES', 2, false],
@@ -725,7 +719,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_numeric
      * @param string  $input     Input to test
-     * @param boolean $expected  Whether or not $input is numeric
+     * @param boolean $expected  Whether $input is numeric
      */
     public function test_numeric($input, $expected)
     {
@@ -865,7 +859,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      */
     public function provider_url()
     {
-        $data = [
+        return [
             ['http://google.com', true],
             ['http://google.com/', true],
             ['http://google.com/?q=abc', true],
@@ -900,8 +894,6 @@ class Kohana_ValidTest extends Unittest_TestCase
             // 254 chars
             ['http://' . str_repeat('123456789.', 25) . 'info/', false],
         ];
-
-        return $data;
     }
 
     /**
@@ -909,7 +901,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_url
-     * @param string  $url       The url to test
+     * @param string  $url       The URL to test
      * @param boolean $expected  Is it valid?
      */
     public function test_url($url, $expected)

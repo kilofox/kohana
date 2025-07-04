@@ -18,6 +18,7 @@ abstract class Kohana_Auth
      * Singleton pattern
      *
      * @return Auth
+     * @throws Kohana_Exception
      */
     public static function instance()
     {
@@ -45,8 +46,9 @@ abstract class Kohana_Auth
     /**
      * Loads Session and configuration options.
      *
-     * @param   array  $config  Config Options
+     * @param array $config Config Options
      * @return  void
+     * @throws Kohana_Exception
      */
     public function __construct($config = [])
     {
@@ -60,7 +62,7 @@ abstract class Kohana_Auth
     abstract public function password($username);
     abstract public function check_password($password);
     /**
-     * Gets the currently logged in user from the session.
+     * Gets the currently logged-in user from the session.
      * Returns null if no user is currently logged in.
      *
      * @param   mixed  $default  Default value to return if the user is currently not logged in.
@@ -126,8 +128,9 @@ abstract class Kohana_Auth
     /**
      * Perform a hmac hash, using the configured method.
      *
-     * @param   string  $str  string to hash
+     * @param string $str string to hash
      * @return  string
+     * @throws Kohana_Exception
      */
     public function hash($str)
     {

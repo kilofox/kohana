@@ -30,7 +30,7 @@ class Kohana_Date
 
     /**
      * Timezone for formatted_time
-     * @link http://uk2.php.net/manual/en/timezones.php
+     * @link https://www.php.net/timezones
      * @var  string
      */
     public static $timezone;
@@ -42,12 +42,13 @@ class Kohana_Date
      *     $seconds = Date::offset('America/Chicago', 'GMT');
      *
      * [!!] A list of time zones that PHP supports can be found at
-     * <http://php.net/timezones>.
+     * <https://www.php.net/timezones>.
      *
-     * @param   string  $remote timezone that to find the offset of
-     * @param   string  $local  timezone used as the baseline
-     * @param   mixed   $now    UNIX timestamp or date string
+     * @param string $remote timezone that to find the offset of
+     * @param string $local timezone used as the baseline
+     * @param mixed $now UNIX timestamp or date string
      * @return  integer
+     * @throws Exception
      */
     public static function offset($remote, $local = null, $now = null)
     {
@@ -70,9 +71,7 @@ class Kohana_Date
         $time_local = new DateTime($now, $zone_local);
 
         // Find the offset
-        $offset = $zone_remote->getOffset($time_remote) - $zone_local->getOffset($time_local);
-
-        return $offset;
+        return $zone_remote->getOffset($time_remote) - $zone_local->getOffset($time_local);
     }
 
     /**
@@ -135,7 +134,6 @@ class Kohana_Date
         // Default values
         $step = (int) $step;
         $long = (bool) $long;
-        $hours = [];
 
         // Set the default start if none was specified.
         if ($start === null) {
@@ -155,7 +153,7 @@ class Kohana_Date
     }
 
     /**
-     * Returns AM or PM, based on a given hour (in 24 hour format).
+     * Returns AM or PM, based on a given hour (in 24-hour format).
      *
      *     $type = Date::ampm(12); // PM
      *     $type = Date::ampm(1);  // AM
@@ -243,7 +241,7 @@ class Kohana_Date
      * Number of months in a year. Typically used as a shortcut for generating
      * a list that can be used in a form.
      *
-     * By default a mirrored array of $month_number => $month_number is returned
+     * By default, a mirrored array of $month_number => $month_number is returned
      *
      *     Date::months();
      *     // [1 => 1, 2 => 2, 3 => 3, ..., 12 => 12]
@@ -279,7 +277,7 @@ class Kohana_Date
 
     /**
      * Returns an array of years between a starting and ending year. By default,
-     * the the current year - 5 and current year + 5 will be used. Typically used
+     * the current year - 5 and current year + 5 will be used. Typically used
      * as a shortcut for generating a list that can be used in a form.
      *
      *     $years = Date::years(2000, 2010); // 2000, 2001, ..., 2009, 2010
@@ -304,7 +302,7 @@ class Kohana_Date
     }
 
     /**
-     * Returns time difference between two timestamps, in human readable format.
+     * Returns the time difference between two timestamps in a human-readable format.
      * If the second timestamp is not given, the current time will be used.
      * Also consider using [Date::fuzzy_span] when displaying a span.
      *
@@ -457,7 +455,7 @@ class Kohana_Date
 
     /**
      * Converts a UNIX timestamp to DOS format. There are very few cases where
-     * this is needed, but some binary formats use it (eg: zip files.)
+     * this is needed, but some binary formats use it (e.g., zip files).
      * Converting the other direction is done using {@link Date::dos2unix}.
      *
      *     $dos = Date::unix2dos($unix);
@@ -484,7 +482,7 @@ class Kohana_Date
 
     /**
      * Converts a DOS timestamp to UNIX format.There are very few cases where
-     * this is needed, but some binary formats use it (eg: zip files.)
+     * this is needed, but some binary formats use it (e.g., zip files).
      * Converting the other direction is done using {@link Date::unix2dos}.
      *
      *     $unix = Date::dos2unix($dos);
@@ -509,23 +507,23 @@ class Kohana_Date
      *
      *     $time = Date::formatted_time('5 minutes ago');
      *
-     * @link    http://www.php.net/manual/datetime.construct
-     * @param   string  $datetime_str       datetime string
-     * @param   string  $timestamp_format   timestamp format
-     * @param   string  $timezone           timezone identifier
+     * @link    https://www.php.net/datetime.construct
+     * @param string $datetime_str datetime string
+     * @param string $timestamp_format timestamp format
+     * @param string $timezone timezone identifier
      * @return  string
+     * @throws Exception
      */
     public static function formatted_time($datetime_str = 'now', $timestamp_format = null, $timezone = null)
     {
         $timestamp_format = ($timestamp_format == null) ? Date::$timestamp_format : $timestamp_format;
         $timezone = ($timezone === null) ? Date::$timezone : $timezone;
 
-        $tz = new DateTimeZone($timezone ? $timezone : date_default_timezone_get());
+        $tz = new DateTimeZone($timezone ?: date_default_timezone_get());
         $time = new DateTime($datetime_str, $tz);
 
         // Convert the time back to the expected timezone if required (in case the datetime_str provided a timezone,
-        // offset or unix timestamp. This also ensures that the timezone reported by the object is correct on HHVM
-        // (see https://github.com/facebook/hhvm/issues/2302).
+        // offset or unix timestamp).
         $time->setTimeZone($tz);
 
         return $time->format($timestamp_format);

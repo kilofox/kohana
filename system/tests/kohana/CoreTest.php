@@ -24,6 +24,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      * Captures the module list as it was before this test
      *
      * @return null
+     * @throws Kohana_Exception
      */
     // @codingStandardsIgnoreStart
     public function setUp()
@@ -37,6 +38,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      * Restores the module list
      *
      * @return null
+     * @throws Kohana_Exception
      */
     // @codingStandardsIgnoreStart
     public function tearDown()
@@ -62,13 +64,15 @@ class Kohana_CoreTest extends Unittest_TestCase
     }
 
     /**
-     * Tests Kohana::santize()
+     * Tests Kohana::sanitize()
      *
      * @test
      * @dataProvider provider_sanitize
-     * @covers Kohana::sanitize
-     * @param boolean $value  Input for Kohana::sanitize
+     * @covers       Kohana::sanitize
+     * @param boolean $value Input for Kohana::sanitize
      * @param boolean $result Output for Kohana::sanitize
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function test_sanitize($value, $result)
     {
@@ -86,7 +90,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      */
     public function test_find_file_no_extension()
     {
-        // EXT is manually appened to the _file name_, not passed as the extension
+        // EXT is manually appended to the _file name_, not passed as the extension
         $path = Kohana::find_file('classes', $file = 'Kohana/Core' . EXT, false);
 
         $this->assertInternalType('string', $path);
@@ -164,10 +168,11 @@ class Kohana_CoreTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_cache
-     * @covers Kohana::cache
-     * @param boolean $key      Key to cache/get for Kohana::cache
-     * @param boolean $value    Output from Kohana::cache
+     * @covers       Kohana::cache
+     * @param boolean $key Key to cache/get for Kohana::cache
+     * @param boolean $value Output from Kohana::cache
      * @param boolean $lifetime Lifetime for Kohana::cache
+     * @throws Kohana_Exception
      */
     public function test_cache($key, $value, $lifetime)
     {
@@ -238,10 +243,11 @@ class Kohana_CoreTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_message
      * @covers       Kohana::message
-     * @param string $file     to pass to Kohana::message
-     * @param string $key      to pass to Kohana::message
-     * @param string $default  to pass to Kohana::message
+     * @param string $file to pass to Kohana::message
+     * @param string $key to pass to Kohana::message
+     * @param string $default to pass to Kohana::message
      * @param string $expected Output for Kohana::message
+     * @throws Kohana_Exception
      */
     public function test_message($file, $key, $default, $expected)
     {
@@ -251,7 +257,7 @@ class Kohana_CoreTest extends Unittest_TestCase
             'bottom' => "$test_path/bottom_module"
         ]);
 
-        $this->assertEquals($expected, Kohana::message($file, $key, $default, $expected));
+        $this->assertEquals($expected, Kohana::message($file, $key, $default));
     }
 
     /**
@@ -362,8 +368,9 @@ class Kohana_CoreTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_modules_sets_and_returns_valid_modules
-     * @param boolean $source   Input for Kohana::modules
+     * @param boolean $source Input for Kohana::modules
      * @param boolean $expected Output for Kohana::modules
+     * @throws Kohana_Exception
      */
     public function test_modules_sets_and_returns_valid_modules($source, $expected)
     {

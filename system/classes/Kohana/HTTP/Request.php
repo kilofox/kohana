@@ -1,7 +1,7 @@
 <?php
 
 /**
- * A HTTP Request specific interface that adds the methods required
+ * An HTTP Request specific interface that adds the methods required
  * by HTTP requests. Over and above [Kohana_HTTP_Interaction], this
  * interface provides method, uri, get and post methods.
  *
@@ -38,7 +38,7 @@ interface Kohana_HTTP_Request extends HTTP_Message
      * If no parameters are passed, the request will use the
      * default values defined in the Route.
      *
-     * @param   array    $params  Optional parameters to include in uri generation
+     * @param   array    $params  Optional parameters to include in URI generation
      * @return  string
      */
     public function uri();

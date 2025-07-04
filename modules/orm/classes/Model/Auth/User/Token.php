@@ -23,6 +23,7 @@ class Model_Auth_User_Token extends ORM
      * Handles garbage collection and deleting of expired objects.
      *
      * @return  void
+     * @throws Kohana_Exception
      */
     public function __construct($id = NULL)
     {
@@ -43,6 +44,7 @@ class Model_Auth_User_Token extends ORM
      * Deletes all expired tokens.
      *
      * @return  ORM
+     * @throws Kohana_Exception
      */
     public function delete_expired()
     {

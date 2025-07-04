@@ -488,7 +488,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
      */
     public function test_str_pad_error()
     {
-        UTF8::str_pad('Cocoñùт', 10, 'š', 15, 'šCocoñùтšš');
+        UTF8::str_pad('Cocoñùт', 10, 'š', 15);
     }
 
     /**

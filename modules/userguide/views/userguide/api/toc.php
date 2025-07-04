@@ -1,22 +1,22 @@
 <h1><?php echo 'Available Classes' ?></h1>
 
-<label>Filter:</label>
+<label for="kodoc-api-filter-box">Filter:</label>
 <input type="text" id="kodoc-api-filter-box" />
 
 <script type="text/javascript">
     (function($) {
         $.fn.extend({
             api_filter: function(api_container_selector) {
-                var $api_container = $(api_container_selector);
-                var $this = this;
+                const $api_container = $(api_container_selector);
+                const $this = this;
+                const $classes = $('.class', $api_container);
+                const $methods = $('.methods li', $classes);
+                const text = $methods.map(function() {
+                    return $(this).text();
+                });
 
                 if ($api_container.length) {
-                    var $classes = $('.class', $api_container);
-                    var $methods = $('.methods li', $classes);
-                    var text = $methods.map(function() {
-                        return $(this).text();
-                    });
-                    var timeout = null;
+                    let timeout = null;
 
                     this.keyup(function() {
                         clearTimeout(timeout);
@@ -27,10 +27,10 @@
                 }
 
                 function filter_content() {
-                    var search = $this.val();
-                    var search_regex = new RegExp(search, 'gi');
+                    const search = $this.val();
+                    const search_regex = new RegExp(search, 'gi');
 
-                    if (search == '') {
+                    if (search === '') {
                         $methods.show();
                         $classes.show();
                     } else {
@@ -59,10 +59,10 @@
 
     <?php foreach ($classes as $class => $methods): $link = $route->uri(['class' => $class]) ?>
         <div class="class <?php echo Text::alternate('left', 'right') ?>">
-            <h2><?php echo HTML::anchor($link, $class, null, null, true) ?></h2>
+            <h2><?php echo HTML::anchor($link, $class) ?></h2>
             <ul class="methods">
                 <?php foreach ($methods as $method): ?>
-                    <li><?php echo HTML::anchor("{$link}#{$method}", "{$class}::{$method}", null, null, true) ?></li>
+                    <li><?php echo HTML::anchor("$link#$method", "$class::$method") ?></li>
                 <?php endforeach ?>
             </ul>
         </div>

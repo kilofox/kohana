@@ -144,10 +144,11 @@ class Kohana_Route
      *         Route::cache(true);
      *     }
      *
-     * @param   boolean $save   cache the current routes
-     * @param   boolean $append append, rather than replace, cached routes when loading
+     * @param boolean $save cache the current routes
+     * @param boolean $append append, rather than replace, cached routes when loading
      * @return  void    when saving routes
      * @return  boolean when loading routes
+     * @throws Kohana_Exception
      * @uses    Kohana::cache
      */
     public static function cache($save = false, $append = false)
@@ -186,12 +187,13 @@ class Kohana_Route
      *
      *     echo URL::site(Route::get($name)->uri($params), $protocol);
      *
-     * @param   string  $name       route name
-     * @param   array   $params     URI parameters
-     * @param   mixed   $protocol   protocol string or boolean, adds protocol and domain
+     * @param string $name route name
+     * @param array $params URI parameters
+     * @param mixed $protocol protocol string or boolean, adds protocol and domain
      * @return  string
-     * @since   3.0.7
+     * @throws Kohana_Exception
      * @uses    URL::site
+     * @since   3.0.7
      */
     public static function url($name, array $params = null, $protocol = null)
     {
@@ -367,7 +369,7 @@ class Kohana_Route
 
     /**
      * Tests if the route matches a given Request. A successful match will return
-     * all of the routed parameters as an array. A failed match will return
+     * all the routed parameters as an array. A failed match will return
      * boolean false.
      *
      *     // Params: controller = users, action = edit, id = 10
@@ -479,9 +481,10 @@ class Kohana_Route
          * Recursively compiles a portion of a URI specification by replacing
          * the specified parameters and any optional parameters that are needed.
          *
-         * @param   string  $portion    Part of the URI specification
-         * @param   boolean $required   Whether or not parameters are required (initially)
-         * @return  array   Tuple of the compiled portion and whether or not it contained specified parameters
+         * @param string $portion Part of the URI specification
+         * @param boolean $required Whether parameters are required (initially)
+         * @return  array   Tuple of the compiled portion and whether it contained specified parameters
+         * @throws Kohana_Exception
          */
         $compile = function ($portion, $required) use (&$compile, $defaults, $params) {
             $missing = [];

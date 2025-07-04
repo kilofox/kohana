@@ -23,8 +23,8 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
      * Provider for test_encode.
      *
      * AES Multiblock Message Test (MMT) Sample Vectors - Known Answer Test (KAT).
-     * @link http://csrc.nist.gov/groups/STM/cavp/index.html NIST - Cryptographic Algorithm Validation Program
-     * @link http://csrc.nist.gov/groups/STM/cavp/documents/aes/aesmmt.zip file used CBCMMT128.rsp
+     * @link https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program NIST - Cryptographic Algorithm Validation Program
+     * @link https://csrc.nist.gov/csrc/media/projects/cryptographic-algorithm-validation-program/documents/aes/aesmmt.zip file used CBCMMT128.rsp
      *
      * @return  array   Array of $method, $key, $iv, $txtPlain, $txtEncoded.
      */
@@ -172,7 +172,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
         $e = $this->getMockBuilder('Encrypt_Openssl')
             ->enableOriginalConstructor()
             ->setConstructorArgs(['name' => 'openssl', 'config' => ['driver' => 'openssl', 'method' => $method, 'key' => $key, 'iv' => $iv]])
-            ->setMethods(null)
+            ->setMethods()
             ->getMock();
 
         // Prepare data.
@@ -187,8 +187,8 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
      * Provider for test_decode.
      *
      * AES Multiblock Message Test (MMT) Sample Vectors - Known Answer Test (KAT).
-     * @link http://csrc.nist.gov/groups/STM/cavp/index.html NIST - Cryptographic Algorithm Validation Program
-     * @link http://csrc.nist.gov/groups/STM/cavp/documents/aes/aesmmt.zip file used CBCMMT128.rsp
+     * @link https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program NIST - Cryptographic Algorithm Validation Program
+     * @link https://csrc.nist.gov/csrc/media/projects/cryptographic-algorithm-validation-program/documents/aes/aesmmt.zip file used CBCMMT128.rsp
      *
      * @return  array   Array of $method, $key, $iv, $txtEncoded, $txtPlain.
      */
@@ -324,7 +324,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
      * @param   string  $method     Encryption cipher.
      * @param   string  $key        Encryption key.
      * @param   string  $iv         Initialization vector.
-     * @param   string  $txtEncoded Ecrypted text.
+     * @param   string  $txtEncoded Encrypted text.
      * @param   string  $txtPlain   Known plain text that is decrypted.
      *
      * @dataProvider providerDecode
@@ -336,7 +336,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
         $e = $this->getMockBuilder('Encrypt_Openssl')
             ->enableOriginalConstructor()
             ->setConstructorArgs(['name' => 'openssl', 'config' => ['driver' => 'openssl', 'method' => $method, 'key' => $key]])
-            ->setMethods(null)
+            ->setMethods()
             ->getMock();
 
         // Prepare data.
@@ -391,7 +391,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
         $e = $this->getMockBuilder('Encrypt_Openssl')
             ->enableOriginalConstructor()
             ->setConstructorArgs(['name' => 'openssl', 'config' => ['driver' => 'openssl', 'method' => $method, 'key' => $key]])
-            ->setMethods(null)
+            ->setMethods()
             ->getMock();
 
         // Encode.
@@ -448,7 +448,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
         $e = $this->getMockBuilder('Encrypt_Openssl')
             ->enableOriginalConstructor()
             ->setConstructorArgs(['name' => 'openssl', 'config' => ['driver' => 'openssl', 'cipher' => $method, 'key' => $key]])
-            ->setMethods(null)
+            ->setMethods()
             ->getMock();
 
         // Assert.
@@ -471,7 +471,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
         $e = $this->getMockBuilder('Encrypt_Openssl')
             ->enableOriginalConstructor()
             ->setConstructorArgs(['name' => 'openssl', 'config' => ['driver' => 'openssl', 'cipher' => $method, 'key' => $key]])
-            ->setMethods(null)
+            ->setMethods()
             ->getMock();
 
         $txtEncodedFirst = $e->encode($txtPlain);
@@ -530,9 +530,11 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
      * Test to multiple calls to the instance() method returns same instance.
      * Also test if the instances are appropriately configured.
      *
-     * @param   string  $instanceName   Instance name.
-     * @param   array   $configArray    Array of config variables missing from config.
+     * @param string $instanceName Instance name.
+     * @param array $configArray Array of config variables missing from config.
      *
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      * @dataProvider providerInstanceReturnsSingleton
      */
     public function testInstanceReturnsSingleton($instanceName, array $configArray)
@@ -541,7 +543,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
         $config = Kohana::$config->load('encrypt');
         // If instance name is null the config group should be the default.
         $configGroup = $instanceName ?: Encrypt::$default;
-        // If config group does not exists, create one.
+        // If config group does not exist, create one.
         if (!array_key_exists($configGroup, $config)) {
             $config[$configGroup] = [];
         }
@@ -569,9 +571,10 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
     /**
      * Helper method to test for private/protected properties.
      *
-     * @param   mixed   $expect Expected value.
-     * @param   mixed   $object Object that holds the private/protected property.
-     * @param   string  $name   The name of the private/protected property.
+     * @param mixed $expect Expected value.
+     * @param mixed $object Object that holds the private/protected property.
+     * @param string $name The name of the private/protected property.
+     * @throws ReflectionException
      */
     protected function assertSameProtectedProperty($expect, $object, $name)
     {

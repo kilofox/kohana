@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Support for image manipulation using [Imagick](http://php.net/Imagick).
+ * Support for image manipulation using [Imagick](https://www.php.net/Imagick).
  *
  * @package    Kohana/Image
  * @category   Drivers
@@ -34,13 +34,14 @@ class Kohana_Image_Imagick extends Image
     /**
      * Runs [Image_Imagick::check] and loads the image.
      *
-     * @return  void
-     * @throws  Kohana_Exception
+     * @param $file
+     * @throws ImagickException
+     * @throws Kohana_Exception
      */
     public function __construct($file)
     {
         if (!Image_Imagick::$_checked) {
-            // Run the install check
+            // Run the installation check
             Image_Imagick::check();
         }
 
@@ -122,7 +123,7 @@ class Kohana_Image_Imagick extends Image
 
     protected function _do_sharpen($amount)
     {
-        // IM not support $amount under 5 (0.15)
+        // ImageMagick does not support $amount under 5 (0.15)
         $amount = ($amount < 5) ? 5 : $amount;
 
         // Amount should be in the range of 0.0 to 3.0
@@ -189,7 +190,7 @@ class Kohana_Image_Imagick extends Image
 
     protected function _do_watermark(Image $image, $offset_x, $offset_y, $opacity)
     {
-        // Convert the Image intance into an Imagick instance
+        // Convert the Image instance into an Imagick instance
         $watermark = new Imagick;
         $watermark->readImageBlob($image->render(), $image->file);
 
@@ -211,7 +212,7 @@ class Kohana_Image_Imagick extends Image
 
     protected function _do_background($r, $g, $b, $opacity)
     {
-        // Create a RGB color for the background
+        // Create an RGB color for the background
         $color = sprintf('rgb(%d, %d, %d)', $r, $g, $b);
 
         // Create a new image for the background
@@ -308,7 +309,6 @@ class Kohana_Image_Imagick extends Image
                 break;
             default:
                 throw new Kohana_Exception('Installed ImageMagick does not support :type images', [':type' => $extension]);
-                break;
         }
 
         return [$format, $type];

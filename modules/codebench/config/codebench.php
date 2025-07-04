@@ -3,7 +3,7 @@
 return [
     /**
      * The maximum execution time, in seconds. If set to zero, no time limit is imposed.
-     * Note: http://php.net/manual/en/function.set-time-limit.php#84563
+     * Note: https://www.php.net/manual/en/function.set-time-limit.php#84563
      */
     'max_execution_time' => 0,
     /**

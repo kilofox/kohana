@@ -80,7 +80,7 @@ class Kohana_Log
             $levels = range($min_level, $levels);
         }
 
-        $this->_writers["{$writer}"] = [
+        $this->_writers["$writer"] = [
             'object' => $writer,
             'levels' => $levels
         ];
@@ -99,14 +99,14 @@ class Kohana_Log
     public function detach(Log_Writer $writer)
     {
         // Remove the writer
-        unset($this->_writers["{$writer}"]);
+        unset($this->_writers["$writer"]);
 
         return $this;
     }
 
     /**
      * Adds a message to the log. Replacement values must be passed in to be
-     * replaced using [strtr](http://php.net/strtr).
+     * replaced using [strtr](https://www.php.net/strtr).
      *
      *     $log->add(Log::ERROR, 'Could not locate user: :user', [
      *         ':user' => $username,
@@ -166,7 +166,7 @@ class Kohana_Log
     }
 
     /**
-     * Write and clear all of the messages.
+     * Write and clear all the messages.
      *
      *     $log->write();
      *
@@ -187,7 +187,7 @@ class Kohana_Log
 
         foreach ($this->_writers as $writer) {
             if (empty($writer['levels'])) {
-                // Write all of the messages
+                // Write all the messages
                 $writer['object']->write($messages);
             } else {
                 // Filtered messages

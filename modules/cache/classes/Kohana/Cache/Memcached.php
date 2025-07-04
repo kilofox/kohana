@@ -6,7 +6,7 @@
  *
  * ### Supported cache engines
  *
- * *  [Memcached](http://www.php.net/manual/en/book.memcached.php)
+ * *  [Memcached](https://www.php.net/manual/en/book.memcached.php)
  *
  * ### Configuration example
  *
@@ -110,9 +110,9 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      */
     protected function __construct(array $config)
     {
-        // Check for the memcached extention.
+        // Check for the memcached extension.
         if (!extension_loaded('memcached')) {
-            throw new Cache_Exception('Memcached PHP extention not loaded');
+            throw new Cache_Exception('Memcached PHP extension not loaded');
         }
 
         parent::__construct($config);
@@ -121,7 +121,7 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
         $this->memcached = new Memcached;
 
         // Load servers from configuration.
-        $servers = Arr::get($this->_config, 'servers', null);
+        $servers = Arr::get($this->_config, 'servers');
 
         if (!$servers) {
             // Throw an exception if no server found.
@@ -161,10 +161,10 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      *     // Retrieve cache entry from memcached group.
      *     $data = Cache::instance('memcached')->get('foo');
      *
-     *     // Retrieve cache entry from memcached group and return 'bar' if miss.
+     *     // Retrieve cache entry from memcached group and return 'bar' if missing.
      *     $data = Cache::instance('memcached')->get('foo', 'bar');
      *
-     * @param   string  $id       Id of cache to entry.
+     * @param   string  $id       ID of cache entry.
      * @param   string  $default  Default value to return if cache miss.
      * @return  mixed
      * @throws  Cache_Exception
@@ -194,7 +194,7 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      *          return true;
      *     }
      *
-     * @param   string   $id        Id of cache entry.
+     * @param   string   $id        ID of cache entry.
      * @param   mixed    $data      Data to set to cache.
      * @param   int      $lifetime  Lifetime in seconds, maximum value 2592000.
      * @return  bool
@@ -234,7 +234,7 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      *     // Delete the 'bar' cache entry after 30 seconds.
      *     Cache::instance('memcached')->delete('bar', 30);
      *
-     * @param   string  $id     Id of entry to delete.
+     * @param   string  $id     ID of cache entry to delete.
      * @param   int     $time   The amount of time the server will wait to delete the entry.
      * @return  bool
      */
@@ -263,7 +263,7 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      * Increment a given value by the step value supplied.
      * Useful for shared counters and other persistent integer based tracking.
      *
-     * @param   string    Id of cache entry to increment.
+     * @param   string    ID of cache entry to increment.
      * @param   int       Step value to increment by.
      * @return  int
      * @return  bool
@@ -277,7 +277,7 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      * Decrement a given value by the step value supplied.
      * Useful for shared counters and other persistent integer based tracking.
      *
-     * @param   string    Id of cache entry to decrement.
+     * @param   string    ID of cache entry to decrement.
      * @param   int       Step value to decrement by.
      * @return  int
      * @return  bool

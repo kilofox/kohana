@@ -37,7 +37,7 @@ class Kohana_CookieTest extends Unittest_TestCase
     }
 
     /**
-     * Tests that cookies are set with the global path, domain, etc options.
+     * Tests that cookies are set with the global path, domain, and other options.
      *
      * @covers Cookie::set
      */
@@ -78,8 +78,10 @@ class Kohana_CookieTest extends Unittest_TestCase
      * @param int $expiration
      * @param int $expect_expiry
      *
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      * @dataProvider provider_set_calculates_expiry_from_lifetime
-     * @covers Cookie::set
+     * @covers       Cookie::set
      */
     public function test_set_calculates_expiry_from_lifetime($expiration, $expect_expiry)
     {
@@ -130,7 +132,8 @@ class Kohana_CookieTest extends Unittest_TestCase
      * @param string $unsigned_value
      *
      * @dataProvider provider_get_returns_default_without_deleting_if_cookie_unsigned
-     * @covers Cookie::get
+     * @covers       Cookie::get
+     * @throws Kohana_Exception
      */
     public function test_get_returns_default_without_deleting_if_cookie_unsigned($unsigned_value)
     {
@@ -255,7 +258,8 @@ class Kohana_CookieTest extends Unittest_TestCase
      * @param array $changed_args
      *
      * @dataProvider provider_salt_creates_different_hash_for_different_data
-     * @covers Cookie::salt
+     * @covers       Cookie::salt
+     * @throws Kohana_Exception
      */
     public function test_salt_creates_different_hash_for_different_data($first_args, $changed_args)
     {

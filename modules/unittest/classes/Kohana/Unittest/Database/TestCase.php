@@ -52,7 +52,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
     }
 
     /**
-     * Restores the original environment overriden with setEnvironment()
+     * Restores the original environment overridden with setEnvironment()
      *
      * Extending classes that have their own tearDown()
      * should call parent::tearDown()
@@ -68,6 +68,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
      * Creates a connection to the unittesting database
      *
      * @return PDO
+     * @throws Kohana_Exception
      */
     public function getConnection()
     {
@@ -91,6 +92,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
      * Gets a connection to the unittest database
      *
      * @return Kohana_Database The database connection
+     * @throws Kohana_Exception
      */
     public function getKohanaConnection()
     {
@@ -106,7 +108,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
     }
 
     /**
-     * Helper function that replaces all occurences of '/' with
+     * Helper function that replaces all occurrences of '/' with
      * the OS-specific directory separator
      *
      * @param string $path The path to act on
@@ -118,7 +120,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
     }
 
     /**
-     * Allows easy setting & backing up of enviroment config
+     * Allows easy setting & backing up of environment config
      *
      * Option types are checked in the following order:
      *
@@ -127,6 +129,9 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
      * * Config option
      *
      * @param array $environment List of environment to set
+     * @return false|null
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function setEnvironment(array $environment)
     {

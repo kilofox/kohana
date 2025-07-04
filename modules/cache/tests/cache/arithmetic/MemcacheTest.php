@@ -14,16 +14,18 @@ include_once(Kohana::find_file('tests/cache/arithmetic', 'CacheArithmeticMethods
 class Kohana_CacheArithmeticMemcacheTest extends Kohana_CacheArithmeticMethodsTest
 {
     /**
-     * This method MUST be implemented by each driver to setup the `Cache`
+     * This method MUST be implemented by each driver to set up the `Cache`
      * instance for each test.
      *
      * This method should do the following tasks for each driver test:
      *
      *  - Test the Cache instance driver is available, skip test otherwise
-     *  - Setup the Cache instance
+     *  - Set up the Cache instance
      *  - Call the parent setup method, `parent::setUp()`
      *
      * @return  void
+     * @throws Cache_Exception
+     * @throws Kohana_Exception
      */
     public function setUp()
     {
@@ -84,6 +86,7 @@ class Kohana_CacheArithmeticMemcacheTest extends Kohana_CacheArithmeticMethodsTe
      *
      * @link    http://dev.kohanaframework.org/issues/4110
      * @return  void
+     * @throws Cache_Exception
      */
     public function test_multiple_set()
     {
@@ -102,11 +105,11 @@ class Kohana_CacheArithmeticMemcacheTest extends Kohana_CacheArithmeticMethodsTe
             false
         ];
 
-        $previous_set = $cache->get($id_set, null);
+        $previous_set = $cache->get($id_set);
 
         foreach ($data as $value) {
             // Use Equals over Sames as Objects will not be equal
-            $this->assertEquals($previous_set, $cache->get($id_set, null));
+            $this->assertEquals($previous_set, $cache->get($id_set));
             $cache->set($id_set, $value, $ttl);
 
             $previous_set = $value;

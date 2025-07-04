@@ -34,9 +34,10 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
      * Compiles an array of conditions into an SQL partial. Used for WHERE
      * and HAVING.
      *
-     * @param   object  $db          Database instance
-     * @param   array   $conditions  condition statements
+     * @param object $db Database instance
+     * @param array $conditions condition statements
      * @return  string
+     * @throws Kohana_Exception
      */
     protected function _compile_conditions(Database $db, array $conditions)
     {
@@ -69,7 +70,7 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
                             // Convert "val = NULL" to "val IS NULL"
                             $op = 'IS';
                         } elseif ($op === '!=' OR $op === '<>') {
-                            // Convert "val != NULL" to "valu IS NOT NULL"
+                            // Convert "val != NULL" to "val IS NOT NULL"
                             $op = 'IS NOT';
                         }
                     }
@@ -122,9 +123,10 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
     /**
      * Compiles an array of set values into an SQL partial. Used for UPDATE.
      *
-     * @param   object  $db      Database instance
-     * @param   array   $values  updated values
+     * @param object $db Database instance
+     * @param array $values updated values
      * @return  string
+     * @throws Kohana_Exception
      */
     protected function _compile_set(Database $db, array $values)
     {
@@ -150,9 +152,10 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
     /**
      * Compiles an array of GROUP BY columns into an SQL partial.
      *
-     * @param   object  $db       Database instance
-     * @param   array   $columns
+     * @param object $db Database instance
+     * @param array $columns
      * @return  string
+     * @throws Kohana_Exception
      */
     protected function _compile_group_by(Database $db, array $columns)
     {
@@ -176,9 +179,11 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
     /**
      * Compiles an array of ORDER BY statements into an SQL partial.
      *
-     * @param   object  $db       Database instance
-     * @param   array   $columns  sorting columns
+     * @param Database $db Database instance
+     * @param array $columns sorting columns
      * @return  string
+     * @throws Database_Exception
+     * @throws Kohana_Exception
      */
     protected function _compile_order_by(Database $db, array $columns)
     {

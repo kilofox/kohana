@@ -61,8 +61,8 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         $this->template->show_comments = false;
 
         // If we are in a module and that module has a menu, show that
-        if ($module = $this->request->param('module') AND $menu = $this->file($module . '/menu') AND Kohana::$config->load('userguide.modules.' . $module . '.enabled')) {
-            // Namespace the markdown parser
+        if ($module = $this->request->param('module') AND $this->file($module . '/menu') AND Kohana::$config->load('userguide.modules.' . $module . '.enabled')) {
+            // Namespace the Markdown parser
             Kodoc_Markdown::$base_url = URL::site($this->guide->uri()) . '/' . $module . '/';
             Kodoc_Markdown::$image_url = URL::site($this->media->uri()) . '/' . $module . '/';
 
@@ -99,7 +99,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         // Trim trailing slash
         $page = rtrim($page, '/');
 
-        // If no module provided in the url, show the user guide index page, which lists the modules.
+        // If no module provided in the URL, show the user guide index page, which lists the modules.
         if (!$module) {
             return $this->index();
         }
@@ -114,12 +114,12 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
             return $this->error('Userguide page not found');
         }
 
-        // If a module is set, but no page was provided in the url, show the index page
+        // If a module is set, but no page was provided in the URL, show the index page
         if (!$page) {
             $page = 'index';
         }
 
-        // Find the markdown file for this page
+        // Find the Markdown file for this page
         $file = $this->file($module . '/' . $page);
 
         // If it's not found, show the error page
@@ -127,7 +127,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
             return $this->error('Userguide page not found');
         }
 
-        // Namespace the markdown parser
+        // Namespace the Markdown parser
         Kodoc_Markdown::$base_url = URL::site($this->guide->uri()) . '/' . $module . '/';
         Kodoc_Markdown::$image_url = URL::site($this->media->uri()) . '/' . $module . '/';
 
@@ -142,9 +142,6 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         // Attach this module's menu to the template
         $this->template->menu = Kodoc_Markdown::markdown($this->_get_all_menu_markdown());
 
-        // Bind the breadcrumb
-        $this->template->bind('breadcrumb', $breadcrumb);
-
         // Bind the copyright
         $this->template->copyright = Kohana::$config->load('userguide.modules.' . $module . '.copyright');
 
@@ -158,6 +155,9 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         if ($page != 'index') {
             $breadcrumb[] = $this->template->title;
         }
+
+        // Bind the breadcrumb
+        $this->template->bind('breadcrumb', $breadcrumb);
     }
 
     public function action_api()
@@ -169,7 +169,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         // Get the class from the request
         $class = $this->request->param('class');
 
-        // If no class was passed to the url, display the API index page
+        // If no class was passed to the URL, display the API index page
         if (!$class) {
             $this->template->title = 'Table of Contents';
 
@@ -188,7 +188,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
 
             // If this classes immediate parent is Kodoc_Missing, then it should 404
             if ($_class->class->getParentClass() AND $_class->class->getParentClass()->name == 'Kodoc_Missing')
-                return $this->error('That class was not found. Check your url and make sure that the module with that class is enabled.');
+                return $this->error('That class was not found. Check your URL and make sure that the module with that class is enabled.');
 
             // If this classes package has been disabled via the config, 404
             if (!Kodoc::show_class($_class))
@@ -205,14 +205,14 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         // Attach the menu to the template
         $this->template->menu = Kodoc::menu();
 
-        // Bind the breadcrumb
-        $this->template->bind('breadcrumb', $breadcrumb);
-
         // Add the breadcrumb
         $breadcrumb = [];
         $breadcrumb[$this->guide->uri(['page' => null])] = 'User Guide';
         $breadcrumb[$this->request->route()->uri()] = 'API Browser';
         $breadcrumb[] = $this->template->title;
+
+        // Bind the breadcrumb
+        $this->template->bind('breadcrumb', $breadcrumb);
     }
 
     public function action_media()
@@ -260,7 +260,6 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
             // Add scripts
             $this->template->scripts = [
                 $media->uri(['file' => 'js/jquery.min.js']),
-                $media->uri(['file' => 'js/jquery.cookie.js']),
                 $media->uri(['file' => 'js/kodoc.js']),
                 // Syntax Highlighter
                 $media->uri(['file' => 'js/shCore.js']),
@@ -275,7 +274,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
     }
 
     /**
-     * Locates the appropriate markdown file for a given guide page. Page URLS
+     * Locates the appropriate Markdown file for a given guide page. Page URLS
      * can be specified in one of three forms:
      *
      *  * userguide/adding
@@ -342,7 +341,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         return $markdown;
     }
 
-    // Get the list of modules from the config, and reverses it so it displays in the order the modules are added, but move Kohana to the top.
+    // Get the list of modules from the config, and reverses it, so it displays in the order the modules are added, but move Kohana to the top.
     protected function _modules()
     {
         $modules = array_reverse(Kohana::$config->load('userguide.modules'));

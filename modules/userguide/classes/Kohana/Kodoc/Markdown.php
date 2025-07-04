@@ -12,12 +12,12 @@
 class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
 {
     /**
-     * @var  string  base url for links
+     * @var  string  base URL for links
      */
     public static $base_url = '';
 
     /**
-     * @var  string  base url for images
+     * @var  string  base URL for images
      */
     public static $image_url = '';
 
@@ -61,10 +61,10 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
 
     public function __construct()
     {
-        // doImage is 10, add image url just before
+        // doImage is 10, add image URL just before
         $this->span_gamut['doImageURL'] = 9;
 
-        // doLink is 20, add base url just before
+        // doLink is 20, add base URL just before
         $this->span_gamut['doBaseURL'] = 19;
 
         // Add API links
@@ -90,14 +90,14 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      * =========
      *
      * @param   array   Matches from regex call
-     * @return  string  Generated html
+     * @return  string  Generated HTML
      */
     function _doHeaders_callback_setext($matches)
     {
         if ($matches[3] == '-' AND preg_match('{^- }', $matches[1]))
             return $matches[0];
         $level = ($matches[3]{0} == '=') ? 1 : 2;
-        $attr = $this->_doHeaders_attr($id = & $matches[2]);
+        $attr = $this->_doHeaders_attr($matches[2]);
 
         // Only auto-generate id if one doesn't exist
         if (empty($attr)) {
@@ -117,12 +117,12 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      * # Heading 1
      *
      * @param   array   Matches from regex call
-     * @return  string  Generated html
+     * @return  string  Generated HTML
      */
     function _doHeaders_callback_atx($matches)
     {
         $level = strlen($matches[1]);
-        $attr = $this->_doHeaders_attr($id = & $matches[3]);
+        $attr = $this->_doHeaders_attr(isset($matches[3]) ? $matches[3] : '');
 
         // Only auto-generate id if one doesn't exist
         if (empty($attr)) {
@@ -191,7 +191,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
     }
 
     /**
-     * Add the current base url to all local links.
+     * Add the current base URL to all local links.
      *
      *     [filesystem](about.filesystem "Optional title")
      *
@@ -205,7 +205,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
     }
 
     /**
-     * Add the current base url to all local images.
+     * Add the current base URL to all local images.
      *
      *     ![Install Page](img/install.png "Optional title")
      *
@@ -263,8 +263,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
         if (self::$show_toc AND Route::name(Request::current()->route()) == "docs/guide") {
             $toc = View::factory('userguide/page-toc')
                 ->set('array', self::$_toc)
-                ->render()
-            ;
+                ->render();
 
             if (($offset = strpos($text, '<p>')) !== false) {
                 // Insert the page TOC just before the first <p>, which every

@@ -7,19 +7,18 @@
  *
  * ### Supported cache engines
  *
- * *  [APC](http://php.net/manual/en/book.apc.php)
- * *  [eAccelerator](http://eaccelerator.net/)
+ * *  [APCu](https://www.php.net/manual/en/book.apcu.php)
  * *  File
- * *  [Memcache](http://memcached.org/)
- * *  [Memcached-tags](http://code.google.com/p/memcached-tags/)
- * *  [SQLite](http://www.sqlite.org/)
- * *  [Xcache](http://xcache.lighttpd.net/)
+ * *  [Memcached](https://www.php.net/manual/en/book.memcached.php)
+ * *  [Memcache](https://www.php.net/manual/en/book.memcache.php)
+ * *  [Memcached-tags](https://code.google.com/archive/p/memcached-tags/)
+ * *  [SQLite](https://www.php.net/manual/en/ref.pdo-sqlite.php)
  *
  * ### Introduction to caching
  *
  * Caching should be implemented with consideration. Generally, caching the result of resources
- * is faster than reprocessing them. Choosing what, how and when to cache is vital. PHP APC is
- * presently one of the fastest caching systems available, closely followed by Memcache. SQLite
+ * is faster than reprocessing them. Choosing what, how and when to cache is vital. PHP APCu is
+ * presently one of the fastest caching systems available, closely followed by Memcached. SQLite
  * and File caching are two of the slowest cache methods, however usually faster than reprocessing
  * a complex set of instructions.
  *
@@ -34,30 +33,29 @@
  *
  * #### Configuration example
  *
- * Below is an example of a _memcache_ server configuration.
+ * Below is an example of a _memcached_ server configuration.
  *
  *     return [
  *         // Name of group
- *         'memcache' => [
- *             // Using Memcache driver
- *             'driver' => 'memcache',
+ *         'memcached' => [
+ *             // Using Memcached driver
+ *             'driver' => 'memcached',
  *             // Available server definitions
  *             'servers' => [
  *                 [
  *                     'host' => 'localhost',
  *                     'port' => 11211,
- *                     'persistent' => false
+ *                     'weight' => 1,
+ *                     'options' => [],
  *                 ]
  *             ],
- *             // Use compression?
- *             'compression' => false,
  *         ],
  *     ]
  *
  * In cases where only one cache group is required, set `Cache::$default` (in your bootstrap,
  * or by extending `Kohana_Cache` class) to the name of the group, and use:
  *
- *     $cache = Cache::instance(); // instead of Cache::instance('memcache')
+ *     $cache = Cache::instance(); // instead of Cache::instance('memcached')
  *
  * It will return the cache instance of the group it has been set in `Cache::$default`.
  *
@@ -69,7 +67,7 @@
  * -------------- | -------- | ---------------------------------------------------------------
  * driver         | __YES__  | (_string_) The driver type to use
  *
- * Details of the settings specific to each driver are available within the drivers documentation.
+ * Details of the settings specific to each driver are available within the driver's documentation.
  *
  * ### System requirements
  *
@@ -110,9 +108,10 @@ abstract class Kohana_Cache
      *     // Access an instantiated group directly
      *     $foo_group = Cache::$instances['default'];
      *
-     * @param   string  $group  the name of the cache group to use [Optional]
+     * @param string $group the name of the cache group to use [Optional]
      * @return  Cache
-     * @throws  Cache_Exception
+     * @throws Cache_Exception
+     * @throws Kohana_Exception
      */
     public static function instance($group = null)
     {
@@ -160,17 +159,17 @@ abstract class Kohana_Cache
 
     /**
      * Getter and setter for the configuration. If no argument provided, the
-     * current configuration is returned. Otherwise the configuration is set
+     * current configuration is returned. Otherwise, the configuration is set
      * to this class.
      *
      *     // Overwrite all configuration
-     *     $cache->config(['driver' => 'memcache', '...']);
+     *     $cache->config(['driver' => 'memcached', '...']);
      *
      *     // Set a new configuration setting
      *     $cache->config('servers', ['foo' => 'bar', '...']);
      *
      *     // Get a configuration setting
-     *     $servers = $cache->config('servers);
+     *     $servers = $cache->config('servers');
      *
      * @param   mixed    key to set to array, either array or config path
      * @param   mixed    value to associate with key
@@ -210,11 +209,11 @@ abstract class Kohana_Cache
      *     // Retrieve cache entry from default group
      *     $data = Cache::instance()->get('foo');
      *
-     *     // Retrieve cache entry from default group and return 'bar' if miss
+     *     // Retrieve cache entry from default group and return 'bar' if missing
      *     $data = Cache::instance()->get('foo', 'bar');
      *
-     *     // Retrieve cache entry from memcache group
-     *     $data = Cache::instance('memcache')->get('foo');
+     *     // Retrieve cache entry from memcached group
+     *     $data = Cache::instance('memcached')->get('foo');
      *
      * @param   string  $id       id of cache to entry
      * @param   string  $default  default value to return if cache miss
@@ -233,11 +232,10 @@ abstract class Kohana_Cache
      *     // Set 'bar' to 'foo' in default group for 30 seconds
      *     Cache::instance()->set('foo', $data, 30);
      *
-     *     // Set 'bar' to 'foo' in memcache group for 10 minutes
-     *     if (Cache::instance('memcache')->set('foo', $data, 600))
-     *     {
+     *     // Set 'bar' to 'foo' in memcached group for 10 minutes
+     *     if (Cache::instance('memcached')->set('foo', $data, 600)) {
      *          // Cache was set successfully
-     *          return
+     *          return;
      *     }
      *
      * @param   string   $id        id of cache entry
@@ -252,8 +250,8 @@ abstract class Kohana_Cache
      *     // Delete 'foo' entry from the default group
      *     Cache::instance()->delete('foo');
      *
-     *     // Delete 'foo' entry from the memcache group
-     *     Cache::instance('memcache')->delete('foo')
+     *     // Delete 'foo' entry from the memcached group
+     *     Cache::instance('memcached')->delete('foo');
      *
      * @param   string  $id  id to remove from cache
      * @return  boolean
@@ -269,8 +267,8 @@ abstract class Kohana_Cache
      *     // Delete all cache entries in the default group
      *     Cache::instance()->delete_all();
      *
-     *     // Delete all cache entries in the memcache group
-     *     Cache::instance('memcache')->delete_all();
+     *     // Delete all cache entries in the memcached group
+     *     Cache::instance('memcached')->delete_all();
      *
      * @return  boolean
      */

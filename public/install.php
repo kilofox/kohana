@@ -1,12 +1,12 @@
 <?php
-// Sanity check, install should only be checked from index.php
-defined('SYSPATH') or exit('Install tests must be loaded from within index.php!');
+// Sanity check, installation should only be checked from index.php
+defined('SYSPATH') or exit('Installation tests must be loaded from within index.php!');
 
 // Clear the realpath() cache
 clearstatcache(true);
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <title>Kohana Installation</title>
@@ -30,18 +30,18 @@ clearstatcache(true);
     <body>
         <h1>Environment Tests</h1>
         <p>
-            The following tests have been run to determine if <a href="http://kohana.top">Kohana</a> will work in your environment.
+            The following tests have been run to determine if <a href="https://kohana.top">Kohana</a> will work in your environment.
             If any of the tests have failed, consult the <a href="https://kohana.top/guide/about.install">documentation</a>
             for more information on how to correct the problem.
         </p>
         <?php $failed = false ?>
-        <table cellspacing="0">
+        <table>
             <tr>
                 <th>PHP Version</th>
-                <?php if (PHP_VERSION_ID >= 50600): ?>
+                <?php if (PHP_VERSION_ID >= 70100): ?>
                     <td class="pass"><?= PHP_VERSION ?></td>
                 <?php else: $failed = true ?>
-                    <td class="fail">Kohana requires PHP 5.6.0 or newer, this version is <?= PHP_VERSION ?>.</td>
+                    <td class="fail">Kohana requires PHP 7.1.0 or newer, this version is <?= PHP_VERSION ?>.</td>
                 <?php endif ?>
             </tr>
             <tr>
@@ -79,9 +79,9 @@ clearstatcache(true);
             <tr>
                 <th>PCRE UTF-8</th>
                 <?php if (!@preg_match('/^.$/u', 'ñ')): $failed = true ?>
-                    <td class="fail"><a href="http://php.net/pcre">PCRE</a> has not been compiled with UTF-8 support.</td>
+                    <td class="fail"><a href="https://www.php.net/pcre">PCRE</a> has not been compiled with UTF-8 support.</td>
                 <?php elseif (!@preg_match('/^\pL$/u', 'ñ')): $failed = true ?>
-                    <td class="fail"><a href="http://php.net/pcre">PCRE</a> has not been compiled with Unicode property support.</td>
+                    <td class="fail"><a href="https://www.php.net/pcre">PCRE</a> has not been compiled with Unicode property support.</td>
                 <?php else: ?>
                     <td class="pass">Pass</td>
                 <?php endif ?>
@@ -91,7 +91,7 @@ clearstatcache(true);
                 <?php if (function_exists('spl_autoload_register')): ?>
                     <td class="pass">Pass</td>
                 <?php else: $failed = true ?>
-                    <td class="fail">PHP <a href="http://www.php.net/spl">SPL</a> is either not loaded or not compiled in.</td>
+                    <td class="fail">PHP <a href="https://www.php.net/spl">SPL</a> is either not loaded or not compiled in.</td>
                 <?php endif ?>
             </tr>
             <tr>
@@ -99,7 +99,7 @@ clearstatcache(true);
                 <?php if (class_exists('ReflectionClass')): ?>
                     <td class="pass">Pass</td>
                 <?php else: $failed = true ?>
-                    <td class="fail">PHP <a href="http://www.php.net/reflection">reflection</a> is either not loaded or not compiled in.</td>
+                    <td class="fail">PHP <a href="https://www.php.net/reflection">reflection</a> is either not loaded or not compiled in.</td>
                 <?php endif ?>
             </tr>
             <tr>
@@ -107,7 +107,7 @@ clearstatcache(true);
                 <?php if (function_exists('filter_list')): ?>
                     <td class="pass">Pass</td>
                 <?php else: $failed = true ?>
-                    <td class="fail">The <a href="http://www.php.net/filter">filter</a> extension is either not loaded or not compiled in.</td>
+                    <td class="fail">The <a href="https://www.php.net/filter">filter</a> extension is either not loaded or not compiled in.</td>
                 <?php endif ?>
             </tr>
             <tr>
@@ -115,14 +115,14 @@ clearstatcache(true);
                 <?php if (extension_loaded('iconv')): ?>
                     <td class="pass">Pass</td>
                 <?php else: $failed = true ?>
-                    <td class="fail">The <a href="http://php.net/iconv">iconv</a> extension is not loaded.</td>
+                    <td class="fail">The <a href="https://www.php.net/iconv">iconv</a> extension is not loaded.</td>
                 <?php endif ?>
             </tr>
             <?php if (extension_loaded('mbstring')): ?>
                 <tr>
                     <th>Mbstring Not Overloaded</th>
                     <?php if (ini_get('mbstring.func_overload') & MB_OVERLOAD_STRING): $failed = true ?>
-                        <td class="fail">The <a href="http://php.net/mbstring">mbstring</a> extension is overloading PHP's native string functions.</td>
+                        <td class="fail">The <a href="https://www.php.net/mbstring">mbstring</a> extension is overloading PHP's native string functions.</td>
                     <?php else: ?>
                         <td class="pass">Pass</td>
                     <?php endif ?>
@@ -131,7 +131,7 @@ clearstatcache(true);
             <tr>
                 <th>Character Type (CTYPE) Extension</th>
                 <?php if (!function_exists('ctype_digit')): $failed = true ?>
-                    <td class="fail">The <a href="http://php.net/ctype">ctype</a> extension is not enabled.</td>
+                    <td class="fail">The <a href="https://www.php.net/ctype">ctype</a> extension is not enabled.</td>
                 <?php else: ?>
                     <td class="pass">Pass</td>
                 <?php endif ?>
@@ -155,13 +155,13 @@ clearstatcache(true);
         <p>
             The following extensions are not required to run the Kohana core, but if enabled can provide access to additional classes.
         </p>
-        <table cellspacing="0">
+        <table>
             <tr>
                 <th>PECL HTTP Enabled</th>
                 <?php if (extension_loaded('http')): ?>
                     <td class="pass">Pass</td>
                 <?php else: ?>
-                    <td class="fail">Kohana can use the <a href="http://php.net/http">http</a> extension for the Request_Client_External class.</td>
+                    <td class="fail">Kohana can use the <a href="https://wiki.php.net/rfc/pecl_http">http</a> extension for the Request_Client_External class.</td>
                 <?php endif ?>
             </tr>
             <tr>
@@ -169,7 +169,7 @@ clearstatcache(true);
                 <?php if (extension_loaded('curl')): ?>
                     <td class="pass">Pass</td>
                 <?php else: ?>
-                    <td class="fail">Kohana can use the <a href="http://php.net/curl">cURL</a> extension for the Request_Client_External class.</td>
+                    <td class="fail">Kohana can use the <a href="https://www.php.net/curl">cURL</a> extension for the Request_Client_External class.</td>
                 <?php endif ?>
             </tr>
             <tr>
@@ -177,15 +177,7 @@ clearstatcache(true);
                 <?php if (extension_loaded('openssl')): ?>
                     <td class="pass">Pass</td>
                 <?php else: ?>
-                    <td class="fail">Kohana can use the <a href="http://php.net/openssl">OpenSSL</a> extension for the Encrypt class.</td>
-                <?php endif ?>
-            </tr>
-            <tr>
-                <th>Mcrypt Enabled</th>
-                <?php if (extension_loaded('mcrypt')): ?>
-                    <td class="pass">Pass</td>
-                <?php else: ?>
-                    <td class="fail">Kohana can use the <a href="http://php.net/mcrypt">Mcrypt</a> extension for the Encrypt class.</td>
+                    <td class="fail">Kohana can use the <a href="https://www.php.net/openssl">OpenSSL</a> extension for the Encrypt class.</td>
                 <?php endif ?>
             </tr>
             <tr>
@@ -193,7 +185,7 @@ clearstatcache(true);
                 <?php if (function_exists('gd_info')): ?>
                     <td class="pass">Pass</td>
                 <?php else: ?>
-                    <td class="fail">Kohana requires <a href="http://php.net/gd">GD</a> v2 for the Image class.</td>
+                    <td class="fail">Kohana requires <a href="https://www.php.net/manual/en/book.image.php">GD</a> v2 for the Image class.</td>
                 <?php endif ?>
             </tr>
             <tr>
@@ -201,7 +193,7 @@ clearstatcache(true);
                 <?php if (class_exists('PDO')): ?>
                     <td class="pass">Pass</td>
                 <?php else: ?>
-                    <td class="fail">Kohana can use <a href="http://php.net/pdo">PDO</a> to support databases.</td>
+                    <td class="fail">Kohana can use <a href="https://www.php.net/pdo">PDO</a> to support databases.</td>
                 <?php endif ?>
             </tr>
         </table>

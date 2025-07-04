@@ -7,7 +7,7 @@
  * name is the [config](database/config) group.
  *
  * This class provides connection instance management via Database Drivers, as
- * well as quoting, escaping and other related functions. Querys are done using
+ * well as quoting, escaping and other related functions. Queries are done using
  * [Database_Query] and [Database_Query_Builder] objects, which can be easily
  * created using the [DB] helper class.
  *
@@ -46,9 +46,10 @@ abstract class Kohana_Database
      *     // Create a custom configured instance
      *     $db = Database::instance('custom', $config);
      *
-     * @param   string   $name    instance name
-     * @param   array    $config  configuration parameters
+     * @param string $name instance name
+     * @param array $config configuration parameters
      * @return  Database
+     * @throws Kohana_Exception
      */
     public static function instance($name = null, array $config = null)
     {
@@ -234,21 +235,23 @@ abstract class Kohana_Database
      * @return  boolean
      */
     abstract public function rollback();
+
     /**
      * Count the number of records in a table.
      *
      *     // Get the total number of records in the "users" table
      *     $count = $db->count_records('users');
      *
-     * @param   mixed    $table  table name string or [query, alias]
+     * @param mixed $table table name string or [query, alias]
      * @return  integer
+     * @throws Kohana_Exception
      */
     public function count_records($table)
     {
         // Quote the table name
         $table = $this->quote_table($table);
 
-        return $this->query(Database::SELECT, 'SELECT COUNT(*) AS total_row_count FROM ' . $table, false)
+        return $this->query(Database::SELECT, 'SELECT COUNT(*) AS total_row_count FROM ' . $table)
                 ->get('total_row_count');
     }
 
@@ -319,7 +322,7 @@ abstract class Kohana_Database
     }
 
     /**
-     * List all of the tables in the database. Optionally, a LIKE string can
+     * List all the tables in the database. Optionally, a LIKE string can
      * be used to search for specific tables.
      *
      *     // Get all tables in the current database
@@ -333,7 +336,7 @@ abstract class Kohana_Database
      */
     abstract public function list_tables($like = null);
     /**
-     * Lists all of the columns in a table. Optionally, a LIKE string can be
+     * Lists all the columns in a table. Optionally, a LIKE string can be
      * used to search for specific fields.
      *
      *     // Get all columns from the "users" table
@@ -403,8 +406,9 @@ abstract class Kohana_Database
      * [Database_Query] objects will be compiled and converted to a sub-query.
      * All other objects will be converted using the `__toString` method.
      *
-     * @param   mixed   $value  any value to quote
+     * @param mixed $value any value to quote
      * @return  string
+     * @throws Kohana_Exception
      * @uses    Database::escape
      */
     public function quote($value)
@@ -452,10 +456,11 @@ abstract class Kohana_Database
      * [Database_Query] objects will be compiled and converted to a sub-query.
      * All other objects will be converted using the `__toString` method.
      *
-     * @param   mixed   $column  column name or [column, alias]
+     * @param mixed $column column name or [column, alias]
      * @return  string
-     * @uses    Database::quote_identifier
+     * @throws Kohana_Exception
      * @uses    Database::table_prefix
+     * @uses    Database::quote_identifier
      */
     public function quote_column($column)
     {
@@ -522,10 +527,11 @@ abstract class Kohana_Database
      * [Database_Query] objects will be compiled and converted to a sub-query.
      * All other objects will be converted using the `__toString` method.
      *
-     * @param   mixed   $table  table name or [table, alias]
+     * @param mixed $table table name or [table, alias]
      * @return  string
-     * @uses    Database::quote_identifier
+     * @throws Kohana_Exception
      * @uses    Database::table_prefix
+     * @uses    Database::quote_identifier
      */
     public function quote_table($table)
     {
@@ -588,8 +594,9 @@ abstract class Kohana_Database
      * [Database_Query] objects will be compiled and converted to a sub-query.
      * All other objects will be converted using the `__toString` method.
      *
-     * @param   mixed   $value  any identifier
+     * @param mixed $value any identifier
      * @return  string
+     * @throws Kohana_Exception
      */
     public function quote_identifier($value)
     {

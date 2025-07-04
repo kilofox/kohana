@@ -31,7 +31,7 @@ class Kohana_Database_MySQLi extends Database
             Database_MySQLi::$_set_names = !function_exists('mysqli_set_charset');
         }
 
-        // Extract the connection parameters, adding required variabels
+        // Extract the connection parameters, adding required variables
         extract($this->_config['connection'] + [
             'database' => '',
             'hostname' => '',
@@ -130,7 +130,7 @@ class Kohana_Database_MySQLi extends Database
 
         if (Kohana::$profiling) {
             // Benchmark this query for the current instance
-            $benchmark = Profiler::start("Database ({$this->_instance})", $sql);
+            $benchmark = Profiler::start("Database ($this->_instance)", $sql);
         }
 
         // Execute the query
@@ -220,15 +220,16 @@ class Kohana_Database_MySQLi extends Database
      *
      * @link http://dev.mysql.com/doc/refman/5.0/en/set-transaction.html
      *
-     * @param string $mode  Isolation level
+     * @param string $mode Isolation level
      * @return boolean
+     * @throws Database_Exception
      */
     public function begin($mode = null)
     {
         // Make sure the database is connected
         $this->_connection or $this->connect();
 
-        if ($mode AND ! $this->_connection->query("SET TRANSACTION ISOLATION LEVEL $mode")) {
+        if ($mode AND !$this->_connection->query("SET TRANSACTION ISOLATION LEVEL $mode")) {
             throw new Database_Exception(':error', [':error' => $this->_connection->error], $this->_connection->errno);
         }
 
@@ -239,6 +240,7 @@ class Kohana_Database_MySQLi extends Database
      * Commit a SQL transaction
      *
      * @return boolean
+     * @throws Database_Exception
      */
     public function commit()
     {
@@ -252,6 +254,7 @@ class Kohana_Database_MySQLi extends Database
      * Rollback a SQL transaction
      *
      * @return boolean
+     * @throws Database_Exception
      */
     public function rollback()
     {
@@ -265,10 +268,10 @@ class Kohana_Database_MySQLi extends Database
     {
         if (is_string($like)) {
             // Search for table names
-            $result = $this->query(Database::SELECT, 'SHOW TABLES LIKE ' . $this->quote($like), false);
+            $result = $this->query(Database::SELECT, 'SHOW TABLES LIKE ' . $this->quote($like));
         } else {
             // Find all table names
-            $result = $this->query(Database::SELECT, 'SHOW TABLES', false);
+            $result = $this->query(Database::SELECT, 'SHOW TABLES');
         }
 
         $tables = [];
@@ -286,10 +289,10 @@ class Kohana_Database_MySQLi extends Database
 
         if (is_string($like)) {
             // Search for column names
-            $result = $this->query(Database::SELECT, 'SHOW FULL COLUMNS FROM ' . $table . ' LIKE ' . $this->quote($like), false);
+            $result = $this->query(Database::SELECT, 'SHOW FULL COLUMNS FROM ' . $table . ' LIKE ' . $this->quote($like));
         } else {
             // Find all column names
-            $result = $this->query(Database::SELECT, 'SHOW FULL COLUMNS FROM ' . $table, false);
+            $result = $this->query(Database::SELECT, 'SHOW FULL COLUMNS FROM ' . $table);
         }
 
         $count = 0;

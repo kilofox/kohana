@@ -200,7 +200,7 @@ class Kohana_Text
         }
 
         // Split the pool into an array of characters
-        $pool = ($utf8 === true) ? UTF8::str_split($pool, 1) : str_split($pool, 1);
+        $pool = ($utf8 === true) ? UTF8::str_split($pool) : str_split($pool);
 
         // Largest pool key
         $max = count($pool) - 1;
@@ -266,7 +266,7 @@ class Kohana_Text
      * @param   string  $str                    phrase to replace words in
      * @param   array   $badwords               words to replace
      * @param   string  $replacement            replacement string
-     * @param   boolean $replace_partial_words  replace words across word boundaries (space, period, etc)
+     * @param   boolean $replace_partial_words  replace words across word boundaries (space, period, etc.)
      * @return  string
      * @uses    UTF8::strlen
      */
@@ -279,20 +279,20 @@ class Kohana_Text
         $regex = '(' . implode('|', $badwords) . ')';
 
         if ($replace_partial_words === false) {
-            // Just using \b isn't sufficient when we need to replace a badword that already contains word boundaries itself
+            // Just using \b isn't sufficient when we need to replace a bad word that already contains word boundaries itself
             $regex = '(?<=\b|\s|^)' . $regex . '(?=\b|\s|$)';
         }
 
         $regex = '!' . $regex . '!ui';
 
-        // if $replacement is a single character: replace each of the characters of the badword with $replacement
+        // if $replacement is a single character: replace each of the characters of the bad word with $replacement
         if (UTF8::strlen($replacement) == 1) {
             return preg_replace_callback($regex, function($matches) use ($replacement) {
                 return str_repeat($replacement, UTF8::strlen($matches[1]));
             }, $str);
         }
 
-        // if $replacement is not a single character, fully replace the badword with $replacement
+        // if $replacement is not a single character, fully replace the bad word with $replacement
         return preg_replace($regex, $replacement, $str);
     }
 
@@ -353,7 +353,7 @@ class Kohana_Text
      */
     public static function auto_link_urls($text)
     {
-        // Find and replace all http/https/ftp/ftps links that are not part of an existing html anchor
+        // Find and replace all http/https/ftp/ftps links that are not part of an existing HTML anchor
         $text = preg_replace_callback('~\b(?<!href="|">)(?:ht|f)tps?://[^<\s]+(?:/|\b)~i', 'Text::_auto_link_urls_callback1', $text);
 
         // Find and replace all naked www.links.com (without http://)
@@ -384,9 +384,9 @@ class Kohana_Text
      */
     public static function auto_link_emails($text)
     {
-        // Find and replace all email addresses that are not part of an existing html mailto anchor
-        // Note: The "58;" negative lookbehind prevents matching of existing encoded html mailto anchors
-        //       The html entity for a colon (:) is &#58; or &#058; or &#0058; etc.
+        // Find and replace all email addresses that are not part of an existing HTML mailto anchor
+        // Note: The "58;" negative lookbehind prevents matching of existing encoded HTML mailto anchors
+        //       The HTML entity for a colon (:) is &#58; or &#058; or &#0058; etc.
         return preg_replace_callback('~\b(?<!href="mailto:|58;)(?!\.)[-+_a-z0-9.]++(?<!\.)@(?![-.])[-a-z0-9.]+(?<!\.)\.[a-z]{2,6}\b(?!</a>)~i', 'Text::_auto_link_emails_callback', $text);
     }
 
@@ -397,7 +397,7 @@ class Kohana_Text
 
     /**
      * Automatically applies "p" and "br" markup to text.
-     * Basically [nl2br](http://php.net/nl2br) on steroids.
+     * Basically [nl2br](https://www.php.net/nl2br) on steroids.
      *
      *     echo Text::auto_p($text);
      *
@@ -420,7 +420,7 @@ class Kohana_Text
         $str = preg_replace('~^[ \t]+~m', '', $str);
         $str = preg_replace('~[ \t]+$~m', '', $str);
 
-        // The following regexes only need to be executed if the string contains html
+        // The following regexes only need to be executed if the string contains HTML
         if ($html_found = (strpos($str, '<') !== false)) {
             // Elements that should not be surrounded by p tags
             $no_p = '(?:p|div|h[1-6r]|ul|ol|li|blockquote|d[dlt]|pre|t[dhr]|t(?:able|body|foot|head)|c(?:aption|olgroup)|form|s(?:elect|tyle)|a(?:ddress|rea)|ma(?:p|th))';
@@ -434,7 +434,7 @@ class Kohana_Text
         $str = '<p>' . trim($str) . '</p>';
         $str = preg_replace('~\n{2,}~', "</p>\n\n<p>", $str);
 
-        // The following regexes only need to be executed if the string contains html
+        // The following regexes only need to be executed if the string contains HTML
         if ($html_found !== false) {
             // Remove p tags around $no_p elements
             $str = preg_replace('~<p>(?=</?' . $no_p . '[^>]*+>)~i', '', $str);
@@ -450,7 +450,7 @@ class Kohana_Text
     }
 
     /**
-     * Returns human readable sizes. Based on original functions written by
+     * Returns human-readable sizes. Based on original functions written by
      * [Aidan Lister](http://aidanlister.com/repos/v/function.size_readable.php)
      * and [Quentin Zervaas](http://www.phpriot.com/d/code/strings/filesize-format/).
      *
@@ -468,7 +468,7 @@ class Kohana_Text
         $format = ($format === null) ? '%01.2f %s' : (string) $format;
 
         // IEC prefixes (binary)
-        if ($si == false OR strpos($force_unit, 'i') !== false) {
+        if (!$si OR strpos($force_unit, 'i') !== false) {
             $units = ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB'];
             $mod = 1024;
         }
@@ -517,7 +517,7 @@ class Kohana_Text
             if ($number / $unit >= 1) {
                 // $value = the number of times the number is divisible by unit
                 $number -= $unit * ($value = (int) floor($number / $unit));
-                // Temporary var for textifying the current unit
+                // Temporary variable for converting the current unit to text
                 $item = '';
 
                 if ($unit < 100) {
@@ -595,9 +595,10 @@ class Kohana_Text
      *
      * When using an array for the value, an associative array will be returned.
      *
-     * @param   string  $agent  user_agent
-     * @param   mixed   $value  array or string to return: browser, version, robot, mobile, platform
+     * @param string $agent user_agent
+     * @param mixed $value array or string to return: browser, version, robot, mobile, platform
      * @return  mixed   requested information, false if nothing is found
+     * @throws Kohana_Exception
      * @uses    Kohana::$config
      */
     public static function user_agent($agent, $value)

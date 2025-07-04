@@ -77,19 +77,21 @@
             .help { cursor:help; }
         </style>
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <?php foreach ($scripts as $script)
+            echo HTML::script($script, null, null, true), "\n";
+        ?>
         <script>
             $(document).ready(function() {
                 // Insert "Toggle All" button
-                var expand_all_text = '▸ Expand all';
-                var collapse_all_text = '▾ Collapse all';
+                const expand_all_text = '▸ Expand all';
+                const collapse_all_text = '▾ Collapse all';
                 $('#bench').before('<p id="toggle_all">' + expand_all_text + '</p>');
 
                 // Cache these selection operations
-                var $runner = $('#runner');
-                var $toggle_all = $('#toggle_all');
-                var $bench_titles = $('#bench > li > h2');
-                var $bench_rows = $('#bench > li > div > table > tbody > tr');
+                const $runner = $('#runner');
+                const $toggle_all = $('#toggle_all');
+                const $bench_titles = $('#bench > li > h2');
+                const $bench_rows = $('#bench > li > div > table > tbody > tr');
 
                 // Runner form
                 $(':input:first', $runner).focus();
@@ -99,7 +101,7 @@
                 });
 
                 // Toggle details for all benchmarks
-                $('#toggle_all').click(function() {
+                $toggle_all.click(function() {
                     if ($(this).data('expanded')) {
                         $(this).data('expanded', false);
                         $(this).text(expand_all_text);
@@ -121,15 +123,15 @@
                     $(this).toggleClass('expanded').siblings().toggle();
 
                     // Counts of bench titles
-                    var total_bench_titles = $bench_titles.length;
-                    var expanded_bench_titles = $bench_titles.filter('.expanded').length;
+                    const total_bench_titles = $bench_titles.length;
+                    const expanded_bench_titles = $bench_titles.filter('.expanded').length;
 
                     // If no benchmark details are expanded, change "Collapse all" to "Expand all"
-                    if (expanded_bench_titles == 0 && $toggle_all.data('expanded')) {
+                    if (expanded_bench_titles === 0 && $toggle_all.data('expanded')) {
                         $toggle_all.click();
                     }
                     // If all benchmark details are expanded, change "Expand all" to "Collapse all"
-                    else if (expanded_bench_titles == total_bench_titles && !$toggle_all.data('expanded')) {
+                    else if (expanded_bench_titles === total_bench_titles && !$toggle_all.data('expanded')) {
                         $toggle_all.click();
                     }
                 });
@@ -137,9 +139,9 @@
                 // Highlight clicked rows
                 $bench_rows.click(function() {
                     $(this).toggleClass('highlight');
-                    // Highlight doubleclicked rows globally
+                    // Highlight double-clicked rows globally
                 }).dblclick(function() {
-                    var nth_row = $(this).parent().children().index(this) + 1;
+                    const nth_row = $(this).parent().children().index(this) + 1;
                     if ($(this).hasClass('highlight')) {
                         $bench_rows.filter(':nth-child(' + nth_row + ')').removeClass('highlight');
                     } else {
@@ -251,7 +253,7 @@
         <p id="footer">
             Page executed in <strong><?php echo round(microtime(true) - KOHANA_START_TIME, 2) ?>&nbsp;s</strong>
             using <strong><?php echo Text::widont(Text::bytes(memory_get_usage(), 'MB')) ?></strong> of memory.<br />
-            <a href="http://github.com/kohana/codebench">Codebench</a>, a <a href="https://kohana.top/">Kohana</a> module
+            <a href="https://github.com/kohana/codebench">Codebench</a>, a <a href="https://kohana.top/">Kohana</a> module
             by <a href="http://www.geertdedeckere.be/article/introducing-codebench">Geert De Deckere</a>.
         </p>
 

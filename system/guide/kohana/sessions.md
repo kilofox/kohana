@@ -15,9 +15,9 @@ Accessing the session instance is done using the [Session::instance] method:
     // Get the session instance
     $session = Session::instance();
 
-When using sessions, you can also get all of the current session data using the [Session::as_array] method:
+When using sessions, you can also get all the current session data using the [Session::as_array] method:
 
-    // Get all of the session data as an array
+    // Get all the session data as an array
     $data = $session->as_array();
 
 You can also use this to overload the `$_SESSION` global to get and set data in a way more similar to standard PHP:
@@ -63,14 +63,14 @@ Deleting session or cookie data is done using the `delete` method:
 
 ## Session Configuration
 
-Always check these settings before making your application live, as many of them will have a direct affect on the security of your application.
+Always check these settings before making your application live, as many of them will have a direct effect on the security of your application.
 
 ## Session Adapters
 
 When creating or accessing an instance of the [Session] class you can decide which session adapter or driver you wish to use. The session adapters that are available to you are:
 
 Native
-: Stores session data in the default location for your web server. The storage location is defined by [session.save_path](http://php.net/manual/session.configuration.php#ini.session.save-path) in `php.ini` or defined by [ini_set](http://php.net/ini_set).
+: Stores session data in the default location for your web server. The storage location is defined by [session.save_path](https://www.php.net/session.configuration#ini.session.save-path) in `php.ini` or defined by [ini_set](https://www.php.net/ini_set).
 
 Database
 : Stores session data in a database table using the [Session_Database] class. Requires the [Database] module to be enabled.
@@ -116,30 +116,30 @@ You can apply configuration settings to each of the session adapters by creating
 
 #### Native Adapter
 
-Type      | Setting   | Description                                       | Default
-----------|-----------|---------------------------------------------------|-----------
-`string`  | name      | name of the session                               | `"session"`
-`integer` | lifetime  | number of seconds the session should live for     | `0`
+| Type      | Setting  | Description                                   | Default     |
+|-----------|----------|-----------------------------------------------|-------------|
+| `string`  | name     | name of the session                           | `"session"` |
+| `integer` | lifetime | number of seconds the session should live for | `0`         |
 
 #### Cookie Adapter
 
-Type      | Setting   | Description                                       | Default
-----------|-----------|---------------------------------------------------|-----------
-`string`  | name      | name of the cookie used to store the session data | `"session"`
-`boolean` | encrypted | encrypt the session data using [Encrypt]?         | `false`
-`integer` | lifetime  | number of seconds the session should live for     | `0`
+| Type      | Setting   | Description                                       | Default     |
+|-----------|-----------|---------------------------------------------------|-------------|
+| `string`  | name      | name of the cookie used to store the session data | `"session"` |
+| `boolean` | encrypted | encrypt the session data using [Encrypt]?         | `false`     |
+| `integer` | lifetime  | number of seconds the session should live for     | `0`         |
 
 #### Database Adapter
 
-Type      | Setting   | Description                                       | Default
-----------|-----------|---------------------------------------------------|-----------
-`string`  | group     | [Database::instance] group name                   | `"default"`
-`string`  | table     | table name to store sessions in                   | `"sessions"`
-`array`   | columns   | associative array of column aliases               | `array`
-`integer` | gc        | 1:x chance that garbage collection will be run    | `500`
-`string`  | name      | name of the cookie used to store the session data | `"session"`
-`boolean` | encrypted | encrypt the session data using [Encrypt]?         | `false`
-`integer` | lifetime  | number of seconds the session should live for     | `0`
+| Type      | Setting   | Description                                       | Default      |
+|-----------|-----------|---------------------------------------------------|--------------|
+| `string`  | group     | [Database::instance] group name                   | `"default"`  |
+| `string`  | table     | table name to store sessions in                   | `"sessions"` |
+| `array`   | columns   | associative array of column aliases               | `array`      |
+| `integer` | gc        | 1:x chance that garbage collection will be run    | `500`        |
+| `string`  | name      | name of the cookie used to store the session data | `"session"`  |
+| `boolean` | encrypted | encrypt the session data using [Encrypt]?         | `false`      |
+| `integer` | lifetime  | number of seconds the session should live for     | `0`          |
 
 ##### Table Schema
 

@@ -29,7 +29,7 @@ class Kohana_Database_PDO extends Database
         if ($this->_connection)
             return;
 
-        // Extract the connection parameters, adding required variabels
+        // Extract the connection parameters, adding required variables
         extract($this->_config['connection'] + [
             'dsn' => '',
             'username' => null,
@@ -66,14 +66,15 @@ class Kohana_Database_PDO extends Database
      *
      * [!!] Works only with SQLite
      *
-     * @link http://php.net/manual/function.pdo-sqlitecreateaggregate
+     * @link https://www.php.net/manual/en/pdo.sqlitecreateaggregate.php
      *
-     * @param   string      $name       Name of the SQL function to be created or redefined
-     * @param   callback    $step       Called for each row of a result set
-     * @param   callback    $final      Called after all rows of a result set have been processed
-     * @param   integer     $arguments  Number of arguments that the SQL function takes
+     * @param string $name Name of the SQL function to be created or redefined
+     * @param callback $step Called for each row of a result set
+     * @param callback $final Called after all rows of a result set have been processed
+     * @param integer $arguments Number of arguments that the SQL function takes
      *
      * @return  boolean
+     * @throws Database_Exception
      */
     public function create_aggregate($name, $step, $final, $arguments = -1)
     {
@@ -89,13 +90,14 @@ class Kohana_Database_PDO extends Database
      *
      * [!!] Works only with SQLite
      *
-     * @link http://php.net/manual/function.pdo-sqlitecreatefunction
+     * @link https://www.php.net/manual/en/pdo.sqlitecreatefunction.php
      *
-     * @param   string      $name       Name of the SQL function to be created or redefined
-     * @param   callback    $callback   Callback which implements the SQL function
-     * @param   integer     $arguments  Number of arguments that the SQL function takes
+     * @param string $name Name of the SQL function to be created or redefined
+     * @param callback $callback Callback which implements the SQL function
+     * @param integer $arguments Number of arguments that the SQL function takes
      *
      * @return  boolean
+     * @throws Database_Exception
      */
     public function create_function($name, $callback, $arguments = -1)
     {
@@ -130,7 +132,7 @@ class Kohana_Database_PDO extends Database
 
         if (Kohana::$profiling) {
             // Benchmark this query for the current instance
-            $benchmark = Profiler::start("Database ({$this->_instance})", $sql);
+            $benchmark = Profiler::start("Database ($this->_instance)", $sql);
         }
 
         try {

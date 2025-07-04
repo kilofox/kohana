@@ -87,7 +87,7 @@ class Controller_Imagefly extends Controller
 }
 ~~~
 
-When the parameters are invalid or the filename does not exists, it simply returns 404 not found error.
+When the parameters are invalid or the filename does not exist, it simply returns 404 not found error.
 
 The rendering of image uses some caching mechanism. One by setting the max age and expire headers and second by using etags.
 

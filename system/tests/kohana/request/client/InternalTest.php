@@ -74,6 +74,7 @@ class Kohana_Request_Client_InternalTest extends Unittest_TestCase
      * @dataProvider provider_response_failure_status
      *
      * @return null
+     * @throws Kohana_Exception
      */
     public function test_response_failure_status($directory, $controller, $action, $uri, $expected)
     {
@@ -103,7 +104,7 @@ class Kohana_Request_Client_InternalTest extends Unittest_TestCase
             ->method('execute')
             ->will($this->returnValue($this->createMock('Response')));
 
-        // mock `method` method to avoid fatals in newer versions of PHPUnit
+        // mock `method` method to avoid fatal errors in newer versions of PHPUnit
         $request->expects($this->any())
             ->method('method')
             ->withAnyParameters();

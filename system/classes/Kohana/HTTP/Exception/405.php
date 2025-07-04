@@ -31,7 +31,7 @@ class Kohana_HTTP_Exception_405 extends HTTP_Exception_Expected
      */
     public function check()
     {
-        if ($location = $this->headers('allow') === null)
+        if ($this->headers('allow') === null)
             throw new Kohana_Exception('A list of allowed methods must be specified');
 
         return true;

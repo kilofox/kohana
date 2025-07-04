@@ -1,8 +1,8 @@
 # Markdown Syntax
 
-The userguide uses [Markdown](http://daringfireball.net/projects/markdown/) and [Markdown Extra](http://michelf.com/projects/php-markdown/extra/) for the userguide pages, and the in-code comments used to generate the API browser. This is a brief summary of most of Markdown and Markdown extra features. It does not cover everything, and it does not cover all the caveats.
+The userguide uses [Markdown](https://daringfireball.net/projects/markdown/) and [Markdown Extra](http://michelf.com/projects/php-markdown/extra/) for the userguide pages, and the in-code comments used to generate the API browser. This is a brief summary of most of Markdown and Markdown extra features. It does not cover everything, and it does not cover all the caveats.
 
-[!!] Be sure to check out the **[Userguide Specific Syntax](#userguide-specific-syntax)** for things that Userguide adds to markdown.
+[!!] Be sure to check out the **[Userguide Specific Syntax](#userguide-specific-syntax)** for things that Userguide adds to Markdown.
 
 ## Headers
 
@@ -42,13 +42,13 @@ end of a line.
 
 ## Links
 ~~~
-This is a normal link: [Kohana](http://kohanaframework.org).
+This is a normal link: [Kohana](https://kohanaframework.org).
 
-This link has a title: [Kohana](http://kohanaframework.org "The swift PHP framework")
+This link has a title: [Kohana](https://kohanaframework.org "The swift PHP framework")
 ~~~
-This is a normal link: [Kohana](http://kohanaframework.org)
+This is a normal link: [Kohana](https://kohanaframework.org)
 
-This link has a title: [Kohana](http://kohanaframework.org "The swift PHP framework")
+This link has a title: [Kohana](https://kohanaframework.org "The swift PHP framework")
 
 ## Code blocks
 
@@ -80,7 +80,7 @@ This is sometimes useful when code is near lists
 -  of each line, surrounded by spaces. You can mix * - and +, but it
 +  makes no difference.
 ~~~
-*  To make a unordered list, put an asterisk, minus, or + at the beginning
+*  To make an unordered list, put an asterisk, minus, or + at the beginning
 -  of each line, surrounded by spaces. You can mix * - and +, but it
 +  makes no difference.
 
@@ -159,10 +159,10 @@ Content Cell  | Content Cell
 Content Cell  | Content Cell
 ~~~
 
-First Header  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
+| First Header | Second Header |
+|--------------|---------------|
+| Content Cell | Content Cell  |
+| Content Cell | Content Cell  |
 
 Note that the pipes on the very left and very right side are optional, and you can change the text-alignment by adding a colon on the right, or on both sides for center.
 ~~~
@@ -172,31 +172,31 @@ Note that the pipes on the very left and very right side are optional, and you c
 | Phone     |   $12 |   30%   |
 | Pipe      |    $1 |    0%   |
 ~~~
-| Item      | Value | Savings |
-| --------- | -----:|:-------:|
-| Computer  | $1600 |   40%   |
-| Phone     |   $12 |   30%   |
-| Pipe      |    $1 |    0%   |
+| Item     | Value | Savings |
+|----------|------:|:-------:|
+| Computer | $1600 |   40%   |
+| Phone    |   $12 |   30%   |
+| Pipe     |    $1 |   0%    |
 
 # Userguide Specific Syntax
 
-In addition to the features and syntax of [Markdown](http://daringfireball.net/projects/markdown/) and [Markdown Extra](http://michelf.com/projects/php-markdown/extra/) the following apply to userguide pages and api documentation:
+In addition to the features and syntax of [Markdown](https://daringfireball.net/projects/markdown/) and [Markdown Extra](http://michelf.com/projects/php-markdown/extra/) the following apply to userguide pages and api documentation:
 
 ## Namespacing
 
-The first thing to note is that all links are "namespaced" to the current module. For example, from anywhere within the Kohana core docs you do not need to include `kohana` at the beginning of a link url. For example: `[Hello World Tutorial](tutorials/hello-world)` rather than `(kohana/tutorials/hello-world)`.
+The first thing to note is that all links are "namespaced" to the current module. For example, from anywhere within the Kohana core docs you do not need to include `kohana` at the beginning of a link URL. For example: `[Hello World Tutorial](tutorials/hello-world)` rather than `(kohana/tutorials/hello-world)`.
 
-To link to a modules index page, have an empty url like: `[Kohana]()`.
+To link to a modules index page, have an empty URL like: `[Kohana]()`.
 
-To link to page in a different module, prefix your url with `../` and the module name. For example: `[Kohana Routes](../kohana/routing)`
+To link to page in a different module, prefix your URL with `../` and the module name. For example: `[Kohana Routes](../kohana/routing)`
 
 **Images are also namespaced**, using `![Alt Text](imagename.jpg)` would look for `media/guide/<modulename>/imagename.jpg`.
 
-[!!] If you want your userguide pages to be browsable on github or similar sites outside Kohana's own userguide module, specify the optional .md file extension in your links
+[!!] If you want your userguide pages to be browsable on GitHub or similar sites outside Kohana's own userguide module, specify the optional .md file extension in your links
 
 ## API Links
 
-You can make links to the api browser by wrapping any class name in brackets. You may also include a function name, or propery name to link to that specifically. All of the following will link to the API browser:
+You can make links to the api browser by wrapping any class name in brackets. You may also include a function name, or property name to link to that specifically. All the following will link to the API browser:
 
     [Request]
     [Request::execute]
@@ -216,7 +216,7 @@ If you want to have parameters and have the function be clickable, only put the 
 
 ## Notes
 
-If you put `[!!]` in front of a line it will be a "note" and be placed in a box with a lightbulb.
+If you put `[!!]` in front of a line, it will be a "note" and be placed in a box with a light bulb.
 
     [!!] This is a note
 

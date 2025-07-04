@@ -13,7 +13,7 @@
 class Kohana_SecurityTest extends Unittest_TestCase
 {
     /**
-     * Provides test data for test_envode_php_tags()
+     * Provides test data for test_encode_php_tags()
      *
      * @return array Test data sets
      */
@@ -40,6 +40,7 @@ class Kohana_SecurityTest extends Unittest_TestCase
      * Provides test data for Security::token()
      *
      * @return array Test data sets
+     * @throws Kohana_Exception
      */
     public function provider_csrf_token()
     {
@@ -48,7 +49,7 @@ class Kohana_SecurityTest extends Unittest_TestCase
             Security::$token_name = 'token_' . $i;
             $array[] = [
                 Security::token(true),
-                Security::check(Security::token(false)), $i
+                Security::check(Security::token()), $i
             ];
         }
         return $array;
@@ -66,7 +67,7 @@ class Kohana_SecurityTest extends Unittest_TestCase
         //@todo: the Security::token tests need to be reviewed to check how much of the logic they're actually covering
         Security::$token_name = 'token_' . $iteration;
         $this->assertSame(true, $input);
-        $this->assertSame($expected, Security::token(false));
+        $this->assertSame($expected, Security::token());
         Session::instance()->delete(Security::$token_name);
     }
 

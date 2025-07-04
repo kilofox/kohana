@@ -129,12 +129,12 @@ class Kohana_ResponseTest extends Unittest_TestCase
      * @dataProvider provider_cookie_set
      * @param string $key
      * @param string $value
-     * @param string $expected
+     * @param array $expected
      * @return void
      */
     public function test_cookie_set($key, $value, $expected)
     {
-        // Setup the Response and apply cookie
+        // Set up the Response and apply cookie
         $response = new Response;
         $response->cookie($key, $value);
 

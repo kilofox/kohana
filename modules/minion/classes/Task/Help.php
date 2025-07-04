@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Help task to display general instructons and list all tasks
+ * Help task to display general instructions and list all tasks
  *
  * @package    Kohana
  * @category   Helpers
@@ -22,7 +22,7 @@ class Task_Help extends Minion_Task
 
         $view = new View('minion/help/list');
 
-        $view->tasks = $tasks;
+        $view->set('tasks', $tasks);
 
         echo $view;
     }

@@ -19,15 +19,15 @@ $(document).ready(function ()
     // Breadcrumbs magic
     $('#kodoc-breadcrumb li.last').each(function ()
     {
-	var $this = $(this);
-	var $topics = $('#kodoc-topics li').has('a.current').slice(0, -1);
+		const $this = $(this);
+		const $topics = $('#kodoc-topics li').has('a.current').slice(0, -1);
 
-	$topics.each(function ()
+		$topics.each(function ()
 	{
 	    // Create a copy of the menu link
-	    var $crumb = $(this).children('a:first, span:not(.toggle):first').clone();
+		const $crumb = $(this).children('a:first, span:not(.toggle):first').clone();
 
-	    // Insert the menu link into the breadcrumbs
+		// Insert the menu link into the breadcrumbs
 	    $('<li></li>').html($crumb).insertBefore($this);
 	});
     });
@@ -36,11 +36,11 @@ $(document).ready(function ()
 
     $('#kodoc-main .method-source').each(function ()
     {
-	var self = $(this);
-	var togg = $(' <a class="sourcecode-toggle">[show]</a>').appendTo($('h4', self));
-	var code = self.find('pre').hide();
+		const self = $(this);
+		const togg = $(' <a class="sourcecode-toggle">[show]</a>').appendTo($('h4', self));
+		const code = self.find('pre').hide();
 
-	togg.toggle(function ()
+		togg.toggle(function ()
 	{
 	    togg.html('[hide]');
 	    code.stop(true, true).slideDown();
@@ -56,7 +56,7 @@ $(document).ready(function ()
     $('#kodoc-body')
 	    .find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]')
 	    .append(function () {
-		var $this = $(this);
-		return '<a href="#' + $this.attr('id') + '" class="permalink">link to this</a>';
+			const $this = $(this);
+			return '<a href="#' + $this.attr('id') + '" class="permalink">link to this</a>';
 	    });
 });

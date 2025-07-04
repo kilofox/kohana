@@ -18,7 +18,7 @@ class Kohana_NumTest extends Unittest_TestCase
     protected $default_locale;
 
     /**
-     * SetUp test enviroment
+     * SetUp test environment
      */
     // @codingStandardsIgnoreStart
     public function setUp()
@@ -61,10 +61,11 @@ class Kohana_NumTest extends Unittest_TestCase
      * Tests Num::bytes()
      *
      * @test
-     * @covers Num::bytes
+     * @covers       Num::bytes
      * @dataProvider provider_bytes
      * @param integer Expected Value
      * @param string  Input value
+     * @throws Kohana_Exception
      */
     public function test_bytes($expected, $size)
     {
@@ -92,7 +93,7 @@ class Kohana_NumTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_ordinal
      * @param integer $number
-     * @param <type> $expected
+     * @param string $expected
      */
     public function test_ordinal($number, $expected)
     {

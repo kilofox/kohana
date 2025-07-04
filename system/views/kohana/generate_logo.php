@@ -11,4 +11,4 @@ file_put_contents('logo.php', "<?php
  * @copyright  (c) 2008-2012 Kohana Team
  * @license    https://kohana.top/license
  */
-return ['mime' => 'image/png', 'data' => '{$data}']; ?>");
+return ['mime' => 'image/png', 'data' => '$data']; ?>");

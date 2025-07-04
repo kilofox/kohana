@@ -258,9 +258,9 @@ abstract class Kohana_Request_Client
     /**
      * Getter and setter for the maximum callback depth property.
      *
-     * This protects the main execution from recursive callback execution (eg
-     * following infinite redirects, conflicts between callbacks causing loops
-     * etc). Requests will only be allowed to nest to the level set by this
+     * This protects the main execution from recursive callback execution (e.g.,
+     * following infinite redirects, and conflicts between callbacks causing loops).
+     * Requests will only be allowed to nest to the level set by this
      * param before execution is aborted with a Request_Client_Recursion_Exception.
      *
      * @param int $depth  Maximum number of callback requests to execute before aborting
@@ -363,6 +363,9 @@ abstract class Kohana_Request_Client
      * @param Request $request
      * @param Response $response
      * @param Request_Client $client
+     * @return null
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      */
     public static function on_header_location(Request $request, Response $response, Request_Client $client)
     {
@@ -392,7 +395,7 @@ abstract class Kohana_Request_Client
             // Prepare the additional request, copying any follow_headers that were present on the original request
             $orig_headers = $request->headers()->getArrayCopy();
             $follow_header_keys = array_intersect(array_keys($orig_headers), $client->follow_headers());
-            $follow_headers = \Arr::extract($orig_headers, $follow_header_keys);
+            $follow_headers = Arr::extract($orig_headers, $follow_header_keys);
 
             $follow_request = Request::factory($response->headers('Location'))
                 ->method($follow_method)

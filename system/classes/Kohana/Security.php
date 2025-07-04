@@ -18,7 +18,7 @@ class Kohana_Security
 
     /**
      * Generate and store a unique token which can be used to help prevent
-     * [CSRF](http://wikipedia.org/wiki/Cross_Site_Request_Forgery) attacks.
+     * [CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery) attacks.
      *
      *     $token = Security::token();
      *
@@ -35,8 +35,9 @@ class Kohana_Security
      *
      * This provides a basic, but effective, method of preventing CSRF attacks.
      *
-     * @param   boolean $new    force a new token to be generated?
+     * @param boolean $new force a new token to be generated?
      * @return  string
+     * @throws Kohana_Exception
      * @uses    Session::instance
      */
     public static function token($new = false)
@@ -46,7 +47,7 @@ class Kohana_Security
         // Get the current token
         $token = $session->get(Security::$token_name);
 
-        if ($new === true OR ! $token) {
+        if ($new === true OR !$token) {
             // Generate a new unique token
             if (function_exists('openssl_random_pseudo_bytes')) {
                 // Generate a random pseudo bytes token if openssl_random_pseudo_bytes is available
@@ -72,8 +73,9 @@ class Kohana_Security
      *         // Pass
      *     }
      *
-     * @param   string  $token  token to check
+     * @param string $token token to check
      * @return  boolean
+     * @throws Kohana_Exception
      * @uses    Security::token
      */
     public static function check($token)

@@ -32,7 +32,7 @@ class Kohana_Kodoc_Class extends Kodoc
     public $tags = [];
 
     /**
-     * @var  array  array of this classes constants
+     * @var  array  array of this class's constants
      */
     public $constants = [];
 
@@ -42,12 +42,13 @@ class Kohana_Kodoc_Class extends Kodoc
     public $parents = [];
 
     /**
-     * Loads a class and uses [reflection](http://php.net/reflection) to parse
+     * Loads a class and uses [reflection](https://www.php.net/reflection) to parse
      * the class. Reads the class modifiers, constants and comment. Parses the
      * comment to find the description and tags.
      *
-     * @param   string  Class name
-     * @return  void
+     * @param string  Class name
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function __construct($class)
     {
@@ -115,7 +116,7 @@ class Kohana_Kodoc_Class extends Kodoc
             if ($parent->name == 'Kodoc_Missing') {
                 $result .= "[!!] **This class, or a class parent, could not be
 				           found or loaded. This could be caused by a missing
-				           module or other dependancy. The documentation for
+				           module or other dependency. The documentation for
 				           class may not be complete!**";
             }
         }
@@ -225,7 +226,7 @@ class Kohana_Kodoc_Class extends Kodoc
         if ($b->name == $this->class->name)
             return 1;
 
-        // Otherwise, get the parents of each methods declaring class, then compare which function has more "ancestors"
+        // Otherwise, get the parents of each method's declaring class, then compare which function has more "ancestors"
         $adepth = 0;
         $bdepth = 0;
 
@@ -246,6 +247,7 @@ class Kohana_Kodoc_Class extends Kodoc
      * Get the tags of this class as HTML.
      *
      * @return  array
+     * @throws Kohana_Exception
      */
     public function tags()
     {

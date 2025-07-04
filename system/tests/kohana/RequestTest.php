@@ -59,25 +59,28 @@ class Kohana_RequestTest extends Unittest_TestCase
 
         $this->assertEquals(Request::$initial, $request);
 
-        $this->assertEquals(Request::$client_ip, '127.0.0.1');
+        $this->assertEquals('127.0.0.1', Request::$client_ip);
 
-        $this->assertEquals(Request::$user_agent, 'whatever (Mozilla 5.0/compatible)');
+        $this->assertEquals('whatever (Mozilla 5.0/compatible)', Request::$user_agent);
 
-        $this->assertEquals($request->protocol(), 'HTTP/1.1');
+        $this->assertEquals('HTTP/1.1', $request->protocol());
 
-        $this->assertEquals($request->referrer(), 'http://example.com/');
+        $this->assertEquals('http://example.com/', $request->referrer());
 
-        $this->assertEquals($request->requested_with(), 'ajax-or-something');
+        $this->assertEquals('ajax-or-something', $request->requested_with());
 
-        $this->assertEquals($request->query(), []);
+        $this->assertEquals([], $request->query());
 
-        $this->assertEquals($request->post(), []);
+        $this->assertEquals([], $request->post());
     }
 
     /**
      * Tests that the allow_external flag prevents an external request.
      *
      * @return null
+     * @throws Kohana_Exception
+     * @throws ReflectionException
+     * @throws Request_Exception
      */
     public function test_disable_external_tests()
     {
@@ -85,7 +88,7 @@ class Kohana_RequestTest extends Unittest_TestCase
 
         $request = new Request('http://www.google.com/', [], false);
 
-        $this->assertEquals(false, $request->is_external());
+        $this->assertFalse($request->is_external());
     }
 
     /**
@@ -101,7 +104,7 @@ class Kohana_RequestTest extends Unittest_TestCase
     }
 
     /**
-     * Ensures the create class is created with the correct client
+     * Ensures the created request is initialized with the correct client
      *
      * @test
      * @dataProvider provider_create
@@ -135,7 +138,7 @@ class Kohana_RequestTest extends Unittest_TestCase
         $this->assertArrayNotHasKey('foo', $request->param());
         $this->assertEquals($request->uri(), $uri);
 
-        // Ensure the params do not contain contamination from controller, action, route, uri etc etc
+        // Ensure the params do not contain contamination from controller, action, route, URI etc etc
         $params = $request->param();
 
         // Test for illegal components
@@ -170,9 +173,9 @@ class Kohana_RequestTest extends Unittest_TestCase
     {
         $request = Request::factory('foo/bar');
 
-        $this->assertEquals($request->method(), 'GET');
-        $this->assertEquals(($request->method('post') === $request), true);
-        $this->assertEquals(($request->method() === 'POST'), true);
+        $this->assertEquals('GET', $request->method());
+        $this->assertSame($request, $request->method('post'));
+        $this->assertSame('POST', $request->method());
     }
 
     /**
@@ -202,62 +205,7 @@ class Kohana_RequestTest extends Unittest_TestCase
     {
         $request = Request::factory(''); // This should always match something, no matter what changes people make
         // The route should be null since the request has not been executed yet
-        $this->assertEquals($request->route(), null);
-    }
-
-    /**
-     * Tests Request::accept_type()
-     *
-     * @test
-     * @covers Request::accept_type
-     */
-    public function test_accept_type()
-    {
-        $this->assertEquals(['*/*' => 1], Request::accept_type());
-    }
-
-    /**
-     * Provides test data for Request::accept_lang()
-     * @return array
-     */
-    public function provider_accept_lang()
-    {
-        return [
-            [
-                'en-us',
-                1,
-                ['_SERVER' => ['HTTP_ACCEPT_LANGUAGE' => 'en-us,en;q=0.5']]
-            ],
-            [
-                'en-us',
-                1,
-                ['_SERVER' => ['HTTP_ACCEPT_LANGUAGE' => 'en-gb']]
-            ],
-            [
-                'en-us',
-                1,
-                ['_SERVER' => ['HTTP_ACCEPT_LANGUAGE' => 'sp-sp;q=0.5']]
-            ],
-        ];
-    }
-
-    /**
-     * Tests Request::accept_lang()
-     *
-     * @test
-     * @covers Request::accept_lang
-     * @dataProvider provider_accept_lang
-     * @param array $params Query string
-     * @param string $expected Expected result
-     * @param array $enviroment Set environment
-     */
-    public function test_accept_lang($params, $expected, $enviroment)
-    {
-        $this->setEnvironment($enviroment);
-
-        $this->assertEquals(
-            $expected, Request::accept_lang($params)
-        );
+        $this->assertNull($request->route());
     }
 
     /**
@@ -279,10 +227,13 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_url
-     * @covers Request::url
-     * @param string $uri the uri to use
+     * @covers       Request::url
+     * @param string $uri the URI to use
      * @param string $protocol the protocol to use
      * @param array $expected The string we expect
+     * @throws Kohana_Exception
+     * @throws ReflectionException
+     * @throws Request_Exception
      */
     public function test_url($uri, $protocol, $expected)
     {
@@ -328,7 +279,11 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_set_protocol
      *
+     * @param $protocol
+     * @param $expected
      * @return null
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      */
     public function test_set_protocol($protocol, $expected)
     {
@@ -348,6 +303,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * Provides data for test_post_max_size_exceeded()
      *
      * @return  array
+     * @throws Kohana_Exception
      */
     public function provider_post_max_size_exceeded()
     {
@@ -366,9 +322,10 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_post_max_size_exceeded
      *
-     * @param   int      content_length
-     * @param   bool     expected
+     * @param int      content_length
+     * @param bool     expected
      * @return  void
+     * @throws Kohana_Exception
      */
     public function test_post_max_size_exceeded($content_length, $expected)
     {
@@ -386,6 +343,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * Provides data for test_uri_only_trimed_on_internal()
      *
      * @return  array
+     * @throws Request_Exception
      */
     public function provider_uri_only_trimed_on_internal()
     {
@@ -415,7 +373,7 @@ class Kohana_RequestTest extends Unittest_TestCase
     }
 
     /**
-     * Tests that the uri supplied to Request is only trimed
+     * Tests that the URI supplied to Request is only trimed
      * for internal requests.
      *
      * @dataProvider provider_uri_only_trimed_on_internal
@@ -434,7 +392,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      */
     public function provider_options_set_to_external_client()
     {
-        $provider = [
+        return [
             [
                 [
                     CURLOPT_PROXYPORT => 8080,
@@ -448,8 +406,6 @@ class Kohana_RequestTest extends Unittest_TestCase
                 ]
             ],
         ];
-
-        return $provider;
     }
 
     /**
@@ -458,9 +414,10 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_options_set_to_external_client
      *
-     * @param   array    settings
-     * @param   array    expected
+     * @param array    settings
+     * @param array    expected
      * @return void
+     * @throws Request_Exception
      */
     public function test_options_set_to_external_client($settings, $expected)
     {
@@ -482,6 +439,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * Provides data for test_headers_get()
      *
      * @return  array
+     * @throws Request_Exception
      */
     public function provider_headers_get()
     {
@@ -549,9 +507,10 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_headers_set
      *
-     * @param   array      header(s) to set to the request object
-     * @param   string     expected http header
+     * @param array      header(s) to set to the request object
+     * @param string     expected http header
      * @return  void
+     * @throws Request_Exception
      */
     public function test_headers_set($headers, $expected)
     {
@@ -604,10 +563,11 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_query_parameter_parsing
      *
-     * @param   string    url
-     * @param   array     query
-     * @param   array    expected
+     * @param string    URL
+     * @param array     query
+     * @param array    expected
      * @return  void
+     * @throws Request_Exception
      */
     public function test_query_parameter_parsing($url, $query, $expected)
     {
@@ -627,10 +587,11 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_query_parameter_parsing
      *
-     * @param   string    url
-     * @param   array     query
-     * @param   array    expected
+     * @param string    URL
+     * @param array     query
+     * @param array    expected
      * @return  void
+     * @throws Request_Exception
      */
     public function test_query_parameter_parsing_in_subrequest($url, $query, $expected)
     {
@@ -698,8 +659,8 @@ class Kohana_RequestTest extends Unittest_TestCase
 
         $client = $request->client();
 
-        $this->assertEquals($client->follow(), true);
-        $this->assertEquals($client->strict_redirect(), false);
+        $this->assertTrue($client->follow());
+        $this->assertFalse($client->strict_redirect());
     }
 
     /**
@@ -755,7 +716,7 @@ class Kohana_RequestTest_Header_Spying_Request_Client_External extends Request_C
 {
     private $headers;
 
-    protected function _send_message(\Request $request, \Response $response)
+    protected function _send_message(Request $request, Response $response)
     {
         $this->headers = $request->headers();
 

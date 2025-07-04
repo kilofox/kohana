@@ -20,7 +20,7 @@ class Kohana_DateTest extends Unittest_TestCase
     protected $default_locale;
 
     /**
-     * Ensures we have a consistant timezone for testing.
+     * Ensures we have a consistent timezone for testing.
      */
     // @codingStandardsIgnoreStart
     public function setUp()
@@ -65,11 +65,12 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_offset
-     * @covers Date::offset
+     * @covers       Date::offset
      * @param integer $expected Expected offset
-     * @param string  $remote   Remote TZ
-     * @param string  $local    Local TZ
-     * @param integer $now      Current timestamp
+     * @param string $remote Remote TZ
+     * @param string $local Local TZ
+     * @param integer $now Current timestamp
+     * @throws Exception
      */
     public function test_offset($expected, $remote, $local, $now = null)
     {
@@ -110,7 +111,7 @@ class Kohana_DateTest extends Unittest_TestCase
             [22, 'PM'],
             [23, 'PM'],
             [24, 'PM'],
-            // ampm doesn't validate the hour, so I don't think we should test it..
+            // ampm doesn't validate the hour, so I don't think we should test it.
             // test strings are converted
             ['0', 'AM'],
             ['12', 'PM'],
@@ -123,8 +124,8 @@ class Kohana_DateTest extends Unittest_TestCase
      * @test
      * @covers Date::ampm
      * @dataProvider provider_am_pm
-     * @param <type> $hour
-     * @param <type> $expected
+     * @param int $hour
+     * @param string $expected
      */
     public function test_am_pm($hour, $expected)
     {
@@ -177,7 +178,7 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_adjust
-     * @param integer $hour       Hour in 12 hour format
+     * @param integer $hour       Hour in 12-hour format
      * @param string  $ampm       Either am or pm
      * @param string  $expected   Expected result
      */
@@ -287,12 +288,13 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_formatted_time
-     * @covers Date::formatted_time
+     * @covers       Date::formatted_time
      * @ticket 3035 3902
-     * @param string         $expected         Expected output
-     * @param string|integer $datetime_str     The datetime timestamp / string
-     * @param string|null    $timestamp_format The output format
-     * @param string|null    $timezone         The timezone identifier
+     * @param string $expected Expected output
+     * @param string|integer $datetime_str The datetime timestamp / string
+     * @param string|null $timestamp_format The output format
+     * @param string|null $timezone The timezone identifier
+     * @throws Exception
      */
     public function test_formatted_time($expected, $datetime_str, $timestamp_format = null, $timezone = null)
     {
@@ -718,7 +720,7 @@ class Kohana_DateTest extends Unittest_TestCase
 
     /**
      * This tests that the minutes helper defaults to using a $step of 5
-     * and thus returns an array of 5 minute itervals
+     * and thus returns an array of 5 minute intervals
      *
      * @test
      * @covers Date::minutes
@@ -738,7 +740,7 @@ class Kohana_DateTest extends Unittest_TestCase
     }
 
     /**
-     * Provids for test_unix2dos
+     * Provides test data for test_unix2dos
      *
      * @return array Test Data
      */
@@ -754,9 +756,9 @@ class Kohana_DateTest extends Unittest_TestCase
      * Test Date::unix2dos()
      *
      * You should always pass a timestamp as otherwise the current
-     * date/time would be used and that's oviously variable
+     * date/time would be used and that's obviously variable
      *
-     * Geert seems to be the only person who knows how unix2dos() works
+     * Geert seems to be the only person who knows how unix2dos() works,
      * so we just throw in some random values and see what happens
      *
      * @test

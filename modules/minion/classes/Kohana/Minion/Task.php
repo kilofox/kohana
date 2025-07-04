@@ -117,7 +117,7 @@ abstract class Kohana_Minion_Task
     }
 
     /**
-     * The file that get's passes to Validation::errors() when validation fails
+     * The file passed to Validation::errors() when validation fails
      * @var string|null
      */
     protected $_errors_file = 'validation';
@@ -160,7 +160,7 @@ abstract class Kohana_Minion_Task
      */
     public function get_options()
     {
-        return (array) $this->_options;
+        return $this->_options;
     }
 
     /**
@@ -170,7 +170,7 @@ abstract class Kohana_Minion_Task
      */
     public function get_accepted_options()
     {
-        return (array) $this->_accepted_options;
+        return $this->_accepted_options;
     }
 
     /**
@@ -210,6 +210,8 @@ abstract class Kohana_Minion_Task
      * Execute the task with the specified set of options
      *
      * @return null
+     * @throws ReflectionException
+     * @throws View_Exception
      */
     public function execute()
     {
@@ -219,7 +221,7 @@ abstract class Kohana_Minion_Task
         $validation = Validation::factory($options);
         $validation = $this->build_validation($validation);
 
-        if ($this->_method != '_help' AND ! $validation->check()) {
+        if ($this->_method != '_help' AND !$validation->check()) {
             echo View::factory('minion/error/validation')
                 ->set('task', Minion_Task::convert_class_to_task($this))
                 ->set('errors', $validation->errors($this->get_errors_file()));
@@ -231,14 +233,16 @@ abstract class Kohana_Minion_Task
     }
 
     abstract protected function _execute(array $params);
+
     /**
      * Outputs help for this task
      *
      * @return null
+     * @throws View_Exception
      */
     protected function _help(array $params)
     {
-        $tasks = $this->_compile_task_list(Kohana::list_files('classes/task'));
+        $this->_compile_task_list(Kohana::list_files('classes/task'));
 
         $inspector = new ReflectionClass($this);
 
@@ -260,7 +264,7 @@ abstract class Kohana_Minion_Task
     }
 
     /**
-     * Parses a doccomment, extracting both the comment and any tags associated
+     * Parses a doc comment, extracting both the comment and any tags associated
      *
      * Based on the code in Kodoc::parse()
      *

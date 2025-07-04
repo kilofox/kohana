@@ -1,9 +1,8 @@
 <div class="method">
 
-    <?php $declares = $doc->method->getDeclaringClass(); ?>
     <h3 id="<?php echo $doc->method->name ?>">
         <?php echo $doc->modifiers, $doc->method->name ?>( <?php echo $doc->params ? $doc->params_short() : '' ?>)
-        <small>(defined in <?php echo html::anchor($route->uri(['class' => $declares->name]), $declares->name, null, null, true) ?>)</small>
+        <small>(defined in <?php echo html::anchor($route->uri(['class' => $doc->class->name]), $doc->class->name) ?>)</small>
     </h3>
 
     <div class="description">
@@ -15,7 +14,7 @@
         <ul>
             <?php foreach ($doc->params as $param): ?>
                 <li>
-                    <code><?php echo ($param->reference ? 'byref ' : '') . ($param->type ? $param->type : 'unknown') ?></code>
+                    <code><?php echo ($param->reference ? 'byref ' : '') . ($param->type ?: 'unknown') ?></code>
                     <strong><?php echo '$' . $param->name ?></strong>
                     <?php echo $param->default ? '<small> = ' . $param->default . '</small>' : '<small>required</small>' ?>
                     <?php echo $param->description ? ' - ' . $param->description : '' ?>

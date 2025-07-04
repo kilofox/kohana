@@ -1,12 +1,12 @@
 # Error/Exception Handling
 
-Kohana provides both an exception handler and an error handler that transforms errors into exceptions using PHP's [ErrorException](http://php.net/errorexception) class. Many details of the error and the internal state of the application is displayed by the handler:
+Kohana provides both an exception handler and an error handler that transforms errors into exceptions using PHP's [ErrorException](https://www.php.net/errorexception) class. Many details of the error and the internal state of the application is displayed by the handler:
 
 1. Exception class
 2. Error level
 3. Error message
 4. Source of the error, with the error line highlighted
-5. A [debug backtrace](http://php.net/debug_backtrace) of the execution flow
+5. A [debug backtrace](https://www.php.net/debug_backtrace) of the execution flow
 6. Included files, loaded extensions, and global variables
 
 ## Example
@@ -23,11 +23,11 @@ If you do not want to use the internal error handling, you can disable it (highl
 
 ## Error Reporting
 
-By default, Kohana displays all errors, including strict mode warnings. This is set using [error_reporting](http://php.net/error_reporting):
+By default, Kohana displays all errors, including strict mode warnings. This is set using [error_reporting](https://www.php.net/errorfunc.configuration#ini.error-reporting):
 
     error_reporting(E_ALL | E_STRICT);
 
-When you application is live and in production, a more conservative setting is recommended, such as ignoring notices:
+When your application is live and in production, a more conservative setting is recommended, such as ignoring notices:
 
     error_reporting(E_ALL & ~E_NOTICE);
 

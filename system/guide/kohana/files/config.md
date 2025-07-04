@@ -36,7 +36,7 @@ For example, if we wanted to change or add to an entry in the inflector configur
 
 ## Creating your own config files
 
-Let's say we want a config file to store and easily change things like the title of a website, or the google analytics code. We would create a config file, let's call it `site.php`:
+Let's say we want a config file to store and easily change things like the title of a website, or the Google Analytics code. We would create a config file, let's call it `site.php`:
 
     // config/site.php
 
@@ -44,7 +44,7 @@ Let's say we want a config file to store and easily change things like the title
 
     return [
         'title' => 'Our Shiny Website',
-        'analytics' => false, // analytics code goes here, set to false to disable
+        'analytics' => false, // analytics code goes here, set to "false" to disable
     ];
 
 We could now call `Kohana::$config->load('site.title')` to get the site name, and `Kohana::$config->load('site.analytics')` to get the analytics code.
@@ -80,5 +80,5 @@ You could then do the following:
 
     // In your view:
     foreach ($versions as $version) {
-        // echo some html to display each version
+        // echo some HTML to display each version
     }

@@ -26,12 +26,13 @@ class Kohana_Form
      *     // When "file" inputs are present, you must include the "enctype"
      *     echo Form::open(null, ['enctype' => 'multipart/form-data']);
      *
-     * @param   mixed   $action     form action, defaults to the current request URI, or [Request] class to use
-     * @param   array   $attributes html attributes
+     * @param mixed $action form action, defaults to the current request URI, or [Request] class to use
+     * @param array $attributes HTML attributes
      * @return  string
-     * @uses    Request
+     * @throws Kohana_Exception
      * @uses    URL::site
      * @uses    HTML::attributes
+     * @uses    Request
      */
     public static function open($action = null, array $attributes = null)
     {
@@ -41,7 +42,7 @@ class Kohana_Form
         }
 
         if (!$action) {
-            // Allow empty form actions (submits back to the current url).
+            // Allow empty form actions (submits back to the current URL).
             $action = '';
         } elseif (strpos($action, '://') === false) {
             // Make the URI absolute
@@ -82,7 +83,7 @@ class Kohana_Form
      *
      * @param   string  $name       input name
      * @param   string  $value      input value
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    HTML::attributes
      */
@@ -109,7 +110,7 @@ class Kohana_Form
      *
      * @param   string  $name       input name
      * @param   string  $value      input value
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -127,7 +128,7 @@ class Kohana_Form
      *
      * @param   string  $name       input name
      * @param   string  $value      input value
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -144,7 +145,7 @@ class Kohana_Form
      *     echo Form::file('image');
      *
      * @param   string  $name       input name
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -163,7 +164,7 @@ class Kohana_Form
      * @param   string  $name       input name
      * @param   string  $value      input value
      * @param   boolean $checked    checked status
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -183,12 +184,12 @@ class Kohana_Form
      * Creates a radio form input.
      *
      *     echo Form::radio('like_cats', 1, $cats);
-     *     echo Form::radio('like_cats', 0, ! $cats);
+     *     echo Form::radio('like_cats', 0, !$cats);
      *
      * @param   string  $name       input name
      * @param   string  $value      input value
      * @param   boolean $checked    checked status
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -211,7 +212,7 @@ class Kohana_Form
      *
      * @param   string  $name           textarea name
      * @param   string  $body           textarea body
-     * @param   array   $attributes     html attributes
+     * @param   array   $attributes     HTML attributes
      * @param   boolean $double_encode  encode existing HTML characters
      * @return  string
      * @uses    HTML::attributes
@@ -238,7 +239,7 @@ class Kohana_Form
      * @param   string  $name       input name
      * @param   array   $options    available options
      * @param   mixed   $selected   selected option string, or an array of selected options
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    HTML::attributes
      */
@@ -325,7 +326,7 @@ class Kohana_Form
      *
      * @param   string  $name       input name
      * @param   string  $value      input value
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -337,15 +338,16 @@ class Kohana_Form
     }
 
     /**
-     * Creates a image form input.
+     * Creates an image form input.
      *
      *     echo Form::image(null, null, ['src' => 'media/img/login.png']);
      *
-     * @param   string  $name       input name
-     * @param   string  $value      input value
-     * @param   array   $attributes html attributes
-     * @param   boolean $index      add index file to URL?
+     * @param string $name input name
+     * @param string $value input value
+     * @param array $attributes HTML attributes
+     * @param boolean $index add index file to URL?
      * @return  string
+     * @throws Kohana_Exception
      * @uses    Form::input
      */
     public static function image($name, $value, array $attributes = null, $index = false)
@@ -370,7 +372,7 @@ class Kohana_Form
      *
      * @param   string  $name       input name
      * @param   string  $body       input value
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    HTML::attributes
      */
@@ -389,7 +391,7 @@ class Kohana_Form
      *
      * @param   string  $input      target input
      * @param   string  $text       label text
-     * @param   array   $attributes html attributes
+     * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    HTML::attributes
      */

@@ -24,15 +24,15 @@ Since Kohana uses HMVC, you can call many requests inside each other. The first 
 
     Request::initial();
 
-You should only use this method if you are absolutely sure you want the initial request. Otherwise you should use the `Request::current()` method.
+You should only use this method if you are absolutely sure you want the initial request. Otherwise, you should use the `Request::current()` method.
 
 #### Sub-requests
 
-You can call a request at any time in your application by using the `Request::factory()` syntax. All of these requests will be considered sub-requests.
+You can call a request at any time in your application by using the `Request::factory()` syntax. All these requests will be considered sub-requests.
 
 Other than this difference, they are exactly the same. You can detect if the request is a sub-request in your controller with the is_initial() method:
 
-    $sub_request = ! $this->request->is_initial()
+    $sub_request = !$this->request->is_initial()
 
 ### External Requests
 
@@ -81,11 +81,11 @@ The request client supports header callbacks - an array of callbacks that will b
 
 Where multiple headers are present in the response, callbacks will be executed in sequence. Callbacks can be any valid PHP callback type and have three possible return types:
 
-Type              | Function
-------------------|---------
-[Request] object  | If a new request is returned, the request client will automatically assign properties, callbacks etc to match the original request and then execute the request. No further callbacks will be triggered for the original request, but the new request may trigger callbacks when executed.
-[Response] object | If the callback returns a new response instance it will be returned to the application. No further callbacks will be triggered for the original request. The callback is responsible for setting any relevant callbacks and properties for the request it executes
-null              | The callback can, if required, modify the provided Response object and return null. The modified response object will be passed into subsequent callbacks.
+| Type              | Function                                                                                                                                                                                                                                                                                     |
+|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Request] object  | If a new request is returned, the request client will automatically assign properties, callbacks, etc. to match the original request and then execute the request. No further callbacks will be triggered for the original request, but the new request may trigger callbacks when executed. |
+| [Response] object | If the callback returns a new response instance it will be returned to the application. No further callbacks will be triggered for the original request. The callback is responsible for setting any relevant callbacks and properties for the request it executes                           |
+| null              | The callback can, if required, modify the provided Response object and return null. The modified response object will be passed into subsequent callbacks.                                                                                                                                   |
 
 #### Nested requests
 If your callback returns a new Request object, the request client will apply the same callback and property definitions to it before execution. This allows for nested requests - for example, you might need to re-authenticate before submitting a POST request and then being redirected to a new location. To avoid infinite recursion and fatal errors, the request client keeps track of the number of subrequests and will throw a [Request_Client_Recursion_Exception] if the recursion gets too deep. This behaviour is controlled by two properties: [Request_Client::callback_depth()] and [Request_Client::max_callback_depth()]. The default limit is 5 subrequests.
@@ -125,11 +125,11 @@ The request client ships with a standard callback to automatically follow redire
 
 A number of options are available to control the behaviour of the [Request_Client] when following redirects.
 
-Option           |Default                 |Function
------------------|------------------------|---------
-follow           | false                  |Whether to follow redirects
-follow_headers   | ['Authorization']      |The keys of headers that will be re-sent with the redirected request
-strict_redirect  | true                   |Whether to use the original request method following to a 302 redirect (see below)
+| Option          | Default           | Function                                                                           |
+|-----------------|-------------------|------------------------------------------------------------------------------------|
+| follow          | false             | Whether to follow redirects                                                        |
+| follow_headers  | ['Authorization'] | The keys of headers that will be re-sent with the redirected request               |
+| strict_redirect | true              | Whether to use the original request method following to a 302 redirect (see below) |
 
 [!!] HTTP/1.1 specifies that a 302 redirect should be followed using the original request method. However, the vast majority of clients and servers get this wrong, with 302 widely used for 'POST - 302 redirect - GET' patterns. By default, Kohana's client is fully compliant with the HTTP spec. If you need to interact with non-compliant third party sites you may need to set strict_redirect false to force the client to switch to GET following a 302 response.
 

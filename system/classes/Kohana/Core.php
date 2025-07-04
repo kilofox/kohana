@@ -17,13 +17,7 @@
 class Kohana_Core
 {
     /** @var string Release version */
-    const VERSION = '3.4.2';
-
-    /**
-     * @var string Release codename
-     * @deprecated 3.4.0
-     */
-    const CODENAME = 'korismas';
+    const VERSION = '3.4.3';
 
     /** @var int Production environment type constant */
     const PRODUCTION = 10;
@@ -54,7 +48,8 @@ class Kohana_Core
     public static $is_windows = false;
 
     /**
-     * @var  boolean  True if [magic quotes](http://php.net/manual/en/security.magicquotes.php) is enabled.
+     * @var  boolean  True if [magic quotes](https://wiki.php.net/rfc/magicquotes) is enabled.
+     * @deprecated 3.5.0
      */
     public static $magic_quotes = false;
 
@@ -159,7 +154,7 @@ class Kohana_Core
     protected static $_files = [];
 
     /**
-     * @var  boolean  Has the file path cache changed during this execution?  Used internally when when caching is true in [Kohana::init]
+     * @var  boolean  Has the file path cache changed during this execution?  Used internally when caching is true in [Kohana::init]
      */
     protected static $_files_changed = false;
 
@@ -177,7 +172,7 @@ class Kohana_Core
      * Type      | Setting    | Description                                    | Default Value
      * ----------|------------|------------------------------------------------|---------------
      * `string`  | base_url   | The base URL for your application.  This should be the *relative* path from your DOCROOT to your `index.php` file, in other words, if Kohana is in a subfolder, set this to the subfolder name, otherwise leave it as the default.  **The leading slash is required**, trailing slash is optional.   | `"/"`
-     * `string`  | index_file | The name of the [front controller](http://en.wikipedia.org/wiki/Front_Controller_pattern).  This is used by Kohana to generate relative urls like [HTML::anchor()] and [URL::base()]. This is usually `index.php`.  To [remove index.php from your urls](tutorials/clean-urls), set this to `false`. | `"index.php"`
+     * `string`  | index_file | The name of the [front controller](https://en.wikipedia.org/wiki/Front_controller).  This is used by Kohana to generate relative URLs like [HTML::anchor()] and [URL::base()]. This is usually `index.php`.  To [remove index.php from your URLs](tutorials/clean-urls), set this to `false`. | `"index.php"`
      * `string`  | charset    | Character set used for all input and output    | `"utf-8"`
      * `string`  | cache_dir  | Kohana's cache directory.  Used by [Kohana::cache] for simple internal caching, like [Fragments](kohana/fragments) and **\[caching database queries](this should link somewhere)**.  This has nothing to do with the [Cache module](cache). | `APPPATH."cache"`
      * `integer` | cache_life | Lifetime, in seconds, of items cached by [Kohana::cache]         | `60`
@@ -310,7 +305,9 @@ class Kohana_Core
         }
 
         // Determine if the extremely evil magic quotes are enabled
-        Kohana::$magic_quotes = (bool) get_magic_quotes_gpc();
+        if (PHP_VERSION_ID < 70400) {
+            Kohana::$magic_quotes = (bool) get_magic_quotes_gpc();
+        }
 
         // Sanitize all request variables
         $_GET = Kohana::sanitize($_GET);
@@ -367,7 +364,7 @@ class Kohana_Core
 
     /**
      * Reverts the effects of the `register_globals` PHP setting by unsetting
-     * all global variables except for the default super globals (GPCS, etc),
+     * all global variables except for the default super globals (GPCS, etc.),
      * which is a [potential security hole.][ref-wikibooks]
      *
      * This is called automatically by [Kohana::init] if `register_globals` is
@@ -442,7 +439,7 @@ class Kohana_Core
     }
 
     /**
-     * Provides auto-loading support of classes that follow Kohana's [class
+     * Provides autoloading support of classes that follow Kohana's [class
      * naming conventions](kohana/conventions#class-names-and-file-location).
      * See [Loading Classes](kohana/autoloading) for more information.
      *
@@ -493,7 +490,7 @@ class Kohana_Core
     }
 
     /**
-     * Provides auto-loading support of classes that follow Kohana's old class
+     * Provides autoloading support of classes that follow Kohana's old class
      * naming conventions.
      *
      * This is included for compatibility purposes with older modules.
@@ -525,8 +522,9 @@ class Kohana_Core
      *
      *     Kohana::modules(['modules/foo', MODPATH . 'bar']);
      *
-     * @param   array   $modules    list of module paths
+     * @param array $modules list of module paths
      * @return  array   enabled modules
+     * @throws Kohana_Exception
      */
     public static function modules(array $modules = null)
     {
@@ -573,7 +571,7 @@ class Kohana_Core
     }
 
     /**
-     * Returns the the currently active include paths, including the
+     * Returns the currently active include paths, including the
      * application, system, and each module's path.
      *
      * @return  array
@@ -589,7 +587,7 @@ class Kohana_Core
      * can be included.
      *
      * When searching the "config", "messages", or "i18n" directories, or when
-     * the `$array` flag is set to true, an array of all the files that match
+     * the `$array` flag is set to "true", an array of all the files that match
      * that path in the [Cascading Filesystem](kohana/files) will be returned.
      * These files will return arrays which must be merged together.
      *
@@ -619,7 +617,7 @@ class Kohana_Core
             $ext = EXT;
         } elseif ($ext) {
             // Prefix the extension with a period
-            $ext = ".{$ext}";
+            $ext = ".$ext";
         } else {
             // Use no extension
             $ext = '';
@@ -683,7 +681,7 @@ class Kohana_Core
     }
 
     /**
-     * Recursively finds all of the files in the specified directory at any
+     * Recursively finds all the files in the specified directory at any
      * location in the [Cascading Filesystem](kohana/files), and returns an
      * array of all the files found, sorted alphabetically.
      *
@@ -729,10 +727,10 @@ class Kohana_Core
                     if ($file->isDir()) {
                         if ($sub_dir = Kohana::list_files($key, $paths)) {
                             if (isset($found[$key])) {
-                                // Append the sub-directory list
+                                // Append the subdirectory list
                                 $found[$key] += $sub_dir;
                             } else {
-                                // Create a new sub-directory list
+                                // Create a new subdirectory list
                                 $found[$key] = $sub_dir;
                             }
                         }
@@ -780,7 +778,7 @@ class Kohana_Core
      *
      * The cache directory and default cache lifetime is set by [Kohana::init]
      *
-     * [ref-var]: http://php.net/var_export
+     * [ref-var]: https://www.php.net/var_export
      *
      * @throws  Kohana_Exception
      * @param   string  $name       name of the cache
@@ -880,7 +878,7 @@ class Kohana_Core
         }
 
         if ($path === null) {
-            // Return all of the messages
+            // Return all the messages
             return $messages[$file];
         } else {
             // Get a message using the path

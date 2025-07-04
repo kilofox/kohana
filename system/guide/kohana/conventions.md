@@ -16,14 +16,14 @@ The following conventions apply:
 
 Remember that in a class, an underscore means a new directory. Consider the following examples:
 
-Class Name            | File Path
-----------------------|-------------------------------
-Controller_Template   | classes/Controller/Template.php
-Model_User            | classes/Model/User.php
-Model_BlogPost        | classes/Model/BlogPost.php
-Database              | classes/Database.php
-Database_Query        | classes/Database/Query.php
-Form                  | classes/Form.php
+| Class Name          | File Path                       |
+|---------------------|---------------------------------|
+| Controller_Template | classes/Controller/Template.php |
+| Model_User          | classes/Model/User.php          |
+| Model_BlogPost      | classes/Model/BlogPost.php      |
+| Database            | classes/Database.php            |
+| Database_Query      | classes/Database/Query.php      |
+| Form                | classes/Form.php                |
 
 ## Coding Style
 

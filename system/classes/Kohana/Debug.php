@@ -70,7 +70,7 @@ class Kohana_Debug
         } elseif (is_float($var)) {
             return '<small>float</small> ' . $var;
         } elseif (is_resource($var)) {
-            if (($type = get_resource_type($var)) === 'stream' AND $meta = stream_get_meta_data($var)) {
+            if (($type = get_resource_type($var)) === 'stream') {
                 $meta = stream_get_meta_data($var);
 
                 if (isset($meta['uri'])) {
@@ -275,7 +275,7 @@ class Kohana_Debug
         // Close the file
         fclose($file);
 
-        return '<pre class="source"><code>' . $source . '</code></pre>';
+        return $source;
     }
 
     /**
@@ -284,8 +284,9 @@ class Kohana_Debug
      *     // Displays the entire current backtrace
      *     echo implode('<br/>', Debug::trace());
      *
-     * @param   array   $trace
+     * @param array $trace
      * @return  string
+     * @throws ReflectionException
      */
     public static function trace(array $trace = null)
     {

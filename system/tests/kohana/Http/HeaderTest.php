@@ -33,10 +33,10 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'text/*'
                 ],
                 [
-                    'text/html' => (float) 1,
+                    'text/html' => 1.0,
                     'text/plain' => 0.5,
                     'application/json' => 0.1,
-                    'text/*' => (float) 1
+                    'text/*' => 1.0
                 ]
             ],
             [
@@ -46,7 +46,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                     'application/xml+rss; q=0.5; level=4'
                 ],
                 [
-                    'text/*' => (float) 1,
+                    'text/*' => 1.0,
                     'text/html; level=1' => 0.4,
                     'application/xml+rss; level=4' => 0.5
                 ]
@@ -68,7 +68,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
     {
         $out = HTTP_Header::accept_quality($parts);
 
-        foreach ($out as $key => $value) {
+        foreach ($out as $value) {
             $this->assertInternalType('float', $value);
         }
 
@@ -87,12 +87,12 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                 'text/html, text/plain, text/*, */*',
                 [
                     'text' => [
-                        'html' => (float) 1,
-                        'plain' => (float) 1,
-                        '*' => (float) 1
+                        'html' => 1.0,
+                        'plain' => 1.0,
+                        '*' => 1.0
                     ],
                     '*' => [
-                        '*' => (float) 1
+                        '*' => 1.0
                     ]
                 ]
             ],
@@ -101,14 +101,14 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                 [
                     'text' => [
                         'html' => 0.5,
-                        '*' => (float) 1
+                        '*' => 1.0
                     ],
                     'application' => [
-                        'json' => (float) 1,
+                        'json' => 1.0,
                         'xml+rss; level=1' => 0.7
                     ],
                     '*' => [
-                        '*' => (float) 1
+                        '*' => 1.0
                     ]
                 ]
             ],
@@ -141,16 +141,16 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
             [
                 'utf-8, utf-10, utf-16, iso-8859-1',
                 [
-                    'utf-8' => (float) 1,
-                    'utf-10' => (float) 1,
-                    'utf-16' => (float) 1,
-                    'iso-8859-1' => (float) 1
+                    'utf-8' => 1.0,
+                    'utf-10' => 1.0,
+                    'utf-16' => 1.0,
+                    'iso-8859-1' => 1.0
                 ]
             ],
             [
                 'utf-8, utf-10; q=.9, utf-16; q=.5, iso-8859-1; q=.75',
                 [
-                    'utf-8' => (float) 1,
+                    'utf-8' => 1.0,
                     'utf-10' => 0.9,
                     'utf-16' => 0.5,
                     'iso-8859-1' => 0.75
@@ -159,7 +159,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
             [
                 null,
                 [
-                    '*' => (float) 1
+                    '*' => 1.0
                 ]
             ],
         ];
@@ -191,29 +191,29 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
             [
                 'compress, gzip, blowfish',
                 [
-                    'compress' => (float) 1,
-                    'gzip' => (float) 1,
-                    'blowfish' => (float) 1
+                    'compress' => 1.0,
+                    'gzip' => 1.0,
+                    'blowfish' => 1.0
                 ]
             ],
             [
                 'compress, gzip; q=0.12345, blowfish; q=1.0',
                 [
-                    'compress' => (float) 1,
+                    'compress' => 1.0,
                     'gzip' => 0.12345,
-                    'blowfish' => (float) 1
+                    'blowfish' => 1.0
                 ]
             ],
             [
                 null,
                 [
-                    '*' => (float) 1
+                    '*' => 1.0
                 ]
             ],
             [
                 '',
                 [
-                    'identity' => (float) 1
+                    'identity' => 1.0
                 ]
             ],
         ];
@@ -246,16 +246,16 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                 'en, en-us, en-gb, fr, fr-fr, es-es',
                 [
                     'en' => [
-                        '*' => (float) 1,
-                        'us' => (float) 1,
-                        'gb' => (float) 1
+                        '*' => 1.0,
+                        'us' => 1.0,
+                        'gb' => 1.0
                     ],
                     'fr' => [
-                        '*' => (float) 1,
-                        'fr' => (float) 1
+                        '*' => 1.0,
+                        'fr' => 1.0
                     ],
                     'es' => [
-                        'es' => (float) 1
+                        'es' => 1.0
                     ]
                 ]
             ],
@@ -264,8 +264,8 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                 [
                     'en' => [
                         '*' => 0.9,
-                        'us' => (float) 1,
-                        'gb' => (float) 1,
+                        'us' => 1.0,
+                        'gb' => 1.0,
                         'gb-gb' => 0.45
                     ],
                     'fr' => [
@@ -281,7 +281,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                 null,
                 [
                     '*' => [
-                        '*' => (float) 1
+                        '*' => 1.0
                     ]
                 ]
             ],
@@ -414,7 +414,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
             if (is_int($key)) {
                 $this->assertTrue(in_array($value, $parsed));
             } else {
-                $this->assertTrue(array_key_exists($key, $parsed));
+                $this->assertArrayHasKey($key, $parsed);
                 $this->assertSame($value, $parsed[$key]);
             }
         }
@@ -489,10 +489,11 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_offsetSet
      *
-     * @param   array  $constructor  constructor
-     * @param   array  $to_set       to_set
-     * @param   array  $expected     expected
+     * @param array $constructor constructor
+     * @param array $to_set to_set
+     * @param array $expected expected
      * @return  void
+     * @throws ReflectionException
      */
     // @codingStandardsIgnoreStart
     public function test_offsetSet(array $constructor, array $to_set, array $expected)
@@ -860,11 +861,12 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_accepts_at_quality
      *
-     * @param   array     starting state
-     * @param   string    accept header to test
-     * @param   boolean   explicitly check
-     * @param   mixed     expected output
+     * @param array     starting state
+     * @param string    Accept header to test
+     * @param boolean   explicitly check
+     * @param mixed     expected output
      * @return  void
+     * @throws Kohana_Exception
      */
     public function test_accepts_at_quality(array $state, $accept, $explicit, $expected)
     {
@@ -921,11 +923,12 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_preferred_accept
      *
-     * @param   array     state
-     * @param   array     accepts
-     * @param   string    explicit
-     * @param   string    expected
+     * @param array     state
+     * @param array     accepts
+     * @param string    explicit
+     * @param string    expected
      * @return  void
+     * @throws Kohana_Exception
      */
     public function test_preferred_accept(array $state, array $accepts, $explicit, $expected)
     {
@@ -1076,7 +1079,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                 ],
                 'bzip',
                 true,
-                (float) 0
+                0.0
             ],
         ];
     }
@@ -1206,7 +1209,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                 ],
                 'fr-ni',
                 true,
-                (float) 0
+                0.0
             ],
             [
                 [
@@ -1214,7 +1217,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
                 ],
                 'en-us',
                 true,
-                (float) 1
+                1.0
             ],
         ];
     }
@@ -1380,9 +1383,10 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_send_headers
      *
-     * @param   array     state in
-     * @param   array     expected out
+     * @param array     state in
+     * @param array     expected out
      * @return  void
+     * @throws Kohana_Exception
      */
     public function test_send_headers(array $state, array $expected, $expose)
     {

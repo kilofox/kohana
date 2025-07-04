@@ -30,12 +30,12 @@ class Bench_MDDoImageURL extends Codebench
     protected function _add_image_url_original($matches)
     {
         if ($matches[2] AND strpos($matches[2], '://') === false) {
-            // Add the base url to the link URL
+            // Add the base URL to the link URL
             $matches[2] = 'http://BASE/' . $matches[2];
         }
 
         // Recreate the link
-        return "![{$matches[1]}]({$matches[2]})";
+        return "![$matches[1]]($matches[2])";
     }
 
     public function bench_optimized_callback($subject)
@@ -46,16 +46,16 @@ class Bench_MDDoImageURL extends Codebench
 
     protected function _add_image_url_optimized($matches)
     {
-        // Add the base url to the link URL
+        // Add the base URL to the link URL
         $matches[2] = 'http://BASE/' . $matches[2];
 
         // Recreate the link
-        return "![{$matches[1]}]({$matches[2]})";
+        return "![$matches[1]]($matches[2])";
     }
 
     public function bench_callback_gone($subject)
     {
-        // All the optimized callback was doing now, is prepend some text to the URL.
+        // What the optimized callback was doing is prepending some text to the URL.
         // We don't need a callback for that, and that should be clearly faster.
         return preg_replace('~(!\[.+?\]\()(?!\w++://)(\S*(?:\s*+".+?")?\))~', '$1http://BASE/$2', $subject);
     }

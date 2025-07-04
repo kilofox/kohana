@@ -1,6 +1,6 @@
 .kohana table.profiler { width: 99%; margin: 0 auto 1em; border-collapse: collapse; }
 .kohana table.profiler th,
-.kohana table.profiler td { padding: 0.2em 0.4em; background: #fff; border: solid 1px #999; border-width: 1px 0; text-align: left; font-weight: normal; font-size: 1em; color: #111; vertical-align: top; text-align: right; }
+.kohana table.profiler td { padding: 0.2em 0.4em; background: #fff; border: solid #999; border-width: 1px 0; font-weight: normal; font-size: 1em; color: #111; vertical-align: top; text-align: right; }
 .kohana table.profiler th.name { text-align: left; }
 .kohana table.profiler tr.group th { font-size: 1.4em; background: #222; color: #eee; border-color: #222; }
 .kohana table.profiler tr.group td { background: #222; color: #777; border-color: #222; }

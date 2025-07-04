@@ -61,8 +61,8 @@ abstract class Kohana_Controller
      * 3. After the controller action is called, the [Controller::after] method
      * will be called.
      *
-     * @throws  HTTP_Exception_404
      * @return  Response
+     * @throws HTTP_Exception
      */
     public function execute()
     {
@@ -111,13 +111,15 @@ abstract class Kohana_Controller
     }
 
     /**
-     * Issues a HTTP redirect.
+     * Issues an HTTP redirect.
      *
      * Proxies to the [HTTP::redirect] method.
      *
-     * @param  string  $uri   URI to redirect to
-     * @param  int     $code  HTTP Status code to use for the redirect
-     * @throws HTTP_Exception
+     * @param string $uri URI to redirect to
+     * @param int $code HTTP Status code to use for the redirect
+     * @return mixed
+     * @throws HTTP_Exception_Redirect
+     * @throws Kohana_Exception
      */
     public static function redirect($uri = '', $code = 302)
     {
@@ -127,12 +129,13 @@ abstract class Kohana_Controller
     /**
      * Checks the browser cache to see the response needs to be returned,
      * execution will halt and a 304 Not Modified will be sent if the
-     * browser cache is up to date.
+     * browser cache is up-to-date.
      *
      *     $this->check_cache(sha1($content));
      *
-     * @param  string  $etag  Resource Etag
+     * @param string $etag Resource Etag
      * @return Response
+     * @throws Request_Exception
      */
     protected function check_cache($etag = null)
     {

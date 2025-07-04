@@ -12,7 +12,7 @@
 class Kohana_Kohana_Exception extends Exception
 {
     /**
-     * @var  array  PHP error code => human readable name
+     * @var  array  PHP error code => human-readable name
      */
     public static $php_errors = [
         E_ERROR => 'Fatal Error',
@@ -77,9 +77,10 @@ class Kohana_Kohana_Exception extends Exception
      * Inline exception handler, displays the error message, source of the
      * exception, and the stack trace of the error.
      *
-     * @uses    Kohana_Exception::response
-     * @param   Throwable   $e
+     * @param Throwable $e
      * @return  void
+     * @throws Kohana_Exception
+     * @uses    Kohana_Exception::response
      */
     public static function handler($e)
     {
@@ -106,9 +107,7 @@ class Kohana_Kohana_Exception extends Exception
             Kohana_Exception::log($e);
 
             // Generate the response
-            $response = Kohana_Exception::response($e);
-
-            return $response;
+            return Kohana_Exception::response($e);
         } catch (Exception $e) {
             /**
              * Things are going *really* badly for us, We now have no choice
@@ -164,9 +163,10 @@ class Kohana_Kohana_Exception extends Exception
     /**
      * Get a Response object representing the exception
      *
-     * @uses    Kohana_Exception::text
-     * @param   Throwable   $e
+     * @param Throwable $e
      * @return  Response
+     * @throws Kohana_Exception
+     * @uses    Kohana_Exception::text
      */
     public static function response($e)
     {
@@ -230,7 +230,7 @@ class Kohana_Kohana_Exception extends Exception
              * The stack trace becomes unmanageable inside PHPUnit.
              *
              * The error view ends up several GB in size, taking
-             * serveral minutes to render.
+             * several minutes to render.
              */
             if (
                 defined('PHPUnit_MAIN_METHOD')

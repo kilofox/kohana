@@ -42,10 +42,11 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
     /**
      * Adds a new condition for joining.
      *
-     * @param   mixed   $c1  column name or [$column, $alias] or object
-     * @param   string  $op  logic operator
-     * @param   mixed   $c2  column name or [$column, $alias] or object
+     * @param mixed $c1 column name or [$column, $alias] or object
+     * @param string $op logic operator
+     * @param mixed $c2 column name or [$column, $alias] or object
      * @return  $this
+     * @throws Kohana_Exception
      */
     public function on($c1, $op, $c2)
     {
@@ -61,8 +62,9 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
     /**
      * Adds a new condition for joining.
      *
-     * @param   string  $columns  column name
+     * @param string $columns column name
      * @return  $this
+     * @throws Kohana_Exception
      */
     public function using($columns)
     {
@@ -80,8 +82,9 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
     /**
      * Compile the SQL partial for a JOIN statement and return it.
      *
-     * @param   mixed  $db  Database instance or name of instance
+     * @param mixed $db Database instance or name of instance
      * @return  string
+     * @throws Kohana_Exception
      */
     public function compile($db = null)
     {

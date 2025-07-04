@@ -256,6 +256,7 @@ class Kohana_Validation implements ArrayAccess
      *     }
      *
      * @return  boolean
+     * @throws ReflectionException
      */
     public function check()
     {
@@ -421,8 +422,8 @@ class Kohana_Validation implements ArrayAccess
      * exists, "field/default" will be used. If neither is set, the returned
      * message will be "file/field/rule".
      *
-     * By default all messages are translated using the default language.
-     * A string can be used as the second parameter to specified the language
+     * By default, all messages are translated using the default language.
+     * A string can be used as the second parameter to specify the language
      * that the message was written in.
      *
      *     // Get errors from messages/forms/login.php
@@ -482,7 +483,7 @@ class Kohana_Validation implements ArrayAccess
 
                     // Check if a label for this parameter exists
                     if (isset($this->_labels[$value])) {
-                        // Use the label as the value, eg: related field name for "matches"
+                        // Use the label as the value, e.g., related field name for "matches"
                         $value = $this->_labels[$value];
 
                         if ($translate) {
@@ -501,9 +502,9 @@ class Kohana_Validation implements ArrayAccess
                 }
             }
 
-            if ($message = Kohana::message($file, "{$field}.{$error}") AND is_string($message)) {
+            if ($message = Kohana::message($file, "$field.$error") AND is_string($message)) {
                 // Found a message for this field and error
-            } elseif ($message = Kohana::message($file, "{$field}.default") AND is_string($message)) {
+            } elseif ($message = Kohana::message($file, "$field.default") AND is_string($message)) {
                 // Found a default message for this field
             } elseif ($message = Kohana::message($file, $error) AND is_string($message)) {
                 // Found a default message for this error
@@ -511,7 +512,7 @@ class Kohana_Validation implements ArrayAccess
                 // Found a default message for this error
             } else {
                 // No message exists, display the path expected
-                $message = "{$file}.{$field}.{$error}";
+                $message = "$file.$field.$error";
             }
 
             if ($translate) {

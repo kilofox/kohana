@@ -2,7 +2,7 @@
 
     $ phpunit --bootstrap=modules/unittest/bootstrap.php modules/unittest/tests.php
 
-Alternatively you can use a phpunit.xml to have a more fine grained control over which tests are included and which files are whitelisted.
+Alternatively you can use a phpunit.xml to have a more fine-grained control over which tests are included and which files are whitelisted.
 
 Make sure you only whitelist the highest files in the cascading filesystem, else you could end up with a lot of "class cannot be redefined" errors.
 
@@ -43,7 +43,7 @@ Ordinarily you could use a foreach loop to iterate over an array of test data, h
         }
     }
 
-The key thing to notice is the `@dataProvider` tag in the DocComment, this is what tells PHPUnit to use a data provider. The provider prefix is totally optional but it's a nice standard to identify providers.
+The key thing to notice is the `@dataProvider` tag in the DocComment, this is what tells PHPUnit to use a data provider. The provider prefix is totally optional, but it's a nice standard to identify providers.
 
 For more info see:
 

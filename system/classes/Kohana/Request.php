@@ -46,12 +46,13 @@ class Kohana_Request implements HTTP_Request
      * If $cache parameter is set, the response for the request will attempt to
      * be retrieved from the cache.
      *
-     * @param   string  $uri              URI of the request
-     * @param   array   $client_params    An array of params to pass to the request client
-     * @param   bool    $allow_external   Allow external requests? (deprecated in 3.3)
-     * @param   array   $injected_routes  An array of routes to use, for testing
+     * @param bool $uri URI of the request
+     * @param array $client_params An array of params to pass to the request client
+     * @param bool $allow_external Allow external requests? (deprecated in 3.3)
+     * @param array $injected_routes An array of routes to use, for testing
      * @return  void|Request
-     * @throws  Request_Exception
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      * @uses    Route::all
      * @uses    Route::matches
      */
@@ -149,10 +150,8 @@ class Kohana_Request implements HTTP_Request
                 $request->secure($secure);
             }
 
-            if (isset($method)) {
-                // Set the request method
-                $request->method($method);
-            }
+            // Set the request method
+            $request->method($method);
 
             if (isset($referrer)) {
                 // Set the referrer
@@ -204,8 +203,8 @@ class Kohana_Request implements HTTP_Request
                  *
                  *  http://localhost/http://example.com/judge.php
                  *
-                 * which parse_url can't handle. So rather than leave empty
-                 * handed, we'll use this.
+                 * which parse_url can't handle. So rather than leave
+                 * empty-handed, we'll use this.
                  */
                 $uri = $_SERVER['REQUEST_URI'];
 
@@ -280,106 +279,15 @@ class Kohana_Request implements HTTP_Request
     /**
      * Returns information about the initial user agent.
      *
-     * @param   mixed   $value  array or string to return: browser, version, robot, mobile, platform
+     * @param mixed $value array or string to return: browser, version, robot, mobile, platform
      * @return  mixed   requested information, false if nothing is found
-     * @uses    Request::$user_agent
+     * @throws Kohana_Exception
      * @uses    Text::user_agent
+     * @uses    Request::$user_agent
      */
     public static function user_agent($value)
     {
         return Text::user_agent(Request::$user_agent, $value);
-    }
-
-    /**
-     * Returns the accepted content types. If a specific type is defined,
-     * the quality of that type will be returned.
-     *
-     *     $types = Request::accept_type();
-     *
-     * [!!] Deprecated in favor of using [HTTP_Header::accepts_at_quality].
-     *
-     * @deprecated  since version 3.3.0
-     * @param   string  $type Content MIME type
-     * @return  mixed   An array of all types or a specific type as a string
-     * @uses    Request::_parse_accept
-     */
-    public static function accept_type($type = null)
-    {
-        static $accepts;
-
-        if ($accepts === null) {
-            // Parse the HTTP_ACCEPT header
-            $accepts = Request::_parse_accept($_SERVER['HTTP_ACCEPT'], ['*/*' => 1.0]);
-        }
-
-        if (isset($type)) {
-            // Return the quality setting for this type
-            return isset($accepts[$type]) ? $accepts[$type] : $accepts['*/*'];
-        }
-
-        return $accepts;
-    }
-
-    /**
-     * Returns the accepted languages. If a specific language is defined,
-     * the quality of that language will be returned. If the language is not
-     * accepted, false will be returned.
-     *
-     *     $langs = Request::accept_lang();
-     *
-     * [!!] Deprecated in favor of using [HTTP_Header::accepts_language_at_quality].
-     *
-     * @deprecated  since version 3.3.0
-     * @param   string  $lang  Language code
-     * @return  mixed   An array of all types or a specific type as a string
-     * @uses    Request::_parse_accept
-     */
-    public static function accept_lang($lang = null)
-    {
-        static $accepts;
-
-        if ($accepts === null) {
-            // Parse the HTTP_ACCEPT_LANGUAGE header
-            $accepts = Request::_parse_accept($_SERVER['HTTP_ACCEPT_LANGUAGE']);
-        }
-
-        if (isset($lang)) {
-            // Return the quality setting for this lang
-            return isset($accepts[$lang]) ? $accepts[$lang] : false;
-        }
-
-        return $accepts;
-    }
-
-    /**
-     * Returns the accepted encodings. If a specific encoding is defined,
-     * the quality of that encoding will be returned. If the encoding is not
-     * accepted, false will be returned.
-     *
-     *     $encodings = Request::accept_encoding();
-     *
-     * [!!] Deprecated in favor of using [HTTP_Header::accepts_encoding_at_quality].
-     *
-     * @deprecated  since version 3.3.0
-     * @param   string  $type Encoding type
-     * @return  mixed   An array of all types or a specific type as a string
-     * @uses    Request::_parse_accept
-     */
-    public static function accept_encoding($type = null)
-    {
-        static $accepts;
-
-        if ($accepts === null) {
-            // Parse the HTTP_ACCEPT_LANGUAGE header
-            $accepts = Request::_parse_accept($_SERVER['HTTP_ACCEPT_ENCODING']);
-        }
-
-        if (isset($type)) {
-            // Return the quality setting for this type
-            return isset($accepts[$type]) ? $accepts[$type] : false;
-        }
-
-        return $accepts;
     }
 
     /**
@@ -388,8 +296,9 @@ class Kohana_Request implements HTTP_Request
      * helps to solve that problem.
      *
      * @return  boolean
-     * @uses    Num::bytes
+     * @throws Kohana_Exception
      * @uses    Arr::get
+     * @uses    Num::bytes
      */
     public static function post_max_size_exceeded()
     {
@@ -415,9 +324,8 @@ class Kohana_Request implements HTTP_Request
     {
         // Load routes
         $routes = (empty($routes)) ? Route::all() : $routes;
-        $params = null;
 
-        foreach ($routes as $name => $route) {
+        foreach ($routes as $route) {
             // Use external routes for reverse routing only
             if ($route->is_external()) {
                 continue;
@@ -436,7 +344,7 @@ class Kohana_Request implements HTTP_Request
     }
 
     /**
-     * Parses an accept header and returns an array (type => quality) of the
+     * Parses an Accept header and returns an array (type => quality) of the
      * accepted types, ordered by quality.
      *
      *     $accept = Request::_parse_accept($header, $defaults);
@@ -448,7 +356,7 @@ class Kohana_Request implements HTTP_Request
     protected static function _parse_accept(& $header, array $accepts = null)
     {
         if (!empty($header)) {
-            // Get all of the types
+            // Get all the types
             $types = explode(',', $header);
 
             foreach ($types as $type) {
@@ -645,7 +553,7 @@ class Kohana_Request implements HTTP_Request
             // Set external state
             $this->_external = true;
 
-            // Setup the client
+            // Set up the client
             $this->_client = Request_Client_External::factory($client_params);
         }
     }
@@ -663,7 +571,7 @@ class Kohana_Request implements HTTP_Request
     }
 
     /**
-     * Sets and gets the uri from the request.
+     * Sets and gets the URI from the request.
      *
      * @param   string $uri
      * @return  mixed
@@ -686,10 +594,11 @@ class Kohana_Request implements HTTP_Request
      *
      *     echo URL::site($this->request->uri(), $protocol);
      *
-     * @param   mixed    $protocol  protocol string or Request object
+     * @param mixed $protocol protocol string or Request object
      * @return  string
-     * @since   3.0.7
+     * @throws Kohana_Exception
      * @uses    URL::site
+     * @since   3.0.7
      */
     public function url($protocol = null)
     {
@@ -868,8 +777,8 @@ class Kohana_Request implements HTTP_Request
      *     $request->execute();
      *
      * @return  Response
-     * @throws  Request_Exception
-     * @throws  HTTP_Exception_404
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      * @uses    [Kohana::$profiling]
      * @uses    [Profiler]
      */
@@ -887,7 +796,7 @@ class Kohana_Request implements HTTP_Request
                 $this->_external = $this->_route->is_external();
 
                 if (isset($params['directory'])) {
-                    // Controllers are in a sub-directory
+                    // Controllers are in a subdirectory
                     $this->_directory = $params['directory'];
                 }
 
@@ -922,7 +831,7 @@ class Kohana_Request implements HTTP_Request
      * Returns whether this request is the initial request Kohana received.
      * Can be used to test for sub requests.
      *
-     *     if ( ! $request->is_initial())
+     *     if (!$request->is_initial())
      *         // This is a sub request
      *
      * @return  boolean
@@ -935,7 +844,7 @@ class Kohana_Request implements HTTP_Request
     /**
      * Readonly access to the [Request::$_external] property.
      *
-     *     if ( ! $request->is_external())
+     *     if (!$request->is_external())
      *          // This is an internal request
      *
      * @return  boolean
@@ -1161,7 +1070,7 @@ class Kohana_Request implements HTTP_Request
         }
 
         $output = $this->method() . ' ' . $this->uri() . ' ' . $this->protocol() . "\r\n";
-        $output .= (string) $this->_header;
+        $output .= $this->_header;
         $output .= $body;
 
         return $output;

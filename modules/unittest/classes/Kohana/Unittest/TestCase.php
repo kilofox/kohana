@@ -39,7 +39,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Restores the original environment overriden with setEnvironment()
+     * Restores the original environment overridden with setEnvironment()
      *
      * Extending classes that have their own tearDown()
      * should call parent::tearDown()
@@ -58,7 +58,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Helper function that replaces all occurences of '/' with
+     * Helper function that replaces all occurrences of '/' with
      * the OS-specific directory separator
      *
      * @param string $path The path to act on
@@ -70,7 +70,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Allows easy setting & backing up of enviroment config
+     * Allows easy setting & backing up of environment config
      *
      * Option types are checked in the following order:
      *
@@ -79,6 +79,9 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
      * * Config option
      *
      * @param array $environment List of environment to set
+     * @return false|null
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function setEnvironment(array $environment)
     {
@@ -187,10 +190,6 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             foreach ($elements as $element) {
                 $nodes[] = $element;
             }
-
-            if (empty($nodes)) {
-                return $nodes;
-            }
         } // no tag selected, get them all
         else {
             $tags = [
@@ -226,10 +225,10 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
                     $nodes[] = $element;
                 }
             }
+        }
 
-            if (empty($nodes)) {
-                return $nodes;
-            }
+        if (empty($nodes)) {
+            return $nodes;
         }
 
         // filter by attributes
@@ -566,7 +565,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Gets elements by case insensitive tagname.
+     * Gets elements by case-insensitive tag name.
      *
      * TODO:
      * This should be removed when [phpunit-dom-assertions](https://github.com/phpunit/phpunit-dom-assertions) gets released.
@@ -627,7 +626,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
     protected static function getDescendants(DOMNode $node)
     {
         $allChildren = [];
-        $childNodes = $node->childNodes ? $node->childNodes : [];
+        $childNodes = $node->childNodes ?: [];
 
         foreach ($childNodes as $child) {
             if ($child->nodeType === XML_CDATA_SECTION_NODE ||
@@ -639,7 +638,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             $allChildren = array_merge($allChildren, $children, [$child]);
         }
 
-        return isset($allChildren) ? $allChildren : [];
+        return $allChildren;
     }
 
 }

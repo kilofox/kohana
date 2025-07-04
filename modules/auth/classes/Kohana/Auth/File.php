@@ -28,10 +28,11 @@ class Kohana_Auth_File extends Auth
     /**
      * Logs a user in.
      *
-     * @param   string   $username  Username
-     * @param   string   $password  Password
-     * @param   boolean  $remember  Enable autologin (not supported)
+     * @param string $username Username
+     * @param string $password Password
+     * @param boolean $remember Enable autologin (not supported)
      * @return  boolean
+     * @throws Kohana_Exception
      */
     protected function _login($username, $password, $remember)
     {

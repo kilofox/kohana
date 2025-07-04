@@ -106,10 +106,10 @@ class Kohana_Arr
             }
 
             // Remove starting delimiters and spaces
-            $path = ltrim($path, "{$delimiter} ");
+            $path = ltrim($path, "$delimiter ");
 
             // Remove ending delimiters, spaces, and wildcards
-            $path = rtrim($path, "{$delimiter} *");
+            $path = rtrim($path, "$delimiter *");
 
             // Split the keys by delimiter
             $keys = explode($delimiter, $path);
@@ -246,13 +246,7 @@ class Kohana_Arr
      */
     public static function get($array, $key, $default = null)
     {
-        if ($array instanceof ArrayObject) {
-            // This is a workaround for inconsistent implementation of isset between PHP and HHVM
-            // See https://github.com/facebook/hhvm/issues/3437
-            return $array->offsetExists($key) ? $array->offsetGet($key) : $default;
-        } else {
-            return isset($array[$key]) ? $array[$key] : $default;
-        }
+        return isset($array[$key]) ? $array[$key] : $default;
     }
 
     /**
@@ -282,12 +276,12 @@ class Kohana_Arr
     }
 
     /**
-     * Retrieves muliple single-key values from a list of arrays.
+     * Retrieves multiple single-key values from a list of arrays.
      *
-     *     // Get all of the "id" values from a result
+     *     // Get all the "id" values from a result
      *     $ids = Arr::pluck($result, 'id');
      *
-     * [!!] A list of arrays is an array that contains arrays, eg: [array $a, array $b, array $c, ...]
+     * [!!] A list of arrays is an array that contains arrays, e.g., [array $a, array $b, array $c, ...]
      *
      * @param   array   $array  list of arrays to check
      * @param   string  $key    key to pluck
@@ -328,7 +322,7 @@ class Kohana_Arr
     }
 
     /**
-     * Recursive version of [array_map](http://php.net/array_map), applies one or more
+     * Recursive version of [array_map](https://www.php.net/array_map), applies one or more
      * callbacks to all elements in an array, including sub-arrays.
      *
      *     // Apply "strip_tags" to every element in the array
@@ -355,14 +349,14 @@ class Kohana_Arr
     {
         foreach ($array as $key => $val) {
             if (is_array($val)) {
-                $array[$key] = Arr::map($callbacks, $array[$key], $keys);
+                $array[$key] = Arr::map($callbacks, $val, $keys);
             } elseif (!is_array($keys) OR in_array($key, $keys)) {
                 if (is_array($callbacks)) {
                     foreach ($callbacks as $cb) {
                         $array[$key] = call_user_func($cb, $array[$key]);
                     }
                 } else {
-                    $array[$key] = call_user_func($callbacks, $array[$key]);
+                    $array[$key] = call_user_func($callbacks, $val);
                 }
             }
         }
@@ -375,7 +369,7 @@ class Kohana_Arr
      * overwrite previous values with the same key. Values in an indexed array
      * are appended, but only when they do not already exist in the result.
      *
-     * Note that this does not work the same as [array_merge_recursive](http://php.net/array_merge_recursive)!
+     * Note that this does not work the same as [array_merge_recursive](https://www.php.net/array_merge_recursive)!
      *
      *     $john = ['name' => 'john', 'children' => ['fred', 'paul', 'sally', 'jane']];
      *     $mary = ['name' => 'mary', 'children' => ['jane']];
@@ -487,7 +481,7 @@ class Kohana_Arr
     public static function callback($str)
     {
         // Overloaded as parts are found
-        $command = $params = null;
+        $params = null;
 
         // command[param,param]
         if (preg_match('/^([^\(]*+)\((.*)\)$/', $str, $match)) {

@@ -13,7 +13,7 @@
 class Kohana_TextTest extends Unittest_TestCase
 {
     /**
-     * Sets up the test enviroment
+     * Sets up the test environment
      */
     // @codingStandardsIgnoreStart
     function setUp()
@@ -263,7 +263,7 @@ class Kohana_TextTest extends Unittest_TestCase
     }
 
     /**
-     * Provides test data for test_reducde_slashes()
+     * Provides test data for test_reduce_slashes()
      *
      * @returns array Array of test data
      */
@@ -441,7 +441,7 @@ class Kohana_TextTest extends Unittest_TestCase
             ['1.02 kB', 1024, null, null, true],
             // In case you need to know the size of a floppy disk in petabytes
             ['0.00147 GB', 1.44 * 1000 * 1024, 'GB', '%01.5f %s', true],
-            // SI is the standard, but lets deviate slightly
+            // SI is the standard, but let's deviate slightly
             ['1.00 MiB', 1024 * 1024, 'MiB', null, false],
         ];
     }
@@ -505,7 +505,7 @@ class Kohana_TextTest extends Unittest_TestCase
                 '<h1><a href="#">In a link</a> followed by other&nbsp;text</h1>',
                 '<h1><a href="#">In a link</a> followed by other text</h1>'
             ],
-            // empty html, with no text inside
+            // empty HTML, with no text inside
             [
                 '<h1><a href="#"></a></h1>',
                 '<h1><a href="#"></a></h1>'
@@ -565,9 +565,9 @@ class Kohana_TextTest extends Unittest_TestCase
 
     /**
      * This checks that auto_link_emails() respects word boundaries and does not
-     * just blindly replace all occurences of the email address in the text.
+     * just blindly replace all occurrences of the email address in the text.
      *
-     * In the sample below the algorithm was replacing all occurences of voorzitter@xxxx.com
+     * In the sample below the algorithm was replacing all occurrences of voorzitter@xxxx.com
      * inc the copy in the second list item.
      *
      * It was updated in 6c199366efc1115545ba13108b876acc66c54b2d to respect word boundaries
@@ -624,12 +624,12 @@ class Kohana_TextTest extends Unittest_TestCase
     public function provider_auto_link_urls()
     {
         return [
-            // First we try with the really obvious url
+            // First we try with the really obvious URL
             [
                 'Some random text <a href="http://www.google.com">http://www.google.com</a>',
                 'Some random text http://www.google.com'
             ],
-            // Then we try with varying urls
+            // Then we try with varying URLs
             [
                 'Some random <a href="http://www.google.com">www.google.com</a>',
                 'Some random www.google.com'
@@ -638,7 +638,7 @@ class Kohana_TextTest extends Unittest_TestCase
                 'Some random google.com',
                 'Some random google.com'
             ],
-            // Check that it doesn't link urls in a href
+            // Check that it doesn't link URLs in a href
             [
                 'Look at me <a href="http://google.com">Awesome stuff</a>',
                 'Look at me <a href="http://google.com">Awesome stuff</a>'
@@ -780,7 +780,7 @@ class Kohana_TextTest extends Unittest_TestCase
             $this->assertNotContains('http://', $linked_text);
         } elseif (count($urls)) {
             foreach ($urls as $url) {
-                // Assert that all the urls have been caught by text auto_link_urls()
+                // Assert that all the URLs have been caught by text auto_link_urls()
                 $this->assertContains(Text::auto_link_urls($url), $linked_text);
             }
         }

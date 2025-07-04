@@ -63,7 +63,7 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      *     // Retrieve cache entry from apcu group
      *     $data = Cache::instance('apcu')->get('foo');
      *
-     *     // Retrieve cache entry from apcu group and return 'bar' if miss
+     *     // Retrieve cache entry from apcu group and return 'bar' if missing
      *     $data = Cache::instance('apcu')->get('foo', 'bar');
      *
      * @param   string  $id       id of cache to entry

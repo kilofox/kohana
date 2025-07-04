@@ -57,7 +57,7 @@ class Kohana_Num
     ];
 
     /**
-     * Returns the English ordinal suffix (th, st, nd, etc) of a number.
+     * Returns the English ordinal suffix (th, st, nd, etc.) of a number.
      *
      *     echo 2, Num::ordinal(2);   // "2nd"
      *     echo 10, Num::ordinal(10); // "10th"
@@ -124,12 +124,12 @@ class Kohana_Num
      * @param float $value Number to round
      * @param integer $precision Desired precision
      * @param integer $mode Tie breaking mode, accepts the PHP_ROUND_HALF_* constants
-     * @param boolean $native Set to false to force use of the userland implementation
+     * @param boolean $native Set to "false" to force use of the userland implementation
      * @return float Rounded number
      */
     public static function round($value, $precision = 0, $mode = self::ROUND_HALF_UP, $native = true)
     {
-        if (version_compare(PHP_VERSION, '5.3', '>=') AND $native) {
+        if ($native) {
             return round($value, $precision, $mode);
         }
 
@@ -164,7 +164,6 @@ class Kohana_Num
                     } else {
                         return round($value, $precision);
                     }
-                    break;
             }
         }
     }
@@ -180,8 +179,9 @@ class Kohana_Num
      *     echo Num::bytes('1000');  // 1000
      *     echo Num::bytes('2.5GB'); // 2684354560
      *
-     * @param   string  $bytes  file size in SB format
+     * @param string $bytes file size in SB format
      * @return  float
+     * @throws Kohana_Exception
      */
     public static function bytes($size)
     {
@@ -205,9 +205,7 @@ class Kohana_Num
         $unit = Arr::get($matches, 2, 'B');
 
         // Convert the size into bytes
-        $bytes = $size * pow(2, Num::$byte_units[$unit]);
-
-        return $bytes;
+        return $size * pow(2, Num::$byte_units[$unit]);
     }
 
 }

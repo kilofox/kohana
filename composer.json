@@ -8,7 +8,7 @@
     "authors": [
         {
             "name": "Kohana Team",
-            "homepage": "http://kohanaframework.org"
+            "homepage": "https://kohanaframework.org"
         },
         {
             "name": "Kohana Group",
@@ -16,8 +16,20 @@
         }
     ],
     "require": {
-        "php": ">=5.6,<7.2",
-        "ext-mbstring": "*"
+        "php": ">=7.1,<7.4",
+        "ext-ctype": "*",
+        "ext-curl": "*",
+        "ext-dom": "*",
+        "ext-fileinfo": "*",
+        "ext-gd": "*",
+        "ext-iconv": "*",
+        "ext-json": "*",
+        "ext-libxml": "*",
+        "ext-mbstring": "*",
+        "ext-mysqli": "*",
+        "ext-openssl": "*",
+        "ext-pdo": "*",
+        "ext-simplexml": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7"

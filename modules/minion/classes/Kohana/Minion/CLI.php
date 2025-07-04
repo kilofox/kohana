@@ -46,7 +46,7 @@ class Kohana_Minion_CLI
      */
     public static function options($options = null)
     {
-        // Get all of the requested options
+        // Get all the requested options
         $options = func_get_args();
 
         // Found option values
@@ -188,7 +188,7 @@ class Kohana_Minion_CLI
     }
 
     /**
-     * Outputs a replacable line to the cli. You can continue replacing the
+     * Outputs a replaceable line to the cli. You can continue replacing the
      * line until `true` is passed as the second parameter in order to indicate
      * you are done modifying the line.
      *
@@ -247,14 +247,15 @@ class Kohana_Minion_CLI
      * Returns the given text with the correct color codes for a foreground and
      * optionally a background color.
      *
-     * @author     Fuel Development Team
-     * @license    MIT License
-     * @copyright  2010 - 2011 Fuel Development Team
-     * @link       http://fuelphp.com
      * @param string $text the text to color
      * @param string $foreground the foreground color
      * @param string $background the background color
      * @return string the color coded string
+     * @throws Kohana_Exception
+     * @license    MIT License
+     * @copyright  2010 - 2011 Fuel Development Team
+     * @link       http://fuelphp.com
+     * @author     Fuel Development Team
      */
     public static function color($text, $foreground, $background = null)
     {

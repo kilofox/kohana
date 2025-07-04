@@ -24,7 +24,7 @@ class Kohana_Unittest_Helpers
             // The @ operator is used here to avoid DNS errors when there is no connection.
             $sock = @fsockopen("www.google.com", 80, $errno, $errstr, 1);
 
-            self::$_has_internet = (bool) $sock ? true : false;
+            self::$_has_internet = (bool) $sock;
         }
 
         return self::$_has_internet;
@@ -80,7 +80,7 @@ class Kohana_Unittest_Helpers
     protected $_environment_backup = [];
 
     /**
-     * Allows easy setting & backing up of enviroment config
+     * Allows easy setting & backing up of environment config
      *
      * Option types are checked in the following order:
      *
@@ -89,6 +89,9 @@ class Kohana_Unittest_Helpers
      * * Config option
      *
      * @param array $environment List of environment to set
+     * @return false|void
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function set_environment(array $environment)
     {
@@ -148,6 +151,8 @@ class Kohana_Unittest_Helpers
      *
      * @chainable
      * @return Kohana_Unittest_Helpers $this
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function restore_environment()
     {

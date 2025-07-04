@@ -3,7 +3,7 @@
 /**
  * URL helper class.
  *
- * [!!] You need to setup the list of trusted hosts in the `url.php` config file, before starting using this helper class.
+ * [!!] You need to set up the list of trusted hosts in the `url.php` config file, before starting using this helper class.
  *
  * @package    Kohana
  * @category   Helpers
@@ -30,11 +30,12 @@ class Kohana_URL
      *     // Absolute URL path with host and protocol from $request
      *     echo URL::base($request);
      *
-     * @param   mixed    $protocol Protocol string, [Request], or boolean
-     * @param   boolean  $index    Add index file to URL?
+     * @param mixed $protocol Protocol string, [Request], or boolean
+     * @param boolean $index Add index file to URL?
      * @return  string
-     * @uses    Kohana::$index_file
+     * @throws Kohana_Exception
      * @uses    Request::protocol()
+     * @uses    Kohana::$index_file
      */
     public static function base($protocol = null, $index = false)
     {
@@ -105,10 +106,11 @@ class Kohana_URL
      *
      *     echo URL::site('foo/bar');
      *
-     * @param   string  $uri        Site URI to convert
-     * @param   mixed   $protocol   Protocol string or [Request] class to use protocol from
-     * @param   boolean $index		Include the index_page in the URL
+     * @param string $uri Site URI to convert
+     * @param mixed $protocol Protocol string or [Request] class to use protocol from
+     * @param boolean $index Include the index_page in the URL
      * @return  string
+     * @throws Kohana_Exception
      * @uses    URL::base
      */
     public static function site($uri = '', $protocol = null, $index = true)
@@ -144,7 +146,7 @@ class Kohana_URL
      *     // Returns "?sort=title&limit=10" combined with any existing GET values
      *     $query = URL::query(['sort' => 'title', 'limit' => 10]);
      *
-     * Typically you would use this when you are sorting query results,
+     * Typically, you would use this when you are sorting query results,
      * or something similar.
      *
      * [!!] Parameters with a null value are left out.
@@ -217,6 +219,7 @@ class Kohana_URL
      * @param string $host
      * @param array $trusted_hosts
      * @return bool true if $host is trustworthy.
+     * @throws Kohana_Exception
      */
     public static function is_trusted_host($host, array $trusted_hosts = null)
     {

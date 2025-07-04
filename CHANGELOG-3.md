@@ -1,3 +1,23 @@
+## [3.4.3](https://github.com/kilofox/kohana/compare/v3.4.2...v3.4.3) (2025-06-16)
+
+
+### Bug Fixes
+
+* **public:** add lang attribute to specify English document language ([d2fea1c](https://github.com/kilofox/kohana/commit/d2fea1c4fb6dbcd51610f65450fe7927b037fcb7))
+* **Core:** correct parentheses for proper assignment ([e9e56a2](https://github.com/kilofox/kohana/commit/e9e56a29bc58f5dd741bb603cb9531b79a0b2f8f))
+* **Core:** optimize Debug output by removing nested pre and code tags ([3b3f13a](https://github.com/kilofox/kohana/commit/3b3f13afc71d2874eba153c640c38e1a3399d59f))
+* **Unittest:** fix wrong return types ([d4515f9](https://github.com/kilofox/kohana/commit/d4515f91199ce6a92436f50d061e724fd11dbc62))
+* **Userguide:** add alt text to Kohana logo for accessibility ([9e7d3d8](https://github.com/kilofox/kohana/commit/9e7d3d841d0939000f5e8eabaae11ff5b0c50ab9))
+* **Userguide:** improve accessibility by linking label to input field ([00bfc9f](https://github.com/kilofox/kohana/commit/00bfc9f7a996f10a27f58dbf9ed2f43ca7a5c3c2))
+* **Userguide:** remove obsolete IE9 polyfill script ([e3a539a](https://github.com/kilofox/kohana/commit/e3a539af31700a36cfcdc46094c5cc0857841d9e))
+
+
+### Performance Improvements
+
+* **Core:** use foreach instead of the "each()" function for better performance ([af20ac8](https://github.com/kilofox/kohana/commit/af20ac86f4dd7e675e698f462fb51a6dd9c14670))
+
+
+
 ## [3.4.2](https://github.com/kilofox/kohana/compare/v3.4.1...v3.4.2) (2023-08-13)
 
 

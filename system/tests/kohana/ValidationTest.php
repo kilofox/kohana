@@ -93,7 +93,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
      * Adding a label to a field should set it in the labels array
      * If the label already exists it should overwrite it
      *
-     * In both cases thefunction should return a reference to $this
+     * In both cases the function should return a reference to $this
      *
      * @test
      * @covers Validation::label
@@ -156,7 +156,6 @@ class Kohana_ValidationTest extends Unittest_TestCase
     public function test_bind_adds_and_overwrites_multiple_variables_and_returns_this()
     {
         $validation = new Validation([]);
-        $data = ['kung fu' => 'fighting', 'fast' => 'cheetah'];
         $bound = [':foo' => 'some value'];
 
         // Test binding an array of values
@@ -188,7 +187,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
             ->rule('fast', [':class', 'max_length'], [':value', 2]);
 
         // The rule should have run and check() should fail
-        $this->assertSame($validation->check(), false);
+        $this->assertFalse($validation->check());
     }
 
     /**
@@ -275,17 +274,18 @@ class Kohana_ValidationTest extends Unittest_TestCase
      * Tests Validation::check()
      *
      * @test
-     * @covers Validation::check
-     * @covers Validation::rule
-     * @covers Validation::rules
-     * @covers Validation::errors
-     * @covers Validation::error
+     * @covers       Validation::check
+     * @covers       Validation::rule
+     * @covers       Validation::rules
+     * @covers       Validation::errors
+     * @covers       Validation::error
      * @dataProvider provider_check
-     * @param array   $array            The array of data
-     * @param array   $rules            The array of rules
-     * @param array   $labels           The array of labels
-     * @param boolean $expected         Is it valid?
-     * @param boolean $expected_errors  Array of expected errors
+     * @param array $array The array of data
+     * @param array $rules The array of rules
+     * @param array $labels The array of labels
+     * @param boolean $expected Is it valid?
+     * @param boolean $expected_errors Array of expected errors
+     * @throws ReflectionException
      */
     public function test_check($array, $rules, $labels, $expected, $expected_errors)
     {
@@ -379,11 +379,12 @@ class Kohana_ValidationTest extends Unittest_TestCase
      * Tests Validation::errors()
      *
      * @test
-     * @covers Validation::errors
+     * @covers       Validation::errors
      * @dataProvider provider_errors
-     * @param array $array     The array of data
-     * @param array $rules     The array of rules
-     * @param array $expected  Array of expected errors
+     * @param array $array The array of data
+     * @param array $rules The array of rules
+     * @param array $expected Array of expected errors
+     * @throws ReflectionException
      */
     public function test_errors($array, $rules, $expected)
     {
@@ -397,7 +398,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
 
         $this->assertSame($expected, $validation->errors('Validation', false));
         // Should be able to get raw errors array
-        $this->assertAttributeSame($validation->errors(null), '_errors', $validation);
+        $this->assertAttributeSame($validation->errors(), '_errors', $validation);
     }
 
     /**
@@ -423,12 +424,13 @@ class Kohana_ValidationTest extends Unittest_TestCase
      * Tests Validation::errors()
      *
      * @test
-     * @covers Validation::errors
+     * @covers       Validation::errors
      * @dataProvider provider_translated_errors
-     * @param array   $data                   The array of data to test
-     * @param array   $rules                  The array of rules to add
-     * @param array   $translated_expected    The array of expected errors when translated
-     * @param array   $untranslated_expected  The array of expected errors when not translated
+     * @param array $data The array of data to test
+     * @param array $rules The array of rules to add
+     * @param array $translated_expected The array of expected errors when translated
+     * @param array $untranslated_expected The array of expected errors when not translated
+     * @throws ReflectionException
      */
     public function test_translated_errors($data, $rules, $translated_expected, $untranslated_expected)
     {
@@ -443,7 +445,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
 
         $validation->check();
 
-        $result_1 = $validation->errors('Validation', true);
+        $result_1 = $validation->errors('Validation');
         $result_2 = $validation->errors('Validation', 'en');
         $result_3 = $validation->errors('Validation', false);
 
@@ -475,7 +477,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
         $translated_expected = ['foo' => 'foo must equal Español'];
         $untranslated_expected = ['foo' => 'foo must equal Spanish'];
 
-        $result_1 = $validation->errors('Validation', true);
+        $result_1 = $validation->errors('Validation');
         $result_2 = $validation->errors('Validation', 'en');
         $result_3 = $validation->errors('Validation', false);
 
@@ -576,7 +578,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
     public function test_offsetSet_throws_exception()
     // @codingStandardsIgnoreEnd
     {
-        $this->setExpectedException('Kohana_Exception');
+        $this->expectException('Kohana_Exception');
 
         $validation = Validation::factory([]);
 
@@ -601,7 +603,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
     public function test_offsetUnset()
     // @codingStandardsIgnoreEnd
     {
-        $this->setExpectedException('Kohana_Exception');
+        $this->expectException('Kohana_Exception');
 
         $validation = Validation::factory(['one' => 'Hello, World!']);
 
@@ -621,8 +623,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
 
         $validation = Validation::factory($array)
             ->rule('email', 'not_empty')
-            ->rule('email', 'email')
-        ;
+            ->rule('email', 'email');
 
         $validation->check();
 

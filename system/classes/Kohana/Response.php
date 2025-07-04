@@ -24,7 +24,7 @@ class Kohana_Response implements HTTP_Response
      *      // Create a new response with headers
      *      $response = Response::factory(['status' => 200]);
      *
-     * @param   array    $config Setup the response object
+     * @param   array    $config Set up the response object
      * @return  Response
      */
     public static function factory(array $config = [])
@@ -111,7 +111,7 @@ class Kohana_Response implements HTTP_Response
     /**
      * Sets up the response object
      *
-     * @param   array $config Setup the response object
+     * @param   array $config Set up the response object
      * @return  void
      */
     public function __construct(array $config = [])
@@ -184,8 +184,9 @@ class Kohana_Response implements HTTP_Response
      *      // Get the current status
      *      $status = $response->status();
      *
-     * @param   integer  $status Status to set to this response
+     * @param integer $status Status to set to this response
      * @return  mixed
+     * @throws Kohana_Exception
      */
     public function status($status = null)
     {
@@ -269,7 +270,7 @@ class Kohana_Response implements HTTP_Response
         // Handle the get cookie calls
         if ($key === null)
             return $this->_cookies;
-        elseif (!is_array($key) AND ! $value)
+        elseif (!is_array($key) AND !$value)
             return Arr::get($this->_cookies, $key);
 
         // Handle the set cookie calls
@@ -319,9 +320,10 @@ class Kohana_Response implements HTTP_Response
     /**
      * Sends the response status and all set headers.
      *
-     * @param   boolean     $replace    replace existing headers
-     * @param   callback    $callback   function to handle header output
+     * @param boolean $replace replace existing headers
+     * @param callback $callback function to handle header output
      * @return  mixed
+     * @throws Kohana_Exception
      */
     public function send_headers($replace = false, $callback = null)
     {
@@ -381,7 +383,7 @@ class Kohana_Response implements HTTP_Response
             }
 
             // Force the data to be rendered if
-            $file_data = (string) $this->_body;
+            $file_data = $this->_body;
 
             // Get the content size
             $size = strlen($file_data);
@@ -550,7 +552,6 @@ class Kohana_Response implements HTTP_Response
                 $cookies = version_compare(phpversion('http'), '2.0.0', '>=') ?
                     (string) new \http\Cookie($this->_cookies) :
                     http_build_cookie($this->_cookies);
-                $this->_header['set-cookie'] = $cookies;
             } else {
                 $cookies = [];
 
@@ -559,14 +560,14 @@ class Kohana_Response implements HTTP_Response
                     $string = $key . '=' . $value['value'] . '; expires=' . date('l, d M Y H:i:s T', $value['expiration']);
                     $cookies[] = $string;
                 }
-
-                // Create the cookie string
-                $this->_header['set-cookie'] = $cookies;
             }
+
+            // Create the cookie string
+            $this->_header['set-cookie'] = $cookies;
         }
 
         $output = $this->_protocol . ' ' . $this->_status . ' ' . Response::$messages[$this->_status] . "\r\n";
-        $output .= (string) $this->_header;
+        $output .= $this->_header;
         $output .= $this->_body;
 
         return $output;
@@ -593,7 +594,7 @@ class Kohana_Response implements HTTP_Response
      * Parse the byte ranges from the HTTP_RANGE header used for
      * resumable downloads.
      *
-     * @link   http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35
+     * @link   https://www.rfc-editor.org/rfc/rfc9110.html#name-byte-ranges
      * @return array|false
      */
     protected function _parse_byte_range()
@@ -640,7 +641,7 @@ class Kohana_Response implements HTTP_Response
         // Normalize values.
         $start = abs(intval($start));
 
-        // Keep the the end value in bounds and normalize it.
+        // Keep the end value in bounds and normalize it.
         $end = min(abs(intval($end)), $size - 1);
 
         // Keep the start in bounds.

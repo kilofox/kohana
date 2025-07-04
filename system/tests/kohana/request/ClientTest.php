@@ -19,6 +19,11 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
     protected $_inital_request;
     protected static $_original_routes;
 
+    /**
+     * @var int
+     */
+    protected $requests_executed;
+
     // @codingStandardsIgnoreStart - PHPUnit does not follow standards
     /**
      * Sets up a new route to ensure that we have a matching route for our
@@ -148,9 +153,11 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      *
      * @dataProvider provider_follows_redirects
      *
-     * @param  bool   $follow           Option value to set
-     * @param  string $request_url      URL to request initially (contains data to set up redirect etc)
-     * @param  string $expect_body      Body text expected in the eventual result
+     * @param bool $follow Option value to set
+     * @param string $request_url URL to request initially (contains data to set up redirect etc)
+     * @param string $expect_body Body text expected in the eventual result
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      */
     public function test_follows_redirects($follow, $request_url, $expect_body)
     {
@@ -229,10 +236,12 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      *
      * @dataProvider provider_follows_with_strict_method
      *
-     * @param string $status_code   HTTP response code to fake
-     * @param bool   $strict_redirect Option value to set
-     * @param string $orig_method   Request method for the original request
+     * @param string $status_code HTTP response code to fake
+     * @param bool $strict_redirect Option value to set
+     * @param string $orig_method Request method for the original request
      * @param string $expect_method Request method expected for the follow request
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      */
     public function test_follows_with_strict_method($status_code, $strict_redirect, $orig_method, $expect_method)
     {
@@ -268,12 +277,14 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      * (unless redirect method is GET)
      *
      * @dataProvider provider_follows_with_body_if_not_get
-     * @depends test_follows_with_strict_method
-     * @depends test_follows_redirects
+     * @depends      test_follows_with_strict_method
+     * @depends      test_follows_redirects
      *
-     * @param string $original_method  Request method to use for the original request
-     * @param string $status  Redirect status that will be issued
-     * @param string $expect_body      Expected value of body() in the second request
+     * @param string $original_method Request method to use for the original request
+     * @param string $status Redirect status that will be issued
+     * @param string $expect_body Expected value of body() in the second request
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      */
     public function test_follows_with_body_if_not_get($original_method, $status, $expect_body)
     {
@@ -373,9 +384,11 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      *
      * @dataProvider provider_triggers_header_callbacks
      *
-     * @param array $callbacks     Array of header callbacks
-     * @param array  $headers      Headers that will be received in the response
-     * @param string $expect_body  Response body content to expect
+     * @param array $callbacks Array of header callbacks
+     * @param $uri
+     * @param string $expect_body Response body content to expect
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      */
     public function test_triggers_header_callbacks($callbacks, $uri, $expect_body)
     {
@@ -400,7 +413,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
         $this->requests_executed = 0;
 
         try {
-            $response = Request::factory($uri, [
+            Request::factory($uri, [
                     'header_callbacks' => [
                         'x-cb' => function ($request, $response, $client) {
                             $client->callback_params('testcase')->requests_executed++;
@@ -480,7 +493,7 @@ class Controller_RequestClientDummy extends Controller
 {
     /**
      * Takes a urlencoded 'data' parameter from the route and uses it to craft a
-     * response. Redirect chains can be tested by passing another encoded uri
+     * response. Redirect chains can be tested by passing another encoded URI
      * as a location header with an appropriate status code.
      */
     public function action_fake()

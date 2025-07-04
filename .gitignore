@@ -11,3 +11,6 @@ build
 composer.lock
 composer.phar
 vendor/*
+.idea
+node_modules
+package-lock.json

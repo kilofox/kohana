@@ -88,11 +88,13 @@ class Kohana_UploadTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_size
-     * @covers upload::size
+     * @covers       upload::size
      * @param string $field the files field to test
      * @param string $bytes valid bite size
      * @param array $environment set the $_FILES array
      * @param bool $expected what to expect
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function test_size($field, $bytes, $environment, $expected)
     {
@@ -102,7 +104,7 @@ class Kohana_UploadTest extends Unittest_TestCase
     }
 
     /**
-     * size() should throw an exception of the supplied max size is invalid
+     * size() should throw an exception if the supplied max size is invalid
      *
      * @test
      * @covers upload::size
@@ -126,7 +128,7 @@ class Kohana_UploadTest extends Unittest_TestCase
     }
 
     /**
-     * Provides test data for test_vali()
+     * Provides test data for test_valid()
      *
      * @test
      * @return array

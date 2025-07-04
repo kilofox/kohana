@@ -9,7 +9,7 @@ The Kohana filesystem is a hierarchy of similar directory structures that cascad
    This is set as an associative array using [Kohana::modules] in `APPPATH/bootstrap.php`. Each of the values of the array will be searched **in the order that the modules are defined**.
 
 3. **System Path**
-   Defined as `SYSPATH` in `index.php`. The default value is `system`. All of the main or "core" files and classes are defined here.
+   Defined as `SYSPATH` in `index.php`. The default value is `system`. All the main or "core" files and classes are defined here.
 
 Files that are in directories higher up the include path order take precedence over files of the same name lower down the order, which makes it is possible to overload any file by placing a file with the same name in a "higher" directory:
 
@@ -17,11 +17,11 @@ Files that are in directories higher up the include path order take precedence o
 
 This image is only shows certain files, but we can use it to illustrate some examples of the cascading filesystem:
 
-* If Kohana catches an error, it would display the `kohana/error.php` view, So it would call `Kohana::find_file('views', 'kohana/error')`. This would return `application/views/kohana/error.php` because it takes precidence over `system/views/kohana/error.php`. By doing this we can change the error view without editing the system folder.
+* If Kohana catches an error, it would display the `kohana/error.php` view, So it would call `Kohana::find_file('views', 'kohana/error')`. This would return `application/views/kohana/error.php` because it takes precedence over `system/views/kohana/error.php`. By doing this we can change the error view without editing the system folder.
 
-* If we used `View::factory('welcome')` it would call `Kohana::find_file('views','welcome')` which would return `application/views/welcome.php` because it takes precidence over `modules/common/views/welcome.php`. By doing this, you can overwrite things in a module without editing the modules files.
+* If we used `View::factory('welcome')` it would call `Kohana::find_file('views','welcome')` which would return `application/views/welcome.php` because it takes precedence over `modules/common/views/welcome.php`. By doing this, you can overwrite things in a module without editing the modules files.
 
-* If use the Cookie class, [Kohana::auto_load] will call `Kohana::find_file('classes', 'Cookie')` which will return `application/classes/Cookie.php`. Assuming Cookie extends Kohana_Cookie, the autoloader would then call `Kohana::find_file('classes','Kohana/Cookie')` which will return `system/classes/Kohana/Cookie.php` because that file does not exist anywhere higher in the cascade. This is an example of [transparent extension](extension).
+* If the Cookie class is used, [Kohana::auto_load] will call `Kohana::find_file('classes', 'Cookie')` which will return `application/classes/Cookie.php`. Assuming Cookie extends Kohana_Cookie, the autoloader would then call `Kohana::find_file('classes','Kohana/Cookie')` which will return `system/classes/Kohana/Cookie.php` because that file does not exist anywhere higher in the cascade. This is an example of [transparent extension](extension).
 
 * If you used `View::factory('user')` it would call `Kohana::find_file('views','user')` which would return `modules/common/views/user.php`.
 
@@ -70,9 +70,9 @@ If the file doesn't have a `.php` extension, pass the extension as the third par
 
 ## Vendor Extensions
 
-We call extensions or external libraries that are not specific to Kohana "vendor" extensions, and they go in the vendor folder, either in application or in a module. Because these libraries do not follow Kohana's file naming conventions, they cannot be autoloaded by Kohana, so you will have to manually included them. Some examples of vendor libraries are [Markdown](http://daringfireball.net/projects/markdown/), [DOMPDF](http://code.google.com/p/dompdf), [Mustache](http://github.com/bobthecow/mustache.php) and [Swiftmailer](http://swiftmailer.org/).
+We call extensions or external libraries that are not specific to Kohana "vendor" extensions, and they go in the vendor folder, either in application or in a module. Because these libraries do not follow Kohana's file naming conventions, they cannot be autoloaded by Kohana, so you will have to manually included them. Some examples of vendor libraries are [Markdown](https://daringfireball.net/projects/markdown/), [DOMPDF](http://code.google.com/p/dompdf), [Mustache](https://github.com/bobthecow/mustache.php) and [Swiftmailer](http://swiftmailer.org/).
 
-For example, if you wanted to use [DOMPDF](http://code.google.com/p/dompdf), you would copy it to `application/vendor/dompdf` and include the DOMPDF autoloading class. It can be useful to do this in a controller's before method, as part of a module's init.php, or the contstructor of a singleton class.
+For example, if you wanted to use [DOMPDF](http://code.google.com/p/dompdf), you would copy it to `application/vendor/dompdf` and include the DOMPDF autoloading class. It can be useful to do this in a controller's before method, as part of a module's init.php, or the constructor of a singleton class.
 
     require Kohana::find_file('vendor', 'dompdf/dompdf/dompdf_config','inc');
 

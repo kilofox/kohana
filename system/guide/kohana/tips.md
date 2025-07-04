@@ -16,18 +16,18 @@ As of Kohana 3.3, classes are autoloaded using the case-sensitive PSR-0 autoload
 
 ## Handling lots of routes
 
-Sometimes your application is sufficiently complex that you have many routes and it becomes unmanageable to put them all in bootstrap.php. If this is the case, simply make a `routes.php` file in APPPATH and require that in your bootstrap: `require_once APPPATH.'routes'.EXT;`
+Sometimes your application is sufficiently complex that you have many routes, and it becomes unmanageable to put them all in bootstrap.php. If this is the case, simply make a `routes.php` file in APPPATH and require that in your bootstrap: `require_once APPPATH.'routes'.EXT;`
 
 ## Reflection_Exception
 
-If you get a Reflection_Exception when setting up your site, it is almost certainly because your [Kohana::init] 'base_url' setting is wrong. If your base url is correct something is probably wrong with your [routes](routing).
+If you get a Reflection_Exception when setting up your site, it is almost certainly because your [Kohana::init] 'base_url' setting is wrong. If your base URL is correct something is probably wrong with your [routes](routing).
 
     ReflectionException [ -1 ]: Class controller_<something> does not exist
-    // where <something> is part of the url you entered in your browser
+    // where <something> is part of the URL you entered in your browser
 
 ### Solution  {#reflection-exception-solution}
 
-Set your [Kohana::init] 'base_url' to the correct setting. The base url should be the path to your index.php file relative to the webserver document root.
+Set your [Kohana::init] 'base_url' to the correct setting. The base URL should be the path to your index.php file relative to the webserver document root.
 
 ## ORM/Session __sleep() bug
 

@@ -16,7 +16,7 @@ class Kohana_Unittest_Tests
 
     /**
      * Loads test files if they cannot be found by kohana
-     * @param <type> $class
+     * @param string $class
      */
     static function autoload($class)
     {
@@ -34,9 +34,9 @@ class Kohana_Unittest_Tests
      *
      * * Loads the phpunit framework (for the web ui)
      * * Restores exception phpunit error handlers (for cli)
-     * * registeres an autoloader to load test files
+     * * Registers an autoloader to load test files
      */
-    static public function configure_environment($do_whitelist = true, $do_blacklist = true)
+    static public function configure_environment()
     {
         restore_exception_handler();
         restore_error_handler();
@@ -50,6 +50,7 @@ class Kohana_Unittest_Tests
      * Creates the test suite for kohana
      *
      * @return Unittest_TestSuite
+     * @throws Kohana_Exception
      */
     static function suite()
     {
@@ -133,7 +134,7 @@ class Kohana_Unittest_Tests
     /**
      * Sets the whitelist
      *
-     * If no directories are provided then the function'll load the whitelist
+     * If no directories are provided then the function will load the whitelist
      * set in the config file
      *
      * @param array $directories Optional directories to whitelist
@@ -178,7 +179,7 @@ class Kohana_Unittest_Tests
             // value in the modules array of your app/config/unittest file
             if (array_search(true, $modules, true) === (count($modules) - 1)) {
                 $modules = $k_modules;
-            } elseif (array_search(false, $modules, true) === false) {
+            } elseif (!in_array(false, $modules, true)) {
                 $modules = array_intersect_key($k_modules, array_combine($modules, $modules));
             } else {
                 // modules are disabled

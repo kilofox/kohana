@@ -1,5 +1,8 @@
 <?php
 
+use http\Env;
+use http\Header;
+
 /**
  * Contains the most low-level helpers methods in Kohana:
  *
@@ -18,16 +21,17 @@
 abstract class Kohana_HTTP
 {
     /**
-     * @var  The default protocol to use if it cannot be detected
+     * @var string The default protocol to use if it cannot be detected
      */
     public static $protocol = 'HTTP/1.1';
 
     /**
-     * Issues a HTTP redirect.
+     * Issues an HTTP redirect.
      *
-     * @param  string    $uri       URI to redirect to
-     * @param  int       $code      HTTP Status code to use for the redirect
-     * @throws HTTP_Exception
+     * @param string $uri URI to redirect to
+     * @param int $code HTTP Status code to use for the redirect
+     * @throws HTTP_Exception_Redirect
+     * @throws Kohana_Exception
      */
     public static function redirect($uri = '', $code = 302)
     {
@@ -42,13 +46,13 @@ abstract class Kohana_HTTP
     /**
      * Checks the browser cache to see the response needs to be returned,
      * execution will halt and a 304 Not Modified will be sent if the
-     * browser cache is up to date.
+     * browser cache is up-to-date.
      *
-     * @param  Request   $request   Request
-     * @param  Response  $response  Response
-     * @param  string    $etag      Resource ETag
-     * @throws HTTP_Exception_304
+     * @param Request $request Request
+     * @param Response $response Response
+     * @param string $etag Resource ETag
      * @return Response
+     * @throws Request_Exception
      */
     public static function check_cache(Request $request, Response $response, $etag = null)
     {
@@ -78,7 +82,7 @@ abstract class Kohana_HTTP
     }
 
     /**
-     * Parses a HTTP header string into an associative array
+     * Parses an HTTP header string into an associative array
      *
      * @param   string   $header_string  Header string to parse
      * @return  HTTP_Header
@@ -89,7 +93,7 @@ abstract class Kohana_HTTP
         if (extension_loaded('http')) {
             // Use the fast method to parse header string
             $headers = version_compare(phpversion('http'), '2.0.0', '>=') ?
-                \http\Header::parse($header_string) :
+                Header::parse($header_string) :
                 http_parse_headers($header_string);
             return new HTTP_Header($headers);
         }
@@ -129,7 +133,7 @@ abstract class Kohana_HTTP
     }
 
     /**
-     * Parses the the HTTP request headers and returns an array containing
+     * Parses the HTTP request headers and returns an array containing
      * key value pairs. This method is slow, but provides an accurate
      * representation of the HTTP request.
      *
@@ -149,12 +153,12 @@ abstract class Kohana_HTTP
         elseif (extension_loaded('http')) {
             // Return the much faster method
             $headers = version_compare(phpversion('http'), '2.0.0', '>=') ?
-                \http\Env::getRequestHeader() :
+                Env::getRequestHeader() :
                 http_get_request_headers();
             return new HTTP_Header($headers);
         }
 
-        // Setup the output
+        // Set up the output
         $headers = [];
 
         // Parse the content type

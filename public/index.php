@@ -10,7 +10,7 @@ define('EXT', '.php');
 
 /**
  * Set the PHP error reporting level. If you set this in php.ini, you remove this.
- * @link http://www.php.net/manual/errorfunc.configuration#ini.error-reporting
+ * @link https://www.php.net/errorfunc.configuration#ini.error-reporting
  *
  * When developing your application, it is highly recommended to enable notices
  * and warnings. Enable them by using: E_ALL
@@ -64,7 +64,7 @@ if (PHP_SAPI === 'cli') {
     Minion_Task::factory(Minion_CLI::options())->execute();
 } else {
     /**
-     * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
+     * Execute the main request. A source of the URI can be passed, e.g., $_SERVER['PATH_INFO'].
      * If no source is specified, the URI will be automatically detected.
      */
     echo Request::factory(true, [], false)

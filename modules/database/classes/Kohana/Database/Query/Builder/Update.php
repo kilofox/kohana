@@ -17,7 +17,7 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
     protected $_set = [];
 
     /**
-     * Set the table for a update.
+     * Set the table for an update.
      *
      * @param   mixed  $table  table name or [$table, $alias] or object
      * @return  void
@@ -25,7 +25,7 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
     public function __construct($table = null)
     {
         if ($table) {
-            // Set the inital table name
+            // Set the initial table name
             $this->_table = $table;
         }
 
@@ -78,8 +78,10 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
     /**
      * Compile the SQL query and return it.
      *
-     * @param   mixed  $db  Database instance or name of instance
+     * @param mixed $db Database instance or name of instance
      * @return  string
+     * @throws Database_Exception
+     * @throws Kohana_Exception
      */
     public function compile($db = null)
     {

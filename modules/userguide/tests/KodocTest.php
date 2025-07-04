@@ -124,12 +124,13 @@ COMMENT
     }
 
     /**
-     * @covers  Kohana_Kodoc::parse
+     * @covers          Kohana_Kodoc::parse
      *
      * @dataProvider    provider_parse_basic
      *
-     * @param   string  $comment    Argument to the method
-     * @param   array   $expected   Expected result
+     * @param string $comment Argument to the method
+     * @param array $expected Expected result
+     * @throws Kohana_Exception
      */
     public function test_parse_basic($comment, $expected)
     {
@@ -304,13 +305,14 @@ COMMENT
     }
 
     /**
-     * @covers  Kohana_Kodoc::format_tag
-     * @covers  Kohana_Kodoc::parse
+     * @covers          Kohana_Kodoc::format_tag
+     * @covers          Kohana_Kodoc::parse
      *
      * @dataProvider    provider_parse_tags
      *
-     * @param   string  $comment    Argument to the method
-     * @param   array   $expected   Expected result
+     * @param string $comment Argument to the method
+     * @param array $expected Expected result
+     * @throws Kohana_Exception
      */
     public function test_parse_tags($comment, $expected)
     {
@@ -368,6 +370,7 @@ COMMENT
      * @param mixed $expected
      * @param string $class
      * @param array $classes
+     * @throws Kohana_Exception
      */
     public function test_transparent_classes($expected, $class, $classes)
     {

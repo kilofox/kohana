@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Support for image manipulation using [GD](http://php.net/GD).
+ * Support for image manipulation using [GD](https://www.php.net/manual/en/book.image.php).
  *
  * @package    Kohana/Image
  * @category   Drivers
@@ -25,6 +25,7 @@ class Kohana_Image_GD extends Image
      * bundled.
      *
      * @return  boolean
+     * @throws Kohana_Exception
      */
     public static function check()
     {
@@ -77,7 +78,7 @@ class Kohana_Image_GD extends Image
     public function __construct($file)
     {
         if (!Image_GD::$_checked) {
-            // Run the install check
+            // Run the installation check
             Image_GD::check();
         }
 
@@ -148,7 +149,7 @@ class Kohana_Image_GD extends Image
      */
     protected function _do_resize($width, $height)
     {
-        // Presize width and height
+        // Pre-size width and height
         $pre_width = $this->width;
         $pre_height = $this->height;
 
@@ -224,8 +225,9 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a rotation.
      *
-     * @param   integer  $degrees  degrees to rotate
+     * @param integer $degrees degrees to rotate
      * @return  void
+     * @throws Kohana_Exception
      */
     protected function _do_rotate($degrees)
     {
@@ -296,10 +298,11 @@ class Kohana_Image_GD extends Image
     }
 
     /**
-     * Execute a sharpen.
+     * Execute a sharpening.
      *
-     * @param   integer  $amount  amount to sharpen
+     * @param integer $amount amount to sharpen
      * @return  void
+     * @throws Kohana_Exception
      */
     protected function _do_sharpen($amount)
     {
@@ -320,7 +323,7 @@ class Kohana_Image_GD extends Image
             [-1, -1, -1],
         ];
 
-        // Perform the sharpen
+        // Perform the sharpening
         if (imageconvolution($this->_image, $matrix, $amount - 8, 0)) {
             // Reset the width and height
             $this->width = imagesx($this->_image);
@@ -331,10 +334,11 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a reflection.
      *
-     * @param   integer   $height   reflection height
-     * @param   integer   $opacity  reflection opacity
-     * @param   boolean   $fade_in  true to fade out, false to fade in
+     * @param integer $height reflection height
+     * @param integer $opacity reflection opacity
+     * @param boolean $fade_in true to fade out, false to fade in
      * @return  void
+     * @throws Kohana_Exception
      */
     protected function _do_reflection($height, $opacity, $fade_in)
     {
@@ -386,7 +390,7 @@ class Kohana_Image_GD extends Image
             // Colorize the line to add the correct alpha level
             imagefilter($line, IMG_FILTER_COLORIZE, 0, 0, 0, $dst_opacity);
 
-            // Copy a the line into the reflection
+            // Copy the line into the reflection
             imagecopy($reflection, $line, 0, $dst_y, 0, 0, $this->width, 1);
         }
 
@@ -402,11 +406,12 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a watermarking.
      *
-     * @param   Image    $image     watermarking Image
-     * @param   integer  $offset_x  offset from the left
-     * @param   integer  $offset_y  offset from the top
-     * @param   integer  $opacity   opacity of watermark
+     * @param Image $image watermarking Image
+     * @param integer $offset_x offset from the left
+     * @param integer $offset_y offset from the top
+     * @param integer $opacity opacity of watermark
      * @return  void
+     * @throws Kohana_Exception
      */
     protected function _do_watermark(Image $watermark, $offset_x, $offset_y, $opacity)
     {
@@ -489,9 +494,10 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a save.
      *
-     * @param   string   $file     new image filename
-     * @param   integer  $quality  quality
+     * @param string $file new image filename
+     * @param integer $quality quality
      * @return  boolean
+     * @throws Kohana_Exception
      */
     protected function _do_save($file, $quality)
     {
@@ -519,9 +525,10 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a render.
      *
-     * @param   string    $type     image type: png, jpg, gif, etc
-     * @param   integer   $quality  quality
+     * @param string $type image type: png, jpg, gif, etc
+     * @param integer $quality quality
      * @return  string
+     * @throws Kohana_Exception
      */
     protected function _do_render($type, $quality)
     {
@@ -588,7 +595,6 @@ class Kohana_Image_GD extends Image
                 break;
             default:
                 throw new Kohana_Exception('Installed GD does not support :type images', [':type' => $extension]);
-                break;
         }
 
         return [$save, $type];

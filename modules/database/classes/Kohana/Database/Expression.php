@@ -90,7 +90,7 @@ class Kohana_Database_Expression
      */
     public function value()
     {
-        return (string) $this->_value;
+        return $this->_value;
     }
 
     /**
@@ -110,8 +110,9 @@ class Kohana_Database_Expression
      * Compile the SQL expression and return it. Replaces any parameters with
      * their given values.
      *
-     * @param   mixed    Database instance or name of instance
+     * @param mixed    Database instance or name of instance
      * @return  string
+     * @throws Kohana_Exception
      */
     public function compile($db = null)
     {
@@ -123,7 +124,7 @@ class Kohana_Database_Expression
         $value = $this->value();
 
         if (!empty($this->_parameters)) {
-            // Quote all of the parameter values
+            // Quote all the parameter values
             $params = array_map([$db, 'quote'], $this->_parameters);
 
             // Replace the values in the expression

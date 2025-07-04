@@ -5,8 +5,8 @@
  *
  * ### Supported cache engines
  *
- * *  [Memcache](http://www.php.net/manual/en/book.memcache.php)
- * *  [Memcached-tags](http://code.google.com/p/memcached-tags/)
+ * *  [Memcache](https://www.php.net/manual/en/book.memcache.php)
+ * *  [Memcached-tags](https://code.google.com/archive/p/memcached-tags/)
  *
  * ### Configuration example
  *
@@ -19,7 +19,7 @@
  *             'driver' => 'memcache',
  *             // Available server definitions
  *             'servers' => [
- *                 // First memcache server server
+ *                 // First memcache server
  *                 [
  *                     'host' => 'localhost',
  *                     'port' => 11211,
@@ -69,7 +69,7 @@
  * timeout          | __NO__   | (_integer_) Value in seconds which will be used for connecting to the daemon. Think twice before changing the default value of 1 second - you can lose all the advantages of caching if your connection is too slow. Default __1__
  * retry_interval   | __NO__   | (_integer_) Controls how often a failed server will be retried, the default value is 15 seconds. Setting this parameter to -1 disables automatic retry. Default __15__
  * status           | __NO__   | (_boolean_) Controls if the server should be flagged as online. Default __true__
- * failure_callback | __NO__   | (_[callback](http://www.php.net/manual/en/language.pseudo-types.php#language.types.callback)_) Allows the user to specify a callback function to run upon encountering an error. The callback is run before failover is attempted. The function takes two parameters, the hostname and port of the failed server. Default __null__
+ * failure_callback | __NO__   | (_[callback](https://www.php.net/manual/en/language.types.callable.php)_) Allows the user to specify a callback function to run upon encountering an error. The callback is run before failover is attempted. The function takes two parameters, the hostname and port of the failed server. Default __null__
  *
  * ### System requirements
  *
@@ -120,9 +120,9 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      */
     protected function __construct(array $config)
     {
-        // Check for the memcache extention
+        // Check for the memcache extension
         if (!extension_loaded('memcache')) {
-            throw new Cache_Exception('Memcache PHP extention not loaded');
+            throw new Cache_Exception('Memcache PHP extension not loaded');
         }
 
         parent::__construct($config);
@@ -131,7 +131,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
         $this->_memcache = new Memcache;
 
         // Load servers from configuration
-        $servers = Arr::get($this->_config, 'servers', null);
+        $servers = Arr::get($this->_config, 'servers');
 
         if (!$servers) {
             // Throw an exception if no server found
@@ -161,7 +161,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
             }
         }
 
-        // Setup the flags
+        // Set up the flags
         $this->_flags = Arr::get($this->_config, 'compression', false) ? MEMCACHE_COMPRESSED : false;
     }
 
@@ -171,7 +171,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      *     // Retrieve cache entry from memcache group
      *     $data = Cache::instance('memcache')->get('foo');
      *
-     *     // Retrieve cache entry from memcache group and return 'bar' if miss
+     *     // Retrieve cache entry from memcache group and return 'bar' if missing
      *     $data = Cache::instance('memcache')->get('foo', 'bar');
      *
      * @param   string  $id       id of cache to entry
@@ -267,7 +267,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
         $result = $this->_memcache->flush();
 
         // We must sleep after flushing, or overwriting will not work!
-        // @see http://php.net/manual/en/function.memcache-flush.php#81420
+        // @see https://www.php.net/manual/en/memcache.flush.php#81420
         sleep(1);
 
         return $result;
@@ -299,7 +299,6 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
             if ($hostname == $server['host'] and $port == $server['port']) {
                 // Server to disable, since it failed
                 $host = $server;
-                continue;
             }
         }
 

@@ -24,19 +24,19 @@ You can make your own helpers by simply making a class and putting it in the `cl
 
  - **[HTML]** - Useful HTML functions. Encode, obfuscate, create script, anchor, and image tags, etc.
 
- - **[I18n]** - Internationalization helper for creating multilanguage sites.
+ - **[I18n]** - Internationalization helper for creating multilingual sites.
 
  - **[Inflector]** - Change a word into plural or singular form, camelize or humanize a phrase, etc.
 
  - **[Kohana]** - The Kohana class is also a helper. Debug variables (like print_r but better), file loading, etc.
 
- - **[Num]** - Provides locale aware formating and english ordinals (th, st, nd, etc).
+ - **[Num]** - Provides locale aware formatting and english ordinals (th, st, nd, etc.).
 
  - **[Profiler]** - Covered in more detail on the [Profiling](profiling) page.
 
- - **[Remote]** - Remote server access helper using [CURL](http://php.net/curl).
+ - **[Remote]** - Remote server access helper using [CURL](https://www.php.net/curl).
 
- - **[Request]** - Get the current request url, create expire tags, send a file, get the user agent, etc.
+ - **[Request]** - Get the current request URL, create expire tags, send a file, get the user agent, etc.
 
  - **[Route]** - Create routes, create an internal link using a route.
 
@@ -48,6 +48,6 @@ You can make your own helpers by simply making a class and putting it in the `cl
 
  - **[URL]** - Create a relative or absolute URL, make a URL-safe title, etc.
 
- - **[UTF8]** - Provides multi-byte aware string functions like strlen, strpos, substr, etc.
+ - **[UTF8]** - Provides multibyte aware string functions like strlen, strpos, substr, etc.
 
  - **[Upload]** - Helper for uploading files from a form.

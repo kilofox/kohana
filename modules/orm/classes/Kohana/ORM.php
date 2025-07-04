@@ -6,8 +6,8 @@
  * with object properties representing row data. ORM in Kohana generally follows
  * the [Active Record][ref-act] pattern.
  *
- * [ref-orm]: http://wikipedia.org/wiki/Object-relational_mapping
- * [ref-act]: http://wikipedia.org/wiki/Active_record
+ * [ref-orm]: https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping
+ * [ref-act]: https://en.wikipedia.org/wiki/Active_record_pattern
  *
  * @package    Kohana/ORM
  * @author     Kohana Team
@@ -30,7 +30,7 @@ class Kohana_ORM extends Model implements serializable
 
     /**
      * Creates and returns a new model.
-     * Model name must be passed with its' original casing, e.g.
+     * Model name must be passed with its original casing, e.g.
      *
      *    $model = ORM::factory('User_Token');
      *
@@ -248,7 +248,8 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Constructs a new model and loads a record if given
      *
-     * @param   mixed $id Parameter for find or object to load
+     * @param mixed $id Parameter for find or object to load
+     * @throws Kohana_Exception
      */
     public function __construct($id = null)
     {
@@ -279,6 +280,7 @@ class Kohana_ORM extends Model implements serializable
      * and loads column information.
      *
      * @return void
+     * @throws Kohana_Exception
      */
     protected function _initialize()
     {
@@ -457,6 +459,7 @@ class Kohana_ORM extends Model implements serializable
      *
      * @chainable
      * @return ORM
+     * @throws Kohana_Exception
      */
     public function reload()
     {
@@ -531,7 +534,7 @@ class Kohana_ORM extends Model implements serializable
      * If $field is specified, checks whether that field was modified.
      *
      * @param string  $field  field to check for changes
-     * @return  bool  Whether or not the field has changed
+     * @return  bool  Whether the field has changed
      */
     public function changed($field = null)
     {
@@ -543,6 +546,7 @@ class Kohana_ORM extends Model implements serializable
      *
      * @param string $data String for unserialization
      * @return  void
+     * @throws Kohana_Exception
      */
     public function unserialize($data)
     {
@@ -563,8 +567,9 @@ class Kohana_ORM extends Model implements serializable
      * Handles retrieval of all model values, relationships, and metadata.
      * [!!] This should not be overridden.
      *
-     * @param   string $column Column name
+     * @param string $column Column name
      * @return  mixed
+     * @throws Kohana_Exception
      */
     public function __get($column)
     {
@@ -626,12 +631,11 @@ class Kohana_ORM extends Model implements serializable
 
                 // Through table's source foreign key (foreign_key) should be this model's primary key
                 $col = $through . '.' . $this->_has_many[$column]['foreign_key'];
-                $val = $this->pk();
             } else {
                 // Simple has_many relationship, search where target model's foreign key is this model's primary key
                 $col = $model->_object_name . '.' . $this->_has_many[$column]['foreign_key'];
-                $val = $this->pk();
             }
+            $val = $this->pk();
 
             return $model->where($col, '=', $val);
         } else {
@@ -643,9 +647,11 @@ class Kohana_ORM extends Model implements serializable
      * Base set method.
      * [!!] This should not be overridden.
      *
-     * @param  string $column  Column name
-     * @param  mixed  $value   Column value
+     * @param string $column Column name
+     * @param mixed $value Column value
      * @return void
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function __set($column, $value)
     {
@@ -656,10 +662,11 @@ class Kohana_ORM extends Model implements serializable
      * Handles setting of columns
      * Override this method to add custom set behavior
      *
-     * @param  string $column Column name
-     * @param  mixed  $value  Column value
-     * @throws Kohana_Exception
+     * @param string $column Column name
+     * @param mixed $value Column value
      * @return ORM
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function set($column, $value)
     {
@@ -748,6 +755,7 @@ class Kohana_ORM extends Model implements serializable
      * models that have already been loaded using with()
      *
      * @return array
+     * @throws Kohana_Exception
      */
     public function as_array()
     {
@@ -894,7 +902,7 @@ class Kohana_ORM extends Model implements serializable
 
         $this->_build(Database::SELECT);
 
-        return $this->_load_result(false);
+        return $this->_load_result();
     }
 
     /**
@@ -942,8 +950,9 @@ class Kohana_ORM extends Model implements serializable
      * an iterator for multiple rows.
      *
      * @chainable
-     * @param  bool $multiple Return an iterator or load a single row
+     * @param bool $multiple Return an iterator or load a single row
      * @return ORM|Database_Result
+     * @throws Kohana_Exception
      */
     protected function _load_result($multiple = false)
     {
@@ -994,7 +1003,7 @@ class Kohana_ORM extends Model implements serializable
     }
 
     /**
-     * Loads an array of values into into the current object.
+     * Loads an array of values into the current object.
      *
      * @chainable
      * @param  array $values Values to load
@@ -1058,9 +1067,10 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Filters a value for a specific column
      *
-     * @param  string $field  The column name
-     * @param  string $value  The value to filter
+     * @param string $field The column name
+     * @param string $value The value to filter
      * @return string
+     * @throws ReflectionException
      */
     protected function run_filter($field, $value)
     {
@@ -1072,14 +1082,14 @@ class Kohana_ORM extends Model implements serializable
         // Merge in the wildcards
         $filters = empty($filters[$field]) ? $wildcards : array_merge($wildcards, $filters[$field]);
 
-        // Bind the field name and model so they can be used in the filter method
+        // Bind the field name and model, so they can be used in the filter method
         $_bound = [
             ':field' => $field,
             ':model' => $this,
         ];
 
         foreach ($filters as $array) {
-            // Value needs to be bound inside the loop so we are always using the
+            // Value needs to be bound inside the loop, so we are always using the
             // version that was modified by the filters that already ran
             $_bound[':value'] = $value;
 
@@ -1141,14 +1151,15 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Validates the current model's data
      *
-     * @param  Validation $extra_validation Validation object
-     * @throws ORM_Validation_Exception
+     * @param Validation $extra_validation Validation object
      * @return ORM
+     * @throws ORM_Validation_Exception
+     * @throws ReflectionException
      */
     public function check(Validation $extra_validation = null)
     {
         // Determine if any external validation failed
-        $extra_errors = ($extra_validation AND ! $extra_validation->check());
+        $extra_errors = ($extra_validation AND !$extra_validation->check());
 
         // Always build a new validation object
         $this->_validation();
@@ -1170,9 +1181,11 @@ class Kohana_ORM extends Model implements serializable
 
     /**
      * Insert a new object to the database
-     * @param  Validation $validation Validation object
-     * @throws Kohana_Exception
+     * @param Validation $validation Validation object
      * @return ORM
+     * @throws Kohana_Exception
+     * @throws ORM_Validation_Exception
+     * @throws ReflectionException
      */
     public function create(Validation $validation = null)
     {
@@ -1224,16 +1237,18 @@ class Kohana_ORM extends Model implements serializable
      * Updates a single record or multiple records
      *
      * @chainable
-     * @param  Validation $validation Validation object
-     * @throws Kohana_Exception
+     * @param Validation $validation Validation object
      * @return ORM
+     * @throws Kohana_Exception
+     * @throws ORM_Validation_Exception
+     * @throws ReflectionException
      */
     public function update(Validation $validation = null)
     {
         if (!$this->_loaded)
             throw new Kohana_Exception('Cannot update :model model because it is not loaded.', [':model' => $this->_object_name]);
 
-        // Run validation if the model isn't valid or we have additional validation rules.
+        // Run validation if the model isn't valid, or we have additional validation rules.
         if (!$this->_valid OR $validation) {
             $this->check($validation);
         }
@@ -1285,8 +1300,11 @@ class Kohana_ORM extends Model implements serializable
      * Updates or Creates the record depending on loaded()
      *
      * @chainable
-     * @param  Validation $validation Validation object
+     * @param Validation $validation Validation object
      * @return ORM
+     * @throws Kohana_Exception
+     * @throws ORM_Validation_Exception
+     * @throws ReflectionException
      */
     public function save(Validation $validation = null)
     {
@@ -1324,16 +1342,17 @@ class Kohana_ORM extends Model implements serializable
      *
      *     // Check if $model has the login role
      *     $model->has('roles', ORM::factory('role', ['name' => 'login']));
-     *     // Check for the login role if you know the roles.id is 5
+     *     // Check for the login role if you know the role id is 5
      *     $model->has('roles', 5);
-     *     // Check for all of the following roles
+     *     // Check for all the following roles
      *     $model->has('roles', [1, 2, 3, 4]);
      *     // Check if $model has any roles
-     *     $model->has('roles')
+     *     $model->has('roles');
      *
-     * @param  string  $alias    Alias of the has_many "through" relationship
-     * @param  mixed   $far_keys Related model, primary key, or an array of primary keys
+     * @param string $alias Alias of the has_many "through" relationship
+     * @param mixed $far_keys Related model, primary key, or an array of primary keys
      * @return boolean
+     * @throws Kohana_Exception
      */
     public function has($alias, $far_keys = null)
     {
@@ -1351,17 +1370,18 @@ class Kohana_ORM extends Model implements serializable
      * only checks that at least one of the relationships is satisfied.
      *
      *     // Check if $model has the login role
-     *     $model->has('roles', ORM::factory('role', ['name' => 'login']));
-     *     // Check for the login role if you know the roles.id is 5
-     *     $model->has('roles', 5);
+     *     $model->has_any('roles', ORM::factory('role', ['name' => 'login']));
+     *     // Check for the login role if you know the role id is 5
+     *     $model->has_any('roles', 5);
      *     // Check for any of the following roles
-     *     $model->has('roles', [1, 2, 3, 4]);
+     *     $model->has_any('roles', [1, 2, 3, 4]);
      *     // Check if $model has any roles
-     *     $model->has('roles')
+     *     $model->has_any('roles');
      *
-     * @param  string  $alias    Alias of the has_many "through" relationship
-     * @param  mixed   $far_keys Related model, primary key, or an array of primary keys
+     * @param string $alias Alias of the has_many "through" relationship
+     * @param mixed $far_keys Related model, primary key, or an array of primary keys
      * @return boolean
+     * @throws Kohana_Exception
      */
     public function has_any($alias, $far_keys = null)
     {
@@ -1371,19 +1391,19 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Returns the number of relationships
      *
-     *     // Counts the number of times the login role is attached to $model
+     *     // Counts the number of times the login role is attached to current model
      *     $model->count_relations('roles', ORM::factory('role', ['name' => 'login']));
-     *     // Counts the number of times role 5 is attached to $model
+     *     // Counts the number of times role 5 is attached to current model
      *     $model->count_relations('roles', 5);
-     *     // Counts the number of times any of roles 1, 2, 3, or 4 are attached to
-     *     // $model
+     *     // Counts the number of times any of roles 1, 2, 3, or 4 are attached to current model
      *     $model->count_relations('roles', [1, 2, 3, 4]);
-     *     // Counts the number roles attached to $model
-     *     $model->count_relations('roles')
+     *     // Counts the number roles attached to current model
+     *     $model->count_relations('roles');
      *
-     * @param  string  $alias    Alias of the has_many "through" relationship
-     * @param  mixed   $far_keys Related model, primary key, or an array of primary keys
+     * @param string $alias Alias of the has_many "through" relationship
+     * @param mixed $far_keys Related model, primary key, or an array of primary keys
      * @return integer
+     * @throws Kohana_Exception
      */
     public function count_relations($alias, $far_keys = null)
     {
@@ -1399,18 +1419,16 @@ class Kohana_ORM extends Model implements serializable
         // We need an array to simplify the logic
         $far_keys = (array) $far_keys;
 
-        // Nothing to check if the model isn't loaded or we don't have any far_keys
-        if (!$far_keys OR ! $this->_loaded)
+        // Nothing to check if the model isn't loaded, or we don't have any far_keys
+        if (!$far_keys OR !$this->_loaded)
             return 0;
 
-        $count = (int) DB::select([DB::expr('COUNT(*)'), 'records_found'])
+        // Rows found need to match the rows searched
+        return (int) DB::select([DB::expr('COUNT(*)'), 'records_found'])
                 ->from($this->_has_many[$alias]['through'])
                 ->where($this->_has_many[$alias]['foreign_key'], '=', $this->pk())
                 ->where($this->_has_many[$alias]['far_key'], 'IN', $far_keys)
                 ->execute($this->_db)->get('records_found');
-
-        // Rows found need to match the rows searched
-        return (int) $count;
     }
 
     /**
@@ -1418,14 +1436,15 @@ class Kohana_ORM extends Model implements serializable
      *
      *     // Add the login role using a model instance
      *     $model->add('roles', ORM::factory('role', ['name' => 'login']));
-     *     // Add the login role if you know the roles.id is 5
+     *     // Add the login role if you know the role id is 5
      *     $model->add('roles', 5);
      *     // Add multiple roles (for example, from checkboxes on a form)
      *     $model->add('roles', [1, 2, 3, 4]);
      *
-     * @param  string  $alias    Alias of the has_many "through" relationship
-     * @param  mixed   $far_keys Related model, primary key, or an array of primary keys
+     * @param string $alias Alias of the has_many "through" relationship
+     * @param mixed $far_keys Related model, primary key, or an array of primary keys
      * @return ORM
+     * @throws Kohana_Exception
      */
     public function add($alias, $far_keys)
     {
@@ -1457,9 +1476,10 @@ class Kohana_ORM extends Model implements serializable
      *     // Remove all related roles
      *     $model->remove('roles');
      *
-     * @param  string $alias    Alias of the has_many "through" relationship
-     * @param  mixed  $far_keys Related model, primary key, or an array of primary keys
+     * @param string $alias Alias of the has_many "through" relationship
+     * @param mixed $far_keys Related model, primary key, or an array of primary keys
      * @return ORM
+     * @throws Kohana_Exception
      */
     public function remove($alias, $far_keys = null)
     {
@@ -1482,6 +1502,7 @@ class Kohana_ORM extends Model implements serializable
      * Count the number of records in the table.
      *
      * @return integer
+     * @throws Kohana_Exception
      */
     public function count_all()
     {
@@ -1927,7 +1948,7 @@ class Kohana_ORM extends Model implements serializable
      * Adds addition tables to "JOIN ...".
      *
      * @param   mixed   $table  column name or [$column, $alias] or object
-     * @param   string  $type   join type (LEFT, RIGHT, INNER, etc)
+     * @param   string  $type   join type (LEFT, RIGHT, INNER, etc.)
      * @return  $this
      */
     public function join($table, $type = null)
@@ -2189,9 +2210,10 @@ class Kohana_ORM extends Model implements serializable
      * Checks whether a column value is unique.
      * Excludes itself if loaded.
      *
-     * @param   string   $field  the field to check for uniqueness
-     * @param   mixed    $value  the value to check for uniqueness
-     * @return  bool     whteher the value is unique
+     * @param string $field the field to check for uniqueness
+     * @param mixed $value the value to check for uniqueness
+     * @return  bool     whether the value is unique
+     * @throws Kohana_Exception
      */
     public function unique($field, $value)
     {

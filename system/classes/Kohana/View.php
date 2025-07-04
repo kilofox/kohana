@@ -22,9 +22,10 @@ class Kohana_View
      *
      *     $view = View::factory($file);
      *
-     * @param   string  $file   view filename
-     * @param   array   $data   array of values
+     * @param string $file view filename
+     * @param array $data array of values
      * @return  View
+     * @throws View_Exception
      */
     public static function factory($file = null, array $data = null)
     {
@@ -126,8 +127,9 @@ class Kohana_View
      *
      *     $view = new View($file);
      *
-     * @param   string  $file   view filename
-     * @param   array   $data   array of values
+     * @param string $file view filename
+     * @param array $data array of values
+     * @throws View_Exception
      * @uses    View::set_filename
      */
     public function __construct($file = null, array $data = null)
@@ -184,7 +186,7 @@ class Kohana_View
      *
      *     isset($view->foo);
      *
-     * [!!] `NULL` variables are not considered to be set by [isset](http://php.net/isset).
+     * [!!] `NULL` variables are not considered to be set by [isset](https://www.php.net/isset).
      *
      * @param   string  $key    variable name
      * @return  boolean

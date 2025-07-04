@@ -2,14 +2,14 @@
 
 /**
  * [Request_Client_External] Curl driver performs external requests using the
- * php-curl extention. This is the default driver for all external requests.
+ * php-curl extension. This is the default driver for all external requests.
  *
  * @package    Kohana
  * @category   Base
  * @author     Kohana Team
  * @copyright  (c) 2008-2012 Kohana Team
  * @license    https://kohana.top/license
- * @uses       [PHP cURL](http://php.net/manual/en/book.curl.php)
+ * @uses       [PHP cURL](https://www.php.net/manual/en/book.curl.php)
  */
 class Kohana_Request_Client_Curl extends Request_Client_External
 {
@@ -17,15 +17,14 @@ class Kohana_Request_Client_Curl extends Request_Client_External
      * Sends the HTTP message [Request] to a remote server and processes
      * the response.
      *
-     * @param   Request   $request  request to send
-     * @param   Response  $request  response to send
+     * @param Request $request response to send
+     * @param Response $response
      * @return  Response
+     * @throws Kohana_Exception
+     * @throws Request_Exception
      */
     public function _send_message(Request $request, Response $response)
     {
-        // Response headers
-        $response_headers = [];
-
         $options = [];
 
         // Set the request method
@@ -56,7 +55,7 @@ class Kohana_Request_Client_Curl extends Request_Client_External
             $options[CURLOPT_COOKIE] = http_build_query($cookies, null, '; ');
         }
 
-        // Get any exisiting response headers
+        // Get any existing response headers
         $response_header = $response->headers();
 
         // Implement the standard parsing parameters
@@ -78,7 +77,7 @@ class Kohana_Request_Client_Curl extends Request_Client_External
 
         // Set connection options
         if (!curl_setopt_array($curl, $options)) {
-            throw new Request_Exception('Failed to set CURL options, check CURL documentation: :url', [':url' => 'http://php.net/curl_setopt_array']);
+            throw new Request_Exception('Failed to set CURL options, check CURL documentation: :url', [':url' => 'https://www.php.net/curl_setopt_array']);
         }
 
         // Get the response body

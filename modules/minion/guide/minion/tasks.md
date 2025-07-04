@@ -68,4 +68,4 @@ Tasks can have built-in help. Minion will read class docblocks that you specify:
      */
     class Minion_Task_Demo extends Minion_Task
 
-The `@` tags in the class comments will also be displayed in a human readable format. When writing your task comments, you should specify how to use it, and any parameters it accepts.
+The `@` tags in the class comments will also be displayed in a human-readable format. When writing your task comments, you should specify how to use it, and any parameters it accepts.

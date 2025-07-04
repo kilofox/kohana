@@ -2,7 +2,7 @@
 
 /**
  * [Kohana Encrypt](api/Kohana_Encrypt) OpenSSL driver. Provides two-way
- * encryption of text and binary strings using the [OpenSSL](http://php.net/openssl)
+ * encryption of text and binary strings using the [OpenSSL](https://www.php.net/openssl)
  * extension.
  *
  * @package     Kohana
@@ -54,10 +54,11 @@ class Kohana_Encrypt_Openssl
     protected $iv;
 
     /**
-     * Creates a new mcrypt wrapper.
+     * Creates a new OpenSSL wrapper.
      *
-     * @param   string  $name   Configuration group name.
-     * @param   string  $config Configuration parameters.
+     * @param string $name configuration group name
+     * @param array $config configuration options
+     * @throws Kohana_Exception
      */
     public function __construct($name, $config)
     {
@@ -93,7 +94,7 @@ class Kohana_Encrypt_Openssl
      *
      *     $data = $encrypt->encode($data);
      *
-     * The encrypted binary data is encoded using [base64](http://php.net/base64_encode)
+     * The encrypted binary data is encoded using [base64](https://www.php.net/base64_encode)
      * to convert it to a string. This string can be stored in a database,
      * displayed, and passed using most other means without corruption.
      *
@@ -111,7 +112,7 @@ class Kohana_Encrypt_Openssl
         }
 
         // Encrypt the data using the configured options and generated IV.
-        if (PHP_VERSION_ID >= 71000) {
+        if (isset($this->tag)) {
             $data = openssl_encrypt($data, $this->method, $this->key, $this->options, $iv, $this->tag, $this->aad, $this->tagLength);
         } else {
             $data = openssl_encrypt($data, $this->method, $this->key, $this->options, $iv);
@@ -152,8 +153,8 @@ class Kohana_Encrypt_Openssl
         $data = substr($data, $this->ivSize);
 
         // Return the decrypted data, trimming the \0 padding bytes from the end of the data.
-        if (PHP_VERSION_ID >= 71000) {
-            return rtrim(openssl_decrypt($data, $this->method, $this->key, $this->options, $iv, $this->tag, $this->aad, $this->tagLength), "\0");
+        if (isset($this->tag)) {
+            return rtrim(openssl_decrypt($data, $this->method, $this->key, $this->options, $iv, $this->tag, $this->aad), "\0");
         } else {
             return rtrim(openssl_decrypt($data, $this->method, $this->key, $this->options, $iv), "\0");
         }
