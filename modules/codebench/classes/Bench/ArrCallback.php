@@ -27,6 +27,8 @@ class Bench_ArrCallback extends Codebench
         // The original regex we're trying to optimize
         if (preg_match('/([^\[]*+)\[(.*)\]/', $subject, $match))
             return $match;
+
+        return [];
     }
 
     public function bench_geert_regex_1($subject)
@@ -34,6 +36,8 @@ class Bench_ArrCallback extends Codebench
         // Added ^ and $ around the whole pattern
         if (preg_match('/^([^\[]*+)\[(.*)\]$/', $subject, $matches))
             return $matches;
+
+        return [];
     }
 
     public function bench_geert_regex_2($subject)
@@ -42,6 +46,8 @@ class Bench_ArrCallback extends Codebench
         // Note: $matches[0] = params, $matches[1] = command
         if (preg_match('/^([^\[]*+)\[\K.*(?=\]$)/', $subject, $matches))
             return $matches;
+
+        return [];
     }
 
     public function bench_geert_str($subject)
@@ -49,6 +55,8 @@ class Bench_ArrCallback extends Codebench
         // A native string function approach which beats all the regexes
         if (strpos($subject, '[') !== false AND substr($subject, -1) === ']')
             return explode('[', substr($subject, 0, -1), 2);
+
+        return [];
     }
 
 }

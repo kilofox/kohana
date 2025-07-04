@@ -24,7 +24,7 @@ class Kohana_Debug
     public static function vars()
     {
         if (func_num_args() === 0)
-            return;
+            return '';
 
         // Get all passed variables
         $variables = func_get_args();
@@ -65,11 +65,17 @@ class Kohana_Debug
     {
         if ($var === null) {
             return '<small>NULL</small>';
-        } elseif (is_bool($var)) {
+        }
+
+        if (is_bool($var)) {
             return '<small>bool</small> ' . ($var ? 'TRUE' : 'FALSE');
-        } elseif (is_float($var)) {
+        }
+
+        if (is_float($var)) {
             return '<small>float</small> ' . $var;
-        } elseif (is_resource($var)) {
+        }
+
+        if (is_resource($var)) {
             if (($type = get_resource_type($var)) === 'stream') {
                 $meta = stream_get_meta_data($var);
 
@@ -85,10 +91,12 @@ class Kohana_Debug
 
                     return '<small>resource</small><span>(' . $type . ')</span> ' . htmlspecialchars($file, ENT_NOQUOTES, Kohana::$charset);
                 }
-            } else {
-                return '<small>resource</small><span>(' . $type . ')</span>';
             }
-        } elseif (is_string($var)) {
+
+            return '<small>resource</small><span>(' . $type . ')</span>';
+        }
+
+        if (is_string($var)) {
             // Clean invalid multibyte characters. iconv is only invoked
             // if there are non ASCII characters in the string, so this
             // isn't too much of a hit.
@@ -103,7 +111,9 @@ class Kohana_Debug
             }
 
             return '<small>string</small><span>(' . strlen($var) . ')</span> "' . $str . '"';
-        } elseif (is_array($var)) {
+        }
+
+        if (is_array($var)) {
             $output = [];
 
             // Indentation for this variable
@@ -142,7 +152,9 @@ class Kohana_Debug
             }
 
             return '<small>array</small><span>(' . count($var) . ')</span> ' . implode("\n", $output);
-        } elseif (is_object($var)) {
+        }
+
+        if (is_object($var)) {
             // Copy the object as an array
             $array = (array) $var;
 
@@ -186,9 +198,9 @@ class Kohana_Debug
             }
 
             return '<small>object</small> <span>' . get_class($var) . '(' . count($array) . ')</span> ' . implode("\n", $output);
-        } else {
-            return '<small>' . gettype($var) . '</small> ' . htmlspecialchars(print_r($var, true), ENT_NOQUOTES, Kohana::$charset);
         }
+
+        return '<small>' . gettype($var) . '</small> ' . htmlspecialchars(print_r($var, true), ENT_NOQUOTES, Kohana::$charset);
     }
 
     /**
