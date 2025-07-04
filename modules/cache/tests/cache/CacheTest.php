@@ -79,7 +79,7 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests that `clone($cache)` will be prevented to maintain singleton
+     * Tests that `clone $cache` will be prevented to maintain singleton
      *
      * @return  void
      * @expectedException Cache_Exception
@@ -91,7 +91,7 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
             ->getMockForAbstractClass();
 
         try {
-            clone($cache);
+            clone $cache;
         } catch (Cache_Exception $e) {
             $this->assertSame('Cloning of Kohana_Cache objects is forbidden', $e->getMessage());
             throw $e;
