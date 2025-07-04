@@ -41,6 +41,8 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
      *
      * Extending classes that have their own setUp() should call
      * parent::setUp()
+     *
+     * @return void
      */
     public function setUp()
     {
@@ -48,7 +50,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
 
         $this->setEnvironment($this->environmentDefault);
 
-        return parent::setUp();
+        parent::setUp();
     }
 
     /**
@@ -56,12 +58,14 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
      *
      * Extending classes that have their own tearDown()
      * should call parent::tearDown()
+     *
+     * @return void
      */
     public function tearDown()
     {
         $this->_helpers->restore_environment();
 
-        return parent::tearDown();
+        parent::tearDown();
     }
 
     /**
@@ -101,10 +105,12 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
 
     /**
      * Removes all kohana related cache files in the cache directory
+     *
+     * @return void
      */
     public function cleanCacheDir()
     {
-        return Kohana_Unittest_Helpers::clean_cache_dir();
+        Kohana_Unittest_Helpers::clean_cache_dir();
     }
 
     /**
