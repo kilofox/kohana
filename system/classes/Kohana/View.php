@@ -243,7 +243,7 @@ class Kohana_View
      */
     public function set_filename($file)
     {
-        if (($path = Kohana::find_file('views', $file)) === false) {
+        if (!$path = Kohana::find_file('views', $file)) {
             throw new View_Exception('The requested view :file could not be found', [':file' => $file]);
         }
 
