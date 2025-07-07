@@ -305,7 +305,7 @@ class Kohana_Valid
 
         for ($i = $length - 1; $i >= 0; $i -= 2) {
             // Add up every 2nd digit, starting from the right
-            $checksum += substr($number, $i, 1);
+            $checksum += (int) substr($number, $i, 1);
         }
 
         for ($i = $length - 2; $i >= 0; $i -= 2) {
