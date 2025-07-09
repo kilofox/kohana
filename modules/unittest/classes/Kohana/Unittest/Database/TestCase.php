@@ -71,7 +71,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
     /**
      * Creates a connection to the unittesting database
      *
-     * @return PDO
+     * @return PHPUnit_Extensions_Database_DB_DefaultDatabaseConnection
      * @throws Kohana_Exception
      */
     public function getConnection()
