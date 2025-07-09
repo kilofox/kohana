@@ -45,7 +45,7 @@ abstract class Kohana_HTTP_Exception extends Kohana_Exception
      * Store the Request that triggered this exception.
      *
      * @param   Request   $request  Request object that triggered this exception.
-     * @return  HTTP_Exception
+     * @return  Kohana_HTTP_Exception|Request
      */
     public function request(Request $request = null)
     {

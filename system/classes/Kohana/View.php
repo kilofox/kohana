@@ -238,7 +238,7 @@ class Kohana_View
      *     $view->set_filename($file);
      *
      * @param   string  $file   view filename
-     * @return  View
+     * @return  Kohana_View
      * @throws  View_Exception
      */
     public function set_filename($file)
