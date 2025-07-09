@@ -1558,14 +1558,15 @@ class Kohana_ORM extends Model implements serializable
      */
     protected function _related($alias)
     {
-        if (isset($this->_related[$alias])) {
-            return $this->_related[$alias];
-        } elseif (isset($this->_has_one[$alias])) {
-            return $this->_related[$alias] = ORM::factory($this->_has_one[$alias]['model']);
-        } elseif (isset($this->_belongs_to[$alias])) {
-            return $this->_related[$alias] = ORM::factory($this->_belongs_to[$alias]['model']);
-        } else {
-            return false;
+        switch (true) {
+            case isset($this->_related[$alias]):
+                return $this->_related[$alias];
+            case isset($this->_has_one[$alias]):
+                return $this->_related[$alias] = ORM::factory($this->_has_one[$alias]['model']);
+            case isset($this->_belongs_to[$alias]):
+                return $this->_related[$alias] = ORM::factory($this->_belongs_to[$alias]['model']);
+            default:
+                return null;
         }
     }
 
