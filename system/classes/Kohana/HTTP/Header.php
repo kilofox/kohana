@@ -308,88 +308,88 @@ class Kohana_HTTP_Header extends ArrayObject
      * is `false`, the header will be appended rather than replacing the
      * original setting.
      *
-     * @param   mixed   $index      index to set `$newval` to
-     * @param   mixed   $newval     new value to set
+     * @param mixed $key The index being set.
+     * @param mixed $value The new value for the index.
      * @param   boolean $replace    replace existing value
      * @return  void
      * @since   3.2.0
      */
-    public function offsetSet($index, $newval, $replace = true)
+    public function offsetSet($key, $value, $replace = true)
     {
         // Ensure the index is lowercase
-        $index = strtolower($index);
+        $key = strtolower($key);
 
-        if ($replace OR !$this->offsetExists($index)) {
-            parent::offsetSet($index, $newval);
+        if ($replace OR !$this->offsetExists($key)) {
+            parent::offsetSet($key, $value);
             return;
         }
 
-        $current_value = $this->offsetGet($index);
+        $current_value = $this->offsetGet($key);
 
         if (is_array($current_value)) {
-            $current_value[] = $newval;
+            $current_value[] = $value;
         } else {
-            $current_value = [$current_value, $newval];
+            $current_value = [$current_value, $value];
         }
 
-        parent::offsetSet($index, $current_value);
+        parent::offsetSet($key, $current_value);
     }
 
     /**
      * Overloads the `ArrayObject::offsetExists()` method to ensure keys
      * are lowercase.
      *
-     * @param   string  $index
+     * @param   string  $key
      * @return  boolean
      * @since   3.2.0
      */
-    public function offsetExists($index)
+    public function offsetExists($key)
     {
-        return parent::offsetExists(strtolower($index));
+        return parent::offsetExists(strtolower($key));
     }
 
     /**
      * Overloads the `ArrayObject::offsetUnset()` method to ensure keys
      * are lowercase.
      *
-     * @param   string  $index
+     * @param   string  $key
      * @return  void
      * @since   3.2.0
      */
-    public function offsetUnset($index)
+    public function offsetUnset($key)
     {
-        parent::offsetUnset(strtolower($index));
+        parent::offsetUnset(strtolower($key));
     }
 
     /**
      * Overload the `ArrayObject::offsetGet()` method to ensure that all
      * keys passed to it are formatted correctly for this object.
      *
-     * @param   string  $index  index to retrieve
+     * @param   string  $key  index to retrieve
      * @return  mixed
      * @since   3.2.0
      */
-    public function offsetGet($index)
+    public function offsetGet($key)
     {
-        return parent::offsetGet(strtolower($index));
+        return parent::offsetGet(strtolower($key));
     }
 
     /**
      * Overloads the `ArrayObject::exchangeArray()` method to ensure that
      * all keys are changed to lowercase.
      *
-     * @param   mixed   $input
+     * @param   mixed   $array
      * @return  array
      * @since   3.2.0
      */
-    public function exchangeArray($input)
+    public function exchangeArray($array)
     {
         /**
          * HTTP header declarations should be treated as case-insensitive
          */
-        $input = array_change_key_case((array) $input);
+        $array = array_change_key_case((array) $array);
 
-        return parent::exchangeArray($input);
+        return parent::exchangeArray($array);
     }
 
     /**

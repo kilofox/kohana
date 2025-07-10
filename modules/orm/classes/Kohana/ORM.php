@@ -35,14 +35,14 @@ class Kohana_ORM extends Model implements serializable
      *    $model = ORM::factory('User_Token');
      *
      * @chainable
-     * @param   string  $model  Model name
+     * @param string $name Model name
      * @param   mixed   $id     Parameter for find()
      * @return  ORM
      */
-    public static function factory($model, $id = null)
+    public static function factory($name, $id = null)
     {
         // Set class name
-        $model = 'Model_' . $model;
+        $model = 'Model_' . $name;
 
         return new $model($id);
     }
