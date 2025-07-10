@@ -62,7 +62,7 @@ abstract class Kohana_Controller
      * will be called.
      *
      * @return  Response
-     * @throws HTTP_Exception
+     * @throws Kohana_HTTP_Exception
      */
     public function execute()
     {

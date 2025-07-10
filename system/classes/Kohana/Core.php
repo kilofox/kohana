@@ -910,8 +910,9 @@ class Kohana_Core
     /**
      * Catches errors that are not caught by the error handler, such as E_PARSE.
      *
-     * @uses    Kohana_Exception::handler
      * @return  void
+     * @throws Kohana_Exception
+     * @uses    Kohana_Exception::handler
      */
     public static function shutdown_handler()
     {
