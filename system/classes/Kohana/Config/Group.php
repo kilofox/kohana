@@ -120,12 +120,13 @@ class Kohana_Config_Group extends ArrayObject
      *
      * @param string $key   The key of the config item we're changing
      * @param mixed  $value The new array value
+     * @return void
      */
     public function offsetSet($key, $value)
     {
         $this->_parent_instance->_write_config($this->_group_name, $key, $value);
 
-        return parent::offsetSet($key, $value);
+        parent::offsetSet($key, $value);
     }
 
 }

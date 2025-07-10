@@ -320,7 +320,8 @@ class Kohana_HTTP_Header extends ArrayObject
         $index = strtolower($index);
 
         if ($replace OR !$this->offsetExists($index)) {
-            return parent::offsetSet($index, $newval);
+            parent::offsetSet($index, $newval);
+            return;
         }
 
         $current_value = $this->offsetGet($index);
@@ -331,7 +332,7 @@ class Kohana_HTTP_Header extends ArrayObject
             $current_value = [$current_value, $newval];
         }
 
-        return parent::offsetSet($index, $current_value);
+        parent::offsetSet($index, $current_value);
     }
 
     /**
@@ -357,7 +358,7 @@ class Kohana_HTTP_Header extends ArrayObject
      */
     public function offsetUnset($index)
     {
-        return parent::offsetUnset(strtolower($index));
+        parent::offsetUnset(strtolower($index));
     }
 
     /**

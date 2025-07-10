@@ -261,9 +261,7 @@ class Kohana_Response implements HTTP_Response
      *
      * @param   mixed   $key    cookie name, or array of cookie values
      * @param   string  $value  value to set to cookie
-     * @return  string
-     * @return  void
-     * @return  [Response]
+     * @return array|string|Kohana_Response
      */
     public function cookie($key = null, $value = null)
     {
@@ -298,7 +296,7 @@ class Kohana_Response implements HTTP_Response
      * Deletes a cookie set to the response
      *
      * @param   string  $name
-     * @return  Response
+     * @return  Kohana_Response
      */
     public function delete_cookie($name)
     {
@@ -309,7 +307,7 @@ class Kohana_Response implements HTTP_Response
     /**
      * Deletes all cookies from this response
      *
-     * @return  Response
+     * @return Kohana_Response
      */
     public function delete_cookies()
     {

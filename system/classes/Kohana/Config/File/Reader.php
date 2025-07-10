@@ -35,7 +35,7 @@ class Kohana_Config_File_Reader implements Kohana_Config_Reader
      *     $config->load($name);
      *
      * @param   string  $group  configuration group name
-     * @return  $this   current object
+     * @return  array
      * @uses    Kohana::load
      */
     public function load($group)

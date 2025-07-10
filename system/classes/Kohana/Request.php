@@ -728,8 +728,7 @@ class Kohana_Request implements HTTP_Request
     /**
      * Provides access to the [Request_Client].
      *
-     * @return  Request_Client
-     * @return  self
+     * @return Kohana_Request|Request_Client
      */
     public function client(Request_Client $client = null)
     {
@@ -972,8 +971,7 @@ class Kohana_Request implements HTTP_Request
      *
      * @param   mixed    $key    Cookie name, or array of cookie values
      * @param   string   $value  Value to set to cookie
-     * @return  string
-     * @return  mixed
+     * @return array|mixed|Kohana_Request
      */
     public function cookie($key = null, $value = null)
     {

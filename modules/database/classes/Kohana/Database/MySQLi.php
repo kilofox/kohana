@@ -329,6 +329,8 @@ class Kohana_Database_MySQLi extends Database
                         case 'char':
                         case 'varchar':
                             $column['character_maximum_length'] = $length;
+                            $column['collation_name'] = $row['Collation'];
+                            break;
                         case 'text':
                         case 'tinytext':
                         case 'mediumtext':

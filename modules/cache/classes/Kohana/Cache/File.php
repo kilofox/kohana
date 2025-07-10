@@ -370,6 +370,8 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
             // Throw exception
             throw $e;
         }
+
+        return false;
     }
 
     /**

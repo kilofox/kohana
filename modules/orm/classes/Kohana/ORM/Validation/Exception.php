@@ -58,7 +58,7 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
      * @param  string     $alias    The relationship alias from the model
      * @param  Validation $object   The Validation object to merge
      * @param  mixed      $has_many The array key to use if this exception can be merged multiple times
-     * @return ORM_Validation_Exception
+     * @return Kohana_ORM_Validation_Exception
      */
     public function add_object($alias, Validation $object, $has_many = false)
     {
@@ -84,7 +84,7 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
      *
      * @param  ORM_Validation_Exception $object   The exception to merge
      * @param  mixed                    $has_many The array key to use if this exception can be merged multiple times
-     * @return ORM_Validation_Exception
+     * @return Kohana_ORM_Validation_Exception
      */
     public function merge(ORM_Validation_Exception $object, $has_many = false)
     {

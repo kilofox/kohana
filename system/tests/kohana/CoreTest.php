@@ -23,7 +23,7 @@ class Kohana_CoreTest extends Unittest_TestCase
     /**
      * Captures the module list as it was before this test
      *
-     * @return null
+     * @return void
      * @throws Kohana_Exception
      */
     // @codingStandardsIgnoreStart
@@ -37,7 +37,7 @@ class Kohana_CoreTest extends Unittest_TestCase
     /**
      * Restores the module list
      *
-     * @return null
+     * @return void
      * @throws Kohana_Exception
      */
     // @codingStandardsIgnoreStart
