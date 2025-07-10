@@ -312,8 +312,7 @@ class Kohana_Date
      * @param   integer $remote timestamp to find the span of
      * @param   integer $local  timestamp to use as the baseline
      * @param   string  $output formatting string
-     * @return  string   when only a single output is requested
-     * @return  array    associative list of all outputs requested
+     * @return string|array Returns a string when only a single output is requested, or an associative array of all outputs requested.
      */
     public static function span($remote, $local = null, $output = 'years,months,weeks,days,hours,minutes,seconds')
     {

@@ -483,12 +483,14 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @param string  $string  The string to length check
      * @param integer $length  The length of the string
      * @param boolean $correct Is $length the actual length of the string?
-     * @return bool
+     * @return void
      */
     public function test_exact_length($string, $length, $correct)
     {
-        return $this->assertSame(
-                $correct, Valid::exact_length($string, $length), 'Reported string length is not correct'
+        $this->assertSame(
+                $correct,
+                Valid::exact_length($string, $length),
+                'Reported string length is not correct'
         );
     }
 
@@ -519,13 +521,11 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @param   string   $string    value to check
      * @param   integer  $required  required value
      * @param   boolean  $correct   is $string the same as $required?
-     * @return  boolean
+     * @return  void
      */
     public function test_equals($string, $required, $correct)
     {
-        return $this->assertSame(
-                $correct, Valid::equals($string, $required), 'Values are not equal'
-        );
+        $this->assertSame($correct, Valid::equals($string, $required), 'Values are not equal');
     }
 
     /**
@@ -675,12 +675,11 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @dataProvider provider_not_empty
      * @param mixed   $value  Value to check
      * @param boolean $empty  Is the value really empty?
+     * @return void
      */
     public function test_not_empty($value, $empty)
     {
-        return $this->assertSame(
-                $empty, Valid::not_empty($value)
-        );
+        $this->assertSame($empty, Valid::not_empty($value));
     }
 
     /**

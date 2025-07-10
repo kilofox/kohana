@@ -406,7 +406,7 @@ class Kohana_ORM extends Model implements serializable
      *
      * @chainable
      * @param   boolean $force Force reloading
-     * @return  ORM
+     * @return  Kohana_ORM
      */
     public function reload_columns($force = false)
     {
@@ -430,7 +430,7 @@ class Kohana_ORM extends Model implements serializable
      * Unloads the current object and clears the status.
      *
      * @chainable
-     * @return ORM
+     * @return Kohana_ORM
      */
     public function clear()
     {
@@ -458,7 +458,7 @@ class Kohana_ORM extends Model implements serializable
      * Reloads the current object from the database.
      *
      * @chainable
-     * @return ORM
+     * @return Kohana_ORM
      * @throws Kohana_Exception
      */
     public function reload()
@@ -664,7 +664,7 @@ class Kohana_ORM extends Model implements serializable
      *
      * @param string $column Column name
      * @param mixed $value Column value
-     * @return ORM
+     * @return Kohana_ORM
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
@@ -716,7 +716,7 @@ class Kohana_ORM extends Model implements serializable
      *
      * @param  array $values   Array of column => val
      * @param  array $expected Array of keys to take from $values
-     * @return ORM
+     * @return Kohana_ORM
      */
     public function values(array $values, array $expected = null)
     {
@@ -779,7 +779,7 @@ class Kohana_ORM extends Model implements serializable
      * can be nested using 'object1:object2' syntax
      *
      * @param  string $target_path Target model to bind to
-     * @return ORM
+     * @return Kohana_ORM
      */
     public function with($target_path)
     {
@@ -851,7 +851,7 @@ class Kohana_ORM extends Model implements serializable
      * Initializes the Database Builder to given query type
      *
      * @param  integer $type Type of Database query
-     * @return ORM
+     * @return Kohana_ORM
      */
     protected function _build($type)
     {
@@ -885,8 +885,8 @@ class Kohana_ORM extends Model implements serializable
      * Finds and loads a single database row into the object.
      *
      * @chainable
+     * @return Database_Result_Cached|Kohana_ORM|object
      * @throws Kohana_Exception
-     * @return ORM
      */
     public function find()
     {
@@ -951,7 +951,7 @@ class Kohana_ORM extends Model implements serializable
      *
      * @chainable
      * @param bool $multiple Return an iterator or load a single row
-     * @return ORM|Database_Result
+     * @return Database_Result_Cached|Kohana_ORM|object
      * @throws Kohana_Exception
      */
     protected function _load_result($multiple = false)
@@ -1007,7 +1007,7 @@ class Kohana_ORM extends Model implements serializable
      *
      * @chainable
      * @param  array $values Values to load
-     * @return ORM
+     * @return Kohana_ORM
      */
     protected function _load_values(array $values)
     {
@@ -1152,7 +1152,7 @@ class Kohana_ORM extends Model implements serializable
      * Validates the current model's data
      *
      * @param Validation $extra_validation Validation object
-     * @return ORM
+     * @return Kohana_ORM
      * @throws ORM_Validation_Exception
      * @throws ReflectionException
      */
@@ -1182,7 +1182,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Insert a new object to the database
      * @param Validation $validation Validation object
-     * @return ORM
+     * @return Kohana_ORM
      * @throws Kohana_Exception
      * @throws ORM_Validation_Exception
      * @throws ReflectionException
@@ -1238,7 +1238,7 @@ class Kohana_ORM extends Model implements serializable
      *
      * @chainable
      * @param Validation $validation Validation object
-     * @return ORM
+     * @return Kohana_ORM
      * @throws Kohana_Exception
      * @throws ORM_Validation_Exception
      * @throws ReflectionException
@@ -1301,7 +1301,7 @@ class Kohana_ORM extends Model implements serializable
      *
      * @chainable
      * @param Validation $validation Validation object
-     * @return ORM
+     * @return Kohana_ORM
      * @throws Kohana_Exception
      * @throws ORM_Validation_Exception
      * @throws ReflectionException
@@ -1315,8 +1315,8 @@ class Kohana_ORM extends Model implements serializable
      * Deletes a single record while ignoring relationships.
      *
      * @chainable
+     * @return Kohana_ORM
      * @throws Kohana_Exception
-     * @return ORM
      */
     public function delete()
     {
@@ -1443,7 +1443,7 @@ class Kohana_ORM extends Model implements serializable
      *
      * @param string $alias Alias of the has_many "through" relationship
      * @param mixed $far_keys Related model, primary key, or an array of primary keys
-     * @return ORM
+     * @return Kohana_ORM
      * @throws Kohana_Exception
      */
     public function add($alias, $far_keys)
@@ -1478,7 +1478,7 @@ class Kohana_ORM extends Model implements serializable
      *
      * @param string $alias Alias of the has_many "through" relationship
      * @param mixed $far_keys Related model, primary key, or an array of primary keys
-     * @return ORM
+     * @return Kohana_ORM
      * @throws Kohana_Exception
      */
     public function remove($alias, $far_keys = null)
@@ -1558,14 +1558,15 @@ class Kohana_ORM extends Model implements serializable
      */
     protected function _related($alias)
     {
-        if (isset($this->_related[$alias])) {
-            return $this->_related[$alias];
-        } elseif (isset($this->_has_one[$alias])) {
-            return $this->_related[$alias] = ORM::factory($this->_has_one[$alias]['model']);
-        } elseif (isset($this->_belongs_to[$alias])) {
-            return $this->_related[$alias] = ORM::factory($this->_belongs_to[$alias]['model']);
-        } else {
-            return false;
+        switch (true) {
+            case isset($this->_related[$alias]):
+                return $this->_related[$alias];
+            case isset($this->_has_one[$alias]):
+                return $this->_related[$alias] = ORM::factory($this->_has_one[$alias]['model']);
+            case isset($this->_belongs_to[$alias]):
+                return $this->_related[$alias] = ORM::factory($this->_belongs_to[$alias]['model']);
+            default:
+                return null;
         }
     }
 
@@ -1594,7 +1595,7 @@ class Kohana_ORM extends Model implements serializable
      * query conditions for another query.
      *
      * @param bool $next Pass false to avoid resetting on the next call
-     * @return ORM
+     * @return Kohana_ORM
      */
     public function reset($next = true)
     {
