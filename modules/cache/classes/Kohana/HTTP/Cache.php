@@ -196,8 +196,7 @@ class Kohana_HTTP_Cache
      * used to cache responses if available and valid.
      *
      * @param   Kohana_Cache  $cache    engine to use for caching
-     * @return  Kohana_Cache
-     * @return  Kohana_Request_Client
+     * @return Kohana_Cache|Kohana_HTTP_Cache
      */
     public function cache(Cache $cache = null)
     {
@@ -215,8 +214,7 @@ class Kohana_HTTP_Cache
      *
      * @link    https://www.rfc-editor.org/rfc/rfc9111#name-private
      * @param   boolean $setting    allow caching of privately marked responses
-     * @return  boolean
-     * @return  [Request_Client]
+     * @return bool|Kohana_HTTP_Cache
      */
     public function allow_private_cache($setting = null)
     {

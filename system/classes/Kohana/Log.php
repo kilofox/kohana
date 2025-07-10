@@ -72,7 +72,7 @@ class Kohana_Log
      * @param   Log_Writer  $writer     instance
      * @param   mixed       $levels     array of messages levels to write OR max level to write
      * @param   integer     $min_level  min level to write IF $levels is not an array
-     * @return  Log
+     * @return  Kohana_Log
      */
     public function attach(Log_Writer $writer, $levels = [], $min_level = 0)
     {
@@ -94,7 +94,7 @@ class Kohana_Log
      *     $log->detach($writer);
      *
      * @param   Log_Writer  $writer instance
-     * @return  Log
+     * @return  Kohana_Log
      */
     public function detach(Log_Writer $writer)
     {
@@ -116,7 +116,7 @@ class Kohana_Log
      * @param   string  $message     message body
      * @param   array   $values      values to replace in the message
      * @param   array   $additional  additional custom parameters to supply to the log writer
-     * @return  Log
+     * @return  Kohana_Log
      */
     public function add($level, $message, array $values = null, array $additional = null)
     {

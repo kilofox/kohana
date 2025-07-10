@@ -46,7 +46,7 @@ abstract class Kohana_Unittest_TestSuite extends PHPUnit_Framework_TestSuite
             }
         }
 
-        return parent::run($result, $filter, $groups, $excludeGroups, $processIsolation);
+        return parent::run($result);
     }
 
     /**

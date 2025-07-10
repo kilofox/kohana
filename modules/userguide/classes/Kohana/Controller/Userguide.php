@@ -101,17 +101,20 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
 
         // If no module provided in the URL, show the user guide index page, which lists the modules.
         if (!$module) {
-            return $this->index();
+            $this->index();
+            return;
         }
 
         // If this module's userguide pages are disabled, show the error page
         if (!Kohana::$config->load('userguide.modules.' . $module . '.enabled')) {
-            return $this->error('That module doesn\'t exist, or has userguide pages disabled.');
+            $this->error('That module doesn\'t exist, or has userguide pages disabled.');
+            return;
         }
 
         // Prevent "guide/module" and "guide/module/index" from having duplicate content
         if ($page == 'index') {
-            return $this->error('Userguide page not found');
+            $this->error('Userguide page not found');
+            return;
         }
 
         // If a module is set, but no page was provided in the URL, show the index page
@@ -124,7 +127,8 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
 
         // If it's not found, show the error page
         if (!$file) {
-            return $this->error('Userguide page not found');
+            $this->error('Userguide page not found');
+            return;
         }
 
         // Namespace the Markdown parser
@@ -187,12 +191,16 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
             }
 
             // If this classes immediate parent is Kodoc_Missing, then it should 404
-            if ($_class->class->getParentClass() AND $_class->class->getParentClass()->name == 'Kodoc_Missing')
-                return $this->error('That class was not found. Check your URL and make sure that the module with that class is enabled.');
+            if ($_class->class->getParentClass() AND $_class->class->getParentClass()->name == 'Kodoc_Missing') {
+                $this->error('That class was not found. Check your URL and make sure that the module with that class is enabled.');
+                return;
+            }
 
             // If this classes package has been disabled via the config, 404
-            if (!Kodoc::show_class($_class))
-                return $this->error('That class is in package that is hidden.  Check the <code>api_packages</code> config setting.');
+            if (!Kodoc::show_class($_class)) {
+                $this->error('That class is in package that is hidden. Check the <code>api_packages</code> config setting.');
+                return;
+            }
 
             // Everything is fine, display the class.
             $this->template->title = $class;
@@ -270,7 +278,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
             $this->template->translations = Kohana::message('userguide', 'translations');
         }
 
-        return parent::after();
+        parent::after();
     }
 
     /**
