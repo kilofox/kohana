@@ -104,7 +104,7 @@ class Kohana_Validation implements ArrayAccess
      *     $copy = $array->copy($new_data);
      *
      * @param   array   $array  new data set
-     * @return  Validation
+     * @return  Kohana_Validation
      * @since   3.0.5
      */
     public function copy(array $array)

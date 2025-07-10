@@ -28,7 +28,7 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where
         }
 
         // Start the query with no SQL
-        return parent::__construct(Database::DELETE, '');
+        parent::__construct(Database::DELETE, '');
     }
 
     /**

@@ -14,6 +14,9 @@
  * @copyright  (c) 2008-2012 Kohana Team
  * @license    https://kohana.top/license
  */
+
+use PHPUnit\Framework\MockObject\MockObject;
+
 include Kohana::find_file('tests', 'test_data/callback_routes');
 
 class Kohana_RouteTest extends Unittest_TestCase
@@ -915,7 +918,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      * in order to avoid the fatal errors
      *
      * @param string $uri
-     * @return type
+     * @return PHPUnit_Framework_MockObject_MockObject|(Request&MockObject)
      */
     public function get_request_mock($uri)
     {

@@ -856,8 +856,7 @@ class Kohana_Core
      * @param   string  $file       file name
      * @param   string  $path       key path to get
      * @param   mixed   $default    default value if the path does not exist
-     * @return  string  message string for the given path
-     * @return  array   complete message list, when no path is specified
+     * @return string|array Returns the message string for the given path, or the entire message array if no path is specified.
      * @uses    Arr::merge
      * @uses    Arr::path
      */

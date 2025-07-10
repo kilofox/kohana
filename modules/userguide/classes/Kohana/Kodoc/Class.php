@@ -91,13 +91,9 @@ class Kohana_Kodoc_Class extends Kodoc
      */
     public function constants()
     {
-        $result = [];
-
-        foreach ($this->constants as $name => $value) {
-            $result[$name] = Debug::vars($value);
-        }
-
-        return $result;
+        return array_map(function ($value) {
+            return Debug::vars($value);
+        }, $this->constants);
     }
 
     /**

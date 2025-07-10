@@ -1,0 +1,34 @@
+# Upgrading from 3.4 to 3.5
+
+## Requirements
+
+Kohana 3.5 supports PHP versions 7.1, 7.2, and 7.3. Compatibility with other PHP versions has not been fully tested, and certain features may not function as expected.
+
+## Changes
+
+### Cache
+
+- The `Apc` driver has been removed. Use the `Apcu` driver or others instead.
+- The `Wincache` driver was deprecated. Use the `Apcu` driver or others instead.
+
+### Core
+
+- The `Kohana::CODENAME` constant has been removed.
+
+- THE static property `Kohana::$magic_quotes` was deprecated.
+
+- The `Request::accept_encoding()` method has been removed. Use `Request::headers()->accepts_encoding_at_quality()`
+  instead.
+
+- The `Request::accept_lang()` method has been removed. Use `Request::headers()->accepts_language_at_quality()` instead.
+
+- The `Request::accept_type()` method has been removed. Use `Request::headers()->accepts_at_quality()` instead.
+
+### Encrypt
+
+- The `Mcrypt` driver has been removed. Use the `OpenSSL` driver instead.
+
+### Image
+
+- The static property `Image::$default_driver` has been removed. To configure the default driver, refer to
+  the [Drivers section in the Image module documentation](../../guide/image/#drivers).

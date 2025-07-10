@@ -79,7 +79,7 @@ class Kohana_Config
      * See [Kohana_Config_Group] for more info
      *
      * @param   string  $group  configuration group name
-     * @return  Kohana_Config_Group
+     * @return  Kohana_Config_Group|mixed
      * @throws  Kohana_Exception
      */
     public function load($group)

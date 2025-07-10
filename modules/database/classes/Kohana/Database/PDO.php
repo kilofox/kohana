@@ -170,7 +170,7 @@ class Kohana_Database_PDO extends Database
             $result = $result->fetchAll();
 
             // Return an iterator of results
-            return new Database_Result_Cached($result, $sql, $as_object, $params);
+            return new Database_Result_Cached($result, $sql, $as_object);
         } elseif ($type === Database::INSERT) {
             // Return a list of insert id and rows created
             return [

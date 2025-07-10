@@ -238,12 +238,12 @@ class Kohana_View
      *     $view->set_filename($file);
      *
      * @param   string  $file   view filename
-     * @return  View
+     * @return  Kohana_View
      * @throws  View_Exception
      */
     public function set_filename($file)
     {
-        if (($path = Kohana::find_file('views', $file)) === false) {
+        if (!$path = Kohana::find_file('views', $file)) {
             throw new View_Exception('The requested view :file could not be found', [':file' => $file]);
         }
 
