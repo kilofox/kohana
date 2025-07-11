@@ -154,7 +154,6 @@ class Kohana_NumTest extends Unittest_TestCase
      * @dataProvider provider_round
      * @param number $input
      * @param integer $precision
-     * @param integer $mode
      * @param number $expected
      */
     function test_round($input, $precision, $expected)

@@ -99,7 +99,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
     /**
      * Use a sub-query to for the inserted values.
      *
-     * @param object $query Database_Query of SELECT type
+     * @param Database_Query $query Database_Query of SELECT type
      * @return  $this
      * @throws Kohana_Exception
      */

@@ -124,7 +124,8 @@ class Kohana_HTTP_Cache
      *
      * @param Request_Client $client client to execute with Cache-Control
      * @param Request $request request to execute with client
-     * @return  [Response]
+     * @param Response $response A response object
+     * @return false|HTTP_Header|mixed|Response
      * @throws Cache_Exception
      */
     public function execute(Request_Client $client, Request $request, Response $response)
@@ -195,7 +196,7 @@ class Kohana_HTTP_Cache
      * Getter and setter for the internal caching engine,
      * used to cache responses if available and valid.
      *
-     * @param   Kohana_Cache  $cache    engine to use for caching
+     * @param Cache|null $cache engine to use for caching
      * @return Kohana_Cache|Kohana_HTTP_Cache
      */
     public function cache(Cache $cache = null)
