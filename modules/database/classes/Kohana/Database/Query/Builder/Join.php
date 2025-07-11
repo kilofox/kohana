@@ -62,17 +62,15 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
     /**
      * Adds a new condition for joining.
      *
-     * @param string $columns column name
+     * @param string ...$columns column name
      * @return  $this
      * @throws Kohana_Exception
      */
-    public function using($columns)
+    public function using(...$columns)
     {
         if (!empty($this->_on)) {
             throw new Kohana_Exception('JOIN ... ON ... cannot be combined with JOIN ... USING ...');
         }
-
-        $columns = func_get_args();
 
         $this->_using = array_merge($this->_using, $columns);
 

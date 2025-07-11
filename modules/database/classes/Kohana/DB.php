@@ -55,12 +55,12 @@ class Kohana_DB
      *     // SELECT id AS user_id
      *     $query = DB::select(['id', 'user_id']);
      *
-     * @param   mixed   $columns  column name or [$column, $alias] or object
+     * @param mixed ...$columns column name or [$column, $alias] or object
      * @return  Database_Query_Builder_Select
      */
-    public static function select($columns = null)
+    public static function select(...$columns)
     {
-        return new Database_Query_Builder_Select(func_get_args());
+        return new Database_Query_Builder_Select($columns);
     }
 
     /**

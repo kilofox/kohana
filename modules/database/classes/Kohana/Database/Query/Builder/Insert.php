@@ -75,19 +75,15 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
     /**
      * Adds or overwrites values. Multiple value sets can be added.
      *
-     * @param array $values values list
-     * @param   ...
+     * @param array ...$values values list
      * @return  $this
      * @throws Kohana_Exception
      */
-    public function values(array $values)
+    public function values(array ...$values)
     {
         if (!is_array($this->_values)) {
             throw new Kohana_Exception('INSERT INTO ... SELECT statements cannot be combined with INSERT INTO ... VALUES');
         }
-
-        // Get all the passed values
-        $values = func_get_args();
 
         foreach ($values as $value) {
             $this->_values[] = $value;
