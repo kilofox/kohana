@@ -36,8 +36,7 @@ abstract class Kohana_CacheBasicMethodsTest extends PHPUnit_Framework_TestCase
     /**
      * Accessor method to `$_cache_driver`.
      *
-     * @return  Cache
-     * @return  self
+     * @return Cache|Kohana_CacheBasicMethodsTest
      */
     public function cache(Cache $cache = null)
     {

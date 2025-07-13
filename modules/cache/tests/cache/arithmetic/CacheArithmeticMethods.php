@@ -77,8 +77,7 @@ abstract class Kohana_CacheArithmeticMethodsTest extends Kohana_CacheBasicMethod
      * @param   array    increment arguments
      * @return  void
      */
-    public function test_increment(
-    $start_state = null, array $inc_args, $expected)
+    public function test_increment($start_state, array $inc_args, $expected)
     {
         $cache = $this->cache();
 
@@ -145,7 +144,7 @@ abstract class Kohana_CacheArithmeticMethodsTest extends Kohana_CacheBasicMethod
      * @param   array    decrement arguments
      * @return  void
      */
-    public function test_decrement($start_state = null, array $dec_args, $expected)
+    public function test_decrement($start_state, array $dec_args, $expected)
     {
         $cache = $this->cache();
 

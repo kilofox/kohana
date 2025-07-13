@@ -20,7 +20,7 @@ class Kohana_ViewTest extends Unittest_TestCase
     /**
      * Setups the filesystem for test view files
      *
-     * @return null
+     * @return void
      * @throws Kohana_Exception
      */
     // @codingStandardsIgnoreStart
@@ -38,7 +38,7 @@ class Kohana_ViewTest extends Unittest_TestCase
     /**
      * Restores the module list
      *
-     * @return null
+     * @return void
      * @throws Kohana_Exception
      */
     // @codingStandardsIgnoreStart
@@ -81,8 +81,7 @@ class Kohana_ViewTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_instantiate
-     *
-     * @return null
+     * @return void
      */
     public function test_instantiate($path, $expects_exception)
     {
@@ -99,8 +98,7 @@ class Kohana_ViewTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_set
-     *
-     * @return null
+     * @return void
      * @throws View_Exception
      */
     public function test_set($data_key, $value, $test_key, $expected)
@@ -114,8 +112,7 @@ class Kohana_ViewTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_set
-     *
-     * @return null
+     * @return void
      * @throws View_Exception
      */
     public function test_set_global($data_key, $value, $test_key, $expected)

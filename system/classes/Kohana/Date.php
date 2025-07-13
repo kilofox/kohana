@@ -312,8 +312,7 @@ class Kohana_Date
      * @param   integer $remote timestamp to find the span of
      * @param   integer $local  timestamp to use as the baseline
      * @param   string  $output formatting string
-     * @return  string   when only a single output is requested
-     * @return  array    associative list of all outputs requested
+     * @return string|array Returns a string when only a single output is requested, or an associative array of all outputs requested.
      */
     public static function span($remote, $local = null, $output = 'years,months,weeks,days,hours,minutes,seconds')
     {
@@ -523,8 +522,7 @@ class Kohana_Date
         $time = new DateTime($datetime_str, $tz);
 
         // Convert the time back to the expected timezone if required (in case the datetime_str provided a timezone,
-        // offset or unix timestamp). This also ensures that the timezone reported by the object is correct on HHVM
-        // (see https://github.com/facebook/hhvm/issues/2302).
+        // offset or unix timestamp).
         $time->setTimeZone($tz);
 
         return $time->format($timestamp_format);

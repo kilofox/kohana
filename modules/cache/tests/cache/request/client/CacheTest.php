@@ -222,8 +222,7 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_set_cache
-     *
-     * @return null
+     * @return void
      */
     public function test_set_cache($headers, $cache_control, $expected)
     {

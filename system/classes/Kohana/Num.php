@@ -133,38 +133,37 @@ class Kohana_Num
             return round($value, $precision, $mode);
         }
 
-        if ($mode === self::ROUND_HALF_UP) {
-            return round($value, $precision);
-        } else {
-            $factor = ($precision === 0) ? 1 : pow(10, $precision);
+        switch ($mode) {
+            case self::ROUND_HALF_UP:
+            default:
+                return round($value, $precision);
+            case self::ROUND_HALF_DOWN:
+            case self::ROUND_HALF_EVEN:
+            case self::ROUND_HALF_ODD:
+                $factor = ($precision === 0) ? 1 : pow(10, $precision);
 
-            switch ($mode) {
-                case self::ROUND_HALF_DOWN:
-                case self::ROUND_HALF_EVEN:
-                case self::ROUND_HALF_ODD:
-                    // Check if we have a rounding tie, otherwise we can just call round()
-                    if (($value * $factor) - floor($value * $factor) === 0.5) {
-                        if ($mode === self::ROUND_HALF_DOWN) {
-                            // Round down operation, so we round down unless the value
-                            // is -ve because up is down and down is up down there. ;)
-                            $up = ($value < 0);
-                        } else {
-                            // Round up if the integer is odd and the round mode is set to even
-                            // or the integer is even and the round mode is set to odd.
-                            // Any other instance round down.
-                            $up = (!(!(floor($value * $factor) & 1)) === ($mode === self::ROUND_HALF_EVEN));
-                        }
-
-                        if ($up) {
-                            $value = ceil($value * $factor);
-                        } else {
-                            $value = floor($value * $factor);
-                        }
-                        return $value / $factor;
+                // Check if we have a rounding tie, otherwise we can just call round()
+                if (($value * $factor) - floor($value * $factor) === 0.5) {
+                    if ($mode === self::ROUND_HALF_DOWN) {
+                        // Round down operation, so we round down unless the value
+                        // is -ve because up is down and down is up down there. ;)
+                        $up = ($value < 0);
                     } else {
-                        return round($value, $precision);
+                        // Round up if the integer is odd and the round mode is set to even
+                        // or the integer is even and the round mode is set to odd.
+                        // Any other instance round down.
+                        $up = (!(!(floor($value * $factor) & 1)) === ($mode === self::ROUND_HALF_EVEN));
                     }
-            }
+
+                    if ($up) {
+                        $value = ceil($value * $factor);
+                    } else {
+                        $value = floor($value * $factor);
+                    }
+                    return $value / $factor;
+                } else {
+                    return round($value, $precision);
+                }
         }
     }
 

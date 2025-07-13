@@ -58,6 +58,8 @@ class Kohana_Auth_ORM extends Auth
 
             return $user->has('roles', $roles);
         }
+
+        return false;
     }
 
     /**
@@ -120,7 +122,7 @@ class Kohana_Auth_ORM extends Auth
      *
      * @param mixed $user username string, or user ORM object
      * @param boolean $mark_session_as_forced mark the session as forced
-     * @return  boolean
+     * @return  void
      * @throws Kohana_Exception
      */
     public function force_login($user, $mark_session_as_forced = false)
@@ -268,7 +270,7 @@ class Kohana_Auth_ORM extends Auth
     {
         $user->complete_login();
 
-        return parent::complete_login($user);
+        parent::complete_login($user);
     }
 
     /**

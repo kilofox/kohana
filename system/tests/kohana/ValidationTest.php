@@ -306,8 +306,8 @@ class Kohana_ValidationTest extends Unittest_TestCase
         $this->assertSame($expected_errors, $errors);
 
         $validation = new validation($array);
-        foreach ($rules as $field => $rules) {
-            $validation->rules($field, $rules);
+        foreach ($rules as $field => $fieldRules) {
+            $validation->rules($field, $fieldRules);
         }
         $validation->labels($labels);
 

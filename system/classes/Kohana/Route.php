@@ -146,8 +146,7 @@ class Kohana_Route
      *
      * @param boolean $save cache the current routes
      * @param boolean $append append, rather than replace, cached routes when loading
-     * @return  void    when saving routes
-     * @return  boolean when loading routes
+     * @return void|bool Returns void when saving routes, or bool when loading routes.
      * @throws Kohana_Exception
      * @uses    Kohana::cache
      */
@@ -319,7 +318,7 @@ class Kohana_Route
      * If no parameter is passed, this method will act as a getter.
      *
      * @param   array   $defaults   key values
-     * @return  $this or array
+     * @return array|Kohana_Route
      */
     public function defaults(array $defaults = null)
     {
@@ -382,8 +381,7 @@ class Kohana_Route
      *     }
      *
      * @param   Request $request  Request object to match
-     * @return  array             on success
-     * @return  false             on failure
+     * @return array|false Returns routed parameters as an array on success, or false on failure.
      */
     public function matches(Request $request)
     {
@@ -526,6 +524,8 @@ class Kohana_Route
 
                     // Do not add optional groups to this result
                 }
+
+                return '';
             }, $portion);
 
             if ($required AND $missing) {
