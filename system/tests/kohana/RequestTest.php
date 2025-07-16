@@ -379,8 +379,8 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_post_max_size_exceeded
      *
-     * @param int      content_length
-     * @param bool     expected
+     * @param int $content_length content_length
+     * @param bool $expected expected
      * @return  void
      * @throws Kohana_Exception
      */
@@ -471,8 +471,8 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_options_set_to_external_client
      *
-     * @param array    settings
-     * @param array    expected
+     * @param array $settings settings
+     * @param array $expected expected
      * @return void
      * @throws Request_Exception
      */
@@ -523,8 +523,8 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_headers_get
      *
-     * @param   Request  request to test
-     * @param   array    headers to test against
+     * @param Request $request request to test
+     * @param array $headers headers to test against
      * @return  void
      */
     public function test_headers_get($request, $headers)
@@ -564,8 +564,8 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_headers_set
      *
-     * @param array      header(s) to set to the request object
-     * @param string     expected http header
+     * @param array $headers header(s) to set to the request object
+     * @param string $expected expected http header
      * @return  void
      * @throws Request_Exception
      */
@@ -620,9 +620,9 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_query_parameter_parsing
      *
-     * @param string    URL
-     * @param array     query
-     * @param array    expected
+     * @param string $url URL
+     * @param array $query query
+     * @param array $expected expected
      * @return  void
      * @throws Request_Exception
      */
@@ -644,9 +644,9 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @dataProvider provider_query_parameter_parsing
      *
-     * @param string    URL
-     * @param array     query
-     * @param array    expected
+     * @param string $url URL
+     * @param array $query query
+     * @param array $expected expected
      * @return  void
      * @throws Request_Exception
      */

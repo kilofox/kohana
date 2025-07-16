@@ -63,8 +63,8 @@ class Kohana_NumTest extends Unittest_TestCase
      * @test
      * @covers       Num::bytes
      * @dataProvider provider_bytes
-     * @param integer Expected Value
-     * @param string  Input value
+     * @param integer $expected Expected Value
+     * @param string $size Input value
      * @throws Kohana_Exception
      */
     public function test_bytes($expected, $size)
