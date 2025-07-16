@@ -413,7 +413,7 @@ class Kohana_Image_GD extends Image
      * @return  void
      * @throws Kohana_Exception
      */
-    protected function _do_watermark(Image $watermark, $offset_x, $offset_y, $opacity)
+    protected function _do_watermark(Image $image, $offset_x, $offset_y, $opacity)
     {
         if (empty(Image_GD::$_available_functions[Image_GD::IMAGELAYEREFFECT])) {
             throw new Kohana_Exception('This method requires :function, which is only available in the bundled version of GD', [':function' => 'imagelayereffect']);
@@ -423,7 +423,7 @@ class Kohana_Image_GD extends Image
         $this->_load_image();
 
         // Create the watermark image resource
-        $overlay = imagecreatefromstring($watermark->render());
+        $overlay = imagecreatefromstring($image->render());
 
         imagesavealpha($overlay, true);
 

@@ -715,7 +715,7 @@ class Kohana_UTF8
      * Ported to PHP by Henri Sivonen <hsivonen@iki.fi>, see http://hsivonen.iki.fi/php-utf8/
      * Slight modifications to fit with phputf8 library by Harry Fuecks <hfuecks@gmail.com>.
      *
-     * @param array $str Unicode code points representing a string
+     * @param array $arr Unicode code points representing a string
      * @return  string  utf8 string of characters
      * @return  boolean false if a code point cannot be found
      * @throws UTF8_Exception

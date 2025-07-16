@@ -242,8 +242,8 @@ TESTTEXT;
      *
      * @dataProvider provider_set_get
      *
-     * @param array    data
-     * @param mixed    expected
+     * @param array $data data
+     * @param mixed $expected expected
      * @return  void
      * @throws Cache_Exception
      */

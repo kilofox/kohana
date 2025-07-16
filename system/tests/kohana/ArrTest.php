@@ -300,7 +300,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_is_array
-     * @param mixed   $value     Value to check
+     * @param mixed   $array     Value to check
      * @param boolean $expected  Is $value an array?
      */
     public function test_is_array($array, $expected)

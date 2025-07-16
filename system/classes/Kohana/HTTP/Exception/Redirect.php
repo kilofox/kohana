@@ -17,7 +17,7 @@ abstract class Kohana_HTTP_Exception_Redirect extends HTTP_Exception_Expected
     /**
      * Specifies the URI to redirect to.
      *
-     * @param string $location URI of the proxy
+     * @param string $uri URI of the proxy
      * @throws Kohana_Exception
      */
     public function location($uri = null)

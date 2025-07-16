@@ -121,20 +121,19 @@ class Kohana_Text
      * Note that using multiple iterations of different strings may produce
      * unexpected results.
      *
-     * @param   string  $str,...    strings to alternate between
+     * @param string ...$strings strings to alternate between
      * @return  string
      */
-    public static function alternate()
+    public static function alternate(...$strings)
     {
         static $i;
 
-        if (func_num_args() === 0) {
+        if (empty($strings)) {
             $i = 0;
             return '';
         }
 
-        $args = func_get_args();
-        return $args[($i++ % count($args))];
+        return $strings[($i++ % count($strings))];
     }
 
     /**
