@@ -263,8 +263,8 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      * Increment a given value by the step value supplied.
      * Useful for shared counters and other persistent integer based tracking.
      *
-     * @param   string    ID of cache entry to increment.
-     * @param   int       Step value to increment by.
+     * @param string $id ID of cache entry to increment.
+     * @param int $step Step value to increment by.
      * @return  int
      * @return  bool
      */
@@ -277,8 +277,8 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      * Decrement a given value by the step value supplied.
      * Useful for shared counters and other persistent integer based tracking.
      *
-     * @param   string    ID of cache entry to decrement.
-     * @param   int       Step value to decrement by.
+     * @param string $id ID of cache entry to decrement.
+     * @param int $step Step value to decrement by.
      * @return  int
      * @return  bool
      */

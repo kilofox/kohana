@@ -171,8 +171,8 @@ abstract class Kohana_Cache
      *     // Get a configuration setting
      *     $servers = $cache->config('servers');
      *
-     * @param   mixed    key to set to array, either array or config path
-     * @param   mixed    value to associate with key
+     * @param mixed $key key to set to array, either array or config path
+     * @param mixed $value value to associate with key
      * @return  mixed
      */
     public function config($key = null, $value = null)

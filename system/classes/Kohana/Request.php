@@ -316,8 +316,8 @@ class Kohana_Request implements HTTP_Request
     /**
      * Process a request to find a matching route
      *
-     * @param   object  $request Request
-     * @param   array   $routes  Route
+     * @param Request $request Request
+     * @param array $routes Route
      * @return  array
      */
     public static function process(Request $request, $routes = null)
@@ -652,7 +652,7 @@ class Kohana_Request implements HTTP_Request
     /**
      * Sets and gets the route from the request.
      *
-     * @param   string $route
+     * @param Route|null $route
      * @return  mixed
      */
     public function route(Route $route = null)

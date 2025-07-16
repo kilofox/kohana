@@ -45,7 +45,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      *
      * @see Markdown()
      *
-     * @param   string  Text to parse
+     * @param string $text Text to parse
      * @return  string  Transformed text
      */
     public static function markdown($text)
@@ -89,7 +89,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      * Heading 1
      * =========
      *
-     * @param   array   Matches from regex call
+     * @param array $matches Matches from regex call
      * @return  string  Generated HTML
      */
     function _doHeaders_callback_setext($matches)
@@ -116,7 +116,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      *
      * # Heading 1
      *
-     * @param   array   Matches from regex call
+     * @param array $matches Matches from regex call
      * @return  string  Generated HTML
      */
     function _doHeaders_callback_atx($matches)
@@ -140,7 +140,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      * Makes a heading id from the heading text
      * If any heading share the same name then subsequent headings will have an integer appended
      *
-     * @param   string  The heading text
+     * @param string $heading The heading text
      * @return  string  ID for the heading
      */
     function make_heading_id($heading)
@@ -195,7 +195,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      *
      *     [filesystem](about.filesystem "Optional title")
      *
-     * @param   string  Span text
+     * @param string $text Span text
      * @return  string
      */
     public function doBaseURL($text)
@@ -209,7 +209,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      *
      *     ![Install Page](img/install.png "Optional title")
      *
-     * @param   string  Span text
+     * @param string $text Span text
      * @return  string
      */
     public function doImageURL($text)
@@ -223,7 +223,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      *
      *     [Class_Name], [Class::method] or [Class::$property]
      *
-     * @param   string  Span text
+     * @param string $text Span text
      * @return  string
      */
     public function doAPI($text)
@@ -236,7 +236,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      *
      *     [!!] Remember the milk!
      *
-     * @param   string  Span text
+     * @param string $text Span text
      * @return  string
      */
     public function doNotes($text)

@@ -63,13 +63,11 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
     /**
      * Choose the columns to select from.
      *
-     * @param   mixed  $columns  column name or [$column, $alias] or object
+     * @param mixed ...$columns column name or [$column, $alias] or object
      * @return  $this
      */
-    public function select($columns = null)
+    public function select(...$columns)
     {
-        $columns = func_get_args();
-
         $this->_select = array_merge($this->_select, $columns);
 
         return $this;
@@ -91,13 +89,11 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
     /**
      * Choose the tables to select "FROM ..."
      *
-     * @param   mixed  $table  table name or [$table, $alias] or object
+     * @param mixed ...$tables table name or [$table, $alias] or object
      * @return  $this
      */
-    public function from($tables)
+    public function from(...$tables)
     {
-        $tables = func_get_args();
-
         $this->_from = array_merge($this->_from, $tables);
 
         return $this;
@@ -135,13 +131,11 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
     /**
      * Adds "USING ..." conditions for the last created JOIN statement.
      *
-     * @param   string  $columns  column name
+     * @param string ...$columns column name
      * @return  $this
      */
-    public function using($columns)
+    public function using(...$columns)
     {
-        $columns = func_get_args();
-
         call_user_func_array([$this->_last_join, 'using'], $columns);
 
         return $this;
@@ -150,13 +144,11 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
     /**
      * Creates a "GROUP BY ..." filter.
      *
-     * @param   mixed   $columns  column name or [$column, $alias] or object
+     * @param mixed ...$columns column name or [$column, $alias] or object
      * @return  $this
      */
-    public function group_by($columns)
+    public function group_by(...$columns)
     {
-        $columns = func_get_args();
-
         $this->_group_by = array_merge($this->_group_by, $columns);
 
         return $this;

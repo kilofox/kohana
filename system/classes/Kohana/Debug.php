@@ -18,16 +18,14 @@ class Kohana_Debug
      *     // Displays the type and value of each variable
      *     echo Debug::vars($foo, $bar, $baz);
      *
-     * @param   mixed   $var,...    variable to debug
+     * @param mixed ...$variables variable to debug
      * @return  string
      */
-    public static function vars()
+    public static function vars(...$variables)
     {
-        if (func_num_args() === 0)
+        if (empty($variables)) {
             return '';
-
-        // Get all passed variables
-        $variables = func_get_args();
+        }
 
         $output = [];
         foreach ($variables as $var) {

@@ -17,7 +17,7 @@ class Kohana_Config_Database_Reader implements Kohana_Config_Reader
     /**
      * Constructs the database reader object
      *
-     * @param array Configuration for the reader
+     * @param array $config Configuration for the reader
      */
     public function __construct(array $config = null)
     {

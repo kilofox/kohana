@@ -43,6 +43,8 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
      * parent::setUp()
      *
      * @return void
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function setUp()
     {
@@ -60,6 +62,8 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
      * should call parent::tearDown()
      *
      * @return void
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function tearDown()
     {

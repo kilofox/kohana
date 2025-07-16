@@ -23,9 +23,10 @@ class Kohana_Request_Client_Internal extends Request_Client
      *
      *     $request->execute();
      *
-     * @param   Request $request
+     * @param Request $request
+     * @param Response $response
      * @return  Response
-     * @throws  Kohana_Exception
+     * @throws Kohana_Exception
      * @uses    [Kohana::$profiling]
      * @uses    [Profiler]
      */

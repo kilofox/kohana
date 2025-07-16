@@ -21,7 +21,7 @@ abstract class Kohana_Kodoc_Missing
      *
      * [!!] All classes created will extend [Kodoc_Missing].
      *
-     * @param   string   class name
+     * @param string $class class name
      * @return  boolean
      * @since   3.0.7
      */

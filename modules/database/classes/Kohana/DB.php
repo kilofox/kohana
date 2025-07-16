@@ -55,12 +55,12 @@ class Kohana_DB
      *     // SELECT id AS user_id
      *     $query = DB::select(['id', 'user_id']);
      *
-     * @param   mixed   $columns  column name or [$column, $alias] or object
+     * @param mixed ...$columns column name or [$column, $alias] or object
      * @return  Database_Query_Builder_Select
      */
-    public static function select($columns = null)
+    public static function select(...$columns)
     {
-        return new Database_Query_Builder_Select(func_get_args());
+        return new Database_Query_Builder_Select($columns);
     }
 
     /**
@@ -129,8 +129,8 @@ class Kohana_DB
      *     $query = DB::update('users')->set(['login_count' => DB::expr('login_count + 1')])->where('id', '=', $id);
      *     $users = ORM::factory('user')->where(DB::expr("BINARY `hash`"), '=', $hash)->find();
      *
-     * @param   string  $string  expression
-     * @param   array   parameters
+     * @param string $string expression
+     * @param array $parameters parameters
      * @return  Database_Expression
      */
     public static function expr($string, $parameters = [])
