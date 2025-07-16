@@ -263,14 +263,12 @@ abstract class Kohana_Session
      *
      *     $session->delete('foo');
      *
-     * @param   string  $key,...    variable name
+     * @param string ...$keys variable name
      * @return  $this
      */
-    public function delete($key)
+    public function delete(...$keys)
     {
-        $args = func_get_args();
-
-        foreach ($args as $key) {
+        foreach ($keys as $key) {
             unset($this->_data[$key]);
         }
 

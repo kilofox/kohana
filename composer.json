@@ -33,6 +33,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7",
-        "ext-imagick": ">=3.6"
+        "ext-apcu": "*",
+        "ext-imagick": ">=3.6",
+        "ext-memcached": "*"
     }
 }

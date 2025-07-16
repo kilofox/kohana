@@ -20,7 +20,7 @@ abstract class Kohana_Minion_Task
     /**
      * Converts a task (e.g. db:migrate to a class name)
      *
-     * @param string  Task name
+     * @param string $task Task name
      * @return string Class name
      */
     public static function convert_task_to_class_name($task)
@@ -36,7 +36,7 @@ abstract class Kohana_Minion_Task
     /**
      * Gets the task name of a task class / task object
      *
-     * @param  string|Minion_Task The task class / object
+     * @param string|Minion_Task $class The task class / object
      * @return string             The task name
      */
     public static function convert_class_to_task($class)
@@ -51,7 +51,7 @@ abstract class Kohana_Minion_Task
     /**
      * Factory for loading minion tasks
      *
-     * @param  array An array of command line options. It should contain the 'task' key
+     * @param array $options An array of command line options. It should contain the 'task' key
      * @throws Minion_Exception_InvalidTask
      * @return Minion_Task The Minion task
      */
@@ -182,7 +182,7 @@ abstract class Kohana_Minion_Task
      *             ->rule('paramname', 'not_empty'); // Require this param
      *     }
      *
-     * @param  Validation   the validation object to add rules to
+     * @param Validation $validation the validation object to add rules to
      *
      * @return Validation
      */
@@ -268,7 +268,7 @@ abstract class Kohana_Minion_Task
      *
      * Based on the code in Kodoc::parse()
      *
-     * @param string The comment to parse
+     * @param string $comment The comment to parse
      * @return array First element is the comment, second is an array of tags
      */
     protected function _parse_doccomment($comment)
@@ -308,8 +308,8 @@ abstract class Kohana_Minion_Task
     /**
      * Compiles a list of available tasks from a directory structure
      *
-     * @param  array Directory structure of tasks
-     * @param  string prefix
+     * @param array $files Directory structure of tasks
+     * @param string $prefix prefix
      * @return array Compiled tasks
      */
     protected function _compile_task_list(array $files, $prefix = '')

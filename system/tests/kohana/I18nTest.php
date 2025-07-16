@@ -48,10 +48,10 @@ class Kohana_I18nTest extends Unittest_TestCase
      * @param  boolean  $input     Input for I18n::lang
      * @param  boolean  $expected  Output for I18n::lang
      */
-    public function test_lang($input, $expected_result)
+    public function test_lang($input, $expected)
     {
-        $this->assertSame($expected_result, I18n::lang($input));
-        $this->assertSame($expected_result, I18n::lang());
+        $this->assertSame($expected, I18n::lang($input));
+        $this->assertSame($expected, I18n::lang());
     }
 
     /**

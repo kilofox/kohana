@@ -101,7 +101,7 @@ class Kohana_Kodoc
     /**
      * Returns an array of all the classes available, built by listing all files in the classes folder.
      *
-     * @param   array   array of files, obtained using Kohana::list_files
+     * @param array $list array of files, obtained using Kohana::list_files
      * @return  array   an array of all the class names
      */
     public static function classes(array $list = null)
@@ -305,9 +305,9 @@ class Kohana_Kodoc
     /**
      * Get the source of a function
      *
-     * @param  string   the filename
-     * @param  int      start line?
-     * @param  int      end line?
+     * @param string $file the filename
+     * @param int $start start line?
+     * @param int $end end line?
      */
     public static function source($file, $start, $end)
     {
@@ -332,7 +332,7 @@ class Kohana_Kodoc
     /**
      * Test whether a class should be shown, based on the api_packages config option
      *
-     * @param Kodoc_Class  the class to test
+     * @param Kodoc_Class $class the class to test
      * @return  bool  whether this class should be shown
      * @throws Kohana_Exception
      */

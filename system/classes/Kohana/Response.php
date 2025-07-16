@@ -184,19 +184,19 @@ class Kohana_Response implements HTTP_Response
      *      // Get the current status
      *      $status = $response->status();
      *
-     * @param integer $status Status to set to this response
+     * @param integer $code Status to set to this response
      * @return  mixed
      * @throws Kohana_Exception
      */
-    public function status($status = null)
+    public function status($code = null)
     {
-        if ($status === null) {
+        if ($code === null) {
             return $this->_status;
-        } elseif (array_key_exists($status, Response::$messages)) {
-            $this->_status = (int) $status;
+        } elseif (array_key_exists($code, Response::$messages)) {
+            $this->_status = (int) $code;
             return $this;
         } else {
-            throw new Kohana_Exception(__METHOD__ . ' unknown status value : :value', [':value' => $status]);
+            throw new Kohana_Exception(__METHOD__ . ' unknown status value : :value', [':value' => $code]);
         }
     }
 

@@ -35,14 +35,14 @@ class Kohana_ORM extends Model implements serializable
      *    $model = ORM::factory('User_Token');
      *
      * @chainable
-     * @param   string  $model  Model name
+     * @param string $name Model name
      * @param   mixed   $id     Parameter for find()
      * @return  ORM
      */
-    public static function factory($model, $id = null)
+    public static function factory($name, $id = null)
     {
         // Set class name
-        $model = 'Model_' . $model;
+        $model = 'Model_' . $name;
 
         return new $model($id);
     }
@@ -394,7 +394,7 @@ class Kohana_ORM extends Model implements serializable
         $columns = array_keys($this->_table_columns);
 
         // Merge user-defined labels
-        $labels = array_merge(array_combine($columns, $columns), $this->labels());
+        $labels = array_merge(array_combine($columns, $columns) ?: [], $this->labels());
 
         foreach ($labels as $field => $label) {
             $this->_validation->label($field, $label);
@@ -1908,14 +1908,11 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Choose the columns to select from.
      *
-     * @param   mixed  $columns  column name or [$column, $alias] or object
-     * @param   ...
+     * @param mixed ...$columns column name or [$column, $alias] or object
      * @return  $this
      */
-    public function select($columns = null)
+    public function select(...$columns)
     {
-        $columns = func_get_args();
-
         // Add pending database call which is executed after query type is determined
         $this->_db_pending[] = [
             'name' => 'select',
@@ -1928,14 +1925,11 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Choose the tables to select "FROM ..."
      *
-     * @param   mixed  $tables  table name or [$table, $alias] or object
-     * @param   ...
+     * @param mixed ...$tables table name or [$table, $alias] or object
      * @return  $this
      */
-    public function from($tables)
+    public function from(...$tables)
     {
-        $tables = func_get_args();
-
         // Add pending database call which is executed after query type is determined
         $this->_db_pending[] = [
             'name' => 'from',
@@ -1985,14 +1979,12 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Creates a "GROUP BY ..." filter.
      *
-     * @param   mixed   $columns  column name or [$column, $alias] or object
+     * @param mixed ...$columns column name or [$column, $alias] or object
      * @param   ...
      * @return  $this
      */
-    public function group_by($columns)
+    public function group_by(...$columns)
     {
-        $columns = func_get_args();
-
         // Add pending database call which is executed after query type is determined
         $this->_db_pending[] = [
             'name' => 'group_by',
