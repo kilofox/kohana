@@ -50,7 +50,7 @@ class Kohana_Request implements HTTP_Request
      * @param array $client_params An array of params to pass to the request client
      * @param bool $allow_external Allow external requests? (deprecated in 3.3)
      * @param array $injected_routes An array of routes to use, for testing
-     * @return  void|Request
+     * @return Request
      * @throws Kohana_Exception
      * @throws Request_Exception
      * @uses    Route::all
@@ -726,7 +726,7 @@ class Kohana_Request implements HTTP_Request
      * Sets and gets the referrer from the request.
      *
      * @param   string $referrer
-     * @return  mixed
+     * @return  Kohana_Request|string
      */
     public function referrer($referrer = null)
     {
@@ -745,7 +745,7 @@ class Kohana_Request implements HTTP_Request
      * Sets and gets the route from the request.
      *
      * @param Route|null $route
-     * @return  mixed
+     * @return Kohana_Request|Route
      */
     public function route(Route $route = null)
     {
@@ -764,7 +764,7 @@ class Kohana_Request implements HTTP_Request
      * Sets and gets the directory for the controller.
      *
      * @param   string   $directory  Directory to execute the controller from
-     * @return  mixed
+     * @return  Kohana_Request|string
      */
     public function directory($directory = null)
     {
@@ -783,7 +783,7 @@ class Kohana_Request implements HTTP_Request
      * Sets and gets the controller for the matched route.
      *
      * @param   string   $controller  Controller to execute the action
-     * @return  mixed
+     * @return  Kohana_Request|string
      */
     public function controller($controller = null)
     {
@@ -802,7 +802,7 @@ class Kohana_Request implements HTTP_Request
      * Sets and gets the action for the controller.
      *
      * @param   string   $action  Action to execute the controller from
-     * @return  mixed
+     * @return  Kohana_Request|string
      */
     public function action($action = null)
     {
@@ -837,7 +837,7 @@ class Kohana_Request implements HTTP_Request
      * be relative to the x-requested-with pseudo header.
      *
      * @param   string    $requested_with Requested with value
-     * @return  mixed
+     * @return  Kohana_Request|string
      */
     public function requested_with($requested_with = null)
     {
@@ -960,7 +960,7 @@ class Kohana_Request implements HTTP_Request
      * traditional CRUD applications.
      *
      * @param   string   $method  Method to use for this request
-     * @return  mixed
+     * @return  Kohana_Request|string
      */
     public function method($method = null)
     {
@@ -980,7 +980,7 @@ class Kohana_Request implements HTTP_Request
      * it will use the default set in HTTP::$protocol
      *
      * @param   string   $protocol  Protocol to set to the request
-     * @return  mixed
+     * @return  Kohana_Request|string
      */
     public function protocol($protocol = null)
     {
@@ -1001,7 +1001,7 @@ class Kohana_Request implements HTTP_Request
      * method should be treated as immutable.
      *
      * @param   boolean $secure is this request secure?
-     * @return  mixed
+     * @return  bool|Kohana_Request
      */
     public function secure($secure = null)
     {
@@ -1090,7 +1090,7 @@ class Kohana_Request implements HTTP_Request
      * included after the header, separated by a single empty new line.
      *
      * @param   string  $content Content to set to the object
-     * @return  mixed
+     * @return  Kohana_Request|string
      */
     public function body($content = null)
     {
