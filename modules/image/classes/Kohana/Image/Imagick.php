@@ -28,6 +28,10 @@ class Kohana_Image_Imagick extends Image
             throw new Kohana_Exception('Imagick is not installed, or the extension is not loaded');
         }
 
+        if (version_compare(phpversion('imagick'), '3.6.0', '<')) {
+            throw new Kohana_Exception('Imagick version must be at least 3.6.0');
+        }
+
         return Image_Imagick::$_checked = true;
     }
 
@@ -194,7 +198,7 @@ class Kohana_Image_Imagick extends Image
         $watermark = new Imagick;
         $watermark->readImageBlob($image->render(), $image->file);
 
-        if ($watermark->getImageAlphaChannel() !== Imagick::ALPHACHANNEL_ACTIVATE) {
+        if (!$watermark->getImageAlphaChannel()) {
             // Force the image to have an alpha channel
             $watermark->setImageAlphaChannel(Imagick::ALPHACHANNEL_OPAQUE);
         }

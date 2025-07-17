@@ -7,7 +7,6 @@
  * @group kohana.core
  * @group kohana.core.http
  * @group kohana.core.http.header
- * @group kohana.core.http.header
  *
  * @package    Kohana
  * @category   Tests
@@ -1395,21 +1394,8 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
         $response = new Response;
         $response->headers($state);
 
-        $this->assertSame($expected, $response->send_headers(false, [
-                $this, 'send_headers_handler'
-        ]));
+        $this->assertSame($expected, $response->send_headers(false, function ($response, $headers) {
+            return $headers;
+        }));
     }
-
-    /**
-     * Callback handler for send headers
-     *
-     * @param array $response headers
-     * @param boolean $headers replace
-     * @return  array
-     */
-    public function send_headers_handler($response, $headers, $replace)
-    {
-        return $headers;
-    }
-
 }

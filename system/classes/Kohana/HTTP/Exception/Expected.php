@@ -61,7 +61,6 @@ abstract class Kohana_HTTP_Exception_Expected extends HTTP_Exception
     /**
      * Validate this exception contains everything needed to continue.
      *
-     * @throws Kohana_Exception
      * @return bool
      */
     public function check()

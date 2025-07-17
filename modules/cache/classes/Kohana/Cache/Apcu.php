@@ -69,7 +69,6 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      * @param   string  $id       id of cache to entry
      * @param   string  $default  default value to return if cache miss
      * @return  mixed
-     * @throws  Cache_Exception
      */
     public function get($id, $default = null)
     {
