@@ -249,7 +249,7 @@ class Kohana_HTTP_Cache
      *      });
      *
      * @param callback $callback
-     * @return  mixed
+     * @return callable|Kohana_HTTP_Cache
      * @throws Kohana_Exception
      */
     public function cache_key_callback($callback = null)
@@ -336,7 +336,7 @@ class Kohana_HTTP_Cache
      * @param string $key the cache key to use
      * @param Request $request the HTTP Request
      * @param Response $response the HTTP Response
-     * @return  mixed
+     * @return bool|Response
      * @throws Cache_Exception
      */
     public function cache_response($key, Request $request, Response $response = null)
@@ -458,7 +458,7 @@ class Kohana_HTTP_Cache
      * `false` if the request hasn't finished executing, or
      * is yet to be run.
      *
-     * @return  mixed
+     * @return false|int
      */
     public function request_execution_time()
     {
