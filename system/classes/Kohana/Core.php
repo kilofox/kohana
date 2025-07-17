@@ -783,7 +783,6 @@ class Kohana_Core
      *
      * [ref-var]: https://www.php.net/var_export
      *
-     * @throws  Kohana_Exception
      * @param   string  $name       name of the cache
      * @param   mixed   $data       data to cache
      * @param   integer $lifetime   number of seconds the cache is valid for
