@@ -68,7 +68,6 @@ class Kohana_Image_Imagick extends Image
     public function __destruct()
     {
         $this->im->clear();
-        $this->im->destroy();
     }
 
     protected function _do_resize($width, $height)
