@@ -7,7 +7,6 @@
  * @group kohana.core
  * @group kohana.core.http
  * @group kohana.core.http.header
- * @group kohana.core.http.header
  *
  * @package    Kohana
  * @category   Tests
