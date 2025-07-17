@@ -142,7 +142,7 @@ class Kohana_Response implements HTTP_Response
     /**
      * Gets or sets the body of the response
      *
-     * @return  mixed
+     * @return Kohana_Response|string
      */
     public function body($content = null)
     {
@@ -158,7 +158,7 @@ class Kohana_Response implements HTTP_Response
      * is `HTTP/1.1`.
      *
      * @param   string   $protocol Protocol to set to the request/response
-     * @return  mixed
+     * @return  Kohana_Response|string
      */
     public function protocol($protocol = null)
     {
@@ -185,7 +185,7 @@ class Kohana_Response implements HTTP_Response
      *      $status = $response->status();
      *
      * @param integer $code Status to set to this response
-     * @return  mixed
+     * @return int|Kohana_Response
      * @throws Kohana_Exception
      */
     public function status($code = null)

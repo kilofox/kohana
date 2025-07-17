@@ -17,9 +17,9 @@ class Kohana_Minion_Exception extends Kohana_Exception
      *
      * Should this display a stack trace? It's useful.
      *
-     * @uses    Kohana_Exception::text
      * @param   Throwable   $e
-     * @return  boolean
+     * @return  void
+     * @uses    Kohana_Exception::text
      */
     public static function handler($e)
     {

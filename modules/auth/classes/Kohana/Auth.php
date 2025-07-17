@@ -118,7 +118,7 @@ abstract class Kohana_Auth
      * specific role.
      *
      * @param   string  $role  role name
-     * @return  mixed
+     * @return  bool
      */
     public function logged_in($role = null)
     {

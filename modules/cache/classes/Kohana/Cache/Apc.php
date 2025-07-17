@@ -1,18 +1,18 @@
 <?php
 
 /**
- * [Kohana Cache](api/Kohana_Cache) APCu data store driver for Kohana Cache
- * library.
+ * [Kohana Cache](api/Kohana_Cache) APC driver. Provides an opcode based
+ * driver for the Kohana Cache library.
  *
  * ### Configuration example
  *
- * Below is an example of an _apcu_ server configuration.
+ * Below is an example of an _apc_ server configuration.
  *
  *     return [
  *         // Driver group
- *         'apcu' => [
- *             // Using APCu driver
- *             'driver' => 'apcu',
+ *         'apc' => [
+ *             // Using APC driver
+ *             'driver' => 'apc',
  *         ],
  *     ];
  *
@@ -31,18 +31,19 @@
  *
  * *  Kohana 3.0.x
  * *  PHP 5.2.4 or greater
- * *  APCu PHP extension
+ * *  APC PHP extension
  *
  * @package    Kohana/Cache
  * @category   Base
  * @author     Kohana Team
  * @copyright  (c) 2009-2012 Kohana Team
  * @license    https://kohana.top/license
+ * @deprecated 3.4.0
  */
-class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
+class Kohana_Cache_Apc extends Cache implements Cache_Arithmetic
 {
     /**
-     * Check for existence of the APCu extension This method cannot be invoked externally. The driver must
+     * Check for existence of the APC extension This method cannot be invoked externally. The driver must
      * be instantiated using the `Cache::instance()` method.
      *
      * @param  array  $config  configuration
@@ -50,8 +51,8 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      */
     protected function __construct(array $config)
     {
-        if (!extension_loaded('apcu')) {
-            throw new Cache_Exception('PHP APCu extension is not available.');
+        if (!extension_loaded('apc')) {
+            throw new Cache_Exception('PHP APC extension is not available.');
         }
 
         parent::__construct($config);
@@ -60,11 +61,11 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
     /**
      * Retrieve a cached value entry by id.
      *
-     *     // Retrieve cache entry from apcu group
-     *     $data = Cache::instance('apcu')->get('foo');
+     *     // Retrieve cache entry from apc group
+     *     $data = Cache::instance('apc')->get('foo');
      *
-     *     // Retrieve cache entry from apcu group and return 'bar' if missing
-     *     $data = Cache::instance('apcu')->get('foo', 'bar');
+     *     // Retrieve cache entry from apc group and return 'bar' if missing
+     *     $data = Cache::instance('apc')->get('foo', 'bar');
      *
      * @param   string  $id       id of cache to entry
      * @param   string  $default  default value to return if cache miss
@@ -72,7 +73,7 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      */
     public function get($id, $default = null)
     {
-        $data = apcu_fetch($this->_sanitize_id($id), $success);
+        $data = apc_fetch($this->_sanitize_id($id), $success);
 
         return $success ? $data : $default;
     }
@@ -82,11 +83,11 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      *
      *     $data = 'bar';
      *
-     *     // Set 'bar' to 'foo' in apcu group, using default expiry
-     *     Cache::instance('apcu')->set('foo', $data);
+     *     // Set 'bar' to 'foo' in apc group, using default expiry
+     *     Cache::instance('apc')->set('foo', $data);
      *
-     *     // Set 'bar' to 'foo' in apcu group for 30 seconds
-     *     Cache::instance('apcu')->set('foo', $data, 30);
+     *     // Set 'bar' to 'foo' in apc group for 30 seconds
+     *     Cache::instance('apc')->set('foo', $data, 30);
      *
      * @param   string   $id        id of cache entry
      * @param   string   $data      data to set to cache
@@ -99,21 +100,21 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
             $lifetime = Arr::get($this->_config, 'default_expire', Cache::DEFAULT_EXPIRE);
         }
 
-        return apcu_store($this->_sanitize_id($id), $data, $lifetime);
+        return apc_store($this->_sanitize_id($id), $data, $lifetime);
     }
 
     /**
      * Delete a cache entry based on id
      *
-     *     // Delete 'foo' entry from the apcu group
-     *     Cache::instance('apcu')->delete('foo');
+     *     // Delete 'foo' entry from the apc group
+     *     Cache::instance('apc')->delete('foo');
      *
      * @param   string  $id  id to remove from cache
      * @return  boolean
      */
     public function delete($id)
     {
-        return apcu_delete($this->_sanitize_id($id));
+        return apc_delete($this->_sanitize_id($id));
     }
 
     /**
@@ -123,14 +124,14 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      * using shared memory cache systems, as it will wipe every
      * entry within the system for all clients.
      *
-     *     // Delete all cache entries in the apcu group
-     *     Cache::instance('apcu')->delete_all();
+     *     // Delete all cache entries in the apc group
+     *     Cache::instance('apc')->delete_all();
      *
      * @return  boolean
      */
     public function delete_all()
     {
-        return apcu_clear_cache();
+        return apc_clear_cache('user');
     }
 
     /**
@@ -145,11 +146,7 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      */
     public function increment($id, $step = 1)
     {
-        if (apcu_exists($id)) {
-            return apcu_inc($id, $step);
-        } else {
-            return false;
-        }
+        return apc_inc($id, $step);
     }
 
     /**
@@ -164,11 +161,7 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      */
     public function decrement($id, $step = 1)
     {
-        if (apcu_exists($id)) {
-            return apcu_dec($id, $step);
-        } else {
-            return false;
-        }
+        return apc_dec($id, $step);
     }
 
 }

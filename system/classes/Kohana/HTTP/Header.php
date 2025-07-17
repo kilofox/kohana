@@ -211,7 +211,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *     }
      *
      * @param   array   $cache_control Array of headers
-     * @return  mixed
+     * @return  array|false
      */
     public static function parse_cache_control($cache_control)
     {
