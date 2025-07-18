@@ -24,7 +24,7 @@ class Kohana_Image_GD extends Image
      * be bundled with PHP.  Exceptions will be thrown from those methods when GD is not
      * bundled.
      *
-     * @return  boolean
+     * @return bool
      * @throws Kohana_Exception
      */
     public static function check()
@@ -496,7 +496,7 @@ class Kohana_Image_GD extends Image
      *
      * @param string $file new image filename
      * @param integer $quality quality
-     * @return  boolean
+     * @return bool
      * @throws Kohana_Exception
      */
     protected function _do_save($file, $quality)

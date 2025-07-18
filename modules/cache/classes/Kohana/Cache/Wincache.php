@@ -96,7 +96,7 @@ class Kohana_Cache_Wincache extends Cache
      * @param   string   $id        id of cache entry
      * @param   string   $data      data to set to cache
      * @param   integer  $lifetime  lifetime in seconds
-     * @return  boolean
+     * @return  bool
      */
     public function set($id, $data, $lifetime = null)
     {
@@ -114,7 +114,7 @@ class Kohana_Cache_Wincache extends Cache
      *     Cache::instance('wincache')->delete('foo');
      *
      * @param   string  $id  id to remove from cache
-     * @return  boolean
+     * @return  bool
      */
     public function delete($id)
     {
@@ -131,7 +131,7 @@ class Kohana_Cache_Wincache extends Cache
      *     // Delete all cache entries in the wincache group
      *     Cache::instance('wincache')->delete_all();
      *
-     * @return  boolean
+     * @return bool
      */
     public function delete_all()
     {

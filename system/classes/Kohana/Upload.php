@@ -197,7 +197,7 @@ class Kohana_Upload
      * @param   integer $max_width  maximum width of image
      * @param   integer $max_height maximum height of image
      * @param   boolean $exact      match width and height exactly?
-     * @return  boolean
+     * @return  bool
      */
     public static function image(array $file, $max_width = null, $max_height = null, $exact = false)
     {

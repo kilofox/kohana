@@ -72,7 +72,7 @@ class Kohana_Fragment
      * @param string $name fragment name
      * @param integer $lifetime fragment cache lifetime
      * @param boolean $i18n multilingual fragment support
-     * @return  boolean
+     * @return bool
      * @throws Kohana_Exception
      */
     public static function load($name, $lifetime = null, $i18n = null)

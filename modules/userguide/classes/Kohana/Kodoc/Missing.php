@@ -22,7 +22,7 @@ abstract class Kohana_Kodoc_Missing
      * [!!] All classes created will extend [Kodoc_Missing].
      *
      * @param string $class class name
-     * @return  boolean
+     * @return bool
      * @since   3.0.7
      */
     public static function create_class($class)

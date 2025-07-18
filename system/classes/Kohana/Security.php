@@ -74,7 +74,7 @@ class Kohana_Security
      *     }
      *
      * @param string $token token to check
-     * @return  boolean
+     * @return bool
      * @throws Kohana_Exception
      * @uses    Security::token
      */
@@ -89,7 +89,7 @@ class Kohana_Security
      *
      * @param string $a cryptographic hash
      * @param string $b cryptographic hash
-     * @return boolean
+     * @return bool
      */
     public static function slow_equals($a, $b)
     {

@@ -158,7 +158,7 @@ abstract class Kohana_Database
      *
      *     $db->disconnect();
      *
-     * @return  boolean
+     * @return bool
      */
     public function disconnect()
     {
@@ -214,7 +214,7 @@ abstract class Kohana_Database
      *      }
      *
      * @param string $mode  transaction mode
-     * @return  boolean
+     * @return bool
      */
     abstract public function begin($mode = null);
     /**
@@ -223,7 +223,7 @@ abstract class Kohana_Database
      *     // Commit the database changes
      *     $db->commit();
      *
-     * @return  boolean
+     * @return bool
      */
     abstract public function commit();
     /**
@@ -232,7 +232,7 @@ abstract class Kohana_Database
      *     // Undo the changes
      *     $db->rollback();
      *
-     * @return  boolean
+     * @return bool
      */
     abstract public function rollback();
 

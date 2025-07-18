@@ -112,7 +112,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      * @param string $id id
      * @param mixed $data data
      * @param integer $lifetime lifetime [Optional]
-     * @return  boolean
+     * @return bool
      * @throws Cache_Exception
      */
     public function set($id, $data, $lifetime = null)
@@ -124,7 +124,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      * Delete a cache entry based on id
      *
      * @param   string  $id  id
-     * @return  boolean
+     * @return  bool
      * @throws  Cache_Exception
      */
     public function delete($id)
@@ -145,7 +145,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
     /**
      * Delete all cache entries
      *
-     * @return  boolean
+     * @return bool
      * @throws Cache_Exception
      */
     public function delete_all()
@@ -170,7 +170,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      * @param   mixed    $data      data
      * @param   integer  $lifetime  lifetime [Optional]
      * @param   array    $tags      tags [Optional]
-     * @return  boolean
+     * @return  bool
      * @throws  Cache_Exception
      */
     public function set_with_tags($id, $data, $lifetime = null, array $tags = null)
@@ -206,7 +206,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      * Delete cache entries based on a tag
      *
      * @param   string  $tag  tag
-     * @return  boolean
+     * @return  bool
      * @throws  Cache_Exception
      */
     public function delete_tag($tag)
@@ -283,7 +283,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      * Tests whether an id exists or not
      *
      * @param   string  $id  id
-     * @return  boolean
+     * @return  bool
      * @throws  Cache_Exception
      */
     protected function exists($id)

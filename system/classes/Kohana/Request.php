@@ -387,7 +387,7 @@ class Kohana_Request implements HTTP_Request
      * does not handle this situation gracefully on its own, so this method
      * helps to solve that problem.
      *
-     * @return  boolean
+     * @return bool
      * @throws Kohana_Exception
      * @uses    Arr::get
      * @uses    Num::bytes
@@ -925,7 +925,7 @@ class Kohana_Request implements HTTP_Request
      *     if (!$request->is_initial())
      *         // This is a sub request
      *
-     * @return  boolean
+     * @return bool
      */
     public function is_initial()
     {
@@ -938,7 +938,7 @@ class Kohana_Request implements HTTP_Request
      *     if (!$request->is_external())
      *          // This is an internal request
      *
-     * @return  boolean
+     * @return bool
      */
     public function is_external()
     {
@@ -948,7 +948,7 @@ class Kohana_Request implements HTTP_Request
     /**
      * Returns whether this is an ajax request (as used by JS frameworks)
      *
-     * @return  boolean
+     * @return bool
      */
     public function is_ajax()
     {

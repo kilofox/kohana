@@ -289,7 +289,7 @@ class Kohana_HTTP_Cache
      *
      * @link    https://www.rfc-editor.org/rfc/rfc9111#name-storing-responses-in-caches RFC 9111
      * @param   Response  $response The Response
-     * @return  boolean
+     * @return  bool
      */
     public function set_cache(Response $response)
     {

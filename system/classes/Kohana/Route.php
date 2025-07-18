@@ -441,7 +441,7 @@ class Kohana_Route
      * Returns whether this route is an external route
      * to a remote controller.
      *
-     * @return  boolean
+     * @return bool
      */
     public function is_external()
     {

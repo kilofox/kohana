@@ -340,7 +340,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * are lowercase.
      *
      * @param   string  $key
-     * @return  boolean
+     * @return  bool
      * @since   3.2.0
      */
     public function offsetExists($key)

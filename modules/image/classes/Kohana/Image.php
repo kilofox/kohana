@@ -542,7 +542,7 @@ abstract class Kohana_Image
      *
      * @param   string   $file     new image path
      * @param   integer  $quality  quality of image: 1-100
-     * @return  boolean
+     * @return  bool
      * @uses    Image::_save
      * @throws  Kohana_Exception
      */
@@ -669,7 +669,7 @@ abstract class Kohana_Image
      *
      * @param   string   $file     new image filename
      * @param   integer  $quality  quality
-     * @return  boolean
+     * @return  bool
      */
     abstract protected function _do_save($file, $quality);
     /**

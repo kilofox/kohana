@@ -104,7 +104,7 @@ class Model_Auth_User extends ORM
      *
      * @param mixed $value the value to test
      * @param string $field field name
-     * @return  boolean
+     * @return bool
      * @throws Kohana_Exception
      */
     public function unique_key_exists($value, $field = NULL)

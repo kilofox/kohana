@@ -14,7 +14,7 @@ class Kohana_Auth_ORM extends Auth
      * Checks if a session is active.
      *
      * @param mixed $role Role name string, role ORM object, or array with role names
-     * @return  boolean
+     * @return bool
      * @throws Kohana_Exception
      * @throws ORM_Validation_Exception
      * @throws ReflectionException
@@ -68,7 +68,7 @@ class Kohana_Auth_ORM extends Auth
      * @param $user
      * @param string $password
      * @param boolean $remember enable autologin
-     * @return  boolean
+     * @return bool
      * @throws Kohana_Exception
      * @throws ORM_Validation_Exception
      * @throws ReflectionException
@@ -209,7 +209,7 @@ class Kohana_Auth_ORM extends Auth
      *
      * @param boolean $destroy completely destroy the session
      * @param boolean $logout_all remove all tokens for user
-     * @return  boolean
+     * @return bool
      * @throws Kohana_Exception
      */
     public function logout($destroy = false, $logout_all = false)
@@ -277,7 +277,7 @@ class Kohana_Auth_ORM extends Auth
      * Compare password with original (hashed). Works for current (logged in) user
      *
      * @param string $password
-     * @return  boolean
+     * @return bool
      * @throws Kohana_Exception
      * @throws ORM_Validation_Exception
      * @throws ReflectionException

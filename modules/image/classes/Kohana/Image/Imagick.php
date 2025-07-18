@@ -20,7 +20,7 @@ class Kohana_Image_Imagick extends Image
      * Checks if ImageMagick is enabled.
      *
      * @throws  Kohana_Exception
-     * @return  boolean
+     * @return  bool
      */
     public static function check()
     {

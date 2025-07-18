@@ -255,7 +255,7 @@ class Kohana_Validation implements ArrayAccess
      *          // The data is valid, do something here
      *     }
      *
-     * @return  boolean
+     * @return bool
      * @throws ReflectionException
      */
     public function check()

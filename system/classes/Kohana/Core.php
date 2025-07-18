@@ -463,7 +463,7 @@ class Kohana_Core
      *
      * @param   string  $class      Class name
      * @param   string  $directory  Directory to load from
-     * @return  boolean
+     * @return  bool
      */
     public static function auto_load($class, $directory = 'classes')
     {
@@ -500,7 +500,7 @@ class Kohana_Core
      *
      * @param   string  $class      Class name
      * @param   string  $directory  Directory to load from
-     * @return  boolean
+     * @return  bool
      */
     public static function auto_load_lowercase($class, $directory = 'classes')
     {
@@ -787,7 +787,7 @@ class Kohana_Core
      * @param   mixed   $data       data to cache
      * @param   integer $lifetime   number of seconds the cache is valid for
      * @return  mixed    for getting
-     * @return  boolean  for setting
+     * @return  bool for setting
      */
     public static function cache($name, $data = null, $lifetime = null)
     {
