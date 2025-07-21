@@ -277,9 +277,9 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *     $this->_delete_file($folder, true, true);
      *
      * @param   SplFileInfo  $file                     file
-     * @param   boolean      $retain_parent_directory  retain the parent directory
-     * @param   boolean      $ignore_errors            ignore_errors to prevent all exceptions interrupting exec
-     * @param   boolean      $only_expired             only expired files
+     * @param   bool $retain_parent_directory retain the parent directory
+     * @param   bool $ignore_errors ignore_errors to prevent all exceptions interrupting exec
+     * @param   bool $only_expired only expired files
      * @return  bool
      * @throws  Cache_Exception
      */
@@ -395,7 +395,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * @link    https://www.php.net/manual/en/function.mkdir.php
      * @param   string    $directory    directory path
      * @param   integer   $mode         chmod mode
-     * @param   boolean   $recursive    allows nested directories creation
+     * @param   bool $recursive allows nested directories creation
      * @param   resource  $context      a stream context
      * @return  SplFileInfo
      * @throws  Cache_Exception

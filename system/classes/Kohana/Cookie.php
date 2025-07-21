@@ -170,8 +170,8 @@ class Kohana_Cookie
      * @param integer $expire
      * @param string  $path
      * @param string  $domain
-     * @param boolean $secure
-     * @param boolean $httponly
+     * @param bool $secure
+     * @param bool $httponly
      *
      * @return bool
      * @see setcookie

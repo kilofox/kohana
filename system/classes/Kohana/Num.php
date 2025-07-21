@@ -99,7 +99,7 @@ class Kohana_Num
      *
      * @param   float   $number     number to format
      * @param   integer $places     decimal places
-     * @param   boolean $monetary   monetary formatting?
+     * @param   bool $monetary monetary formatting?
      * @return  string
      * @since   3.0.2
      */
@@ -124,7 +124,7 @@ class Kohana_Num
      * @param float $value Number to round
      * @param integer $precision Desired precision
      * @param integer $mode Tie breaking mode, accepts the PHP_ROUND_HALF_* constants
-     * @param boolean $native Set to "false" to force use of the userland implementation
+     * @param bool $native Set to "false" to force use of the userland implementation
      * @return float Rounded number
      */
     public static function round($value, $precision = 0, $mode = self::ROUND_HALF_UP, $native = true)

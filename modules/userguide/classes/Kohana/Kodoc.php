@@ -225,8 +225,7 @@ class Kohana_Kodoc
      * [!!] Converting the output to HTML in this method is deprecated in 3.3
      *
      * @param string $comment The DocBlock to parse
-     * @param boolean $html Whether to convert the return values
-     *   to HTML (deprecated)
+     * @param bool $html Whether to convert the return values to HTML (deprecated)
      * @return  array   [string $description, array $tags]
      * @throws Kohana_Exception
      */

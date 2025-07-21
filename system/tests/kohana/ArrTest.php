@@ -270,7 +270,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_is_assoc
      * @param array   $array     Array to check
-     * @param boolean $expected  Is $array assoc
+     * @param bool $expected Is $array assoc
      */
     public function test_is_assoc(array $array, $expected)
     {
@@ -301,7 +301,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_is_array
      * @param mixed   $array     Value to check
-     * @param boolean $expected  Is $value an array?
+     * @param bool $expected Is $value an array?
      */
     public function test_is_array($array, $expected)
     {

@@ -1000,7 +1000,7 @@ class Kohana_Request implements HTTP_Request
      * Getter/Setter to the security settings for this request. This
      * method should be treated as immutable.
      *
-     * @param   boolean $secure is this request secure?
+     * @param bool $secure is this request secure?
      * @return  bool|Kohana_Request
      */
     public function secure($secure = null)

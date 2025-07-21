@@ -418,7 +418,7 @@ abstract class Kohana_Image
      *
      * @param   integer   $height   reflection height
      * @param   integer   $opacity  reflection opacity: 0-100
-     * @param   boolean   $fade_in  true to fade in, false to fade out
+     * @param   bool $fade_in true to fade in, false to fade out
      * @return  $this
      * @uses    Image::_do_reflection
      */
@@ -640,7 +640,7 @@ abstract class Kohana_Image
      *
      * @param   integer   $height   reflection height
      * @param   integer   $opacity  reflection opacity
-     * @param   boolean   $fade_in  true to fade out, false to fade in
+     * @param   bool $fade_in true to fade out, false to fade in
      * @return  void
      */
     abstract protected function _do_reflection($height, $opacity, $fade_in);

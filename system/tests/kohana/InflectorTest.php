@@ -39,7 +39,7 @@ class Kohana_InflectorTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_uncountable
      * @param string $input Input for Inflector::uncountable
-     * @param boolean $expected Output for Inflector::uncountable
+     * @param bool $expected Output for Inflector::uncountable
      * @throws Kohana_Exception
      */
     public function test_uncountable($input, $expected)

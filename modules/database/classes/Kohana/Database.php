@@ -350,7 +350,7 @@ abstract class Kohana_Database
      *
      * @param   string  $table       table to get columns from
      * @param   string  $like        column to search for
-     * @param   boolean $add_prefix  whether to add the table prefix automatically or not
+     * @param   bool $add_prefix whether to add the table prefix automatically or not
      * @return  array
      */
     abstract public function list_columns($table, $like = null, $add_prefix = true);

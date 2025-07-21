@@ -310,7 +310,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *
      * @param mixed $key The index being set.
      * @param mixed $value The new value for the index.
-     * @param   boolean $replace    replace existing value
+     * @param bool $replace replace existing value
      * @return  void
      * @since   3.2.0
      */
@@ -430,7 +430,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *     $quality_explicit = $request->headers()->accepts_at_quality('text/plain', true);
      *
      * @param string $type
-     * @param boolean $explicit explicit check, excludes `*`
+     * @param bool $explicit explicit check, excludes `*`
      * @return  mixed
      * @throws Kohana_Exception
      * @since   3.2.0
@@ -502,7 +502,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *
      *
      * @param array $types the content types to examine
-     * @param boolean $explicit only allow explicit references, no wildcards
+     * @param bool $explicit only allow explicit references, no wildcards
      * @return  string  name of the preferred content type
      * @throws Kohana_Exception
      * @since   3.2.0
@@ -602,7 +602,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *      // $encoding = (float) 1.0s
      *
      * @param   string  $encoding   encoding type to interrogate
-     * @param   boolean $explicit   explicit check, ignoring wildcards and `identity`
+     * @param   bool $explicit explicit check, ignoring wildcards and `identity`
      * @return  float
      * @since   3.2.0
      */
@@ -648,7 +648,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *     // $encoding = 'gzip';
      *
      * @param   array   $encodings  encodings to test against
-     * @param   boolean $explicit   explicit check, if `true` wildcards are excluded
+     * @param   bool $explicit explicit check, if `true` wildcards are excluded
      * @return  mixed
      * @since   3.2.0
      */
@@ -685,7 +685,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *     // $lang3 = (float) 0.0
      *
      * @param   string  $language   language to interrogate
-     * @param   boolean $explicit   explicit interrogation, `true` ignores wildcards
+     * @param   bool $explicit explicit interrogation, `true` ignores wildcards
      * @return  float
      * @since   3.2.0
      */
@@ -733,7 +733,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *      ]); // $lang = 'en-gb'
      *
      * @param   array   $languages
-     * @param   boolean $explicit
+     * @param   bool $explicit
      * @return  mixed
      * @since   3.2.0
      */
@@ -763,7 +763,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *  recommended that `$response` is returned
      *
      * @param HTTP_Response $response header to send
-     * @param boolean $replace replace existing value
+     * @param bool $replace replace existing value
      * @param callback $callback optional callback to replace PHP header function
      * @return  mixed
      * @throws Kohana_Exception
@@ -815,7 +815,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * are included in the message they will be handled appropriately.
      *
      * @param array $headers headers to send to php
-     * @param boolean $replace replace existing headers
+     * @param bool $replace replace existing headers
      * @return  self
      * @throws Kohana_Exception
      * @since   3.2.0

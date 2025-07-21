@@ -78,7 +78,7 @@ abstract class Kohana_Auth
      *
      * @param   string   $username  Username to log in
      * @param   string   $password  Password to check against
-     * @param   boolean  $remember  Enable autologin
+     * @param   bool $remember Enable autologin
      * @return  bool
      */
     public function login($username, $password, $remember = false)
@@ -92,8 +92,8 @@ abstract class Kohana_Auth
     /**
      * Log out a user by removing the related session variables.
      *
-     * @param   boolean  $destroy     Completely destroy the session
-     * @param   boolean  $logout_all  Remove all tokens for user
+     * @param   bool  $destroy     Completely destroy the session
+     * @param   bool  $logout_all  Remove all tokens for user
      * @return  bool
      */
     public function logout($destroy = false, $logout_all = false)

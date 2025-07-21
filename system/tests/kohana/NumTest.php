@@ -123,7 +123,7 @@ class Kohana_NumTest extends Unittest_TestCase
      * @dataProvider provider_format
      * @param integer $number
      * @param integer $places
-     * @param boolean $monetary
+     * @param bool $monetary
      * @param string $expected
      */
     public function test_format($number, $places, $monetary, $expected)

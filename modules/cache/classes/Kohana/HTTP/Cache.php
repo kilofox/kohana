@@ -214,7 +214,7 @@ class Kohana_HTTP_Cache
      * that have the `private` setting.
      *
      * @link    https://www.rfc-editor.org/rfc/rfc9111#name-private
-     * @param   boolean $setting    allow caching of privately marked responses
+     * @param bool $setting allow caching of privately marked responses
      * @return bool|Kohana_HTTP_Cache
      */
     public function allow_private_cache($setting = null)

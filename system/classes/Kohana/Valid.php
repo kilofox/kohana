@@ -98,7 +98,7 @@ class Kohana_Valid
      * @link  http://www.w3.org/Protocols/rfc822/
      *
      * @param   string  $email  email address
-     * @param   boolean $strict strict RFC compatibility
+     * @param   bool $strict strict RFC compatibility
      * @return  bool
      */
     public static function email($email, $strict = false)
@@ -209,7 +209,7 @@ class Kohana_Valid
      * Validate an IP.
      *
      * @param   string  $ip             IP address
-     * @param   boolean $allow_private  allow private IP networks
+     * @param   bool $allow_private allow private IP networks
      * @return  bool
      */
     public static function ip($ip, $allow_private = true)
@@ -355,7 +355,7 @@ class Kohana_Valid
      * Checks whether a string consists of alphabetical characters only.
      *
      * @param   string  $str    input string
-     * @param   boolean $utf8   trigger UTF-8 compatibility
+     * @param   bool $utf8 trigger UTF-8 compatibility
      * @return  bool
      */
     public static function alpha($str, $utf8 = false)
@@ -373,7 +373,7 @@ class Kohana_Valid
      * Checks whether a string consists of alphabetical characters and numbers only.
      *
      * @param   string  $str    input string
-     * @param   boolean $utf8   trigger UTF-8 compatibility
+     * @param   bool $utf8 trigger UTF-8 compatibility
      * @return  bool
      */
     public static function alpha_numeric($str, $utf8 = false)
@@ -389,7 +389,7 @@ class Kohana_Valid
      * Checks whether a string consists of alphabetical characters, numbers, underscores and dashes only.
      *
      * @param   string  $str    input string
-     * @param   boolean $utf8   trigger UTF-8 compatibility
+     * @param   bool $utf8 trigger UTF-8 compatibility
      * @return  bool
      */
     public static function alpha_dash($str, $utf8 = false)
@@ -407,7 +407,7 @@ class Kohana_Valid
      * Checks whether a string consists of digits only (no dots or dashes).
      *
      * @param   string  $str    input string
-     * @param   boolean $utf8   trigger UTF-8 compatibility
+     * @param   bool $utf8 trigger UTF-8 compatibility
      * @return  bool
      */
     public static function digit($str, $utf8 = false)

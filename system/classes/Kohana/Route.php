@@ -144,8 +144,8 @@ class Kohana_Route
      *         Route::cache(true);
      *     }
      *
-     * @param boolean $save cache the current routes
-     * @param boolean $append append, rather than replace, cached routes when loading
+     * @param bool $save cache the current routes
+     * @param bool $append append, rather than replace, cached routes when loading
      * @return void|bool Returns void when saving routes, or bool when loading routes.
      * @throws Kohana_Exception
      * @uses    Kohana::cache
@@ -480,7 +480,7 @@ class Kohana_Route
          * the specified parameters and any optional parameters that are needed.
          *
          * @param string $portion Part of the URI specification
-         * @param boolean $required Whether parameters are required (initially)
+         * @param bool $required Whether parameters are required (initially)
          * @return  array   Tuple of the compiled portion and whether it contained specified parameters
          * @throws Kohana_Exception
          */

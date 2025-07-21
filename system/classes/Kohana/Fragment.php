@@ -41,7 +41,7 @@ class Kohana_Fragment
      *     $key = Fragment::_cache_key('footer', true);
      *
      * @param   string  $name   fragment name
-     * @param   boolean $i18n   multilingual fragment support
+     * @param   bool $i18n multilingual fragment support
      * @return  string
      * @uses    I18n::lang
      * @since   3.0.4
@@ -71,7 +71,7 @@ class Kohana_Fragment
      *
      * @param string $name fragment name
      * @param integer $lifetime fragment cache lifetime
-     * @param boolean $i18n multilingual fragment support
+     * @param bool $i18n multilingual fragment support
      * @return bool
      * @throws Kohana_Exception
      */
@@ -133,7 +133,7 @@ class Kohana_Fragment
      *     Fragment::delete($key);
      *
      * @param string $name fragment name
-     * @param boolean $i18n multilingual fragment support
+     * @param bool $i18n multilingual fragment support
      * @return  void
      * @throws Kohana_Exception
      */

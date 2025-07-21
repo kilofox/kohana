@@ -32,7 +32,7 @@ class Kohana_Config
      *     $config->attach($reader, false); // Try last
      *
      * @param   Kohana_Config_Source    $source instance
-     * @param   boolean                 $first  add the reader as the first used object
+     * @param   bool $first add the reader as the first used object
      * @return  $this
      */
     public function attach(Kohana_Config_Source $source, $first = true)

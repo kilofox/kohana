@@ -157,7 +157,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_base
      * @param mixed $protocol Parameter for Url::base()
-     * @param boolean $index Parameter for Url::base()
+     * @param bool $index Parameter for Url::base()
      * @param string $expected Expected URL
      * @param array $enviroment Array of environment vars to change @see Kohana_URLTest::setEnvironment()
      * @throws Kohana_Exception
@@ -501,7 +501,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @param array $enviroment Set environment
      * @param string $expected Expected result
      * @param array $params Query string
-     * @param boolean $use_get Combine with GET parameters
+     * @param bool $use_get Combine with GET parameters
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
@@ -555,7 +555,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @dataProvider provider_is_trusted_host
      * @param string $host the given host
      * @param array $trusted_hosts list of trusted hosts
-     * @param boolean $expected true if host is trusted, false otherwise
+     * @param bool $expected true if host is trusted, false otherwise
      * @throws Kohana_Exception
      */
     public function test_is_trusted_host($host, $trusted_hosts, $expected)
