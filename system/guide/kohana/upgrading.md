@@ -1,43 +1,37 @@
-# Upgrading from 3.3 to 3.4
+# Upgrading from 3.4 to 3.5
 
 ## Requirements
 
-Kohana 3.4 supports PHP versions 5.6, 7.0, and 7.1. Compatibility with other PHP versions has not been fully tested, and
+Kohana 3.5 supports PHP versions 7.1, 7.2, and 7.3. Compatibility with other PHP versions has not been fully tested, and
 certain features may not function as expected.
 
 ## Changes
 
-### Auth
-
-- The `Auth::hash_password()` method has been removed. Use `Auth::hash()` instead.
-
 ### Cache
 
-- Added a new `Memcached` driver.
-- The `APC` driver was deprecated. Use `APCu` or other drivers instead.
-- The `Memcache` driver was deprecated. Use `Memcached` or other drivers instead.
-- The `MemcacheTag` driver was deprecated.
+- The `Apc` driver has been removed. Use the `Apcu` driver or others instead.
+- The `Wincache` driver was deprecated. Use the `Apcu` driver or others instead.
 
 ### Core
 
-- The `Core::CODENAME` constant was deprecated.
+- The `Kohana::CODENAME` constant has been removed.
 
-### Database
-
-- The `MySQL` driver has been removed. Use `PDO` or other drivers instead.
+- The static property `Kohana::$magic_quotes` was deprecated.
 
 ### Encrypt
 
-- Now `Encrypt` acts as an interface and a new `OpenSSL` driver for it was added.
-- The `Mcrypt` driver was deprecated. Use `OpenSSL` instead.
+- The `Mcrypt` driver has been removed. Use the `OpenSSL` driver instead.
 
-### Security
+### Image
 
-- The `Security::strip_image_tags()` method has been removed
-  for [security reasons](https://github.com/kohana/kohana/issues/107) as it is not reliable to parse and sanitize HTML
-  with regular expressions. You should either encode HTML tags entirely, e.g. with `HTML::chars()`, or use a more robust
-  HTML filtering solution such as [HTML Purifier](http://htmlpurifier.org).
+- The static property `Image::$default_driver` has been removed. To configure the default driver, refer to
+  the [Image driver configuration](../../guide/image/#drivers).
 
-### Validation
+### Request
 
-- The `Validation::as_array()` method has been removed. Use `Validation::data()` instead.
+- The `Request::accept_encoding()` method has been removed. Use `Request::headers()->accepts_encoding_at_quality()`
+  instead.
+
+- The `Request::accept_lang()` method has been removed. Use `Request::headers()->accepts_language_at_quality()` instead.
+
+- The `Request::accept_type()` method has been removed. Use `Request::headers()->accepts_at_quality()` instead.
