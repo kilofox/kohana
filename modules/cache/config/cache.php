@@ -61,10 +61,6 @@ return [
 //        'driver' => 'apcu',
 //        'default_expire' => 3600,
 //    ],
-//    'apc' => [
-//        'driver' => 'apc',
-//        'default_expire' => 3600,
-//    ],
 //    'wincache' => [
 //        'driver' => 'wincache',
 //        'default_expire' => 3600,

@@ -112,7 +112,7 @@ class Kohana_Encrypt_Openssl
         }
 
         // Encrypt the data using the configured options and generated IV.
-        if (PHP_VERSION_ID >= 70100 && isset($this->tag)) {
+        if (isset($this->tag)) {
             $data = openssl_encrypt($data, $this->method, $this->key, $this->options, $iv, $this->tag, $this->aad, $this->tagLength);
         } else {
             $data = openssl_encrypt($data, $this->method, $this->key, $this->options, $iv);
@@ -153,7 +153,7 @@ class Kohana_Encrypt_Openssl
         $data = substr($data, $this->ivSize);
 
         // Return the decrypted data, trimming the \0 padding bytes from the end of the data.
-        if (PHP_VERSION_ID >= 70100 && isset($this->tag)) {
+        if (isset($this->tag)) {
             return rtrim(openssl_decrypt($data, $this->method, $this->key, $this->options, $iv, $this->tag, $this->aad), "\0");
         } else {
             return rtrim(openssl_decrypt($data, $this->method, $this->key, $this->options, $iv), "\0");

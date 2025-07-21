@@ -19,12 +19,6 @@ class Kohana_Core
     /** @var string Release version */
     const VERSION = '3.4.3';
 
-    /**
-     * @var string Release codename
-     * @deprecated 3.4.0
-     */
-    const CODENAME = 'korismas';
-
     /** @var int Production environment type constant */
     const PRODUCTION = 10;
 
@@ -55,6 +49,7 @@ class Kohana_Core
 
     /**
      * @var  boolean  True if [magic quotes](https://wiki.php.net/rfc/magicquotes) is enabled.
+     * @deprecated 3.5.0
      */
     public static $magic_quotes = false;
 
@@ -310,7 +305,9 @@ class Kohana_Core
         }
 
         // Determine if the extremely evil magic quotes are enabled
-        Kohana::$magic_quotes = (bool) get_magic_quotes_gpc();
+        if (PHP_VERSION_ID < 70400) {
+            Kohana::$magic_quotes = (bool) get_magic_quotes_gpc();
+        }
 
         // Sanitize all request variables
         $_GET = Kohana::sanitize($_GET);

@@ -119,13 +119,6 @@ Below are the default cache configuration groups for each supported driver. Add 
         'instant_death' => true,
     ],
 
-## APC settings
-
-    'apc' => [
-        'driver' => 'apc',
-        'default_expire' => 3600,
-    ],
-
 ## APCu settings
 
     'apcu' => [

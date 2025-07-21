@@ -19,10 +19,6 @@ return [
 ];
 ~~~
 
-[!!] Older versions of Kohana allowed you to configure the driver with the `Image::$default_driver` static variable in
-the bootstrap, an extension class, or elsewhere. That variable is now deprecated and will be ignored if you set a
-config value.
-
 ## Getting Started
 
 Before using the image module, we must enable it first on `APPPATH/bootstrap.php`:

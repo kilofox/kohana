@@ -38,10 +38,10 @@ clearstatcache(true);
         <table>
             <tr>
                 <th>PHP Version</th>
-                <?php if (PHP_VERSION_ID >= 50600): ?>
+                <?php if (PHP_VERSION_ID >= 70100): ?>
                     <td class="pass"><?= PHP_VERSION ?></td>
                 <?php else: $failed = true ?>
-                    <td class="fail">Kohana requires PHP 5.6.0 or newer, this version is <?= PHP_VERSION ?>.</td>
+                    <td class="fail">Kohana requires PHP 7.1.0 or newer, this version is <?= PHP_VERSION ?>.</td>
                 <?php endif ?>
             </tr>
             <tr>
@@ -178,14 +178,6 @@ clearstatcache(true);
                     <td class="pass">Pass</td>
                 <?php else: ?>
                     <td class="fail">Kohana can use the <a href="https://www.php.net/openssl">OpenSSL</a> extension for the Encrypt class.</td>
-                <?php endif ?>
-            </tr>
-            <tr>
-                <th>Mcrypt Enabled</th>
-                <?php if (extension_loaded('mcrypt')): ?>
-                    <td class="pass">Pass</td>
-                <?php else: ?>
-                    <td class="fail">Kohana can use the <a href="https://www.php.net/mcrypt">Mcrypt</a> extension for the Encrypt class.</td>
                 <?php endif ?>
             </tr>
             <tr>

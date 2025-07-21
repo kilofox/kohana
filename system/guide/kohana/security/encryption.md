@@ -7,7 +7,6 @@ Encryption supports multiple instances of cryptography engines through a grouped
 ## Supported cryptography engines
 
  *  OpenSSL ([Encrypt_Openssl])
- *  Mcrypt ([Encrypt_Mcrypt])
 
 ## Encryption configuration
 
@@ -49,7 +48,7 @@ The default group will use whatever is set to [Encrypt::$default] and must have 
 
 To create an encryption instance using a group other than the default, simply provide the group name as an argument.
 
-    $encrypt = Encrypt::instance('mcrypt');
+    $encrypt = Encrypt::instance('sodium');
 
 ### Encoding Data
 
