@@ -336,7 +336,7 @@ class Kohana_Image_GD extends Image
      *
      * @param integer $height reflection height
      * @param integer $opacity reflection opacity
-     * @param boolean $fade_in true to fade out, false to fade in
+     * @param bool $fade_in true to fade out, false to fade in
      * @return  void
      * @throws Kohana_Exception
      */

@@ -64,7 +64,7 @@ class Kohana_HTML
      *     echo HTML::chars($username);
      *
      * @param   string  $value          string to convert
-     * @param   boolean $double_encode  encode existing entities
+     * @param   bool $double_encode encode existing entities
      * @return  string
      */
     public static function chars($value, $double_encode = true)
@@ -80,7 +80,7 @@ class Kohana_HTML
      *     echo HTML::entities($username);
      *
      * @param   string  $value          string to convert
-     * @param   boolean $double_encode  encode existing entities
+     * @param   bool $double_encode encode existing entities
      * @return  string
      */
     public static function entities($value, $double_encode = true)
@@ -98,7 +98,7 @@ class Kohana_HTML
      * @param string $title link text
      * @param array $attributes HTML anchor attributes
      * @param mixed $protocol protocol to pass to URL::base()
-     * @param boolean $index include the index page
+     * @param bool $index include the index page
      * @return  string
      * @throws Kohana_Exception
      * @uses    URL::base
@@ -143,7 +143,7 @@ class Kohana_HTML
      * @param string $title link text
      * @param array $attributes HTML anchor attributes
      * @param mixed $protocol protocol to pass to URL::base()
-     * @param boolean $index include the index page
+     * @param bool $index include the index page
      * @return  string
      * @throws Kohana_Exception
      * @uses    HTML::attributes
@@ -192,7 +192,7 @@ class Kohana_HTML
      * @param string $file file name
      * @param array $attributes default attributes
      * @param mixed $protocol protocol to pass to URL::base()
-     * @param boolean $index include the index page
+     * @param bool $index include the index page
      * @return  string
      * @throws Kohana_Exception
      * @uses    HTML::attributes
@@ -225,7 +225,7 @@ class Kohana_HTML
      * @param string $file file name
      * @param array $attributes default attributes
      * @param mixed $protocol protocol to pass to URL::base()
-     * @param boolean $index include the index page
+     * @param bool $index include the index page
      * @return  string
      * @throws Kohana_Exception
      * @uses    HTML::attributes
@@ -255,7 +255,7 @@ class Kohana_HTML
      * @param string $file file name
      * @param array $attributes default attributes
      * @param mixed $protocol protocol to pass to URL::base()
-     * @param boolean $index include the index page
+     * @param bool $index include the index page
      * @return  string
      * @throws Kohana_Exception
      * @uses    HTML::attributes

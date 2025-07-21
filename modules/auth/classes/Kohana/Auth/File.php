@@ -30,7 +30,7 @@ class Kohana_Auth_File extends Auth
      *
      * @param string $username Username
      * @param string $password Password
-     * @param boolean $remember Enable autologin (not supported)
+     * @param bool $remember Enable autologin (not supported)
      * @return bool
      * @throws Kohana_Exception
      */

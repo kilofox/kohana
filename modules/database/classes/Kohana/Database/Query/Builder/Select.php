@@ -50,7 +50,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
     /**
      * Enables or disables selecting only unique columns using "SELECT DISTINCT"
      *
-     * @param   boolean  $value  enable or disable distinct columns
+     * @param bool $value enable or disable distinct columns
      * @return  $this
      */
     public function distinct($value)
@@ -270,7 +270,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      *
      * @param mixed $select If a string, it must be the name of a table.
      * Otherwise, it must be an instance of Database_Query_Builder_Select.
-     * @param boolean $all Determines if it's a UNION or UNION ALL clause.
+     * @param bool $all Determines if it's a UNION or UNION ALL clause.
      * @return $this
      * @throws Kohana_Exception
      */

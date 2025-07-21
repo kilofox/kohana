@@ -125,7 +125,7 @@ class Kohana_Date
      *     $hours = Date::hours(); // 01, 02, 03, ..., 10, 11, 12
      *
      * @param   integer $step   amount to increment each step by
-     * @param   boolean $long   use 24-hour time
+     * @param   bool $long use 24-hour time
      * @param   integer $start  the hour to start at
      * @return  array   A mirrored (foo => foo) array from start-12 or start-23.
      */

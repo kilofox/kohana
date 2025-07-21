@@ -606,7 +606,7 @@ class Kohana_Core
      * @param   string  $dir    directory name (views, i18n, classes, extensions, etc.)
      * @param   string  $file   filename with subdirectory
      * @param   string  $ext    extension to search for
-     * @param   boolean $array  return an array of files?
+     * @param   bool $array return an array of files?
      * @return  array   a list of files when $array is true
      * @return  string  single file path
      */

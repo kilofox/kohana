@@ -60,8 +60,8 @@ class Kohana_FormTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_open
-     * @param boolean $input Input for Form::open
-     * @param boolean $expected Output for Form::open
+     * @param array $input Input for Form::open
+     * @param array $expected Output for Form::open
      * @throws Kohana_Exception
      */
     public function test_open($input, $expected)
@@ -167,7 +167,7 @@ class Kohana_FormTest extends Unittest_TestCase
      * @dataProvider provider_file
      * @param string $name
      * @param array $attributes
-     * @param boolean $expected Output for Form::file
+     * @param string $expected Output for Form::file
      */
     public function test_file($name, $attributes, $expected)
     {
@@ -334,7 +334,7 @@ class Kohana_FormTest extends Unittest_TestCase
      * @param string $name
      * @param array $options
      * @param string $selected
-     * @param boolean $expected Output for Form::select
+     * @param string $expected Output for Form::select
      */
     public function test_select($name, $options, $selected, $expected)
     {
@@ -366,7 +366,7 @@ class Kohana_FormTest extends Unittest_TestCase
      * @dataProvider provider_submit
      * @param string $name
      * @param string $value
-     * @param boolean $expected Output for Form::submit
+     * @param string $expected Output for Form::submit
      */
     public function test_submit($name, $value, $expected)
     {
@@ -405,10 +405,10 @@ class Kohana_FormTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_image
-     * @param boolean $name Input for Form::image
-     * @param boolean $value Input for Form::image
-     * @param boolean $attributes Input for Form::image
-     * @param boolean $expected Output for Form::image
+     * @param string $name The name attribute for the image input.
+     * @param string $value The value attribute for the image input.
+     * @param array $attributes Additional HTML attributes for the image input.
+     * @param string $expected The expected output from Form::image().
      * @throws Kohana_Exception
      */
     public function test_image($name, $value, $attributes, $expected)
@@ -472,10 +472,10 @@ class Kohana_FormTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_label
-     * @param boolean $for         Input for Form::label
-     * @param boolean $text        Input for Form::label
-     * @param boolean $attributes  Input for Form::label
-     * @param boolean $expected    Output for Form::label
+     * @param string $for The "for" attribute of the label.
+     * @param string $text The text content of the label.
+     * @param array $attributes Additional HTML attributes for the label.
+     * @param string $expected The expected output from Form::label().
      */
     function test_label($for, $text, $attributes, $expected)
     {

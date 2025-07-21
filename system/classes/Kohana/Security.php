@@ -35,7 +35,7 @@ class Kohana_Security
      *
      * This provides a basic, but effective, method of preventing CSRF attacks.
      *
-     * @param boolean $new force a new token to be generated?
+     * @param bool $new force a new token to be generated?
      * @return  string
      * @throws Kohana_Exception
      * @uses    Session::instance

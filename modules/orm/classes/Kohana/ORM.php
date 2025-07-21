@@ -405,7 +405,7 @@ class Kohana_ORM extends Model implements serializable
      * Reload column definitions.
      *
      * @chainable
-     * @param   boolean $force Force reloading
+     * @param bool $force Force reloading
      * @return  Kohana_ORM
      */
     public function reload_columns($force = false)
@@ -1891,7 +1891,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Enables or disables selecting only unique columns using "SELECT DISTINCT"
      *
-     * @param   boolean  $value  enable or disable distinct columns
+     * @param bool $value enable or disable distinct columns
      * @return  $this
      */
     public function distinct($value)
