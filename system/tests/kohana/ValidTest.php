@@ -46,6 +46,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @dataProvider provider_alpha
      * @param string  $string
      * @param boolean $expected
+     * @param bool $utf8 Whether to use UTF-8 mode.
      */
     public function test_alpha($string, $expected, $utf8 = false)
     {
@@ -84,6 +85,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @dataProvider provide_alpha_numeric
      * @param string  $input     The string to test
      * @param boolean $expected  Is $input valid
+     * @param bool $utf8 Whether to use UTF-8 mode.
      */
     public function test_alpha_numeric($input, $expected, $utf8 = false)
     {

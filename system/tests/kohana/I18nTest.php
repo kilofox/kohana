@@ -45,8 +45,8 @@ class Kohana_I18nTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_lang
-     * @param  boolean  $input     Input for I18n::lang
-     * @param  boolean  $expected  Output for I18n::lang
+     * @param  string  $input     Input for I18n::lang
+     * @param  string  $expected  Output for I18n::lang
      */
     public function test_lang($input, $expected)
     {
@@ -74,8 +74,9 @@ class Kohana_I18nTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_get
-     * @param boolean $input  Input for File::mime
-     * @param boolean $expected Output for File::mime
+     * @param string $lang Language code to set
+     * @param string $input Input for I18n::get
+     * @param string $expected Output for I18n::get
      */
     public function test_get($lang, $input, $expected)
     {

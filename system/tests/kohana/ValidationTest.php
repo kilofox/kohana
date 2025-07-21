@@ -284,7 +284,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
      * @param array $rules The array of rules
      * @param array $labels The array of labels
      * @param boolean $expected Is it valid?
-     * @param boolean $expected_errors Array of expected errors
+     * @param array $expected_errors Array of expected errors
      * @throws ReflectionException
      */
     public function test_check($array, $rules, $labels, $expected, $expected_errors)

@@ -567,9 +567,10 @@ class Kohana_ArrTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_path
-     * @param string  $path       The path to follow
+     * @param array $array The input array to search within.
+     * @param mixed $path The path to follow
      * @param mixed   $default    The value to return if dnx
-     * @param boolean $expected   The expected value
+     * @param mixed $expected The expected value
      * @param string  $delimiter  The path delimiter
      */
     public function test_path($expected, $array, $path, $default = null, $delimiter = null)
@@ -636,8 +637,10 @@ class Kohana_ArrTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_set_path
-     * @param string  $path       The path to follow
-     * @param boolean $expected   The expected value
+     * @param array $array The input array to modify.
+     * @param mixed $path The path to follow
+     * @param mixed $value The value to set.
+     * @param array $expected The expected value
      * @param string  $delimiter  The path delimiter
      */
     public function test_set_path($expected, $array, $path, $value, $delimiter = null)

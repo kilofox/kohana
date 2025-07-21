@@ -38,8 +38,8 @@ class Kohana_InflectorTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_uncountable
-     * @param boolean $input Input for File::mime
-     * @param boolean $expected Output for File::mime
+     * @param string $input Input for Inflector::uncountable
+     * @param boolean $expected Output for Inflector::uncountable
      * @throws Kohana_Exception
      */
     public function test_uncountable($input, $expected)
@@ -75,8 +75,9 @@ class Kohana_InflectorTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_singular
-     * @param boolean $input Input for File::mime
-     * @param boolean $expected Output for File::mime
+     * @param string $input Input for Inflector::singular
+     * @param int $count Optional count to determine inflection logic
+     * @param string $expected Output for Inflector::mime
      * @throws Kohana_Exception
      */
     public function test_singular($input, $count, $expected)
@@ -112,8 +113,9 @@ class Kohana_InflectorTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_plural
-     * @param boolean $input Input for File::mime
-     * @param boolean $expected Output for File::mime
+     * @param string $input Input for Inflector::plural
+     * @param int $count Optional count to determine inflection logic
+     * @param string $expected Output for Inflector::plural
      * @throws Kohana_Exception
      */
     public function test_plural($input, $count, $expected)
@@ -140,12 +142,13 @@ class Kohana_InflectorTest extends Unittest_TestCase
     }
 
     /**
-     * Tests Inflector::camelize
+     * Tests Inflector methods like camelize, underscore, and humanize.
      *
      * @test
      * @dataProvider provider_camelize
-     * @param boolean $input  Input for File::mime
-     * @param boolean $expected Output for File::mime
+     * @param string $input The input string to transform
+     * @param string $method The Inflector method to test
+     * @param string $expected The expected transformed string
      */
     public function test_camelize($input, $method, $expected)
     {

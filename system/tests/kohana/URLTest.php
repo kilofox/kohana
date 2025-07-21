@@ -156,7 +156,7 @@ class Kohana_URLTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_base
-     * @param boolean $protocol Parameter for Url::base()
+     * @param mixed $protocol Parameter for Url::base()
      * @param boolean $index Parameter for Url::base()
      * @param string $expected Expected URL
      * @param array $enviroment Array of environment vars to change @see Kohana_URLTest::setEnvironment()
@@ -270,7 +270,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_site
      * @param string $uri URI to use
-     * @param boolean|string $protocol Protocol to use
+     * @param mixed $protocol Protocol to use
      * @param string $expected Expected result
      * @param array $enviroment Array of environment vars to set
      * @throws Kohana_Exception
