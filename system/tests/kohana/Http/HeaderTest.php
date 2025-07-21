@@ -7,7 +7,6 @@
  * @group kohana.core
  * @group kohana.core.http
  * @group kohana.core.http.header
- * @group kohana.core.http.header
  *
  * @package    Kohana
  * @category   Tests
@@ -574,9 +573,9 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_offsetGet
      *
-     * @param   array     start state
-     * @param   string    key to retrieve
-     * @param   mixed     expected
+     * @param array $state start state
+     * @param string $key key to retrieve
+     * @param mixed $expected expected
      * @return  void
      */
     // @codingStandardsIgnoreStart
@@ -644,7 +643,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @param   array    $state     state
      * @param   string   $key       key
-     * @param   boolean  $expected  expected
+     * @param   bool $expected expected
      * @return  void
      */
     // @codingStandardsIgnoreStart
@@ -769,8 +768,8 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_parse_header_string
      *
-     * @param   array    headers
-     * @param   array    expected
+     * @param array $headers headers
+     * @param array $expected expected
      * @return  void
      */
     public function test_parse_header_string(array $headers, array $expected)
@@ -861,10 +860,10 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_accepts_at_quality
      *
-     * @param array     starting state
-     * @param string    Accept header to test
-     * @param boolean   explicitly check
-     * @param mixed     expected output
+     * @param array $state starting state
+     * @param string $accept Accept header to test
+     * @param bool $explicit explicitly check
+     * @param mixed $expected expected output
      * @return  void
      * @throws Kohana_Exception
      */
@@ -923,10 +922,10 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_preferred_accept
      *
-     * @param array     state
-     * @param array     accepts
-     * @param string    explicit
-     * @param string    expected
+     * @param array $state state
+     * @param array $accepts accepts
+     * @param string $explicit explicit
+     * @param string $expected expected
      * @return  void
      * @throws Kohana_Exception
      */
@@ -982,9 +981,9 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_accepts_charset_at_quality
      *
-     * @param   array     state
-     * @param   string    charset
-     * @param   string    expected
+     * @param array $state state
+     * @param string $charset charset
+     * @param string $expected expected
      * @return  void
      */
     public function test_accepts_charset_at_quality(array $state, $charset, $expected)
@@ -1021,9 +1020,9 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_preferred_charset
      *
-     * @param   array     state
-     * @param   array     charsets
-     * @param   string    expected
+     * @param array $state state
+     * @param array $charsets charsets
+     * @param string $expected expected
      * @return  void
      */
     public function test_preferred_charset(array $state, array $charsets, $expected)
@@ -1090,10 +1089,10 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_accepts_encoding_at_quality
      *
-     * @param   array     state
-     * @param   string    encoding
-     * @param   boolean   explicit
-     * @param   float     expected
+     * @param array $state state
+     * @param string $encoding encoding
+     * @param bool $explicit explicit
+     * @param float $expected expected
      * @return  void
      */
     public function test_accepts_encoding_at_quality(array $state, $encoding, $explicit, $expected)
@@ -1151,10 +1150,10 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_preferred_encoding
      *
-     * @param   array     state in
-     * @param   array     encodings to interrogate
-     * @param   boolean   explicit check
-     * @param   string    expected output
+     * @param array $state state in
+     * @param array $encodings encodings to interrogate
+     * @param bool $explicit explicit check
+     * @param string $expected expected output
      * @return  void
      */
     public function test_preferred_encoding(array $state, array $encodings, $explicit, $expected)
@@ -1228,10 +1227,10 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_accepts_language_at_quality
      *
-     * @param   array    state in
-     * @param   string   language to interrogate
-     * @param   boolean  explicit check
-     * @param   float    expected output
+     * @param array $state state in
+     * @param string $language language to interrogate
+     * @param bool $explicit explicit check
+     * @param float $expected expected output
      * @return  void
      */
     public function test_accepts_language_at_quality(array $state, $language, $explicit, $expected)
@@ -1297,10 +1296,10 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_preferred_language
      *
-     * @param   array    state in
-     * @param   array    languages to interrogate
-     * @param   boolean  explicit check
-     * @param   string   expected output
+     * @param array $state state in
+     * @param array $languages languages to interrogate
+     * @param bool $explicit explicit check
+     * @param string $expected expected output
      * @return  void
      */
     public function test_preferred_language(array $state, array $languages, $explicit, $expected)
@@ -1383,8 +1382,8 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_send_headers
      *
-     * @param array     state in
-     * @param array     expected out
+     * @param array $state state in
+     * @param array $expected expected out
      * @return  void
      * @throws Kohana_Exception
      */
@@ -1395,21 +1394,8 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
         $response = new Response;
         $response->headers($state);
 
-        $this->assertSame($expected, $response->send_headers(false, [
-                $this, 'send_headers_handler'
-        ]));
+        $this->assertSame($expected, $response->send_headers(false, function ($response, $headers) {
+            return $headers;
+        }));
     }
-
-    /**
-     * Callback handler for send headers
-     *
-     * @param   array     headers
-     * @param   boolean   replace
-     * @return  array
-     */
-    public function send_headers_handler($response, $headers, $replace)
-    {
-        return $headers;
-    }
-
 }

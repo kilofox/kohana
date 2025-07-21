@@ -142,7 +142,7 @@ class Kohana_Response implements HTTP_Response
     /**
      * Gets or sets the body of the response
      *
-     * @return  mixed
+     * @return Kohana_Response|string
      */
     public function body($content = null)
     {
@@ -158,7 +158,7 @@ class Kohana_Response implements HTTP_Response
      * is `HTTP/1.1`.
      *
      * @param   string   $protocol Protocol to set to the request/response
-     * @return  mixed
+     * @return  Kohana_Response|string
      */
     public function protocol($protocol = null)
     {
@@ -184,19 +184,19 @@ class Kohana_Response implements HTTP_Response
      *      // Get the current status
      *      $status = $response->status();
      *
-     * @param integer $status Status to set to this response
-     * @return  mixed
+     * @param integer $code Status to set to this response
+     * @return int|Kohana_Response
      * @throws Kohana_Exception
      */
-    public function status($status = null)
+    public function status($code = null)
     {
-        if ($status === null) {
+        if ($code === null) {
             return $this->_status;
-        } elseif (array_key_exists($status, Response::$messages)) {
-            $this->_status = (int) $status;
+        } elseif (array_key_exists($code, Response::$messages)) {
+            $this->_status = (int) $code;
             return $this;
         } else {
-            throw new Kohana_Exception(__METHOD__ . ' unknown status value : :value', [':value' => $status]);
+            throw new Kohana_Exception(__METHOD__ . ' unknown status value : :value', [':value' => $code]);
         }
     }
 
@@ -318,7 +318,7 @@ class Kohana_Response implements HTTP_Response
     /**
      * Sends the response status and all set headers.
      *
-     * @param boolean $replace replace existing headers
+     * @param bool $replace replace existing headers
      * @param callback $callback function to handle header output
      * @return  mixed
      * @throws Kohana_Exception

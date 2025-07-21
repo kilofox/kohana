@@ -41,14 +41,11 @@ class Kohana_Minion_CLI
      *     // Get the values of "username" and "password"
      *     $auth = Minion_CLI::options('username', 'password');
      *
-     * @param   string  $options,...    option name
+     * @param string ...$options option name
      * @return  array
      */
-    public static function options($options = null)
+    public static function options(...$options)
     {
-        // Get all the requested options
-        $options = func_get_args();
-
         // Found option values
         $values = [];
 
@@ -81,12 +78,10 @@ class Kohana_Minion_CLI
             $values[$opt] = $value;
         }
 
-        if ($options) {
-            foreach ($values as $opt => $value) {
-                if (!in_array($opt, $options)) {
-                    // Set the given value
-                    unset($values[$opt]);
-                }
+        foreach ($values as $opt => $value) {
+            if (!in_array($opt, $options)) {
+                // Set the given value
+                unset($values[$opt]);
             }
         }
 
@@ -201,7 +196,7 @@ class Kohana_Minion_CLI
      *     Minion_CLI::write_replace('100%', true);
      *
      * @param string  $text      the text to output
-     * @param boolean $end_line  whether the line is done being replaced
+     * @param bool $end_line whether the line is done being replaced
      */
     public static function write_replace($text = '', $end_line = false)
     {

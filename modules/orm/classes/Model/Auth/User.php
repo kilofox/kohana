@@ -102,9 +102,9 @@ class Model_Auth_User extends ORM
     /**
      * Tests if a unique key value exists in the database.
      *
-     * @param mixed    the value to test
-     * @param string   field name
-     * @return  boolean
+     * @param mixed $value the value to test
+     * @param string $field field name
+     * @return bool
      * @throws Kohana_Exception
      */
     public function unique_key_exists($value, $field = NULL)
@@ -125,7 +125,7 @@ class Model_Auth_User extends ORM
     /**
      * Allows a model use both email and username as unique identifiers for login
      *
-     * @param   string  unique value
+     * @param string $value unique value
      * @return  string  field name
      */
     public function unique_key($value)

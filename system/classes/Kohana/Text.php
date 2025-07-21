@@ -84,7 +84,7 @@ class Kohana_Text
      * @param   string  $str            phrase to limit characters of
      * @param   integer $limit          number of characters to limit to
      * @param   string  $end_char       end character or entity
-     * @param   boolean $preserve_words enable or disable the preservation of words while limiting
+     * @param   bool $preserve_words enable or disable the preservation of words while limiting
      * @return  string
      * @uses    UTF8::strlen
      */
@@ -121,20 +121,19 @@ class Kohana_Text
      * Note that using multiple iterations of different strings may produce
      * unexpected results.
      *
-     * @param   string  $str,...    strings to alternate between
+     * @param string ...$strings strings to alternate between
      * @return  string
      */
-    public static function alternate()
+    public static function alternate(...$strings)
     {
         static $i;
 
-        if (func_num_args() === 0) {
+        if (empty($strings)) {
             $i = 0;
             return '';
         }
 
-        $args = func_get_args();
-        return $args[($i++ % count($args))];
+        return $strings[($i++ % count($strings))];
     }
 
     /**
@@ -266,7 +265,7 @@ class Kohana_Text
      * @param   string  $str                    phrase to replace words in
      * @param   array   $badwords               words to replace
      * @param   string  $replacement            replacement string
-     * @param   boolean $replace_partial_words  replace words across word boundaries (space, period, etc.)
+     * @param   bool $replace_partial_words replace words across word boundaries (space, period, etc.)
      * @return  string
      * @uses    UTF8::strlen
      */
@@ -404,7 +403,7 @@ class Kohana_Text
      * [!!] This method is not foolproof since it uses regex to parse HTML.
      *
      * @param   string  $str    subject
-     * @param   boolean $br     convert single linebreaks to <br />
+     * @param   bool $br convert single linebreaks to <br />
      * @return  string
      */
     public static function auto_p($str, $br = true)
@@ -459,7 +458,7 @@ class Kohana_Text
      * @param   integer $bytes      size in bytes
      * @param   string  $force_unit a definitive unit
      * @param   string  $format     the return string format
-     * @param   boolean $si         whether to use SI prefixes or IEC
+     * @param   bool $si whether to use SI prefixes or IEC
      * @return  string
      */
     public static function bytes($bytes, $force_unit = null, $format = null, $si = true)

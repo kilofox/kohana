@@ -189,7 +189,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      *     }
      *
      * @param   int     $offset
-     * @return  boolean
+     * @return  bool
      */
     public function offsetExists($offset)
     {
@@ -297,7 +297,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      *
      * [!!] This method is only used internally.
      *
-     * @return  boolean
+     * @return bool
      */
     public function valid()
     {

@@ -460,7 +460,7 @@ class Kohana_Core
      *
      * @param   string  $class      Class name
      * @param   string  $directory  Directory to load from
-     * @return  boolean
+     * @return  bool
      */
     public static function auto_load($class, $directory = 'classes')
     {
@@ -497,7 +497,7 @@ class Kohana_Core
      *
      * @param   string  $class      Class name
      * @param   string  $directory  Directory to load from
-     * @return  boolean
+     * @return  bool
      */
     public static function auto_load_lowercase($class, $directory = 'classes')
     {
@@ -606,7 +606,7 @@ class Kohana_Core
      * @param   string  $dir    directory name (views, i18n, classes, extensions, etc.)
      * @param   string  $file   filename with subdirectory
      * @param   string  $ext    extension to search for
-     * @param   boolean $array  return an array of files?
+     * @param   bool $array return an array of files?
      * @return  array   a list of files when $array is true
      * @return  string  single file path
      */
@@ -780,12 +780,11 @@ class Kohana_Core
      *
      * [ref-var]: https://www.php.net/var_export
      *
-     * @throws  Kohana_Exception
      * @param   string  $name       name of the cache
      * @param   mixed   $data       data to cache
      * @param   integer $lifetime   number of seconds the cache is valid for
      * @return  mixed    for getting
-     * @return  boolean  for setting
+     * @return  bool for setting
      */
     public static function cache($name, $data = null, $lifetime = null)
     {
@@ -907,8 +906,9 @@ class Kohana_Core
     /**
      * Catches errors that are not caught by the error handler, such as E_PARSE.
      *
-     * @uses    Kohana_Exception::handler
      * @return  void
+     * @throws Kohana_Exception
+     * @uses    Kohana_Exception::handler
      */
     public static function shutdown_handler()
     {

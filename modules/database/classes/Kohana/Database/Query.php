@@ -67,8 +67,8 @@ class Kohana_Database_Query
     /**
      * Enables the query to be cached for a specified amount of time.
      *
-     * @param   integer  $lifetime  number of seconds to cache, 0 deletes it from the cache
-     * @param   boolean  whether to execute the query during a cache hit
+     * @param integer $lifetime number of seconds to cache, 0 deletes it from the cache
+     * @param bool $force whether to execute the query during a cache hit
      * @return  $this
      * @uses    Kohana::$cache_life
      */
@@ -195,8 +195,8 @@ class Kohana_Database_Query
      * Execute the current query on the given database.
      *
      * @param mixed $db Database instance or name of instance
-     * @param string   result object classname, true for stdClass or false for array
-     * @param array    result object constructor arguments
+     * @param string $as_object result object classname, true for stdClass or false for array
+     * @param array $object_params result object constructor arguments
      * @return  object   Database_Result for SELECT queries
      * @return  mixed    the insert id for INSERT queries
      * @return  integer  number of affected rows for all other queries

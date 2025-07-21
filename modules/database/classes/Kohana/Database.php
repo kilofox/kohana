@@ -158,7 +158,7 @@ abstract class Kohana_Database
      *
      *     $db->disconnect();
      *
-     * @return  boolean
+     * @return bool
      */
     public function disconnect()
     {
@@ -214,7 +214,7 @@ abstract class Kohana_Database
      *      }
      *
      * @param string $mode  transaction mode
-     * @return  boolean
+     * @return bool
      */
     abstract public function begin($mode = null);
     /**
@@ -223,7 +223,7 @@ abstract class Kohana_Database
      *     // Commit the database changes
      *     $db->commit();
      *
-     * @return  boolean
+     * @return bool
      */
     abstract public function commit();
     /**
@@ -232,7 +232,7 @@ abstract class Kohana_Database
      *     // Undo the changes
      *     $db->rollback();
      *
-     * @return  boolean
+     * @return bool
      */
     abstract public function rollback();
 
@@ -350,7 +350,7 @@ abstract class Kohana_Database
      *
      * @param   string  $table       table to get columns from
      * @param   string  $like        column to search for
-     * @param   boolean $add_prefix  whether to add the table prefix automatically or not
+     * @param   bool $add_prefix whether to add the table prefix automatically or not
      * @return  array
      */
     abstract public function list_columns($table, $like = null, $add_prefix = true);

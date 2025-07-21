@@ -26,7 +26,7 @@ class Kohana_Arr
      *     Arr::is_assoc('foo', 'bar');
      *
      * @param   array   $array  array to check
-     * @return  boolean
+     * @return  bool
      */
     public static function is_assoc(array $array)
     {
@@ -51,7 +51,7 @@ class Kohana_Arr
      *     Arr::is_array(Database::instance());
      *
      * @param   mixed   $value  value to check
-     * @return  boolean
+     * @return  bool
      */
     public static function is_array($value)
     {
@@ -381,48 +381,24 @@ class Kohana_Arr
      *     ['name' => 'mary', 'children' => ['fred', 'paul', 'sally', 'jane']]
      *
      * @param   array  $array1      initial array
-     * @param   array  $array2,...  array to merge
+     * @param   array  ...$arrays   array to merge
      * @return  array
      */
-    public static function merge($array1, $array2)
+    public static function merge($array1, ...$arrays)
     {
-        if (Arr::is_assoc($array2)) {
-            foreach ($array2 as $key => $value) {
-                if (is_array($value)
-                    AND isset($array1[$key])
-                    AND is_array($array1[$key])
-                ) {
-                    $array1[$key] = Arr::merge($array1[$key], $value);
-                } else {
-                    $array1[$key] = $value;
-                }
-            }
-        } else {
-            foreach ($array2 as $value) {
-                if (!in_array($value, $array1, true)) {
-                    $array1[] = $value;
-                }
-            }
-        }
-
-        if (func_num_args() > 2) {
-            foreach (array_slice(func_get_args(), 2) as $array2) {
-                if (Arr::is_assoc($array2)) {
-                    foreach ($array2 as $key => $value) {
-                        if (is_array($value)
-                            AND isset($array1[$key])
-                            AND is_array($array1[$key])
-                        ) {
-                            $array1[$key] = Arr::merge($array1[$key], $value);
-                        } else {
-                            $array1[$key] = $value;
-                        }
+        foreach ($arrays as $array2) {
+            if (Arr::is_assoc($array2)) {
+                foreach ($array2 as $key => $value) {
+                    if (is_array($value) && isset($array1[$key]) && is_array($array1[$key])) {
+                        $array1[$key] = Arr::merge($array1[$key], $value);
+                    } else {
+                        $array1[$key] = $value;
                     }
-                } else {
-                    foreach ($array2 as $value) {
-                        if (!in_array($value, $array1, true)) {
-                            $array1[] = $value;
-                        }
+                }
+            } else {
+                foreach ($array2 as $value) {
+                    if (!in_array($value, $array1, true)) {
+                        $array1[] = $value;
                     }
                 }
             }
@@ -445,20 +421,14 @@ class Kohana_Arr
      *     ['name' => 'jack', 'mood' => 'happy', 'food' => 'tacos']
      *
      * @param   array   $array1 master array
-     * @param   array   $array2 input arrays that will overwrite existing values
+     * @param   array   ...$arrays input arrays that will overwrite existing values
      * @return  array
      */
-    public static function overwrite($array1, $array2)
+    public static function overwrite($array1, ...$arrays)
     {
-        foreach (array_intersect_key($array2, $array1) as $key => $value) {
-            $array1[$key] = $value;
-        }
-
-        if (func_num_args() > 2) {
-            foreach (array_slice(func_get_args(), 2) as $array2) {
-                foreach (array_intersect_key($array2, $array1) as $key => $value) {
-                    $array1[$key] = $value;
-                }
+        foreach ($arrays as $array2) {
+            foreach (array_intersect_key($array2, $array1) as $key => $value) {
+                $array1[$key] = $value;
             }
         }
 

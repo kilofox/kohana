@@ -41,7 +41,7 @@ class Kohana_Inflector
      * case, please report [an issue](http://dev.kohanaphp.com/projects/kohana3/issues).
      *
      * @param string $str word to check
-     * @return  boolean
+     * @return bool
      * @throws Kohana_Exception
      */
     public static function uncountable($str)

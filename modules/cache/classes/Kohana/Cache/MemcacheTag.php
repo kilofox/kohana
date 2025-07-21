@@ -35,7 +35,7 @@ class Kohana_Cache_MemcacheTag extends Cache_Memcache implements Cache_Tagging
      * @param   mixed    $data      data
      * @param   integer  $lifetime  lifetime [Optional]
      * @param   array    $tags      tags [Optional]
-     * @return  boolean
+     * @return  bool
      */
     public function set_with_tags($id, $data, $lifetime = null, array $tags = null)
     {
@@ -56,7 +56,7 @@ class Kohana_Cache_MemcacheTag extends Cache_Memcache implements Cache_Tagging
      * Delete cache entries based on a tag
      *
      * @param   string  $tag  tag
-     * @return  boolean
+     * @return  bool
      */
     public function delete_tag($tag)
     {

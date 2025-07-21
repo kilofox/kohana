@@ -14,7 +14,7 @@ class Kohana_Valid
     /**
      * Checks if a field is not empty.
      *
-     * @return  boolean
+     * @return bool
      */
     public static function not_empty($value)
     {
@@ -32,7 +32,7 @@ class Kohana_Valid
      *
      * @param   string  $value      value
      * @param   string  $expression regular expression to match (including delimiters)
-     * @return  boolean
+     * @return  bool
      */
     public static function regex($value, $expression)
     {
@@ -44,7 +44,7 @@ class Kohana_Valid
      *
      * @param   string  $value  value
      * @param   integer $length minimum length required
-     * @return  boolean
+     * @return  bool
      */
     public static function min_length($value, $length)
     {
@@ -56,7 +56,7 @@ class Kohana_Valid
      *
      * @param   string  $value  value
      * @param   integer $length maximum length required
-     * @return  boolean
+     * @return  bool
      */
     public static function max_length($value, $length)
     {
@@ -68,7 +68,7 @@ class Kohana_Valid
      *
      * @param   string          $value  value
      * @param   integer|array   $length exact length required, or array of valid lengths
-     * @return  boolean
+     * @return  bool
      */
     public static function exact_length($value, $length)
     {
@@ -84,7 +84,7 @@ class Kohana_Valid
      *
      * @param   string  $value      value
      * @param   string  $required   required value
-     * @return  boolean
+     * @return  bool
      */
     public static function equals($value, $required)
     {
@@ -98,8 +98,8 @@ class Kohana_Valid
      * @link  http://www.w3.org/Protocols/rfc822/
      *
      * @param   string  $email  email address
-     * @param   boolean $strict strict RFC compatibility
-     * @return  boolean
+     * @param   bool $strict strict RFC compatibility
+     * @return  bool
      */
     public static function email($email, $strict = false)
     {
@@ -135,7 +135,7 @@ class Kohana_Valid
      * @link  https://www.php.net/checkdnsrr  not added to Windows until PHP 5.3.0
      *
      * @param   string  $email  email address
-     * @return  boolean
+     * @return  bool
      */
     public static function email_domain($email)
     {
@@ -150,7 +150,7 @@ class Kohana_Valid
      * Validate a URL.
      *
      * @param   string  $url    URL
-     * @return  boolean
+     * @return  bool
      */
     public static function url($url)
     {
@@ -209,8 +209,8 @@ class Kohana_Valid
      * Validate an IP.
      *
      * @param   string  $ip             IP address
-     * @param   boolean $allow_private  allow private IP networks
-     * @return  boolean
+     * @param   bool $allow_private allow private IP networks
+     * @return  bool
      */
     public static function ip($ip, $allow_private = true)
     {
@@ -230,7 +230,7 @@ class Kohana_Valid
      *
      * @param integer $number credit card number
      * @param string|array $type card type, or an array of card types
-     * @return  boolean
+     * @return bool
      * @throws Kohana_Exception
      * @uses    Valid::luhn
      */
@@ -284,7 +284,7 @@ class Kohana_Valid
      * (mod10) formula.
      *
      * @param   string  $number number to check
-     * @return  boolean
+     * @return  bool
      */
     public static function luhn($number)
     {
@@ -325,7 +325,7 @@ class Kohana_Valid
      *
      * @param   string  $number     phone number to check
      * @param   array   $lengths
-     * @return  boolean
+     * @return  bool
      */
     public static function phone($number, $lengths = null)
     {
@@ -344,7 +344,7 @@ class Kohana_Valid
      * Tests if a string is a valid date string.
      *
      * @param   string  $str    date to check
-     * @return  boolean
+     * @return  bool
      */
     public static function date($str)
     {
@@ -355,8 +355,8 @@ class Kohana_Valid
      * Checks whether a string consists of alphabetical characters only.
      *
      * @param   string  $str    input string
-     * @param   boolean $utf8   trigger UTF-8 compatibility
-     * @return  boolean
+     * @param   bool $utf8 trigger UTF-8 compatibility
+     * @return  bool
      */
     public static function alpha($str, $utf8 = false)
     {
@@ -373,8 +373,8 @@ class Kohana_Valid
      * Checks whether a string consists of alphabetical characters and numbers only.
      *
      * @param   string  $str    input string
-     * @param   boolean $utf8   trigger UTF-8 compatibility
-     * @return  boolean
+     * @param   bool $utf8 trigger UTF-8 compatibility
+     * @return  bool
      */
     public static function alpha_numeric($str, $utf8 = false)
     {
@@ -389,8 +389,8 @@ class Kohana_Valid
      * Checks whether a string consists of alphabetical characters, numbers, underscores and dashes only.
      *
      * @param   string  $str    input string
-     * @param   boolean $utf8   trigger UTF-8 compatibility
-     * @return  boolean
+     * @param   bool $utf8 trigger UTF-8 compatibility
+     * @return  bool
      */
     public static function alpha_dash($str, $utf8 = false)
     {
@@ -407,8 +407,8 @@ class Kohana_Valid
      * Checks whether a string consists of digits only (no dots or dashes).
      *
      * @param   string  $str    input string
-     * @param   boolean $utf8   trigger UTF-8 compatibility
-     * @return  boolean
+     * @param   bool $utf8 trigger UTF-8 compatibility
+     * @return  bool
      */
     public static function digit($str, $utf8 = false)
     {
@@ -426,7 +426,7 @@ class Kohana_Valid
      * to allow decimal point to be locale specific.
      *
      * @param   string  $str    input string
-     * @return  boolean
+     * @return  bool
      */
     public static function numeric($str)
     {
@@ -444,7 +444,7 @@ class Kohana_Valid
      * @param   integer $min    minimum value
      * @param   integer $max    maximum value
      * @param   integer $step   increment size
-     * @return  boolean
+     * @return  bool
      */
     public static function range($number, $min, $max, $step = null)
     {
@@ -469,7 +469,7 @@ class Kohana_Valid
      * @param   string  $str    number to check
      * @param   integer $places number of decimal places
      * @param   integer $digits number of digits
-     * @return  boolean
+     * @return  bool
      */
     public static function decimal($str, $places = 2, $digits = null)
     {
@@ -493,7 +493,7 @@ class Kohana_Valid
      * the short notation using only three instead of six hexadecimal characters.
      *
      * @param   string  $str    input string
-     * @return  boolean
+     * @return  bool
      */
     public static function color($str)
     {
@@ -506,7 +506,7 @@ class Kohana_Valid
      * @param   array   $array  array of values
      * @param   string  $field  field name
      * @param   string  $match  field name to match
-     * @return  boolean
+     * @return  bool
      */
     public static function matches($array, $field, $match)
     {

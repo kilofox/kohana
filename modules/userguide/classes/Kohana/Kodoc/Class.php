@@ -46,7 +46,7 @@ class Kohana_Kodoc_Class extends Kodoc
      * the class. Reads the class modifiers, constants and comment. Parses the
      * comment to find the description and tags.
      *
-     * @param string  Class name
+     * @param string $class Class name
      * @throws Kohana_Exception
      * @throws ReflectionException
      */

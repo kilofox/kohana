@@ -1,18 +1,18 @@
 <?php
 
 /**
- * [Kohana Cache](api/Kohana_Cache) Wincache driver. Provides an opcode based
+ * [Kohana Cache](api/Kohana_Cache) APC driver. Provides an opcode based
  * driver for the Kohana Cache library.
  *
  * ### Configuration example
  *
- * Below is an example of an _wincache_ server configuration.
+ * Below is an example of an _apc_ server configuration.
  *
  *     return [
  *         // Driver group
- *         'wincache' => [
- *             // Using wincache driver
- *             'driver' => 'wincache',
+ *         'apc' => [
+ *             // Using APC driver
+ *             'driver' => 'apc',
  *         ],
  *     ];
  *
@@ -29,25 +29,21 @@
  *
  * ### System requirements
  *
- * *  Windows XP SP3 with IIS 5.1 and » FastCGI Extension
- * *  Windows Server 2003 with IIS 6.0 and » FastCGI Extension
- * *  Windows Vista SP1 with IIS 7.0 and FastCGI Module
- * *  Windows Server 2008 with IIS 7.0 and FastCGI Module
- * *  Windows 7 with IIS 7.5 and FastCGI Module
- * *  Windows Server 2008 R2 with IIS 7.5 and FastCGI Module
- * *  PHP 5.2.X, Non-thread-safe build
- * *  PHP 5.3 X86, Non-thread-safe VC9 build
+ * *  Kohana 3.0.x
+ * *  PHP 5.2.4 or greater
+ * *  APC PHP extension
  *
  * @package    Kohana/Cache
  * @category   Base
  * @author     Kohana Team
  * @copyright  (c) 2009-2012 Kohana Team
  * @license    https://kohana.top/license
+ * @deprecated 3.4.0
  */
-class Kohana_Cache_Wincache extends Cache
+class Kohana_Cache_Apc extends Cache implements Cache_Arithmetic
 {
     /**
-     * Check for existence of the wincache extension This method cannot be invoked externally. The driver must
+     * Check for existence of the APC extension This method cannot be invoked externally. The driver must
      * be instantiated using the `Cache::instance()` method.
      *
      * @param  array  $config  configuration
@@ -55,8 +51,8 @@ class Kohana_Cache_Wincache extends Cache
      */
     protected function __construct(array $config)
     {
-        if (!extension_loaded('wincache')) {
-            throw new Cache_Exception('PHP wincache extension is not available.');
+        if (!extension_loaded('apc')) {
+            throw new Cache_Exception('PHP APC extension is not available.');
         }
 
         parent::__construct($config);
@@ -65,11 +61,11 @@ class Kohana_Cache_Wincache extends Cache
     /**
      * Retrieve a cached value entry by id.
      *
-     *     // Retrieve cache entry from wincache group
-     *     $data = Cache::instance('wincache')->get('foo');
+     *     // Retrieve cache entry from apc group
+     *     $data = Cache::instance('apc')->get('foo');
      *
-     *     // Retrieve cache entry from wincache group and return 'bar' if missing
-     *     $data = Cache::instance('wincache')->get('foo', 'bar');
+     *     // Retrieve cache entry from apc group and return 'bar' if missing
+     *     $data = Cache::instance('apc')->get('foo', 'bar');
      *
      * @param   string  $id       id of cache to entry
      * @param   string  $default  default value to return if cache miss
@@ -77,7 +73,7 @@ class Kohana_Cache_Wincache extends Cache
      */
     public function get($id, $default = null)
     {
-        $data = wincache_ucache_get($this->_sanitize_id($id), $success);
+        $data = apc_fetch($this->_sanitize_id($id), $success);
 
         return $success ? $data : $default;
     }
@@ -87,11 +83,11 @@ class Kohana_Cache_Wincache extends Cache
      *
      *     $data = 'bar';
      *
-     *     // Set 'bar' to 'foo' in wincache group, using default expiry
-     *     Cache::instance('wincache')->set('foo', $data);
+     *     // Set 'bar' to 'foo' in apc group, using default expiry
+     *     Cache::instance('apc')->set('foo', $data);
      *
-     *     // Set 'bar' to 'foo' in wincache group for 30 seconds
-     *     Cache::instance('wincache')->set('foo', $data, 30);
+     *     // Set 'bar' to 'foo' in apc group for 30 seconds
+     *     Cache::instance('apc')->set('foo', $data, 30);
      *
      * @param   string   $id        id of cache entry
      * @param   string   $data      data to set to cache
@@ -104,21 +100,21 @@ class Kohana_Cache_Wincache extends Cache
             $lifetime = Arr::get($this->_config, 'default_expire', Cache::DEFAULT_EXPIRE);
         }
 
-        return wincache_ucache_set($this->_sanitize_id($id), $data, $lifetime);
+        return apc_store($this->_sanitize_id($id), $data, $lifetime);
     }
 
     /**
      * Delete a cache entry based on id
      *
-     *     // Delete 'foo' entry from the wincache group
-     *     Cache::instance('wincache')->delete('foo');
+     *     // Delete 'foo' entry from the apc group
+     *     Cache::instance('apc')->delete('foo');
      *
      * @param   string  $id  id to remove from cache
      * @return  bool
      */
     public function delete($id)
     {
-        return wincache_ucache_delete($this->_sanitize_id($id));
+        return apc_delete($this->_sanitize_id($id));
     }
 
     /**
@@ -128,14 +124,44 @@ class Kohana_Cache_Wincache extends Cache
      * using shared memory cache systems, as it will wipe every
      * entry within the system for all clients.
      *
-     *     // Delete all cache entries in the wincache group
-     *     Cache::instance('wincache')->delete_all();
+     *     // Delete all cache entries in the apc group
+     *     Cache::instance('apc')->delete_all();
      *
      * @return bool
      */
     public function delete_all()
     {
-        return wincache_ucache_clear();
+        return apc_clear_cache('user');
+    }
+
+    /**
+     * Increments a given value by the step value supplied.
+     * Useful for shared counters and other persistent integer based
+     * tracking.
+     *
+     * @param string $id id of cache entry to increment
+     * @param int $step step value to increment by
+     * @return  integer
+     * @return bool
+     */
+    public function increment($id, $step = 1)
+    {
+        return apc_inc($id, $step);
+    }
+
+    /**
+     * Decrements a given value by the step value supplied.
+     * Useful for shared counters and other persistent integer based
+     * tracking.
+     *
+     * @param string $id id of cache entry to decrement
+     * @param int $step step value to decrement by
+     * @return  integer
+     * @return bool
+     */
+    public function decrement($id, $step = 1)
+    {
+        return apc_dec($id, $step);
     }
 
 }

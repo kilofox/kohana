@@ -211,7 +211,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *     }
      *
      * @param   array   $cache_control Array of headers
-     * @return  mixed
+     * @return  array|false
      */
     public static function parse_cache_control($cache_control)
     {
@@ -308,88 +308,88 @@ class Kohana_HTTP_Header extends ArrayObject
      * is `false`, the header will be appended rather than replacing the
      * original setting.
      *
-     * @param   mixed   $index      index to set `$newval` to
-     * @param   mixed   $newval     new value to set
-     * @param   boolean $replace    replace existing value
+     * @param mixed $key The index being set.
+     * @param mixed $value The new value for the index.
+     * @param bool $replace replace existing value
      * @return  void
      * @since   3.2.0
      */
-    public function offsetSet($index, $newval, $replace = true)
+    public function offsetSet($key, $value, $replace = true)
     {
         // Ensure the index is lowercase
-        $index = strtolower($index);
+        $key = strtolower($key);
 
-        if ($replace OR !$this->offsetExists($index)) {
-            parent::offsetSet($index, $newval);
+        if ($replace OR !$this->offsetExists($key)) {
+            parent::offsetSet($key, $value);
             return;
         }
 
-        $current_value = $this->offsetGet($index);
+        $current_value = $this->offsetGet($key);
 
         if (is_array($current_value)) {
-            $current_value[] = $newval;
+            $current_value[] = $value;
         } else {
-            $current_value = [$current_value, $newval];
+            $current_value = [$current_value, $value];
         }
 
-        parent::offsetSet($index, $current_value);
+        parent::offsetSet($key, $current_value);
     }
 
     /**
      * Overloads the `ArrayObject::offsetExists()` method to ensure keys
      * are lowercase.
      *
-     * @param   string  $index
-     * @return  boolean
+     * @param   string  $key
+     * @return  bool
      * @since   3.2.0
      */
-    public function offsetExists($index)
+    public function offsetExists($key)
     {
-        return parent::offsetExists(strtolower($index));
+        return parent::offsetExists(strtolower($key));
     }
 
     /**
      * Overloads the `ArrayObject::offsetUnset()` method to ensure keys
      * are lowercase.
      *
-     * @param   string  $index
+     * @param   string  $key
      * @return  void
      * @since   3.2.0
      */
-    public function offsetUnset($index)
+    public function offsetUnset($key)
     {
-        parent::offsetUnset(strtolower($index));
+        parent::offsetUnset(strtolower($key));
     }
 
     /**
      * Overload the `ArrayObject::offsetGet()` method to ensure that all
      * keys passed to it are formatted correctly for this object.
      *
-     * @param   string  $index  index to retrieve
+     * @param   string  $key  index to retrieve
      * @return  mixed
      * @since   3.2.0
      */
-    public function offsetGet($index)
+    public function offsetGet($key)
     {
-        return parent::offsetGet(strtolower($index));
+        return parent::offsetGet(strtolower($key));
     }
 
     /**
      * Overloads the `ArrayObject::exchangeArray()` method to ensure that
      * all keys are changed to lowercase.
      *
-     * @param   mixed   $input
+     * @param   mixed   $array
      * @return  array
      * @since   3.2.0
      */
-    public function exchangeArray($input)
+    public function exchangeArray($array)
     {
         /**
          * HTTP header declarations should be treated as case-insensitive
          */
-        $input = array_change_key_case((array) $input);
+        $array = array_change_key_case((array) $array);
 
-        return parent::exchangeArray($input);
+        return parent::exchangeArray($array);
     }
 
     /**
@@ -430,7 +430,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *     $quality_explicit = $request->headers()->accepts_at_quality('text/plain', true);
      *
      * @param string $type
-     * @param boolean $explicit explicit check, excludes `*`
+     * @param bool $explicit explicit check, excludes `*`
      * @return  mixed
      * @throws Kohana_Exception
      * @since   3.2.0
@@ -502,7 +502,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *
      *
      * @param array $types the content types to examine
-     * @param boolean $explicit only allow explicit references, no wildcards
+     * @param bool $explicit only allow explicit references, no wildcards
      * @return  string  name of the preferred content type
      * @throws Kohana_Exception
      * @since   3.2.0
@@ -602,7 +602,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *      // $encoding = (float) 1.0s
      *
      * @param   string  $encoding   encoding type to interrogate
-     * @param   boolean $explicit   explicit check, ignoring wildcards and `identity`
+     * @param   bool $explicit explicit check, ignoring wildcards and `identity`
      * @return  float
      * @since   3.2.0
      */
@@ -648,7 +648,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *     // $encoding = 'gzip';
      *
      * @param   array   $encodings  encodings to test against
-     * @param   boolean $explicit   explicit check, if `true` wildcards are excluded
+     * @param   bool $explicit explicit check, if `true` wildcards are excluded
      * @return  mixed
      * @since   3.2.0
      */
@@ -685,7 +685,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *     // $lang3 = (float) 0.0
      *
      * @param   string  $language   language to interrogate
-     * @param   boolean $explicit   explicit interrogation, `true` ignores wildcards
+     * @param   bool $explicit explicit interrogation, `true` ignores wildcards
      * @return  float
      * @since   3.2.0
      */
@@ -733,7 +733,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *      ]); // $lang = 'en-gb'
      *
      * @param   array   $languages
-     * @param   boolean $explicit
+     * @param   bool $explicit
      * @return  mixed
      * @since   3.2.0
      */
@@ -763,7 +763,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *  recommended that `$response` is returned
      *
      * @param HTTP_Response $response header to send
-     * @param boolean $replace replace existing value
+     * @param bool $replace replace existing value
      * @param callback $callback optional callback to replace PHP header function
      * @return  mixed
      * @throws Kohana_Exception
@@ -815,7 +815,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * are included in the message they will be handled appropriately.
      *
      * @param array $headers headers to send to php
-     * @param boolean $replace replace existing headers
+     * @param bool $replace replace existing headers
      * @return  self
      * @throws Kohana_Exception
      * @since   3.2.0

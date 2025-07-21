@@ -89,7 +89,7 @@ class Kohana_UTF8
      *     $ascii = UTF8::is_ascii($str);
      *
      * @param   mixed   $str    string or array of strings to check
-     * @return  boolean
+     * @return  bool
      */
     public static function is_ascii($str)
     {
@@ -185,7 +185,7 @@ class Kohana_UTF8
      * @param   string  $search needle
      * @param   integer $offset offset from which character in haystack to start searching
      * @return  integer position of needle
-     * @return  boolean false if the needle is not found
+     * @return  bool false if the needle is not found
      * @uses    UTF8::$server_utf8
      * @uses    Kohana::$charset
      */
@@ -215,7 +215,7 @@ class Kohana_UTF8
      * @param   string  $search needle
      * @param   integer $offset offset from which character in haystack to start searching
      * @return  integer position of needle
-     * @return  boolean false if the needle is not found
+     * @return  bool false if the needle is not found
      * @uses    UTF8::$server_utf8
      */
     public static function strrpos($str, $search, $offset = 0)
@@ -715,9 +715,9 @@ class Kohana_UTF8
      * Ported to PHP by Henri Sivonen <hsivonen@iki.fi>, see http://hsivonen.iki.fi/php-utf8/
      * Slight modifications to fit with phputf8 library by Harry Fuecks <hfuecks@gmail.com>.
      *
-     * @param array $str Unicode code points representing a string
+     * @param array $arr Unicode code points representing a string
      * @return  string  utf8 string of characters
-     * @return  boolean false if a code point cannot be found
+     * @return bool false if a code point cannot be found
      * @throws UTF8_Exception
      */
     public static function from_unicode($arr)

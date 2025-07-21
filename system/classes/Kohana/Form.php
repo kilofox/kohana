@@ -163,7 +163,7 @@ class Kohana_Form
      *
      * @param   string  $name       input name
      * @param   string  $value      input value
-     * @param   boolean $checked    checked status
+     * @param   bool $checked checked status
      * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    Form::input
@@ -188,7 +188,7 @@ class Kohana_Form
      *
      * @param   string  $name       input name
      * @param   string  $value      input value
-     * @param   boolean $checked    checked status
+     * @param   bool $checked checked status
      * @param   array   $attributes HTML attributes
      * @return  string
      * @uses    Form::input
@@ -213,7 +213,7 @@ class Kohana_Form
      * @param   string  $name           textarea name
      * @param   string  $body           textarea body
      * @param   array   $attributes     HTML attributes
-     * @param   boolean $double_encode  encode existing HTML characters
+     * @param   bool $double_encode encode existing HTML characters
      * @return  string
      * @uses    HTML::attributes
      * @uses    HTML::chars
@@ -345,7 +345,7 @@ class Kohana_Form
      * @param string $name input name
      * @param string $value input value
      * @param array $attributes HTML attributes
-     * @param boolean $index add index file to URL?
+     * @param bool $index add index file to URL?
      * @return  string
      * @throws Kohana_Exception
      * @uses    Form::input

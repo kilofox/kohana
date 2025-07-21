@@ -124,7 +124,8 @@ class Kohana_HTTP_Cache
      *
      * @param Request_Client $client client to execute with Cache-Control
      * @param Request $request request to execute with client
-     * @return  [Response]
+     * @param Response $response A response object
+     * @return false|HTTP_Header|mixed|Response
      * @throws Cache_Exception
      */
     public function execute(Request_Client $client, Request $request, Response $response)
@@ -195,7 +196,7 @@ class Kohana_HTTP_Cache
      * Getter and setter for the internal caching engine,
      * used to cache responses if available and valid.
      *
-     * @param   Kohana_Cache  $cache    engine to use for caching
+     * @param Cache|null $cache engine to use for caching
      * @return Kohana_Cache|Kohana_HTTP_Cache
      */
     public function cache(Cache $cache = null)
@@ -213,7 +214,7 @@ class Kohana_HTTP_Cache
      * that have the `private` setting.
      *
      * @link    https://www.rfc-editor.org/rfc/rfc9111#name-private
-     * @param   boolean $setting    allow caching of privately marked responses
+     * @param bool $setting allow caching of privately marked responses
      * @return bool|Kohana_HTTP_Cache
      */
     public function allow_private_cache($setting = null)
@@ -248,7 +249,7 @@ class Kohana_HTTP_Cache
      *      });
      *
      * @param callback $callback
-     * @return  mixed
+     * @return callable|Kohana_HTTP_Cache
      * @throws Kohana_Exception
      */
     public function cache_key_callback($callback = null)
@@ -288,7 +289,7 @@ class Kohana_HTTP_Cache
      *
      * @link    https://www.rfc-editor.org/rfc/rfc9111#name-storing-responses-in-caches RFC 9111
      * @param   Response  $response The Response
-     * @return  boolean
+     * @return  bool
      */
     public function set_cache(Response $response)
     {
@@ -335,7 +336,7 @@ class Kohana_HTTP_Cache
      * @param string $key the cache key to use
      * @param Request $request the HTTP Request
      * @param Response $response the HTTP Response
-     * @return  mixed
+     * @return bool|Response
      * @throws Cache_Exception
      */
     public function cache_response($key, Request $request, Response $response = null)
@@ -457,7 +458,7 @@ class Kohana_HTTP_Cache
      * `false` if the request hasn't finished executing, or
      * is yet to be run.
      *
-     * @return  mixed
+     * @return false|int
      */
     public function request_execution_time()
     {

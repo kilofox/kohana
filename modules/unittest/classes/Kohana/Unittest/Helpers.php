@@ -16,7 +16,7 @@ class Kohana_Unittest_Helpers
     /**
      * Check for internet connectivity
      *
-     * @return boolean Whether an internet connection is available
+     * @return bool Whether an internet connection is available
      */
     public static function has_internet()
     {

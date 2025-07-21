@@ -35,7 +35,7 @@ class Kohana_Security
      *
      * This provides a basic, but effective, method of preventing CSRF attacks.
      *
-     * @param boolean $new force a new token to be generated?
+     * @param bool $new force a new token to be generated?
      * @return  string
      * @throws Kohana_Exception
      * @uses    Session::instance
@@ -74,7 +74,7 @@ class Kohana_Security
      *     }
      *
      * @param string $token token to check
-     * @return  boolean
+     * @return bool
      * @throws Kohana_Exception
      * @uses    Security::token
      */
@@ -89,7 +89,7 @@ class Kohana_Security
      *
      * @param string $a cryptographic hash
      * @param string $b cryptographic hash
-     * @return boolean
+     * @return bool
      */
     public static function slow_equals($a, $b)
     {
