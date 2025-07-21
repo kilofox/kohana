@@ -179,7 +179,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * @param string $id id of cache entry
      * @param string $data data to set to cache
      * @param integer $lifetime lifetime in seconds
-     * @return  boolean
+     * @return bool
      * @throws Cache_Exception
      * @throws ErrorException
      */
@@ -229,7 +229,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *     Cache::instance('file')->delete('foo');
      *
      * @param string $id id to remove from cache
-     * @return  boolean
+     * @return bool
      * @throws Cache_Exception
      */
     public function delete($id)
@@ -250,7 +250,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *     // Delete all cache entries in the file group
      *     Cache::instance('file')->delete_all();
      *
-     * @return  boolean
+     * @return bool
      * @throws Cache_Exception
      */
     public function delete_all()
@@ -277,10 +277,10 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *     $this->_delete_file($folder, true, true);
      *
      * @param   SplFileInfo  $file                     file
-     * @param   boolean      $retain_parent_directory  retain the parent directory
-     * @param   boolean      $ignore_errors            ignore_errors to prevent all exceptions interrupting exec
-     * @param   boolean      $only_expired             only expired files
-     * @return  boolean
+     * @param   bool $retain_parent_directory retain the parent directory
+     * @param   bool $ignore_errors ignore_errors to prevent all exceptions interrupting exec
+     * @param   bool $only_expired only expired files
+     * @return  bool
      * @throws  Cache_Exception
      */
     protected function _delete_file(SplFileInfo $file, $retain_parent_directory = false, $ignore_errors = false, $only_expired = false)
@@ -395,7 +395,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * @link    https://www.php.net/manual/en/function.mkdir.php
      * @param   string    $directory    directory path
      * @param   integer   $mode         chmod mode
-     * @param   boolean   $recursive    allows nested directories creation
+     * @param   bool $recursive allows nested directories creation
      * @param   resource  $context      a stream context
      * @return  SplFileInfo
      * @throws  Cache_Exception
@@ -422,7 +422,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * Test if cache file is expired
      *
      * @param SplFileInfo $file the cache file
-     * @return boolean true if expired false otherwise
+     * @return bool true if expired false otherwise
      * @throws Cache_Exception
      */
     protected function _is_expired(SplFileInfo $file)

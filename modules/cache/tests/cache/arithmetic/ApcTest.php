@@ -64,7 +64,7 @@ class Kohana_ApcTest extends Kohana_CacheArithmeticMethodsTest
      * This test doesn't test the TTL as there is a known bug/feature
      * in APC that prevents the same request from killing cache on timeout.
      *
-     * @link   http://pecl.php.net/bugs/bug.php?id=16814
+     * @link https://bugs.php.net/bug.php?id=58832
      *
      * @dataProvider provider_set_get
      *
@@ -77,7 +77,7 @@ class Kohana_ApcTest extends Kohana_CacheArithmeticMethodsTest
     {
         if ($data['wait'] !== false) {
             $this->markTestSkipped('Unable to perform TTL test in CLI, see: ' .
-                'http://pecl.php.net/bugs/bug.php?id=16814 for more info!');
+                'https://bugs.php.net/bug.php?id=58832 for more info!');
         }
 
         parent::test_set_get($data, $expected);

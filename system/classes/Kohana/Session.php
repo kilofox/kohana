@@ -333,7 +333,7 @@ abstract class Kohana_Session
      * but not displayed, because sessions are written after output has
      * been sent.
      *
-     * @return  boolean
+     * @return  bool
      * @uses    Kohana::$log
      */
     public function write()
@@ -362,7 +362,7 @@ abstract class Kohana_Session
      *
      *     $success = $session->destroy();
      *
-     * @return  boolean
+     * @return bool
      */
     public function destroy()
     {
@@ -381,7 +381,7 @@ abstract class Kohana_Session
      *
      *     $success = $session->restart();
      *
-     * @return  boolean
+     * @return bool
      */
     public function restart()
     {
@@ -456,19 +456,19 @@ abstract class Kohana_Session
     /**
      * Writes the current session.
      *
-     * @return  boolean
+     * @return bool
      */
     abstract protected function _write();
     /**
      * Destroys the current session.
      *
-     * @return  boolean
+     * @return bool
      */
     abstract protected function _destroy();
     /**
      * Restarts the current session.
      *
-     * @return  boolean
+     * @return bool
      */
     abstract protected function _restart();
 }

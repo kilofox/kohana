@@ -196,7 +196,7 @@ class Kohana_Minion_CLI
      *     Minion_CLI::write_replace('100%', true);
      *
      * @param string  $text      the text to output
-     * @param boolean $end_line  whether the line is done being replaced
+     * @param bool $end_line whether the line is done being replaced
      */
     public static function write_replace($text = '', $end_line = false)
     {

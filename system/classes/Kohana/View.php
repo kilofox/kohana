@@ -189,7 +189,7 @@ class Kohana_View
      * [!!] `NULL` variables are not considered to be set by [isset](https://www.php.net/isset).
      *
      * @param   string  $key    variable name
-     * @return  boolean
+     * @return  bool
      */
     public function __isset($key)
     {

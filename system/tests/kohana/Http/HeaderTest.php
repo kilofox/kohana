@@ -643,7 +643,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @param   array    $state     state
      * @param   string   $key       key
-     * @param   boolean  $expected  expected
+     * @param   bool $expected expected
      * @return  void
      */
     // @codingStandardsIgnoreStart
@@ -862,7 +862,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @param array $state starting state
      * @param string $accept Accept header to test
-     * @param boolean $explicit explicitly check
+     * @param bool $explicit explicitly check
      * @param mixed $expected expected output
      * @return  void
      * @throws Kohana_Exception
@@ -1091,7 +1091,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @param array $state state
      * @param string $encoding encoding
-     * @param boolean $explicit explicit
+     * @param bool $explicit explicit
      * @param float $expected expected
      * @return  void
      */
@@ -1152,7 +1152,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @param array $state state in
      * @param array $encodings encodings to interrogate
-     * @param boolean $explicit explicit check
+     * @param bool $explicit explicit check
      * @param string $expected expected output
      * @return  void
      */
@@ -1229,7 +1229,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @param array $state state in
      * @param string $language language to interrogate
-     * @param boolean $explicit explicit check
+     * @param bool $explicit explicit check
      * @param float $expected expected output
      * @return  void
      */
@@ -1298,7 +1298,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @param array $state state in
      * @param array $languages languages to interrogate
-     * @param boolean $explicit explicit check
+     * @param bool $explicit explicit check
      * @param string $expected expected output
      * @return  void
      */
