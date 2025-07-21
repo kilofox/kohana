@@ -73,7 +73,7 @@ class Kohana_Database_PDO extends Database
      * @param callback $final Called after all rows of a result set have been processed
      * @param integer $arguments Number of arguments that the SQL function takes
      *
-     * @return  boolean
+     * @return bool
      * @throws Database_Exception
      */
     public function create_aggregate($name, $step, $final, $arguments = -1)
@@ -96,7 +96,7 @@ class Kohana_Database_PDO extends Database
      * @param callback $callback Callback which implements the SQL function
      * @param integer $arguments Number of arguments that the SQL function takes
      *
-     * @return  boolean
+     * @return bool
      * @throws Database_Exception
      */
     public function create_function($name, $callback, $arguments = -1)

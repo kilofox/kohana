@@ -37,8 +37,8 @@ class Kohana_FileTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_mime
-     * @param boolean $input Input for File::mime
-     * @param boolean $expected Output for File::mime
+     * @param mixed $input Input for File::mime
+     * @param string $expected Output for File::mime
      * @throws Kohana_Exception
      */
     public function test_mime($input, $expected)
@@ -65,9 +65,9 @@ class Kohana_FileTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_split_join
-     * @param boolean $input    Input for File::split
-     * @param boolean $peices   Input for File::split
-     * @param boolean $expected Output for File::split
+     * @param array|string $input Input for File::split
+     * @param int $peices Input for File::split
+     * @param int $expected Output for File::split
      */
     public function test_split_join($input, $peices, $expected)
     {

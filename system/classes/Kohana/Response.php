@@ -318,7 +318,7 @@ class Kohana_Response implements HTTP_Response
     /**
      * Sends the response status and all set headers.
      *
-     * @param boolean $replace replace existing headers
+     * @param bool $replace replace existing headers
      * @param callback $callback function to handle header output
      * @return  mixed
      * @throws Kohana_Exception

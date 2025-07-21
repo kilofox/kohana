@@ -98,7 +98,7 @@ class Kohana_Cookie
      * @param string $name name of cookie
      * @param string $value value of cookie
      * @param integer $lifetime lifetime in seconds
-     * @return  boolean
+     * @return bool
      * @throws Kohana_Exception
      * @uses    Cookie::salt
      */
@@ -126,7 +126,7 @@ class Kohana_Cookie
      *     Cookie::delete('theme');
      *
      * @param   string  $name   cookie name
-     * @return  boolean
+     * @return  bool
      */
     public static function delete($name)
     {
@@ -170,8 +170,8 @@ class Kohana_Cookie
      * @param integer $expire
      * @param string  $path
      * @param string  $domain
-     * @param boolean $secure
-     * @param boolean $httponly
+     * @param bool $secure
+     * @param bool $httponly
      *
      * @return bool
      * @see setcookie

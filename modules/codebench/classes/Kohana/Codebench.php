@@ -178,7 +178,7 @@ abstract class Kohana_Codebench
      * Filters out all methods not to benchmark.
      *
      * @param string $method method name
-     * @return  boolean
+     * @return bool
      */
     protected function _method_filter($method)
     {

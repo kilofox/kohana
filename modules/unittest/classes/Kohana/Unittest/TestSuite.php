@@ -25,7 +25,7 @@ abstract class Kohana_Unittest_TestSuite extends PHPUnit_Framework_TestSuite
      * @param  mixed                        $filter
      * @param  array                        $groups
      * @param  array                        $excludeGroups
-     * @param  boolean                      $processIsolation
+     * @param  bool $processIsolation
      * @return PHPUnit_Framework_TestResult
      * @throws InvalidArgumentException
      */

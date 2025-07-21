@@ -26,7 +26,7 @@ class Kohana_Arr
      *     Arr::is_assoc('foo', 'bar');
      *
      * @param   array   $array  array to check
-     * @return  boolean
+     * @return  bool
      */
     public static function is_assoc(array $array)
     {
@@ -51,7 +51,7 @@ class Kohana_Arr
      *     Arr::is_array(Database::instance());
      *
      * @param   mixed   $value  value to check
-     * @return  boolean
+     * @return  bool
      */
     public static function is_array($value)
     {

@@ -405,7 +405,7 @@ class Kohana_ORM extends Model implements serializable
      * Reload column definitions.
      *
      * @chainable
-     * @param   boolean $force Force reloading
+     * @param bool $force Force reloading
      * @return  Kohana_ORM
      */
     public function reload_columns($force = false)
@@ -481,7 +481,7 @@ class Kohana_ORM extends Model implements serializable
      * Checks if object data is set.
      *
      * @param  string $column Column name
-     * @return boolean
+     * @return bool
      */
     public function __isset($column)
     {
@@ -1351,7 +1351,7 @@ class Kohana_ORM extends Model implements serializable
      *
      * @param string $alias Alias of the has_many "through" relationship
      * @param mixed $far_keys Related model, primary key, or an array of primary keys
-     * @return boolean
+     * @return bool
      * @throws Kohana_Exception
      */
     public function has($alias, $far_keys = null)
@@ -1380,7 +1380,7 @@ class Kohana_ORM extends Model implements serializable
      *
      * @param string $alias Alias of the has_many "through" relationship
      * @param mixed $far_keys Related model, primary key, or an array of primary keys
-     * @return boolean
+     * @return bool
      * @throws Kohana_Exception
      */
     public function has_any($alias, $far_keys = null)
@@ -1891,7 +1891,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Enables or disables selecting only unique columns using "SELECT DISTINCT"
      *
-     * @param   boolean  $value  enable or disable distinct columns
+     * @param bool $value enable or disable distinct columns
      * @return  $this
      */
     public function distinct($value)
