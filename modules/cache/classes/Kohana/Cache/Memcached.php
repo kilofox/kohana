@@ -264,8 +264,7 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      *
      * @param string $id ID of cache entry to increment.
      * @param int $step Step value to increment by.
-     * @return  int
-     * @return  bool
+     * @return int|bool
      */
     public function increment($id, $step = 1)
     {
@@ -278,8 +277,7 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      *
      * @param string $id ID of cache entry to decrement.
      * @param int $step Step value to decrement by.
-     * @return  int
-     * @return  bool
+     * @return int|bool
      */
     public function decrement($id, $step = 1)
     {

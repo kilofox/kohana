@@ -668,8 +668,8 @@ class Kohana_ArrTest extends Unittest_TestCase
      * Tests Arr::range()
      *
      * @dataProvider provider_range
-     * @param integer $step  The step between each value in the array
-     * @param integer $max   The max value of the range (inclusive)
+     * @param int $step The step between each value in the array
+     * @param int $max The max value of the range (inclusive)
      */
     public function test_range($step, $max)
     {

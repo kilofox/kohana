@@ -63,7 +63,7 @@ class Kohana_Num
      *     echo 10, Num::ordinal(10); // "10th"
      *     echo 33, Num::ordinal(33); // "33rd"
      *
-     * @param   integer $number
+     * @param   int $number
      * @return  string
      */
     public static function ordinal($number)
@@ -98,7 +98,7 @@ class Kohana_Num
      *     echo Num::format(1200.05, 2, true);
      *
      * @param   float   $number     number to format
-     * @param   integer $places     decimal places
+     * @param   int $places decimal places
      * @param   bool $monetary monetary formatting?
      * @return  string
      * @since   3.0.2
@@ -122,8 +122,8 @@ class Kohana_Num
      * Round a number to a specified precision, using a specified tie breaking technique
      *
      * @param float $value Number to round
-     * @param integer $precision Desired precision
-     * @param integer $mode Tie breaking mode, accepts the PHP_ROUND_HALF_* constants
+     * @param int $precision Desired precision
+     * @param int $mode Tie breaking mode, accepts the PHP_ROUND_HALF_* constants
      * @param bool $native Set to "false" to force use of the userland implementation
      * @return float Rounded number
      */

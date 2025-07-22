@@ -70,7 +70,7 @@ class Kohana_Fragment
      *     }
      *
      * @param string $name fragment name
-     * @param integer $lifetime fragment cache lifetime
+     * @param int $lifetime fragment cache lifetime
      * @param bool $i18n multilingual fragment support
      * @return bool
      * @throws Kohana_Exception

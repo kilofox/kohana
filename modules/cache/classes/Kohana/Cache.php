@@ -240,7 +240,7 @@ abstract class Kohana_Cache
      *
      * @param   string   $id        id of cache entry
      * @param   string   $data      data to set to cache
-     * @param   integer  $lifetime  lifetime in seconds
+     * @param   int $lifetime lifetime in seconds
      * @return  bool
      */
     abstract public function set($id, $data, $lifetime = 3600);

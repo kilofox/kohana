@@ -212,8 +212,8 @@ class Kohana_Arr
      *     // Fill an array with values 5, 10, 15, 20
      *     $values = Arr::range(5, 20);
      *
-     * @param   integer $step   stepping
-     * @param   integer $max    ending number
+     * @param   int $step   stepping
+     * @param   int $max    ending number
      * @return  array
      */
     public static function range($step = 10, $max = 100)

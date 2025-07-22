@@ -33,7 +33,7 @@ class Kohana_Cache_MemcacheTag extends Cache_Memcache implements Cache_Tagging
      *
      * @param   string   $id        id
      * @param   mixed    $data      data
-     * @param   integer  $lifetime  lifetime [Optional]
+     * @param   int $lifetime lifetime [Optional]
      * @param   array    $tags      tags [Optional]
      * @return  bool
      */

@@ -143,8 +143,8 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a resize.
      *
-     * @param   integer  $width   new width
-     * @param   integer  $height  new height
+     * @param   int  $width   new width
+     * @param   int  $height  new height
      * @return  void
      */
     protected function _do_resize($width, $height)
@@ -196,10 +196,10 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a crop.
      *
-     * @param   integer  $width     new width
-     * @param   integer  $height    new height
-     * @param   integer  $offset_x  offset from the left
-     * @param   integer  $offset_y  offset from the top
+     * @param   int  $width     new width
+     * @param   int  $height    new height
+     * @param   int  $offset_x  offset from the left
+     * @param   int  $offset_y  offset from the top
      * @return  void
      */
     protected function _do_crop($width, $height, $offset_x, $offset_y)
@@ -225,7 +225,7 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a rotation.
      *
-     * @param integer $degrees degrees to rotate
+     * @param int $degrees degrees to rotate
      * @return  void
      * @throws Kohana_Exception
      */
@@ -265,7 +265,7 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a flip.
      *
-     * @param   integer  $direction  direction to flip
+     * @param   int $direction direction to flip
      * @return  void
      */
     protected function _do_flip($direction)
@@ -300,7 +300,7 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a sharpening.
      *
-     * @param integer $amount amount to sharpen
+     * @param int $amount amount to sharpen
      * @return  void
      * @throws Kohana_Exception
      */
@@ -334,8 +334,8 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a reflection.
      *
-     * @param integer $height reflection height
-     * @param integer $opacity reflection opacity
+     * @param int $height reflection height
+     * @param int $opacity reflection opacity
      * @param bool $fade_in true to fade out, false to fade in
      * @return  void
      * @throws Kohana_Exception
@@ -407,9 +407,9 @@ class Kohana_Image_GD extends Image
      * Execute a watermarking.
      *
      * @param Image $image watermarking Image
-     * @param integer $offset_x offset from the left
-     * @param integer $offset_y offset from the top
-     * @param integer $opacity opacity of watermark
+     * @param int $offset_x offset from the left
+     * @param int $offset_y offset from the top
+     * @param int $opacity opacity of watermark
      * @return  void
      * @throws Kohana_Exception
      */
@@ -457,10 +457,10 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a background.
      *
-     * @param   integer  $r        red
-     * @param   integer  $g        green
-     * @param   integer  $b        blue
-     * @param   integer  $opacity  opacity
+     * @param   int  $r        red
+     * @param   int  $g        green
+     * @param   int  $b        blue
+     * @param   int  $opacity  opacity
      * @return void
      */
     protected function _do_background($r, $g, $b, $opacity)
@@ -495,7 +495,7 @@ class Kohana_Image_GD extends Image
      * Execute a save.
      *
      * @param string $file new image filename
-     * @param integer $quality quality
+     * @param int $quality quality
      * @return bool
      * @throws Kohana_Exception
      */
@@ -526,7 +526,7 @@ class Kohana_Image_GD extends Image
      * Execute a render.
      *
      * @param string $type image type: png, jpg, gif, etc
-     * @param integer $quality quality
+     * @param int $quality quality
      * @return  string
      * @throws Kohana_Exception
      */
@@ -558,7 +558,7 @@ class Kohana_Image_GD extends Image
      * Also normalizes the quality setting
      *
      * @param   string   $extension  image type: png, jpg, etc
-     * @param   integer  $quality    image quality
+     * @param   int $quality image quality
      * @return  array    save function, IMAGETYPE_* constant
      * @throws  Kohana_Exception
      */
@@ -603,8 +603,8 @@ class Kohana_Image_GD extends Image
     /**
      * Create an empty image with the given width and height.
      *
-     * @param   integer   $width   image width
-     * @param   integer   $height  image height
+     * @param   int   $width   image width
+     * @param   int   $height  image height
      * @return  resource
      */
     protected function _create($width, $height)
