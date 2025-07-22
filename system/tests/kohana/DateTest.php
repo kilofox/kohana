@@ -69,7 +69,7 @@ class Kohana_DateTest extends Unittest_TestCase
      * @param integer $expected Expected offset
      * @param string $remote Remote TZ
      * @param string $local Local TZ
-     * @param integer $now Current timestamp
+     * @param string|int $now Current timestamp
      * @throws Exception
      */
     public function test_offset($expected, $remote, $local, $now = null)

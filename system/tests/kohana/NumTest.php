@@ -121,7 +121,7 @@ class Kohana_NumTest extends Unittest_TestCase
      * @test
      * @requires OS Linux
      * @dataProvider provider_format
-     * @param integer $number
+     * @param float $number
      * @param integer $places
      * @param bool $monetary
      * @param string $expected

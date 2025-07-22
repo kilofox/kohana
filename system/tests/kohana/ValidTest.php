@@ -165,7 +165,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_date
      * @param string  $date  The date to validate
-     * @param integer $expected
+     * @param bool $expected Whether the date is valid.
      */
     public function test_date($date, $expected)
     {
@@ -319,7 +319,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @covers        Valid::credit_card
      * @dataProvider  provider_credit_card()
      * @param string $number Credit card number
-     * @param string $type Credit card type
+     * @param string|array $type Credit card type
      * @param bool $expected
      * @throws Kohana_Exception
      */
@@ -483,7 +483,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_exact_length
      * @param string  $string  The string to length check
-     * @param integer $length  The length of the string
+     * @param int|array $length The length of the string
      * @param bool $correct Is $length the actual length of the string?
      * @return void
      */
@@ -520,8 +520,8 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_equals
-     * @param   string   $string    value to check
-     * @param   integer  $required  required value
+     * @param   mixed $string value to check
+     * @param   mixed $required required value
      * @param   bool $correct is $string the same as $required?
      * @return  void
      */
@@ -936,8 +936,8 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_matches
      * @param array   $data      Array of fields
-     * @param integer $field     First field name
-     * @param integer $match     Field name that must match $field in $data
+     * @param string $field First field name
+     * @param string $match Field name that must match $field in $data
      * @param bool $expected Do the two fields match?
      */
     public function test_matches($data, $field, $match, $expected)

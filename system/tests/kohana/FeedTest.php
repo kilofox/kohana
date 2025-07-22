@@ -143,11 +143,11 @@ class Kohana_FeedTest extends Unittest_TestCase
      *
      * @covers       feed::create
      *
-     * @param string $info info to pass
-     * @param integer $items items to add
-     * @param $enviroment
-     * @param $matcher_item
-     * @param $matchers_image
+     * @param array $info info to pass
+     * @param array $items items to add
+     * @param array $enviroment Server environment data.
+     * @param array $matcher_item XML matcher structure for the main item.
+     * @param array $matchers_image Array of XML matcher structures for image elements.
      * @throws Kohana_Exception
      * @throws ReflectionException
      */

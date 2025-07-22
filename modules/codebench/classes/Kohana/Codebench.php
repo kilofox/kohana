@@ -189,7 +189,7 @@ abstract class Kohana_Codebench
     /**
      * Returns the applicable grade letter for a score.
      *
-     * @param integer|double $score score
+     * @param float $score score
      * @return  string  grade letter
      */
     protected function _grade($score)

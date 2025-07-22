@@ -228,7 +228,7 @@ class Kohana_Valid
     /**
      * Validates a credit card number, with a Luhn check if possible.
      *
-     * @param integer $number credit card number
+     * @param string $number credit card number
      * @param string|array $type card type, or an array of card types
      * @return bool
      * @throws Kohana_Exception
@@ -440,7 +440,7 @@ class Kohana_Valid
     /**
      * Tests if a number is within a range.
      *
-     * @param   string  $number number to check
+     * @param   int $number number to check
      * @param   integer $min    minimum value
      * @param   integer $max    maximum value
      * @param   integer $step   increment size
