@@ -128,8 +128,7 @@ class Kohana_Encrypt_Openssl
      *     $data = $encrypt->decode($data);
      *
      * @param   string  $data   Encoded string to be decrypted.
-     * @return  false   If decryption fails.
-     * @return  string
+     * @return  string|false Decrypted string on success, or false on failure.
      */
     public function decode($data)
     {

@@ -29,7 +29,7 @@ class Kohana_Database_Query
     /**
      * Creates a new SQL query of the specified type.
      *
-     * @param   integer  $type  query type: Database::SELECT, Database::INSERT, etc
+     * @param   int $type query type: Database::SELECT, Database::INSERT, etc
      * @param   string   $sql   query string
      * @return  void
      */
@@ -57,7 +57,7 @@ class Kohana_Database_Query
     /**
      * Get the type of the query.
      *
-     * @return  integer
+     * @return int
      */
     public function type()
     {
@@ -67,7 +67,7 @@ class Kohana_Database_Query
     /**
      * Enables the query to be cached for a specified amount of time.
      *
-     * @param integer $lifetime number of seconds to cache, 0 deletes it from the cache
+     * @param int $lifetime number of seconds to cache, 0 deletes it from the cache
      * @param bool $force whether to execute the query during a cache hit
      * @return  $this
      * @uses    Kohana::$cache_life
@@ -197,9 +197,7 @@ class Kohana_Database_Query
      * @param mixed $db Database instance or name of instance
      * @param string $as_object result object classname, true for stdClass or false for array
      * @param array $object_params result object constructor arguments
-     * @return  object   Database_Result for SELECT queries
-     * @return  mixed    the insert id for INSERT queries
-     * @return  integer  number of affected rows for all other queries
+     * @return Database_Result|array|int Database_Result for SELECT queries, insert ID for INSERT queries, number of affected rows for all other queries.
      * @throws Kohana_Exception
      */
     public function execute($db = null, $as_object = null, $object_params = null)

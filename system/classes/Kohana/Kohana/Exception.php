@@ -43,7 +43,7 @@ class Kohana_Kohana_Exception extends Exception
      *
      * @param   string          $message    error message
      * @param   array           $variables  translation variables
-     * @param   integer|string  $code       the exception code
+     * @param   int|string $code the exception code
      * @param   Exception       $previous   Previous exception
      * @return  void
      */

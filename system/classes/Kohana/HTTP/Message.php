@@ -37,8 +37,7 @@ interface Kohana_HTTP_Message
      * included after the header, separated by a single empty new line.
      *
      * @param   string    $content  Content to set to the object
-     * @return  string
-     * @return  void
+     * @return  string|void
      */
     public function body($content = null);
     /**

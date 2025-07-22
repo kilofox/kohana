@@ -15,7 +15,7 @@ class Kohana_Feed
      * Parses a remote feed into an array.
      *
      * @param string $feed remote feed URL
-     * @param integer $limit item limit to fetch
+     * @param int $limit item limit to fetch
      * @return  array
      * @throws HTTP_Exception_404
      * @throws Kohana_Exception

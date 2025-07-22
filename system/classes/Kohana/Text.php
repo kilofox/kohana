@@ -54,7 +54,7 @@ class Kohana_Text
      *     $text = Text::limit_words($text);
      *
      * @param   string  $str        phrase to limit words of
-     * @param   integer $limit      number of words to limit to
+     * @param   int $limit number of words to limit to
      * @param   string  $end_char   end character or entity
      * @return  string
      */
@@ -82,7 +82,7 @@ class Kohana_Text
      *     $text = Text::limit_chars($text);
      *
      * @param   string  $str            phrase to limit characters of
-     * @param   integer $limit          number of characters to limit to
+     * @param   int $limit number of characters to limit to
      * @param   string  $end_char       end character or entity
      * @param   bool $preserve_words enable or disable the preservation of words while limiting
      * @return  string
@@ -160,7 +160,7 @@ class Kohana_Text
      * as the type.
      *
      * @param   string  $type   a type of pool, or a string of characters to use as the pool
-     * @param   integer $length length of string to return
+     * @param   int $length length of string to return
      * @return  string
      * @uses    UTF8::split
      */
@@ -455,7 +455,7 @@ class Kohana_Text
      *
      *     echo Text::bytes(filesize($file));
      *
-     * @param   integer $bytes      size in bytes
+     * @param   int $bytes size in bytes
      * @param   string  $force_unit a definitive unit
      * @param   string  $format     the return string format
      * @param   bool $si whether to use SI prefixes or IEC
@@ -494,7 +494,7 @@ class Kohana_Text
      *     // Display: five million, six hundred and thirty-two
      *     echo Text::number(5000632);
      *
-     * @param   integer $number number to format
+     * @param   int $number number to format
      * @return  string
      * @since   3.0.8
      */

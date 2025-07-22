@@ -20,8 +20,7 @@ interface Kohana_Cache_Arithmetic
      *
      * @param string $id id of cache entry to increment
      * @param int $step step value to increment by
-     * @return  integer
-     * @return bool
+     * @return int|false
      */
     public function increment($id, $step = 1);
     /**
@@ -31,8 +30,7 @@ interface Kohana_Cache_Arithmetic
      *
      * @param string $id id of cache entry to decrement
      * @param int $step step value to decrement by
-     * @return  integer
-     * @return bool
+     * @return int|false
      */
     public function decrement($id, $step = 1);
 }
