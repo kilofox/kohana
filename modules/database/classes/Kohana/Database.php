@@ -241,7 +241,7 @@ abstract class Kohana_Database
      *     $count = $db->count_records('users');
      *
      * @param mixed $table table name string or [query, alias]
-     * @return  integer
+     * @return int
      * @throws Kohana_Exception
      */
     public function count_records($table)

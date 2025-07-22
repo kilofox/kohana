@@ -47,7 +47,7 @@ class Kohana_Date
      * @param string $remote timezone that to find the offset of
      * @param string $local timezone used as the baseline
      * @param mixed $now UNIX timestamp or date string
-     * @return  integer
+     * @return int
      * @throws Exception
      */
     public static function offset($remote, $local = null, $now = null)
@@ -460,7 +460,7 @@ class Kohana_Date
      *     $dos = Date::unix2dos($unix);
      *
      * @param   int $timestamp UNIX timestamp
-     * @return  integer
+     * @return  int
      */
     public static function unix2dos($timestamp = false)
     {
@@ -487,7 +487,7 @@ class Kohana_Date
      *     $unix = Date::dos2unix($dos);
      *
      * @param   int $timestamp DOS timestamp
-     * @return  integer
+     * @return  int
      */
     public static function dos2unix($timestamp = false)
     {

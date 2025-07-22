@@ -155,7 +155,7 @@ class Kohana_UTF8
      *     $length = UTF8::strlen($str);
      *
      * @param   string  $str    string being measured for length
-     * @return  integer
+     * @return  int
      * @uses    UTF8::$server_utf8
      * @uses    Kohana::$charset
      */
@@ -465,7 +465,7 @@ class Kohana_UTF8
      * @param   string  $mask   mask for search
      * @param   int $offset start position of the string to examine
      * @param   int $length length of the string to examine
-     * @return  integer length of the initial segment that contains characters in the mask
+     * @return  int length of the initial segment that contains characters in the mask
      */
     public static function strspn($str, $mask, $offset = null, $length = null)
     {
@@ -490,7 +490,7 @@ class Kohana_UTF8
      * @param   string  $mask   mask for search
      * @param   int $offset start position of the string to examine
      * @param   int $length length of the string to examine
-     * @return  integer length of the initial segment that contains characters not in the mask
+     * @return  int length of the initial segment that contains characters not in the mask
      */
     public static function strcspn($str, $mask, $offset = null, $length = null)
     {
@@ -650,7 +650,7 @@ class Kohana_UTF8
      *     $digit = UTF8::ord($character);
      *
      * @param string $chr UTF-8 encoded character
-     * @return  integer
+     * @return int
      * @throws UTF8_Exception
      * @author  Harry Fuecks <hfuecks@gmail.com>
      */

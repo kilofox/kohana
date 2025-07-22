@@ -1402,7 +1402,7 @@ class Kohana_ORM extends Model implements serializable
      *
      * @param string $alias Alias of the has_many "through" relationship
      * @param mixed $far_keys Related model, primary key, or an array of primary keys
-     * @return integer
+     * @return int
      * @throws Kohana_Exception
      */
     public function count_relations($alias, $far_keys = null)
@@ -1501,7 +1501,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Count the number of records in the table.
      *
-     * @return integer
+     * @return int
      * @throws Kohana_Exception
      */
     public function count_all()

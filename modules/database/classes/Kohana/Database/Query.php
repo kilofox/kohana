@@ -57,7 +57,7 @@ class Kohana_Database_Query
     /**
      * Get the type of the query.
      *
-     * @return  integer
+     * @return int
      */
     public function type()
     {

@@ -240,7 +240,7 @@ class Kohana_Response implements HTTP_Response
      * Returns the length of the body for use with
      * content header
      *
-     * @return  integer
+     * @return int
      */
     public function content_length()
     {
