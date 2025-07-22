@@ -237,8 +237,7 @@ class Kohana_Debug
      * @param   string  $file           file to open
      * @param   int $line_number line number to highlight
      * @param   int $padding number of padding lines
-     * @return  string  source of file
-     * @return  false   File is unreadable
+     * @return  string|false Source of file if readable, false otherwise.
      */
     public static function source($file, $line_number, $padding = 5)
     {

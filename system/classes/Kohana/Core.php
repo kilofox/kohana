@@ -610,8 +610,7 @@ class Kohana_Core
      * @param   string  $file   filename with subdirectory
      * @param   string  $ext    extension to search for
      * @param   bool $array return an array of files?
-     * @return  array   a list of files when $array is true
-     * @return  string  single file path
+     * @return  string[]|string List of files if $array is true, single file path otherwise.
      */
     public static function find_file($dir, $file, $ext = null, $array = false)
     {
@@ -786,8 +785,7 @@ class Kohana_Core
      * @param   string  $name       name of the cache
      * @param   mixed   $data       data to cache
      * @param   int $lifetime number of seconds the cache is valid for
-     * @return  mixed    for getting
-     * @return  bool for setting
+     * @return  mixed|bool The cached data when getting, or a boolean when setting.
      */
     public static function cache($name, $data = null, $lifetime = null)
     {

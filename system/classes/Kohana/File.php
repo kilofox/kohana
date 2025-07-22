@@ -19,8 +19,7 @@ class Kohana_File
      *     $mime = File::mime($file);
      *
      * @param string $filename file name or path
-     * @return  string  mime type on success
-     * @return  false   On failure
+     * @return string|false MIME type on success or false on failure.
      * @throws Kohana_Exception
      */
     public static function mime($filename)
@@ -64,8 +63,7 @@ class Kohana_File
      *     $mime = File::mime_by_ext('png'); // "image/png"
      *
      * @param string $extension php, pdf, txt, etc
-     * @return  string  mime type on success
-     * @return  false   On failure
+     * @return string|false MIME type on success or false on failure.
      * @throws Kohana_Exception
      */
     public static function mime_by_ext($extension)

@@ -190,9 +190,7 @@ abstract class Kohana_Database
      * @param   string   $sql        SQL query
      * @param   mixed    $as_object  result object class string, true for stdClass, false for assoc array
      * @param   array    $params     object construct parameters for result class
-     * @return  object   Database_Result for SELECT queries
-     * @return  array    list (insert id, row count) for INSERT queries
-     * @return  integer  number of affected rows for all other queries
+     * @return  Database_Result|array|int Database_Result for SELECT queries, list (insert ID, row count) for INSERT queries, number of affected rows for all other queries.
      */
     abstract public function query($type, $sql, $as_object = false, array $params = null);
     /**

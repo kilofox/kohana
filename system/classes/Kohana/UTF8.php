@@ -184,8 +184,7 @@ class Kohana_UTF8
      * @param   string  $str    haystack
      * @param   string  $search needle
      * @param   int $offset offset from which character in haystack to start searching
-     * @return  integer position of needle
-     * @return  bool false if the needle is not found
+     * @return  int|false Position of needle if found, false otherwise.
      * @uses    UTF8::$server_utf8
      * @uses    Kohana::$charset
      */
@@ -214,8 +213,7 @@ class Kohana_UTF8
      * @param   string  $str    haystack
      * @param   string  $search needle
      * @param   int $offset offset from which character in haystack to start searching
-     * @return  integer position of needle
-     * @return  bool false if the needle is not found
+     * @return  int|false Position of needle if found, false otherwise.
      * @uses    UTF8::$server_utf8
      */
     public static function strrpos($str, $search, $offset = 0)
@@ -391,9 +389,7 @@ class Kohana_UTF8
      * @author  Harry Fuecks <hfuecks@gmail.com>
      * @param   string  $str1   string to compare
      * @param   string  $str2   string to compare
-     * @return  integer less than 0 if str1 is less than str2
-     * @return  integer greater than 0 if str1 is greater than str2
-     * @return  integer 0 if they are equal
+     * @return  int Less than 0 if str1 is less than str2, greater than 0 if str1 is greater than str2, or 0 if they are equal.
      */
     public static function strcasecmp($str1, $str2)
     {
@@ -420,8 +416,7 @@ class Kohana_UTF8
      * @param   string|array    $replace    replacement text
      * @param   string|array    $str        subject text
      * @param   int $count number of matched and replaced needles will be returned via this parameter which is passed by reference
-     * @return  string  if the input was a string
-     * @return  array   if the input was an array
+     * @return  string|array Replaced value, same type as input.
      */
     public static function str_ireplace($search, $replace, $str, & $count = null)
     {
@@ -445,8 +440,7 @@ class Kohana_UTF8
      * @author  Harry Fuecks <hfuecks@gmail.com>
      * @param   string  $str    input string
      * @param   string  $search needle
-     * @return  string  matched substring if found
-     * @return  false   if the substring was not found
+     * @return  string|false Matched substring if found, false otherwise.
      */
     public static function stristr($str, $search)
     {
@@ -686,8 +680,7 @@ class Kohana_UTF8
      * Slight modifications to fit with phputf8 library by Harry Fuecks <hfuecks@gmail.com>
      *
      * @param string $str UTF-8 encoded string
-     * @return  array   Unicode code points
-     * @return  false   if the string is invalid
+     * @return array|false Unicode code points if succeeded, or false if the string is invalid.
      * @throws UTF8_Exception
      */
     public static function to_unicode($str)
@@ -716,8 +709,7 @@ class Kohana_UTF8
      * Slight modifications to fit with phputf8 library by Harry Fuecks <hfuecks@gmail.com>.
      *
      * @param array $arr Unicode code points representing a string
-     * @return  string  utf8 string of characters
-     * @return bool false if a code point cannot be found
+     * @return string|false UTF-8 encoded string on success, false if invalid code point encountered.
      * @throws UTF8_Exception
      */
     public static function from_unicode($arr)

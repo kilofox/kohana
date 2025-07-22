@@ -197,9 +197,7 @@ class Kohana_Database_Query
      * @param mixed $db Database instance or name of instance
      * @param string $as_object result object classname, true for stdClass or false for array
      * @param array $object_params result object constructor arguments
-     * @return  object   Database_Result for SELECT queries
-     * @return  mixed    the insert id for INSERT queries
-     * @return  integer  number of affected rows for all other queries
+     * @return Database_Result|array|int Database_Result for SELECT queries, insert ID for INSERT queries, number of affected rows for all other queries.
      * @throws Kohana_Exception
      */
     public function execute($db = null, $as_object = null, $object_params = null)
