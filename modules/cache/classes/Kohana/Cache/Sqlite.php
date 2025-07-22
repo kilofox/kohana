@@ -111,7 +111,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      *
      * @param string $id id
      * @param mixed $data data
-     * @param integer $lifetime lifetime [Optional]
+     * @param int $lifetime lifetime [Optional]
      * @return bool
      * @throws Cache_Exception
      */
@@ -168,7 +168,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      *
      * @param   string   $id        id
      * @param   mixed    $data      data
-     * @param   integer  $lifetime  lifetime [Optional]
+     * @param   int $lifetime lifetime [Optional]
      * @param   array    $tags      tags [Optional]
      * @return  bool
      * @throws  Cache_Exception

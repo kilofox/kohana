@@ -43,7 +43,7 @@ class Kohana_Valid
      * Checks that a field is long enough.
      *
      * @param   string  $value  value
-     * @param   integer $length minimum length required
+     * @param   int $length minimum length required
      * @return  bool
      */
     public static function min_length($value, $length)
@@ -55,7 +55,7 @@ class Kohana_Valid
      * Checks that a field is short enough.
      *
      * @param   string  $value  value
-     * @param   integer $length maximum length required
+     * @param   int $length maximum length required
      * @return  bool
      */
     public static function max_length($value, $length)
@@ -67,7 +67,7 @@ class Kohana_Valid
      * Checks that a field is exactly the right length.
      *
      * @param   string          $value  value
-     * @param   integer|array   $length exact length required, or array of valid lengths
+     * @param   int|array $length exact length required, or array of valid lengths
      * @return  bool
      */
     public static function exact_length($value, $length)
@@ -228,7 +228,7 @@ class Kohana_Valid
     /**
      * Validates a credit card number, with a Luhn check if possible.
      *
-     * @param integer $number credit card number
+     * @param string $number credit card number
      * @param string|array $type card type, or an array of card types
      * @return bool
      * @throws Kohana_Exception
@@ -440,10 +440,10 @@ class Kohana_Valid
     /**
      * Tests if a number is within a range.
      *
-     * @param   string  $number number to check
-     * @param   integer $min    minimum value
-     * @param   integer $max    maximum value
-     * @param   integer $step   increment size
+     * @param   int $number number to check
+     * @param   int $min    minimum value
+     * @param   int $max    maximum value
+     * @param   int $step   increment size
      * @return  bool
      */
     public static function range($number, $min, $max, $step = null)
@@ -467,8 +467,8 @@ class Kohana_Valid
      * number of digits can be checked too.
      *
      * @param   string  $str    number to check
-     * @param   integer $places number of decimal places
-     * @param   integer $digits number of digits
+     * @param   int $places number of decimal places
+     * @param   int $digits number of digits
      * @return  bool
      */
     public static function decimal($str, $places = 2, $digits = null)

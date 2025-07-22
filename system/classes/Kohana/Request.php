@@ -1017,7 +1017,7 @@ class Kohana_Request implements HTTP_Request
      * Returns the length of the body for use with
      * content header
      *
-     * @return  integer
+     * @return int
      */
     public function content_length()
     {

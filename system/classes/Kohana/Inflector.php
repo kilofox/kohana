@@ -72,7 +72,7 @@ class Kohana_Inflector
      * [!!] Special inflections are defined in `config/inflector.php`.
      *
      * @param string $str word to make singular
-     * @param integer $count count of thing
+     * @param int $count count of thing
      * @return  string
      * @throws Kohana_Exception
      * @uses    Inflector::uncountable
@@ -137,7 +137,7 @@ class Kohana_Inflector
      * [!!] Special inflections are defined in `config/inflector.php`.
      *
      * @param string $str word to pluralize
-     * @param integer $count count of thing
+     * @param int $count count of thing
      * @return  string
      * @throws Kohana_Exception
      * @uses    Inflector::uncountable

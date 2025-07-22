@@ -19,8 +19,7 @@ class Kohana_File
      *     $mime = File::mime($file);
      *
      * @param string $filename file name or path
-     * @return  string  mime type on success
-     * @return  false   On failure
+     * @return string|false MIME type on success or false on failure.
      * @throws Kohana_Exception
      */
     public static function mime($filename)
@@ -64,8 +63,7 @@ class Kohana_File
      *     $mime = File::mime_by_ext('png'); // "image/png"
      *
      * @param string $extension php, pdf, txt, etc
-     * @return  string  mime type on success
-     * @return  false   On failure
+     * @return string|false MIME type on success or false on failure.
      * @throws Kohana_Exception
      */
     public static function mime_by_ext($extension)
@@ -143,8 +141,8 @@ class Kohana_File
      *     $count = File::split($file);
      *
      * @param   string  $filename   file to be split
-     * @param   integer $piece_size size, in MB, for each piece to be
-     * @return  integer The number of pieces that were created
+     * @param   int $piece_size size, in MB, for each piece to be
+     * @return  int The number of pieces that were created
      */
     public static function split($filename, $piece_size = 10)
     {
@@ -195,7 +193,7 @@ class Kohana_File
      *     $count = File::join($file);
      *
      * @param   string  $filename   split filename, without .000 extension
-     * @return  integer The number of pieces that were joined.
+     * @return  int The number of pieces that were joined.
      */
     public static function join($filename)
     {

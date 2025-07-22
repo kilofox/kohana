@@ -29,7 +29,7 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
      * @param  Validation $object      The Validation object of the model
      * @param  string     $message     The error message
      * @param  array      $values      The array of values for the error message
-     * @param  integer    $code        The error code for the exception
+     * @param  int $code The error code for the exception
      * @return void
      */
     public function __construct($alias, Validation $object, $message = 'Failed to validate array', array $values = null, $code = 0, Exception $previous = null)

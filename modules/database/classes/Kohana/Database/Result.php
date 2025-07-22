@@ -173,7 +173,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      *
      *     echo count($result);
      *
-     * @return  integer
+     * @return int
      */
     public function count()
     {
@@ -246,7 +246,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      *
      *     echo key($result);
      *
-     * @return  integer
+     * @return int
      */
     public function key()
     {

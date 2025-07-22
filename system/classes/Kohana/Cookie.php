@@ -97,7 +97,7 @@ class Kohana_Cookie
      *
      * @param string $name name of cookie
      * @param string $value value of cookie
-     * @param integer $lifetime lifetime in seconds
+     * @param int $lifetime lifetime in seconds
      * @return bool
      * @throws Kohana_Exception
      * @uses    Cookie::salt
@@ -167,7 +167,7 @@ class Kohana_Cookie
      *
      * @param string  $name
      * @param string  $value
-     * @param integer $expire
+     * @param int $expire
      * @param string  $path
      * @param string  $domain
      * @param bool $secure
