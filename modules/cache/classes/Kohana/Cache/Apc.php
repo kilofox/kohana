@@ -91,7 +91,7 @@ class Kohana_Cache_Apc extends Cache implements Cache_Arithmetic
      *
      * @param   string   $id        id of cache entry
      * @param   string   $data      data to set to cache
-     * @param   integer  $lifetime  lifetime in seconds
+     * @param   int $lifetime lifetime in seconds
      * @return  bool
      */
     public function set($id, $data, $lifetime = null)

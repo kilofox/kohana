@@ -46,7 +46,7 @@ class Kohana_Upload
      * @param array $file uploaded file data
      * @param string $filename new filename
      * @param string $directory new directory
-     * @param integer $chmod chmod mask
+     * @param int $chmod chmod mask
      * @return  string  on success, full path to new file
      * @return  false   on failure
      * @throws Kohana_Exception
@@ -194,8 +194,8 @@ class Kohana_Upload
      *
      *
      * @param   array   $file       $_FILES item
-     * @param   integer $max_width  maximum width of image
-     * @param   integer $max_height maximum height of image
+     * @param   int $max_width maximum width of image
+     * @param   int $max_height maximum height of image
      * @param   bool $exact match width and height exactly?
      * @return  bool
      */

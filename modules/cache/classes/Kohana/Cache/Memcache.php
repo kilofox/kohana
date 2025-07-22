@@ -206,7 +206,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      *
      * @param   string   $id        id of cache entry
      * @param   mixed    $data      data to set to cache
-     * @param   integer  $lifetime  lifetime in seconds, maximum value 2592000
+     * @param   int $lifetime lifetime in seconds, maximum value 2592000
      * @return  bool
      */
     public function set($id, $data, $lifetime = 3600)
@@ -240,7 +240,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      *     Cache::instance('memcache')->delete('bar', 30);
      *
      * @param   string   $id       id of entry to delete
-     * @param   integer  $timeout  timeout of entry, if zero item is deleted immediately, otherwise the item will delete after the specified value in seconds
+     * @param   int $timeout timeout of entry, if zero item is deleted immediately, otherwise the item will delete after the specified value in seconds
      * @return  bool
      */
     public function delete($id, $timeout = 0)
@@ -278,7 +278,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      * server if the configuration setting `instant_death` is set to `true`.
      *
      * @param   string   $hostname
-     * @param   integer  $port
+     * @param   int $port
      * @return  void|boolean
      * @since   3.0.8
      */

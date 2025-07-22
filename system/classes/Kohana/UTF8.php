@@ -133,7 +133,7 @@ class Kohana_UTF8
      *
      * @author  Andreas Gohr <andi@splitbrain.org>
      * @param   string  $str    string to transliterate
-     * @param   integer $case   -1 lowercase only, +1 uppercase only, 0 both cases
+     * @param   int $case -1 lowercase only, +1 uppercase only, 0 both cases
      * @return  string
      */
     public static function transliterate_to_ascii($str, $case = 0)
@@ -183,7 +183,7 @@ class Kohana_UTF8
      * @author  Harry Fuecks <hfuecks@gmail.com>
      * @param   string  $str    haystack
      * @param   string  $search needle
-     * @param   integer $offset offset from which character in haystack to start searching
+     * @param   int $offset offset from which character in haystack to start searching
      * @return  integer position of needle
      * @return  bool false if the needle is not found
      * @uses    UTF8::$server_utf8
@@ -213,7 +213,7 @@ class Kohana_UTF8
      * @author  Harry Fuecks <hfuecks@gmail.com>
      * @param   string  $str    haystack
      * @param   string  $search needle
-     * @param   integer $offset offset from which character in haystack to start searching
+     * @param   int $offset offset from which character in haystack to start searching
      * @return  integer position of needle
      * @return  bool false if the needle is not found
      * @uses    UTF8::$server_utf8
@@ -241,8 +241,8 @@ class Kohana_UTF8
      *
      * @author  Chris Smith <chris@jalakai.co.uk>
      * @param   string  $str    input string
-     * @param   integer $offset offset
-     * @param   integer $length length limit
+     * @param   int $offset offset
+     * @param   int $length length limit
      * @return  string
      * @uses    UTF8::$server_utf8
      * @uses    Kohana::$charset
@@ -271,7 +271,7 @@ class Kohana_UTF8
      * @author  Harry Fuecks <hfuecks@gmail.com>
      * @param   string  $str            input string
      * @param   string  $replacement    replacement string
-     * @param   integer $offset         offset
+     * @param   int $offset offset
      * @return  string
      */
     public static function substr_replace($str, $replacement, $offset, $length = null)
@@ -419,7 +419,7 @@ class Kohana_UTF8
      * @param   string|array    $search     text to replace
      * @param   string|array    $replace    replacement text
      * @param   string|array    $str        subject text
-     * @param   integer         $count      number of matched and replaced needles will be returned via this parameter which is passed by reference
+     * @param   int $count number of matched and replaced needles will be returned via this parameter which is passed by reference
      * @return  string  if the input was a string
      * @return  array   if the input was an array
      */
@@ -469,8 +469,8 @@ class Kohana_UTF8
      * @author  Harry Fuecks <hfuecks@gmail.com>
      * @param   string  $str    input string
      * @param   string  $mask   mask for search
-     * @param   integer $offset start position of the string to examine
-     * @param   integer $length length of the string to examine
+     * @param   int $offset start position of the string to examine
+     * @param   int $length length of the string to examine
      * @return  integer length of the initial segment that contains characters in the mask
      */
     public static function strspn($str, $mask, $offset = null, $length = null)
@@ -494,8 +494,8 @@ class Kohana_UTF8
      * @author  Harry Fuecks <hfuecks@gmail.com>
      * @param   string  $str    input string
      * @param   string  $mask   mask for search
-     * @param   integer $offset start position of the string to examine
-     * @param   integer $length length of the string to examine
+     * @param   int $offset start position of the string to examine
+     * @param   int $length length of the string to examine
      * @return  integer length of the initial segment that contains characters not in the mask
      */
     public static function strcspn($str, $mask, $offset = null, $length = null)
@@ -517,7 +517,7 @@ class Kohana_UTF8
      *     $str = UTF8::str_pad($str, $length);
      *
      * @param string $str input string
-     * @param integer $final_str_length desired string length after padding
+     * @param int $final_str_length desired string length after padding
      * @param string $pad_str string to use as padding
      * @param string $pad_type padding type: STR_PAD_RIGHT, STR_PAD_LEFT, or STR_PAD_BOTH
      * @return  string
@@ -544,7 +544,7 @@ class Kohana_UTF8
      *
      * @author  Harry Fuecks <hfuecks@gmail.com>
      * @param   string  $str            input string
-     * @param   integer $split_length   maximum length of each chunk
+     * @param   int $split_length maximum length of each chunk
      * @return  array
      */
     public static function str_split($str, $split_length = 1)

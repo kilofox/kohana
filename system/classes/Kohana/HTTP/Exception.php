@@ -5,7 +5,7 @@ abstract class Kohana_HTTP_Exception extends Kohana_Exception
     /**
      * Creates an HTTP_Exception of the specified type.
      *
-     * @param   integer $code       the http status code
+     * @param   int $code the http status code
      * @param   string  $message    status message, custom content to display with error
      * @param   array   $variables  translation variables
      * @return  HTTP_Exception

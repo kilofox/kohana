@@ -29,7 +29,7 @@ class Kohana_Database_Query
     /**
      * Creates a new SQL query of the specified type.
      *
-     * @param   integer  $type  query type: Database::SELECT, Database::INSERT, etc
+     * @param   int $type query type: Database::SELECT, Database::INSERT, etc
      * @param   string   $sql   query string
      * @return  void
      */
@@ -67,7 +67,7 @@ class Kohana_Database_Query
     /**
      * Enables the query to be cached for a specified amount of time.
      *
-     * @param integer $lifetime number of seconds to cache, 0 deletes it from the cache
+     * @param int $lifetime number of seconds to cache, 0 deletes it from the cache
      * @param bool $force whether to execute the query during a cache hit
      * @return  $this
      * @uses    Kohana::$cache_life

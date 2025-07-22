@@ -66,7 +66,7 @@ class Kohana_DateTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_offset
      * @covers       Date::offset
-     * @param integer $expected Expected offset
+     * @param int $expected Expected offset
      * @param string $remote Remote TZ
      * @param string $local Local TZ
      * @param string|int $now Current timestamp
@@ -178,7 +178,7 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_adjust
-     * @param integer $hour       Hour in 12-hour format
+     * @param int $hour Hour in 12-hour format
      * @param string  $ampm       Either am or pm
      * @param string  $expected   Expected result
      */
@@ -221,9 +221,9 @@ class Kohana_DateTest extends Unittest_TestCase
      * @test
      * @covers Date::days
      * @dataProvider provider_days
-     * @param integer $month
-     * @param integer $year
-     * @param integer $expected
+     * @param int $month
+     * @param int $year
+     * @param int $expected
      */
     public function test_days($month, $year, $expected)
     {
@@ -481,8 +481,8 @@ class Kohana_DateTest extends Unittest_TestCase
      * @test
      * @covers Date::span
      * @dataProvider provider_span
-     * @param integer $time1     Time in the past
-     * @param integer $time2     Time to compare against
+     * @param int $time1 Time in the past
+     * @param int $time2 Time to compare against
      * @param string  $output    Units to output
      * @param array   $expected  Array of $outputs => values
      */
@@ -556,8 +556,8 @@ class Kohana_DateTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_fuzzy_span
      * @param string  $expected        Expected output
-     * @param integer $timestamp       Timestamp to use
-     * @param integer $local_timestamp The local timestamp to use
+     * @param int $timestamp Timestamp to use
+     * @param int $local_timestamp The local timestamp to use
      */
     public function test_fuzzy_span($expected, $timestamp, $local_timestamp)
     {
@@ -764,8 +764,8 @@ class Kohana_DateTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_unix2dos
      * @covers Date::unix2dos
-     * @param integer $expected  Expected output
-     * @param integer $timestamp Input timestamp
+     * @param int $expected  Expected output
+     * @param int $timestamp Input timestamp
      */
     public function test_unix2dos($expected, $timestamp)
     {
@@ -790,8 +790,8 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_dos2unix
-     * @param integer $expected  Expected output
-     * @param integer $timestamp Input timestamp
+     * @param int $expected  Expected output
+     * @param int $timestamp Input timestamp
      */
     public function test_dos2unix($expected, $timestamp)
     {

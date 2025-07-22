@@ -785,7 +785,7 @@ class Kohana_Core
      *
      * @param   string  $name       name of the cache
      * @param   mixed   $data       data to cache
-     * @param   integer $lifetime   number of seconds the cache is valid for
+     * @param   int $lifetime number of seconds the cache is valid for
      * @return  mixed    for getting
      * @return  bool for setting
      */

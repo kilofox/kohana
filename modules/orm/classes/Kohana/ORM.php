@@ -850,7 +850,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Initializes the Database Builder to given query type
      *
-     * @param  integer $type Type of Database query
+     * @param  int $type Type of Database query
      * @return Kohana_ORM
      */
     protected function _build($type)
@@ -1874,7 +1874,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Return up to "LIMIT ..." results
      *
-     * @param   integer  $number  maximum results to return
+     * @param   int $number maximum results to return
      * @return  $this
      */
     public function limit($number)
@@ -2132,7 +2132,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Start returning results after "OFFSET ..."
      *
-     * @param   integer   $number  starting result number
+     * @param   int $number starting result number
      * @return  $this
      */
     public function offset($number)
@@ -2149,7 +2149,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Enables the query to be cached for a specified amount of time.
      *
-     * @param   integer  $lifetime  number of seconds to cache
+     * @param   int $lifetime number of seconds to cache
      * @return  $this
      * @uses    Kohana::$cache_life
      */

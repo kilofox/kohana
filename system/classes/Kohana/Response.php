@@ -184,7 +184,7 @@ class Kohana_Response implements HTTP_Response
      *      // Get the current status
      *      $status = $response->status();
      *
-     * @param integer $code Status to set to this response
+     * @param int $code Status to set to this response
      * @return int|Kohana_Response
      * @throws Kohana_Exception
      */
@@ -611,7 +611,7 @@ class Kohana_Response implements HTTP_Response
      * Calculates the byte range to use with send_file. If HTTP_RANGE doesn't
      * exist then the complete byte range is returned
      *
-     * @param  integer $size
+     * @param  int $size
      * @return array
      */
     protected function _calculate_byte_range($size)

@@ -63,7 +63,7 @@ class Kohana_NumTest extends Unittest_TestCase
      * @test
      * @covers       Num::bytes
      * @dataProvider provider_bytes
-     * @param integer $expected Expected Value
+     * @param int $expected Expected Value
      * @param string $size Input value
      * @throws Kohana_Exception
      */
@@ -92,7 +92,7 @@ class Kohana_NumTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_ordinal
-     * @param integer $number
+     * @param int $number
      * @param string $expected
      */
     public function test_ordinal($number, $expected)
@@ -122,7 +122,7 @@ class Kohana_NumTest extends Unittest_TestCase
      * @requires OS Linux
      * @dataProvider provider_format
      * @param float $number
-     * @param integer $places
+     * @param int $places
      * @param bool $monetary
      * @param string $expected
      */
@@ -153,7 +153,7 @@ class Kohana_NumTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_round
      * @param number $input
-     * @param integer $precision
+     * @param int $precision
      * @param number $expected
      */
     function test_round($input, $precision, $expected)

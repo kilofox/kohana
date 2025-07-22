@@ -199,8 +199,8 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_decimal
      * @param string  $decimal  The decimal to validate
-     * @param integer $places   The number of places to check to
-     * @param integer $digits   The number of digits preceding the point to check
+     * @param int $places The number of places to check to
+     * @param int $digits The number of digits preceding the point to check
      * @param bool $expected Whether $decimal conforms to $places AND $digits
      */
     public function test_decimal($decimal, $places, $digits, $expected)
@@ -595,7 +595,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_max_length
      * @param string  $string    String to test
-     * @param integer $maxlength Max length for this string
+     * @param int $maxlength Max length for this string
      * @param bool $correct Is $string <= $maxlength
      */
     public function test_max_length($string, $maxlength, $correct)
@@ -631,7 +631,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_min_length
      * @param string  $string     String to compare
-     * @param integer $minlength  The minimum allowed length
+     * @param int $minlength The minimum allowed length
      * @param bool $correct Is $string 's length >= $minlength
      */
     public function test_min_length($string, $minlength, $correct)
@@ -841,9 +841,9 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_range
-     * @param integer $number    Number to test
-     * @param integer $min       Lower bound
-     * @param integer $max       Upper bound
+     * @param int $number    Number to test
+     * @param int $min       Lower bound
+     * @param int $max       Upper bound
      * @param bool $expected Is Number within the bounds of $min && $max
      */
     public function test_range($number, $min, $max, $step, $expected)

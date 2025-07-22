@@ -71,7 +71,7 @@ class Kohana_Database_PDO extends Database
      * @param string $name Name of the SQL function to be created or redefined
      * @param callback $step Called for each row of a result set
      * @param callback $final Called after all rows of a result set have been processed
-     * @param integer $arguments Number of arguments that the SQL function takes
+     * @param int $arguments Number of arguments that the SQL function takes
      *
      * @return bool
      * @throws Database_Exception
@@ -94,7 +94,7 @@ class Kohana_Database_PDO extends Database
      *
      * @param string $name Name of the SQL function to be created or redefined
      * @param callback $callback Callback which implements the SQL function
-     * @param integer $arguments Number of arguments that the SQL function takes
+     * @param int $arguments Number of arguments that the SQL function takes
      *
      * @return bool
      * @throws Database_Exception
