@@ -99,7 +99,7 @@ class Kohana_Core
     public static $cache_dir;
 
     /**
-     * @var  integer  Default lifetime for caching, in seconds, used by [Kohana::cache]. Set by [Kohana::init]
+     * @var int Default lifetime for caching, in seconds, used by [Kohana::cache]. Set by [Kohana::init]
      */
     public static $cache_life = 60;
 

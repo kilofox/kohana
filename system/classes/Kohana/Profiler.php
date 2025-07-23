@@ -15,7 +15,7 @@
 class Kohana_Profiler
 {
     /**
-     * @var  integer   maximum number of application stats to keep
+     * @var int maximum number of application stats to keep
      */
     public static $rollover = 1000;
 

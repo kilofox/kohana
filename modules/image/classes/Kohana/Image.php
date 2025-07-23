@@ -61,17 +61,17 @@ abstract class Kohana_Image
     public $file;
 
     /**
-     * @var  integer  image width
+     * @var int image width
      */
     public $width;
 
     /**
-     * @var  integer  image height
+     * @var int image height
      */
     public $height;
 
     /**
-     * @var  integer  one of the IMAGETYPE_* constants
+     * @var int one of the IMAGETYPE_* constants
      */
     public $type;
 

@@ -17,7 +17,7 @@ class Kohana_Cookie
     public static $salt = null;
 
     /**
-     * @var  integer  Number of seconds before the cookie expires
+     * @var int Number of seconds before the cookie expires
      */
     public static $expiration = 0;
 

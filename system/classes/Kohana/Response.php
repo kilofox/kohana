@@ -84,7 +84,7 @@ class Kohana_Response implements HTTP_Response
     ];
 
     /**
-     * @var  integer     The response http status
+     * @var int The response http status
      */
     protected $_status = 200;
 

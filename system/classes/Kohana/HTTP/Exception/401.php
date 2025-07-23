@@ -3,7 +3,7 @@
 class Kohana_HTTP_Exception_401 extends HTTP_Exception_Expected
 {
     /**
-     * @var   integer    HTTP 401 Unauthorized
+     * @var int HTTP 401 Unauthorized
      */
     protected $_code = 401;
 
