@@ -49,17 +49,17 @@ class Kohana_Core
     public static $environment = Kohana::DEVELOPMENT;
 
     /**
-     * @var  boolean  True if Kohana is running on windows
+     * @var bool True if Kohana is running on windows
      */
     public static $is_windows = false;
 
     /**
-     * @var  boolean  True if [magic quotes](https://wiki.php.net/rfc/magicquotes) is enabled.
+     * @var bool True if [magic quotes](https://wiki.php.net/rfc/magicquotes) is enabled.
      */
     public static $magic_quotes = false;
 
     /**
-     * @var  boolean  true if PHP safe mode is on
+     * @var bool true if PHP safe mode is on
      */
     public static $safe_mode = false;
 
@@ -104,17 +104,17 @@ class Kohana_Core
     public static $cache_life = 60;
 
     /**
-     * @var  boolean  Whether to use internal caching for [Kohana::find_file], does not apply to [Kohana::cache]. Set by [Kohana::init]
+     * @var bool Whether to use internal caching for [Kohana::find_file], does not apply to [Kohana::cache]. Set by [Kohana::init]
      */
     public static $caching = false;
 
     /**
-     * @var  boolean  Whether to enable [profiling](kohana/profiling). Set by [Kohana::init]
+     * @var bool Whether to enable [profiling](kohana/profiling). Set by [Kohana::init]
      */
     public static $profiling = true;
 
     /**
-     * @var  boolean  Enable Kohana catching and displaying PHP errors and exceptions. Set by [Kohana::init]
+     * @var bool Enable Kohana catching and displaying PHP errors and exceptions. Set by [Kohana::init]
      */
     public static $errors = true;
 
@@ -124,7 +124,7 @@ class Kohana_Core
     public static $shutdown_errors = [E_PARSE, E_ERROR, E_USER_ERROR];
 
     /**
-     * @var  boolean  set the X-Powered-By header
+     * @var bool set the X-Powered-By header
      */
     public static $expose = false;
 
@@ -139,7 +139,7 @@ class Kohana_Core
     public static $config;
 
     /**
-     * @var  boolean  Has [Kohana::init] been called?
+     * @var bool Has [Kohana::init] been called?
      */
     protected static $_init = false;
 
@@ -159,7 +159,7 @@ class Kohana_Core
     protected static $_files = [];
 
     /**
-     * @var  boolean  Has the file path cache changed during this execution?  Used internally when caching is true in [Kohana::init]
+     * @var bool Has the file path cache changed during this execution?  Used internally when caching is true in [Kohana::init]
      */
     protected static $_files_changed = false;
 

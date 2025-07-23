@@ -80,7 +80,7 @@ class Kohana_HTTP_Cache
     protected $_cache_key_callback;
 
     /**
-     * @var    boolean   Defines whether this client should cache `private` cache directives
+     * @var    bool Defines whether this client should cache `private` cache directives
      * @link   https://www.rfc-editor.org/rfc/rfc9111#name-private
      */
     protected $_allow_private_cache = false;

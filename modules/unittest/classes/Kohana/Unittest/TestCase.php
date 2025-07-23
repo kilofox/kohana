@@ -8,7 +8,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
 {
     /**
      * Make sure PHPUnit backs up globals
-     * @var boolean
+     * @var bool
      */
     protected $backupGlobals = false;
 

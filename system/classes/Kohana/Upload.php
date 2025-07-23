@@ -22,7 +22,7 @@
 class Kohana_Upload
 {
     /**
-     * @var  boolean  remove spaces in uploaded files
+     * @var bool remove spaces in uploaded files
      */
     public static $remove_spaces = true;
 

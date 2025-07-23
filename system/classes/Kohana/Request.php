@@ -506,7 +506,7 @@ class Kohana_Request implements HTTP_Request
     protected $_protocol;
 
     /**
-     * @var  boolean
+     * @var bool
      */
     protected $_secure = false;
 
@@ -556,7 +556,7 @@ class Kohana_Request implements HTTP_Request
     protected $_uri;
 
     /**
-     * @var  boolean  external request
+     * @var bool external request
      */
     protected $_external = false;
 

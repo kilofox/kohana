@@ -48,12 +48,12 @@ class Kohana_HTML
     );
 
     /**
-     * @var  boolean  use strict XHTML mode?
+     * @var bool use strict XHTML mode?
      */
     public static $strict = true;
 
     /**
-     * @var  boolean  automatically target external URLs to a new window?
+     * @var bool automatically target external URLs to a new window?
      */
     public static $windowed_urls = false;
 

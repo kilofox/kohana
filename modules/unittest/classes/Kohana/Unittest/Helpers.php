@@ -9,7 +9,7 @@ class Kohana_Unittest_Helpers
      * Static variable used to work out whether we have an internet
      * connection
      * @see has_internet
-     * @var boolean
+     * @var bool
      */
     static protected $_has_internet = null;
 

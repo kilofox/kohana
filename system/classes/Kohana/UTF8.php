@@ -25,7 +25,7 @@
 class Kohana_UTF8
 {
     /**
-     * @var  boolean  Does the server support UTF-8 natively?
+     * @var bool Does the server support UTF-8 natively?
      */
     public static $server_utf8 = null;
 

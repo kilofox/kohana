@@ -32,12 +32,12 @@ class Kohana_Cookie
     public static $domain = null;
 
     /**
-     * @var  boolean  Only transmit cookies over secure connections
+     * @var bool Only transmit cookies over secure connections
      */
     public static $secure = false;
 
     /**
-     * @var  boolean  Only transmit cookies over HTTP, disabling Javascript access
+     * @var bool Only transmit cookies over HTTP, disabling Javascript access
      */
     public static $httponly = false;
 
