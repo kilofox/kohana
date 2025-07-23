@@ -11,7 +11,6 @@
  * *  File
  * *  [Memcached](https://www.php.net/manual/en/book.memcached.php)
  * *  [Memcache](https://www.php.net/manual/en/book.memcache.php)
- * *  [Memcached-tags](https://code.google.com/archive/p/memcached-tags/)
  * *  [SQLite](https://www.php.net/manual/en/ref.pdo-sqlite.php)
  *
  * ### Introduction to caching
