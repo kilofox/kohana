@@ -450,21 +450,20 @@ class Kohana_Arr
      */
     public static function callback($str)
     {
-        // Overloaded as parts are found
-        $params = null;
+        $params = [];
 
-        // command[param,param]
-        if (preg_match('/^([^\(]*+)\((.*)\)$/', $str, $match)) {
-            // command
-            $command = $match[1];
+        // command(param,param)
+        if (strpos($str, '(') !== false && substr($str, -1) === ')') {
+            list($command, $params) = explode('(', substr($str, 0, -1), 2);
 
-            if ($match[2] !== '') {
+            if ($params !== '') {
                 // param,param
-                $params = preg_split('/(?<!\\\\),/', $match[2]);
+                $params = preg_split('/(?<!\\\\),/', $params);
                 $params = str_replace('\,', ',', $params);
+            } else {
+                $params = [];
             }
         } else {
-            // command
             $command = $str;
         }
 
