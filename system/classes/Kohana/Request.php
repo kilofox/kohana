@@ -62,13 +62,8 @@ class Kohana_Request implements HTTP_Request
         if (!Request::$initial) {
             $protocol = HTTP::$protocol;
 
-            if (isset($_SERVER['REQUEST_METHOD'])) {
-                // Use the server request method
-                $method = $_SERVER['REQUEST_METHOD'];
-            } else {
-                // Default to GET requests
-                $method = HTTP_Request::GET;
-            }
+            // Use the server request method, or default to GET.
+            $method = $_SERVER['REQUEST_METHOD'] ?? HTTP_Request::GET;
 
             if ((!empty($_SERVER['HTTPS']) AND filter_var($_SERVER['HTTPS'], FILTER_VALIDATE_BOOLEAN))
                 OR ( isset($_SERVER['HTTP_X_FORWARDED_PROTO'])
@@ -627,7 +622,7 @@ class Kohana_Request implements HTTP_Request
             return $this->_params;
         }
 
-        return isset($this->_params[$key]) ? $this->_params[$key] : $default;
+        return $this->_params[$key] ?? $default;
     }
 
     /**
@@ -984,7 +979,7 @@ class Kohana_Request implements HTTP_Request
             return $this->_cookies;
         } elseif ($value === null) {
             // Act as a getting, single cookie
-            return isset($this->_cookies[$key]) ? $this->_cookies[$key] : null;
+            return $this->_cookies[$key] ?? null;
         }
 
         // Act as a setter for a single cookie

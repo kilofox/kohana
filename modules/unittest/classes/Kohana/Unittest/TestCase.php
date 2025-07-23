@@ -319,7 +319,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
         // filter by parent node
         if ($options['parent']) {
             $parentNodes = self::findNodes($dom, $options['parent'], $isHtml);
-            $parentNode = isset($parentNodes[0]) ? $parentNodes[0] : null;
+            $parentNode = $parentNodes[0] ?? null;
 
             foreach ($nodes as $node) {
                 if ($parentNode !== $node->parentNode) {
@@ -395,7 +395,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
         // filter by ancestor
         if ($options['ancestor']) {
             $ancestorNodes = self::findNodes($dom, $options['ancestor'], $isHtml);
-            $ancestorNode = isset($ancestorNodes[0]) ? $ancestorNodes[0] : null;
+            $ancestorNode = $ancestorNodes[0] ?? null;
 
             foreach ($nodes as $node) {
                 $parent = $node->parentNode;

@@ -119,7 +119,7 @@ class Kohana_File
             }
         }
 
-        return isset($types[$type]) ? $types[$type] : false;
+        return $types[$type] ?? false;
     }
 
     /**

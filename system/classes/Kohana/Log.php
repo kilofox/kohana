@@ -150,10 +150,10 @@ class Kohana_Log
             'level' => $level,
             'body' => $message,
             'trace' => $trace,
-            'file' => isset($trace[0]['file']) ? $trace[0]['file'] : null,
-            'line' => isset($trace[0]['line']) ? $trace[0]['line'] : null,
-            'class' => isset($trace[0]['class']) ? $trace[0]['class'] : null,
-            'function' => isset($trace[0]['function']) ? $trace[0]['function'] : null,
+            'file' => $trace[0]['file'] ?? null,
+            'line' => $trace[0]['line'] ?? null,
+            'class' => $trace[0]['class'] ?? null,
+            'function' => $trace[0]['function'] ?? null,
             'additional' => $additional,
         ];
 

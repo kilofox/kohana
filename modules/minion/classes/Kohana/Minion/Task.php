@@ -292,7 +292,7 @@ abstract class Kohana_Minion_Task
                 unset($comment[$i]);
 
                 $name = $matches[1];
-                $text = isset($matches[2]) ? $matches[2] : '';
+                $text = $matches[2] ?? '';
 
                 $tags[$name] = $text;
             } else {

@@ -128,7 +128,7 @@ class Kohana_Unittest_Helpers
             // If this is an environment variable
             elseif (preg_match('/^[A-Z_-]+$/', $option) OR isset($_SERVER[$option])) {
                 if ($backup_needed) {
-                    $this->_environment_backup[$option] = isset($_SERVER[$option]) ? $_SERVER[$option] : '';
+                    $this->_environment_backup[$option] = $_SERVER[$option] ?? '';
                 }
 
                 $_SERVER[$option] = $value;

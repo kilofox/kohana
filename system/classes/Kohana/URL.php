@@ -77,7 +77,7 @@ class Kohana_URL
                 $base_url = parse_url($base_url, PHP_URL_PATH);
             } else {
                 // Attempt to use HTTP_HOST and fallback to SERVER_NAME
-                $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME'];
+                $host = $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'];
 
                 // make $host lowercase
                 $host = strtolower($host);

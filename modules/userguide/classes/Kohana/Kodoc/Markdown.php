@@ -122,7 +122,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
     function _doHeaders_callback_atx($matches)
     {
         $level = strlen($matches[1]);
-        $attr = $this->_doHeaders_attr(isset($matches[3]) ? $matches[3] : '');
+        $attr = $this->_doHeaders_attr($matches[3] ?? '');
 
         // Only auto-generate id if one doesn't exist
         if (empty($attr)) {

@@ -194,7 +194,7 @@ class Kohana_Kodoc
             $split = preg_split('/\s+/', $text, 2);
 
             return HTML::anchor(
-                    $split[0], isset($split[1]) ? $split[1] : $split[0]
+                    $split[0], $split[1] ?? $split[0]
             );
         } elseif ($tag === 'copyright') {
             // Convert the copyright symbol
@@ -272,7 +272,7 @@ class Kohana_Kodoc
                 }
 
                 $tag = $matches[1];
-                $text = isset($matches[2]) ? $matches[2] : '';
+                $text = $matches[2] ?? '';
 
                 if ($i === $end) {
                     // No more lines

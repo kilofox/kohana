@@ -100,7 +100,7 @@ class Kohana_Kodoc_Method extends Kodoc
         if (isset($tags['return'])) {
             foreach ($tags['return'] as $return) {
                 if (preg_match('/^(\S*)(?:\s*(.+?))?$/', $return, $matches)) {
-                    $this->return[] = [$matches[1], isset($matches[2]) ? $matches[2] : ''];
+                    $this->return[] = [$matches[1], $matches[2] ?? ''];
                 }
             }
 

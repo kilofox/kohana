@@ -377,10 +377,10 @@ class Kohana_Debug
 
             $output[] = [
                 'function' => $function,
-                'args' => isset($args) ? $args : null,
-                'file' => isset($file) ? $file : null,
-                'line' => isset($line) ? $line : null,
-                'source' => isset($source) ? $source : null,
+                'args' => $args ?? null,
+                'file' => $file ?? null,
+                'line' => $line ?? null,
+                'source' => $source ?? null,
             ];
 
             unset($function, $args, $file, $line, $source);
