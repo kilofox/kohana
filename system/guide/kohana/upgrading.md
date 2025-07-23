@@ -7,6 +7,11 @@ certain features may not function as expected.
 
 ## Changes
 
+### Arr
+
+- The `Arr::callback()` method now ensures that the second element of the returned array (`$params`) is always an array,
+  even when no parameters are provided. This means you can safely remove any null checks for `$params` in your code.
+
 ### Cache
 
 - The `Apc` driver has been removed. Use the `Apcu` driver or others instead.
