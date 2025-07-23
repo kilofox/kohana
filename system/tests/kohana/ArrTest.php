@@ -25,10 +25,15 @@ class Kohana_ArrTest extends Unittest_TestCase
     {
         return [
             // Tests....
-            // That no parameters returns null
+            // That a function with no parameters returns an empty array for parameters
             [
                 'function',
-                ['function', null]
+                ['function', []]
+            ],
+            // That a function with empty parentheses returns an empty array for parameters
+            [
+                'function()',
+                ['function', []]
             ],
             // That we can get an array of parameters values
             [
@@ -50,7 +55,6 @@ class Kohana_ArrTest extends Unittest_TestCase
                 'deal::make(me, my mate )',
                 [['deal', 'make'], ['me', ' my mate ']]
             ],
-            // TODO: add more cases
         ];
     }
 
