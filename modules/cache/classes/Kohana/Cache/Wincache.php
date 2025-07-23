@@ -43,6 +43,7 @@
  * @author     Kohana Team
  * @copyright  (c) 2009-2012 Kohana Team
  * @license    https://kohana.top/license
+ * @deprecated 3.5.0
  */
 class Kohana_Cache_Wincache extends Cache
 {
