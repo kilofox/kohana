@@ -86,11 +86,6 @@ class Kohana_Arr
      */
     public static function path($array, $path, $default = null, $delimiter = null)
     {
-        if (!Arr::is_array($array)) {
-            // This is not an array!
-            return $default;
-        }
-
         if (is_array($path)) {
             // The path has already been separated into keys
             $keys = $path;
@@ -141,6 +136,13 @@ class Kohana_Arr
 
                 $values = [];
                 foreach ($array as $arr) {
+                    if (!is_array($arr)) {
+                        if (Arr::is_array($arr)) {
+                            $arr = iterator_to_array($arr);
+                        } else {
+                            continue;
+                        }
+                    }
                     if ($value = Arr::path($arr, implode('.', $keys))) {
                         $values[] = $value;
                     }
