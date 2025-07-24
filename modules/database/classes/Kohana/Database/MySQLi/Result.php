@@ -30,7 +30,7 @@ class Kohana_Database_MySQLi_Result extends Database_Result
 
     public function seek($offset)
     {
-        if ($this->offsetExists($offset) AND $this->_result->data_seek($offset)) {
+        if ($this->offsetExists($offset) && $this->_result->data_seek($offset)) {
             // Set the current row to the offset
             $this->_current_row = $this->_internal_row = $offset;
 
@@ -42,7 +42,7 @@ class Kohana_Database_MySQLi_Result extends Database_Result
 
     public function current()
     {
-        if ($this->_current_row !== $this->_internal_row AND !$this->seek($this->_current_row))
+        if ($this->_current_row !== $this->_internal_row && !$this->seek($this->_current_row))
             return null;
 
         // Increment internal row for optimization assuming rows are fetched in order

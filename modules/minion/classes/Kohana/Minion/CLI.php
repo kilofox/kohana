@@ -263,7 +263,7 @@ class Kohana_Minion_CLI
             throw new Kohana_Exception('Invalid CLI foreground color: ' . $foreground);
         }
 
-        if ($background !== null and ! array_key_exists($background, Minion_CLI::$background_colors)) {
+        if ($background !== null && !array_key_exists($background, Minion_CLI::$background_colors)) {
             throw new Kohana_Exception('Invalid CLI background color: ' . $background);
         }
 

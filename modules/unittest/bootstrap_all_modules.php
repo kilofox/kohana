@@ -8,7 +8,7 @@ $modules_iterator = new DirectoryIterator(MODPATH);
 $modules = [];
 
 foreach ($modules_iterator as $module) {
-    if ($module->isDir() AND !$module->isDot()) {
+    if ($module->isDir() && !$module->isDot()) {
         $modules[$module->getFilename()] = MODPATH . $module->getFilename();
     }
 }

@@ -21,12 +21,12 @@
 class Kohana_Fragment
 {
     /**
-     * @var  integer  default number of seconds to cache for
+     * @var int default number of seconds to cache for
      */
     public static $lifetime = 30;
 
     /**
-     * @var  boolean  use multilingual fragment support?
+     * @var bool use multilingual fragment support?
      */
     public static $i18n = false;
 

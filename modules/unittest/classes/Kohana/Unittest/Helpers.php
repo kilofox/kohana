@@ -9,7 +9,7 @@ class Kohana_Unittest_Helpers
      * Static variable used to work out whether we have an internet
      * connection
      * @see has_internet
-     * @var boolean
+     * @var bool
      */
     static protected $_has_internet = null;
 
@@ -52,7 +52,7 @@ class Kohana_Unittest_Helpers
 
         while ($dir = readdir($cache_dir)) {
             // Cache files are split into directories based on first two characters of hash
-            if ($dir[0] !== '.' AND strlen($dir) === 2) {
+            if ($dir[0] !== '.' && strlen($dir) === 2) {
                 $dir = self::dir_separator(Kohana::$cache_dir . '/' . $dir . '/');
 
                 $cache = opendir($dir);
@@ -126,7 +126,7 @@ class Kohana_Unittest_Helpers
                 $class->setStaticPropertyValue($var, $value);
             }
             // If this is an environment variable
-            elseif (preg_match('/^[A-Z_-]+$/', $option) OR isset($_SERVER[$option])) {
+            elseif (preg_match('/^[A-Z_-]+$/', $option) || isset($_SERVER[$option])) {
                 if ($backup_needed) {
                     $this->_environment_backup[$option] = isset($_SERVER[$option]) ? $_SERVER[$option] : '';
                 }

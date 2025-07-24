@@ -68,7 +68,7 @@ class Kohana_Num
      */
     public static function ordinal($number)
     {
-        if ($number % 100 > 10 AND $number % 100 < 14) {
+        if ($number % 100 > 10 && $number % 100 < 14) {
             return 'th';
         }
 

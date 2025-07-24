@@ -229,7 +229,7 @@ class Kohana_Database_MySQLi extends Database
         // Make sure the database is connected
         $this->_connection or $this->connect();
 
-        if ($mode AND !$this->_connection->query("SET TRANSACTION ISOLATION LEVEL $mode")) {
+        if ($mode && !$this->_connection->query("SET TRANSACTION ISOLATION LEVEL $mode")) {
             throw new Database_Exception(':error', [':error' => $this->_connection->error], $this->_connection->errno);
         }
 

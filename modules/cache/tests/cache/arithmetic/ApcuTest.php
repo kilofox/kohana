@@ -35,7 +35,7 @@ class Kohana_ApcuTest extends Kohana_CacheArithmeticMethodsTest
             $this->markTestSkipped('APCu PHP Extension is not available');
         }
 
-        if (!(ini_get('apc.enabled') AND ini_get('apc.enable_cli'))) {
+        if (!(ini_get('apc.enabled') && ini_get('apc.enable_cli'))) {
             $this->markTestSkipped('APCu is not enabled. To fix ' .
                 'set "apc.enabled=1" and "apc.enable_cli=1" in your php.ini file');
         }

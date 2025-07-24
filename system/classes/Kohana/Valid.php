@@ -18,7 +18,7 @@ class Kohana_Valid
      */
     public static function not_empty($value)
     {
-        if (is_object($value) AND $value instanceof ArrayObject) {
+        if (is_object($value) && $value instanceof ArrayObject) {
             // Get the array from the ArrayObject
             $value = $value->getArrayCopy();
         }
@@ -415,7 +415,7 @@ class Kohana_Valid
         if ($utf8 === true) {
             return (bool) preg_match('/^\pN++$/uD', $str);
         } else {
-            return (is_int($str) AND $str >= 0) OR ctype_digit($str);
+            return (is_int($str) && $str >= 0) OR ctype_digit($str);
         }
     }
 
@@ -448,7 +448,7 @@ class Kohana_Valid
      */
     public static function range($number, $min, $max, $step = null)
     {
-        if ($number < $min OR $number > $max) {
+        if ($number < $min || $number > $max) {
             // Number is outside of range
             return false;
         }

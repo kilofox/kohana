@@ -44,7 +44,7 @@ class Kohana_File
             }
         }
 
-        if (ini_get('mime_magic.magicfile') AND function_exists('mime_content_type')) {
+        if (ini_get('mime_magic.magicfile') && function_exists('mime_content_type')) {
             // The mime_content_type function is only useful with a magic file
             return mime_content_type($filename);
         }

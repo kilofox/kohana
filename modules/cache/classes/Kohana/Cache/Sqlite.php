@@ -85,7 +85,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
         }
 
         // If the cache has expired
-        if ($result->expiration != 0 and $result->expiration <= time()) {
+        if ($result->expiration != 0 && $result->expiration <= time()) {
             // Delete it and return default value
             $this->delete($id);
             return $default;

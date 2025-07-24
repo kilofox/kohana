@@ -461,6 +461,7 @@ class Kohana_ArrTest extends Unittest_TestCase
                     ]
                 ],
                 3 => 'frank', // Issue #3194
+                4 => new ArrayObject(['name' => 'frank']),
             ],
             // Iterable object should work exactly the same
             'object' => new ArrayObject(['iterator' => true]),
@@ -544,7 +545,7 @@ class Kohana_ArrTest extends Unittest_TestCase
             ],
             // Starting wildcards, issue #3269
             [
-                ['matt', 'john'],
+                ['matt', 'john', 'frank'],
                 $array['users'],
                 '*.name'
             ],
