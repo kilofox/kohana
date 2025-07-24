@@ -462,7 +462,7 @@ class Kohana_HTTP_Cache
      */
     public function request_execution_time()
     {
-        if ($this->_request_time === null OR $this->_response_time === null)
+        if ($this->_request_time === null || $this->_response_time === null)
             return false;
 
         return $this->_response_time - $this->_request_time;

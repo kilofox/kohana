@@ -100,7 +100,7 @@ abstract class Kohana_Image
             // Ignore all errors while reading the image
         }
 
-        if (empty($file) OR empty($info)) {
+        if (empty($file) || empty($info)) {
             throw new Kohana_Exception('Not an image or invalid image: :file', [':file' => Debug::path($file)]);
         }
 
@@ -424,7 +424,7 @@ abstract class Kohana_Image
      */
     public function reflection($height = null, $opacity = 100, $fade_in = false)
     {
-        if ($height === null OR $height > $this->height) {
+        if ($height === null || $height > $this->height) {
             // Use the current height
             $height = $this->height;
         }
@@ -561,7 +561,7 @@ abstract class Kohana_Image
             // Get the directory of the file
             $directory = realpath(pathinfo($file, PATHINFO_DIRNAME));
 
-            if (!is_dir($directory) OR ! is_writable($directory)) {
+            if (!is_dir($directory) || !is_writable($directory)) {
                 throw new Kohana_Exception('Directory must be writable: :directory', [':directory' => Debug::path($directory)]);
             }
         }

@@ -126,7 +126,7 @@ class Kohana_Unittest_Helpers
                 $class->setStaticPropertyValue($var, $value);
             }
             // If this is an environment variable
-            elseif (preg_match('/^[A-Z_-]+$/', $option) OR isset($_SERVER[$option])) {
+            elseif (preg_match('/^[A-Z_-]+$/', $option) || isset($_SERVER[$option])) {
                 if ($backup_needed) {
                     $this->_environment_backup[$option] = isset($_SERVER[$option]) ? $_SERVER[$option] : '';
                 }

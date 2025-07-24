@@ -163,7 +163,7 @@ class Kohana_Kodoc
                     $declares = $child;
                 }
 
-                if ($declares === $_class->name OR $declares === "Core") {
+                if ($declares === $_class->name || $declares === "Core") {
                     $methods[] = $_method->name;
                 }
             }
@@ -211,7 +211,7 @@ class Kohana_Kodoc
             return HTML::anchor(
                     $route->uri(['class' => $text]), $text
             );
-        } elseif ($tag === 'see' OR $tag === 'uses') {
+        } elseif ($tag === 'see' || $tag === 'uses') {
             if (preg_match('/^' . Kodoc::$regex_class_member . '/', $text, $matches))
                 return Kodoc::link_class_member($matches);
         }

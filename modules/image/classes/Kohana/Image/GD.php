@@ -97,7 +97,7 @@ class Kohana_Image_GD extends Image
                 break;
         }
 
-        if (!isset($create) OR ! function_exists($create)) {
+        if (!isset($create) || !function_exists($create)) {
             throw new Kohana_Exception('Installed GD does not support :type images', [':type' => image_type_to_extension($this->type, false)]);
         }
 

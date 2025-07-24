@@ -410,7 +410,7 @@ class Kohana_ORM extends Model implements serializable
      */
     public function reload_columns($force = false)
     {
-        if ($force === true OR empty($this->_table_columns)) {
+        if ($force === true || empty($this->_table_columns)) {
             if (isset(ORM::$_column_cache[$this->_object_name])) {
                 // Use cached column information
                 $this->_table_columns = ORM::$_column_cache[$this->_object_name];
@@ -1104,7 +1104,7 @@ class Kohana_ORM extends Model implements serializable
                 }
             }
 
-            if (is_array($filter) OR ! is_string($filter)) {
+            if (is_array($filter) || !is_string($filter)) {
                 // This is either a callback as an array or a lambda
                 $value = call_user_func_array($filter, $params);
             } elseif (strpos($filter, '::') === false) {
@@ -1166,7 +1166,7 @@ class Kohana_ORM extends Model implements serializable
 
         $array = $this->_validation;
 
-        if (($this->_valid = $array->check()) === false OR $extra_errors) {
+        if (($this->_valid = $array->check()) === false || $extra_errors) {
             $exception = new ORM_Validation_Exception($this->errors_filename(), $array);
 
             if ($extra_errors) {
@@ -1193,7 +1193,7 @@ class Kohana_ORM extends Model implements serializable
             throw new Kohana_Exception('Cannot create :model model because it is already loaded.', [':model' => $this->_object_name]);
 
         // Require model validation before saving
-        if (!$this->_valid OR $validation) {
+        if (!$this->_valid || $validation) {
             $this->check($validation);
         }
 
@@ -1249,7 +1249,7 @@ class Kohana_ORM extends Model implements serializable
             throw new Kohana_Exception('Cannot update :model model because it is not loaded.', [':model' => $this->_object_name]);
 
         // Run validation if the model isn't valid, or we have additional validation rules.
-        if (!$this->_valid OR $validation) {
+        if (!$this->_valid || $validation) {
             $this->check($validation);
         }
 
@@ -1420,7 +1420,7 @@ class Kohana_ORM extends Model implements serializable
         $far_keys = (array) $far_keys;
 
         // Nothing to check if the model isn't loaded, or we don't have any far_keys
-        if (!$far_keys OR !$this->_loaded)
+        if (!$far_keys || !$this->_loaded)
             return 0;
 
         // Rows found need to match the rows searched
