@@ -94,7 +94,7 @@ class Kohana_Security
     public static function slow_equals($a, $b)
     {
         $diff = strlen($a) ^ strlen($b);
-        for ($i = 0; $i < strlen($a) AND $i < strlen($b); $i++) {
+        for ($i = 0; $i < strlen($a) && $i < strlen($b); $i++) {
             $diff |= ord($a[$i]) ^ ord($b[$i]);
         }
         return $diff === 0;

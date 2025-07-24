@@ -103,7 +103,7 @@ abstract class Kohana_Request_Client_External extends Request_Client
             // Set the benchmark name
             $benchmark = '"' . $request->uri() . '"';
 
-            if ($request !== Request::$initial AND Request::$current) {
+            if ($request !== Request::$initial && Request::$current) {
                 // Add the parent request URI
                 $benchmark .= ' « "' . Request::$current->uri() . '"';
             }

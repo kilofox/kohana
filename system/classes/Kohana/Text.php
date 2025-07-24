@@ -211,7 +211,7 @@ class Kohana_Text
         }
 
         // Make sure alnum strings contain at least one letter and one digit
-        if ($type === 'alnum' AND $length > 1) {
+        if ($type === 'alnum' && $length > 1) {
             if (ctype_alpha($str)) {
                 // Add a random digit
                 $str[mt_rand(0, $length - 1)] = chr(mt_rand(48, 57));
@@ -520,7 +520,7 @@ class Kohana_Text
                 $item = '';
 
                 if ($unit < 100) {
-                    if ($last_unit < 100 AND $last_unit >= 20) {
+                    if ($last_unit < 100 && $last_unit >= 20) {
                         $last_item .= '-' . $name;
                     } else {
                         $item = $name;

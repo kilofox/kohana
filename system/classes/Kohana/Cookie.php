@@ -67,7 +67,7 @@ class Kohana_Cookie
         // Find the position of the split between salt and contents
         $split = strlen(Cookie::salt($key, null));
 
-        if (isset($cookie[$split]) AND $cookie[$split] === '~') {
+        if (isset($cookie[$split]) && $cookie[$split] === '~') {
             // Separate the salt and the value
             list ($hash, $value) = explode('~', $cookie, 2);
 

@@ -228,7 +228,7 @@ class Kohana_Core
         /**
          * Enable xdebug parameter collection in development mode to improve fatal stack traces.
          */
-        if (Kohana::$environment == Kohana::DEVELOPMENT AND extension_loaded('xdebug')) {
+        if (Kohana::$environment == Kohana::DEVELOPMENT && extension_loaded('xdebug')) {
             ini_set('xdebug.collect_params', 3);
         }
 
@@ -628,12 +628,12 @@ class Kohana_Core
         // Create a partial path of the filename
         $path = $dir . DIRECTORY_SEPARATOR . $file . $ext;
 
-        if (Kohana::$caching === true AND isset(Kohana::$_files[$path . ($array ? '_array' : '_path')])) {
+        if (Kohana::$caching === true && isset(Kohana::$_files[$path . ($array ? '_array' : '_path')])) {
             // This path has been cached
             return Kohana::$_files[$path . ($array ? '_array' : '_path')];
         }
 
-        if (Kohana::$profiling === true AND class_exists('Profiler', false)) {
+        if (Kohana::$profiling === true && class_exists('Profiler', false)) {
             // Start a new benchmark
             $benchmark = Profiler::start('Kohana', __FUNCTION__);
         }
@@ -919,7 +919,7 @@ class Kohana_Core
         }
 
         try {
-            if (Kohana::$caching === true AND Kohana::$_files_changed === true) {
+            if (Kohana::$caching === true && Kohana::$_files_changed === true) {
                 // Write the file path cache
                 Kohana::cache('Kohana::find_file()', Kohana::$_files);
             }
@@ -928,7 +928,7 @@ class Kohana_Core
             Kohana_Exception::handler($e);
         }
 
-        if (Kohana::$errors AND $error = error_get_last() AND in_array($error['type'], Kohana::$shutdown_errors)) {
+        if (Kohana::$errors && ($error = error_get_last()) && in_array($error['type'], Kohana::$shutdown_errors)) {
             // Clean the output buffer
             ob_get_level() AND ob_clean();
 

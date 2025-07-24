@@ -14,7 +14,7 @@ function _strspn($str, $mask, $offset = null, $length = null)
     if ($str == '' OR $mask == '')
         return 0;
 
-    if (UTF8::is_ascii($str) AND UTF8::is_ascii($mask))
+    if (UTF8::is_ascii($str) && UTF8::is_ascii($mask))
         return ($offset === null) ? strspn($str, $mask) : (($length === null) ? strspn($str, $mask, $offset) : strspn($str, $mask, $offset, $length));
 
     if ($offset !== null OR $length !== null) {

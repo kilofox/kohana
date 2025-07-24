@@ -314,7 +314,7 @@ class Kohana_Debug
                 continue;
             }
 
-            if (isset($step['file']) AND isset($step['line'])) {
+            if (isset($step['file']) && isset($step['line'])) {
                 // Include the source of this step
                 $source = Debug::source($step['file'], $step['line']);
             }

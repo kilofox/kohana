@@ -366,7 +366,7 @@ abstract class Kohana_Request_Client
     public static function on_header_location(Request $request, Response $response, Request_Client $client)
     {
         // Do we need to follow a Location header ?
-        if ($client->follow() AND in_array($response->status(), [201, 301, 302, 303, 307])) {
+        if ($client->follow() && in_array($response->status(), [201, 301, 302, 303, 307])) {
             // Figure out which method to use for the follow request
             switch ($response->status()) {
                 default:

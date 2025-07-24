@@ -114,7 +114,7 @@ class Kohana_Inflector
         } elseif (preg_match('/[^aeiou]ies$/', $str)) {
             // Replace "ies" with "y"
             $str = substr($str, 0, -3) . 'y';
-        } elseif (substr($str, -1) === 's' AND substr($str, -2) !== 'ss') {
+        } elseif (substr($str, -1) === 's' && substr($str, -2) !== 'ss') {
             // Remove singular "s"
             $str = substr($str, 0, -1);
         }

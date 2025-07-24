@@ -62,7 +62,7 @@ class Kohana_Feed
         $items = [];
 
         foreach ($feed as $item) {
-            if ($limit > 0 AND $i++ === $limit)
+            if ($limit > 0 && $i++ === $limit)
                 break;
             $item_fields = (array) $item;
 
@@ -116,10 +116,10 @@ class Kohana_Feed
                 $image->addChild('url', $value['url']);
                 $image->addChild('title', $value['title']);
             } else {
-                if (($name === 'pubDate' OR $name === 'lastBuildDate') AND ( is_int($value) OR ctype_digit($value))) {
+                if (($name === 'pubDate' OR $name === 'lastBuildDate') && (is_int($value) OR ctype_digit($value))) {
                     // Convert timestamps to RFC 822 formatted dates
                     $value = date('r', $value);
-                } elseif (($name === 'link' OR $name === 'docs') AND strpos($value, '://') === false) {
+                } elseif (($name === 'link' OR $name === 'docs') && strpos($value, '://') === false) {
                     // Convert URIs to URLs
                     $value = URL::site($value, 'http');
                 }
@@ -134,10 +134,10 @@ class Kohana_Feed
             $row = $feed->channel->addChild('item');
 
             foreach ($item as $name => $value) {
-                if ($name === 'pubDate' AND ( is_int($value) OR ctype_digit($value))) {
+                if ($name === 'pubDate' && (is_int($value) OR ctype_digit($value))) {
                     // Convert timestamps to RFC 822 formatted dates
                     $value = date('r', $value);
-                } elseif (($name === 'link' OR $name === 'guid') AND strpos($value, '://') === false) {
+                } elseif (($name === 'link' OR $name === 'guid') && strpos($value, '://') === false) {
                     // Convert URIs to URLs
                     $value = URL::site($value, 'http');
                 }

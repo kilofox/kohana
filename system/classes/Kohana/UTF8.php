@@ -60,7 +60,7 @@ class Kohana_UTF8
                 // Recursion!
                 $var[UTF8::clean($key)] = UTF8::clean($val);
             }
-        } elseif (is_string($var) AND $var !== '') {
+        } elseif (is_string($var) && $var !== '') {
             // Remove control characters
             $var = UTF8::strip_ascii_ctrl($var);
 

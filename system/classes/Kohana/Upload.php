@@ -122,9 +122,9 @@ class Kohana_Upload
     public static function not_empty(array $file)
     {
         return (isset($file['error'])
-            AND isset($file['tmp_name'])
-            AND $file['error'] === UPLOAD_ERR_OK
-            AND is_uploaded_file($file['tmp_name']));
+            && isset($file['tmp_name'])
+            && $file['error'] === UPLOAD_ERR_OK
+            && is_uploaded_file($file['tmp_name']));
     }
 
     /**
@@ -225,10 +225,10 @@ class Kohana_Upload
 
             if ($exact) {
                 // Check if dimensions match exactly
-                return ($width === $max_width AND $height === $max_height);
+                return ($width === $max_width && $height === $max_height);
             } else {
                 // Check if size is within maximum dimensions
-                return ($width <= $max_width AND $height <= $max_height);
+                return ($width <= $max_width && $height <= $max_height);
             }
         }
 
