@@ -143,7 +143,7 @@ class Kohana_Arr
                             continue;
                         }
                     }
-                    if ($value = Arr::path($arr, implode('.', $keys))) {
+                    if ($value = Arr::path($arr, $keys, $default, $delimiter)) {
                         $values[] = $value;
                     }
                 }
