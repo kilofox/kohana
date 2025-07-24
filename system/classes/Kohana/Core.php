@@ -380,7 +380,7 @@ class Kohana_Core
      */
     public static function globals()
     {
-        if (isset($_REQUEST['GLOBALS']) OR isset($_FILES['GLOBALS'])) {
+        if (isset($_REQUEST['GLOBALS']) || isset($_FILES['GLOBALS'])) {
             // Prevent malicious GLOBALS overload attack
             echo "Global variable overload attack detected! Request aborted.\n";
 
@@ -421,7 +421,7 @@ class Kohana_Core
      */
     public static function sanitize($value)
     {
-        if (is_array($value) OR is_object($value)) {
+        if (is_array($value) || is_object($value)) {
             foreach ($value as $key => $val) {
                 // Recursively clean each value
                 $value[$key] = Kohana::sanitize($val);
@@ -638,7 +638,7 @@ class Kohana_Core
             $benchmark = Profiler::start('Kohana', __FUNCTION__);
         }
 
-        if ($array OR $dir === 'config' OR $dir === 'i18n' OR $dir === 'messages') {
+        if ($array || $dir === 'config' || $dir === 'i18n' || $dir === 'messages') {
             // Include paths must be searched in reverse
             $paths = array_reverse(Kohana::$_paths);
 
@@ -718,7 +718,7 @@ class Kohana_Core
                     // Get the file name
                     $filename = $file->getFilename();
 
-                    if ($filename[0] === '.' OR $filename[strlen($filename) - 1] === '~') {
+                    if ($filename[0] === '.' || $filename[strlen($filename) - 1] === '~') {
                         // Skip all hidden files and UNIX backup files
                         continue;
                     }

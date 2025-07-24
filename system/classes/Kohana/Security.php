@@ -47,7 +47,7 @@ class Kohana_Security
         // Get the current token
         $token = $session->get(Security::$token_name);
 
-        if ($new === true OR !$token) {
+        if ($new === true || !$token) {
             // Generate a new unique token
             if (function_exists('openssl_random_pseudo_bytes')) {
                 // Generate a random pseudo bytes token if openssl_random_pseudo_bytes is available

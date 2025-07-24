@@ -264,7 +264,7 @@ class Kohana_Date
     {
         $months = [];
 
-        if ($format === Date::MONTHS_LONG OR $format === Date::MONTHS_SHORT) {
+        if ($format === Date::MONTHS_LONG || $format === Date::MONTHS_SHORT) {
             for ($i = 1; $i <= 12; ++$i) {
                 $months[$i] = strftime($format, mktime(0, 0, 0, $i, 1));
             }

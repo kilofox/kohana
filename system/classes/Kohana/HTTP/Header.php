@@ -319,7 +319,7 @@ class Kohana_HTTP_Header extends ArrayObject
         // Ensure the index is lowercase
         $key = strtolower($key);
 
-        if ($replace OR !$this->offsetExists($key)) {
+        if ($replace || !$this->offsetExists($key)) {
             parent::offsetSet($key, $value);
             return;
         }

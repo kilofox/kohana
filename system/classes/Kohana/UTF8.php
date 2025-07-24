@@ -55,7 +55,7 @@ class Kohana_UTF8
             $charset = Kohana::$charset;
         }
 
-        if (is_array($var) OR is_object($var)) {
+        if (is_array($var) || is_object($var)) {
             foreach ($var as $key => $val) {
                 // Recursion!
                 $var[UTF8::clean($key)] = UTF8::clean($val);

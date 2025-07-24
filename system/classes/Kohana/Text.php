@@ -94,7 +94,7 @@ class Kohana_Text
 
         $limit = (int) $limit;
 
-        if (trim($str) === '' OR UTF8::strlen($str) <= $limit)
+        if (trim($str) === '' || UTF8::strlen($str) <= $limit)
             return $str;
 
         if ($limit <= 0)
@@ -311,7 +311,7 @@ class Kohana_Text
         for ($i = 0, $max = strlen($word); $i < $max; ++$i) {
             foreach ($words as $w) {
                 // Once a difference is found, break out of the loops
-                if (!isset($w[$i]) OR $w[$i] !== $word[$i])
+                if (!isset($w[$i]) || $w[$i] !== $word[$i])
                     break 2;
             }
         }
@@ -467,7 +467,7 @@ class Kohana_Text
         $format = ($format === null) ? '%01.2f %s' : (string) $format;
 
         // IEC prefixes (binary)
-        if (!$si OR strpos($force_unit, 'i') !== false) {
+        if (!$si || strpos($force_unit, 'i') !== false) {
             $units = ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB'];
             $mod = 1024;
         }
@@ -612,7 +612,7 @@ class Kohana_Text
             return $data;
         }
 
-        if ($value === 'browser' OR $value == 'version') {
+        if ($value === 'browser' || $value == 'version') {
             // Extra data will be captured
             $info = [];
 

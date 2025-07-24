@@ -448,7 +448,7 @@ class Kohana_Valid
      */
     public static function range($number, $min, $max, $step = null)
     {
-        if ($number < $min OR $number > $max) {
+        if ($number < $min || $number > $max) {
             // Number is outside of range
             return false;
         }

@@ -108,7 +108,7 @@ class Kohana_Inflector
         } elseif (preg_match('/us$/', $str)) {
             // https://en.wikipedia.org/wiki/Plural_form_of_words_ending_in_-us
             // Already singular, do nothing
-        } elseif (preg_match('/[sxz]es$/', $str) OR preg_match('/[^aeioudgkprt]hes$/', $str)) {
+        } elseif (preg_match('/[sxz]es$/', $str) || preg_match('/[^aeioudgkprt]hes$/', $str)) {
             // Remove "es"
             $str = substr($str, 0, -2);
         } elseif (preg_match('/[^aeiou]ies$/', $str)) {
@@ -175,7 +175,7 @@ class Kohana_Inflector
             $str = Inflector::$irregular[$str];
         } elseif (in_array($str, Inflector::$irregular)) {
             // Do nothing
-        } elseif (preg_match('/[sxz]$/', $str) OR preg_match('/[^aeioudgkprt]h$/', $str)) {
+        } elseif (preg_match('/[sxz]$/', $str) || preg_match('/[^aeioudgkprt]h$/', $str)) {
             $str .= 'es';
         } elseif (preg_match('/[^aeiou]y$/', $str)) {
             // Change "y" to "ies"

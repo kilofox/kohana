@@ -16,7 +16,7 @@ function _str_pad($str, $final_str_length, $pad_str = ' ', $pad_type = STR_PAD_R
 
     $str_length = UTF8::strlen($str);
 
-    if ($final_str_length <= 0 OR $final_str_length <= $str_length)
+    if ($final_str_length <= 0 || $final_str_length <= $str_length)
         return $str;
 
     $pad_str_length = UTF8::strlen($pad_str);

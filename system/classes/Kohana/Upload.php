@@ -52,7 +52,7 @@ class Kohana_Upload
      */
     public static function save(array $file, $filename = null, $directory = null, $chmod = 0644)
     {
-        if (!isset($file['tmp_name']) OR ! is_uploaded_file($file['tmp_name'])) {
+        if (!isset($file['tmp_name']) || !is_uploaded_file($file['tmp_name'])) {
             // Ignore corrupted uploads
             return false;
         }
@@ -72,7 +72,7 @@ class Kohana_Upload
             $directory = Upload::$default_directory;
         }
 
-        if (!is_dir($directory) OR ! is_writable(realpath($directory))) {
+        if (!is_dir($directory) || !is_writable(realpath($directory))) {
             throw new Kohana_Exception('Directory :dir must be writable', [':dir' => Debug::path($directory)]);
         }
 
@@ -208,7 +208,7 @@ class Kohana_Upload
                 // Ignore read errors
             }
 
-            if (empty($width) OR empty($height)) {
+            if (empty($width) || empty($height)) {
                 // Cannot get image size, cannot validate
                 return false;
             }

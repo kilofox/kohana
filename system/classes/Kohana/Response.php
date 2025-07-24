@@ -428,7 +428,7 @@ class Kohana_Response implements HTTP_Response
         list($start, $end) = $this->_calculate_byte_range($size);
 
         if (!empty($options['resumable'])) {
-            if ($start > 0 OR $end < ($size - 1)) {
+            if ($start > 0 || $end < ($size - 1)) {
                 // Partial Content
                 $this->_status = 206;
             }

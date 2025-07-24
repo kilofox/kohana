@@ -624,7 +624,7 @@ class Kohana_Request implements HTTP_Request
         // Detect protocol (if present)
         // $allow_external = false prevents the default index.php from
         // being able to proxy external pages.
-        if (!$allow_external OR strpos($uri, '://') === false) {
+        if (!$allow_external || strpos($uri, '://') === false) {
             // Remove leading and trailing slashes from the URI
             $this->_uri = trim($uri, '/');
 
