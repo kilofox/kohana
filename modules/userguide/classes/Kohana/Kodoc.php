@@ -293,7 +293,7 @@ class Kohana_Kodoc
 
         $comment = trim($comment, "\n");
 
-        if ($comment AND $html) {
+        if ($comment && $html) {
             // Parse the comment with Markdown
             $comment = Kodoc_Markdown::markdown($comment);
         }
@@ -392,7 +392,7 @@ class Kohana_Kodoc
         // Split the class name at the first underscore
         $segments = explode('_', $class, 2);
 
-        if ((count($segments) == 2) AND ( isset($transparent_prefixes[$segments[0]]))) {
+        if ((count($segments) == 2) && (isset($transparent_prefixes[$segments[0]]))) {
             if ($segments[1] === 'Core') {
                 // Cater for Module extends Module_Core naming
                 $child_class = $segments[0];
@@ -402,7 +402,7 @@ class Kohana_Kodoc
             }
 
             // It is only a transparent class if the unprefixed class also exists
-            if ($classes AND ! isset($classes[$child_class]))
+            if ($classes && !isset($classes[$child_class]))
                 return false;
 
             // Return the name of the child class

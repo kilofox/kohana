@@ -157,12 +157,12 @@ class Kohana_Image_GD extends Image
         $this->_load_image();
 
         // Test if we can do a resize without resampling to speed up the final resize
-        if ($width > ($this->width / 2) AND $height > ($this->height / 2)) {
+        if ($width > ($this->width / 2) && $height > ($this->height / 2)) {
             // The maximum reduction is 10% greater than the final size
             $reduction_width = round($width * 1.1);
             $reduction_height = round($height * 1.1);
 
-            while ($pre_width / 2 > $reduction_width AND $pre_height / 2 > $reduction_height) {
+            while ($pre_width / 2 > $reduction_width && $pre_height / 2 > $reduction_height) {
                 // Reduce the size using an O(2n) algorithm, until it reaches the maximum reduction
                 $pre_width /= 2;
                 $pre_height /= 2;
@@ -513,7 +513,7 @@ class Kohana_Image_GD extends Image
         // Save the image to a file
         $status = isset($quality) ? $save($this->_image, $file, $quality) : $save($this->_image, $file);
 
-        if ($status === true AND $type !== $this->type) {
+        if ($status === true && $type !== $this->type) {
             // Reset the image type and mime type
             $this->type = $type;
             $this->mime = image_type_to_mime_type($type);
@@ -544,7 +544,7 @@ class Kohana_Image_GD extends Image
         // Render the image
         $status = isset($quality) ? $save($this->_image, null, $quality) : $save($this->_image, null);
 
-        if ($status === true AND $type !== $this->type) {
+        if ($status === true && $type !== $this->type) {
             // Reset the image type and mime type
             $this->type = $type;
             $this->mime = image_type_to_mime_type($type);

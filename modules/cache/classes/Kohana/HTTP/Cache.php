@@ -304,7 +304,7 @@ class Kohana_HTTP_Cache
                 return false;
 
             // Check for private cache and get out of here if invalid
-            if (!$this->_allow_private_cache AND in_array('private', $cache_control)) {
+            if (!$this->_allow_private_cache && in_array('private', $cache_control)) {
                 if (!isset($cache_control['s-maxage']))
                     return false;
 
@@ -313,11 +313,11 @@ class Kohana_HTTP_Cache
             }
 
             // Check that max-age has been set and if it is valid for caching
-            if (isset($cache_control['max-age']) AND $cache_control['max-age'] < 1)
+            if (isset($cache_control['max-age']) && $cache_control['max-age'] < 1)
                 return false;
         }
 
-        if ($expires = Arr::get($headers, 'expires') AND ! isset($cache_control['max-age'])) {
+        if (($expires = Arr::get($headers, 'expires')) && !isset($cache_control['max-age'])) {
             // Can't cache things that have expired already
             if (strtotime($expires) <= time())
                 return false;
@@ -348,7 +348,7 @@ class Kohana_HTTP_Cache
         if ($pragma = $request->headers('pragma')) {
             if ($pragma == 'no-cache')
                 return false;
-            elseif (is_array($pragma) AND in_array('no-cache', $pragma))
+            elseif (is_array($pragma) && in_array('no-cache', $pragma))
                 return false;
         }
 
@@ -433,11 +433,11 @@ class Kohana_HTTP_Cache
                 $ttl = $cache_control['max-age'];
             }
 
-            if (isset($cache_control['s-maxage']) AND isset($cache_control['private']) AND $this->_allow_private_cache) {
+            if (isset($cache_control['s-maxage']) && isset($cache_control['private']) && $this->_allow_private_cache) {
                 $ttl = $cache_control['s-maxage'];
             }
 
-            if (isset($cache_control['max-stale']) AND ! isset($cache_control['must-revalidate'])) {
+            if (isset($cache_control['max-stale']) && !isset($cache_control['must-revalidate'])) {
                 $ttl = $current_age + $cache_control['max-stale'];
             }
         }

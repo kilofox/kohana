@@ -52,7 +52,7 @@ class Kohana_Unittest_Helpers
 
         while ($dir = readdir($cache_dir)) {
             // Cache files are split into directories based on first two characters of hash
-            if ($dir[0] !== '.' AND strlen($dir) === 2) {
+            if ($dir[0] !== '.' && strlen($dir) === 2) {
                 $dir = self::dir_separator(Kohana::$cache_dir . '/' . $dir . '/');
 
                 $cache = opendir($dir);

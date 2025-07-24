@@ -61,7 +61,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         $this->template->show_comments = false;
 
         // If we are in a module and that module has a menu, show that
-        if ($module = $this->request->param('module') AND $this->file($module . '/menu') AND Kohana::$config->load('userguide.modules.' . $module . '.enabled')) {
+        if (($module = $this->request->param('module')) && $this->file($module . '/menu') && Kohana::$config->load('userguide.modules.' . $module . '.enabled')) {
             // Namespace the Markdown parser
             Kodoc_Markdown::$base_url = URL::site($this->guide->uri()) . '/' . $module . '/';
             Kodoc_Markdown::$image_url = URL::site($this->media->uri()) . '/' . $module . '/';
@@ -191,7 +191,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
             }
 
             // If this classes immediate parent is Kodoc_Missing, then it should 404
-            if ($_class->class->getParentClass() AND $_class->class->getParentClass()->name == 'Kodoc_Missing') {
+            if ($_class->class->getParentClass() && $_class->class->getParentClass()->name == 'Kodoc_Missing') {
                 $this->error('That class was not found. Check your URL and make sure that the module with that class is enabled.');
                 return;
             }
@@ -339,7 +339,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
             // Get menu items
             $file = $this->file($this->request->param('module') . '/menu');
 
-            if ($file AND $text = file_get_contents($file)) {
+            if ($file && ($text = file_get_contents($file))) {
                 // Add spans around non-link categories. This is a terrible hack.
                 $text = preg_replace('/^(\s*[\-\*\+]\s*)([^\[\]]+)$/m', '$1<span>$2</span>', $text);
                 $markdown .= $text;

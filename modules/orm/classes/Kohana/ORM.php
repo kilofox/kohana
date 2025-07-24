@@ -966,7 +966,7 @@ class Kohana_ORM extends Model implements serializable
         // Select all columns by default
         $this->_db_builder->select_array($this->_build_select());
 
-        if (!isset($this->_db_applied['order_by']) AND ! empty($this->_sorting)) {
+        if (!isset($this->_db_applied['order_by']) && !empty($this->_sorting)) {
             foreach ($this->_sorting as $column => $direction) {
                 if (strpos($column, '.') === false) {
                     // Sorting column for use in JOINs
@@ -1098,7 +1098,7 @@ class Kohana_ORM extends Model implements serializable
             $params = Arr::get($array, 1, [':value']);
 
             foreach ($params as $key => $param) {
-                if (is_string($param) AND array_key_exists($param, $_bound)) {
+                if (is_string($param) && array_key_exists($param, $_bound)) {
                     // Replace with bound value
                     $params[$key] = $_bound[$param];
                 }
@@ -1599,7 +1599,7 @@ class Kohana_ORM extends Model implements serializable
      */
     public function reset($next = true)
     {
-        if ($next AND $this->_db_reset) {
+        if ($next && $this->_db_reset) {
             $this->_db_pending = [];
             $this->_db_applied = [];
             $this->_db_builder = null;
@@ -2215,7 +2215,7 @@ class Kohana_ORM extends Model implements serializable
             ->find();
 
         if ($this->loaded()) {
-            return (!($model->loaded() AND $model->pk() != $this->pk()));
+            return (!($model->loaded() && $model->pk() != $this->pk()));
         }
 
         return (!$model->loaded());

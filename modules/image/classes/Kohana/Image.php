@@ -174,12 +174,12 @@ abstract class Kohana_Image
         }
         // Image::WIDTH and Image::HEIGHT deprecated. You can use it in old projects,
         // but in new you must pass empty value for non-master dimension
-        elseif ($master == Image::WIDTH AND ! empty($width)) {
+        elseif ($master == Image::WIDTH && !empty($width)) {
             $master = Image::AUTO;
 
             // Set empty height for backward compatibility
             $height = null;
-        } elseif ($master == Image::HEIGHT AND ! empty($height)) {
+        } elseif ($master == Image::HEIGHT && !empty($height)) {
             $master = Image::AUTO;
 
             // Set empty width for backward compatibility

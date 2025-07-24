@@ -42,7 +42,7 @@ class Bench_ArrCallback extends Codebench
     public function bench_geert_str($subject)
     {
         // A native string function approach which beats all the regexes
-        if (strpos($subject, '(') !== false AND substr($subject, -1) === ')')
+        if (strpos($subject, '(') !== false && substr($subject, -1) === ')')
             return explode('(', substr($subject, 0, -1), 2);
 
         return [];

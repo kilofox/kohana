@@ -43,7 +43,7 @@ class Kohana_Cache_MemcacheTag extends Cache_Memcache implements Cache_Tagging
 
         $result = $this->set($id, $data, $lifetime);
 
-        if ($result and $tags) {
+        if ($result && $tags) {
             foreach ($tags as $tag) {
                 $this->_memcache->tag_add($tag, $id);
             }

@@ -82,7 +82,7 @@ class Bench_DateSpan extends Codebench
         // Return the difference
         $difference = [];
         foreach ($output as $key) {
-            if (isset($$key) AND ! isset($deny[$key])) {
+            if (isset($$key) && !isset($deny[$key])) {
                 // Add requested key to the output
                 $difference[$key] = $$key;
             }

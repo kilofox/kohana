@@ -27,7 +27,7 @@ class Kohana_Auth_ORM extends Auth
         if (!$user)
             return false;
 
-        if ($user instanceof Model_User AND $user->loaded()) {
+        if ($user instanceof Model_User && $user->loaded()) {
             // If we don't have a roll no further checking is needed
             if (!$role)
                 return true;
@@ -89,7 +89,7 @@ class Kohana_Auth_ORM extends Auth
         }
 
         // If the passwords match, perform a login
-        if ($user->has('roles', ORM::factory('Role', ['name' => 'login'])) AND $user->password === $password) {
+        if ($user->has('roles', ORM::factory('Role', ['name' => 'login'])) && $user->password === $password) {
             if ($remember === true) {
                 // Token data
                 $data = [
@@ -158,7 +158,7 @@ class Kohana_Auth_ORM extends Auth
             // Load the token and user
             $token = ORM::factory('User_Token', ['token' => $token]);
 
-            if ($token->loaded() AND $token->user->loaded()) {
+            if ($token->loaded() && $token->user->loaded()) {
                 if ($token->user_agent === sha1(Request::$user_agent)) {
                     // Save the token to create a new unique token
                     $token->save();
@@ -224,7 +224,7 @@ class Kohana_Auth_ORM extends Auth
             // Clear the autologin token from the database
             $token = ORM::factory('User_Token', ['token' => $token]);
 
-            if ($token->loaded() AND $logout_all) {
+            if ($token->loaded() && $logout_all) {
                 // Delete all user tokens. This isn't the most elegant solution but does the job
                 $tokens = ORM::factory('User_Token')->where('user_id', '=', $token->user_id)->find_all();
 
