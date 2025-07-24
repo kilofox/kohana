@@ -17,7 +17,7 @@ function _from_unicode($arr)
 
     foreach ($keys as $k) {
         // ASCII range (including control chars)
-        if (($arr[$k] >= 0) AND ( $arr[$k] <= 0x007f)) {
+        if (($arr[$k] >= 0) && ($arr[$k] <= 0x007f)) {
             echo chr($arr[$k]);
         }
         // 2 byte sequence
@@ -30,7 +30,7 @@ function _from_unicode($arr)
             // nop -- zap the BOM
         }
         // Test for illegal surrogates
-        elseif ($arr[$k] >= 0xD800 AND $arr[$k] <= 0xDFFF) {
+        elseif ($arr[$k] >= 0xD800 && $arr[$k] <= 0xDFFF) {
             // Found a surrogate
             throw new UTF8_Exception("UTF8::from_unicode: Illegal surrogate at index: ':index', value: ':value'", [
             ':index' => $k,

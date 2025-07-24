@@ -21,11 +21,11 @@ function _substr($str, $offset, $length = null)
     $length = ($length === null) ? null : (int) $length;
 
     // Impossible
-    if ($length === 0 OR $offset >= $strlen OR ( $length < 0 AND $length <= $offset - $strlen))
+    if ($length === 0 || $offset >= $strlen || ($length < 0 && $length <= $offset - $strlen))
         return '';
 
     // Whole string
-    if ($offset == 0 AND ( $length === null OR $length >= $strlen))
+    if ($offset == 0 && ($length === null || $length >= $strlen))
         return $str;
 
     // Build regex

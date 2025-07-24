@@ -18,7 +18,7 @@ abstract class Kohana_Codebench
     public $description = '';
 
     /**
-     * @var  integer  How many times to execute each method per subject.
+     * @var int How many times to execute each method per subject.
      */
     public $loops = 1000;
 

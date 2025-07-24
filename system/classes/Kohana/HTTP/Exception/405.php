@@ -3,7 +3,7 @@
 class Kohana_HTTP_Exception_405 extends HTTP_Exception_Expected
 {
     /**
-     * @var   integer    HTTP 405 Method Not Allowed
+     * @var int HTTP 405 Method Not Allowed
      */
     protected $_code = 405;
 

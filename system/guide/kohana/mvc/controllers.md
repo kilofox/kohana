@@ -151,7 +151,7 @@ You can check what action has been requested (via `$this->request->action`) and 
         public function before()
         {
             // If this user doesn't have the admin role, and is not trying to login, redirect to login
-            if (!Auth::instance()->logged_in('admin') AND $this->request->action !== 'login') {
+            if (!Auth::instance()->logged_in('admin') && $this->request->action !== 'login') {
                 $this->redirect('admin/login', 302);
             }
         }

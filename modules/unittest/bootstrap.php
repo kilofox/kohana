@@ -62,17 +62,17 @@ error_reporting(E_ALL | E_STRICT);
  * @link https://kohana.top/guide/using.configuration
  */
 // Make the application relative to the docroot
-if (!is_dir($application) AND is_dir(DOCROOT . $application)) {
+if (!is_dir($application) && is_dir(DOCROOT . $application)) {
     $application = DOCROOT . $application;
 }
 
 // Make the modules relative to the docroot
-if (!is_dir($modules) AND is_dir(DOCROOT . $modules)) {
+if (!is_dir($modules) && is_dir(DOCROOT . $modules)) {
     $modules = DOCROOT . $modules;
 }
 
 // Make the system relative to the docroot
-if (!is_dir($system) AND is_dir(DOCROOT . $system)) {
+if (!is_dir($system) && is_dir(DOCROOT . $system)) {
     $system = DOCROOT . $system;
 }
 

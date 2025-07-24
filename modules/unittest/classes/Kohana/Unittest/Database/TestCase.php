@@ -13,7 +13,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
 {
     /**
      * Make sure PHPUnit backs up globals
-     * @var boolean
+     * @var bool
      */
     protected $backupGlobals = false;
 

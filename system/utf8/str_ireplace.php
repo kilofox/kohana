@@ -11,7 +11,7 @@
  */
 function _str_ireplace($search, $replace, $str, & $count = null)
 {
-    if (UTF8::is_ascii($search) AND UTF8::is_ascii($replace) AND UTF8::is_ascii($str))
+    if (UTF8::is_ascii($search) && UTF8::is_ascii($replace) && UTF8::is_ascii($str))
         return str_ireplace($search, $replace, $str, $count);
 
     if (is_array($str)) {

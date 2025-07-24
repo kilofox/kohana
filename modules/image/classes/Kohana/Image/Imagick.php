@@ -177,7 +177,7 @@ class Kohana_Image_Imagick extends Image
 
         // Place the image and reflection into the container
         if ($image->compositeImage($this->im, Imagick::COMPOSITE_SRC, 0, 0)
-            AND $image->compositeImage($reflection, Imagick::COMPOSITE_OVER, 0, $this->height)) {
+            && $image->compositeImage($reflection, Imagick::COMPOSITE_OVER, 0, $this->height)) {
             // Replace the current image with the reflected image
             $this->im = $image;
 

@@ -241,7 +241,7 @@ class Kohana_Debug
      */
     public static function source($file, $line_number, $padding = 5)
     {
-        if (!$file OR ! is_readable($file)) {
+        if (!$file || !is_readable($file)) {
             // Continuing will cause errors
             return false;
         }
@@ -314,7 +314,7 @@ class Kohana_Debug
                 continue;
             }
 
-            if (isset($step['file']) AND isset($step['line'])) {
+            if (isset($step['file']) && isset($step['line'])) {
                 // Include the source of this step
                 $source = Debug::source($step['file'], $step['line']);
             }
@@ -339,7 +339,7 @@ class Kohana_Debug
                     $args = [$step['args'][0]];
                 }
             } elseif (isset($step['args'])) {
-                if (!function_exists($step['function']) OR strpos($step['function'], '{closure}') !== false) {
+                if (!function_exists($step['function']) || strpos($step['function'], '{closure}') !== false) {
                     // Introspection on closures or language constructs in a stack trace is impossible
                     $params = null;
                 } else {

@@ -49,17 +49,17 @@ class Kohana_Core
     public static $environment = Kohana::DEVELOPMENT;
 
     /**
-     * @var  boolean  True if Kohana is running on windows
+     * @var bool True if Kohana is running on windows
      */
     public static $is_windows = false;
 
     /**
-     * @var  boolean  True if [magic quotes](https://wiki.php.net/rfc/magicquotes) is enabled.
+     * @var bool True if [magic quotes](https://wiki.php.net/rfc/magicquotes) is enabled.
      */
     public static $magic_quotes = false;
 
     /**
-     * @var  boolean  true if PHP safe mode is on
+     * @var bool true if PHP safe mode is on
      */
     public static $safe_mode = false;
 
@@ -99,22 +99,22 @@ class Kohana_Core
     public static $cache_dir;
 
     /**
-     * @var  integer  Default lifetime for caching, in seconds, used by [Kohana::cache]. Set by [Kohana::init]
+     * @var int Default lifetime for caching, in seconds, used by [Kohana::cache]. Set by [Kohana::init]
      */
     public static $cache_life = 60;
 
     /**
-     * @var  boolean  Whether to use internal caching for [Kohana::find_file], does not apply to [Kohana::cache]. Set by [Kohana::init]
+     * @var bool Whether to use internal caching for [Kohana::find_file], does not apply to [Kohana::cache]. Set by [Kohana::init]
      */
     public static $caching = false;
 
     /**
-     * @var  boolean  Whether to enable [profiling](kohana/profiling). Set by [Kohana::init]
+     * @var bool Whether to enable [profiling](kohana/profiling). Set by [Kohana::init]
      */
     public static $profiling = true;
 
     /**
-     * @var  boolean  Enable Kohana catching and displaying PHP errors and exceptions. Set by [Kohana::init]
+     * @var bool Enable Kohana catching and displaying PHP errors and exceptions. Set by [Kohana::init]
      */
     public static $errors = true;
 
@@ -124,7 +124,7 @@ class Kohana_Core
     public static $shutdown_errors = [E_PARSE, E_ERROR, E_USER_ERROR];
 
     /**
-     * @var  boolean  set the X-Powered-By header
+     * @var bool set the X-Powered-By header
      */
     public static $expose = false;
 
@@ -139,7 +139,7 @@ class Kohana_Core
     public static $config;
 
     /**
-     * @var  boolean  Has [Kohana::init] been called?
+     * @var bool Has [Kohana::init] been called?
      */
     protected static $_init = false;
 
@@ -159,7 +159,7 @@ class Kohana_Core
     protected static $_files = [];
 
     /**
-     * @var  boolean  Has the file path cache changed during this execution?  Used internally when caching is true in [Kohana::init]
+     * @var bool Has the file path cache changed during this execution?  Used internally when caching is true in [Kohana::init]
      */
     protected static $_files_changed = false;
 
@@ -228,7 +228,7 @@ class Kohana_Core
         /**
          * Enable xdebug parameter collection in development mode to improve fatal stack traces.
          */
-        if (Kohana::$environment == Kohana::DEVELOPMENT AND extension_loaded('xdebug')) {
+        if (Kohana::$environment == Kohana::DEVELOPMENT && extension_loaded('xdebug')) {
             ini_set('xdebug.collect_params', 3);
         }
 
@@ -380,7 +380,7 @@ class Kohana_Core
      */
     public static function globals()
     {
-        if (isset($_REQUEST['GLOBALS']) OR isset($_FILES['GLOBALS'])) {
+        if (isset($_REQUEST['GLOBALS']) || isset($_FILES['GLOBALS'])) {
             // Prevent malicious GLOBALS overload attack
             echo "Global variable overload attack detected! Request aborted.\n";
 
@@ -421,7 +421,7 @@ class Kohana_Core
      */
     public static function sanitize($value)
     {
-        if (is_array($value) OR is_object($value)) {
+        if (is_array($value) || is_object($value)) {
             foreach ($value as $key => $val) {
                 // Recursively clean each value
                 $value[$key] = Kohana::sanitize($val);
@@ -628,17 +628,17 @@ class Kohana_Core
         // Create a partial path of the filename
         $path = $dir . DIRECTORY_SEPARATOR . $file . $ext;
 
-        if (Kohana::$caching === true AND isset(Kohana::$_files[$path . ($array ? '_array' : '_path')])) {
+        if (Kohana::$caching === true && isset(Kohana::$_files[$path . ($array ? '_array' : '_path')])) {
             // This path has been cached
             return Kohana::$_files[$path . ($array ? '_array' : '_path')];
         }
 
-        if (Kohana::$profiling === true AND class_exists('Profiler', false)) {
+        if (Kohana::$profiling === true && class_exists('Profiler', false)) {
             // Start a new benchmark
             $benchmark = Profiler::start('Kohana', __FUNCTION__);
         }
 
-        if ($array OR $dir === 'config' OR $dir === 'i18n' OR $dir === 'messages') {
+        if ($array || $dir === 'config' || $dir === 'i18n' || $dir === 'messages') {
             // Include paths must be searched in reverse
             $paths = array_reverse(Kohana::$_paths);
 
@@ -718,7 +718,7 @@ class Kohana_Core
                     // Get the file name
                     $filename = $file->getFilename();
 
-                    if ($filename[0] === '.' OR $filename[strlen($filename) - 1] === '~') {
+                    if ($filename[0] === '.' || $filename[strlen($filename) - 1] === '~') {
                         // Skip all hidden files and UNIX backup files
                         continue;
                     }
@@ -919,7 +919,7 @@ class Kohana_Core
         }
 
         try {
-            if (Kohana::$caching === true AND Kohana::$_files_changed === true) {
+            if (Kohana::$caching === true && Kohana::$_files_changed === true) {
                 // Write the file path cache
                 Kohana::cache('Kohana::find_file()', Kohana::$_files);
             }
@@ -928,7 +928,7 @@ class Kohana_Core
             Kohana_Exception::handler($e);
         }
 
-        if (Kohana::$errors AND $error = error_get_last() AND in_array($error['type'], Kohana::$shutdown_errors)) {
+        if (Kohana::$errors && ($error = error_get_last()) && in_array($error['type'], Kohana::$shutdown_errors)) {
             // Clean the output buffer
             ob_get_level() AND ob_clean();
 

@@ -84,7 +84,7 @@ class Kohana_Response implements HTTP_Response
     ];
 
     /**
-     * @var  integer     The response http status
+     * @var int The response http status
      */
     protected $_status = 200;
 
@@ -268,7 +268,7 @@ class Kohana_Response implements HTTP_Response
         // Handle the get cookie calls
         if ($key === null)
             return $this->_cookies;
-        elseif (!is_array($key) AND !$value)
+        elseif (!is_array($key) && !$value)
             return Arr::get($this->_cookies, $key);
 
         // Handle the set cookie calls
@@ -428,7 +428,7 @@ class Kohana_Response implements HTTP_Response
         list($start, $end) = $this->_calculate_byte_range($size);
 
         if (!empty($options['resumable'])) {
-            if ($start > 0 OR $end < ($size - 1)) {
+            if ($start > 0 || $end < ($size - 1)) {
                 // Partial Content
                 $this->_status = 206;
             }

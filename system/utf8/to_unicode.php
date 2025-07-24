@@ -86,9 +86,9 @@ function _to_unicode($str)
                 if (0 == --$m_state) {
                     // Check for illegal sequences and codepoints
                     // From Unicode 3.1, non-shortest form is illegal
-                    if (((2 == $m_bytes) AND ( $m_ucs4 < 0x0080)) OR ( (3 == $m_bytes) AND ( $m_ucs4 < 0x0800)) OR ( (4 == $m_bytes) AND ( $m_ucs4 < 0x10000)) OR ( 4 < $m_bytes) OR
+                    if (((2 == $m_bytes) && ($m_ucs4 < 0x0080)) || ((3 == $m_bytes) && ($m_ucs4 < 0x0800)) || ((4 == $m_bytes) && ($m_ucs4 < 0x10000)) || (4 < $m_bytes) ||
                         // From Unicode 3.2, surrogate characters are illegal
-                        ( ($m_ucs4 & 0xFFFFF800) == 0xD800) OR
+                        ( ($m_ucs4 & 0xFFFFF800) == 0xD800) ||
                         // Codepoints outside the Unicode range are illegal
                         ( $m_ucs4 > 0x10FFFF)) {
                         trigger_error('UTF8::to_unicode: Illegal sequence or codepoint in UTF-8 at byte ' . $i, E_USER_WARNING);

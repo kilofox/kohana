@@ -94,7 +94,7 @@ class Kohana_Text
 
         $limit = (int) $limit;
 
-        if (trim($str) === '' OR UTF8::strlen($str) <= $limit)
+        if (trim($str) === '' || UTF8::strlen($str) <= $limit)
             return $str;
 
         if ($limit <= 0)
@@ -211,7 +211,7 @@ class Kohana_Text
         }
 
         // Make sure alnum strings contain at least one letter and one digit
-        if ($type === 'alnum' AND $length > 1) {
+        if ($type === 'alnum' && $length > 1) {
             if (ctype_alpha($str)) {
                 // Add a random digit
                 $str[mt_rand(0, $length - 1)] = chr(mt_rand(48, 57));
@@ -311,7 +311,7 @@ class Kohana_Text
         for ($i = 0, $max = strlen($word); $i < $max; ++$i) {
             foreach ($words as $w) {
                 // Once a difference is found, break out of the loops
-                if (!isset($w[$i]) OR $w[$i] !== $word[$i])
+                if (!isset($w[$i]) || $w[$i] !== $word[$i])
                     break 2;
             }
         }
@@ -467,7 +467,7 @@ class Kohana_Text
         $format = ($format === null) ? '%01.2f %s' : (string) $format;
 
         // IEC prefixes (binary)
-        if (!$si OR strpos($force_unit, 'i') !== false) {
+        if (!$si || strpos($force_unit, 'i') !== false) {
             $units = ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB'];
             $mod = 1024;
         }
@@ -520,7 +520,7 @@ class Kohana_Text
                 $item = '';
 
                 if ($unit < 100) {
-                    if ($last_unit < 100 AND $last_unit >= 20) {
+                    if ($last_unit < 100 && $last_unit >= 20) {
                         $last_item .= '-' . $name;
                     } else {
                         $item = $name;
@@ -612,7 +612,7 @@ class Kohana_Text
             return $data;
         }
 
-        if ($value === 'browser' OR $value == 'version') {
+        if ($value === 'browser' || $value == 'version') {
             // Extra data will be captured
             $info = [];
 

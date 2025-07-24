@@ -338,7 +338,7 @@ abstract class Kohana_Session
      */
     public function write()
     {
-        if (headers_sent() OR $this->_destroyed) {
+        if (headers_sent() || $this->_destroyed) {
             // Session cannot be written when the headers are sent or when
             // the session has been destroyed
             return false;

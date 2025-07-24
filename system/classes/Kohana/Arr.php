@@ -60,7 +60,7 @@ class Kohana_Arr
             return true;
         } else {
             // Possibly a Traversable object, functionally the same as an array
-            return (is_object($value) AND $value instanceof Traversable);
+            return (is_object($value) && $value instanceof Traversable);
         }
     }
 
@@ -86,11 +86,6 @@ class Kohana_Arr
      */
     public static function path($array, $path, $default = null, $delimiter = null)
     {
-        if (!Arr::is_array($array)) {
-            // This is not an array!
-            return $default;
-        }
-
         if (is_array($path)) {
             // The path has already been separated into keys
             $keys = $path;
@@ -141,7 +136,14 @@ class Kohana_Arr
 
                 $values = [];
                 foreach ($array as $arr) {
-                    if ($value = Arr::path($arr, implode('.', $keys))) {
+                    if (!is_array($arr)) {
+                        if (Arr::is_array($arr)) {
+                            $arr = iterator_to_array($arr);
+                        } else {
+                            continue;
+                        }
+                    }
+                    if ($value = Arr::path($arr, $keys, $default, $delimiter)) {
                         $values[] = $value;
                     }
                 }
@@ -350,7 +352,7 @@ class Kohana_Arr
         foreach ($array as $key => $val) {
             if (is_array($val)) {
                 $array[$key] = Arr::map($callbacks, $val, $keys);
-            } elseif (!is_array($keys) OR in_array($key, $keys)) {
+            } elseif (!is_array($keys) || in_array($key, $keys)) {
                 if (is_array($callbacks)) {
                     foreach ($callbacks as $cb) {
                         $array[$key] = call_user_func($cb, $array[$key]);

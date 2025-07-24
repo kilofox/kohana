@@ -70,10 +70,10 @@ class Kohana_Request implements HTTP_Request
                 $method = HTTP_Request::GET;
             }
 
-            if ((!empty($_SERVER['HTTPS']) AND filter_var($_SERVER['HTTPS'], FILTER_VALIDATE_BOOLEAN))
+            if ((!empty($_SERVER['HTTPS']) && filter_var($_SERVER['HTTPS'], FILTER_VALIDATE_BOOLEAN))
                 OR ( isset($_SERVER['HTTP_X_FORWARDED_PROTO'])
-                AND $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')
-                AND in_array($_SERVER['REMOTE_ADDR'], Request::$trusted_proxies)) {
+                && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')
+                && in_array($_SERVER['REMOTE_ADDR'], Request::$trusted_proxies)) {
                 // This request is secure
                 $secure = true;
             }
@@ -233,7 +233,7 @@ class Kohana_Request implements HTTP_Request
                 $uri = (string) substr($uri, strlen($base_url));
             }
 
-            if (Kohana::$index_file AND strpos($uri, Kohana::$index_file) === 0) {
+            if (Kohana::$index_file && strpos($uri, Kohana::$index_file) === 0) {
                 // Remove the index file from the URI
                 $uri = (string) substr($uri, strlen(Kohana::$index_file));
             }
@@ -506,7 +506,7 @@ class Kohana_Request implements HTTP_Request
     protected $_protocol;
 
     /**
-     * @var  boolean
+     * @var bool
      */
     protected $_secure = false;
 
@@ -556,7 +556,7 @@ class Kohana_Request implements HTTP_Request
     protected $_uri;
 
     /**
-     * @var  boolean  external request
+     * @var bool external request
      */
     protected $_external = false;
 
@@ -624,7 +624,7 @@ class Kohana_Request implements HTTP_Request
         // Detect protocol (if present)
         // $allow_external = false prevents the default index.php from
         // being able to proxy external pages.
-        if (!$allow_external OR strpos($uri, '://') === false) {
+        if (!$allow_external || strpos($uri, '://') === false) {
             // Remove leading and trailing slashes from the URI
             $this->_uri = trim($uri, '/');
 
@@ -1039,7 +1039,7 @@ class Kohana_Request implements HTTP_Request
             return $this;
         }
 
-        if ($this->_header->count() === 0 AND $this->is_initial()) {
+        if ($this->_header->count() === 0 && $this->is_initial()) {
             // Lazy load the request headers
             $this->_header = HTTP::request_headers();
         }
