@@ -93,7 +93,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
     {
         $results = [];
 
-        if ($key === null AND $value === null) {
+        if ($key === null && $value === null) {
             // Indexed rows
 
             foreach ($this as $row) {
@@ -193,7 +193,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      */
     public function offsetExists($offset)
     {
-        return ($offset >= 0 AND $offset < $this->_total_rows);
+        return ($offset >= 0 && $offset < $this->_total_rows);
     }
 
     /**

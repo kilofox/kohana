@@ -221,7 +221,7 @@ abstract class Kohana_Minion_Task
         $validation = Validation::factory($options);
         $validation = $this->build_validation($validation);
 
-        if ($this->_method != '_help' AND !$validation->check()) {
+        if ($this->_method != '_help' && !$validation->check()) {
             echo View::factory('minion/error/validation')
                 ->set('task', Minion_Task::convert_class_to_task($this))
                 ->set('errors', $validation->errors($this->get_errors_file()));
@@ -319,7 +319,7 @@ abstract class Kohana_Minion_Task
         foreach ($files as $file => $path) {
             $file = substr($file, strrpos($file, DIRECTORY_SEPARATOR) + 1);
 
-            if (is_array($path) AND count($path)) {
+            if (is_array($path) && count($path)) {
                 $task = $this->_compile_task_list($path, $prefix . $file . Minion_Task::$task_separator);
 
                 if ($task) {

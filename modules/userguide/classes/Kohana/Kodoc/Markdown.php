@@ -94,7 +94,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      */
     function _doHeaders_callback_setext($matches)
     {
-        if ($matches[3] == '-' AND preg_match('{^- }', $matches[1]))
+        if ($matches[3] == '-' && preg_match('{^- }', $matches[1]))
             return $matches[0];
         $level = ($matches[3]{0} == '=') ? 1 : 2;
         $attr = $this->_doHeaders_attr($matches[2]);
@@ -260,7 +260,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
     public function doTOC($text)
     {
         // Only add the toc do userguide pages, not api since they already have one
-        if (self::$show_toc AND Route::name(Request::current()->route()) == "docs/guide") {
+        if (self::$show_toc && Route::name(Request::current()->route()) == "docs/guide") {
             $toc = View::factory('userguide/page-toc')
                 ->set('array', self::$_toc)
                 ->render();

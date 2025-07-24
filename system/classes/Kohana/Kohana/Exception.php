@@ -184,7 +184,7 @@ class Kohana_Kohana_Exception extends Exception
              * method. We need to remove that entry from the trace and overwrite
              * the variables from above.
              */
-            if ($e instanceof HTTP_Exception AND $trace[0]['function'] == 'factory') {
+            if ($e instanceof HTTP_Exception && $trace[0]['function'] == 'factory') {
                 extract(array_shift($trace));
             }
 
@@ -194,7 +194,7 @@ class Kohana_Kohana_Exception extends Exception
                  * If XDebug is installed, and this is a fatal error,
                  * use XDebug to generate the stack trace
                  */
-                if (function_exists('xdebug_get_function_stack') AND $code == E_ERROR) {
+                if (function_exists('xdebug_get_function_stack') && $code == E_ERROR) {
                     $trace = array_slice(array_reverse(xdebug_get_function_stack()), 4);
 
                     foreach ($trace as & $frame) {
@@ -214,7 +214,7 @@ class Kohana_Kohana_Exception extends Exception
                         }
 
                         // XDebug also has a different name for the parameters array
-                        if (isset($frame['params']) AND ! isset($frame['args'])) {
+                        if (isset($frame['params']) && !isset($frame['args'])) {
                             $frame['args'] = $frame['params'];
                         }
                     }

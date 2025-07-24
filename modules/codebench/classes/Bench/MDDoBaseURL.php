@@ -30,7 +30,7 @@ class Bench_MDDoBaseURL extends Codebench
 
     public function _add_base_url_original($matches)
     {
-        if ($matches[2] AND strpos($matches[2], '://') === false) {
+        if ($matches[2] && strpos($matches[2], '://') === false) {
             // Add the base URL to the link URL
             $matches[2] = 'http://BASE/' . $matches[2];
         }

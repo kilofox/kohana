@@ -79,7 +79,7 @@ class Kohana_Session_Database extends Session
 
     protected function _read($id = null)
     {
-        if ($id OR $id = Cookie::get($this->_name)) {
+        if ($id || $id = Cookie::get($this->_name)) {
             $result = DB::select([$this->_columns['contents'], 'contents'])
                 ->from($this->_table)
                 ->where($this->_columns['session_id'], '=', ':id')

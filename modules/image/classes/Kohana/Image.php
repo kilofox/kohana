@@ -58,17 +58,17 @@ abstract class Kohana_Image
     public $file;
 
     /**
-     * @var  integer  image width
+     * @var int image width
      */
     public $width;
 
     /**
-     * @var  integer  image height
+     * @var int image height
      */
     public $height;
 
     /**
-     * @var  integer  one of the IMAGETYPE_* constants
+     * @var int one of the IMAGETYPE_* constants
      */
     public $type;
 
@@ -97,7 +97,7 @@ abstract class Kohana_Image
             // Ignore all errors while reading the image
         }
 
-        if (empty($file) OR empty($info)) {
+        if (empty($file) || empty($info)) {
             throw new Kohana_Exception('Not an image or invalid image: :file', [':file' => Debug::path($file)]);
         }
 
@@ -171,12 +171,12 @@ abstract class Kohana_Image
         }
         // Image::WIDTH and Image::HEIGHT deprecated. You can use it in old projects,
         // but in new you must pass empty value for non-master dimension
-        elseif ($master == Image::WIDTH AND ! empty($width)) {
+        elseif ($master == Image::WIDTH && !empty($width)) {
             $master = Image::AUTO;
 
             // Set empty height for backward compatibility
             $height = null;
-        } elseif ($master == Image::HEIGHT AND ! empty($height)) {
+        } elseif ($master == Image::HEIGHT && !empty($height)) {
             $master = Image::AUTO;
 
             // Set empty width for backward compatibility
@@ -421,7 +421,7 @@ abstract class Kohana_Image
      */
     public function reflection($height = null, $opacity = 100, $fade_in = false)
     {
-        if ($height === null OR $height > $this->height) {
+        if ($height === null || $height > $this->height) {
             // Use the current height
             $height = $this->height;
         }
@@ -558,7 +558,7 @@ abstract class Kohana_Image
             // Get the directory of the file
             $directory = realpath(pathinfo($file, PATHINFO_DIRNAME));
 
-            if (!is_dir($directory) OR ! is_writable($directory)) {
+            if (!is_dir($directory) || !is_writable($directory)) {
                 throw new Kohana_Exception('Directory must be writable: :directory', [':directory' => Debug::path($directory)]);
             }
         }

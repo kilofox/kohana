@@ -115,7 +115,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
     {
         $group = end($this->_where);
 
-        if ($group AND reset($group) === '(') {
+        if ($group && reset($group) === '(') {
             array_pop($this->_where);
 
             return $this;

@@ -17,7 +17,7 @@ class Kohana_Cookie
     public static $salt = null;
 
     /**
-     * @var  integer  Number of seconds before the cookie expires
+     * @var int Number of seconds before the cookie expires
      */
     public static $expiration = 0;
 
@@ -32,12 +32,12 @@ class Kohana_Cookie
     public static $domain = null;
 
     /**
-     * @var  boolean  Only transmit cookies over secure connections
+     * @var bool Only transmit cookies over secure connections
      */
     public static $secure = false;
 
     /**
-     * @var  boolean  Only transmit cookies over HTTP, disabling Javascript access
+     * @var bool Only transmit cookies over HTTP, disabling Javascript access
      */
     public static $httponly = false;
 
@@ -67,7 +67,7 @@ class Kohana_Cookie
         // Find the position of the split between salt and contents
         $split = strlen(Cookie::salt($key, null));
 
-        if (isset($cookie[$split]) AND $cookie[$split] === '~') {
+        if (isset($cookie[$split]) && $cookie[$split] === '~') {
             // Separate the salt and the value
             list ($hash, $value) = explode('~', $cookie, 2);
 

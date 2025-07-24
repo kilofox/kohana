@@ -144,15 +144,15 @@ class Kohana_Kodoc_Class extends Kodoc
     protected function _prop_sort($a, $b)
     {
         // If one property is public, and the other is not, it goes on top
-        if ($a->isPublic() AND ( !$b->isPublic()))
+        if ($a->isPublic() && ( !$b->isPublic()))
             return -1;
-        if ($b->isPublic() AND ( !$a->isPublic()))
+        if ($b->isPublic() && ( !$a->isPublic()))
             return 1;
 
         // If one property is protected and the other is private, it goes on top
-        if ($a->isProtected() AND $b->isPrivate())
+        if ($a->isProtected() && $b->isPrivate())
             return -1;
-        if ($b->isProtected() AND $a->isPrivate())
+        if ($b->isProtected() && $a->isPrivate())
             return 1;
 
         // Otherwise just do alphabetical
@@ -189,15 +189,15 @@ class Kohana_Kodoc_Class extends Kodoc
     protected function _method_sort($a, $b)
     {
         // If one method is public, and the other is not, it goes on top
-        if ($a->isPublic() AND ( !$b->isPublic()))
+        if ($a->isPublic() && ( !$b->isPublic()))
             return -1;
-        if ($b->isPublic() AND ( !$a->isPublic()))
+        if ($b->isPublic() && ( !$a->isPublic()))
             return 1;
 
         // If one method is protected and the other is private, it goes on top
-        if ($a->isProtected() AND $b->isPrivate())
+        if ($a->isProtected() && $b->isPrivate())
             return -1;
-        if ($b->isProtected() AND $a->isPrivate())
+        if ($b->isProtected() && $a->isPrivate())
             return 1;
 
         // The methods have the same visibility, so check the declaring class depth:

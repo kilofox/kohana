@@ -25,7 +25,7 @@
 class Kohana_UTF8
 {
     /**
-     * @var  boolean  Does the server support UTF-8 natively?
+     * @var bool Does the server support UTF-8 natively?
      */
     public static $server_utf8 = null;
 
@@ -55,12 +55,12 @@ class Kohana_UTF8
             $charset = Kohana::$charset;
         }
 
-        if (is_array($var) OR is_object($var)) {
+        if (is_array($var) || is_object($var)) {
             foreach ($var as $key => $val) {
                 // Recursion!
                 $var[UTF8::clean($key)] = UTF8::clean($val);
             }
-        } elseif (is_string($var) AND $var !== '') {
+        } elseif (is_string($var) && $var !== '') {
             // Remove control characters
             $var = UTF8::strip_ascii_ctrl($var);
 

@@ -13,7 +13,7 @@ function _strpos($str, $search, $offset = 0)
 {
     $offset = (int) $offset;
 
-    if (UTF8::is_ascii($str) AND UTF8::is_ascii($search))
+    if (UTF8::is_ascii($str) && UTF8::is_ascii($search))
         return strpos($str, $search, $offset);
 
     if ($offset == 0) {

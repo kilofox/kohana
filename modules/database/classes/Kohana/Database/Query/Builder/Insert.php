@@ -134,7 +134,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
             $groups = [];
             foreach ($this->_values as $group) {
                 foreach ($group as $offset => $value) {
-                    if ((is_string($value) AND array_key_exists($value, $this->_parameters)) === false) {
+                    if ((is_string($value) && array_key_exists($value, $this->_parameters)) === false) {
                         // Quote the value, it is not a parameter
                         $group[$offset] = $db->quote($value);
                     }

@@ -24,7 +24,7 @@ class Kohana_Log
     const DEBUG = LOG_DEBUG;    // 7
 
     /**
-     * @var  boolean  immediately write when logs are added
+     * @var bool immediately write when logs are added
      */
     public static $write_on_add = false;
 

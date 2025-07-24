@@ -45,7 +45,7 @@ class Controller_Imagefly extends Controller
         $height = (int) $this->request->param('height');
 
         $rendered = false;
-        if ($file AND $width AND $height) {
+        if ($file && $width && $height) {
             $filename = DOCROOT . 'uploads/' . $file . '.jpg';
 
             if (is_file($filename)) {

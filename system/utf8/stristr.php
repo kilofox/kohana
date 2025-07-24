@@ -11,7 +11,7 @@
  */
 function _stristr($str, $search)
 {
-    if (UTF8::is_ascii($str) AND UTF8::is_ascii($search))
+    if (UTF8::is_ascii($str) && UTF8::is_ascii($search))
         return stristr($str, $search);
 
     if ($search == '')

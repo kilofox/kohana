@@ -339,7 +339,7 @@ class Kohana_Route
      *         if ($request->method() !== HTTP_Request::POST) {
      *             return false;
      *         }
-     *         if ($params AND $params['controller'] === 'welcome') {
+     *         if ($params && $params['controller'] === 'welcome') {
      *             $params['controller'] = 'home';
      *         }
      *
@@ -403,7 +403,7 @@ class Kohana_Route
         }
 
         foreach ($this->_defaults as $key => $value) {
-            if (!isset($params[$key]) OR $params[$key] === '') {
+            if (!isset($params[$key]) || $params[$key] === '') {
                 // Set default values for any key that was not matched
                 $params[$key] = $value;
             }
@@ -528,7 +528,7 @@ class Kohana_Route
                 return '';
             }, $portion);
 
-            if ($required AND $missing) {
+            if ($required && $missing) {
                 throw new Kohana_Exception('Required route parameter not passed: :param', [':param' => reset($missing)]);
             }
 

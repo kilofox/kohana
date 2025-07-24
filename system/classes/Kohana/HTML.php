@@ -48,12 +48,12 @@ class Kohana_HTML
     );
 
     /**
-     * @var  boolean  use strict XHTML mode?
+     * @var bool use strict XHTML mode?
      */
     public static $strict = true;
 
     /**
-     * @var  boolean  automatically target external URLs to a new window?
+     * @var bool automatically target external URLs to a new window?
      */
     public static $windowed_urls = false;
 
@@ -117,11 +117,11 @@ class Kohana_HTML
             $uri = URL::base($protocol, $index);
         } else {
             if (strpos($uri, '://') !== false) {
-                if (HTML::$windowed_urls === true AND empty($attributes['target'])) {
+                if (HTML::$windowed_urls === true && empty($attributes['target'])) {
                     // Make the link open in a new window
                     $attributes['target'] = '_blank';
                 }
-            } elseif ($uri[0] !== '#' AND $uri[0] !== '?') {
+            } elseif ($uri[0] !== '#' && $uri[0] !== '?') {
                 // Make the URI absolute for non-fragment and non-query anchors
                 $uri = URL::site($uri, $protocol, $index);
             }
@@ -200,7 +200,7 @@ class Kohana_HTML
      */
     public static function style($file, array $attributes = null, $protocol = null, $index = false)
     {
-        if (strpos($file, '://') === false AND strpos($file, '//') !== 0) {
+        if (strpos($file, '://') === false && strpos($file, '//') !== 0) {
             // Add the base URL
             $file = URL::site($file, $protocol, $index);
         }
@@ -233,7 +233,7 @@ class Kohana_HTML
      */
     public static function script($file, array $attributes = null, $protocol = null, $index = false)
     {
-        if (strpos($file, '://') === false AND strpos($file, '//') !== 0) {
+        if (strpos($file, '://') === false && strpos($file, '//') !== 0) {
             // Add the base URL
             $file = URL::site($file, $protocol, $index);
         }
@@ -319,7 +319,7 @@ class Kohana_HTML
             // Add the attribute key
             $compiled .= ' ' . $key;
 
-            if ($value OR HTML::$strict) {
+            if ($value || HTML::$strict) {
                 // Add the attribute value
                 $compiled .= '="' . HTML::chars($value) . '"';
             }

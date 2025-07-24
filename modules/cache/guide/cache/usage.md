@@ -173,7 +173,7 @@ When not automated, garbage collection is the responsibility of the developer. I
     $gc = 10;
 
     // If the GC probability is a hit
-    if (rand(0, 99) <= $gc and $cache_file instanceof Cache_GarbageCollect) {
+    if (rand(0, 99) <= $gc && $cache_file instanceof Cache_GarbageCollect) {
         // Garbage Collect
         $cacheFile->garbage_collect();
     }
