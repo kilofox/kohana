@@ -140,7 +140,7 @@ class Kohana_Log
             }
         }
 
-        if ($additional == null) {
+        if ($additional === null) {
             $additional = [];
         }
 

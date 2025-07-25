@@ -228,7 +228,7 @@ class Kohana_Core
         /**
          * Enable xdebug parameter collection in development mode to improve fatal stack traces.
          */
-        if (Kohana::$environment == Kohana::DEVELOPMENT && extension_loaded('xdebug')) {
+        if (Kohana::$environment === Kohana::DEVELOPMENT && extension_loaded('xdebug')) {
             ini_set('xdebug.collect_params', 3);
         }
 

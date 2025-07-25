@@ -185,7 +185,7 @@ class Kohana_Date
 
         switch ($ampm) {
             case 'am':
-                if ($hour == 12) {
+                if ($hour === 12) {
                     $hour = 0;
                 }
                 break;
@@ -515,7 +515,7 @@ class Kohana_Date
      */
     public static function formatted_time($datetime_str = 'now', $timestamp_format = null, $timezone = null)
     {
-        $timestamp_format = ($timestamp_format == null) ? Date::$timestamp_format : $timestamp_format;
+        $timestamp_format = ($timestamp_format === null) ? Date::$timestamp_format : $timestamp_format;
         $timezone = ($timezone === null) ? Date::$timezone : $timezone;
 
         $tz = new DateTimeZone($timezone ?: date_default_timezone_get());

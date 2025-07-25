@@ -285,7 +285,7 @@ class Kohana_Text
         $regex = '!' . $regex . '!ui';
 
         // if $replacement is a single character: replace each of the characters of the bad word with $replacement
-        if (UTF8::strlen($replacement) == 1) {
+        if (UTF8::strlen($replacement) === 1) {
             return preg_replace_callback($regex, function($matches) use ($replacement) {
                 return str_repeat($replacement, UTF8::strlen($matches[1]));
             }, $str);
@@ -612,7 +612,7 @@ class Kohana_Text
             return $data;
         }
 
-        if ($value === 'browser' || $value == 'version') {
+        if ($value === 'browser' || $value === 'version') {
             // Extra data will be captured
             $info = [];
 

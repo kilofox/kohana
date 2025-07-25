@@ -105,7 +105,7 @@ class Kohana_File
         if (empty($types)) {
             foreach (Kohana::$config->load('mimes') as $ext => $mimes) {
                 foreach ($mimes as $mime) {
-                    if ($mime == 'application/octet-stream') {
+                    if ($mime === 'application/octet-stream') {
                         // octet-stream is a generic binary
                         continue;
                     }

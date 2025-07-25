@@ -25,7 +25,7 @@ function _substr($str, $offset, $length = null)
         return '';
 
     // Whole string
-    if ($offset == 0 && ($length === null || $length >= $strlen))
+    if ($offset === 0 && ($length === null || $length >= $strlen))
         return $str;
 
     // Build regex
@@ -36,8 +36,8 @@ function _substr($str, $offset, $length = null)
         // PCRE repeating quantifiers must be less than 65536, so repeat when necessary
         $x = (int) ($offset / 65535);
         $y = $offset % 65535;
-        $regex .= ($x == 0) ? '' : ('(?:.{65535}){' . $x . '}');
-        $regex .= ($y == 0) ? '' : ('.{' . $y . '}');
+        $regex .= ($x === 0) ? '' : ('(?:.{65535}){' . $x . '}');
+        $regex .= ($y === 0) ? '' : ('.{' . $y . '}');
     }
 
     // Create a length expression
@@ -52,7 +52,7 @@ function _substr($str, $offset, $length = null)
         $x = (int) ($length / 65535);
         $y = $length % 65535;
         $regex .= '(';
-        $regex .= ($x == 0) ? '' : ('(?:.{65535}){' . $x . '}');
+        $regex .= ($x === 0) ? '' : ('(?:.{65535}){' . $x . '}');
         $regex .= '.{' . $y . '})';
     }
     // Find length from the right (negative length)
@@ -60,7 +60,7 @@ function _substr($str, $offset, $length = null)
         $x = (int) (-$length / 65535);
         $y = -$length % 65535;
         $regex .= '(.*)';
-        $regex .= ($x == 0) ? '' : ('(?:.{65535}){' . $x . '}');
+        $regex .= ($x === 0) ? '' : ('(?:.{65535}){' . $x . '}');
         $regex .= '.{' . $y . '}';
     }
 

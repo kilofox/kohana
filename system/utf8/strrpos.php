@@ -16,7 +16,7 @@ function _strrpos($str, $search, $offset = 0)
     if (UTF8::is_ascii($str) && UTF8::is_ascii($search))
         return strrpos($str, $search, $offset);
 
-    if ($offset == 0) {
+    if ($offset === 0) {
         $array = explode($search, $str, -1);
         return isset($array[0]) ? UTF8::strlen(implode($search, $array)) : false;
     }

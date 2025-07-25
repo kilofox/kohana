@@ -25,31 +25,31 @@ function _to_unicode($str)
     for ($i = 0; $i < $len; $i++) {
         $in = ord($str[$i]);
 
-        if ($m_state == 0) {
+        if ($m_state === 0) {
             // When m_state is zero we expect either a US-ASCII character or a multi-octet sequence.
-            if (0 == (0x80 & $in)) {
+            if (0 === (0x80 & $in)) {
                 // US-ASCII, pass straight through.
                 $out[] = $in;
                 $m_bytes = 1;
-            } elseif (0xC0 == (0xE0 & $in)) {
+            } elseif (0xC0 === (0xE0 & $in)) {
                 // First octet of 2 octet sequence
                 $m_ucs4 = $in;
                 $m_ucs4 = ($m_ucs4 & 0x1F) << 6;
                 $m_state = 1;
                 $m_bytes = 2;
-            } elseif (0xE0 == (0xF0 & $in)) {
+            } elseif (0xE0 === (0xF0 & $in)) {
                 // First octet of 3 octet sequence
                 $m_ucs4 = $in;
                 $m_ucs4 = ($m_ucs4 & 0x0F) << 12;
                 $m_state = 2;
                 $m_bytes = 3;
-            } elseif (0xF0 == (0xF8 & $in)) {
+            } elseif (0xF0 === (0xF8 & $in)) {
                 // First octet of 4 octet sequence
                 $m_ucs4 = $in;
                 $m_ucs4 = ($m_ucs4 & 0x07) << 18;
                 $m_state = 3;
                 $m_bytes = 4;
-            } elseif (0xF8 == (0xFC & $in)) {
+            } elseif (0xF8 === (0xFC & $in)) {
                 /** First octet of 5 octet sequence.
                  *
                  * This is illegal because the encoded codepoint must be either
@@ -62,7 +62,7 @@ function _to_unicode($str)
                 $m_ucs4 = ($m_ucs4 & 0x03) << 24;
                 $m_state = 4;
                 $m_bytes = 5;
-            } elseif (0xFC == (0xFE & $in)) {
+            } elseif (0xFC === (0xFE & $in)) {
                 // First octet of 6 octet sequence, see comments for 5 octet sequence.
                 $m_ucs4 = $in;
                 $m_ucs4 = ($m_ucs4 & 1) << 30;
@@ -75,7 +75,7 @@ function _to_unicode($str)
             }
         } else {
             // When m_state is non-zero, we expect a continuation of the multi-octet sequence
-            if (0x80 == (0xC0 & $in)) {
+            if (0x80 === (0xC0 & $in)) {
                 // Legal continuation
                 $shift = ($m_state - 1) * 6;
                 $tmp = $in;
@@ -83,19 +83,19 @@ function _to_unicode($str)
                 $m_ucs4 |= $tmp;
 
                 // End of the multi-octet sequence. mUcs4 now contains the final Unicode codepoint to be output
-                if (0 == --$m_state) {
+                if (0 === --$m_state) {
                     // Check for illegal sequences and codepoints
                     // From Unicode 3.1, non-shortest form is illegal
-                    if (((2 == $m_bytes) && ($m_ucs4 < 0x0080)) || ((3 == $m_bytes) && ($m_ucs4 < 0x0800)) || ((4 == $m_bytes) && ($m_ucs4 < 0x10000)) || (4 < $m_bytes) ||
+                    if (((2 === $m_bytes) && ($m_ucs4 < 0x0080)) || ((3 === $m_bytes) && ($m_ucs4 < 0x0800)) || ((4 === $m_bytes) && ($m_ucs4 < 0x10000)) || (4 < $m_bytes) ||
                         // From Unicode 3.2, surrogate characters are illegal
-                        ( ($m_ucs4 & 0xFFFFF800) == 0xD800) ||
+                        ( ($m_ucs4 & 0xFFFFF800) === 0xD800) ||
                         // Codepoints outside the Unicode range are illegal
                         ( $m_ucs4 > 0x10FFFF)) {
                         trigger_error('UTF8::to_unicode: Illegal sequence or codepoint in UTF-8 at byte ' . $i, E_USER_WARNING);
                         return false;
                     }
 
-                    if (0xFEFF != $m_ucs4) {
+                    if (0xFEFF !== $m_ucs4) {
                         // BOM is legal, but we don't want to output it
                         $out[] = $m_ucs4;
                     }
@@ -106,7 +106,7 @@ function _to_unicode($str)
                     $m_bytes = 1;
                 }
             } else {
-                // ((0xC0 & (*in) != 0x80) AND (m_state != 0))
+                // ((0xC0 & (*in) !== 0x80) AND (m_state !== 0))
                 // Incomplete multi-octet sequence
                 throw new UTF8_Exception("UTF8::to_unicode: Incomplete multi-octet sequence in UTF-8 at byte ':byte'", [
                 ':byte' => $i,

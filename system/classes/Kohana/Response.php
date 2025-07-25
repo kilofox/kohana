@@ -120,7 +120,7 @@ class Kohana_Response implements HTTP_Response
 
         foreach ($config as $key => $value) {
             if (property_exists($this, $key)) {
-                if ($key == '_header') {
+                if ($key === '_header') {
                     $this->headers($value);
                 } else {
                     $this->$key = $value;

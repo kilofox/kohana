@@ -11,7 +11,7 @@
  */
 function _strcspn($str, $mask, $offset = null, $length = null)
 {
-    if ($str == '' || $mask == '')
+    if ($str === '' || $mask === '')
         return 0;
 
     if (UTF8::is_ascii($str) && UTF8::is_ascii($mask))

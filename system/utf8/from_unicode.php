@@ -26,7 +26,7 @@ function _from_unicode($arr)
             echo chr(0x80 | ($arr[$k] & 0x003f));
         }
         // Byte order mark (skip)
-        elseif ($arr[$k] == 0xFEFF) {
+        elseif ($arr[$k] === 0xFEFF) {
             // nop -- zap the BOM
         }
         // Test for illegal surrogates

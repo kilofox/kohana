@@ -240,7 +240,7 @@ class Kohana_Valid
         if (($number = preg_replace('/\D+/', '', $number)) === '')
             return false;
 
-        if ($type == null) {
+        if ($type === null) {
             // Use the default type
             $type = 'default';
         } elseif (is_array($type)) {

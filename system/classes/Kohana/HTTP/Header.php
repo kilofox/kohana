@@ -827,7 +827,7 @@ class Kohana_HTTP_Header extends ArrayObject
             return $this;
 
         foreach ($headers as $key => $line) {
-            if ($key == 'Set-Cookie' && is_array($line)) {
+            if ($key === 'Set-Cookie' && is_array($line)) {
                 // Send cookies
                 foreach ($line as $name => $value) {
                     Cookie::set($name, $value['value'], $value['expiration']);
