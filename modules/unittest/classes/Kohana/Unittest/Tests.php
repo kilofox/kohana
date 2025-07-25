@@ -43,7 +43,7 @@ class Kohana_Unittest_Tests
 
         spl_autoload_register(['Unittest_tests', 'autoload']);
 
-        Unittest_tests::$cache = (($cache = Kohana::cache('unittest_whitelist_cache')) === null) ? [] : $cache;
+        Unittest_tests::$cache = ($cache = Kohana::cache('unittest_whitelist_cache')) === null ? [] : $cache;
     }
 
     /**

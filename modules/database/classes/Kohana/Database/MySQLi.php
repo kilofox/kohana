@@ -285,7 +285,7 @@ class Kohana_Database_MySQLi extends Database
     public function list_columns($table, $like = null, $add_prefix = true)
     {
         // Quote the table name
-        $table = ($add_prefix === true) ? $this->quote_table($table) : $table;
+        $table = $add_prefix === true ? $this->quote_table($table) : $table;
 
         if (is_string($like)) {
             // Search for column names

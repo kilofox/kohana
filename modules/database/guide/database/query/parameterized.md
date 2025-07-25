@@ -31,7 +31,7 @@ If you want to set multiple parameters at once, you can use [Database_Query::par
         ':status' => 'active',
     ]);
 
-It is also possible to bind a parameter to a variable, using a [variable reference]((https://www.php.net/language.references.whatdo)). This can be extremely useful when running the same query many times:
+It is also possible to bind a parameter to a variable, using a [variable reference](https://www.php.net/language.references.whatdo). This can be extremely useful when running the same query many times:
 
     $query = DB::query(Database::INSERT, 'INSERT INTO users (username, password) VALUES (:user, :pass)')
         ->bind(':user', $username)

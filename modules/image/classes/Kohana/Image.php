@@ -46,7 +46,7 @@ abstract class Kohana_Image
         if ($driver === null) {
             // Use the driver from configuration file or default one
             $configured_driver = Kohana::$config->load('image.default_driver');
-            $driver = ($configured_driver) ?: Image::$default_driver;
+            $driver = $configured_driver ?: Image::$default_driver;
         }
 
         // Set the class name
@@ -209,11 +209,11 @@ abstract class Kohana_Image
         switch ($master) {
             case Image::AUTO:
                 // Choose direction with the greatest reduction ratio
-                $master = ($this->width / $width) > ($this->height / $height) ? Image::WIDTH : Image::HEIGHT;
+                $master = $this->width / $width > $this->height / $height ? Image::WIDTH : Image::HEIGHT;
                 break;
             case Image::INVERSE:
                 // Choose direction with the minimum reduction ratio
-                $master = ($this->width / $width) > ($this->height / $height) ? Image::HEIGHT : Image::WIDTH;
+                $master = $this->width / $width > $this->height / $height ? Image::HEIGHT : Image::WIDTH;
                 break;
         }
 

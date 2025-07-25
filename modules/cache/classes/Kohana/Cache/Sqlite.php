@@ -179,13 +179,13 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
         $data = serialize($data);
 
         // Normalise tags
-        $tags = (null === $tags) ? null : ('<' . implode('>,<', $tags) . '>');
+        $tags = null === $tags ? null : '<' . implode('>,<', $tags) . '>';
 
         // Setup lifetime
         if ($lifetime === null) {
-            $lifetime = (0 === Arr::get($this->_config, 'default_expire')) ? 0 : (Arr::get($this->_config, 'default_expire', Cache::DEFAULT_EXPIRE) + time());
+            $lifetime = 0 === Arr::get($this->_config, 'default_expire') ? 0 : Arr::get($this->_config, 'default_expire', Cache::DEFAULT_EXPIRE) + time();
         } else {
-            $lifetime = (0 === $lifetime) ? 0 : ($lifetime + time());
+            $lifetime = 0 === $lifetime ? 0 : $lifetime + time();
         }
 
         // Prepare statement

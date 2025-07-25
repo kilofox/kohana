@@ -185,7 +185,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
 
         // If the value wasn't found, normalise it
         if ($value === false) {
-            $value = (null === $default) ? null : $default;
+            $value = null === $default ? null : $default;
         }
 
         // Return the value

@@ -293,7 +293,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      */
     public function offset($number)
     {
-        $this->_offset = ($number === null) ? null : (int) $number;
+        $this->_offset = $number === null ? null : (int) $number;
 
         return $this;
     }

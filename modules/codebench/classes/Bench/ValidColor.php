@@ -90,7 +90,7 @@ class Bench_ValidColor extends Codebench
         }
 
         $strlen = strlen($subject);
-        return (($strlen === 3 OR $strlen === 6) AND ctype_xdigit($subject));
+        return ($strlen === 3 OR $strlen === 6) AND ctype_xdigit($subject);
     }
 
     // An ugly, but fast, solution without regex
@@ -103,8 +103,8 @@ class Bench_ValidColor extends Codebench
         // true if:
         // 1. $subject is 6 or 3 chars long
         // 2. $subject contains only hexadecimal digits
-        return (((isset($subject[5]) AND ! isset($subject[6])) OR ( isset($subject[2]) AND ! isset($subject[3])))
-            AND ctype_xdigit($subject));
+        return ((isset($subject[5]) AND ! isset($subject[6])) OR ( isset($subject[2]) AND ! isset($subject[3])))
+            AND ctype_xdigit($subject);
     }
 
 }

@@ -136,7 +136,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         Kodoc_Markdown::$image_url = URL::site($this->media->uri()) . '/' . $module . '/';
 
         // Set the page title
-        $this->template->title = ($page === 'index') ? Kohana::$config->load('userguide.modules.' . $module . '.name') : $this->title($page);
+        $this->template->title = $page === 'index' ? Kohana::$config->load('userguide.modules.' . $module . '.name') : $this->title($page);
 
         // Parse the page contents into the template
         Kodoc_Markdown::$show_toc = true;
