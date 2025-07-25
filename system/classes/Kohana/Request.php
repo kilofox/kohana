@@ -97,8 +97,8 @@ class Kohana_Request implements HTTP_Request
             }
 
             if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])
-                AND isset($_SERVER['REMOTE_ADDR'])
-                AND in_array($_SERVER['REMOTE_ADDR'], Request::$trusted_proxies)) {
+                && isset($_SERVER['REMOTE_ADDR'])
+                && in_array($_SERVER['REMOTE_ADDR'], Request::$trusted_proxies)) {
                 // Use the forwarded IP address, typically set when the
                 // client is using a proxy server.
                 // Format: "X-Forwarded-For: client1, proxy1, proxy2"
@@ -108,8 +108,8 @@ class Kohana_Request implements HTTP_Request
 
                 unset($client_ips);
             } elseif (isset($_SERVER['HTTP_CLIENT_IP'])
-                AND isset($_SERVER['REMOTE_ADDR'])
-                AND in_array($_SERVER['REMOTE_ADDR'], Request::$trusted_proxies)) {
+                && isset($_SERVER['REMOTE_ADDR'])
+                && in_array($_SERVER['REMOTE_ADDR'], Request::$trusted_proxies)) {
                 // Use the forwarded IP address, typically set when the
                 // client is using a proxy server.
                 $client_ips = explode(',', $_SERVER['HTTP_CLIENT_IP']);

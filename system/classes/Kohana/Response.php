@@ -477,7 +477,7 @@ class Kohana_Response implements HTTP_Response
 
         fseek($file, $start);
 
-        while (!feof($file) AND ( $pos = ftell($file)) <= $end) {
+        while (!feof($file) && ($pos = ftell($file)) <= $end) {
             if (connection_aborted())
                 break;
 

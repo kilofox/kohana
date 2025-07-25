@@ -47,8 +47,8 @@ class Controller_Avatar extends Controller
     {
         if (
             !Upload::valid($image)
-            OR !Upload::not_empty($image)
-            OR !Upload::type($image, ['jpg', 'jpeg', 'png', 'gif'])
+            || !Upload::not_empty($image)
+            || !Upload::type($image, ['jpg', 'jpeg', 'png', 'gif'])
         ) {
             return false;
         }

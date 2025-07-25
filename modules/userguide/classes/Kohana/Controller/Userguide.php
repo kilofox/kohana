@@ -300,8 +300,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
 
         // Strip optional .md or .markdown suffix from the passed filename
         $info = pathinfo($page);
-        if (isset($info['extension'])
-            AND ( ($info['extension'] === 'md') OR ( $info['extension'] === 'markdown'))) {
+        if (isset($info['extension']) && (($info['extension'] === 'md') || ($info['extension'] === 'markdown'))) {
             $page = $info['dirname'] . DIRECTORY_SEPARATOR . $info['filename'];
         }
         return Kohana::find_file('guide', $page, 'md');

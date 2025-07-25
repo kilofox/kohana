@@ -105,10 +105,10 @@ class Kohana_Upload
     public static function valid($file)
     {
         return isset($file['error'])
-            AND isset($file['name'])
-            AND isset($file['type'])
-            AND isset($file['tmp_name'])
-            AND isset($file['size']);
+            && isset($file['name'])
+            && isset($file['type'])
+            && isset($file['tmp_name'])
+            && isset($file['size']);
     }
 
     /**

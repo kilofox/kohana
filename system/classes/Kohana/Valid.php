@@ -415,7 +415,7 @@ class Kohana_Valid
         if ($utf8 === true) {
             return (bool) preg_match('/^\pN++$/uD', $str);
         } else {
-            return is_int($str) && $str >= 0 OR ctype_digit($str);
+            return is_int($str) && $str >= 0 || ctype_digit($str);
         }
     }
 

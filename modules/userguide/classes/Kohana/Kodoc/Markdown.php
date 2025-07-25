@@ -152,7 +152,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
 
             $count = 0;
 
-            while (isset($this->_heading_ids[$id]) AND ++ $count) {
+            while (isset($this->_heading_ids[$id]) && ++$count) {
                 $id .= $count;
             }
         }

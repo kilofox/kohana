@@ -234,10 +234,8 @@ class Kohana_Kohana_Exception extends Exception
              */
             if (
                 defined('PHPUnit_MAIN_METHOD')
-                OR
-                defined('PHPUNIT_COMPOSER_INSTALL')
-                OR
-                defined('__PHPUNIT_PHAR__')
+                || defined('PHPUNIT_COMPOSER_INSTALL')
+                || defined('__PHPUNIT_PHAR__')
             ) {
                 $trace = array_slice($trace, 0, 2);
             }
