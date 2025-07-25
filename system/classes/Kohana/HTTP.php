@@ -57,7 +57,7 @@ abstract class Kohana_HTTP
     public static function check_cache(Request $request, Response $response, $etag = null)
     {
         // Generate an etag if necessary
-        if ($etag == null) {
+        if ($etag === null) {
             $etag = $response->generate_etag();
         }
 

@@ -289,7 +289,7 @@ class Kohana_Auth_ORM extends Auth
         if (!$user)
             return false;
 
-        return ($this->hash($password) === $user->password);
+        return $this->hash($password) === $user->password;
     }
 
 }

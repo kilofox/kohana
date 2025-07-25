@@ -14,7 +14,7 @@ There are a few things you'll want to do with your application before moving int
         /**
          * Set the environment string by the domain (defaults to Kohana::DEVELOPMENT).
          */
-        Kohana::$environment = ($_SERVER['SERVER_NAME'] !== 'localhost') ? Kohana::PRODUCTION : Kohana::DEVELOPMENT;
+        Kohana::$environment = $_SERVER['SERVER_NAME'] !== 'localhost' ? Kohana::PRODUCTION : Kohana::DEVELOPMENT;
         /**
          * Initialise Kohana based on environment
          */

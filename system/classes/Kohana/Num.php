@@ -140,19 +140,19 @@ class Kohana_Num
             case self::ROUND_HALF_DOWN:
             case self::ROUND_HALF_EVEN:
             case self::ROUND_HALF_ODD:
-                $factor = ($precision === 0) ? 1 : pow(10, $precision);
+                $factor = $precision === 0 ? 1 : pow(10, $precision);
 
                 // Check if we have a rounding tie, otherwise we can just call round()
-                if (($value * $factor) - floor($value * $factor) === 0.5) {
+                if ($value * $factor - floor($value * $factor) === 0.5) {
                     if ($mode === self::ROUND_HALF_DOWN) {
                         // Round down operation, so we round down unless the value
                         // is -ve because up is down and down is up down there. ;)
-                        $up = ($value < 0);
+                        $up = $value < 0;
                     } else {
                         // Round up if the integer is odd and the round mode is set to even
                         // or the integer is even and the round mode is set to odd.
                         // Any other instance round down.
-                        $up = (!(!(floor($value * $factor) & 1)) === ($mode === self::ROUND_HALF_EVEN));
+                        $up = !!(floor($value * $factor) & 1) === ($mode === self::ROUND_HALF_EVEN);
                     }
 
                     if ($up) {

@@ -193,7 +193,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      */
     public function offsetExists($offset)
     {
-        return ($offset >= 0 && $offset < $this->_total_rows);
+        return $offset >= 0 && $offset < $this->_total_rows;
     }
 
     /**

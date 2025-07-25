@@ -137,13 +137,13 @@ class Kohana_Date
 
         // Set the default start if none was specified.
         if ($start === null) {
-            $start = ($long === false) ? 1 : 0;
+            $start = $long === false ? 1 : 0;
         }
 
         $hours = [];
 
         // 24-hour time has 24 hours, instead of 12
-        $size = ($long === true) ? 23 : 12;
+        $size = $long === true ? 23 : 12;
 
         for ($i = $start; $i <= $size; $i += $step) {
             $hours[$i] = (string) $i;
@@ -166,7 +166,7 @@ class Kohana_Date
         // Always integer
         $hour = (int) $hour;
 
-        return ($hour > 11) ? 'PM' : 'AM';
+        return $hour > 11 ? 'PM' : 'AM';
     }
 
     /**
@@ -185,7 +185,7 @@ class Kohana_Date
 
         switch ($ampm) {
             case 'am':
-                if ($hour == 12) {
+                if ($hour === 12) {
                     $hour = 0;
                 }
                 break;
@@ -289,8 +289,8 @@ class Kohana_Date
     public static function years($start = false, $end = false)
     {
         // Default values
-        $start = ($start === false) ? (date('Y') - 5) : (int) $start;
-        $end = ($end === false) ? (date('Y') + 5) : (int) $end;
+        $start = $start === false ? date('Y') - 5 : (int) $start;
+        $end = $end === false ? date('Y') + 5 : (int) $end;
 
         $years = [];
 
@@ -396,7 +396,7 @@ class Kohana_Date
      */
     public static function fuzzy_span($timestamp, $local_timestamp = null)
     {
-        $local_timestamp = ($local_timestamp === null) ? time() : (int) $local_timestamp;
+        $local_timestamp = $local_timestamp === null ? time() : (int) $local_timestamp;
 
         // Determine the difference in seconds
         $offset = abs($local_timestamp - $timestamp);
@@ -464,19 +464,19 @@ class Kohana_Date
      */
     public static function unix2dos($timestamp = false)
     {
-        $timestamp = ($timestamp === false) ? getdate() : getdate($timestamp);
+        $timestamp = $timestamp === false ? getdate() : getdate($timestamp);
 
         if ($timestamp['year'] < 1980) {
-            return (1 << 21 | 1 << 16);
+            return 1 << 21 | 1 << 16;
         }
 
         $timestamp['year'] -= 1980;
 
         // What voodoo is this? I have no idea... Geert can explain it though,
         // and that's good enough for me.
-        return ($timestamp['year'] << 25 | $timestamp['mon'] << 21 |
+        return $timestamp['year'] << 25 | $timestamp['mon'] << 21 |
             $timestamp['mday'] << 16 | $timestamp['hours'] << 11 |
-            $timestamp['minutes'] << 5 | $timestamp['seconds'] >> 1);
+            $timestamp['minutes'] << 5 | $timestamp['seconds'] >> 1;
     }
 
     /**
@@ -515,8 +515,8 @@ class Kohana_Date
      */
     public static function formatted_time($datetime_str = 'now', $timestamp_format = null, $timezone = null)
     {
-        $timestamp_format = ($timestamp_format == null) ? Date::$timestamp_format : $timestamp_format;
-        $timezone = ($timezone === null) ? Date::$timezone : $timezone;
+        $timestamp_format = $timestamp_format === null ? Date::$timestamp_format : $timestamp_format;
+        $timezone = $timezone === null ? Date::$timezone : $timezone;
 
         $tz = new DateTimeZone($timezone ?: date_default_timezone_get());
         $time = new DateTime($datetime_str, $tz);

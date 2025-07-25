@@ -167,7 +167,7 @@ class Kohana_HTTP_Cache
         $response = $client->execute_request($request, $response);
 
         // Stop response time
-        $this->_response_time = (time() - $this->_request_time);
+        $this->_response_time = time() - $this->_request_time;
 
         // Cache the response
         $this->cache_response($cache_key, $request, $response);
@@ -346,7 +346,7 @@ class Kohana_HTTP_Cache
 
         // Check for Pragma: no-cache
         if ($pragma = $request->headers('pragma')) {
-            if ($pragma == 'no-cache')
+            if ($pragma === 'no-cache')
                 return false;
             elseif (is_array($pragma) && in_array('no-cache', $pragma))
                 return false;

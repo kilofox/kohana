@@ -35,7 +35,7 @@ class Kohana_ApcTest extends Kohana_CacheArithmeticMethodsTest
             $this->markTestSkipped('APC PHP Extension is not available');
         }
 
-        if (ini_get('apc.enable_cli') != '1') {
+        if (ini_get('apc.enable_cli') !== '1') {
             $this->markTestSkipped('Unable to test APC in CLI mode. To fix ' .
                 'place "apc.enable_cli=1" in your php.ini file');
         }

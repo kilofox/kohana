@@ -109,7 +109,7 @@ class Kohana_Kodoc_Class extends Kodoc
         // If this class extends Kodoc_Missing, add a warning about possible
         // incomplete documentation
         foreach ($this->parents as $parent) {
-            if ($parent->name == 'Kodoc_Missing') {
+            if ($parent->name === 'Kodoc_Missing') {
                 $result .= "[!!] **This class, or a class parent, could not be
 				           found or loaded. This could be caused by a missing
 				           module or other dependency. The documentation for
@@ -205,21 +205,21 @@ class Kohana_Kodoc_Class extends Kodoc
 
         /*
           echo Debug::vars('a is '.$a->class.'::'.$a->name,'b is '.$b->class.'::'.$b->name,
-          'are the classes the same?', $a->class == $b->class,'if they are, the result is:',strcmp($a->name, $b->name),
-          'is a this class?', $a->name == $this->class->name,-1,
-          'is b this class?', $b->name == $this->class->name,1,
+          'are the classes the same?', $a->class === $b->class,'if they are, the result is:',strcmp($a->name, $b->name),
+          'is a this class?', $a->name === $this->class->name,-1,
+          'is b this class?', $b->name === $this->class->name,1,
           'otherwise, the result is:',strcmp($a->class, $b->class)
           );
          */
 
         // If both methods are defined in the same class, just compare the method names
-        if ($a->class == $b->class)
+        if ($a->class === $b->class)
             return strcmp($a->name, $b->name);
 
         // If one of them was declared by this class, it needs to be on top
-        if ($a->name == $this->class->name)
+        if ($a->name === $this->class->name)
             return -1;
-        if ($b->name == $this->class->name)
+        if ($b->name === $this->class->name)
             return 1;
 
         // Otherwise, get the parents of each method's declaring class, then compare which function has more "ancestors"
