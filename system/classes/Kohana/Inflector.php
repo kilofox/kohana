@@ -80,7 +80,7 @@ class Kohana_Inflector
     public static function singular($str, $count = null)
     {
         // $count should always be a float
-        $count = ($count === null) ? 1.0 : (float) $count;
+        $count = $count === null ? 1.0 : (float) $count;
 
         // Do nothing when $count is not 1
         if ($count != 1)
@@ -145,7 +145,7 @@ class Kohana_Inflector
     public static function plural($str, $count = null)
     {
         // $count should always be a float
-        $count = ($count === null) ? 0.0 : (float) $count;
+        $count = $count === null ? 0.0 : (float) $count;
 
         // Do nothing with singular
         if ($count == 1)

@@ -61,7 +61,7 @@ class Kohana_Text
     public static function limit_words($str, $limit = 100, $end_char = null)
     {
         $limit = (int) $limit;
-        $end_char = ($end_char === null) ? '…' : $end_char;
+        $end_char = $end_char === null ? '…' : $end_char;
 
         if (trim($str) === '')
             return $str;
@@ -73,7 +73,7 @@ class Kohana_Text
 
         // Only attach the end character if the matched string is shorter
         // than the starting string.
-        return rtrim($matches[0]) . ((strlen($matches[0]) === strlen($str)) ? '' : $end_char);
+        return rtrim($matches[0]) . (strlen($matches[0]) === strlen($str) ? '' : $end_char);
     }
 
     /**
@@ -90,7 +90,7 @@ class Kohana_Text
      */
     public static function limit_chars($str, $limit = 100, $end_char = null, $preserve_words = false)
     {
-        $end_char = ($end_char === null) ? '…' : $end_char;
+        $end_char = $end_char === null ? '…' : $end_char;
 
         $limit = (int) $limit;
 
@@ -108,7 +108,7 @@ class Kohana_Text
         if (!preg_match('/^.{0,' . $limit . '}\s/us', $str, $matches))
             return $end_char;
 
-        return rtrim($matches[0]) . ((strlen($matches[0]) === strlen($str)) ? '' : $end_char);
+        return rtrim($matches[0]) . (strlen($matches[0]) === strlen($str) ? '' : $end_char);
     }
 
     /**
@@ -199,7 +199,7 @@ class Kohana_Text
         }
 
         // Split the pool into an array of characters
-        $pool = ($utf8 === true) ? UTF8::str_split($pool) : str_split($pool);
+        $pool = $utf8 === true ? UTF8::str_split($pool) : str_split($pool);
 
         // Largest pool key
         $max = count($pool) - 1;
@@ -285,7 +285,7 @@ class Kohana_Text
         $regex = '!' . $regex . '!ui';
 
         // if $replacement is a single character: replace each of the characters of the bad word with $replacement
-        if (UTF8::strlen($replacement) == 1) {
+        if (UTF8::strlen($replacement) === 1) {
             return preg_replace_callback($regex, function($matches) use ($replacement) {
                 return str_repeat($replacement, UTF8::strlen($matches[1]));
             }, $str);
@@ -464,7 +464,7 @@ class Kohana_Text
     public static function bytes($bytes, $force_unit = null, $format = null, $si = true)
     {
         // Format string
-        $format = ($format === null) ? '%01.2f %s' : (string) $format;
+        $format = $format === null ? '%01.2f %s' : (string) $format;
 
         // IEC prefixes (binary)
         if (!$si || strpos($force_unit, 'i') !== false) {
@@ -479,7 +479,7 @@ class Kohana_Text
 
         // Determine unit to use
         if (($power = array_search((string) $force_unit, $units)) === false) {
-            $power = ($bytes > 0) ? floor(log($bytes, $mod)) : 0;
+            $power = $bytes > 0 ? floor(log($bytes, $mod)) : 0;
         }
 
         return sprintf($format, $bytes / pow($mod, $power), $units[$power]);
@@ -612,7 +612,7 @@ class Kohana_Text
             return $data;
         }
 
-        if ($value === 'browser' || $value == 'version') {
+        if ($value === 'browser' || $value === 'version') {
             // Extra data will be captured
             $info = [];
 

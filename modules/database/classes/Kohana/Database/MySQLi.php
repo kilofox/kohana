@@ -285,7 +285,7 @@ class Kohana_Database_MySQLi extends Database
     public function list_columns($table, $like = null, $add_prefix = true)
     {
         // Quote the table name
-        $table = ($add_prefix === true) ? $this->quote_table($table) : $table;
+        $table = $add_prefix === true ? $this->quote_table($table) : $table;
 
         if (is_string($like)) {
             // Search for column names
@@ -305,7 +305,7 @@ class Kohana_Database_MySQLi extends Database
             $column['column_name'] = $row['Field'];
             $column['column_default'] = $row['Default'];
             $column['data_type'] = $type;
-            $column['is_nullable'] = ($row['Null'] == 'YES');
+            $column['is_nullable'] = $row['Null'] === 'YES';
             $column['ordinal_position'] = ++$count;
 
             switch ($column['type']) {

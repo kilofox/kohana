@@ -350,7 +350,7 @@ class Kohana_Image_GD extends Image
         $this->_load_image();
 
         // Convert an opacity range of 0-100 to 127-0
-        $opacity = round(abs(($opacity * 127 / 100) - 127));
+        $opacity = round(abs($opacity * 127 / 100 - 127));
 
         if ($opacity < 127) {
             // Calculate the opacity stepping
@@ -433,7 +433,7 @@ class Kohana_Image_GD extends Image
 
         if ($opacity < 100) {
             // Convert an opacity range of 0-100 to 127-0
-            $opacity = round(abs(($opacity * 127 / 100) - 127));
+            $opacity = round(abs($opacity * 127 / 100 - 127));
 
             // Allocate transparent gray
             $color = imagecolorallocatealpha($overlay, 127, 127, 127, $opacity);
@@ -469,7 +469,7 @@ class Kohana_Image_GD extends Image
         $this->_load_image();
 
         // Convert an opacity range of 0-100 to 127-0
-        $opacity = round(abs(($opacity * 127 / 100) - 127));
+        $opacity = round(abs($opacity * 127 / 100 - 127));
 
         // Create a new background
         $background = $this->_create($this->width, $this->height);

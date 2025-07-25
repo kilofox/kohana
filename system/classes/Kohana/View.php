@@ -193,7 +193,7 @@ class Kohana_View
      */
     public function __isset($key)
     {
-        return (isset($this->_data[$key]) OR isset(View::$_global_data[$key]));
+        return isset($this->_data[$key]) || isset(View::$_global_data[$key]);
     }
 
     /**

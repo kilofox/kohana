@@ -171,12 +171,12 @@ abstract class Kohana_Image
         }
         // Image::WIDTH and Image::HEIGHT deprecated. You can use it in old projects,
         // but in new you must pass empty value for non-master dimension
-        elseif ($master == Image::WIDTH && !empty($width)) {
+        elseif ($master === Image::WIDTH && !empty($width)) {
             $master = Image::AUTO;
 
             // Set empty height for backward compatibility
             $height = null;
-        } elseif ($master == Image::HEIGHT && !empty($height)) {
+        } elseif ($master === Image::HEIGHT && !empty($height)) {
             $master = Image::AUTO;
 
             // Set empty width for backward compatibility
@@ -206,11 +206,11 @@ abstract class Kohana_Image
         switch ($master) {
             case Image::AUTO:
                 // Choose direction with the greatest reduction ratio
-                $master = ($this->width / $width) > ($this->height / $height) ? Image::WIDTH : Image::HEIGHT;
+                $master = $this->width / $width > $this->height / $height ? Image::WIDTH : Image::HEIGHT;
                 break;
             case Image::INVERSE:
                 // Choose direction with the minimum reduction ratio
-                $master = ($this->width / $width) > ($this->height / $height) ? Image::HEIGHT : Image::WIDTH;
+                $master = $this->width / $width > $this->height / $height ? Image::HEIGHT : Image::WIDTH;
                 break;
         }
 

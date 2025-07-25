@@ -16,7 +16,7 @@ In this example, we loop through an array of whitelisted input fields and for ea
     $formInputs = ['first_name', 'last_name', 'email'];
     foreach ($formInputs as $name) {
         $value = Arr::get($_GET, $name, false);
-        if ($value !== false && $value != '') {
+        if ($value !== false && $value !== '') {
             $query->where($name, 'like', '%' . $value . '%');
         }
     }

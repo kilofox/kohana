@@ -65,10 +65,13 @@ class Kohana_Request implements HTTP_Request
             // Use the server request method, or default to GET.
             $method = $_SERVER['REQUEST_METHOD'] ?? HTTP_Request::GET;
 
-            if ((!empty($_SERVER['HTTPS']) && filter_var($_SERVER['HTTPS'], FILTER_VALIDATE_BOOLEAN))
-                OR ( isset($_SERVER['HTTP_X_FORWARDED_PROTO'])
-                && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')
-                && in_array($_SERVER['REMOTE_ADDR'], Request::$trusted_proxies)) {
+            if (
+                !empty($_SERVER['HTTPS']) && filter_var($_SERVER['HTTPS'], FILTER_VALIDATE_BOOLEAN)
+                ||
+                isset($_SERVER['HTTP_X_FORWARDED_PROTO'])
+                && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https'
+                && in_array($_SERVER['REMOTE_ADDR'], Request::$trusted_proxies)
+            ) {
                 // This request is secure
                 $secure = true;
             }
@@ -89,8 +92,8 @@ class Kohana_Request implements HTTP_Request
             }
 
             if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])
-                AND isset($_SERVER['REMOTE_ADDR'])
-                AND in_array($_SERVER['REMOTE_ADDR'], Request::$trusted_proxies)) {
+                && isset($_SERVER['REMOTE_ADDR'])
+                && in_array($_SERVER['REMOTE_ADDR'], Request::$trusted_proxies)) {
                 // Use the forwarded IP address, typically set when the
                 // client is using a proxy server.
                 // Format: "X-Forwarded-For: client1, proxy1, proxy2"
@@ -100,8 +103,8 @@ class Kohana_Request implements HTTP_Request
 
                 unset($client_ips);
             } elseif (isset($_SERVER['HTTP_CLIENT_IP'])
-                AND isset($_SERVER['REMOTE_ADDR'])
-                AND in_array($_SERVER['REMOTE_ADDR'], Request::$trusted_proxies)) {
+                && isset($_SERVER['REMOTE_ADDR'])
+                && in_array($_SERVER['REMOTE_ADDR'], Request::$trusted_proxies)) {
                 // Use the forwarded IP address, typically set when the
                 // client is using a proxy server.
                 $client_ips = explode(',', $_SERVER['HTTP_CLIENT_IP']);
@@ -126,7 +129,7 @@ class Kohana_Request implements HTTP_Request
 
             $cookies = [];
 
-            if (($cookie_keys = array_keys($_COOKIE))) {
+            if ($cookie_keys = array_keys($_COOKIE)) {
                 foreach ($cookie_keys as $key) {
                     $cookies[$key] = Cookie::get($key);
                 }
@@ -305,7 +308,7 @@ class Kohana_Request implements HTTP_Request
         $max_bytes = Num::bytes(ini_get('post_max_size'));
 
         // Error occurred if method is POST, and content length is too long
-        return (Arr::get($_SERVER, 'CONTENT_LENGTH') > $max_bytes);
+        return Arr::get($_SERVER, 'CONTENT_LENGTH') > $max_bytes;
     }
 
     /**
@@ -318,7 +321,7 @@ class Kohana_Request implements HTTP_Request
     public static function process(Request $request, $routes = null)
     {
         // Load routes
-        $routes = (empty($routes)) ? Route::all() : $routes;
+        $routes = empty($routes) ? Route::all() : $routes;
 
         foreach ($routes as $route) {
             // Use external routes for reverse routing only
@@ -575,7 +578,7 @@ class Kohana_Request implements HTTP_Request
     {
         if ($uri === null) {
             // Act as a getter
-            return ($this->_uri === '') ? '/' : $this->_uri;
+            return $this->_uri === '' ? '/' : $this->_uri;
         }
 
         // Act as a setter
@@ -798,7 +801,7 @@ class Kohana_Request implements HTTP_Request
                 $this->_controller = $params['controller'];
 
                 // Store the action
-                $this->_action = (isset($params['action'])) ? $params['action'] : Route::$default_action;
+                $this->_action = isset($params['action']) ? $params['action'] : Route::$default_action;
 
                 // These are accessible as public vars and can be overloaded
                 unset($params['controller'], $params['action'], $params['directory']);
@@ -832,7 +835,7 @@ class Kohana_Request implements HTTP_Request
      */
     public function is_initial()
     {
-        return ($this === Request::$initial);
+        return $this === Request::$initial;
     }
 
     /**
@@ -855,7 +858,7 @@ class Kohana_Request implements HTTP_Request
      */
     public function is_ajax()
     {
-        return ($this->requested_with() === 'xmlhttprequest');
+        return $this->requested_with() === 'xmlhttprequest';
     }
 
     /**
@@ -952,7 +955,7 @@ class Kohana_Request implements HTTP_Request
             return $this->_header;
         } elseif ($value === null) {
             // Act as a getter, single header
-            return ($this->_header->offsetExists($key)) ? $this->_header->offsetGet($key) : null;
+            return $this->_header->offsetExists($key) ? $this->_header->offsetGet($key) : null;
         }
 
         // Act as a setter for a single header

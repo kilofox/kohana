@@ -248,7 +248,7 @@ class Kohana_UTF8
     public static function substr($str, $offset, $length = null)
     {
         if (UTF8::$server_utf8)
-            return ($length === null) ? mb_substr($str, $offset, mb_strlen($str), Kohana::$charset) : mb_substr($str, $offset, $length, Kohana::$charset);
+            return $length === null ? mb_substr($str, $offset, mb_strlen($str), Kohana::$charset) : mb_substr($str, $offset, $length, Kohana::$charset);
 
         if (!isset(UTF8::$called[__FUNCTION__])) {
             require Kohana::find_file('utf8', __FUNCTION__);

@@ -496,7 +496,7 @@ class Kohana_Route
                     if (isset($params[$param])) {
                         // This portion is required when a specified
                         // parameter does not match the default
-                        $required = ($required OR ! isset($defaults[$param]) OR $params[$param] !== $defaults[$param]);
+                        $required = $required || !isset($defaults[$param]) || $params[$param] !== $defaults[$param];
 
                         // Add specified parameter to this result
                         return $params[$param];

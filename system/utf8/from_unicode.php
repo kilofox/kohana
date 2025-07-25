@@ -17,7 +17,7 @@ function _from_unicode($arr)
 
     foreach ($keys as $k) {
         // ASCII range (including control chars)
-        if (($arr[$k] >= 0) && ($arr[$k] <= 0x007f)) {
+        if ($arr[$k] >= 0 && $arr[$k] <= 0x007f) {
             echo chr($arr[$k]);
         }
         // 2 byte sequence
@@ -26,7 +26,7 @@ function _from_unicode($arr)
             echo chr(0x80 | ($arr[$k] & 0x003f));
         }
         // Byte order mark (skip)
-        elseif ($arr[$k] == 0xFEFF) {
+        elseif ($arr[$k] === 0xFEFF) {
             // nop -- zap the BOM
         }
         // Test for illegal surrogates
@@ -39,16 +39,16 @@ function _from_unicode($arr)
         }
         // 3 byte sequence
         elseif ($arr[$k] <= 0xffff) {
-            echo chr(0xe0 | ($arr[$k] >> 12));
-            echo chr(0x80 | (($arr[$k] >> 6) & 0x003f));
-            echo chr(0x80 | ($arr[$k] & 0x003f));
+            echo chr(0xe0 | $arr[$k] >> 12);
+            echo chr(0x80 | $arr[$k] >> 6 & 0x003f);
+            echo chr(0x80 | $arr[$k] & 0x003f);
         }
         // 4 byte sequence
         elseif ($arr[$k] <= 0x10ffff) {
-            echo chr(0xf0 | ($arr[$k] >> 18));
-            echo chr(0x80 | (($arr[$k] >> 12) & 0x3f));
-            echo chr(0x80 | (($arr[$k] >> 6) & 0x3f));
-            echo chr(0x80 | ($arr[$k] & 0x3f));
+            echo chr(0xf0 | $arr[$k] >> 18);
+            echo chr(0x80 | $arr[$k] >> 12 & 0x3f);
+            echo chr(0x80 | $arr[$k] >> 6 & 0x3f);
+            echo chr(0x80 | $arr[$k] & 0x3f);
         }
         // Out of range
         else {

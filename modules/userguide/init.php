@@ -31,7 +31,7 @@ class Markdown_Autoloader
 {
     public static function autoload($class)
     {
-        if ($class == 'Markdown_Parser' || $class == 'MarkdownExtra_Parser') {
+        if ($class === 'Markdown_Parser' || $class === 'MarkdownExtra_Parser') {
             include_once Kohana::find_file('vendor', 'markdown/markdown');
         }
     }

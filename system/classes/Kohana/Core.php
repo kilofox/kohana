@@ -223,7 +223,7 @@ class Kohana_Core
         /**
          * Enable xdebug parameter collection in development mode to improve fatal stack traces.
          */
-        if (Kohana::$environment == Kohana::DEVELOPMENT && extension_loaded('xdebug')) {
+        if (Kohana::$environment === Kohana::DEVELOPMENT && extension_loaded('xdebug')) {
             ini_set('xdebug.collect_params', 3);
         }
 
@@ -240,7 +240,7 @@ class Kohana_Core
         }
 
         // Determine if we are running in a Windows environment
-        Kohana::$is_windows = (DIRECTORY_SEPARATOR === '\\');
+        Kohana::$is_windows = DIRECTORY_SEPARATOR === '\\';
 
         // Determine if we are running in safe mode
         Kohana::$safe_mode = (bool) ini_get('safe_mode');
@@ -799,7 +799,7 @@ class Kohana_Core
 
         if ($data === null) {
             if (is_file($dir . $file)) {
-                if ((time() - filemtime($dir . $file)) < $lifetime) {
+                if (time() - filemtime($dir . $file) < $lifetime) {
                     // Return the cache
                     try {
                         return unserialize(file_get_contents($dir . $file));

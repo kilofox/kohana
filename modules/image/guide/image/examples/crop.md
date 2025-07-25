@@ -23,7 +23,7 @@ class Controller_Crop extends Controller
         $error_message = null;
         $filename = null;
 
-        if ($this->request->method() == Request::POST) {
+        if ($this->request->method() === Request::POST) {
             if (isset($_FILES['avatar'])) {
                 $filename = $this->_save_image($_FILES['avatar']);
             }
@@ -43,8 +43,8 @@ class Controller_Crop extends Controller
     {
         if (
             !Upload::valid($image)
-            OR !Upload::not_empty($image)
-            OR !Upload::type($image, ['jpg', 'jpeg', 'png', 'gif'])
+            || !Upload::not_empty($image)
+            || !Upload::type($image, ['jpg', 'jpeg', 'png', 'gif'])
         ) {
             return false;
         }

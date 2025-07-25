@@ -122,7 +122,7 @@ abstract class Kohana_Auth
      */
     public function logged_in($role = null)
     {
-        return ($this->get_user() !== null);
+        return $this->get_user() !== null;
     }
 
     /**

@@ -184,7 +184,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
 
         // If the value wasn't found, normalise it
         if ($value === false) {
-            $value = (null === $default) ? null : $default;
+            $value = null === $default ? null : $default;
         }
 
         // Return the value
@@ -294,7 +294,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
             // Merge the defaults, since they won't always be set
             $server += $this->_default_config;
             // We're looking at the failed server
-            if ($hostname == $server['host'] && $port == $server['port']) {
+            if ($hostname === $server['host'] && $port === $server['port']) {
                 // Server to disable, since it failed
                 $host = $server;
             }

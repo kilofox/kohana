@@ -22,17 +22,17 @@ function _str_pad($str, $final_str_length, $pad_str = ' ', $pad_type = STR_PAD_R
     $pad_str_length = UTF8::strlen($pad_str);
     $pad_length = $final_str_length - $str_length;
 
-    if ($pad_type == STR_PAD_RIGHT) {
+    if ($pad_type === STR_PAD_RIGHT) {
         $repeat = ceil($pad_length / $pad_str_length);
         return UTF8::substr($str . str_repeat($pad_str, $repeat), 0, $final_str_length);
     }
 
-    if ($pad_type == STR_PAD_LEFT) {
+    if ($pad_type === STR_PAD_LEFT) {
         $repeat = ceil($pad_length / $pad_str_length);
         return UTF8::substr(str_repeat($pad_str, $repeat), 0, floor($pad_length)) . $str;
     }
 
-    if ($pad_type == STR_PAD_BOTH) {
+    if ($pad_type === STR_PAD_BOTH) {
         $pad_length /= 2;
         $pad_length_left = floor($pad_length);
         $pad_length_right = ceil($pad_length);

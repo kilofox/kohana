@@ -176,7 +176,7 @@ class Kohana_URL
         $query = http_build_query($params, '', '&');
 
         // Don't prepend '?' to an empty string
-        return ($query === '') ? '' : ('?' . $query);
+        return $query === '' ? '' : '?' . $query;
     }
 
     /**
