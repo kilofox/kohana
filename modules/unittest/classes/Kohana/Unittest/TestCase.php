@@ -263,7 +263,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
                         }
                     } // match by exact string
                     else {
-                        if ($node->getAttribute($name) !== $value) {
+                        if ($node->getAttribute($name) <> $value) {
                             $invalid = true;
                         }
                     }
