@@ -802,7 +802,7 @@ class Kohana_Core
 
         if ($data === null) {
             if (is_file($dir . $file)) {
-                if ((time() - filemtime($dir . $file)) < $lifetime) {
+                if (time() - filemtime($dir . $file) < $lifetime) {
                     // Return the cache
                     try {
                         return unserialize(file_get_contents($dir . $file));

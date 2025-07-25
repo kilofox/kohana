@@ -191,7 +191,7 @@ class Kohana_HTTP_Header extends ArrayObject
         $parts = [];
 
         foreach ($cache_control as $key => $value) {
-            $parts[] = (is_int($key)) ? $value : ($key . '=' . $value);
+            $parts[] = is_int($key) ? $value : $key . '=' . $value;
         }
 
         return implode(', ', $parts);
@@ -459,7 +459,7 @@ class Kohana_HTTP_Header extends ArrayObject
 
             foreach ($mime as $_type) {
                 $quality_check = $this->accepts_at_quality($_type, $explicit);
-                $quality = ($quality_check > $quality) ? $quality_check : $quality;
+                $quality = $quality_check > $quality ? $quality_check : $quality;
             }
 
             return $quality;

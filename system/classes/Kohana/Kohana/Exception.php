@@ -249,7 +249,7 @@ class Kohana_Kohana_Exception extends Exception
             $response = Response::factory();
 
             // Set the response status
-            $response->status(($e instanceof HTTP_Exception) ? $e->getCode() : 500);
+            $response->status($e instanceof HTTP_Exception ? $e->getCode() : 500);
 
             // Set the response headers
             $response->headers('Content-Type', Kohana_Exception::$error_view_content_type . '; charset=' . Kohana::$charset);

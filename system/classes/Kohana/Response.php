@@ -428,7 +428,7 @@ class Kohana_Response implements HTTP_Response
         list($start, $end) = $this->_calculate_byte_range($size);
 
         if (!empty($options['resumable'])) {
-            if ($start > 0 || $end < ($size - 1)) {
+            if ($start > 0 || $end < $size - 1) {
                 // Partial Content
                 $this->_status = 206;
             }
@@ -441,7 +441,7 @@ class Kohana_Response implements HTTP_Response
         // Set the headers for a download
         $this->_header['content-disposition'] = $disposition . '; filename="' . $download . '"';
         $this->_header['content-type'] = $mime;
-        $this->_header['content-length'] = (string) (($end - $start) + 1);
+        $this->_header['content-length'] = (string) ($end - $start + 1);
 
         if (Request::user_agent('browser') === 'Internet Explorer') {
             // Naturally, IE does not act like a real browser...
@@ -643,7 +643,7 @@ class Kohana_Response implements HTTP_Response
         $end = min(abs(intval($end)), $size - 1);
 
         // Keep the start in bounds.
-        $start = ($end < $start) ? 0 : max($start, 0);
+        $start = $end < $start ? 0 : max($start, 0);
 
         return [$start, $end];
     }

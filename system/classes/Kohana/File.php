@@ -87,7 +87,7 @@ class Kohana_File
         // Load all the mime types
         $mimes = Kohana::$config->load('mimes');
 
-        return isset($mimes[$extension]) ? ((array) $mimes[$extension]) : [];
+        return isset($mimes[$extension]) ? (array) $mimes[$extension] : [];
     }
 
     /**

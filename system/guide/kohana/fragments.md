@@ -35,7 +35,7 @@ if (!Fragment::load('pi1000', Date::HOUR * 4)) {
     // Source: http://mgccl.com/2007/01/22/php-calculate-pi-revisited
     function bcfact($n)
     {
-        return ($n === 0 || $n === 1) ? 1 : bcmul($n, bcfact($n - 1));
+        return $n === 0 || $n === 1 ? 1 : bcmul($n, bcfact($n - 1));
     }
 
     function bcpi($precision)
