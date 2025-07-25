@@ -95,7 +95,7 @@ class Kohana_Unittest_Tests
 
         foreach ($files as $path => $file) {
             if (is_array($file)) {
-                if ($path != 'tests' . DIRECTORY_SEPARATOR . 'test_data') {
+                if ($path !== 'tests' . DIRECTORY_SEPARATOR . 'test_data') {
                     self::addTests($suite, $file);
                 }
             } else {

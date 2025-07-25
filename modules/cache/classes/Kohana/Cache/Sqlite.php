@@ -44,7 +44,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
         $result = $this->_db->query("SELECT * FROM sqlite_master WHERE name = 'caches' AND type = 'table'")->fetchAll();
 
         // If there is no table, create a new one
-        if (0 == count($result)) {
+        if (0 === count($result)) {
             $database_schema = Arr::get($this->_config, 'schema');
 
             if ($database_schema === null) {
@@ -85,7 +85,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
         }
 
         // If the cache has expired
-        if ($result->expiration != 0 && $result->expiration <= time()) {
+        if ((int) $result->expiration !== 0 && $result->expiration <= time()) {
             // Delete it and return default value
             $this->delete($id);
             return $default;

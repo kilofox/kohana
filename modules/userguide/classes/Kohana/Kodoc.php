@@ -392,7 +392,7 @@ class Kohana_Kodoc
         // Split the class name at the first underscore
         $segments = explode('_', $class, 2);
 
-        if ((count($segments) == 2) && (isset($transparent_prefixes[$segments[0]]))) {
+        if ((count($segments) === 2) && (isset($transparent_prefixes[$segments[0]]))) {
             if ($segments[1] === 'Core') {
                 // Cater for Module extends Module_Core naming
                 $child_class = $segments[0];

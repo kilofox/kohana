@@ -27,7 +27,7 @@ class Controller_Avatar extends Controller
         $error_message = null;
         $filename = null;
 
-        if ($this->request->method() == Request::POST) {
+        if ($this->request->method() === Request::POST) {
             if (isset($_FILES['avatar'])) {
                 $filename = $this->_save_image($_FILES['avatar']);
             }

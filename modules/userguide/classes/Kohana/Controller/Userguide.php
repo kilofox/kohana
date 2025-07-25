@@ -74,7 +74,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
             ];
         }
         // If we are in the api browser, show the menu and show the api browser in the breadcrumbs
-        elseif (Route::name($this->request->route()) == 'docs/api') {
+        elseif (Route::name($this->request->route()) === 'docs/api') {
             $this->template->menu = Kodoc::menu();
 
             // Bind the breadcrumb
@@ -112,7 +112,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         }
 
         // Prevent "guide/module" and "guide/module/index" from having duplicate content
-        if ($page == 'index') {
+        if ($page === 'index') {
             $this->error('Userguide page not found');
             return;
         }
@@ -136,7 +136,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         Kodoc_Markdown::$image_url = URL::site($this->media->uri()) . '/' . $module . '/';
 
         // Set the page title
-        $this->template->title = ($page == 'index') ? Kohana::$config->load('userguide.modules.' . $module . '.name') : $this->title($page);
+        $this->template->title = ($page === 'index') ? Kohana::$config->load('userguide.modules.' . $module . '.name') : $this->title($page);
 
         // Parse the page contents into the template
         Kodoc_Markdown::$show_toc = true;
@@ -156,7 +156,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
 
         // TODO try and get parent category names (from menu).  Regex magic or javascript dom stuff perhaps?
         // Only add the current page title to breadcrumbs if it isn't the index, otherwise we get repeats.
-        if ($page != 'index') {
+        if ($page !== 'index') {
             $breadcrumb[] = $this->template->title;
         }
 
@@ -186,12 +186,12 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
 
             // If the class requested and the actual class name are different
             // (different case, orm vs ORM, auth vs Auth) redirect
-            if ($_class->class->name != $class) {
+            if ($_class->class->name !== $class) {
                 $this->redirect($this->request->route()->uri(['class' => $_class->class->name]));
             }
 
             // If this classes immediate parent is Kodoc_Missing, then it should 404
-            if ($_class->class->getParentClass() && $_class->class->getParentClass()->name == 'Kodoc_Missing') {
+            if ($_class->class->getParentClass() && $_class->class->getParentClass()->name === 'Kodoc_Missing') {
                 $this->error('That class was not found. Check your URL and make sure that the module with that class is enabled.');
                 return;
             }

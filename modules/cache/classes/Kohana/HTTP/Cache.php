@@ -346,7 +346,7 @@ class Kohana_HTTP_Cache
 
         // Check for Pragma: no-cache
         if ($pragma = $request->headers('pragma')) {
-            if ($pragma == 'no-cache')
+            if ($pragma === 'no-cache')
                 return false;
             elseif (is_array($pragma) && in_array('no-cache', $pragma))
                 return false;

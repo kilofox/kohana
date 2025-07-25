@@ -1509,7 +1509,7 @@ class Kohana_ORM extends Model implements serializable
         $selects = [];
 
         foreach ($this->_db_pending as $key => $method) {
-            if ($method['name'] == 'select') {
+            if ($method['name'] === 'select') {
                 // Ignore any selected columns for now
                 $selects[$key] = $method;
                 unset($this->_db_pending[$key]);
@@ -2215,7 +2215,7 @@ class Kohana_ORM extends Model implements serializable
             ->find();
 
         if ($this->loaded()) {
-            return (!($model->loaded() && $model->pk() != $this->pk()));
+            return (!($model->loaded() && $model->pk() !== $this->pk()));
         }
 
         return (!$model->loaded());

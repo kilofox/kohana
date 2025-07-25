@@ -36,7 +36,7 @@ class Kohana_Minion_Exception extends Kohana_Exception
             $exit_code = $e->getCode();
 
             // Never exit "0" after an exception.
-            if ($exit_code == 0) {
+            if ($exit_code === 0) {
                 $exit_code = 1;
             }
 
