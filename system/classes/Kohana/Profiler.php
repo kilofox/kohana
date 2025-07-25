@@ -189,7 +189,7 @@ class Kohana_Profiler
     public static function group_stats($groups = null)
     {
         // Which groups do we need to calculate stats for?
-        $groups = ($groups === null) ? Profiler::groups() : array_intersect_key(Profiler::groups(), array_flip((array) $groups));
+        $groups = $groups === null ? Profiler::groups() : array_intersect_key(Profiler::groups(), array_flip((array) $groups));
 
         // All statistics
         $stats = [];

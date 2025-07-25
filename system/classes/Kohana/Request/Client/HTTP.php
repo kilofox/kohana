@@ -84,7 +84,7 @@ class Kohana_Request_Client_HTTP extends Request_Client_External
         $http_request->setQueryData($request->query());
 
         // Set the body
-        if ($request->method() == HTTP_Request::PUT) {
+        if ($request->method() === HTTP_Request::PUT) {
             $http_request->addPutData($request->body());
         } else {
             $http_request->setBody($request->body());

@@ -88,7 +88,7 @@ class Kohana_Valid
      */
     public static function equals($value, $required)
     {
-        return ($value === $required);
+        return $value === $required;
     }
 
     /**
@@ -240,7 +240,7 @@ class Kohana_Valid
         if (($number = preg_replace('/\D+/', '', $number)) === '')
             return false;
 
-        if ($type == null) {
+        if ($type === null) {
             // Use the default type
             $type = 'default';
         } elseif (is_array($type)) {
@@ -313,11 +313,11 @@ class Kohana_Valid
             $double = substr($number, $i, 1) * 2;
 
             // Subtract 9 from the double where value is greater than 10
-            $checksum += ($double >= 10) ? ($double - 9) : $double;
+            $checksum += $double >= 10 ? $double - 9 : $double;
         }
 
         // If the checksum is a multiple of 10, the number is valid
-        return ($checksum % 10 === 0);
+        return $checksum % 10 === 0;
     }
 
     /**
@@ -348,7 +348,7 @@ class Kohana_Valid
      */
     public static function date($str)
     {
-        return (strtotime($str) !== false);
+        return strtotime($str) !== false;
     }
 
     /**
@@ -415,7 +415,7 @@ class Kohana_Valid
         if ($utf8 === true) {
             return (bool) preg_match('/^\pN++$/uD', $str);
         } else {
-            return (is_int($str) && $str >= 0) OR ctype_digit($str);
+            return is_int($str) && $str >= 0 || ctype_digit($str);
         }
     }
 
@@ -459,7 +459,7 @@ class Kohana_Valid
         }
 
         // Check step requirements
-        return (($number - $min) % $step === 0);
+        return ($number - $min) % $step === 0;
     }
 
     /**
@@ -510,7 +510,7 @@ class Kohana_Valid
      */
     public static function matches($array, $field, $match)
     {
-        return ($array[$field] === $array[$match]);
+        return $array[$field] === $array[$match];
     }
 
 }

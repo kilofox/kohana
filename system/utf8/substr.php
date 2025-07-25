@@ -12,20 +12,20 @@
 function _substr($str, $offset, $length = null)
 {
     if (UTF8::is_ascii($str))
-        return ($length === null) ? substr($str, $offset) : substr($str, $offset, $length);
+        return $length === null ? substr($str, $offset) : substr($str, $offset, $length);
 
     // Normalize params
     $str = (string) $str;
     $strlen = UTF8::strlen($str);
     $offset = (int) ($offset < 0) ? max(0, $strlen + $offset) : $offset; // Normalize to positive offset
-    $length = ($length === null) ? null : (int) $length;
+    $length = $length === null ? null : (int) $length;
 
     // Impossible
     if ($length === 0 || $offset >= $strlen || ($length < 0 && $length <= $offset - $strlen))
         return '';
 
     // Whole string
-    if ($offset == 0 && ($length === null || $length >= $strlen))
+    if ($offset === 0 && ($length === null || $length >= $strlen))
         return $str;
 
     // Build regex
@@ -36,8 +36,8 @@ function _substr($str, $offset, $length = null)
         // PCRE repeating quantifiers must be less than 65536, so repeat when necessary
         $x = (int) ($offset / 65535);
         $y = $offset % 65535;
-        $regex .= ($x == 0) ? '' : ('(?:.{65535}){' . $x . '}');
-        $regex .= ($y == 0) ? '' : ('.{' . $y . '}');
+        $regex .= $x === 0 ? '' : '(?:.{65535}){' . $x . '}';
+        $regex .= $y === 0 ? '' : '.{' . $y . '}';
     }
 
     // Create a length expression
@@ -52,7 +52,7 @@ function _substr($str, $offset, $length = null)
         $x = (int) ($length / 65535);
         $y = $length % 65535;
         $regex .= '(';
-        $regex .= ($x == 0) ? '' : ('(?:.{65535}){' . $x . '}');
+        $regex .= $x === 0 ? '' : '(?:.{65535}){' . $x . '}';
         $regex .= '.{' . $y . '})';
     }
     // Find length from the right (negative length)
@@ -60,7 +60,7 @@ function _substr($str, $offset, $length = null)
         $x = (int) (-$length / 65535);
         $y = -$length % 65535;
         $regex .= '(.*)';
-        $regex .= ($x == 0) ? '' : ('(?:.{65535}){' . $x . '}');
+        $regex .= $x === 0 ? '' : '(?:.{65535}){' . $x . '}';
         $regex .= '.{' . $y . '}';
     }
 

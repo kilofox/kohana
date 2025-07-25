@@ -104,11 +104,11 @@ class Kohana_Upload
      */
     public static function valid($file)
     {
-        return (isset($file['error'])
-            AND isset($file['name'])
-            AND isset($file['type'])
-            AND isset($file['tmp_name'])
-            AND isset($file['size']));
+        return isset($file['error'])
+            && isset($file['name'])
+            && isset($file['type'])
+            && isset($file['tmp_name'])
+            && isset($file['size']);
     }
 
     /**
@@ -121,10 +121,10 @@ class Kohana_Upload
      */
     public static function not_empty(array $file)
     {
-        return (isset($file['error'])
+        return isset($file['error'])
             && isset($file['tmp_name'])
             && $file['error'] === UPLOAD_ERR_OK
-            && is_uploaded_file($file['tmp_name']));
+            && is_uploaded_file($file['tmp_name']);
     }
 
     /**
@@ -176,7 +176,7 @@ class Kohana_Upload
         $size = Num::bytes($size);
 
         // Test that the file is under or equal to the max size
-        return ($file['size'] <= $size);
+        return $file['size'] <= $size;
     }
 
     /**
@@ -225,10 +225,10 @@ class Kohana_Upload
 
             if ($exact) {
                 // Check if dimensions match exactly
-                return ($width === $max_width && $height === $max_height);
+                return $width === $max_width && $height === $max_height;
             } else {
                 // Check if size is within maximum dimensions
-                return ($width <= $max_width && $height <= $max_height);
+                return $width <= $max_width && $height <= $max_height;
             }
         }
 

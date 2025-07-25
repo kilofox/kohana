@@ -245,7 +245,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
                             $invalid = true;
                         }
                     } // class can match only a part
-                    elseif ($name == 'class') {
+                    elseif ($name === 'class') {
                         // split to individual classes
                         $findClasses = explode(
                             ' ', preg_replace("/\s+/", ' ', $value)
@@ -263,7 +263,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
                         }
                     } // match by exact string
                     else {
-                        if ($node->getAttribute($name) != $value) {
+                        if ($node->getAttribute($name) <> $value) {
                             $invalid = true;
                         }
                     }
@@ -400,7 +400,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
             foreach ($nodes as $node) {
                 $parent = $node->parentNode;
 
-                while ($parent && $parent->nodeType != XML_HTML_DOCUMENT_NODE) {
+                while ($parent && $parent->nodeType !== XML_HTML_DOCUMENT_NODE) {
                     if ($parent === $ancestorNode) {
                         $filtered[] = $node;
                     }
@@ -580,7 +580,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
     {
         $elements = $dom->getElementsByTagName(strtolower($tag));
 
-        if ($elements->length == 0) {
+        if ($elements->length === 0) {
             $elements = $dom->getElementsByTagName(strtoupper($tag));
         }
 

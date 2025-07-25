@@ -325,7 +325,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
                     $name = $files->getFilename();
 
                     // If the name is not a dot
-                    if ($name != '.' && $name != '..') {
+                    if ($name !== '.' && $name !== '..') {
                         // Create new file resource
                         $fp = new SplFileInfo($files->getRealPath());
                         // Delete the file
@@ -441,7 +441,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
         $data = null;
 
         // test for expiry and return
-        return (($lifetime !== 0) AND ( ($created + $lifetime) < time()));
+        return $lifetime !== 0 && $created + $lifetime < time();
     }
 
 }

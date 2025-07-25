@@ -87,7 +87,7 @@ class Kohana_Auth_File extends Auth
             return false;
         }
 
-        return ($password === $this->password($username));
+        return $password === $this->password($username);
     }
 
 }

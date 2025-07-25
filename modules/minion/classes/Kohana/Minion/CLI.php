@@ -85,7 +85,7 @@ class Kohana_Minion_CLI
             }
         }
 
-        return count($options) == 1 ? array_pop($values) : $values;
+        return count($options) === 1 ? array_pop($values) : $values;
     }
 
     /**

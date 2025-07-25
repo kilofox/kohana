@@ -138,7 +138,7 @@ clearstatcache(true);
             </tr>
             <tr>
                 <th>URI Determination</th>
-                <?php if (isset($_SERVER['REQUEST_URI']) or isset($_SERVER['PHP_SELF']) or isset($_SERVER['PATH_INFO'])): ?>
+                <?php if (isset($_SERVER['REQUEST_URI']) || isset($_SERVER['PHP_SELF']) || isset($_SERVER['PATH_INFO'])): ?>
                     <td class="pass">Pass</td>
                 <?php else: $failed = true ?>
                     <td class="fail">Neither <code>$_SERVER['REQUEST_URI']</code>, <code>$_SERVER['PHP_SELF']</code>, or <code>$_SERVER['PATH_INFO']</code> is available.</td>
