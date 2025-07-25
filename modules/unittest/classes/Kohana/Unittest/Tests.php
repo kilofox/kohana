@@ -177,7 +177,7 @@ class Kohana_Unittest_Tests
             // Have to do this because kohana merges config...
             // If you want to include all modules & override defaults then true must be the first
             // value in the modules array of your app/config/unittest file
-            if (array_search(true, $modules, true) === (count($modules) - 1)) {
+            if (array_search(true, $modules, true) === count($modules) - 1) {
                 $modules = $k_modules;
             } elseif (!in_array(false, $modules, true)) {
                 $modules = array_intersect_key($k_modules, array_combine($modules, $modules));
@@ -215,7 +215,7 @@ class Kohana_Unittest_Tests
 
                     // The theory is that if this file is the highest one in the cascading filesystem
                     // then it's safe to whitelist
-                    Unittest_tests::$cache[$file] = ($cascading_file === $file);
+                    Unittest_tests::$cache[$file] = $cascading_file === $file;
                 }
 
                 if (Unittest_tests::$cache[$file]) {

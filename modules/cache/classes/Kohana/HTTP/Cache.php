@@ -167,7 +167,7 @@ class Kohana_HTTP_Cache
         $response = $client->execute_request($request, $response);
 
         // Stop response time
-        $this->_response_time = (time() - $this->_request_time);
+        $this->_response_time = time() - $this->_request_time;
 
         // Cache the response
         $this->cache_response($cache_key, $request, $response);

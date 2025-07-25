@@ -305,7 +305,7 @@ class Kohana_Database_MySQLi extends Database
             $column['column_name'] = $row['Field'];
             $column['column_default'] = $row['Default'];
             $column['data_type'] = $type;
-            $column['is_nullable'] = ($row['Null'] === 'YES');
+            $column['is_nullable'] = $row['Null'] === 'YES';
             $column['ordinal_position'] = ++$count;
 
             switch ($column['type']) {

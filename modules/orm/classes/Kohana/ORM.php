@@ -1159,7 +1159,7 @@ class Kohana_ORM extends Model implements serializable
     public function check(Validation $extra_validation = null)
     {
         // Determine if any external validation failed
-        $extra_errors = ($extra_validation && !$extra_validation->check());
+        $extra_errors = $extra_validation && !$extra_validation->check();
 
         // Always build a new validation object
         $this->_validation();

@@ -245,7 +245,7 @@ class Kohana_Core
         }
 
         // Determine if we are running in a Windows environment
-        Kohana::$is_windows = (DIRECTORY_SEPARATOR === '\\');
+        Kohana::$is_windows = DIRECTORY_SEPARATOR === '\\';
 
         // Determine if we are running in safe mode
         Kohana::$safe_mode = (bool) ini_get('safe_mode');
