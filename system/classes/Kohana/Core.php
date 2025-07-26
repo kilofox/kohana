@@ -40,7 +40,10 @@ class Kohana_Core
     /** @var string Security check that is added to all generated PHP files */
     const FILE_SECURITY = '<?php defined(\'SYSPATH\') or die(\'No direct script access.\');';
 
-    /** @var string Format of cache files: header, cache name, and data */
+    /**
+     * @var string Format of cache files: header, cache name, and data
+     * @deprecated 3.4.4
+     */
     const FILE_CACHE = ":header \n\n// :name\n\n:data\n";
 
     /**
@@ -75,11 +78,13 @@ class Kohana_Core
 
     /**
      * @var  string  the name of the server Kohana is hosted upon
+     * @deprecated 3.4.4
      */
     public static $server_name = '';
 
     /**
      * @var  array   list of valid host names for this instance
+     * @deprecated 3.4.4
      */
     public static $hostnames = [];
 
