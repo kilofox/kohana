@@ -119,7 +119,7 @@ class Kohana_Database_PDO extends Database
     public function set_charset($charset)
     {
         // Make sure the database is connected
-        $this->_connection OR $this->connect();
+        $this->_connection or $this->connect();
 
         // This SQL-92 syntax is not supported by all drivers
         $this->_connection->exec('SET NAMES ' . $this->quote($charset));
