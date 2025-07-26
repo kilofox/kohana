@@ -29,7 +29,7 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
      * @param  Validation $object      The Validation object of the model
      * @param  string     $message     The error message
      * @param  array      $values      The array of values for the error message
-     * @param  integer    $code        The error code for the exception
+     * @param  int $code The error code for the exception
      * @return void
      */
     public function __construct($alias, Validation $object, $message = 'Failed to validate array', array $values = null, $code = 0, Exception $previous = null)
@@ -63,7 +63,7 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
     public function add_object($alias, Validation $object, $has_many = false)
     {
         // We will need this when generating errors
-        $this->_objects[$alias]['_has_many'] = ($has_many !== false);
+        $this->_objects[$alias]['_has_many'] = $has_many !== false;
 
         if ($has_many === true) {
             // This is most likely a has_many relationship
@@ -91,7 +91,7 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
         $alias = $object->alias();
 
         // We will need this when generating errors
-        $this->_objects[$alias]['_has_many'] = ($has_many !== false);
+        $this->_objects[$alias]['_has_many'] = $has_many !== false;
 
         if ($has_many === true) {
             // This is most likely a has_many relationship
@@ -137,7 +137,7 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
 
         foreach ($array as $key => $object) {
             if (is_array($object)) {
-                $errors[$key] = ($key === '_external')
+                $errors[$key] = $key === '_external'
                     // Search for errors in $alias/_external.php
                     ? $this->generate_errors($alias . '/' . $key, $object, $directory, $translate)
                     // Regular models get their own file not nested within $alias

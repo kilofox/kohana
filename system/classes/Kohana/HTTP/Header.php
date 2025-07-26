@@ -191,7 +191,7 @@ class Kohana_HTTP_Header extends ArrayObject
         $parts = [];
 
         foreach ($cache_control as $key => $value) {
-            $parts[] = (is_int($key)) ? $value : ($key . '=' . $value);
+            $parts[] = is_int($key) ? $value : $key . '=' . $value;
         }
 
         return implode(', ', $parts);
@@ -319,7 +319,7 @@ class Kohana_HTTP_Header extends ArrayObject
         // Ensure the index is lowercase
         $key = strtolower($key);
 
-        if ($replace OR !$this->offsetExists($key)) {
+        if ($replace || !$this->offsetExists($key)) {
             parent::offsetSet($key, $value);
             return;
         }
@@ -459,7 +459,7 @@ class Kohana_HTTP_Header extends ArrayObject
 
             foreach ($mime as $_type) {
                 $quality_check = $this->accepts_at_quality($_type, $explicit);
-                $quality = ($quality_check > $quality) ? $quality_check : $quality;
+                $quality = $quality_check > $quality ? $quality_check : $quality;
             }
 
             return $quality;
@@ -708,7 +708,7 @@ class Kohana_HTTP_Header extends ArrayObject
             if (isset($language_parts[1])) {
                 if (isset($this->_accept_language[$language_parts[0]][$language_parts[1]])) {
                     return $this->_accept_language[$language_parts[0]][$language_parts[1]];
-                } elseif ($explicit === false AND isset($this->_accept_language[$language_parts[0]]['*'])) {
+                } elseif ($explicit === false && isset($this->_accept_language[$language_parts[0]]['*'])) {
                     return $this->_accept_language[$language_parts[0]]['*'];
                 }
             } elseif (isset($this->_accept_language[$language_parts[0]]['*'])) {
@@ -716,7 +716,7 @@ class Kohana_HTTP_Header extends ArrayObject
             }
         }
 
-        if ($explicit === false AND isset($this->_accept_language['*'])) {
+        if ($explicit === false && isset($this->_accept_language['*'])) {
             return $this->_accept_language['*'];
         }
 
@@ -792,7 +792,7 @@ class Kohana_HTTP_Header extends ArrayObject
             $processed_headers[] = 'Content-Type: ' . Kohana::$content_type . '; charset=' . Kohana::$charset;
         }
 
-        if (Kohana::$expose AND ! isset($headers['x-powered-by'])) {
+        if (Kohana::$expose && !isset($headers['x-powered-by'])) {
             $processed_headers[] = 'X-Powered-By: ' . Kohana::version();
         }
 
@@ -827,7 +827,7 @@ class Kohana_HTTP_Header extends ArrayObject
             return $this;
 
         foreach ($headers as $key => $line) {
-            if ($key == 'Set-Cookie' AND is_array($line)) {
+            if ($key === 'Set-Cookie' && is_array($line)) {
                 // Send cookies
                 foreach ($line as $name => $value) {
                     Cookie::set($name, $value['value'], $value['expiration']);

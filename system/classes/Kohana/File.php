@@ -19,8 +19,7 @@ class Kohana_File
      *     $mime = File::mime($file);
      *
      * @param string $filename file name or path
-     * @return  string  mime type on success
-     * @return  false   On failure
+     * @return string|false MIME type on success or false on failure.
      * @throws Kohana_Exception
      */
     public static function mime($filename)
@@ -45,7 +44,7 @@ class Kohana_File
             }
         }
 
-        if (ini_get('mime_magic.magicfile') AND function_exists('mime_content_type')) {
+        if (ini_get('mime_magic.magicfile') && function_exists('mime_content_type')) {
             // The mime_content_type function is only useful with a magic file
             return mime_content_type($filename);
         }
@@ -64,8 +63,7 @@ class Kohana_File
      *     $mime = File::mime_by_ext('png'); // "image/png"
      *
      * @param string $extension php, pdf, txt, etc
-     * @return  string  mime type on success
-     * @return  false   On failure
+     * @return string|false MIME type on success or false on failure.
      * @throws Kohana_Exception
      */
     public static function mime_by_ext($extension)
@@ -89,7 +87,7 @@ class Kohana_File
         // Load all the mime types
         $mimes = Kohana::$config->load('mimes');
 
-        return isset($mimes[$extension]) ? ((array) $mimes[$extension]) : [];
+        return isset($mimes[$extension]) ? (array) $mimes[$extension] : [];
     }
 
     /**
@@ -107,7 +105,7 @@ class Kohana_File
         if (empty($types)) {
             foreach (Kohana::$config->load('mimes') as $ext => $mimes) {
                 foreach ($mimes as $mime) {
-                    if ($mime == 'application/octet-stream') {
+                    if ($mime === 'application/octet-stream') {
                         // octet-stream is a generic binary
                         continue;
                     }
@@ -121,7 +119,7 @@ class Kohana_File
             }
         }
 
-        return isset($types[$type]) ? $types[$type] : false;
+        return $types[$type] ?? false;
     }
 
     /**
@@ -143,8 +141,8 @@ class Kohana_File
      *     $count = File::split($file);
      *
      * @param   string  $filename   file to be split
-     * @param   integer $piece_size size, in MB, for each piece to be
-     * @return  integer The number of pieces that were created
+     * @param   int $piece_size size, in MB, for each piece to be
+     * @return  int The number of pieces that were created
      */
     public static function split($filename, $piece_size = 10)
     {
@@ -195,7 +193,7 @@ class Kohana_File
      *     $count = File::join($file);
      *
      * @param   string  $filename   split filename, without .000 extension
-     * @return  integer The number of pieces that were joined.
+     * @return  int The number of pieces that were joined.
      */
     public static function join($filename)
     {

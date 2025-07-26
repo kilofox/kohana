@@ -61,7 +61,7 @@ class Kohana_URL
             $protocol = parse_url($base_url, PHP_URL_SCHEME);
         }
 
-        if ($index === true AND ! empty(Kohana::$index_file)) {
+        if ($index === true && !empty(Kohana::$index_file)) {
             // Add the index file to the URL
             $base_url .= Kohana::$index_file . '/';
         }
@@ -77,7 +77,7 @@ class Kohana_URL
                 $base_url = parse_url($base_url, PHP_URL_PATH);
             } else {
                 // Attempt to use HTTP_HOST and fallback to SERVER_NAME
-                $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME'];
+                $host = $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'];
 
                 // make $host lowercase
                 $host = strtolower($host);
@@ -176,7 +176,7 @@ class Kohana_URL
         $query = http_build_query($params, '', '&');
 
         // Don't prepend '?' to an empty string
-        return ($query === '') ? '' : ('?' . $query);
+        return $query === '' ? '' : '?' . $query;
     }
 
     /**

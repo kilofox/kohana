@@ -21,12 +21,12 @@
 class Kohana_Fragment
 {
     /**
-     * @var  integer  default number of seconds to cache for
+     * @var int default number of seconds to cache for
      */
     public static $lifetime = 30;
 
     /**
-     * @var  boolean  use multilingual fragment support?
+     * @var bool use multilingual fragment support?
      */
     public static $i18n = false;
 
@@ -54,7 +54,7 @@ class Kohana_Fragment
         }
 
         // Language prefix for cache key
-        $i18n = ($i18n === true) ? I18n::lang() : '';
+        $i18n = $i18n === true ? I18n::lang() : '';
 
         // Note: $i18n and $name need to be delimited to prevent naming collisions
         return 'Fragment::cache(' . $i18n . '+' . $name . ')';
@@ -70,7 +70,7 @@ class Kohana_Fragment
      *     }
      *
      * @param string $name fragment name
-     * @param integer $lifetime fragment cache lifetime
+     * @param int $lifetime fragment cache lifetime
      * @param bool $i18n multilingual fragment support
      * @return bool
      * @throws Kohana_Exception
@@ -78,7 +78,7 @@ class Kohana_Fragment
     public static function load($name, $lifetime = null, $i18n = null)
     {
         // Set the cache lifetime
-        $lifetime = ($lifetime === null) ? Fragment::$lifetime : (int) $lifetime;
+        $lifetime = $lifetime === null ? Fragment::$lifetime : (int) $lifetime;
 
         // Get the cache key name
         $cache_key = Fragment::_cache_key($name, $i18n);

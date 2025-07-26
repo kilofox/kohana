@@ -63,12 +63,12 @@ class Kohana_Num
      *     echo 10, Num::ordinal(10); // "10th"
      *     echo 33, Num::ordinal(33); // "33rd"
      *
-     * @param   integer $number
+     * @param   int $number
      * @return  string
      */
     public static function ordinal($number)
     {
-        if ($number % 100 > 10 AND $number % 100 < 14) {
+        if ($number % 100 > 10 && $number % 100 < 14) {
             return 'th';
         }
 
@@ -98,7 +98,7 @@ class Kohana_Num
      *     echo Num::format(1200.05, 2, true);
      *
      * @param   float   $number     number to format
-     * @param   integer $places     decimal places
+     * @param   int $places decimal places
      * @param   bool $monetary monetary formatting?
      * @return  string
      * @since   3.0.2
@@ -122,8 +122,8 @@ class Kohana_Num
      * Round a number to a specified precision, using a specified tie breaking technique
      *
      * @param float $value Number to round
-     * @param integer $precision Desired precision
-     * @param integer $mode Tie breaking mode, accepts the PHP_ROUND_HALF_* constants
+     * @param int $precision Desired precision
+     * @param int $mode Tie breaking mode, accepts the PHP_ROUND_HALF_* constants
      * @param bool $native Set to "false" to force use of the userland implementation
      * @return float Rounded number
      */
@@ -140,19 +140,19 @@ class Kohana_Num
             case self::ROUND_HALF_DOWN:
             case self::ROUND_HALF_EVEN:
             case self::ROUND_HALF_ODD:
-                $factor = ($precision === 0) ? 1 : pow(10, $precision);
+                $factor = $precision === 0 ? 1 : pow(10, $precision);
 
                 // Check if we have a rounding tie, otherwise we can just call round()
-                if (($value * $factor) - floor($value * $factor) === 0.5) {
+                if ($value * $factor - floor($value * $factor) === 0.5) {
                     if ($mode === self::ROUND_HALF_DOWN) {
                         // Round down operation, so we round down unless the value
                         // is -ve because up is down and down is up down there. ;)
-                        $up = ($value < 0);
+                        $up = $value < 0;
                     } else {
                         // Round up if the integer is odd and the round mode is set to even
                         // or the integer is even and the round mode is set to odd.
                         // Any other instance round down.
-                        $up = (!(!(floor($value * $factor) & 1)) === ($mode === self::ROUND_HALF_EVEN));
+                        $up = !!(floor($value * $factor) & 1) === ($mode === self::ROUND_HALF_EVEN);
                     }
 
                     if ($up) {

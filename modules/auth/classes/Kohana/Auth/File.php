@@ -41,7 +41,7 @@ class Kohana_Auth_File extends Auth
             $password = $this->hash($password);
         }
 
-        if (isset($this->_users[$username]) AND $this->_users[$username] === $password) {
+        if (isset($this->_users[$username]) && $this->_users[$username] === $password) {
             // Complete the login
             return $this->complete_login($username);
         }
@@ -87,7 +87,7 @@ class Kohana_Auth_File extends Auth
             return false;
         }
 
-        return ($password === $this->password($username));
+        return $password === $this->password($username);
     }
 
 }

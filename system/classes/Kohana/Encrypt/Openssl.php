@@ -103,13 +103,8 @@ class Kohana_Encrypt_Openssl
      */
     public function encode($data)
     {
-        // Use a fake random initialization vector for unit testing.
-        if (isset($this->iv)) {
-            $iv = $this->iv;
-        } else {
-            // Create a random initialization vector of the proper size for the current cipher.
-            $iv = openssl_random_pseudo_bytes($this->ivSize);
-        }
+        // Use a fake IV for unit testing, or generate a secure random IV.
+        $iv = $this->iv ?? openssl_random_pseudo_bytes($this->ivSize);
 
         // Encrypt the data using the configured options and generated IV.
         if (isset($this->tag)) {
@@ -128,8 +123,7 @@ class Kohana_Encrypt_Openssl
      *     $data = $encrypt->decode($data);
      *
      * @param   string  $data   Encoded string to be decrypted.
-     * @return  false   If decryption fails.
-     * @return  string
+     * @return  string|false Decrypted string on success, or false on failure.
      */
     public function decode($data)
     {

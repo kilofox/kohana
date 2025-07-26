@@ -288,12 +288,12 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
     /**
      * Start returning results after "OFFSET ..."
      *
-     * @param   integer   $number  starting result number or null to reset
+     * @param   int $number starting result number or null to reset
      * @return  $this
      */
     public function offset($number)
     {
-        $this->_offset = ($number === null) ? null : (int) $number;
+        $this->_offset = $number === null ? null : (int) $number;
 
         return $this;
     }

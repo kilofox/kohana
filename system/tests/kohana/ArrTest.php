@@ -25,10 +25,15 @@ class Kohana_ArrTest extends Unittest_TestCase
     {
         return [
             // Tests....
-            // That no parameters returns null
+            // That a function with no parameters returns an empty array for parameters
             [
                 'function',
-                ['function', null]
+                ['function', []]
+            ],
+            // That a function with empty parentheses returns an empty array for parameters
+            [
+                'function()',
+                ['function', []]
             ],
             // That we can get an array of parameters values
             [
@@ -50,7 +55,6 @@ class Kohana_ArrTest extends Unittest_TestCase
                 'deal::make(me, my mate )',
                 [['deal', 'make'], ['me', ' my mate ']]
             ],
-            // TODO: add more cases
         ];
     }
 
@@ -461,6 +465,7 @@ class Kohana_ArrTest extends Unittest_TestCase
                     ]
                 ],
                 3 => 'frank', // Issue #3194
+                4 => new ArrayObject(['name' => 'frank']),
             ],
             // Iterable object should work exactly the same
             'object' => new ArrayObject(['iterator' => true]),
@@ -544,7 +549,7 @@ class Kohana_ArrTest extends Unittest_TestCase
             ],
             // Starting wildcards, issue #3269
             [
-                ['matt', 'john'],
+                ['matt', 'john', 'frank'],
                 $array['users'],
                 '*.name'
             ],
@@ -668,8 +673,8 @@ class Kohana_ArrTest extends Unittest_TestCase
      * Tests Arr::range()
      *
      * @dataProvider provider_range
-     * @param integer $step  The step between each value in the array
-     * @param integer $max   The max value of the range (inclusive)
+     * @param int $step The step between each value in the array
+     * @param int $max The max value of the range (inclusive)
      */
     public function test_range($step, $max)
     {

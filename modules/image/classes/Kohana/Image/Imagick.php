@@ -127,10 +127,10 @@ class Kohana_Image_Imagick extends Image
     protected function _do_sharpen($amount)
     {
         // ImageMagick does not support $amount under 5 (0.15)
-        $amount = ($amount < 5) ? 5 : $amount;
+        $amount = max($amount, 5);
 
         // Amount should be in the range of 0.0 to 3.0
-        $amount = ($amount * 3.0) / 100;
+        $amount = $amount * 3.0 / 100;
 
         return $this->im->sharpenImage(0, $amount);
     }
@@ -177,7 +177,7 @@ class Kohana_Image_Imagick extends Image
 
         // Place the image and reflection into the container
         if ($image->compositeImage($this->im, Imagick::COMPOSITE_SRC, 0, 0)
-            AND $image->compositeImage($reflection, Imagick::COMPOSITE_OVER, 0, $this->height)) {
+            && $image->compositeImage($reflection, Imagick::COMPOSITE_OVER, 0, $this->height)) {
             // Replace the current image with the reflected image
             $this->im = $image;
 

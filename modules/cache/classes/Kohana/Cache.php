@@ -11,7 +11,6 @@
  * *  File
  * *  [Memcached](https://www.php.net/manual/en/book.memcached.php)
  * *  [Memcache](https://www.php.net/manual/en/book.memcache.php)
- * *  [Memcached-tags](https://code.google.com/archive/p/memcached-tags/)
  * *  [SQLite](https://www.php.net/manual/en/ref.pdo-sqlite.php)
  *
  * ### Introduction to caching
@@ -240,7 +239,7 @@ abstract class Kohana_Cache
      *
      * @param   string   $id        id of cache entry
      * @param   string   $data      data to set to cache
-     * @param   integer  $lifetime  lifetime in seconds
+     * @param   int $lifetime lifetime in seconds
      * @return  bool
      */
     abstract public function set($id, $data, $lifetime = 3600);

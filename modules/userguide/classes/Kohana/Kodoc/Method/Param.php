@@ -37,12 +37,12 @@ class Kohana_Kodoc_Method_Param extends Kodoc
     public $description;
 
     /**
-     * @var  boolean  is the parameter passed by reference?
+     * @var bool is the parameter passed by reference?
      */
     public $reference = false;
 
     /**
-     * @var  boolean  is the parameter optional?
+     * @var bool is the parameter optional?
      */
     public $optional = false;
 

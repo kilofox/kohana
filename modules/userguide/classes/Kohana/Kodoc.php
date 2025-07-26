@@ -163,7 +163,7 @@ class Kohana_Kodoc
                     $declares = $child;
                 }
 
-                if ($declares === $_class->name OR $declares === "Core") {
+                if ($declares === $_class->name || $declares === "Core") {
                     $methods[] = $_method->name;
                 }
             }
@@ -194,7 +194,7 @@ class Kohana_Kodoc
             $split = preg_split('/\s+/', $text, 2);
 
             return HTML::anchor(
-                    $split[0], isset($split[1]) ? $split[1] : $split[0]
+                    $split[0], $split[1] ?? $split[0]
             );
         } elseif ($tag === 'copyright') {
             // Convert the copyright symbol
@@ -211,7 +211,7 @@ class Kohana_Kodoc
             return HTML::anchor(
                     $route->uri(['class' => $text]), $text
             );
-        } elseif ($tag === 'see' OR $tag === 'uses') {
+        } elseif ($tag === 'see' || $tag === 'uses') {
             if (preg_match('/^' . Kodoc::$regex_class_member . '/', $text, $matches))
                 return Kodoc::link_class_member($matches);
         }
@@ -272,7 +272,7 @@ class Kohana_Kodoc
                 }
 
                 $tag = $matches[1];
-                $text = isset($matches[2]) ? $matches[2] : '';
+                $text = $matches[2] ?? '';
 
                 if ($i === $end) {
                     // No more lines
@@ -293,7 +293,7 @@ class Kohana_Kodoc
 
         $comment = trim($comment, "\n");
 
-        if ($comment AND $html) {
+        if ($comment && $html) {
             // Parse the comment with Markdown
             $comment = Kodoc_Markdown::markdown($comment);
         }
@@ -392,7 +392,7 @@ class Kohana_Kodoc
         // Split the class name at the first underscore
         $segments = explode('_', $class, 2);
 
-        if ((count($segments) == 2) AND ( isset($transparent_prefixes[$segments[0]]))) {
+        if (count($segments) === 2 && isset($transparent_prefixes[$segments[0]])) {
             if ($segments[1] === 'Core') {
                 // Cater for Module extends Module_Core naming
                 $child_class = $segments[0];
@@ -402,7 +402,7 @@ class Kohana_Kodoc
             }
 
             // It is only a transparent class if the unprefixed class also exists
-            if ($classes AND ! isset($classes[$child_class]))
+            if ($classes && !isset($classes[$child_class]))
                 return false;
 
             // Return the name of the child class

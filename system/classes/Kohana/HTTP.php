@@ -57,7 +57,7 @@ abstract class Kohana_HTTP
     public static function check_cache(Request $request, Response $response, $etag = null)
     {
         // Generate an etag if necessary
-        if ($etag == null) {
+        if ($etag === null) {
             $etag = $response->generate_etag();
         }
 
@@ -73,7 +73,7 @@ abstract class Kohana_HTTP
         }
 
         // Check if we have a matching etag
-        if ($request->headers('if-none-match') AND (string) $request->headers('if-none-match') === $etag) {
+        if ($request->headers('if-none-match') && (string) $request->headers('if-none-match') === $etag) {
             // No need to send data again
             throw HTTP_Exception::factory(304)->headers('etag', $etag);
         }

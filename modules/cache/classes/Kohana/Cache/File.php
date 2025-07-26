@@ -178,7 +178,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *
      * @param string $id id of cache entry
      * @param string $data data to set to cache
-     * @param integer $lifetime lifetime in seconds
+     * @param int $lifetime lifetime in seconds
      * @return bool
      * @throws Cache_Exception
      * @throws ErrorException
@@ -325,7 +325,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
                     $name = $files->getFilename();
 
                     // If the name is not a dot
-                    if ($name != '.' AND $name != '..') {
+                    if ($name !== '.' && $name !== '..') {
                         // Create new file resource
                         $fp = new SplFileInfo($files->getRealPath());
                         // Delete the file
@@ -394,7 +394,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *
      * @link    https://www.php.net/manual/en/function.mkdir.php
      * @param   string    $directory    directory path
-     * @param   integer   $mode         chmod mode
+     * @param   int $mode chmod mode
      * @param   bool $recursive allows nested directories creation
      * @param   resource  $context      a stream context
      * @return  SplFileInfo
@@ -441,7 +441,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
         $data = null;
 
         // test for expiry and return
-        return (($lifetime !== 0) AND ( ($created + $lifetime) < time()));
+        return $lifetime !== 0 && $created + $lifetime < time();
     }
 
 }

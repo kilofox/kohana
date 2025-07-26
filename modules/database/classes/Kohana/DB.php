@@ -36,7 +36,7 @@ class Kohana_DB
      * `Database::INSERT` queries will return the insert id and number of rows.
      * For all other queries, the number of affected rows is returned.
      *
-     * @param   integer  $type  type: Database::SELECT, Database::UPDATE, etc
+     * @param   int $type type: Database::SELECT, Database::UPDATE, etc
      * @param   string   $sql   SQL statement
      * @return  Database_Query
      */

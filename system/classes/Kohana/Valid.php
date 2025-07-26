@@ -18,7 +18,7 @@ class Kohana_Valid
      */
     public static function not_empty($value)
     {
-        if (is_object($value) AND $value instanceof ArrayObject) {
+        if (is_object($value) && $value instanceof ArrayObject) {
             // Get the array from the ArrayObject
             $value = $value->getArrayCopy();
         }
@@ -43,7 +43,7 @@ class Kohana_Valid
      * Checks that a field is long enough.
      *
      * @param   string  $value  value
-     * @param   integer $length minimum length required
+     * @param   int $length minimum length required
      * @return  bool
      */
     public static function min_length($value, $length)
@@ -55,7 +55,7 @@ class Kohana_Valid
      * Checks that a field is short enough.
      *
      * @param   string  $value  value
-     * @param   integer $length maximum length required
+     * @param   int $length maximum length required
      * @return  bool
      */
     public static function max_length($value, $length)
@@ -67,7 +67,7 @@ class Kohana_Valid
      * Checks that a field is exactly the right length.
      *
      * @param   string          $value  value
-     * @param   integer|array   $length exact length required, or array of valid lengths
+     * @param   int|array $length exact length required, or array of valid lengths
      * @return  bool
      */
     public static function exact_length($value, $length)
@@ -88,7 +88,7 @@ class Kohana_Valid
      */
     public static function equals($value, $required)
     {
-        return ($value === $required);
+        return $value === $required;
     }
 
     /**
@@ -228,7 +228,7 @@ class Kohana_Valid
     /**
      * Validates a credit card number, with a Luhn check if possible.
      *
-     * @param integer $number credit card number
+     * @param string $number credit card number
      * @param string|array $type card type, or an array of card types
      * @return bool
      * @throws Kohana_Exception
@@ -240,7 +240,7 @@ class Kohana_Valid
         if (($number = preg_replace('/\D+/', '', $number)) === '')
             return false;
 
-        if ($type == null) {
+        if ($type === null) {
             // Use the default type
             $type = 'default';
         } elseif (is_array($type)) {
@@ -313,11 +313,11 @@ class Kohana_Valid
             $double = substr($number, $i, 1) * 2;
 
             // Subtract 9 from the double where value is greater than 10
-            $checksum += ($double >= 10) ? ($double - 9) : $double;
+            $checksum += $double >= 10 ? $double - 9 : $double;
         }
 
         // If the checksum is a multiple of 10, the number is valid
-        return ($checksum % 10 === 0);
+        return $checksum % 10 === 0;
     }
 
     /**
@@ -348,7 +348,7 @@ class Kohana_Valid
      */
     public static function date($str)
     {
-        return (strtotime($str) !== false);
+        return strtotime($str) !== false;
     }
 
     /**
@@ -415,7 +415,7 @@ class Kohana_Valid
         if ($utf8 === true) {
             return (bool) preg_match('/^\pN++$/uD', $str);
         } else {
-            return (is_int($str) AND $str >= 0) OR ctype_digit($str);
+            return is_int($str) && $str >= 0 || ctype_digit($str);
         }
     }
 
@@ -440,15 +440,15 @@ class Kohana_Valid
     /**
      * Tests if a number is within a range.
      *
-     * @param   string  $number number to check
-     * @param   integer $min    minimum value
-     * @param   integer $max    maximum value
-     * @param   integer $step   increment size
+     * @param   int $number number to check
+     * @param   int $min    minimum value
+     * @param   int $max    maximum value
+     * @param   int $step   increment size
      * @return  bool
      */
     public static function range($number, $min, $max, $step = null)
     {
-        if ($number < $min OR $number > $max) {
+        if ($number < $min || $number > $max) {
             // Number is outside of range
             return false;
         }
@@ -459,7 +459,7 @@ class Kohana_Valid
         }
 
         // Check step requirements
-        return (($number - $min) % $step === 0);
+        return ($number - $min) % $step === 0;
     }
 
     /**
@@ -467,8 +467,8 @@ class Kohana_Valid
      * number of digits can be checked too.
      *
      * @param   string  $str    number to check
-     * @param   integer $places number of decimal places
-     * @param   integer $digits number of digits
+     * @param   int $places number of decimal places
+     * @param   int $digits number of digits
      * @return  bool
      */
     public static function decimal($str, $places = 2, $digits = null)
@@ -510,7 +510,7 @@ class Kohana_Valid
      */
     public static function matches($array, $field, $match)
     {
-        return ($array[$field] === $array[$match]);
+        return $array[$field] === $array[$match];
     }
 
 }

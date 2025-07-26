@@ -85,9 +85,9 @@ class Bench_URLSite extends Codebench
     public function bench_regex_without_arrget($uri)
     {
         preg_match('~^(?:[-a-z0-9+.]++://[^/]++/?)?([^?#]++)?(\?[^#]*+)?(#.*)?~', trim($uri, '/'), $matches);
-        $path = isset($matches[1]) ? $matches[1] : '';
-        $query = isset($matches[2]) ? $matches[2] : '';
-        $fragment = isset($matches[3]) ? $matches[3] : '';
+        $path = $matches[1] ?? '';
+        $query = $matches[2] ?? '';
+        $fragment = $matches[3] ?? '';
 
         return $path . $query . $fragment;
     }

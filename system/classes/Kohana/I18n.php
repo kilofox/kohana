@@ -80,7 +80,7 @@ class Kohana_I18n
         $table = I18n::load($lang);
 
         // Return the translated string if it exists
-        return isset($table[$string]) ? $table[$string] : $string;
+        return $table[$string] ?? $string;
     }
 
     /**

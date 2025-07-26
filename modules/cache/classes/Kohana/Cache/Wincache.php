@@ -43,6 +43,7 @@
  * @author     Kohana Team
  * @copyright  (c) 2009-2012 Kohana Team
  * @license    https://kohana.top/license
+ * @deprecated 3.5.0
  */
 class Kohana_Cache_Wincache extends Cache
 {
@@ -95,7 +96,7 @@ class Kohana_Cache_Wincache extends Cache
      *
      * @param   string   $id        id of cache entry
      * @param   string   $data      data to set to cache
-     * @param   integer  $lifetime  lifetime in seconds
+     * @param   int $lifetime lifetime in seconds
      * @return  bool
      */
     public function set($id, $data, $lifetime = null)

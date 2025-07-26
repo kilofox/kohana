@@ -32,7 +32,7 @@ class Kohana_Request_Client_Stream extends Request_Client_External
     public function _send_message(Request $request, Response $response)
     {
         // Calculate stream mode
-        $mode = ($request->method() === HTTP_Request::GET) ? 'r' : 'r+';
+        $mode = $request->method() === HTTP_Request::GET ? 'r' : 'r+';
 
         // Process cookies
         if ($cookies = $request->cookie()) {

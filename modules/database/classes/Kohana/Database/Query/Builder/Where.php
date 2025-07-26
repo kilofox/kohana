@@ -115,7 +115,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
     {
         $group = end($this->_where);
 
-        if ($group AND reset($group) === '(') {
+        if ($group && reset($group) === '(') {
             array_pop($this->_where);
 
             return $this;
@@ -165,12 +165,12 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
     /**
      * Return up to "LIMIT ..." results
      *
-     * @param   integer  $number  maximum results to return or null to reset
+     * @param   int $number maximum results to return or null to reset
      * @return  $this
      */
     public function limit($number)
     {
-        $this->_limit = ($number === null) ? null : (int) $number;
+        $this->_limit = $number === null ? null : (int) $number;
 
         return $this;
     }
