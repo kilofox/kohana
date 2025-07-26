@@ -62,7 +62,7 @@ class Kohana_Kodoc_Method extends Kodoc
         }
 
         do {
-            if ($parent->hasMethod($method) AND $comment = $parent->getMethod($method)->getDocComment()) {
+            if ($parent->hasMethod($method) && ($comment = $parent->getMethod($method)->getDocComment())) {
                 // Found a description for this method
                 break;
             }
@@ -100,7 +100,7 @@ class Kohana_Kodoc_Method extends Kodoc
         if (isset($tags['return'])) {
             foreach ($tags['return'] as $return) {
                 if (preg_match('/^(\S*)(?:\s*(.+?))?$/', $return, $matches)) {
-                    $this->return[] = [$matches[1], isset($matches[2]) ? $matches[2] : ''];
+                    $this->return[] = [$matches[1], $matches[2] ?? ''];
                 }
             }
 
@@ -116,11 +116,11 @@ class Kohana_Kodoc_Method extends Kodoc
         $required = true;
         $first = true;
         foreach ($this->params as $param) {
-            if ($required AND $param->default AND $first) {
+            if ($required && $param->default && $first) {
                 $out .= '[ ' . $param;
                 $required = false;
                 $first = false;
-            } elseif ($required AND $param->default) {
+            } elseif ($required && $param->default) {
                 $out .= '[, ' . $param;
                 $required = false;
             } elseif ($first) {

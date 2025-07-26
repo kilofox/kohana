@@ -6,7 +6,6 @@
  * ### Supported cache engines
  *
  * *  [Memcache](https://www.php.net/manual/en/book.memcache.php)
- * *  [Memcached-tags](https://code.google.com/archive/p/memcached-tags/)
  *
  * ### Configuration example
  *
@@ -75,7 +74,7 @@
  *
  * *  Kohana 3.0.x
  * *  PHP 5.2.4 or greater
- * *  Memcache (plus Memcached-tags for native tagging support)
+ * *  Memcache
  * *  Zlib
  *
  * @package    Kohana/Cache
@@ -177,7 +176,6 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      * @param   string  $id       id of cache to entry
      * @param   string  $default  default value to return if cache miss
      * @return  mixed
-     * @throws  Cache_Exception
      */
     public function get($id, $default = null)
     {
@@ -186,7 +184,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
 
         // If the value wasn't found, normalise it
         if ($value === false) {
-            $value = (null === $default) ? null : $default;
+            $value = null === $default ? null : $default;
         }
 
         // Return the value
@@ -207,8 +205,8 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      *
      * @param   string   $id        id of cache entry
      * @param   mixed    $data      data to set to cache
-     * @param   integer  $lifetime  lifetime in seconds, maximum value 2592000
-     * @return  boolean
+     * @param   int $lifetime lifetime in seconds, maximum value 2592000
+     * @return  bool
      */
     public function set($id, $data, $lifetime = 3600)
     {
@@ -241,8 +239,8 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      *     Cache::instance('memcache')->delete('bar', 30);
      *
      * @param   string   $id       id of entry to delete
-     * @param   integer  $timeout  timeout of entry, if zero item is deleted immediately, otherwise the item will delete after the specified value in seconds
-     * @return  boolean
+     * @param   int $timeout timeout of entry, if zero item is deleted immediately, otherwise the item will delete after the specified value in seconds
+     * @return  bool
      */
     public function delete($id, $timeout = 0)
     {
@@ -260,7 +258,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      *     // Delete all cache entries in the default group
      *     Cache::instance('memcache')->delete_all();
      *
-     * @return  boolean
+     * @return bool
      */
     public function delete_all()
     {
@@ -279,7 +277,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      * server if the configuration setting `instant_death` is set to `true`.
      *
      * @param   string   $hostname
-     * @param   integer  $port
+     * @param   int $port
      * @return  void|boolean
      * @since   3.0.8
      */
@@ -296,7 +294,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
             // Merge the defaults, since they won't always be set
             $server += $this->_default_config;
             // We're looking at the failed server
-            if ($hostname == $server['host'] and $port == $server['port']) {
+            if ($hostname === $server['host'] && $port === $server['port']) {
                 // Server to disable, since it failed
                 $host = $server;
             }
@@ -318,10 +316,9 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      * Useful for shared counters and other persistent integer based
      * tracking.
      *
-     * @param   string    id of cache entry to increment
-     * @param   int       step value to increment by
-     * @return  integer
-     * @return  boolean
+     * @param string $id id of cache entry to increment
+     * @param int $step step value to increment by
+     * @return int|false
      */
     public function increment($id, $step = 1)
     {
@@ -333,10 +330,9 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      * Useful for shared counters and other persistent integer based
      * tracking.
      *
-     * @param   string    id of cache entry to decrement
-     * @param   int       step value to decrement by
-     * @return  integer
-     * @return  boolean
+     * @param string $id id of cache entry to decrement
+     * @param int $step step value to decrement by
+     * @return int|false
      */
     public function decrement($id, $step = 1)
     {

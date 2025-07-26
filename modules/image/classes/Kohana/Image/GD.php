@@ -24,7 +24,7 @@ class Kohana_Image_GD extends Image
      * be bundled with PHP.  Exceptions will be thrown from those methods when GD is not
      * bundled.
      *
-     * @return  boolean
+     * @return bool
      * @throws Kohana_Exception
      */
     public static function check()
@@ -97,7 +97,7 @@ class Kohana_Image_GD extends Image
                 break;
         }
 
-        if (!isset($create) OR ! function_exists($create)) {
+        if (!isset($create) || !function_exists($create)) {
             throw new Kohana_Exception('Installed GD does not support :type images', [':type' => image_type_to_extension($this->type, false)]);
         }
 
@@ -143,8 +143,8 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a resize.
      *
-     * @param   integer  $width   new width
-     * @param   integer  $height  new height
+     * @param   int  $width   new width
+     * @param   int  $height  new height
      * @return  void
      */
     protected function _do_resize($width, $height)
@@ -157,12 +157,12 @@ class Kohana_Image_GD extends Image
         $this->_load_image();
 
         // Test if we can do a resize without resampling to speed up the final resize
-        if ($width > ($this->width / 2) AND $height > ($this->height / 2)) {
+        if ($width > ($this->width / 2) && $height > ($this->height / 2)) {
             // The maximum reduction is 10% greater than the final size
             $reduction_width = round($width * 1.1);
             $reduction_height = round($height * 1.1);
 
-            while ($pre_width / 2 > $reduction_width AND $pre_height / 2 > $reduction_height) {
+            while ($pre_width / 2 > $reduction_width && $pre_height / 2 > $reduction_height) {
                 // Reduce the size using an O(2n) algorithm, until it reaches the maximum reduction
                 $pre_width /= 2;
                 $pre_height /= 2;
@@ -196,10 +196,10 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a crop.
      *
-     * @param   integer  $width     new width
-     * @param   integer  $height    new height
-     * @param   integer  $offset_x  offset from the left
-     * @param   integer  $offset_y  offset from the top
+     * @param   int  $width     new width
+     * @param   int  $height    new height
+     * @param   int  $offset_x  offset from the left
+     * @param   int  $offset_y  offset from the top
      * @return  void
      */
     protected function _do_crop($width, $height, $offset_x, $offset_y)
@@ -225,7 +225,7 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a rotation.
      *
-     * @param integer $degrees degrees to rotate
+     * @param int $degrees degrees to rotate
      * @return  void
      * @throws Kohana_Exception
      */
@@ -265,7 +265,7 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a flip.
      *
-     * @param   integer  $direction  direction to flip
+     * @param   int $direction direction to flip
      * @return  void
      */
     protected function _do_flip($direction)
@@ -300,7 +300,7 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a sharpening.
      *
-     * @param integer $amount amount to sharpen
+     * @param int $amount amount to sharpen
      * @return  void
      * @throws Kohana_Exception
      */
@@ -334,9 +334,9 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a reflection.
      *
-     * @param integer $height reflection height
-     * @param integer $opacity reflection opacity
-     * @param boolean $fade_in true to fade out, false to fade in
+     * @param int $height reflection height
+     * @param int $opacity reflection opacity
+     * @param bool $fade_in true to fade out, false to fade in
      * @return  void
      * @throws Kohana_Exception
      */
@@ -350,7 +350,7 @@ class Kohana_Image_GD extends Image
         $this->_load_image();
 
         // Convert an opacity range of 0-100 to 127-0
-        $opacity = round(abs(($opacity * 127 / 100) - 127));
+        $opacity = round(abs($opacity * 127 / 100 - 127));
 
         if ($opacity < 127) {
             // Calculate the opacity stepping
@@ -407,13 +407,13 @@ class Kohana_Image_GD extends Image
      * Execute a watermarking.
      *
      * @param Image $image watermarking Image
-     * @param integer $offset_x offset from the left
-     * @param integer $offset_y offset from the top
-     * @param integer $opacity opacity of watermark
+     * @param int $offset_x offset from the left
+     * @param int $offset_y offset from the top
+     * @param int $opacity opacity of watermark
      * @return  void
      * @throws Kohana_Exception
      */
-    protected function _do_watermark(Image $watermark, $offset_x, $offset_y, $opacity)
+    protected function _do_watermark(Image $image, $offset_x, $offset_y, $opacity)
     {
         if (empty(Image_GD::$_available_functions[Image_GD::IMAGELAYEREFFECT])) {
             throw new Kohana_Exception('This method requires :function, which is only available in the bundled version of GD', [':function' => 'imagelayereffect']);
@@ -423,7 +423,7 @@ class Kohana_Image_GD extends Image
         $this->_load_image();
 
         // Create the watermark image resource
-        $overlay = imagecreatefromstring($watermark->render());
+        $overlay = imagecreatefromstring($image->render());
 
         imagesavealpha($overlay, true);
 
@@ -433,7 +433,7 @@ class Kohana_Image_GD extends Image
 
         if ($opacity < 100) {
             // Convert an opacity range of 0-100 to 127-0
-            $opacity = round(abs(($opacity * 127 / 100) - 127));
+            $opacity = round(abs($opacity * 127 / 100 - 127));
 
             // Allocate transparent gray
             $color = imagecolorallocatealpha($overlay, 127, 127, 127, $opacity);
@@ -457,10 +457,10 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a background.
      *
-     * @param   integer  $r        red
-     * @param   integer  $g        green
-     * @param   integer  $b        blue
-     * @param   integer  $opacity  opacity
+     * @param   int  $r        red
+     * @param   int  $g        green
+     * @param   int  $b        blue
+     * @param   int  $opacity  opacity
      * @return void
      */
     protected function _do_background($r, $g, $b, $opacity)
@@ -469,7 +469,7 @@ class Kohana_Image_GD extends Image
         $this->_load_image();
 
         // Convert an opacity range of 0-100 to 127-0
-        $opacity = round(abs(($opacity * 127 / 100) - 127));
+        $opacity = round(abs($opacity * 127 / 100 - 127));
 
         // Create a new background
         $background = $this->_create($this->width, $this->height);
@@ -495,8 +495,8 @@ class Kohana_Image_GD extends Image
      * Execute a save.
      *
      * @param string $file new image filename
-     * @param integer $quality quality
-     * @return  boolean
+     * @param int $quality quality
+     * @return bool
      * @throws Kohana_Exception
      */
     protected function _do_save($file, $quality)
@@ -513,7 +513,7 @@ class Kohana_Image_GD extends Image
         // Save the image to a file
         $status = isset($quality) ? $save($this->_image, $file, $quality) : $save($this->_image, $file);
 
-        if ($status === true AND $type !== $this->type) {
+        if ($status === true && $type !== $this->type) {
             // Reset the image type and mime type
             $this->type = $type;
             $this->mime = image_type_to_mime_type($type);
@@ -526,7 +526,7 @@ class Kohana_Image_GD extends Image
      * Execute a render.
      *
      * @param string $type image type: png, jpg, gif, etc
-     * @param integer $quality quality
+     * @param int $quality quality
      * @return  string
      * @throws Kohana_Exception
      */
@@ -544,7 +544,7 @@ class Kohana_Image_GD extends Image
         // Render the image
         $status = isset($quality) ? $save($this->_image, null, $quality) : $save($this->_image, null);
 
-        if ($status === true AND $type !== $this->type) {
+        if ($status === true && $type !== $this->type) {
             // Reset the image type and mime type
             $this->type = $type;
             $this->mime = image_type_to_mime_type($type);
@@ -558,7 +558,7 @@ class Kohana_Image_GD extends Image
      * Also normalizes the quality setting
      *
      * @param   string   $extension  image type: png, jpg, etc
-     * @param   integer  $quality    image quality
+     * @param   int $quality image quality
      * @return  array    save function, IMAGETYPE_* constant
      * @throws  Kohana_Exception
      */
@@ -603,8 +603,8 @@ class Kohana_Image_GD extends Image
     /**
      * Create an empty image with the given width and height.
      *
-     * @param   integer   $width   image width
-     * @param   integer   $height  image height
+     * @param   int   $width   image width
+     * @param   int   $height  image height
      * @return  resource
      */
     protected function _create($width, $height)

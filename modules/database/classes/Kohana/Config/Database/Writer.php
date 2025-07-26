@@ -28,7 +28,7 @@ class Kohana_Config_Database_Writer extends Config_Database_Reader implements Ko
      * Returns false if group does not exist or an array if it does
      *
      * @param string $group Configuration group
-     * @return boolean|array
+     * @return bool|array
      * @throws Kohana_Exception
      */
     public function load($group)
@@ -51,7 +51,7 @@ class Kohana_Config_Database_Writer extends Config_Database_Reader implements Ko
      * @param string $group The config group
      * @param string $key The config key to write to
      * @param array $config The configuration to write
-     * @return boolean
+     * @return bool
      * @throws Kohana_Exception
      */
     public function write($group, $key, $config)

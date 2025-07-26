@@ -8,7 +8,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
 {
     /**
      * Make sure PHPUnit backs up globals
-     * @var boolean
+     * @var bool
      */
     protected $backupGlobals = false;
 
@@ -93,7 +93,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
     /**
      * Check for internet connectivity
      *
-     * @return boolean Whether an internet connection is available
+     * @return bool Whether an internet connection is available
      */
     public function hasInternet()
     {
@@ -245,7 +245,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
                             $invalid = true;
                         }
                     } // class can match only a part
-                    elseif ($name == 'class') {
+                    elseif ($name === 'class') {
                         // split to individual classes
                         $findClasses = explode(
                             ' ', preg_replace("/\s+/", ' ', $value)
@@ -263,7 +263,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
                         }
                     } // match by exact string
                     else {
-                        if ($node->getAttribute($name) != $value) {
+                        if ($node->getAttribute($name) <> $value) {
                             $invalid = true;
                         }
                     }
@@ -319,7 +319,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
         // filter by parent node
         if ($options['parent']) {
             $parentNodes = self::findNodes($dom, $options['parent'], $isHtml);
-            $parentNode = isset($parentNodes[0]) ? $parentNodes[0] : null;
+            $parentNode = $parentNodes[0] ?? null;
 
             foreach ($nodes as $node) {
                 if ($parentNode !== $node->parentNode) {
@@ -395,12 +395,12 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
         // filter by ancestor
         if ($options['ancestor']) {
             $ancestorNodes = self::findNodes($dom, $options['ancestor'], $isHtml);
-            $ancestorNode = isset($ancestorNodes[0]) ? $ancestorNodes[0] : null;
+            $ancestorNode = $ancestorNodes[0] ?? null;
 
             foreach ($nodes as $node) {
                 $parent = $node->parentNode;
 
-                while ($parent && $parent->nodeType != XML_HTML_DOCUMENT_NODE) {
+                while ($parent && $parent->nodeType !== XML_HTML_DOCUMENT_NODE) {
                     if ($parent === $ancestorNode) {
                         $filtered[] = $node;
                     }
@@ -580,7 +580,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
     {
         $elements = $dom->getElementsByTagName(strtolower($tag));
 
-        if ($elements->length == 0) {
+        if ($elements->length === 0) {
             $elements = $dom->getElementsByTagName(strtoupper($tag));
         }
 

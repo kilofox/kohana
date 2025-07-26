@@ -40,8 +40,8 @@ class Kohana_DebugTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_vars
      * @covers Debug::vars
-     * @param boolean $thing    The thing to debug
-     * @param boolean $expected Output for Debug::vars
+     * @param mixed $thing The thing to debug
+     * @param string $expected Output for Debug::vars
      */
     public function test_var($thing, $expected)
     {
@@ -73,8 +73,8 @@ class Kohana_DebugTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_debug_path
      * @covers Debug::path
-     * @param boolean $path     Input for Debug::path
-     * @param boolean $expected Output for Debug::path
+     * @param string $path Input for Debug::path
+     * @param string $expected Output for Debug::path
      */
     public function test_debug_path($path, $expected)
     {
@@ -157,8 +157,10 @@ class Kohana_DebugTest extends Unittest_TestCase
      * @dataProvider provider_dump
      * @covers Debug::dump
      * @covers Debug::_dump
-     * @param object $exception exception to test
-     * @param string $expected  expected output
+     * @param string $input
+     * @param int $length
+     * @param int $limit
+     * @param string $expected expected output
      */
     public function test_dump($input, $length, $limit, $expected)
     {

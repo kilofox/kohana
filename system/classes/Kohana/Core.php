@@ -32,9 +32,12 @@ class Kohana_Core
     const DEVELOPMENT = 40;
 
     /** @var string Security check that is added to all generated PHP files */
-    const FILE_SECURITY = '<?php defined(\'SYSPATH\') OR die(\'No direct script access.\');';
+    const FILE_SECURITY = '<?php defined(\'SYSPATH\') or die(\'No direct script access.\');';
 
-    /** @var string Format of cache files: header, cache name, and data */
+    /**
+     * @var string Format of cache files: header, cache name, and data
+     * @deprecated 3.4.4
+     */
     const FILE_CACHE = ":header \n\n// :name\n\n:data\n";
 
     /**
@@ -43,18 +46,18 @@ class Kohana_Core
     public static $environment = Kohana::DEVELOPMENT;
 
     /**
-     * @var  boolean  True if Kohana is running on windows
+     * @var bool True if Kohana is running on windows
      */
     public static $is_windows = false;
 
     /**
-     * @var  boolean  True if [magic quotes](https://wiki.php.net/rfc/magicquotes) is enabled.
+     * @var bool True if [magic quotes](https://wiki.php.net/rfc/magicquotes) is enabled.
      * @deprecated 3.5.0
      */
     public static $magic_quotes = false;
 
     /**
-     * @var  boolean  true if PHP safe mode is on
+     * @var bool true if PHP safe mode is on
      */
     public static $safe_mode = false;
 
@@ -70,11 +73,13 @@ class Kohana_Core
 
     /**
      * @var  string  the name of the server Kohana is hosted upon
+     * @deprecated 3.4.4
      */
     public static $server_name = '';
 
     /**
      * @var  array   list of valid host names for this instance
+     * @deprecated 3.4.4
      */
     public static $hostnames = [];
 
@@ -94,22 +99,22 @@ class Kohana_Core
     public static $cache_dir;
 
     /**
-     * @var  integer  Default lifetime for caching, in seconds, used by [Kohana::cache]. Set by [Kohana::init]
+     * @var int Default lifetime for caching, in seconds, used by [Kohana::cache]. Set by [Kohana::init]
      */
     public static $cache_life = 60;
 
     /**
-     * @var  boolean  Whether to use internal caching for [Kohana::find_file], does not apply to [Kohana::cache]. Set by [Kohana::init]
+     * @var bool Whether to use internal caching for [Kohana::find_file], does not apply to [Kohana::cache]. Set by [Kohana::init]
      */
     public static $caching = false;
 
     /**
-     * @var  boolean  Whether to enable [profiling](kohana/profiling). Set by [Kohana::init]
+     * @var bool Whether to enable [profiling](kohana/profiling). Set by [Kohana::init]
      */
     public static $profiling = true;
 
     /**
-     * @var  boolean  Enable Kohana catching and displaying PHP errors and exceptions. Set by [Kohana::init]
+     * @var bool Enable Kohana catching and displaying PHP errors and exceptions. Set by [Kohana::init]
      */
     public static $errors = true;
 
@@ -119,7 +124,7 @@ class Kohana_Core
     public static $shutdown_errors = [E_PARSE, E_ERROR, E_USER_ERROR];
 
     /**
-     * @var  boolean  set the X-Powered-By header
+     * @var bool set the X-Powered-By header
      */
     public static $expose = false;
 
@@ -134,7 +139,7 @@ class Kohana_Core
     public static $config;
 
     /**
-     * @var  boolean  Has [Kohana::init] been called?
+     * @var bool Has [Kohana::init] been called?
      */
     protected static $_init = false;
 
@@ -154,7 +159,7 @@ class Kohana_Core
     protected static $_files = [];
 
     /**
-     * @var  boolean  Has the file path cache changed during this execution?  Used internally when caching is true in [Kohana::init]
+     * @var bool Has the file path cache changed during this execution?  Used internally when caching is true in [Kohana::init]
      */
     protected static $_files_changed = false;
 
@@ -223,7 +228,7 @@ class Kohana_Core
         /**
          * Enable xdebug parameter collection in development mode to improve fatal stack traces.
          */
-        if (Kohana::$environment == Kohana::DEVELOPMENT AND extension_loaded('xdebug')) {
+        if (Kohana::$environment === Kohana::DEVELOPMENT && extension_loaded('xdebug')) {
             ini_set('xdebug.collect_params', 3);
         }
 
@@ -240,7 +245,7 @@ class Kohana_Core
         }
 
         // Determine if we are running in a Windows environment
-        Kohana::$is_windows = (DIRECTORY_SEPARATOR === '\\');
+        Kohana::$is_windows = DIRECTORY_SEPARATOR === '\\';
 
         // Determine if we are running in safe mode
         Kohana::$safe_mode = (bool) ini_get('safe_mode');
@@ -377,7 +382,7 @@ class Kohana_Core
      */
     public static function globals()
     {
-        if (isset($_REQUEST['GLOBALS']) OR isset($_FILES['GLOBALS'])) {
+        if (isset($_REQUEST['GLOBALS']) || isset($_FILES['GLOBALS'])) {
             // Prevent malicious GLOBALS overload attack
             echo "Global variable overload attack detected! Request aborted.\n";
 
@@ -418,7 +423,7 @@ class Kohana_Core
      */
     public static function sanitize($value)
     {
-        if (is_array($value) OR is_object($value)) {
+        if (is_array($value) || is_object($value)) {
             foreach ($value as $key => $val) {
                 // Recursively clean each value
                 $value[$key] = Kohana::sanitize($val);
@@ -460,7 +465,7 @@ class Kohana_Core
      *
      * @param   string  $class      Class name
      * @param   string  $directory  Directory to load from
-     * @return  boolean
+     * @return  bool
      */
     public static function auto_load($class, $directory = 'classes')
     {
@@ -497,7 +502,7 @@ class Kohana_Core
      *
      * @param   string  $class      Class name
      * @param   string  $directory  Directory to load from
-     * @return  boolean
+     * @return  bool
      */
     public static function auto_load_lowercase($class, $directory = 'classes')
     {
@@ -606,9 +611,8 @@ class Kohana_Core
      * @param   string  $dir    directory name (views, i18n, classes, extensions, etc.)
      * @param   string  $file   filename with subdirectory
      * @param   string  $ext    extension to search for
-     * @param   boolean $array  return an array of files?
-     * @return  array   a list of files when $array is true
-     * @return  string  single file path
+     * @param   bool $array return an array of files?
+     * @return  string[]|string List of files if $array is true, single file path otherwise.
      */
     public static function find_file($dir, $file, $ext = null, $array = false)
     {
@@ -626,17 +630,17 @@ class Kohana_Core
         // Create a partial path of the filename
         $path = $dir . DIRECTORY_SEPARATOR . $file . $ext;
 
-        if (Kohana::$caching === true AND isset(Kohana::$_files[$path . ($array ? '_array' : '_path')])) {
+        if (Kohana::$caching === true && isset(Kohana::$_files[$path . ($array ? '_array' : '_path')])) {
             // This path has been cached
             return Kohana::$_files[$path . ($array ? '_array' : '_path')];
         }
 
-        if (Kohana::$profiling === true AND class_exists('Profiler', false)) {
+        if (Kohana::$profiling === true && class_exists('Profiler', false)) {
             // Start a new benchmark
             $benchmark = Profiler::start('Kohana', __FUNCTION__);
         }
 
-        if ($array OR $dir === 'config' OR $dir === 'i18n' OR $dir === 'messages') {
+        if ($array || $dir === 'config' || $dir === 'i18n' || $dir === 'messages') {
             // Include paths must be searched in reverse
             $paths = array_reverse(Kohana::$_paths);
 
@@ -716,7 +720,7 @@ class Kohana_Core
                     // Get the file name
                     $filename = $file->getFilename();
 
-                    if ($filename[0] === '.' OR $filename[strlen($filename) - 1] === '~') {
+                    if ($filename[0] === '.' || $filename[strlen($filename) - 1] === '~') {
                         // Skip all hidden files and UNIX backup files
                         continue;
                     }
@@ -780,12 +784,10 @@ class Kohana_Core
      *
      * [ref-var]: https://www.php.net/var_export
      *
-     * @throws  Kohana_Exception
      * @param   string  $name       name of the cache
      * @param   mixed   $data       data to cache
-     * @param   integer $lifetime   number of seconds the cache is valid for
-     * @return  mixed    for getting
-     * @return  boolean  for setting
+     * @param   int $lifetime number of seconds the cache is valid for
+     * @return  mixed|bool The cached data when getting, or a boolean when setting.
      */
     public static function cache($name, $data = null, $lifetime = null)
     {
@@ -802,7 +804,7 @@ class Kohana_Core
 
         if ($data === null) {
             if (is_file($dir . $file)) {
-                if ((time() - filemtime($dir . $file)) < $lifetime) {
+                if (time() - filemtime($dir . $file) < $lifetime) {
                     // Return the cache
                     try {
                         return unserialize(file_get_contents($dir . $file));
@@ -907,8 +909,9 @@ class Kohana_Core
     /**
      * Catches errors that are not caught by the error handler, such as E_PARSE.
      *
-     * @uses    Kohana_Exception::handler
      * @return  void
+     * @throws Kohana_Exception
+     * @uses    Kohana_Exception::handler
      */
     public static function shutdown_handler()
     {
@@ -918,7 +921,7 @@ class Kohana_Core
         }
 
         try {
-            if (Kohana::$caching === true AND Kohana::$_files_changed === true) {
+            if (Kohana::$caching === true && Kohana::$_files_changed === true) {
                 // Write the file path cache
                 Kohana::cache('Kohana::find_file()', Kohana::$_files);
             }
@@ -927,9 +930,9 @@ class Kohana_Core
             Kohana_Exception::handler($e);
         }
 
-        if (Kohana::$errors AND $error = error_get_last() AND in_array($error['type'], Kohana::$shutdown_errors)) {
+        if (Kohana::$errors && ($error = error_get_last()) && in_array($error['type'], Kohana::$shutdown_errors)) {
             // Clean the output buffer
-            ob_get_level() AND ob_clean();
+            ob_get_level() and ob_clean();
 
             // Fake an exception for nice debugging
             Kohana_Exception::handler(new ErrorException($error['message'], $error['type'], 0, $error['file'], $error['line']));

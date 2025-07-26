@@ -14,8 +14,8 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
     /**
      * Compiles an array of JOIN statements into an SQL partial.
      *
-     * @param   object  $db     Database instance
-     * @param   array   $joins  join statements
+     * @param Database $db Database instance
+     * @param array $joins join statements
      * @return  string
      */
     protected function _compile_join(Database $db, array $joins)
@@ -34,7 +34,7 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
      * Compiles an array of conditions into an SQL partial. Used for WHERE
      * and HAVING.
      *
-     * @param object $db Database instance
+     * @param Database $db Database instance
      * @param array $conditions condition statements
      * @return  string
      * @throws Kohana_Exception
@@ -48,7 +48,7 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
             // Process groups of conditions
             foreach ($group as $logic => $condition) {
                 if ($condition === '(') {
-                    if (!empty($sql) AND $last_condition !== '(') {
+                    if (!empty($sql) && $last_condition !== '(') {
                         // Include logic operator
                         $sql .= ' ' . $logic . ' ';
                     }
@@ -57,7 +57,7 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
                 } elseif ($condition === ')') {
                     $sql .= ')';
                 } else {
-                    if (!empty($sql) AND $last_condition !== '(') {
+                    if (!empty($sql) && $last_condition !== '(') {
                         // Add the logic operator
                         $sql .= ' ' . $logic . ' ';
                     }
@@ -69,7 +69,7 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
                         if ($op === '=') {
                             // Convert "val = NULL" to "val IS NULL"
                             $op = 'IS';
-                        } elseif ($op === '!=' OR $op === '<>') {
+                        } elseif ($op === '!=' || $op === '<>') {
                             // Convert "val != NULL" to "val IS NOT NULL"
                             $op = 'IS NOT';
                         }
@@ -78,23 +78,23 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
                     // Database operators are always uppercase
                     $op = strtoupper($op);
 
-                    if ($op === 'BETWEEN' AND is_array($value)) {
+                    if ($op === 'BETWEEN' && is_array($value)) {
                         // BETWEEN always has exactly two arguments
                         list($min, $max) = $value;
 
-                        if ((is_string($min) AND array_key_exists($min, $this->_parameters)) === false) {
+                        if ((is_string($min) && array_key_exists($min, $this->_parameters)) === false) {
                             // Quote the value, it is not a parameter
                             $min = $db->quote($min);
                         }
 
-                        if ((is_string($max) AND array_key_exists($max, $this->_parameters)) === false) {
+                        if ((is_string($max) && array_key_exists($max, $this->_parameters)) === false) {
                             // Quote the value, it is not a parameter
                             $max = $db->quote($max);
                         }
 
                         // Quote the min and max value
                         $value = $min . ' AND ' . $max;
-                    } elseif ((is_string($value) AND array_key_exists($value, $this->_parameters)) === false) {
+                    } elseif ((is_string($value) && array_key_exists($value, $this->_parameters)) === false) {
                         // Quote the value, it is not a parameter
                         $value = $db->quote($value);
                     }
@@ -123,7 +123,7 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
     /**
      * Compiles an array of set values into an SQL partial. Used for UPDATE.
      *
-     * @param object $db Database instance
+     * @param Database $db Database instance
      * @param array $values updated values
      * @return  string
      * @throws Kohana_Exception
@@ -138,7 +138,7 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
             // Quote the column name
             $column = $db->quote_column($column);
 
-            if ((is_string($value) AND array_key_exists($value, $this->_parameters)) === false) {
+            if ((is_string($value) && array_key_exists($value, $this->_parameters)) === false) {
                 // Quote the value, it is not a parameter
                 $value = $db->quote($value);
             }
@@ -152,7 +152,7 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
     /**
      * Compiles an array of GROUP BY columns into an SQL partial.
      *
-     * @param object $db Database instance
+     * @param Database $db Database instance
      * @param array $columns
      * @return  string
      * @throws Kohana_Exception

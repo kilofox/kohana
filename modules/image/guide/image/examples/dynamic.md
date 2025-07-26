@@ -45,7 +45,7 @@ class Controller_Imagefly extends Controller
         $height = (int) $this->request->param('height');
 
         $rendered = false;
-        if ($file AND $width AND $height) {
+        if ($file && $width && $height) {
             $filename = DOCROOT . 'uploads/' . $file . '.jpg';
 
             if (is_file($filename)) {
@@ -73,7 +73,7 @@ class Controller_Imagefly extends Controller
 
         if (
             $this->request->headers('if-none-match')
-            AND (string) $this->request->headers('if-none-match') === $etag_sum
+            && (string) $this->request->headers('if-none-match') === $etag_sum
         ) {
             $this->response->status(304)->headers('Content-Length', '0');
         } else {

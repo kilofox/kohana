@@ -30,8 +30,8 @@ class Kohana_Auth_File extends Auth
      *
      * @param string $username Username
      * @param string $password Password
-     * @param boolean $remember Enable autologin (not supported)
-     * @return  boolean
+     * @param bool $remember Enable autologin (not supported)
+     * @return bool
      * @throws Kohana_Exception
      */
     protected function _login($username, $password, $remember)
@@ -41,7 +41,7 @@ class Kohana_Auth_File extends Auth
             $password = $this->hash($password);
         }
 
-        if (isset($this->_users[$username]) AND $this->_users[$username] === $password) {
+        if (isset($this->_users[$username]) && $this->_users[$username] === $password) {
             // Complete the login
             return $this->complete_login($username);
         }
@@ -54,7 +54,7 @@ class Kohana_Auth_File extends Auth
      * Forces a user to be logged in, without specifying a password.
      *
      * @param   mixed    $username  Username
-     * @return  boolean
+     * @return  bool
      */
     public function force_login($username)
     {
@@ -77,7 +77,7 @@ class Kohana_Auth_File extends Auth
      * Compare password with original (plain text). Works for current (logged in) user
      *
      * @param   string   $password  Password
-     * @return  boolean
+     * @return  bool
      */
     public function check_password($password)
     {
@@ -87,7 +87,7 @@ class Kohana_Auth_File extends Auth
             return false;
         }
 
-        return ($password === $this->password($username));
+        return $password === $this->password($username);
     }
 
 }

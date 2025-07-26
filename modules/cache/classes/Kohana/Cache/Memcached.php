@@ -70,7 +70,7 @@
  *
  * @package    Kohana/Cache
  * @category   Base
- * @author     Tinsh <kilofox2000@gmail.com>
+ * @author     Loong <loong2460@gmail.com>
  * @copyright  (c) 2018 Kohana Group
  * @license    https://kohana.top/license
  */
@@ -167,7 +167,6 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      * @param   string  $id       ID of cache entry.
      * @param   string  $default  Default value to return if cache miss.
      * @return  mixed
-     * @throws  Cache_Exception
      */
     public function get($id, $default = null)
     {
@@ -263,10 +262,9 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      * Increment a given value by the step value supplied.
      * Useful for shared counters and other persistent integer based tracking.
      *
-     * @param   string    ID of cache entry to increment.
-     * @param   int       Step value to increment by.
-     * @return  int
-     * @return  bool
+     * @param string $id ID of cache entry to increment.
+     * @param int $step Step value to increment by.
+     * @return int|bool
      */
     public function increment($id, $step = 1)
     {
@@ -277,10 +275,9 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      * Decrement a given value by the step value supplied.
      * Useful for shared counters and other persistent integer based tracking.
      *
-     * @param   string    ID of cache entry to decrement.
-     * @param   int       Step value to decrement by.
-     * @return  int
-     * @return  bool
+     * @param string $id ID of cache entry to decrement.
+     * @param int $step Step value to decrement by.
+     * @return int|bool
      */
     public function decrement($id, $step = 1)
     {

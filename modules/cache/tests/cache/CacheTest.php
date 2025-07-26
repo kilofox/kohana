@@ -59,7 +59,7 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
      */
     public function test_instance($group, $expected)
     {
-        if ($group == Kohana_CacheTest::BAD_GROUP_DEFINITION) {
+        if ($group === Kohana_CacheTest::BAD_GROUP_DEFINITION) {
             $this->expectException('Cache_Exception');
         }
 
@@ -144,10 +144,10 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
      *
      * @dataProvider provider_config
      *
-     * @param   mixed    key value to set or get
-     * @param   mixed    value to set to key
-     * @param   mixed    expected result from [Cache::config()]
-     * @param   array    expected config within cache
+     * @param mixed $key key value to set or get
+     * @param mixed $value value to set to key
+     * @param mixed $expected_result expected result from [Cache::config()]
+     * @param array $expected_config expected config within cache
      * @return  void
      */
     public function test_config($key, $value, $expected_result, array $expected_config)
@@ -207,8 +207,8 @@ class Kohana_CacheTest extends PHPUnit_Framework_TestCase
      *
      * @dataProvider provider_sanitize_id
      *
-     * @param string    id
-     * @param string    expected
+     * @param string $id id
+     * @param string $expected expected
      * @return  void
      * @throws ReflectionException
      */

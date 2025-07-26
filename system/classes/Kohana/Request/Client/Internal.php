@@ -23,9 +23,10 @@ class Kohana_Request_Client_Internal extends Request_Client
      *
      *     $request->execute();
      *
-     * @param   Request $request
+     * @param Request $request
+     * @param Response $response
      * @return  Response
-     * @throws  Kohana_Exception
+     * @throws Kohana_Exception
      * @uses    [Kohana::$profiling]
      * @uses    [Profiler]
      */
@@ -49,7 +50,7 @@ class Kohana_Request_Client_Internal extends Request_Client
             // Set the benchmark name
             $benchmark = '"' . $request->uri() . '"';
 
-            if ($request !== Request::$initial AND Request::$current) {
+            if ($request !== Request::$initial && Request::$current) {
                 // Add the parent request URI
                 $benchmark .= ' « "' . Request::$current->uri() . '"';
             }

@@ -263,14 +263,12 @@ abstract class Kohana_Session
      *
      *     $session->delete('foo');
      *
-     * @param   string  $key,...    variable name
+     * @param string ...$keys variable name
      * @return  $this
      */
-    public function delete($key)
+    public function delete(...$keys)
     {
-        $args = func_get_args();
-
-        foreach ($args as $key) {
+        foreach ($keys as $key) {
             unset($this->_data[$key]);
         }
 
@@ -335,12 +333,12 @@ abstract class Kohana_Session
      * but not displayed, because sessions are written after output has
      * been sent.
      *
-     * @return  boolean
+     * @return  bool
      * @uses    Kohana::$log
      */
     public function write()
     {
-        if (headers_sent() OR $this->_destroyed) {
+        if (headers_sent() || $this->_destroyed) {
             // Session cannot be written when the headers are sent or when
             // the session has been destroyed
             return false;
@@ -364,7 +362,7 @@ abstract class Kohana_Session
      *
      *     $success = $session->destroy();
      *
-     * @return  boolean
+     * @return bool
      */
     public function destroy()
     {
@@ -383,7 +381,7 @@ abstract class Kohana_Session
      *
      *     $success = $session->restart();
      *
-     * @return  boolean
+     * @return bool
      */
     public function restart()
     {
@@ -458,19 +456,19 @@ abstract class Kohana_Session
     /**
      * Writes the current session.
      *
-     * @return  boolean
+     * @return bool
      */
     abstract protected function _write();
     /**
      * Destroys the current session.
      *
-     * @return  boolean
+     * @return bool
      */
     abstract protected function _destroy();
     /**
      * Restarts the current session.
      *
-     * @return  boolean
+     * @return bool
      */
     abstract protected function _restart();
 }

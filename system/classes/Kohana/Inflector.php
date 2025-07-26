@@ -41,7 +41,7 @@ class Kohana_Inflector
      * case, please report [an issue](http://dev.kohanaphp.com/projects/kohana3/issues).
      *
      * @param string $str word to check
-     * @return  boolean
+     * @return bool
      * @throws Kohana_Exception
      */
     public static function uncountable($str)
@@ -72,7 +72,7 @@ class Kohana_Inflector
      * [!!] Special inflections are defined in `config/inflector.php`.
      *
      * @param string $str word to make singular
-     * @param integer $count count of thing
+     * @param int $count count of thing
      * @return  string
      * @throws Kohana_Exception
      * @uses    Inflector::uncountable
@@ -80,7 +80,7 @@ class Kohana_Inflector
     public static function singular($str, $count = null)
     {
         // $count should always be a float
-        $count = ($count === null) ? 1.0 : (float) $count;
+        $count = $count === null ? 1.0 : (float) $count;
 
         // Do nothing when $count is not 1
         if ($count != 1)
@@ -108,13 +108,13 @@ class Kohana_Inflector
         } elseif (preg_match('/us$/', $str)) {
             // https://en.wikipedia.org/wiki/Plural_form_of_words_ending_in_-us
             // Already singular, do nothing
-        } elseif (preg_match('/[sxz]es$/', $str) OR preg_match('/[^aeioudgkprt]hes$/', $str)) {
+        } elseif (preg_match('/[sxz]es$/', $str) || preg_match('/[^aeioudgkprt]hes$/', $str)) {
             // Remove "es"
             $str = substr($str, 0, -2);
         } elseif (preg_match('/[^aeiou]ies$/', $str)) {
             // Replace "ies" with "y"
             $str = substr($str, 0, -3) . 'y';
-        } elseif (substr($str, -1) === 's' AND substr($str, -2) !== 'ss') {
+        } elseif (substr($str, -1) === 's' && substr($str, -2) !== 'ss') {
             // Remove singular "s"
             $str = substr($str, 0, -1);
         }
@@ -137,7 +137,7 @@ class Kohana_Inflector
      * [!!] Special inflections are defined in `config/inflector.php`.
      *
      * @param string $str word to pluralize
-     * @param integer $count count of thing
+     * @param int $count count of thing
      * @return  string
      * @throws Kohana_Exception
      * @uses    Inflector::uncountable
@@ -145,7 +145,7 @@ class Kohana_Inflector
     public static function plural($str, $count = null)
     {
         // $count should always be a float
-        $count = ($count === null) ? 0.0 : (float) $count;
+        $count = $count === null ? 0.0 : (float) $count;
 
         // Do nothing with singular
         if ($count == 1)
@@ -175,7 +175,7 @@ class Kohana_Inflector
             $str = Inflector::$irregular[$str];
         } elseif (in_array($str, Inflector::$irregular)) {
             // Do nothing
-        } elseif (preg_match('/[sxz]$/', $str) OR preg_match('/[^aeioudgkprt]h$/', $str)) {
+        } elseif (preg_match('/[sxz]$/', $str) || preg_match('/[^aeioudgkprt]h$/', $str)) {
             $str .= 'es';
         } elseif (preg_match('/[^aeiou]y$/', $str)) {
             // Change "y" to "ies"

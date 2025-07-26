@@ -84,7 +84,7 @@ class Kohana_Response implements HTTP_Response
     ];
 
     /**
-     * @var  integer     The response http status
+     * @var int The response http status
      */
     protected $_status = 200;
 
@@ -120,7 +120,7 @@ class Kohana_Response implements HTTP_Response
 
         foreach ($config as $key => $value) {
             if (property_exists($this, $key)) {
-                if ($key == '_header') {
+                if ($key === '_header') {
                     $this->headers($value);
                 } else {
                     $this->$key = $value;
@@ -142,7 +142,7 @@ class Kohana_Response implements HTTP_Response
     /**
      * Gets or sets the body of the response
      *
-     * @return  mixed
+     * @return Kohana_Response|string
      */
     public function body($content = null)
     {
@@ -158,7 +158,7 @@ class Kohana_Response implements HTTP_Response
      * is `HTTP/1.1`.
      *
      * @param   string   $protocol Protocol to set to the request/response
-     * @return  mixed
+     * @return  Kohana_Response|string
      */
     public function protocol($protocol = null)
     {
@@ -184,19 +184,19 @@ class Kohana_Response implements HTTP_Response
      *      // Get the current status
      *      $status = $response->status();
      *
-     * @param integer $status Status to set to this response
-     * @return  mixed
+     * @param int $code Status to set to this response
+     * @return int|Kohana_Response
      * @throws Kohana_Exception
      */
-    public function status($status = null)
+    public function status($code = null)
     {
-        if ($status === null) {
+        if ($code === null) {
             return $this->_status;
-        } elseif (array_key_exists($status, Response::$messages)) {
-            $this->_status = (int) $status;
+        } elseif (array_key_exists($code, Response::$messages)) {
+            $this->_status = (int) $code;
             return $this;
         } else {
-            throw new Kohana_Exception(__METHOD__ . ' unknown status value : :value', [':value' => $status]);
+            throw new Kohana_Exception(__METHOD__ . ' unknown status value : :value', [':value' => $code]);
         }
     }
 
@@ -240,7 +240,7 @@ class Kohana_Response implements HTTP_Response
      * Returns the length of the body for use with
      * content header
      *
-     * @return  integer
+     * @return int
      */
     public function content_length()
     {
@@ -268,7 +268,7 @@ class Kohana_Response implements HTTP_Response
         // Handle the get cookie calls
         if ($key === null)
             return $this->_cookies;
-        elseif (!is_array($key) AND !$value)
+        elseif (!is_array($key) && !$value)
             return Arr::get($this->_cookies, $key);
 
         // Handle the set cookie calls
@@ -318,7 +318,7 @@ class Kohana_Response implements HTTP_Response
     /**
      * Sends the response status and all set headers.
      *
-     * @param boolean $replace replace existing headers
+     * @param bool $replace replace existing headers
      * @param callback $callback function to handle header output
      * @return  mixed
      * @throws Kohana_Exception
@@ -428,7 +428,7 @@ class Kohana_Response implements HTTP_Response
         list($start, $end) = $this->_calculate_byte_range($size);
 
         if (!empty($options['resumable'])) {
-            if ($start > 0 OR $end < ($size - 1)) {
+            if ($start > 0 || $end < $size - 1) {
                 // Partial Content
                 $this->_status = 206;
             }
@@ -441,7 +441,7 @@ class Kohana_Response implements HTTP_Response
         // Set the headers for a download
         $this->_header['content-disposition'] = $disposition . '; filename="' . $download . '"';
         $this->_header['content-type'] = $mime;
-        $this->_header['content-length'] = (string) (($end - $start) + 1);
+        $this->_header['content-length'] = (string) ($end - $start + 1);
 
         if (Request::user_agent('browser') === 'Internet Explorer') {
             // Naturally, IE does not act like a real browser...
@@ -477,7 +477,7 @@ class Kohana_Response implements HTTP_Response
 
         fseek($file, $start);
 
-        while (!feof($file) AND ( $pos = ftell($file)) <= $end) {
+        while (!feof($file) && ($pos = ftell($file)) <= $end) {
             if (connection_aborted())
                 break;
 
@@ -611,7 +611,7 @@ class Kohana_Response implements HTTP_Response
      * Calculates the byte range to use with send_file. If HTTP_RANGE doesn't
      * exist then the complete byte range is returned
      *
-     * @param  integer $size
+     * @param  int $size
      * @return array
      */
     protected function _calculate_byte_range($size)
@@ -643,7 +643,7 @@ class Kohana_Response implements HTTP_Response
         $end = min(abs(intval($end)), $size - 1);
 
         // Keep the start in bounds.
-        $start = ($end < $start) ? 0 : max($start, 0);
+        $start = $end < $start ? 0 : max($start, 0);
 
         return [$start, $end];
     }

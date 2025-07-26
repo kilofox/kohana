@@ -43,6 +43,7 @@
  * @author     Kohana Team
  * @copyright  (c) 2009-2012 Kohana Team
  * @license    https://kohana.top/license
+ * @deprecated 3.5.0
  */
 class Kohana_Cache_Wincache extends Cache
 {
@@ -74,7 +75,6 @@ class Kohana_Cache_Wincache extends Cache
      * @param   string  $id       id of cache to entry
      * @param   string  $default  default value to return if cache miss
      * @return  mixed
-     * @throws  Cache_Exception
      */
     public function get($id, $default = null)
     {
@@ -96,8 +96,8 @@ class Kohana_Cache_Wincache extends Cache
      *
      * @param   string   $id        id of cache entry
      * @param   string   $data      data to set to cache
-     * @param   integer  $lifetime  lifetime in seconds
-     * @return  boolean
+     * @param   int $lifetime lifetime in seconds
+     * @return  bool
      */
     public function set($id, $data, $lifetime = null)
     {
@@ -115,7 +115,7 @@ class Kohana_Cache_Wincache extends Cache
      *     Cache::instance('wincache')->delete('foo');
      *
      * @param   string  $id  id to remove from cache
-     * @return  boolean
+     * @return  bool
      */
     public function delete($id)
     {
@@ -132,7 +132,7 @@ class Kohana_Cache_Wincache extends Cache
      *     // Delete all cache entries in the wincache group
      *     Cache::instance('wincache')->delete_all();
      *
-     * @return  boolean
+     * @return bool
      */
     public function delete_all()
     {

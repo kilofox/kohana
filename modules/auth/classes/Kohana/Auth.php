@@ -78,8 +78,8 @@ abstract class Kohana_Auth
      *
      * @param   string   $username  Username to log in
      * @param   string   $password  Password to check against
-     * @param   boolean  $remember  Enable autologin
-     * @return  boolean
+     * @param   bool $remember Enable autologin
+     * @return  bool
      */
     public function login($username, $password, $remember = false)
     {
@@ -92,9 +92,9 @@ abstract class Kohana_Auth
     /**
      * Log out a user by removing the related session variables.
      *
-     * @param   boolean  $destroy     Completely destroy the session
-     * @param   boolean  $logout_all  Remove all tokens for user
-     * @return  boolean
+     * @param   bool  $destroy     Completely destroy the session
+     * @param   bool  $logout_all  Remove all tokens for user
+     * @return  bool
      */
     public function logout($destroy = false, $logout_all = false)
     {
@@ -118,11 +118,11 @@ abstract class Kohana_Auth
      * specific role.
      *
      * @param   string  $role  role name
-     * @return  mixed
+     * @return  bool
      */
     public function logged_in($role = null)
     {
-        return ($this->get_user() !== null);
+        return $this->get_user() !== null;
     }
 
     /**

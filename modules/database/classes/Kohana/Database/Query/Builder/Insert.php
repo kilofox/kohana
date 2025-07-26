@@ -75,19 +75,15 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
     /**
      * Adds or overwrites values. Multiple value sets can be added.
      *
-     * @param array $values values list
-     * @param   ...
+     * @param array ...$values values list
      * @return  $this
      * @throws Kohana_Exception
      */
-    public function values(array $values)
+    public function values(array ...$values)
     {
         if (!is_array($this->_values)) {
             throw new Kohana_Exception('INSERT INTO ... SELECT statements cannot be combined with INSERT INTO ... VALUES');
         }
-
-        // Get all the passed values
-        $values = func_get_args();
 
         foreach ($values as $value) {
             $this->_values[] = $value;
@@ -99,7 +95,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
     /**
      * Use a sub-query to for the inserted values.
      *
-     * @param object $query Database_Query of SELECT type
+     * @param Database_Query $query Database_Query of SELECT type
      * @return  $this
      * @throws Kohana_Exception
      */
@@ -138,7 +134,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
             $groups = [];
             foreach ($this->_values as $group) {
                 foreach ($group as $offset => $value) {
-                    if ((is_string($value) AND array_key_exists($value, $this->_parameters)) === false) {
+                    if ((is_string($value) && array_key_exists($value, $this->_parameters)) === false) {
                         // Quote the value, it is not a parameter
                         $group[$offset] = $db->quote($value);
                     }

@@ -38,21 +38,21 @@ class Bench_GruberURL extends Codebench
     {
         // Original regex by John Gruber
         preg_match('~\b(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))~', $subject, $matches);
-        return (empty($matches)) ? false : $matches[0];
+        return empty($matches) ? false : $matches[0];
     }
 
     public function bench_daringfireball_v2($subject)
     {
         // Removed outer capturing parentheses, made another pair non-capturing
         preg_match('~\b(?:[\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|(?:[^[:punct:]\s]|/))~', $subject, $matches);
-        return (empty($matches)) ? false : $matches[0];
+        return empty($matches) ? false : $matches[0];
     }
 
     public function bench_daringfireball_v3($subject)
     {
         // Made quantifiers possessive where possible
         preg_match('~\b(?:[\w-]++://?+|www[.])[^\s()<>]+(?:\([\w\d]++\)|(?:[^[:punct:]\s]|/))~', $subject, $matches);
-        return (empty($matches)) ? false : $matches[0];
+        return empty($matches) ? false : $matches[0];
     }
 
 }

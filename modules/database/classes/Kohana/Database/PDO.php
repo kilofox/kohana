@@ -71,9 +71,9 @@ class Kohana_Database_PDO extends Database
      * @param string $name Name of the SQL function to be created or redefined
      * @param callback $step Called for each row of a result set
      * @param callback $final Called after all rows of a result set have been processed
-     * @param integer $arguments Number of arguments that the SQL function takes
+     * @param int $arguments Number of arguments that the SQL function takes
      *
-     * @return  boolean
+     * @return bool
      * @throws Database_Exception
      */
     public function create_aggregate($name, $step, $final, $arguments = -1)
@@ -94,9 +94,9 @@ class Kohana_Database_PDO extends Database
      *
      * @param string $name Name of the SQL function to be created or redefined
      * @param callback $callback Callback which implements the SQL function
-     * @param integer $arguments Number of arguments that the SQL function takes
+     * @param int $arguments Number of arguments that the SQL function takes
      *
-     * @return  boolean
+     * @return bool
      * @throws Database_Exception
      */
     public function create_function($name, $callback, $arguments = -1)
@@ -119,7 +119,7 @@ class Kohana_Database_PDO extends Database
     public function set_charset($charset)
     {
         // Make sure the database is connected
-        $this->_connection OR $this->connect();
+        $this->_connection or $this->connect();
 
         // This SQL-92 syntax is not supported by all drivers
         $this->_connection->exec('SET NAMES ' . $this->quote($charset));

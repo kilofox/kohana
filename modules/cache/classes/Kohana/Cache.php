@@ -11,7 +11,6 @@
  * *  File
  * *  [Memcached](https://www.php.net/manual/en/book.memcached.php)
  * *  [Memcache](https://www.php.net/manual/en/book.memcache.php)
- * *  [Memcached-tags](https://code.google.com/archive/p/memcached-tags/)
  * *  [SQLite](https://www.php.net/manual/en/ref.pdo-sqlite.php)
  *
  * ### Introduction to caching
@@ -171,8 +170,8 @@ abstract class Kohana_Cache
      *     // Get a configuration setting
      *     $servers = $cache->config('servers');
      *
-     * @param   mixed    key to set to array, either array or config path
-     * @param   mixed    value to associate with key
+     * @param mixed $key key to set to array, either array or config path
+     * @param mixed $value value to associate with key
      * @return  mixed
      */
     public function config($key = null, $value = null)
@@ -240,8 +239,8 @@ abstract class Kohana_Cache
      *
      * @param   string   $id        id of cache entry
      * @param   string   $data      data to set to cache
-     * @param   integer  $lifetime  lifetime in seconds
-     * @return  boolean
+     * @param   int $lifetime lifetime in seconds
+     * @return  bool
      */
     abstract public function set($id, $data, $lifetime = 3600);
     /**
@@ -254,7 +253,7 @@ abstract class Kohana_Cache
      *     Cache::instance('memcached')->delete('foo');
      *
      * @param   string  $id  id to remove from cache
-     * @return  boolean
+     * @return  bool
      */
     abstract public function delete($id);
     /**
@@ -270,7 +269,7 @@ abstract class Kohana_Cache
      *     // Delete all cache entries in the memcached group
      *     Cache::instance('memcached')->delete_all();
      *
-     * @return  boolean
+     * @return bool
      */
     abstract public function delete_all();
     /**

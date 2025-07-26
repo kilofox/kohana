@@ -35,7 +35,7 @@ class Kohana_Security
      *
      * This provides a basic, but effective, method of preventing CSRF attacks.
      *
-     * @param boolean $new force a new token to be generated?
+     * @param bool $new force a new token to be generated?
      * @return  string
      * @throws Kohana_Exception
      * @uses    Session::instance
@@ -47,7 +47,7 @@ class Kohana_Security
         // Get the current token
         $token = $session->get(Security::$token_name);
 
-        if ($new === true OR !$token) {
+        if ($new === true || !$token) {
             // Generate a new unique token
             if (function_exists('openssl_random_pseudo_bytes')) {
                 // Generate a random pseudo bytes token if openssl_random_pseudo_bytes is available
@@ -74,7 +74,7 @@ class Kohana_Security
      *     }
      *
      * @param string $token token to check
-     * @return  boolean
+     * @return bool
      * @throws Kohana_Exception
      * @uses    Security::token
      */
@@ -89,12 +89,12 @@ class Kohana_Security
      *
      * @param string $a cryptographic hash
      * @param string $b cryptographic hash
-     * @return boolean
+     * @return bool
      */
     public static function slow_equals($a, $b)
     {
         $diff = strlen($a) ^ strlen($b);
-        for ($i = 0; $i < strlen($a) AND $i < strlen($b); $i++) {
+        for ($i = 0; $i < strlen($a) && $i < strlen($b); $i++) {
             $diff |= ord($a[$i]) ^ ord($b[$i]);
         }
         return $diff === 0;

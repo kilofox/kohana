@@ -7,7 +7,7 @@
  *
  * @package    Kohana
  * @category   Security
- * @author     Tinsh <kilofox2000@gmail.com>
+ * @author     Loong <loong2460@gmail.com>
  * @copyright  (c) 2018 Kohana Group
  * @license    https://kohana.top/license
  */
@@ -80,8 +80,7 @@ abstract class Kohana_Encrypt
      *     $data = $encrypt->decode($data);
      *
      * @param   string  $data   Encoded string to be decrypted.
-     * @return  false   If decryption fails.
-     * @return  string
+     * @return  string|false Decrypted string on success, or false on failure.
      */
     abstract public function decode($data);
 }

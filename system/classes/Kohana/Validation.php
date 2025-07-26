@@ -175,7 +175,7 @@ class Kohana_Validation implements ArrayAccess
      *
      *     // Using closure (anonymous function)
      *     $validation->rule('index', function(Validation $array, $field, $value) {
-     *             if ($value > 6 AND $value < 10) {
+     *             if ($value > 6 && $value < 10) {
      *                 $array->error($field, 'custom');
      *             }
      *         }, [':validation', ':field', ':value']
@@ -195,7 +195,7 @@ class Kohana_Validation implements ArrayAccess
             $params = [':value'];
         }
 
-        if ($field !== true AND ! isset($this->_labels[$field])) {
+        if ($field !== true && !isset($this->_labels[$field])) {
             // Set the field label to the field name
             $this->_labels[$field] = $field;
         }
@@ -255,7 +255,7 @@ class Kohana_Validation implements ArrayAccess
      *          // The data is valid, do something here
      *     }
      *
-     * @return  boolean
+     * @return bool
      * @throws ReflectionException
      */
     public function check()
@@ -319,7 +319,7 @@ class Kohana_Validation implements ArrayAccess
                 list($rule, $params) = $array;
 
                 foreach ($params as $key => $param) {
-                    if (is_string($param) AND array_key_exists($param, $this->_bound)) {
+                    if (is_string($param) && array_key_exists($param, $this->_bound)) {
                         // Replace with bound value
                         $params[$key] = $this->_bound[$param];
                     }
@@ -330,7 +330,7 @@ class Kohana_Validation implements ArrayAccess
 
                 if (is_array($rule)) {
                     // Allows rule('field', [':model', 'some_rule']);
-                    if (is_string($rule[0]) AND array_key_exists($rule[0], $this->_bound)) {
+                    if (is_string($rule[0]) && array_key_exists($rule[0], $this->_bound)) {
                         // Replace with bound value
                         $rule[0] = $this->_bound[$rule[0]];
                     }
@@ -366,10 +366,10 @@ class Kohana_Validation implements ArrayAccess
                 }
 
                 // Ignore return values from rules when the field is empty
-                if (!in_array($rule, $this->_empty_rules) AND ! Valid::not_empty($value))
+                if (!in_array($rule, $this->_empty_rules) && !Valid::not_empty($value))
                     continue;
 
-                if ($passed === false AND $error_name !== false) {
+                if ($passed === false && $error_name !== false) {
                     // Add the rule to the errors
                     $this->error($field, $error_name, $params);
 
@@ -502,13 +502,13 @@ class Kohana_Validation implements ArrayAccess
                 }
             }
 
-            if ($message = Kohana::message($file, "$field.$error") AND is_string($message)) {
+            if (($message = Kohana::message($file, "$field.$error")) && is_string($message)) {
                 // Found a message for this field and error
-            } elseif ($message = Kohana::message($file, "$field.default") AND is_string($message)) {
+            } elseif (($message = Kohana::message($file, "$field.default")) && is_string($message)) {
                 // Found a default message for this field
-            } elseif ($message = Kohana::message($file, $error) AND is_string($message)) {
+            } elseif (($message = Kohana::message($file, $error)) && is_string($message)) {
                 // Found a default message for this error
-            } elseif ($message = Kohana::message('validation', $error) AND is_string($message)) {
+            } elseif (($message = Kohana::message('validation', $error)) && is_string($message)) {
                 // Found a default message for this error
             } else {
                 // No message exists, display the path expected

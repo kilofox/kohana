@@ -18,16 +18,14 @@ class Kohana_Debug
      *     // Displays the type and value of each variable
      *     echo Debug::vars($foo, $bar, $baz);
      *
-     * @param   mixed   $var,...    variable to debug
+     * @param mixed ...$variables variable to debug
      * @return  string
      */
-    public static function vars()
+    public static function vars(...$variables)
     {
-        if (func_num_args() === 0)
+        if (empty($variables)) {
             return '';
-
-        // Get all passed variables
-        $variables = func_get_args();
+        }
 
         $output = [];
         foreach ($variables as $var) {
@@ -43,8 +41,8 @@ class Kohana_Debug
      * Borrows heavily on concepts from the Debug class of [Nette](http://nettephp.com/).
      *
      * @param   mixed   $value              variable to dump
-     * @param   integer $length             maximum length of strings
-     * @param   integer $level_recursion    recursion limit
+     * @param   int $length maximum length of strings
+     * @param   int $level_recursion recursion limit
      * @return  string
      */
     public static function dump($value, $length = 128, $level_recursion = 10)
@@ -56,9 +54,9 @@ class Kohana_Debug
      * Helper for Debug::dump(), handles recursion in arrays and objects.
      *
      * @param   mixed   $var    variable to dump
-     * @param   integer $length maximum length of strings
-     * @param   integer $limit  recursion limit
-     * @param   integer $level  current recursion level (internal usage only!)
+     * @param   int $length maximum length of strings
+     * @param   int $limit recursion limit
+     * @param   int $level current recursion level (internal usage only!)
      * @return  string
      */
     protected static function _dump(& $var, $length = 128, $limit = 10, $level = 0)
@@ -179,7 +177,7 @@ class Kohana_Debug
                 foreach ($array as $key => & $val) {
                     if ($key[0] === "\x00") {
                         // Determine if the access is protected or protected
-                        $access = '<small>' . (($key[1] === '*') ? 'protected' : 'private') . '</small>';
+                        $access = '<small>' . ($key[1] === '*' ? 'protected' : 'private') . '</small>';
 
                         // Remove the access level from the variable name
                         $key = substr($key, strrpos($key, "\x00") + 1);
@@ -237,14 +235,13 @@ class Kohana_Debug
      *     echo Debug::source(__FILE__, __LINE__);
      *
      * @param   string  $file           file to open
-     * @param   integer $line_number    line number to highlight
-     * @param   integer $padding        number of padding lines
-     * @return  string  source of file
-     * @return  false   File is unreadable
+     * @param   int $line_number line number to highlight
+     * @param   int $padding number of padding lines
+     * @return  string|false Source of file if readable, false otherwise.
      */
     public static function source($file, $line_number, $padding = 5)
     {
-        if (!$file OR ! is_readable($file)) {
+        if (!$file || !is_readable($file)) {
             // Continuing will cause errors
             return false;
         }
@@ -317,7 +314,7 @@ class Kohana_Debug
                 continue;
             }
 
-            if (isset($step['file']) AND isset($step['line'])) {
+            if (isset($step['file']) && isset($step['line'])) {
                 // Include the source of this step
                 $source = Debug::source($step['file'], $step['line']);
             }
@@ -342,7 +339,7 @@ class Kohana_Debug
                     $args = [$step['args'][0]];
                 }
             } elseif (isset($step['args'])) {
-                if (!function_exists($step['function']) OR strpos($step['function'], '{closure}') !== false) {
+                if (!function_exists($step['function']) || strpos($step['function'], '{closure}') !== false) {
                     // Introspection on closures or language constructs in a stack trace is impossible
                     $params = null;
                 } else {
@@ -380,10 +377,10 @@ class Kohana_Debug
 
             $output[] = [
                 'function' => $function,
-                'args' => isset($args) ? $args : null,
-                'file' => isset($file) ? $file : null,
-                'line' => isset($line) ? $line : null,
-                'source' => isset($source) ? $source : null,
+                'args' => $args ?? null,
+                'file' => $file ?? null,
+                'line' => $line ?? null,
+                'source' => $source ?? null,
             ];
 
             unset($function, $args, $file, $line, $source);

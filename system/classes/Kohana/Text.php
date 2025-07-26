@@ -54,14 +54,14 @@ class Kohana_Text
      *     $text = Text::limit_words($text);
      *
      * @param   string  $str        phrase to limit words of
-     * @param   integer $limit      number of words to limit to
+     * @param   int $limit number of words to limit to
      * @param   string  $end_char   end character or entity
      * @return  string
      */
     public static function limit_words($str, $limit = 100, $end_char = null)
     {
         $limit = (int) $limit;
-        $end_char = ($end_char === null) ? '…' : $end_char;
+        $end_char = $end_char === null ? '…' : $end_char;
 
         if (trim($str) === '')
             return $str;
@@ -73,7 +73,7 @@ class Kohana_Text
 
         // Only attach the end character if the matched string is shorter
         // than the starting string.
-        return rtrim($matches[0]) . ((strlen($matches[0]) === strlen($str)) ? '' : $end_char);
+        return rtrim($matches[0]) . (strlen($matches[0]) === strlen($str) ? '' : $end_char);
     }
 
     /**
@@ -82,19 +82,19 @@ class Kohana_Text
      *     $text = Text::limit_chars($text);
      *
      * @param   string  $str            phrase to limit characters of
-     * @param   integer $limit          number of characters to limit to
+     * @param   int $limit number of characters to limit to
      * @param   string  $end_char       end character or entity
-     * @param   boolean $preserve_words enable or disable the preservation of words while limiting
+     * @param   bool $preserve_words enable or disable the preservation of words while limiting
      * @return  string
      * @uses    UTF8::strlen
      */
     public static function limit_chars($str, $limit = 100, $end_char = null, $preserve_words = false)
     {
-        $end_char = ($end_char === null) ? '…' : $end_char;
+        $end_char = $end_char === null ? '…' : $end_char;
 
         $limit = (int) $limit;
 
-        if (trim($str) === '' OR UTF8::strlen($str) <= $limit)
+        if (trim($str) === '' || UTF8::strlen($str) <= $limit)
             return $str;
 
         if ($limit <= 0)
@@ -108,7 +108,7 @@ class Kohana_Text
         if (!preg_match('/^.{0,' . $limit . '}\s/us', $str, $matches))
             return $end_char;
 
-        return rtrim($matches[0]) . ((strlen($matches[0]) === strlen($str)) ? '' : $end_char);
+        return rtrim($matches[0]) . (strlen($matches[0]) === strlen($str) ? '' : $end_char);
     }
 
     /**
@@ -121,20 +121,19 @@ class Kohana_Text
      * Note that using multiple iterations of different strings may produce
      * unexpected results.
      *
-     * @param   string  $str,...    strings to alternate between
+     * @param string ...$strings strings to alternate between
      * @return  string
      */
-    public static function alternate()
+    public static function alternate(...$strings)
     {
         static $i;
 
-        if (func_num_args() === 0) {
+        if (empty($strings)) {
             $i = 0;
             return '';
         }
 
-        $args = func_get_args();
-        return $args[($i++ % count($args))];
+        return $strings[($i++ % count($strings))];
     }
 
     /**
@@ -161,7 +160,7 @@ class Kohana_Text
      * as the type.
      *
      * @param   string  $type   a type of pool, or a string of characters to use as the pool
-     * @param   integer $length length of string to return
+     * @param   int $length length of string to return
      * @return  string
      * @uses    UTF8::split
      */
@@ -200,7 +199,7 @@ class Kohana_Text
         }
 
         // Split the pool into an array of characters
-        $pool = ($utf8 === true) ? UTF8::str_split($pool) : str_split($pool);
+        $pool = $utf8 === true ? UTF8::str_split($pool) : str_split($pool);
 
         // Largest pool key
         $max = count($pool) - 1;
@@ -212,7 +211,7 @@ class Kohana_Text
         }
 
         // Make sure alnum strings contain at least one letter and one digit
-        if ($type === 'alnum' AND $length > 1) {
+        if ($type === 'alnum' && $length > 1) {
             if (ctype_alpha($str)) {
                 // Add a random digit
                 $str[mt_rand(0, $length - 1)] = chr(mt_rand(48, 57));
@@ -266,7 +265,7 @@ class Kohana_Text
      * @param   string  $str                    phrase to replace words in
      * @param   array   $badwords               words to replace
      * @param   string  $replacement            replacement string
-     * @param   boolean $replace_partial_words  replace words across word boundaries (space, period, etc.)
+     * @param   bool $replace_partial_words replace words across word boundaries (space, period, etc.)
      * @return  string
      * @uses    UTF8::strlen
      */
@@ -286,7 +285,7 @@ class Kohana_Text
         $regex = '!' . $regex . '!ui';
 
         // if $replacement is a single character: replace each of the characters of the bad word with $replacement
-        if (UTF8::strlen($replacement) == 1) {
+        if (UTF8::strlen($replacement) === 1) {
             return preg_replace_callback($regex, function($matches) use ($replacement) {
                 return str_repeat($replacement, UTF8::strlen($matches[1]));
             }, $str);
@@ -312,7 +311,7 @@ class Kohana_Text
         for ($i = 0, $max = strlen($word); $i < $max; ++$i) {
             foreach ($words as $w) {
                 // Once a difference is found, break out of the loops
-                if (!isset($w[$i]) OR $w[$i] !== $word[$i])
+                if (!isset($w[$i]) || $w[$i] !== $word[$i])
                     break 2;
             }
         }
@@ -404,7 +403,7 @@ class Kohana_Text
      * [!!] This method is not foolproof since it uses regex to parse HTML.
      *
      * @param   string  $str    subject
-     * @param   boolean $br     convert single linebreaks to <br />
+     * @param   bool $br convert single linebreaks to <br />
      * @return  string
      */
     public static function auto_p($str, $br = true)
@@ -456,19 +455,19 @@ class Kohana_Text
      *
      *     echo Text::bytes(filesize($file));
      *
-     * @param   integer $bytes      size in bytes
+     * @param   int $bytes size in bytes
      * @param   string  $force_unit a definitive unit
      * @param   string  $format     the return string format
-     * @param   boolean $si         whether to use SI prefixes or IEC
+     * @param   bool $si whether to use SI prefixes or IEC
      * @return  string
      */
     public static function bytes($bytes, $force_unit = null, $format = null, $si = true)
     {
         // Format string
-        $format = ($format === null) ? '%01.2f %s' : (string) $format;
+        $format = $format === null ? '%01.2f %s' : (string) $format;
 
         // IEC prefixes (binary)
-        if (!$si OR strpos($force_unit, 'i') !== false) {
+        if (!$si || strpos($force_unit, 'i') !== false) {
             $units = ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB'];
             $mod = 1024;
         }
@@ -480,7 +479,7 @@ class Kohana_Text
 
         // Determine unit to use
         if (($power = array_search((string) $force_unit, $units)) === false) {
-            $power = ($bytes > 0) ? floor(log($bytes, $mod)) : 0;
+            $power = $bytes > 0 ? floor(log($bytes, $mod)) : 0;
         }
 
         return sprintf($format, $bytes / pow($mod, $power), $units[$power]);
@@ -495,7 +494,7 @@ class Kohana_Text
      *     // Display: five million, six hundred and thirty-two
      *     echo Text::number(5000632);
      *
-     * @param   integer $number number to format
+     * @param   int $number number to format
      * @return  string
      * @since   3.0.8
      */
@@ -521,7 +520,7 @@ class Kohana_Text
                 $item = '';
 
                 if ($unit < 100) {
-                    if ($last_unit < 100 AND $last_unit >= 20) {
+                    if ($last_unit < 100 && $last_unit >= 20) {
                         $last_item .= '-' . $name;
                     } else {
                         $item = $name;
@@ -613,7 +612,7 @@ class Kohana_Text
             return $data;
         }
 
-        if ($value === 'browser' OR $value == 'version') {
+        if ($value === 'browser' || $value === 'version') {
             // Extra data will be captured
             $info = [];
 

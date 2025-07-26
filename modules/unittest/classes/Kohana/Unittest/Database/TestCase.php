@@ -13,7 +13,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
 {
     /**
      * Make sure PHPUnit backs up globals
-     * @var boolean
+     * @var bool
      */
     protected $backupGlobals = false;
 
@@ -43,6 +43,8 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
      * parent::setUp()
      *
      * @return void
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function setUp()
     {
@@ -60,6 +62,8 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
      * should call parent::tearDown()
      *
      * @return void
+     * @throws Kohana_Exception
+     * @throws ReflectionException
      */
     public function tearDown()
     {
@@ -147,7 +151,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
     /**
      * Check for internet connectivity
      *
-     * @return boolean Whether an internet connection is available
+     * @return bool Whether an internet connection is available
      */
     public function hasInternet()
     {

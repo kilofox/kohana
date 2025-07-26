@@ -6,7 +6,7 @@
  * @group      kohana.cache
  * @group      kohana.cache.memcached
  * @category   Test
- * @author     Tinsh <kilofox2000@gmail.com>
+ * @author     Loong <loong2460@gmail.com>
  * @copyright  (c) 2018 Kohana Group
  * @license    https://kohana.top/license
  */

@@ -12,7 +12,7 @@
  * @category    Tests
  * @author      Kohana Team
  * @author      Samuel Demirdjian <sam@enov.ws>
- * @author      Tinsh <kilofox2000@gmail.com>
+ * @author      Loong <loong2460@gmail.com>
  * @copyright   (c) 2014 Kohana Team
  * @copyright   (c) 2018 Kohana Group
  * @license     https://kohana.top/license

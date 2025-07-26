@@ -158,7 +158,7 @@ abstract class Kohana_Database
      *
      *     $db->disconnect();
      *
-     * @return  boolean
+     * @return bool
      */
     public function disconnect()
     {
@@ -186,13 +186,11 @@ abstract class Kohana_Database
      *     // Make a SELECT query and use "Model_User" for the results
      *     $db->query(Database::SELECT, 'SELECT * FROM users LIMIT 1', 'Model_User');
      *
-     * @param   integer  $type       Database::SELECT, Database::INSERT, etc
+     * @param   int $type Database::SELECT, Database::INSERT, etc
      * @param   string   $sql        SQL query
      * @param   mixed    $as_object  result object class string, true for stdClass, false for assoc array
      * @param   array    $params     object construct parameters for result class
-     * @return  object   Database_Result for SELECT queries
-     * @return  array    list (insert id, row count) for INSERT queries
-     * @return  integer  number of affected rows for all other queries
+     * @return  Database_Result|array|int Database_Result for SELECT queries, list (insert ID, row count) for INSERT queries, number of affected rows for all other queries.
      */
     abstract public function query($type, $sql, $as_object = false, array $params = null);
     /**
@@ -214,7 +212,7 @@ abstract class Kohana_Database
      *      }
      *
      * @param string $mode  transaction mode
-     * @return  boolean
+     * @return bool
      */
     abstract public function begin($mode = null);
     /**
@@ -223,7 +221,7 @@ abstract class Kohana_Database
      *     // Commit the database changes
      *     $db->commit();
      *
-     * @return  boolean
+     * @return bool
      */
     abstract public function commit();
     /**
@@ -232,7 +230,7 @@ abstract class Kohana_Database
      *     // Undo the changes
      *     $db->rollback();
      *
-     * @return  boolean
+     * @return bool
      */
     abstract public function rollback();
 
@@ -243,7 +241,7 @@ abstract class Kohana_Database
      *     $count = $db->count_records('users');
      *
      * @param mixed $table table name string or [query, alias]
-     * @return  integer
+     * @return int
      * @throws Kohana_Exception
      */
     public function count_records($table)
@@ -350,7 +348,7 @@ abstract class Kohana_Database
      *
      * @param   string  $table       table to get columns from
      * @param   string  $like        column to search for
-     * @param   boolean $add_prefix  whether to add the table prefix automatically or not
+     * @param   bool $add_prefix whether to add the table prefix automatically or not
      * @return  array
      */
     abstract public function list_columns($table, $like = null, $add_prefix = true);

@@ -221,7 +221,7 @@ class Kohana_Database_MySQLi extends Database
      * @link http://dev.mysql.com/doc/refman/5.0/en/set-transaction.html
      *
      * @param string $mode Isolation level
-     * @return boolean
+     * @return bool
      * @throws Database_Exception
      */
     public function begin($mode = null)
@@ -229,7 +229,7 @@ class Kohana_Database_MySQLi extends Database
         // Make sure the database is connected
         $this->_connection or $this->connect();
 
-        if ($mode AND !$this->_connection->query("SET TRANSACTION ISOLATION LEVEL $mode")) {
+        if ($mode && !$this->_connection->query("SET TRANSACTION ISOLATION LEVEL $mode")) {
             throw new Database_Exception(':error', [':error' => $this->_connection->error], $this->_connection->errno);
         }
 
@@ -239,7 +239,7 @@ class Kohana_Database_MySQLi extends Database
     /**
      * Commit a SQL transaction
      *
-     * @return boolean
+     * @return bool
      * @throws Database_Exception
      */
     public function commit()
@@ -253,7 +253,7 @@ class Kohana_Database_MySQLi extends Database
     /**
      * Rollback a SQL transaction
      *
-     * @return boolean
+     * @return bool
      * @throws Database_Exception
      */
     public function rollback()
@@ -285,7 +285,7 @@ class Kohana_Database_MySQLi extends Database
     public function list_columns($table, $like = null, $add_prefix = true)
     {
         // Quote the table name
-        $table = ($add_prefix === true) ? $this->quote_table($table) : $table;
+        $table = $add_prefix === true ? $this->quote_table($table) : $table;
 
         if (is_string($like)) {
             // Search for column names
@@ -305,7 +305,7 @@ class Kohana_Database_MySQLi extends Database
             $column['column_name'] = $row['Field'];
             $column['column_default'] = $row['Default'];
             $column['data_type'] = $type;
-            $column['is_nullable'] = ($row['Null'] == 'YES');
+            $column['is_nullable'] = $row['Null'] === 'YES';
             $column['ordinal_position'] = ++$count;
 
             switch ($column['type']) {

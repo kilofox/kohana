@@ -31,7 +31,7 @@ class Kohana_URL
      *     echo URL::base($request);
      *
      * @param mixed $protocol Protocol string, [Request], or boolean
-     * @param boolean $index Add index file to URL?
+     * @param bool $index Add index file to URL?
      * @return  string
      * @throws Kohana_Exception
      * @uses    Request::protocol()
@@ -61,7 +61,7 @@ class Kohana_URL
             $protocol = parse_url($base_url, PHP_URL_SCHEME);
         }
 
-        if ($index === true AND ! empty(Kohana::$index_file)) {
+        if ($index === true && !empty(Kohana::$index_file)) {
             // Add the index file to the URL
             $base_url .= Kohana::$index_file . '/';
         }
@@ -77,7 +77,7 @@ class Kohana_URL
                 $base_url = parse_url($base_url, PHP_URL_PATH);
             } else {
                 // Attempt to use HTTP_HOST and fallback to SERVER_NAME
-                $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME'];
+                $host = $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'];
 
                 // make $host lowercase
                 $host = strtolower($host);
@@ -108,7 +108,7 @@ class Kohana_URL
      *
      * @param string $uri Site URI to convert
      * @param mixed $protocol Protocol string or [Request] class to use protocol from
-     * @param boolean $index Include the index_page in the URL
+     * @param bool $index Include the index_page in the URL
      * @return  string
      * @throws Kohana_Exception
      * @uses    URL::base
@@ -152,7 +152,7 @@ class Kohana_URL
      * [!!] Parameters with a null value are left out.
      *
      * @param   array    $params   Array of GET parameters
-     * @param   boolean  $use_get  Include current request GET parameters
+     * @param   bool $use_get Include current request GET parameters
      * @return  string
      */
     public static function query(array $params = null, $use_get = true)
@@ -176,7 +176,7 @@ class Kohana_URL
         $query = http_build_query($params, '', '&');
 
         // Don't prepend '?' to an empty string
-        return ($query === '') ? '' : ('?' . $query);
+        return $query === '' ? '' : '?' . $query;
     }
 
     /**
@@ -186,7 +186,7 @@ class Kohana_URL
      *
      * @param   string   $title       Phrase to convert
      * @param   string   $separator   Word separator (any single character)
-     * @param   boolean  $ascii_only  Transliterate to ASCII?
+     * @param   bool $ascii_only Transliterate to ASCII?
      * @return  string
      * @uses    UTF8::transliterate_to_ascii
      */

@@ -24,7 +24,7 @@ class Kohana_Request_Client_Stream extends Request_Client_External
      * the response.
      *
      * @param Request $request request to send
-     * @param Response $request response to send
+     * @param Response $response response to send
      * @return  Response
      * @throws Kohana_Exception
      * @uses    [PHP cURL](https://www.php.net/manual/en/book.curl.php)
@@ -32,7 +32,7 @@ class Kohana_Request_Client_Stream extends Request_Client_External
     public function _send_message(Request $request, Response $response)
     {
         // Calculate stream mode
-        $mode = ($request->method() === HTTP_Request::GET) ? 'r' : 'r+';
+        $mode = $request->method() === HTTP_Request::GET ? 'r' : 'r+';
 
         // Process cookies
         if ($cookies = $request->cookie()) {

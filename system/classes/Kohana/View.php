@@ -92,7 +92,7 @@ class Kohana_View
      */
     public static function set_global($key, $value = null)
     {
-        if (is_array($key) OR $key instanceof Traversable) {
+        if (is_array($key) || $key instanceof Traversable) {
             foreach ($key as $name => $value) {
                 View::$_global_data[$name] = $value;
             }
@@ -189,11 +189,11 @@ class Kohana_View
      * [!!] `NULL` variables are not considered to be set by [isset](https://www.php.net/isset).
      *
      * @param   string  $key    variable name
-     * @return  boolean
+     * @return  bool
      */
     public function __isset($key)
     {
-        return (isset($this->_data[$key]) OR isset(View::$_global_data[$key]));
+        return isset($this->_data[$key]) || isset(View::$_global_data[$key]);
     }
 
     /**
@@ -274,7 +274,7 @@ class Kohana_View
      */
     public function set($key, $value = null)
     {
-        if (is_array($key) OR $key instanceof Traversable) {
+        if (is_array($key) || $key instanceof Traversable) {
             foreach ($key as $name => $value) {
                 $this->_data[$name] = $value;
             }
