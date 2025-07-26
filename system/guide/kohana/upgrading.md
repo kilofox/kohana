@@ -20,7 +20,7 @@ certain features may not function as expected.
 
 ### Core
 
-- The `Core::CODENAME` constant was deprecated.
+- The `Kohana::CODENAME` constant was deprecated.
 
 ### Database
 

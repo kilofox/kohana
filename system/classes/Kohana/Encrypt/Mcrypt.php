@@ -21,7 +21,7 @@
  * @package     Kohana
  * @category    Security
  * @author      Kohana Team
- * @author      Tinsh <kilofox2000@gmail.com>
+ * @author      Loong <loong2460@gmail.com>
  * @copyright   (c) 2007-2012 Kohana Team
  * @copyright   (c) 2018 Kohana Group
  * @license     https://kohana.top/license

@@ -114,7 +114,7 @@ class Kohana_Kohana_Exception extends Exception
              * but to bail. Hard.
              */
             // Clean the output buffer if one exists
-            ob_get_level() AND ob_clean();
+            ob_get_level() and ob_clean();
 
             // Set the Status code to 500, and Content-Type to text/plain.
             header('Content-Type: text/plain; charset=' . Kohana::$charset, true, 500);

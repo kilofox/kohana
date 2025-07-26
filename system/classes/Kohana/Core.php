@@ -38,9 +38,12 @@ class Kohana_Core
     const DEVELOPMENT = 40;
 
     /** @var string Security check that is added to all generated PHP files */
-    const FILE_SECURITY = '<?php defined(\'SYSPATH\') OR die(\'No direct script access.\');';
+    const FILE_SECURITY = '<?php defined(\'SYSPATH\') or die(\'No direct script access.\');';
 
-    /** @var string Format of cache files: header, cache name, and data */
+    /**
+     * @var string Format of cache files: header, cache name, and data
+     * @deprecated 3.4.4
+     */
     const FILE_CACHE = ":header \n\n// :name\n\n:data\n";
 
     /**
@@ -75,11 +78,13 @@ class Kohana_Core
 
     /**
      * @var  string  the name of the server Kohana is hosted upon
+     * @deprecated 3.4.4
      */
     public static $server_name = '';
 
     /**
      * @var  array   list of valid host names for this instance
+     * @deprecated 3.4.4
      */
     public static $hostnames = [];
 
@@ -930,7 +935,7 @@ class Kohana_Core
 
         if (Kohana::$errors && ($error = error_get_last()) && in_array($error['type'], Kohana::$shutdown_errors)) {
             // Clean the output buffer
-            ob_get_level() AND ob_clean();
+            ob_get_level() and ob_clean();
 
             // Fake an exception for nice debugging
             Kohana_Exception::handler(new ErrorException($error['message'], $error['type'], 0, $error['file'], $error['line']));
