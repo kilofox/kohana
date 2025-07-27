@@ -801,7 +801,7 @@ class Kohana_Request implements HTTP_Request
                 $this->_controller = $params['controller'];
 
                 // Store the action
-                $this->_action = isset($params['action']) ? $params['action'] : Route::$default_action;
+                $this->_action = $params['action'] ?? Route::$default_action;
 
                 // These are accessible as public vars and can be overloaded
                 unset($params['controller'], $params['action'], $params['directory']);
