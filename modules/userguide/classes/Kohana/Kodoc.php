@@ -101,7 +101,7 @@ class Kohana_Kodoc
     /**
      * Returns an array of all the classes available, built by listing all files in the classes folder.
      *
-     * @param array $list array of files, obtained using Kohana::list_files
+     * @param array|null $list array of files, obtained using Kohana::list_files
      * @return  array   an array of all the class names
      */
     public static function classes(array $list = null)

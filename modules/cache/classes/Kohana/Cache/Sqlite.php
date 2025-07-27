@@ -166,12 +166,12 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
     /**
      * Set a value based on an id. Optionally add tags.
      *
-     * @param   string   $id        id
-     * @param   mixed    $data      data
-     * @param   int $lifetime lifetime [Optional]
-     * @param   array    $tags      tags [Optional]
+     * @param string $id id
+     * @param mixed $data data
+     * @param int|null $lifetime lifetime [Optional]
+     * @param array|null $tags tags [Optional]
      * @return  bool
-     * @throws  Cache_Exception
+     * @throws Cache_Exception
      */
     public function set_with_tags($id, $data, $lifetime = null, array $tags = null)
     {

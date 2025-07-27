@@ -46,8 +46,8 @@ abstract class Kohana_Database
      *     // Create a custom configured instance
      *     $db = Database::instance('custom', $config);
      *
-     * @param string $name instance name
-     * @param array $config configuration parameters
+     * @param string|null $name instance name
+     * @param array|null $config configuration parameters
      * @return  Database
      * @throws Kohana_Exception
      */
@@ -177,6 +177,7 @@ abstract class Kohana_Database
      * @return  void
      */
     abstract public function set_charset($charset);
+
     /**
      * Perform an SQL query of the given type.
      *
@@ -186,10 +187,10 @@ abstract class Kohana_Database
      *     // Make a SELECT query and use "Model_User" for the results
      *     $db->query(Database::SELECT, 'SELECT * FROM users LIMIT 1', 'Model_User');
      *
-     * @param   int $type Database::SELECT, Database::INSERT, etc
-     * @param   string   $sql        SQL query
-     * @param   mixed    $as_object  result object class string, true for stdClass, false for assoc array
-     * @param   array    $params     object construct parameters for result class
+     * @param int $type Database::SELECT, Database::INSERT, etc
+     * @param string $sql SQL query
+     * @param mixed $as_object result object class string, true for stdClass, false for assoc array
+     * @param array|null $params object construct parameters for result class
      * @return  Database_Result|array|int Database_Result for SELECT queries, list (insert ID, row count) for INSERT queries, number of affected rows for all other queries.
      */
     abstract public function query($type, $sql, $as_object = false, array $params = null);

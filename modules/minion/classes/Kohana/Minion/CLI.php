@@ -102,8 +102,8 @@ class Kohana_Minion_CLI
      * // Will only accept the options in the array
      * $ready = Minion_CLI::read('Are you ready?', ['y','n']);
      *
-     * @param  string  $text    text to show user before waiting for input
-     * @param  array   $options array of options the user is shown
+     * @param string $text text to show user before waiting for input
+     * @param array|null $options array of options the user is shown
      * @return string  the user input
      */
     public static function read($text = '', array $options = null)

@@ -293,7 +293,7 @@ class Kohana_Debug
      *     // Displays the entire current backtrace
      *     echo implode('<br/>', Debug::trace());
      *
-     * @param array $trace
+     * @param array|null $trace
      * @return array
      * @throws ReflectionException
      */

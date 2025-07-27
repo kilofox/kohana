@@ -762,9 +762,9 @@ class Kohana_HTTP_Header extends ArrayObject
      * [!!] if you supply a custom header handler via `$callback`, it is
      *  recommended that `$response` is returned
      *
-     * @param HTTP_Response $response header to send
+     * @param HTTP_Response|null $response header to send
      * @param bool $replace replace existing value
-     * @param callback $callback optional callback to replace PHP header function
+     * @param callable|null $callback optional callback to replace PHP header function
      * @return  mixed
      * @throws Kohana_Exception
      * @since   3.2.0

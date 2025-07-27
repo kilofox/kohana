@@ -147,11 +147,12 @@ abstract class Kohana_Request_Client
      * @since   3.2.0
      */
     abstract public function execute_request(Request $request, Response $response);
+
     /**
      * Getter and setter for the internal caching engine,
      * used to cache responses if available and valid.
      *
-     * @param   HTTP_Cache  $cache  engine to use for caching
+     * @param HTTP_Cache|null $cache engine to use for caching
      * @return Cache|Kohana_Request_Client
      */
     public function cache(HTTP_Cache $cache = null)

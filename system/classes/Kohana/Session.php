@@ -90,9 +90,8 @@ abstract class Kohana_Session
      *
      * [!!] Sessions can only be created using the [Session::instance] method.
      *
-     * @param array $config configuration
-     * @param string $id session id
-     * @return  void
+     * @param array|null $config configuration
+     * @param string|null $id session id
      * @throws Session_Exception
      * @uses    Session::read
      */
