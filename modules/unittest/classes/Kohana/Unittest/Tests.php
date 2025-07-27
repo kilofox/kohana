@@ -118,7 +118,7 @@ class Kohana_Unittest_Tests
      * Blacklist a set of files in PHPUnit code coverage
      *
      * @param array $blacklist_items A set of files to blacklist
-     * @param Unittest_TestSuite $suite The test suite
+     * @param Unittest_TestSuite|null $suite The test suite
      */
     static public function blacklist(array $blacklist_items, Unittest_TestSuite $suite = null)
     {
@@ -137,8 +137,8 @@ class Kohana_Unittest_Tests
      * If no directories are provided then the function will load the whitelist
      * set in the config file
      *
-     * @param array $directories Optional directories to whitelist
-     * @param Unittest_Testsuite $suite Suite to load the whitelist into
+     * @param array|null $directories Optional directories to whitelist
+     * @param Unittest_TestSuite|null $suite Suite to load the whitelist into
      */
     static public function whitelist(array $directories = null, Unittest_TestSuite $suite = null)
     {
@@ -200,7 +200,7 @@ class Kohana_Unittest_Tests
      * Recursively whitelists an array of files
      *
      * @param array $files Array of files to whitelist
-     * @param Unittest_TestSuite $suite Suite to load the whitelist into
+     * @param Unittest_TestSuite|null $suite Suite to load the whitelist into
      */
     static protected function set_whitelist($files, Unittest_TestSuite $suite = null)
     {

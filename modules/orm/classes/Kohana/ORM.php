@@ -714,8 +714,8 @@ class Kohana_ORM extends Model implements serializable
      * Set values from an array with support for one-one relationships.  This method should be used
      * for loading in post data, etc.
      *
-     * @param  array $values   Array of column => val
-     * @param  array $expected Array of keys to take from $values
+     * @param array $values Array of column => val
+     * @param array|null $expected Array of keys to take from $values
      * @return Kohana_ORM
      */
     public function values(array $values, array $expected = null)
@@ -1151,7 +1151,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Validates the current model's data
      *
-     * @param Validation $extra_validation Validation object
+     * @param Validation|null $extra_validation Validation object
      * @return Kohana_ORM
      * @throws ORM_Validation_Exception
      * @throws ReflectionException
@@ -1181,7 +1181,7 @@ class Kohana_ORM extends Model implements serializable
 
     /**
      * Insert a new object to the database
-     * @param Validation $validation Validation object
+     * @param Validation|null $validation Validation object
      * @return Kohana_ORM
      * @throws Kohana_Exception
      * @throws ORM_Validation_Exception
@@ -1237,7 +1237,7 @@ class Kohana_ORM extends Model implements serializable
      * Updates a single record or multiple records
      *
      * @chainable
-     * @param Validation $validation Validation object
+     * @param Validation|null $validation Validation object
      * @return Kohana_ORM
      * @throws Kohana_Exception
      * @throws ORM_Validation_Exception
@@ -1300,7 +1300,7 @@ class Kohana_ORM extends Model implements serializable
      * Updates or Creates the record depending on loaded()
      *
      * @chainable
-     * @param Validation $validation Validation object
+     * @param Validation|null $validation Validation object
      * @return Kohana_ORM
      * @throws Kohana_Exception
      * @throws ORM_Validation_Exception

@@ -102,8 +102,8 @@ class Kohana_Database_Query
     /**
      * Returns results as objects
      *
-     * @param   string  $class  classname or true for stdClass
-     * @param   array   $params
+     * @param string|bool $class classname or true for stdClass
+     * @param array|null $params
      * @return  $this
      */
     public function as_object($class = true, array $params = null)

@@ -33,8 +33,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
     /**
      * Sets the initial columns to select from.
      *
-     * @param   array  $columns  column list
-     * @return  void
+     * @param array|null $columns column list
      */
     public function __construct(array $columns = null)
     {

@@ -26,11 +26,10 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
     /**
      * Sets the total number of rows and stores the result locally.
      *
-     * @param   mixed   $result     query result
-     * @param   string  $sql        SQL query
-     * @param   mixed   $as_object
-     * @param   array   $params
-     * @return  void
+     * @param mixed $result query result
+     * @param string $sql SQL query
+     * @param mixed $as_object
+     * @param array|null $params
      */
     public function __construct($result, $sql, $as_object = false, array $params = null)
     {

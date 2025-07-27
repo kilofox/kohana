@@ -31,10 +31,10 @@ class Kohana_Cache_MemcacheTag extends Cache_Memcache implements Cache_Tagging
     /**
      * Set a value based on an id with tags
      *
-     * @param   string   $id        id
-     * @param   mixed    $data      data
-     * @param   int $lifetime lifetime [Optional]
-     * @param   array    $tags      tags [Optional]
+     * @param string $id id
+     * @param mixed $data data
+     * @param int|null $lifetime lifetime [Optional]
+     * @param array|null $tags tags [Optional]
      * @return  bool
      */
     public function set_with_tags($id, $data, $lifetime = null, array $tags = null)
