@@ -319,7 +319,7 @@ class Kohana_Response implements HTTP_Response
      * Sends the response status and all set headers.
      *
      * @param bool $replace replace existing headers
-     * @param callback $callback function to handle header output
+     * @param callable $callback function to handle header output
      * @return  mixed
      * @throws Kohana_Exception
      */
@@ -351,11 +351,11 @@ class Kohana_Response implements HTTP_Response
      *
      * [!!] No further processing can be done after this method is called!
      *
-     * @param   string  $filename   filename with path, or true for the current response
-     * @param   string  $download   downloaded file name
-     * @param   array   $options    additional options
+     * @param string $filename filename with path, or true for the current response
+     * @param string|null $download downloaded file name
+     * @param array|null $options additional options
      * @return  void
-     * @throws  Kohana_Exception
+     * @throws Kohana_Exception
      * @uses    File::mime_by_ext
      * @uses    File::mime
      * @uses    Request::send_headers

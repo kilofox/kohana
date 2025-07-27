@@ -151,8 +151,8 @@ class Kohana_URL
      *
      * [!!] Parameters with a null value are left out.
      *
-     * @param   array    $params   Array of GET parameters
-     * @param   bool $use_get Include current request GET parameters
+     * @param array|null $params Array of GET parameters
+     * @param bool $use_get Include current request GET parameters
      * @return  string
      */
     public static function query(array $params = null, $use_get = true)
@@ -217,7 +217,7 @@ class Kohana_URL
      * or looks for key `trusted_hosts` in `url` config
      *
      * @param string $host
-     * @param array $trusted_hosts
+     * @param array|null $trusted_hosts
      * @return bool true if $host is trustworthy.
      * @throws Kohana_Exception
      */

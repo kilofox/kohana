@@ -22,8 +22,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
      * Set the table and columns for an insert.
      *
      * @param mixed $table table name or [$table, $alias] or object
-     * @param array $columns column names
-     * @return  void
+     * @param array|null $columns column names
      * @throws Kohana_Exception
      */
     public function __construct($table = null, array $columns = null)

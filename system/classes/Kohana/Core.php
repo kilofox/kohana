@@ -186,9 +186,9 @@ class Kohana_Core
      * `boolean` | caching    | Cache file locations to speed up [Kohana::find_file].  This has nothing to do with [Kohana::cache], [Fragments](kohana/fragments) or the [Cache module](cache).  <br /> <br />  Recommended setting: `false` while developing, `true` on production servers. | `false`
      * `boolean` | expose     | Set the X-Powered-By header
      *
-     * @throws  Kohana_Exception
-     * @param   array   $settings   Array of settings.  See above.
+     * @param array|null $settings Array of settings. See above.
      * @return  void
+     * @throws Kohana_Exception
      * @uses    Kohana::globals
      * @uses    Kohana::sanitize
      * @uses    Kohana::cache
@@ -527,7 +527,7 @@ class Kohana_Core
      *
      *     Kohana::modules(['modules/foo', MODPATH . 'bar']);
      *
-     * @param array $modules list of module paths
+     * @param array|null $modules list of module paths
      * @return  array   enabled modules
      * @throws Kohana_Exception
      */
@@ -692,8 +692,8 @@ class Kohana_Core
      *     // Find all view files.
      *     $views = Kohana::list_files('views');
      *
-     * @param   string  $directory  directory name
-     * @param   array   $paths      list of paths to search
+     * @param string|null $directory directory name
+     * @param array|null $paths list of paths to search
      * @return  array
      */
     public static function list_files($directory = null, array $paths = null)

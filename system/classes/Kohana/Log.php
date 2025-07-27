@@ -112,10 +112,10 @@ class Kohana_Log
      *         ':user' => $username,
      *     ]);
      *
-     * @param   string  $level       level of message
-     * @param   string  $message     message body
-     * @param   array   $values      values to replace in the message
-     * @param   array   $additional  additional custom parameters to supply to the log writer
+     * @param string $level level of message
+     * @param string $message message body
+     * @param array|null $values values to replace in the message
+     * @param array|null $additional additional custom parameters to supply to the log writer
      * @return  Kohana_Log
      */
     public function add($level, $message, array $values = null, array $additional = null)

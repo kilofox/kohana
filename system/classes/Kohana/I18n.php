@@ -139,11 +139,11 @@ if (!function_exists('__')) {
      *
      * [!!] The target language is defined by [I18n::$lang].
      *
-     * @uses    I18n::get
-     * @param   string  $string text to translate
-     * @param   array   $values values to replace in the translated text
-     * @param   string  $lang   source language
+     * @param string $string text to translate
+     * @param array|null $values values to replace in the translated text
+     * @param string $lang source language
      * @return  string
+     * @uses    I18n::get
      */
     function __($string, array $values = null, $lang = 'en-us')
     {

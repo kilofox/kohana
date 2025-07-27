@@ -22,8 +22,8 @@ class Kohana_View
      *
      *     $view = View::factory($file);
      *
-     * @param string $file view filename
-     * @param array $data array of values
+     * @param string|null $file view filename
+     * @param array|null $data array of values
      * @return  View
      * @throws View_Exception
      */
@@ -127,8 +127,8 @@ class Kohana_View
      *
      *     $view = new View($file);
      *
-     * @param string $file view filename
-     * @param array $data array of values
+     * @param string|null $file view filename
+     * @param array|null $data array of values
      * @throws View_Exception
      * @uses    View::set_filename
      */

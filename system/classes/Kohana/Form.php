@@ -27,7 +27,7 @@ class Kohana_Form
      *     echo Form::open(null, ['enctype' => 'multipart/form-data']);
      *
      * @param mixed $action form action, defaults to the current request URI, or [Request] class to use
-     * @param array $attributes HTML attributes
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @throws Kohana_Exception
      * @uses    URL::site
@@ -81,9 +81,9 @@ class Kohana_Form
      *
      *     echo Form::input('username', $username);
      *
-     * @param   string  $name       input name
-     * @param   string  $value      input value
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param string|null $value input value
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    HTML::attributes
      */
@@ -108,9 +108,9 @@ class Kohana_Form
      *
      *     echo Form::hidden('csrf', $token);
      *
-     * @param   string  $name       input name
-     * @param   string  $value      input value
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param string|null $value input value
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -126,9 +126,9 @@ class Kohana_Form
      *
      *     echo Form::password('password');
      *
-     * @param   string  $name       input name
-     * @param   string  $value      input value
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param string|null $value input value
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -144,8 +144,8 @@ class Kohana_Form
      *
      *     echo Form::file('image');
      *
-     * @param   string  $name       input name
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -161,10 +161,10 @@ class Kohana_Form
      *
      *     echo Form::checkbox('remember_me', 1, (bool) $remember);
      *
-     * @param   string  $name       input name
-     * @param   string  $value      input value
-     * @param   bool $checked checked status
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param string|null $value input value
+     * @param bool $checked checked status
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -186,10 +186,10 @@ class Kohana_Form
      *     echo Form::radio('like_cats', 1, $cats);
      *     echo Form::radio('like_cats', 0, !$cats);
      *
-     * @param   string  $name       input name
-     * @param   string  $value      input value
-     * @param   bool $checked checked status
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param string|null $value input value
+     * @param bool $checked checked status
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -210,10 +210,10 @@ class Kohana_Form
      *
      *     echo Form::textarea('about', $about);
      *
-     * @param   string  $name           textarea name
-     * @param   string  $body           textarea body
-     * @param   array   $attributes     HTML attributes
-     * @param   bool $double_encode encode existing HTML characters
+     * @param string $name textarea name
+     * @param string $body textarea body
+     * @param array|null $attributes HTML attributes
+     * @param bool $double_encode encode existing HTML characters
      * @return  string
      * @uses    HTML::attributes
      * @uses    HTML::chars
@@ -236,10 +236,10 @@ class Kohana_Form
      *
      * [!!] Support for multiple selected options was added in v3.0.7.
      *
-     * @param   string  $name       input name
-     * @param   array   $options    available options
-     * @param   mixed   $selected   selected option string, or an array of selected options
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param array|null $options available options
+     * @param mixed $selected selected option string, or an array of selected options
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    HTML::attributes
      */
@@ -324,9 +324,9 @@ class Kohana_Form
      *
      *     echo Form::submit(null, 'Login');
      *
-     * @param   string  $name       input name
-     * @param   string  $value      input value
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param string $value input value
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
@@ -344,7 +344,7 @@ class Kohana_Form
      *
      * @param string $name input name
      * @param string $value input value
-     * @param array $attributes HTML attributes
+     * @param array|null $attributes HTML attributes
      * @param bool $index add index file to URL?
      * @return  string
      * @throws Kohana_Exception
@@ -370,9 +370,9 @@ class Kohana_Form
      *
      *     echo Form::button('save', 'Save Profile', ['type' => 'submit']);
      *
-     * @param   string  $name       input name
-     * @param   string  $body       input value
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param string $body input value
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    HTML::attributes
      */
@@ -389,9 +389,9 @@ class Kohana_Form
      *
      *     echo Form::label('username', 'Username');
      *
-     * @param   string  $input      target input
-     * @param   string  $text       label text
-     * @param   array   $attributes HTML attributes
+     * @param string $input target input
+     * @param string|null $text label text
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    HTML::attributes
      */

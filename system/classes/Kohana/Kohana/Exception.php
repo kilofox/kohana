@@ -41,11 +41,10 @@ class Kohana_Kohana_Exception extends Exception
      *
      *     throw new Kohana_Exception('Something went terrible wrong, :user', [':user' => $user]);
      *
-     * @param   string          $message    error message
-     * @param   array           $variables  translation variables
-     * @param   int|string $code the exception code
-     * @param   Exception       $previous   Previous exception
-     * @return  void
+     * @param string $message error message
+     * @param array|null $variables translation variables
+     * @param int|string $code the exception code
+     * @param Exception|null $previous Previous exception
      */
     public function __construct($message = "", array $variables = null, $code = 0, Exception $previous = null)
     {
