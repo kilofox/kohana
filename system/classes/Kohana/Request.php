@@ -444,8 +444,8 @@ class Kohana_Request implements HTTP_Request
      *
      *     $accept = Request::_parse_accept($header, $defaults);
      *
-     * @param   string   $header   Header to parse
-     * @param   array    $accepts  Default values
+     * @param string $header Header to parse
+     * @param array|null $accepts Default values
      * @return  array
      */
     protected static function _parse_accept(& $header, array $accepts = null)

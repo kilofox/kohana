@@ -5,9 +5,10 @@ abstract class Kohana_HTTP_Exception extends Kohana_Exception
     /**
      * Creates an HTTP_Exception of the specified type.
      *
-     * @param   int $code the http status code
-     * @param   string  $message    status message, custom content to display with error
-     * @param   array   $variables  translation variables
+     * @param int $code the http status code
+     * @param string|null $message status message, custom content to display with error
+     * @param array|null $variables translation variables
+     * @param Exception|null $previous
      * @return  HTTP_Exception
      */
     public static function factory($code, $message = null, array $variables = null, Exception $previous = null)
@@ -32,9 +33,9 @@ abstract class Kohana_HTTP_Exception extends Kohana_Exception
      *
      *     throw new Kohana_Exception('Something went terrible wrong, :user', [':user' => $user]);
      *
-     * @param   string  $message    status message, custom content to display with error
-     * @param   array   $variables  translation variables
-     * @return  void
+     * @param string|null $message status message, custom content to display with error
+     * @param array|null $variables translation variables
+     * @param Exception|null $previous
      */
     public function __construct($message = null, array $variables = null, Exception $previous = null)
     {
@@ -44,7 +45,7 @@ abstract class Kohana_HTTP_Exception extends Kohana_Exception
     /**
      * Store the Request that triggered this exception.
      *
-     * @param   Request   $request  Request object that triggered this exception.
+     * @param Request|null $request Request object that triggered this exception.
      * @return  Kohana_HTTP_Exception|Request
      */
     public function request(Request $request = null)

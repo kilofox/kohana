@@ -29,8 +29,8 @@ abstract class Kohana_Encrypt
      *
      *     $encrypt = Encrypt::instance();
      *
-     * @param string $name configuration group name
-     * @param array $config configuration options
+     * @param string|null $name configuration group name
+     * @param array|null $config configuration options
      * @return  Encrypt
      * @throws Kohana_Exception
      */

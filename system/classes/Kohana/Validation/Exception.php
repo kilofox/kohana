@@ -15,10 +15,11 @@ class Kohana_Validation_Exception extends Kohana_Exception
     public $array;
 
     /**
-     * @param  Validation   $array      Validation object
-     * @param  string       $message    error message
-     * @param  array        $values     translation variables
-     * @param  int          $code       the exception code
+     * @param Validation $array Validation object
+     * @param string $message error message
+     * @param array|null $values translation variables
+     * @param int $code the exception code
+     * @param Exception|null $previous
      */
     public function __construct(Validation $array, $message = 'Failed to validate array', array $values = null, $code = 0, Exception $previous = null)
     {

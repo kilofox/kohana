@@ -95,8 +95,8 @@ class Kohana_HTML
      *     echo HTML::anchor('/user/profile', 'My Profile');
      *
      * @param string $uri URL or URI string
-     * @param string $title link text
-     * @param array $attributes HTML anchor attributes
+     * @param string|null $title link text
+     * @param array|null $attributes HTML anchor attributes
      * @param mixed $protocol protocol to pass to URL::base()
      * @param bool $index include the index page
      * @return  string
@@ -140,8 +140,8 @@ class Kohana_HTML
      *     echo HTML::file_anchor('media/doc/user_guide.pdf', 'User Guide');
      *
      * @param string $file name of file to link to
-     * @param string $title link text
-     * @param array $attributes HTML anchor attributes
+     * @param string|null $title link text
+     * @param array|null $attributes HTML anchor attributes
      * @param mixed $protocol protocol to pass to URL::base()
      * @param bool $index include the index page
      * @return  string
@@ -168,9 +168,9 @@ class Kohana_HTML
      *
      *     echo HTML::mailto($address);
      *
-     * @param   string  $email      email address to send to
-     * @param   string  $title      link text
-     * @param   array   $attributes HTML anchor attributes
+     * @param string $email email address to send to
+     * @param string|null $title link text
+     * @param array|null $attributes HTML anchor attributes
      * @return  string
      * @uses    HTML::attributes
      */
@@ -190,7 +190,7 @@ class Kohana_HTML
      *     echo HTML::style('media/css/screen.css');
      *
      * @param string $file file name
-     * @param array $attributes default attributes
+     * @param array|null $attributes default attributes
      * @param mixed $protocol protocol to pass to URL::base()
      * @param bool $index include the index page
      * @return  string
@@ -223,7 +223,7 @@ class Kohana_HTML
      *     echo HTML::script('media/js/jquery.min.js');
      *
      * @param string $file file name
-     * @param array $attributes default attributes
+     * @param array|null $attributes default attributes
      * @param mixed $protocol protocol to pass to URL::base()
      * @param bool $index include the index page
      * @return  string
@@ -253,7 +253,7 @@ class Kohana_HTML
      *     echo HTML::image('media/img/logo.png', ['alt' => 'My Company']);
      *
      * @param string $file file name
-     * @param array $attributes default attributes
+     * @param array|null $attributes default attributes
      * @param mixed $protocol protocol to pass to URL::base()
      * @param bool $index include the index page
      * @return  string
@@ -280,7 +280,7 @@ class Kohana_HTML
      *
      *     echo '<div'.HTML::attributes($attrs).'>'.$content.'</div>';
      *
-     * @param   array   $attributes attribute list
+     * @param array|null $attributes attribute list
      * @return  string
      */
     public static function attributes(array $attributes = null)

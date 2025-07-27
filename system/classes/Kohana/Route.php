@@ -187,7 +187,7 @@ class Kohana_Route
      *     echo URL::site(Route::get($name)->uri($params), $protocol);
      *
      * @param string $name route name
-     * @param array $params URI parameters
+     * @param array|null $params URI parameters
      * @param mixed $protocol protocol string or boolean, adds protocol and domain
      * @return  string
      * @throws Kohana_Exception
@@ -317,7 +317,7 @@ class Kohana_Route
      *
      * If no parameter is passed, this method will act as a getter.
      *
-     * @param   array   $defaults   key values
+     * @param array|null $defaults key values
      * @return array|Kohana_Route
      */
     public function defaults(array $defaults = null)
@@ -458,9 +458,9 @@ class Kohana_Route
      *         'id' => '10'
      *     ]);
      *
-     * @param   array   $params URI parameters
+     * @param array|null $params URI parameters
      * @return  string
-     * @throws  Kohana_Exception
+     * @throws Kohana_Exception
      * @uses    Route::REGEX_GROUP
      * @uses    Route::REGEX_KEY
      */

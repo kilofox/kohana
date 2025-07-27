@@ -145,8 +145,8 @@ class Kohana_HTMLTest extends Unittest_TestCase
      * @dataProvider  provider_script
      * @param string $expected Expected output
      * @param string $file URL to script
-     * @param array $attributes HTML attributes for the anchor
-     * @param string $protocol Protocol to use
+     * @param array|null $attributes HTML attributes for the anchor
+     * @param string|null $protocol Protocol to use
      * @param bool $index Should the index file be included in URL?
      * @throws Kohana_Exception
      */
@@ -225,8 +225,8 @@ class Kohana_HTMLTest extends Unittest_TestCase
      * @dataProvider  provider_style
      * @param string $expected The expected output
      * @param string $file The file to link to
-     * @param array $attributes Any extra attributes for the link
-     * @param string $protocol Protocol to use
+     * @param array|null $attributes Any extra attributes for the link
+     * @param string|null $protocol Protocol to use
      * @param bool $index Whether the index file should be added to the link
      * @throws Kohana_Exception
      */

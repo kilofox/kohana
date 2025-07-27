@@ -183,9 +183,9 @@ class Kohana_Validation implements ArrayAccess
      *
      * [!!] Errors must be added manually when using closures!
      *
-     * @param   string      $field  field name
-     * @param   callback    $rule   valid PHP callback or closure
-     * @param   array       $params extra parameters for the rule
+     * @param string $field field name
+     * @param callable $rule valid PHP callback or closure
+     * @param array|null $params extra parameters for the rule
      * @return  $this
      */
     public function rule($field, $rule, array $params = null)
@@ -403,9 +403,9 @@ class Kohana_Validation implements ArrayAccess
     /**
      * Add an error to a field.
      *
-     * @param   string  $field  field name
-     * @param   string  $error  error message
-     * @param   array   $params
+     * @param string $field field name
+     * @param string $error error message
+     * @param array|null $params
      * @return  $this
      */
     public function error($field, $error, array $params = null)
