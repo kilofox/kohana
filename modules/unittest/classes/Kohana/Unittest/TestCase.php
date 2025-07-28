@@ -4,7 +4,7 @@
  * A version of the stock PHPUnit testcase that includes some extra helpers
  * and default settings
  */
-abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
+abstract class Kohana_Unittest_TestCase extends PHPUnit\Framework\TestCase
 {
     /**
      * Make sure PHPUnit backs up globals
@@ -115,7 +115,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
      */
     public static function assertTag($matcher, $actual, $message = '', $isHtml = true)
     {
-        $dom = PHPUnit_Util_XML::load($actual, $isHtml);
+        $dom = PHPUnit\Util\XML::load($actual, $isHtml);
         $tags = self::findNodes($dom, $matcher, $isHtml);
         $matched = count($tags) > 0 && $tags[0] instanceof DOMNode;
 
@@ -140,7 +140,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit_Framework_TestCase
      */
     public static function assertNotTag($matcher, $actual, $message = '', $isHtml = true)
     {
-        $dom = PHPUnit_Util_XML::load($actual, $isHtml);
+        $dom = PHPUnit\Util\XML::load($actual, $isHtml);
         $tags = static::findNodes($dom, $matcher, $isHtml);
         $matched = count($tags) > 0 && $tags[0] instanceof DOMNode;
 

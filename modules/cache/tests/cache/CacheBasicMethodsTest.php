@@ -9,7 +9,7 @@
  * @copyright  (c) 2009-2012 Kohana Team
  * @license    https://kohana.top/license
  */
-abstract class Kohana_CacheBasicMethodsTest extends PHPUnit_Framework_TestCase
+abstract class Kohana_CacheBasicMethodsTest extends PHPUnit\Framework\TestCase
 {
     /**
      * @var     Cache driver for this test

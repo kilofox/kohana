@@ -9,7 +9,7 @@
  * @copyright  (c) 2008-2013 Kohana Team
  * @license    https://kohana.top/license
  */
-class Kohana_KodocTest extends PHPUnit_Framework_TestCase
+class Kohana_KodocTest extends PHPUnit\Framework\TestCase
 {
     public function provider_parse_basic()
     {

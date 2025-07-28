@@ -9,7 +9,7 @@
  * @copyright  (c) 2009-2012 Kohana Team
  * @license    http://https://kohana.top/license
  */
-class Kohana_ImageTest extends PHPUnit_Framework_TestCase
+class Kohana_ImageTest extends PHPUnit\Framework\TestCase
 {
     protected function setUp()
     {

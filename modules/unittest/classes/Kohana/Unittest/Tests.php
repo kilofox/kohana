@@ -56,7 +56,7 @@ class Kohana_Unittest_Tests
     {
         static $suite = null;
 
-        if ($suite instanceof PHPUnit_Framework_TestSuite) {
+        if ($suite instanceof PHPUnit\Framework\TestSuite) {
             return $suite;
         }
 

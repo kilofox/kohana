@@ -9,7 +9,7 @@
  * @copyright  (c) 2009-2012 Kohana Team
  * @license    https://kohana.top/license
  */
-class Kohana_CacheTest extends PHPUnit_Framework_TestCase
+class Kohana_CacheTest extends PHPUnit\Framework\TestCase
 {
     const BAD_GROUP_DEFINITION = 1010;
     const EXPECT_SELF = 1001;
