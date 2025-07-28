@@ -93,7 +93,6 @@ abstract class Kohana_Request_Client_External extends Request_Client
      * @param   Request   $request   A request object
      * @param   Response  $response  A response object
      * @return  Response
-     * @throws  Kohana_Exception
      * @uses    [Kohana::$profiling]
      * @uses    [Profiler]
      */

@@ -72,7 +72,6 @@ abstract class Kohana_HTTP_Exception_Expected extends HTTP_Exception
      * Generate a Response for the current Exception
      *
      * @return Response
-     * @throws Kohana_Exception
      * @uses   Kohana_Exception::response()
      */
     public function get_response()
