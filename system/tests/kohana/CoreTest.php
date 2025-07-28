@@ -172,7 +172,6 @@ class Kohana_CoreTest extends Unittest_TestCase
      * @param string $key Key to cache/get for Kohana::cache
      * @param mixed $value Output from Kohana::cache
      * @param int $lifetime Lifetime for Kohana::cache
-     * @throws Kohana_Exception
      */
     public function test_cache($key, $value, $lifetime)
     {

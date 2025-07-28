@@ -32,13 +32,10 @@ interface Kohana_HTTP_Request extends HTTP_Message
      * @return  mixed
      */
     public function method($method = null);
+
     /**
-     * Gets the URI of this request, optionally allows setting
-     * of [Route] specific parameters during the URI generation.
-     * If no parameters are passed, the request will use the
-     * default values defined in the Route.
+     * Gets the URI of this request.
      *
-     * @param   array    $params  Optional parameters to include in URI generation
      * @return  string
      */
     public function uri();
