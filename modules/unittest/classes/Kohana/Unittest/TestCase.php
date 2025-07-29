@@ -115,7 +115,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit\Framework\TestCase
      */
     public static function assertTag($matcher, $actual, $message = '', $isHtml = true)
     {
-        $dom = PHPUnit\Util\XML::load($actual, $isHtml);
+        $dom = PHPUnit\Util\Xml::load($actual, $isHtml);
         $tags = self::findNodes($dom, $matcher, $isHtml);
         $matched = count($tags) > 0 && $tags[0] instanceof DOMNode;
 
@@ -140,7 +140,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit\Framework\TestCase
      */
     public static function assertNotTag($matcher, $actual, $message = '', $isHtml = true)
     {
-        $dom = PHPUnit\Util\XML::load($actual, $isHtml);
+        $dom = PHPUnit\Util\Xml::load($actual, $isHtml);
         $tags = static::findNodes($dom, $matcher, $isHtml);
         $matched = count($tags) > 0 && $tags[0] instanceof DOMNode;
 
