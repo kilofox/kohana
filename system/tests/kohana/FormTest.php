@@ -71,17 +71,17 @@ class Kohana_FormTest extends Unittest_TestCase
         $tag = Form::open($action, $attributes);
 
         $matcher = [
-            'tag' => 'form',
-            // Default attributes
-            'attributes' => [
-                'method' => 'post',
-                'accept-charset' => 'utf-8',
-            ],
+            'method' => 'post',
+            'accept-charset' => 'utf-8',
         ];
+        $matcher = $expected + $matcher;
 
-        $matcher['attributes'] = $expected + $matcher['attributes'];
+        $selector = 'form';
+        foreach ($matcher as $attr => $val) {
+            $selector .= '[' . $attr . ($val !== null ? '="' . $val . '"' : '') . ']';
+        }
 
-        $this->assertTag($matcher, $tag);
+        $this->assertSelectEquals($selector, null, true, $tag);
     }
 
     /**
@@ -102,11 +102,10 @@ class Kohana_FormTest extends Unittest_TestCase
     public function provider_input()
     {
         return [
-            // $value, $result
-            ['input', 'foo', 'bar', null, 'input'],
-            ['input', 'foo', null, null, 'input'],
-            ['hidden', 'foo', 'bar', null, 'hidden'],
-            ['password', 'foo', 'bar', null, 'password'],
+            ['input', 'foo', 'bar', null],
+            ['input', 'foo', null, null],
+            ['hidden', 'foo', 'bar', null],
+            ['password', 'foo', 'bar', null],
         ];
     }
 
@@ -122,29 +121,31 @@ class Kohana_FormTest extends Unittest_TestCase
      */
     public function test_input($type, $name, $value, $attributes)
     {
-        $matcher = [
-            'tag' => 'input',
-            'attributes' => ['name' => $name, 'type' => $type]
-        ];
+        $matcher = ['name' => $name, 'type' => $type];
 
         // Form::input creates a text input
         if ($type === 'input') {
-            $matcher['attributes']['type'] = 'text';
+            $matcher['type'] = 'text';
         }
 
         // null just means no value
         if ($value !== null) {
-            $matcher['attributes']['value'] = $value;
+            $matcher['value'] = $value;
         }
 
         // Add on any attributes
         if (is_array($attributes)) {
-            $matcher['attributes'] = $attributes + $matcher['attributes'];
+            $matcher = $attributes + $matcher;
+        }
+
+        $selector = 'input';
+        foreach ($matcher as $attr => $val) {
+            $selector .= '[' . $attr . ($val !== null ? '="' . $val . '"' : '') . ']';
         }
 
         $tag = Form::$type($name, $value, $attributes);
 
-        $this->assertTag($matcher, $tag, $tag);
+        $this->assertSelectEquals($selector,null, true, $tag);
     }
 
     /**
@@ -205,25 +206,28 @@ class Kohana_FormTest extends Unittest_TestCase
      */
     public function test_check($type, $name, $value, $checked, $attributes)
     {
-        $matcher = [
-            'tag' => 'input',
-            'attributes' => ['name' => $name, 'type' => $type]
-        ];
+        $matcher = ['name' => $name, 'type' => $type];
 
         if ($value !== null) {
-            $matcher['attributes']['value'] = $value;
+            $matcher['value'] = $value;
         }
 
         if (is_array($attributes)) {
-            $matcher['attributes'] = $attributes + $matcher['attributes'];
+            $matcher = $attributes + $matcher;
         }
 
         if ($checked === true) {
-            $matcher['attributes']['checked'] = 'checked';
+            $matcher['checked'] = 'checked';
+        }
+
+        $selector = 'input';
+        foreach ($matcher as $attr => $val) {
+            $selector .= '[' . $attr . ($val !== null ? '="' . $val . '"' : '') . ']';
         }
 
         $tag = Form::$type($name, $value, $checked, $attributes);
-        $this->assertTag($matcher, $tag, $tag);
+
+        $this->assertSelectEquals($selector,null, true, $tag);
     }
 
     /**
@@ -234,7 +238,6 @@ class Kohana_FormTest extends Unittest_TestCase
     public function provider_text()
     {
         return [
-            // $value, $result
             ['textarea', 'foo', 'bar', null],
             ['textarea', 'foo', 'bar', ['rows' => 20, 'cols' => 20]],
             ['button', 'foo', 'bar', null],
@@ -255,26 +258,20 @@ class Kohana_FormTest extends Unittest_TestCase
      */
     public function test_text($type, $name, $body, $attributes)
     {
-        $matcher = [
-            'tag' => $type,
-            'attributes' => [],
-            'content' => $body,
-        ];
-
-        if ($type !== 'label') {
-            $matcher['attributes'] = ['name' => $name];
-        } else {
-            $matcher['attributes'] = ['for' => $name];
-        }
-
+        $matcher = $type !== 'label' ? ['name' => $name] : ['for' => $name];
 
         if (is_array($attributes)) {
-            $matcher['attributes'] = $attributes + $matcher['attributes'];
+            $matcher = $attributes + $matcher;
+        }
+
+        $selector = $type;
+        foreach ($matcher as $attr => $val) {
+            $selector .= '[' . $attr . ($val !== null ? '="' . $val . '"' : '') . ']';
         }
 
         $tag = Form::$type($name, $body, $attributes);
 
-        $this->assertTag($matcher, $tag, $tag);
+        $this->assertSelectEquals($selector, $body, true, $tag);
     }
 
     /**
@@ -350,12 +347,7 @@ class Kohana_FormTest extends Unittest_TestCase
     public function provider_submit()
     {
         return [
-            // $value, $result
-            [
-                'foo',
-                'Foobar!',
-                '<input type="submit" name="foo" value="Foobar!" />'
-            ],
+            ['foo', 'Foobar!'],
         ];
     }
 
@@ -368,18 +360,20 @@ class Kohana_FormTest extends Unittest_TestCase
      * @param string $value
      * @param string $expected Output for Form::submit
      */
-    public function test_submit($name, $value, $expected)
+    public function test_submit($name, $value)
     {
         $matcher = [
-            'tag' => 'input',
-            'attributes' => [
-                'name' => $name,
-                'type' => 'submit',
-                'value' => $value
-            ]
+            'name' => $name,
+            'type' => 'submit',
+            'value' => $value
         ];
 
-        $this->assertTag($matcher, Form::submit($name, $value));
+        $selector = 'input';
+        foreach ($matcher as $attr => $val) {
+            $selector .= '[' . $attr . ($val !== null ? '="' . $val . '"' : '') . ']';
+        }
+
+        $this->assertSelectEquals($selector, null, true, Form::submit($name, $value));
     }
 
     /**
