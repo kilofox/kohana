@@ -35,7 +35,7 @@
         "ext-apcu": "*",
         "ext-imagick": ">=3.6",
         "ext-memcached": "*",
-        "phpunit/phpunit": "^5.7",
-        "phpunit/phpunit-dom-assertions": "^0.1.0"
+        "phpunit/phpunit": "^7.5",
+        "phpunit/phpunit-dom-assertions": "^2.6.0"
     }
 }

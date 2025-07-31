@@ -140,10 +140,10 @@ class Kohana_FeedTest extends Unittest_TestCase
     {
         $this->setEnvironment($enviroment);
 
-        $this->assertSelectEquals($matcher_item[0], $matcher_item[1], true, Feed::create($info, $items), null, false);
+        $this->assertSelectEquals($matcher_item[0], $matcher_item[1], true, Feed::create($info, $items), '', false);
 
         foreach ($matchers_image as $matcher_image) {
-            $this->assertSelectEquals($matcher_image[0], $matcher_image[1], true, Feed::create($info, $items), null, false);
+            $this->assertSelectEquals($matcher_image[0], $matcher_image[1], true, Feed::create($info, $items), '', false);
         }
     }
 
