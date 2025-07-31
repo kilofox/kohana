@@ -43,8 +43,8 @@ class Kohana_TextTest extends Unittest_TestCase
     function provider_auto_para_does_not_enclose_html_tags_in_paragraphs()
     {
         return [
-            [['div'], '<div>Pick a plum of peppers</div>'],
-            [['div'], '<div id="awesome">Tangas</div>'],
+            ['<div>Pick a plum of peppers</div>'],
+            ['<div id="awesome">Tangas</div>'],
         ];
     }
 
@@ -56,15 +56,11 @@ class Kohana_TextTest extends Unittest_TestCase
      * @covers Text::auto_p
      * @dataProvider provider_auto_para_does_not_enclose_html_tags_in_paragraphs
      */
-    function test_auto_para_does_not_enclose_html_tags_in_paragraphs(array $tags, $text)
+    function test_auto_para_does_not_enclose_html_tags_in_paragraphs($text)
     {
         $output = Text::auto_p($text);
 
-        foreach ($tags as $tag) {
-            $this->assertNotTag(
-                ['tag' => $tag, 'ancestor' => ['tag' => 'p']], $output
-            );
-        }
+        $this->assertSelectEquals('p', null, false, $output);
     }
 
     /**

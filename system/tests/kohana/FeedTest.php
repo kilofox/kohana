@@ -85,26 +85,17 @@ class Kohana_FeedTest extends Unittest_TestCase
             'pubDate' => 123,
             'image' => [
                 'link' => 'https://kohana.top/image.png',
-                'url' => 'https://kohana.top/', 'title' => 'title'
+                'url' => 'https://kohana.top/',
+                'title' => 'title'
             ]
         ];
 
         return [
-            // $source, $expected
             [
                 $info,
                 ['foo' => ['foo' => 'bar', 'pubDate' => 123, 'link' => 'foo']],
                 ['_SERVER' => ['HTTP_HOST' => 'localhost'] + $_SERVER],
-                [
-                    'tag' => 'channel',
-                    'descendant' => [
-                        'tag' => 'item',
-                        'child' => [
-                            'tag' => 'foo',
-                            'content' => 'bar'
-                        ]
-                    ]
-                ],
+                ['channel > item > foo', 'bar'],
                 [
                     $this->matcher_composer($info, 'image', 'link'),
                     $this->matcher_composer($info, 'image', 'url'),
@@ -125,14 +116,8 @@ class Kohana_FeedTest extends Unittest_TestCase
     private function matcher_composer($data, $tag, $child)
     {
         return [
-            'tag' => 'channel',
-            'descendant' => [
-                'tag' => $tag,
-                'child' => [
-                    'tag' => $child,
-                    'content' => $data[$tag][$child]
-                ]
-            ]
+            'channel > ' . $tag . ' > ' . $child,
+            $data[$tag][$child]
         ];
     }
 
@@ -155,10 +140,10 @@ class Kohana_FeedTest extends Unittest_TestCase
     {
         $this->setEnvironment($enviroment);
 
-        $this->assertTag($matcher_item, Feed::create($info, $items), '', false);
+        $this->assertSelectEquals($matcher_item[0], $matcher_item[1], true, Feed::create($info, $items), null, false);
 
         foreach ($matchers_image as $matcher_image) {
-            $this->assertTag($matcher_image, Feed::create($info, $items), '', false);
+            $this->assertSelectEquals($matcher_image[0], $matcher_image[1], true, Feed::create($info, $items), null, false);
         }
     }
 
