@@ -323,7 +323,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_modules_detects_invalid_modules
      * @param array $source Input for Kohana::modules
-     *
+     * @throws Kohana_Exception
      */
     public function test_modules_detects_invalid_modules($source)
     {
@@ -331,14 +331,7 @@ class Kohana_CoreTest extends Unittest_TestCase
 
         $modules = Kohana::modules();
 
-        try {
-            Kohana::modules($source);
-        } catch (Exception $e) {
-            // Restore modules
-            Kohana::modules($modules);
-
-            throw $e;
-        }
+        Kohana::modules($source);
 
         // Restore modules
         Kohana::modules($modules);
