@@ -202,12 +202,12 @@ class Kohana_ConfigTest extends Unittest_TestCase
      *
      * @test
      * @covers Config::load
-     * @expectedException Kohana_Exception
      */
     public function test_load_throws_exception_if_there_are_no_sources()
     {
+        $this->expectException(Kohana_Exception::class);
+
         // The following code should throw an exception and phpunit will catch / handle it
-        // (see the @expectedException doccomment)
         $config = new Kohana_config;
 
         $config->load('random');
@@ -237,10 +237,11 @@ class Kohana_ConfigTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_load_throws_exception_if_no_group_is_given
      * @covers Config::load
-     * @expectedException Kohana_Exception
      */
     public function test_load_throws_exception_if_invalid_group($value)
     {
+        $this->expectException(Kohana_Exception::class);
+
         $config = new Kohana_Config;
 
         $reader = $this->createMock('Kohana_Config_Reader');

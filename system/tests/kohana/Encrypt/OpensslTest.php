@@ -483,12 +483,12 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
 
     /**
      * Validate the instance of Encrypt_Openssl throw an exception when no key provided.
-     *
-     * @expectedException Kohana_Exception
-     * @expectedExceptionMessage No encryption key is defined in the encryption configuration group: default
      */
     public function testInstanceThrowExceptionWhenNoKeyProvided()
     {
+        $this->expectException(Kohana_Exception::class);
+        $this->expectExceptionMessage('No encryption key is defined in the encryption configuration group: default');
+
         Encrypt::instance('default', ['driver' => 'openssl']);
     }
 
