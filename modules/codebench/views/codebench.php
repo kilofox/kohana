@@ -142,11 +142,7 @@
                     // Highlight double-clicked rows globally
                 }).on('dblclick', function() {
                     const nth_row = $(this).parent().children().index(this) + 1;
-                    if ($(this).hasClass('highlight')) {
-                        $bench_rows.filter(':nth-child(' + nth_row + ')').removeClass('highlight');
-                    } else {
-                        $bench_rows.filter(':nth-child(' + nth_row + ')').addClass('highlight');
-                    }
+                    $bench_rows.filter(':nth-child(' + nth_row + ')').toggleClass('highlight');
                 });
             });
         </script>
