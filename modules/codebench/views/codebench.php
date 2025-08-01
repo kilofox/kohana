@@ -154,8 +154,6 @@
     </head>
     <body>
 
-    <!--[if IE]><p class="alert">This page is not meant to be viewed in Internet Explorer. Get a better browser.</p><![endif]-->
-
         <form id="runner" method="post" action="<?php echo URL::site('codebench') ?>">
             <h1>
                 <input name="class" type="text" value="<?php echo $class !== '' ? $class : 'Bench_' ?>" size="25" title="Name of the Codebench library to run" />
@@ -245,8 +243,6 @@
             <?php if (!empty($codebench['description'])) { ?>
                 <?php echo Text::auto_p(Text::auto_link($codebench['description']), false) ?>
             <?php } ?>
-
-            <?php // echo '<h2>Raw output:</h2>', Debug::vars($codebench)  ?>
 
         <?php } ?>
 
