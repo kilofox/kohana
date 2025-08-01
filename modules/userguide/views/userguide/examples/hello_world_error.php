@@ -29,17 +29,9 @@
 
         if (elem.style && elem.style['display']) {
             disp = elem.style['display'];
+        } else if (window.getComputedStyle) {
+            disp = document.defaultView.getComputedStyle(elem, null).getPropertyValue('display');
         }
-        else if (elem.currentStyle)
-            // For MSIE, naturally
-            {
-                disp = elem.currentStyle['display'];
-            }
-        else if (window.getComputedStyle)
-            // For most other browsers
-            {
-                disp = document.defaultView.getComputedStyle(elem, null).getPropertyValue('display');
-            }
 
         // Toggle the state of the "display" style
         elem.style.display = disp === 'block' ? 'none' : 'block';
