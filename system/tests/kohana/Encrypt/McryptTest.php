@@ -556,15 +556,15 @@ class Kohana_Encrypt_McryptTest extends Unittest_TestCase
 
     /**
      * Validate the instance of Encrypt_Mcrypt throw an exception when no key provided.
-     *
-     * @expectedException Kohana_Exception
-     * @expectedExceptionMessage No encryption key is defined in the encryption configuration group: mcrypt
      */
     public function testInstanceThrowExceptionWhenNoKeyProvided()
     {
         if (PHP_VERSION_ID >= 70100) {
             $this->markTestSkipped();
         }
+
+        $this->expectException(Kohana_Exception::class);
+        $this->expectExceptionMessage('No encryption key is defined in the encryption configuration group: mcrypt');
 
         Encrypt::instance('mcrypt', ['driver' => 'mcrypt']);
     }

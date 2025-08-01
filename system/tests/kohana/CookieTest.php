@@ -179,10 +179,11 @@ class Kohana_CookieTest extends Unittest_TestCase
 
     /**
      * @covers Cookie::salt
-     * @expectedException Kohana_Exception
      */
     public function test_salt_throws_with_no_configured_salt()
     {
+        $this->expectException(Kohana_Exception::class);
+
         Cookie::$salt = null;
         Cookie::salt('key', 'value');
     }

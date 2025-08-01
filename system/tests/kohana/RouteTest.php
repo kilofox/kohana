@@ -53,14 +53,13 @@ class Kohana_RouteTest extends Unittest_TestCase
      * If Route::get() is asked for a route that does not exist then
      * it should throw a Kohana_Exception
      *
-     * Note use of @expectedException
-     *
      * @test
      * @covers Route::get
-     * @expectedException Kohana_Exception
      */
     public function test_get_throws_exception_if_route_dnx()
     {
+        $this->expectException(Kohana_Exception::class);
+
         Route::get('HAHAHAHAHAHAHAHAHA');
     }
 
