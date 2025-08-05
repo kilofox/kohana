@@ -7,6 +7,8 @@ certain features may not function as expected.
 
 ## Changes
 
+- The global EXT constant has been removed. Explicitly specify `.php` or another file extension instead.
+
 ### Arr
 
 - The `Arr::callback()` method now ensures that the second element of the returned array (`$params`) is always an array,
@@ -22,7 +24,6 @@ certain features may not function as expected.
 ### Core
 
 - The `Kohana::CODENAME` constant has been removed.
-
 - The static property `Kohana::$magic_quotes` was deprecated.
 
 ### Encrypt
@@ -38,7 +39,5 @@ certain features may not function as expected.
 
 - The `Request::accept_encoding()` method has been removed. Use `Request::headers()->accepts_encoding_at_quality()`
   instead.
-
 - The `Request::accept_lang()` method has been removed. Use `Request::headers()->accepts_language_at_quality()` instead.
-
 - The `Request::accept_type()` method has been removed. Use `Request::headers()->accepts_at_quality()` instead.
