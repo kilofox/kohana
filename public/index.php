@@ -4,6 +4,7 @@
  * The default extension of resource files. If you change this, all resources
  * must be renamed to use the new extension.
  *
+ * @deprecated 3.4.4
  * @link https://kohana.top/guide/about.install#ext
  */
 define('EXT', '.php');
