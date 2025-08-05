@@ -250,7 +250,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      */
     public function test_message($file, $key, $default, $expected)
     {
-        $test_path = realpath(dirname(__FILE__) . '/../test_data/message_tests');
+        $test_path = realpath(__DIR__ . '/../test_data/message_tests');
         Kohana::modules([
             'top' => "$test_path/top_module",
             'bottom' => "$test_path/bottom_module"
