@@ -61,17 +61,17 @@ If multiple cache operations are required, it is best to assign an instance of C
 Certain cache drivers support setting values with tags. To set a value to cache with tags using the following interface.
 
     // Get a cache instance that supports tags
-    $memcache = Cache::instance('memcachetag');
+    $cache = Cache::instance('sqlite');
 
     // Test for tagging interface
-    if ($memcache instanceof Cache_Tagging) {
+    if ($cache instanceof Cache_Tagging) {
         // Set a value with some tags for 30 seconds
-        $memcache->set('foo', $object, 30, ['snafu', 'stfu', 'fubar']);
+        $cache->set_with_tags('foo', $object, 30, ['snafu', 'stfu', 'fubar']);
     }
     // Otherwise set without tags
     else {
         // Set a value for 30 seconds
-        $memcache->set('foo', $object, 30);
+        $cache->set('foo', $object, 30);
     }
 
 It is possible to implement custom tagging solutions onto existing or new cache drivers by implementing the [Cache_Tagging] interface. Kohana_Cache only applies the interface to drivers that support tagging natively as standard.
