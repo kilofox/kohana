@@ -38,7 +38,7 @@ define('EXT', '.php');
  * this bootstrap file somewhere else then you'll need to modify this value to
  * compensate.
  */
-define('DOCROOT', realpath(dirname(__FILE__) . '/../../') . DIRECTORY_SEPARATOR);
+define('DOCROOT', realpath(__DIR__ . '/../../') . DIRECTORY_SEPARATOR);
 
 /**
  * Set the PHP error reporting level. If you set this in php.ini, you remove this.
