@@ -7,6 +7,8 @@ certain features may not function as expected.
 
 ## Changes
 
+- The global EXT constant has been deprecated. Explicitly specify `.php` or another file extension instead.
+
 ### Auth
 
 - The `Auth::hash_password()` method has been removed. Use `Auth::hash()` instead.
