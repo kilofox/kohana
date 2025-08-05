@@ -1,15 +1,6 @@
 <?php
 
 /**
- * The default extension of resource files. If you change this, all resources
- * must be renamed to use the new extension.
- *
- * @deprecated 3.4.4
- * @link https://kohana.top/guide/about.install#ext
- */
-define('EXT', '.php');
-
-/**
  * Set the path to the document root
  *
  * This assumes that this file is stored 2 levels below the DOCROOT, if you move
@@ -56,7 +47,7 @@ if (!defined('KOHANA_START_MEMORY')) {
 }
 
 // Bootstrap the application
-require APPPATH . 'bootstrap' . EXT;
+require APPPATH . 'bootstrap.php';
 
 // Disable output buffering
 if (($ob_len = ob_get_length()) !== false) {

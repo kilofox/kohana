@@ -72,7 +72,7 @@ class Kohana_Log_File extends Log_Writer
         }
 
         // Set the name of the log file
-        $filename = $directory . DIRECTORY_SEPARATOR . date('d') . EXT;
+        $filename = $directory . DIRECTORY_SEPARATOR . date('d') . '.php';
 
         if (!file_exists($filename)) {
             // Create the log file

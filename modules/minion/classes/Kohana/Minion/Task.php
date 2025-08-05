@@ -326,7 +326,7 @@ abstract class Kohana_Minion_Task
                     $output = array_merge($output, $task);
                 }
             } else {
-                $output[] = strtolower($prefix . substr($file, 0, -strlen(EXT)));
+                $output[] = strtolower($prefix . substr($file, 0, -4));
             }
         }
 

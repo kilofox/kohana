@@ -100,9 +100,9 @@ class Kohana_Unittest_Tests
                 }
             } else {
                 // Make sure we only include php files
-                if (is_file($file) && substr($file, -strlen(EXT)) === EXT) {
+                if (is_file($file) && substr($file, -4) === '.php') {
                     // The default PHPUnit TestCase extension
-                    if (!strpos($file, 'TestCase' . EXT)) {
+                    if (!strpos($file, 'TestCase.php')) {
                         $suite->addTestFile($file);
                     } else {
                         require_once($file);
@@ -210,7 +210,7 @@ class Kohana_Unittest_Tests
                 self::set_whitelist($file, $suite);
             } else {
                 if (!isset(Unittest_tests::$cache[$file])) {
-                    $relative_path = substr($file, strrpos($file, 'classes' . DIRECTORY_SEPARATOR) + 8, -strlen(EXT));
+                    $relative_path = substr($file, strrpos($file, 'classes' . DIRECTORY_SEPARATOR) + 8, -4);
                     $cascading_file = Kohana::find_file('classes', $relative_path);
 
                     // The theory is that if this file is the highest one in the cascading filesystem

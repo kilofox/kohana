@@ -564,7 +564,7 @@ class Kohana_Core
         Kohana::$_modules = $modules;
 
         foreach (Kohana::$_modules as $path) {
-            $init = $path . 'init' . EXT;
+            $init = $path . 'init.php';
 
             if (is_file($init)) {
                 // Include the module initialization file once
@@ -596,8 +596,7 @@ class Kohana_Core
      * that path in the [Cascading Filesystem](kohana/files) will be returned.
      * These files will return arrays which must be merged together.
      *
-     * If no extension is given, the default extension (`EXT` set in
-     * `index.php`) will be used.
+     * If no extension is given, `.php` will be used by default.
      *
      *     // Returns an absolute path to views/template.php
      *     Kohana::find_file('views', 'template');
@@ -618,7 +617,7 @@ class Kohana_Core
     {
         if ($ext === null) {
             // Use the default extension
-            $ext = EXT;
+            $ext = '.php';
         } elseif ($ext) {
             // Prefix the extension with a period
             $ext = ".$ext";
