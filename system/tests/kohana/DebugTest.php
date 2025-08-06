@@ -3,8 +3,6 @@
 /**
  * Tests Kohana Core
  *
- * @TODO Use a virtual filesystem (see phpunit doc on mocking fs) for find_file etc.
- *
  * @group kohana
  * @group kohana.core
  * @group kohana.core.debug
