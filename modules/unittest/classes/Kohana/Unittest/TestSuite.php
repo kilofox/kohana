@@ -24,15 +24,10 @@ abstract class Kohana_Unittest_TestSuite extends PHPUnit\Framework\TestSuite
      * Runs the tests and collects their result in a TestResult.
      *
      * @param TestResult|null $result
-     * @param mixed $filter
-     * @param array $groups
-     * @param array $excludeGroups
-     * @param bool $processIsolation
      * @return TestResult
      */
-    public function run(TestResult $result = null, $filter = false, array $groups = [], array $excludeGroups = [], $processIsolation = false): TestResult
+    public function run(TestResult $result = null): TestResult
     {
-
         // Get the code coverage filter from the suite's result object
         $coverage = $result->getCodeCoverage();
 
