@@ -9,7 +9,7 @@
  * @copyright  (c) 2008-2009 Kohana Team
  * @license    https://kohana.top/license
  */
-abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Database_TestCase
+abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Framework_TestCase
 {
     /**
      * Make sure PHPUnit backs up globals
@@ -75,7 +75,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
     /**
      * Creates a connection to the unittesting database
      *
-     * @return PHPUnit_Extensions_Database_DB_DefaultDatabaseConnection
+     * @return PDO
      * @throws Kohana_Exception
      */
     public function getConnection()
@@ -90,10 +90,13 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Extensions_Data
         }
 
         $pdo = new PDO(
-            $config['connection']['dsn'], $config['connection']['username'], $config['connection']['password']
+            $config['connection']['dsn'],
+            $config['connection']['username'],
+            $config['connection']['password']
         );
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        return $this->createDefaultDBConnection($pdo, $config['connection']['database']);
+        return $pdo;
     }
 
     /**
