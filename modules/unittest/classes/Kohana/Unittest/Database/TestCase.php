@@ -9,7 +9,7 @@
  * @copyright  (c) 2008-2009 Kohana Team
  * @license    https://kohana.top/license
  */
-abstract class Kohana_Unittest_Database_TestCase extends PHPUnit_Framework_TestCase
+abstract class Kohana_Unittest_Database_TestCase extends PHPUnit\Framework\TestCase
 {
     /**
      * Make sure PHPUnit backs up globals
