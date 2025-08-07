@@ -1,7 +1,7 @@
 <?php
 
 // Register the Composer autoloader
-require DOCROOT . 'vendor/autoload.php';
+require DOCROOT . '../vendor/autoload.php';
 
 // -- Environment setup --------------------------------------------------------
 // Load the core Kohana class
