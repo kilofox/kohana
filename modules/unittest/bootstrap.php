@@ -16,7 +16,7 @@ define('EXT', '.php');
  * this bootstrap file somewhere else then you'll need to modify this value to
  * compensate.
  */
-define('DOCROOT', realpath(__DIR__ . '/../../') . DIRECTORY_SEPARATOR);
+define('DOCROOT', realpath(__DIR__ . '/../../public') . DIRECTORY_SEPARATOR);
 
 /**
  * Set the PHP error reporting level. If you set this in php.ini, you remove this.
@@ -37,9 +37,9 @@ error_reporting(E_ALL);
  * @link https://kohana.top/guide/using.configuration
  */
 // Define the absolute paths for configured directories
-define('APPPATH', realpath(DOCROOT . 'application') . DIRECTORY_SEPARATOR);
-define('MODPATH', realpath(DOCROOT . 'modules') . DIRECTORY_SEPARATOR);
-define('SYSPATH', realpath(DOCROOT . 'system') . DIRECTORY_SEPARATOR);
+define('APPPATH', realpath(DOCROOT . '../application') . DIRECTORY_SEPARATOR);
+define('MODPATH', realpath(DOCROOT . '../modules') . DIRECTORY_SEPARATOR);
+define('SYSPATH', realpath(DOCROOT . '../system') . DIRECTORY_SEPARATOR);
 
 /**
  * Define the start time of the application, used for profiling.
