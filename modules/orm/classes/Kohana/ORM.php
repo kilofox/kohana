@@ -86,7 +86,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * @var array
      */
-    protected $_changed = [];
+    protected $_changes = [];
 
     /**
      * @var array
@@ -384,7 +384,7 @@ class Kohana_ORM extends Model implements serializable
         $this->_validation = Validation::factory($this->_object)
             ->bind(':model', $this)
             ->bind(':original_values', $this->_original_values)
-            ->bind(':changed', $this->_changed);
+            ->bind(':changes', $this->_changes);
 
         foreach ($this->rules() as $field => $rules) {
             $this->_validation->rules($field, $rules);
@@ -438,7 +438,7 @@ class Kohana_ORM extends Model implements serializable
         $values = array_combine(array_keys($this->_table_columns), array_fill(0, count($this->_table_columns), null));
 
         // Replace the object and reset the object status
-        $this->_object = $this->_changed = $this->_related = $this->_original_values = [];
+        $this->_object = $this->_changes = $this->_related = $this->_original_values = [];
 
         // Replace the current object with an empty one
         $this->_load_values($values);
@@ -466,7 +466,7 @@ class Kohana_ORM extends Model implements serializable
         $primary_key = $this->pk();
 
         // Replace the object and reset the object status
-        $this->_object = $this->_changed = $this->_related = $this->_original_values = [];
+        $this->_object = $this->_changes = $this->_related = $this->_original_values = [];
 
         // Only reload the object if we have one to reload
         if ($this->_loaded)
@@ -500,7 +500,7 @@ class Kohana_ORM extends Model implements serializable
      */
     public function __unset($column)
     {
-        unset($this->_object[$column], $this->_changed[$column], $this->_related[$column]);
+        unset($this->_object[$column], $this->_changes[$column], $this->_related[$column]);
     }
 
     /**
@@ -522,7 +522,7 @@ class Kohana_ORM extends Model implements serializable
     public function serialize()
     {
         // Store only information about the object
-        foreach (['_primary_key_value', '_object', '_changed', '_loaded', '_saved', '_sorting', '_original_values'] as $var) {
+        foreach (['_primary_key_value', '_object', '_changes', '_loaded', '_saved', '_sorting', '_original_values'] as $var) {
             $data[$var] = $this->{$var};
         }
 
@@ -533,12 +533,22 @@ class Kohana_ORM extends Model implements serializable
      * Check whether the model data has been modified.
      * If $field is specified, checks whether that field was modified.
      *
-     * @param string  $field  field to check for changes
+     * @param string|null $field Field to check for changes
      * @return  bool  Whether the field has changed
      */
-    public function changed($field = null)
+    public function changed(string $field = null): bool
     {
-        return $field === null ? $this->_changed : Arr::get($this->_changed, $field);
+        return $field === null ? count($this->_changes) > 0 : array_key_exists($field, $this->_changes);
+    }
+
+    /**
+     * Returns an array of changed fields and their new values.
+     *
+     * @return array
+     */
+    public function changes(): array
+    {
+        return $this->_changes;
     }
 
     /**
@@ -690,7 +700,7 @@ class Kohana_ORM extends Model implements serializable
                 $this->_object[$column] = $value;
 
                 // Data has changed
-                $this->_changed[$column] = $column;
+                $this->_changes[$column] = $value;
 
                 // Object is no longer saved or valid
                 $this->_saved = $this->_valid = false;
@@ -702,7 +712,7 @@ class Kohana_ORM extends Model implements serializable
             // Update the foreign key of this model
             $this->_object[$this->_belongs_to[$column]['foreign_key']] = $value instanceof ORM ? $value->pk() : null;
 
-            $this->_changed[$column] = $this->_belongs_to[$column]['foreign_key'];
+            $this->_changes[$column] = $value;
         } else {
             throw new Kohana_Exception('The :property: property does not exist in the :class: class', [':property:' => $column, ':class:' => get_class($this)]);
         }
@@ -1198,7 +1208,7 @@ class Kohana_ORM extends Model implements serializable
         }
 
         $data = [];
-        foreach ($this->_changed as $column) {
+        foreach ($this->_changes as $column => $value) {
             // Generate list of column => values
             $data[$column] = $this->_object[$column];
         }
@@ -1227,7 +1237,7 @@ class Kohana_ORM extends Model implements serializable
         $this->_loaded = $this->_saved = true;
 
         // All changes have been saved
-        $this->_changed = [];
+        $this->_changes = [];
         $this->_original_values = $this->_object;
 
         return $this;
@@ -1253,13 +1263,13 @@ class Kohana_ORM extends Model implements serializable
             $this->check($validation);
         }
 
-        if (empty($this->_changed)) {
+        if (empty($this->_changes)) {
             // Nothing to update
             return $this;
         }
 
         $data = [];
-        foreach ($this->_changed as $column) {
+        foreach ($this->_changes as $column => $value) {
             // Compile changed data
             $data[$column] = $this->_object[$column];
         }
@@ -1290,7 +1300,7 @@ class Kohana_ORM extends Model implements serializable
         $this->_saved = true;
 
         // All changes have been saved
-        $this->_changed = [];
+        $this->_changes = [];
         $this->_original_values = $this->_object;
 
         return $this;
