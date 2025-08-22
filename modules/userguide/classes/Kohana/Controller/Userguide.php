@@ -295,7 +295,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
      * @param string $page The relative URL of the guide page
      * @return string
      */
-    public function file($page)
+    public function file(string $page)
     {
 
         // Strip optional .md or .markdown suffix from the passed filename
