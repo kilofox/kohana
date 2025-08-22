@@ -143,7 +143,7 @@ class Kohana_Cache_FileTest extends Kohana_CacheBasicMethodsTest
      * @return bool true if file exists false otherwise
      * @throws ReflectionException
      */
-    protected function is_file($id)
+    protected function is_file(string $id)
     {
         $cache = $this->cache();
 

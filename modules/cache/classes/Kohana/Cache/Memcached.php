@@ -164,11 +164,11 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      *     // Retrieve cache entry from memcached group and return 'bar' if missing.
      *     $data = Cache::instance('memcached')->get('foo', 'bar');
      *
-     * @param   string  $id       ID of cache entry.
-     * @param   string  $default  Default value to return if cache miss.
+     * @param string $id ID of cache entry.
+     * @param string|null $default Default value to return if cache miss.
      * @return  mixed
      */
-    public function get($id, $default = null)
+    public function get(string $id, string $default = null)
     {
         // Get the value from Memcached.
         $value = $this->memcached->get($this->_sanitize_id($id));
@@ -193,12 +193,12 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      *          return true;
      *     }
      *
-     * @param   string   $id        ID of cache entry.
+     * @param string $id ID of cache entry.
      * @param   mixed    $data      Data to set to cache.
-     * @param   int      $lifetime  Lifetime in seconds, maximum value 2592000.
+     * @param int|null $lifetime Lifetime in seconds, maximum value 2592000.
      * @return  bool
      */
-    public function set($id, $data, $lifetime = null)
+    public function set(string $id, $data, int $lifetime = null)
     {
         // If lifetime is null, set to the default expiry.
         if ($lifetime === null) {
@@ -233,11 +233,11 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      *     // Delete the 'bar' cache entry after 30 seconds.
      *     Cache::instance('memcached')->delete('bar', 30);
      *
-     * @param   string  $id     ID of cache entry to delete.
-     * @param   int     $time   The amount of time the server will wait to delete the entry.
+     * @param string $id ID of cache entry to delete.
+     * @param int $time The amount of time the server will wait to delete the entry.
      * @return  bool
      */
-    public function delete($id, $time = 0)
+    public function delete(string $id, int $time = 0)
     {
         return $this->memcached->delete($this->_sanitize_id($id), $time);
     }
@@ -266,7 +266,7 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      * @param int $step Step value to increment by.
      * @return int|bool
      */
-    public function increment($id, $step = 1)
+    public function increment(string $id, int $step = 1)
     {
         return $this->memcached->increment($id, $step);
     }
@@ -279,7 +279,7 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      * @param int $step Step value to decrement by.
      * @return int|bool
      */
-    public function decrement($id, $step = 1)
+    public function decrement(string $id, int $step = 1)
     {
         return $this->memcached->decrement($id, $step);
     }

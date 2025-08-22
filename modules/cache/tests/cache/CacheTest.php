@@ -209,7 +209,7 @@ class Kohana_CacheTest extends PHPUnit\Framework\TestCase
      * @return  void
      * @throws ReflectionException
      */
-    public function test_sanitize_id($id, $expected)
+    public function test_sanitize_id(string $id, string $expected)
     {
         $cache = $this->createMock('Cache');
 
