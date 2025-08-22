@@ -71,11 +71,11 @@ class Kohana_Image_GD extends Image
     /**
      * Runs [Image_GD::check] and loads the image.
      *
-     * @param   string  $file  image file path
+     * @param string $file Image file path
      * @return  void
      * @throws  Kohana_Exception
      */
-    public function __construct($file)
+    public function __construct(string $file)
     {
         if (!Image_GD::$_checked) {
             // Run the installation check
@@ -143,11 +143,11 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a resize.
      *
-     * @param   int  $width   new width
-     * @param   int  $height  new height
+     * @param int $width   New width
+     * @param int $height  New height
      * @return  void
      */
-    protected function _do_resize($width, $height)
+    protected function _do_resize(int $width, int $height)
     {
         // Pre-size width and height
         $pre_width = $this->width;
@@ -196,13 +196,13 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a crop.
      *
-     * @param   int  $width     new width
-     * @param   int  $height    new height
-     * @param   int  $offset_x  offset from the left
-     * @param   int  $offset_y  offset from the top
+     * @param int $width     New width
+     * @param int $height    New height
+     * @param int $offset_x  Offset from the left
+     * @param int $offset_y  Offset from the top
      * @return  void
      */
-    protected function _do_crop($width, $height, $offset_x, $offset_y)
+    protected function _do_crop(int $width, int $height, int $offset_x, int $offset_y)
     {
         // Create the temporary image to copy to
         $image = $this->_create($width, $height);
@@ -229,7 +229,7 @@ class Kohana_Image_GD extends Image
      * @return  void
      * @throws Kohana_Exception
      */
-    protected function _do_rotate($degrees)
+    protected function _do_rotate(int $degrees)
     {
         if (empty(Image_GD::$_available_functions[Image_GD::IMAGEROTATE])) {
             throw new Kohana_Exception('This method requires :function, which is only available in the bundled version of GD', [':function' => 'imagerotate']);
@@ -265,10 +265,10 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a flip.
      *
-     * @param   int $direction direction to flip
+     * @param int $direction Direction to flip
      * @return  void
      */
-    protected function _do_flip($direction)
+    protected function _do_flip(int $direction)
     {
         // Create the flipped image
         $flipped = $this->_create($this->width, $this->height);
@@ -304,7 +304,7 @@ class Kohana_Image_GD extends Image
      * @return  void
      * @throws Kohana_Exception
      */
-    protected function _do_sharpen($amount)
+    protected function _do_sharpen(int $amount)
     {
         if (empty(Image_GD::$_available_functions[Image_GD::IMAGECONVOLUTION])) {
             throw new Kohana_Exception('This method requires :function, which is only available in the bundled version of GD', [':function' => 'imageconvolution']);
@@ -336,11 +336,11 @@ class Kohana_Image_GD extends Image
      *
      * @param int $height reflection height
      * @param int $opacity reflection opacity
-     * @param bool $fade_in true to fade out, false to fade in
+     * @param bool $fade_in True to fade in, false to fade out
      * @return  void
      * @throws Kohana_Exception
      */
-    protected function _do_reflection($height, $opacity, $fade_in)
+    protected function _do_reflection(int $height, int $opacity, bool $fade_in)
     {
         if (empty(Image_GD::$_available_functions[Image_GD::IMAGEFILTER])) {
             throw new Kohana_Exception('This method requires :function, which is only available in the bundled version of GD', [':function' => 'imagefilter']);
@@ -413,7 +413,7 @@ class Kohana_Image_GD extends Image
      * @return  void
      * @throws Kohana_Exception
      */
-    protected function _do_watermark(Image $image, $offset_x, $offset_y, $opacity)
+    protected function _do_watermark(Image $image, int $offset_x, int $offset_y, int $opacity)
     {
         if (empty(Image_GD::$_available_functions[Image_GD::IMAGELAYEREFFECT])) {
             throw new Kohana_Exception('This method requires :function, which is only available in the bundled version of GD', [':function' => 'imagelayereffect']);
@@ -457,13 +457,13 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a background.
      *
-     * @param   int  $r        red
-     * @param   int  $g        green
-     * @param   int  $b        blue
-     * @param   int  $opacity  opacity
+     * @param int $r        Red
+     * @param int $g        Green
+     * @param int $b        Blue
+     * @param int $opacity  Opacity
      * @return void
      */
-    protected function _do_background($r, $g, $b, $opacity)
+    protected function _do_background(int $r, int $g, int $b, int $opacity)
     {
         // Loads image if not yet loaded
         $this->_load_image();
@@ -499,7 +499,7 @@ class Kohana_Image_GD extends Image
      * @return bool
      * @throws Kohana_Exception
      */
-    protected function _do_save($file, $quality)
+    protected function _do_save(string $file, int $quality)
     {
         // Loads image if not yet loaded
         $this->_load_image();
@@ -530,7 +530,7 @@ class Kohana_Image_GD extends Image
      * @return  string
      * @throws Kohana_Exception
      */
-    protected function _do_render($type, $quality)
+    protected function _do_render(string $type, int $quality)
     {
         // Loads image if not yet loaded
         $this->_load_image();
@@ -557,12 +557,12 @@ class Kohana_Image_GD extends Image
      * Get the GD saving function and image type for this extension.
      * Also normalizes the quality setting
      *
-     * @param   string   $extension  image type: png, jpg, etc
-     * @param   int $quality image quality
+     * @param string $extension Image type: png, jpg, etc.
+     * @param int $quality Image quality
      * @return  array    save function, IMAGETYPE_* constant
      * @throws  Kohana_Exception
      */
-    protected function _save_function($extension, & $quality)
+    protected function _save_function(string $extension, int & $quality)
     {
         if (!$extension) {
             // Use the current image type
@@ -603,11 +603,11 @@ class Kohana_Image_GD extends Image
     /**
      * Create an empty image with the given width and height.
      *
-     * @param   int   $width   image width
-     * @param   int   $height  image height
+     * @param int $width   Image width
+     * @param int $height  Image height
      * @return  resource
      */
-    protected function _create($width, $height)
+    protected function _create(int $width, int $height)
     {
         // Create an empty image
         $image = imagecreatetruecolor($width, $height);
