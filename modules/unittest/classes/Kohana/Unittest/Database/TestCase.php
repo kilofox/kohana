@@ -127,7 +127,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit\Framework\TestC
      * @param string $path The path to act on
      * @return string
      */
-    public function dirSeparator($path)
+    public function dirSeparator(string $path)
     {
         return Kohana_Unittest_Helpers::dir_separator($path);
     }

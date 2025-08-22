@@ -49,7 +49,7 @@ abstract class Kohana_Unittest_TestSuite extends PHPUnit\Framework\TestSuite
      * Queues a file to be added to the code coverage blacklist when the suite runs
      * @param string $file
      */
-    public function addFileToBlacklist($file)
+    public function addFileToBlacklist(string $file)
     {
         $this->_filter_calls['addFileToBlacklist'][] = $file;
     }
@@ -58,7 +58,7 @@ abstract class Kohana_Unittest_TestSuite extends PHPUnit\Framework\TestSuite
      * Queues a directory to be added to the code coverage blacklist when the suite runs
      * @param string $dir
      */
-    public function addDirectoryToBlacklist($dir)
+    public function addDirectoryToBlacklist(string $dir)
     {
         $this->_filter_calls['addDirectoryToBlacklist'][] = $dir;
     }
@@ -67,7 +67,7 @@ abstract class Kohana_Unittest_TestSuite extends PHPUnit\Framework\TestSuite
      * Queues a file to be added to the code coverage whitelist when the suite runs
      * @param string $file
      */
-    public function addFileToWhitelist($file)
+    public function addFileToWhitelist(string $file)
     {
         $this->_filter_calls['addFileToWhitelist'][] = $file;
     }
