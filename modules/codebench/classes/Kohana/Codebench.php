@@ -180,7 +180,7 @@ abstract class Kohana_Codebench
      * @param string $method method name
      * @return bool
      */
-    protected function _method_filter($method)
+    protected function _method_filter(string $method)
     {
         // Only benchmark methods with the "bench" prefix
         return substr($method, 0, 5) === 'bench';
@@ -192,7 +192,7 @@ abstract class Kohana_Codebench
      * @param float $score score
      * @return  string  grade letter
      */
-    protected function _grade($score)
+    protected function _grade(float $score)
     {
         foreach ($this->grades as $max => $grade) {
             if ($max === 'default')
