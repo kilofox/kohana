@@ -31,7 +31,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      * @param mixed $as_object
      * @param array|null $params
      */
-    public function __construct($result, $sql, $as_object = false, array $params = null)
+    public function __construct($result, string $sql, $as_object = false, array $params = null)
     {
         // Store the result locally
         $this->_result = $result;
@@ -84,11 +84,11 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      *     // Associative array of rows, "id" => "name"
      *     $rows = $result->as_array('id', 'name');
      *
-     * @param   string  $key    column for associative keys
-     * @param   string  $value  column for values
+     * @param string|null $key Column for associative keys
+     * @param string|null $value Column for values
      * @return  array
      */
-    public function as_array($key = null, $value = null)
+    public function as_array(string $key = null, string $value = null)
     {
         $results = [];
 
@@ -147,11 +147,11 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      *     // Get the "id" value
      *     $id = $result->get('id');
      *
-     * @param   string  $name     column to get
+     * @param string $name Column to get
      * @param   mixed   $default  default value if the column does not exist
      * @return  mixed
      */
-    public function get($name, $default = null)
+    public function get(string $name, $default = null)
     {
         $row = $this->current();
 

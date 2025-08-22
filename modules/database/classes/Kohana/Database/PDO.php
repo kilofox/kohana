@@ -76,7 +76,7 @@ class Kohana_Database_PDO extends Database
      * @return bool
      * @throws Database_Exception
      */
-    public function create_aggregate($name, $step, $final, $arguments = -1)
+    public function create_aggregate(string $name, callable $step, callable $final, int $arguments = -1)
     {
         $this->_connection or $this->connect();
 
@@ -99,7 +99,7 @@ class Kohana_Database_PDO extends Database
      * @return bool
      * @throws Database_Exception
      */
-    public function create_function($name, $callback, $arguments = -1)
+    public function create_function(string $name, callable $callback, int $arguments = -1)
     {
         $this->_connection or $this->connect();
 
@@ -116,7 +116,7 @@ class Kohana_Database_PDO extends Database
         return parent::disconnect();
     }
 
-    public function set_charset($charset)
+    public function set_charset(string $charset)
     {
         // Make sure the database is connected
         $this->_connection or $this->connect();
@@ -125,7 +125,7 @@ class Kohana_Database_PDO extends Database
         $this->_connection->exec('SET NAMES ' . $this->quote($charset));
     }
 
-    public function query($type, $sql, $as_object = false, array $params = null)
+    public function query(int $type, string $sql, $as_object = false, array $params = null)
     {
         // Make sure the database is connected
         $this->_connection or $this->connect();
@@ -183,7 +183,7 @@ class Kohana_Database_PDO extends Database
         }
     }
 
-    public function begin($mode = null)
+    public function begin(string $mode = null)
     {
         // Make sure the database is connected
         $this->_connection or $this->connect();
@@ -207,17 +207,17 @@ class Kohana_Database_PDO extends Database
         return $this->_connection->rollBack();
     }
 
-    public function list_tables($like = null)
+    public function list_tables(string $like = null)
     {
         throw new Kohana_Exception('Database method :method is not supported by :class', [':method' => __FUNCTION__, ':class' => __CLASS__]);
     }
 
-    public function list_columns($table, $like = null, $add_prefix = true)
+    public function list_columns(string $table, string $like = null, bool $add_prefix = true)
     {
         throw new Kohana_Exception('Database method :method is not supported by :class', [':method' => __FUNCTION__, ':class' => __CLASS__]);
     }
 
-    public function escape($value)
+    public function escape(string $value)
     {
         // Make sure the database is connected
         $this->_connection or $this->connect();

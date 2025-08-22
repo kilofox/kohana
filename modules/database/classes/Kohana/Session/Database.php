@@ -77,7 +77,7 @@ class Kohana_Session_Database extends Session
         return $this->_session_id;
     }
 
-    protected function _read($id = null)
+    protected function _read(string $id = null)
     {
         if ($id || $id = Cookie::get($this->_name)) {
             $result = DB::select([$this->_columns['contents'], 'contents'])

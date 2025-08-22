@@ -29,11 +29,11 @@ class Kohana_Database_Query
     /**
      * Creates a new SQL query of the specified type.
      *
-     * @param   int $type query type: Database::SELECT, Database::INSERT, etc
-     * @param   string   $sql   query string
+     * @param int $type Query type: Database::SELECT, Database::INSERT, etc.
+     * @param string $sql Query string
      * @return  void
      */
-    public function __construct($type, $sql)
+    public function __construct(int $type, string $sql)
     {
         $this->_type = $type;
         $this->_sql = $sql;
@@ -67,12 +67,12 @@ class Kohana_Database_Query
     /**
      * Enables the query to be cached for a specified amount of time.
      *
-     * @param int $lifetime number of seconds to cache, 0 deletes it from the cache
+     * @param int|null $lifetime Number of seconds to cache, 0 deletes it from the cache
      * @param bool $force whether to execute the query during a cache hit
      * @return  $this
      * @uses    Kohana::$cache_life
      */
-    public function cached($lifetime = null, $force = false)
+    public function cached(int $lifetime = null, bool $force = false)
     {
         if ($lifetime === null) {
             // Use the global setting
@@ -121,11 +121,11 @@ class Kohana_Database_Query
     /**
      * Set the value of a parameter in the query.
      *
-     * @param   string   $param  parameter key to replace
+     * @param string $param Parameter key to replace
      * @param   mixed    $value  value to use
      * @return  $this
      */
-    public function param($param, $value)
+    public function param(string $param, $value)
     {
         // Add or overload a new parameter
         $this->_parameters[$param] = $value;
@@ -136,11 +136,11 @@ class Kohana_Database_Query
     /**
      * Bind a variable to a parameter in the query.
      *
-     * @param   string  $param  parameter key to replace
+     * @param string $param Parameter key to replace
      * @param   mixed   $var    variable to use
      * @return  $this
      */
-    public function bind($param, & $var)
+    public function bind(string $param, &$var)
     {
         // Bind a value to a variable
         $this->_parameters[$param] = & $var;
@@ -195,12 +195,12 @@ class Kohana_Database_Query
      * Execute the current query on the given database.
      *
      * @param mixed $db Database instance or name of instance
-     * @param string $as_object result object classname, true for stdClass or false for array
-     * @param array $object_params result object constructor arguments
+     * @param string|null $as_object Result object classname, true for stdClass or false for array
+     * @param array|null $object_params Result object constructor arguments
      * @return Database_Result|array|int Database_Result for SELECT queries, insert ID for INSERT queries, number of affected rows for all other queries.
      * @throws Kohana_Exception
      */
-    public function execute($db = null, $as_object = null, $object_params = null)
+    public function execute($db = null, string $as_object = null, array $object_params = null)
     {
         if (!is_object($db)) {
             // Get the database instance

@@ -41,7 +41,7 @@ class Kohana_Config_Database_Reader implements Kohana_Config_Reader
      * @return bool|array
      * @throws Kohana_Exception
      */
-    public function load($group)
+    public function load(string $group)
     {
         /**
          * Prevents the catch-22 scenario where the database config reader attempts to load the

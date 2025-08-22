@@ -22,11 +22,11 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      * Alias of and_where()
      *
      * @param   mixed   $column  column name or [$column, $alias] or object
-     * @param   string  $op      logic operator
+     * @param string $op Logic operator
      * @param   mixed   $value   column value
      * @return  $this
      */
-    public function where($column, $op, $value)
+    public function where($column, string $op, $value)
     {
         return $this->and_where($column, $op, $value);
     }
@@ -35,11 +35,11 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      * Creates a new "AND WHERE" condition for the query.
      *
      * @param   mixed   $column  column name or [$column, $alias] or object
-     * @param   string  $op      logic operator
+     * @param string $op Logic operator
      * @param   mixed   $value   column value
      * @return  $this
      */
-    public function and_where($column, $op, $value)
+    public function and_where($column, string $op, $value)
     {
         $this->_where[] = ['AND' => [$column, $op, $value]];
 
@@ -50,11 +50,11 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      * Creates a new "OR WHERE" condition for the query.
      *
      * @param   mixed   $column  column name or [$column, $alias] or object
-     * @param   string  $op      logic operator
+     * @param string $op Logic operator
      * @param   mixed   $value   column value
      * @return  $this
      */
-    public function or_where($column, $op, $value)
+    public function or_where($column, string $op, $value)
     {
         $this->_where[] = ['OR' => [$column, $op, $value]];
 
@@ -152,10 +152,10 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      * Applies sorting with "ORDER BY ..."
      *
      * @param   mixed   $column     column name or [$column, $alias] or object
-     * @param   string  $direction  direction of sorting
+     * @param string|null $direction Direction of sorting
      * @return  $this
      */
-    public function order_by($column, $direction = null)
+    public function order_by($column, string $direction = null)
     {
         $this->_order_by[] = [$column, $direction];
 
@@ -165,10 +165,10 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
     /**
      * Return up to "LIMIT ..." results
      *
-     * @param   int $number maximum results to return or null to reset
+     * @param int $number Maximum results to return or null to reset
      * @return  $this
      */
-    public function limit($number)
+    public function limit(int $number)
     {
         $this->_limit = $number === null ? null : (int) $number;
 

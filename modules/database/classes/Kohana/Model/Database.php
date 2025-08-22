@@ -18,11 +18,11 @@ abstract class Kohana_Model_Database extends Model
      *
      *     $model = Model::factory($name);
      *
-     * @param   string   $name  model name
+     * @param string $name Model name
      * @param   mixed    $db    Database instance object or string
      * @return  Model
      */
-    public static function factory($name, $db = null)
+    public static function factory(string $name, $db = null)
     {
         // Add the model prefix
         $class = 'Model_' . $name;

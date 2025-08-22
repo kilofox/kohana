@@ -48,7 +48,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
      * @return  $this
      * @throws Kohana_Exception
      */
-    public function table($table)
+    public function table(string $table)
     {
         if (!is_string($table))
             throw new Kohana_Exception('INSERT INTO syntax does not allow table aliasing');

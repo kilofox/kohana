@@ -51,7 +51,7 @@ abstract class Kohana_Database
      * @return  Database
      * @throws Kohana_Exception
      */
-    public static function instance($name = null, array $config = null)
+    public static function instance(string $name = null, array $config = null)
     {
         if ($name === null) {
             // Use the default instance name
@@ -172,11 +172,11 @@ abstract class Kohana_Database
      *
      *     $db->set_charset('utf8');
      *
-     * @throws  Database_Exception
      * @param   string   $charset  character set name
      * @return  void
+     * @throws  Database_Exception
      */
-    abstract public function set_charset($charset);
+    abstract public function set_charset(string $charset);
 
     /**
      * Perform an SQL query of the given type.
@@ -193,7 +193,7 @@ abstract class Kohana_Database
      * @param array|null $params object construct parameters for result class
      * @return  Database_Result|array|int Database_Result for SELECT queries, list (insert ID, row count) for INSERT queries, number of affected rows for all other queries.
      */
-    abstract public function query($type, $sql, $as_object = false, array $params = null);
+    abstract public function query(int $type, string $sql, $as_object = false, array $params = null);
     /**
      * Start a SQL transaction
      *
@@ -212,10 +212,10 @@ abstract class Kohana_Database
      *          $db->rollback();
      *      }
      *
-     * @param string $mode  transaction mode
+     * @param string|null $mode Transaction mode
      * @return bool
      */
-    abstract public function begin($mode = null);
+    abstract public function begin(string $mode = null);
     /**
      * Commit the current transaction
      *
@@ -259,10 +259,10 @@ abstract class Kohana_Database
      *
      *     $db->datatype('char');
      *
-     * @param   string  $type  SQL data type
+     * @param string $type SQL data type
      * @return  array
      */
-    public function datatype($type)
+    public function datatype(string $type)
     {
         static $types = [
             // SQL-92
@@ -330,10 +330,10 @@ abstract class Kohana_Database
      *     // Get all user-related tables
      *     $tables = $db->list_tables('user%');
      *
-     * @param   string   $like  table to search for
+     * @param string|null $like Table to search for
      * @return  array
      */
-    abstract public function list_tables($like = null);
+    abstract public function list_tables(string $like = null);
     /**
      * Lists all the columns in a table. Optionally, a LIKE string can be
      * used to search for specific fields.
@@ -347,22 +347,22 @@ abstract class Kohana_Database
      *     // Get the columns from a table that doesn't use the table prefix
      *     $columns = $db->list_columns('users', null, false);
      *
-     * @param   string  $table       table to get columns from
-     * @param   string  $like        column to search for
-     * @param   bool $add_prefix whether to add the table prefix automatically or not
+     * @param string $table Table to get columns from
+     * @param string|null $like Column to search for
+     * @param bool $add_prefix Whether to add the table prefix automatically or not
      * @return  array
      */
-    abstract public function list_columns($table, $like = null, $add_prefix = true);
+    abstract public function list_columns(string $table, string $like = null, bool $add_prefix = true);
     /**
      * Extracts the text between parentheses, if any.
      *
      *     // Returns: ['CHAR', '6']
      *     list($type, $length) = $db->_parse_type('CHAR(6)');
      *
-     * @param   string  $type
+     * @param string $type
      * @return  array   list containing the type and length, if any
      */
-    protected function _parse_type($type)
+    protected function _parse_type(string $type)
     {
         if (($open = strpos($type, '(')) === false) {
             // No length specified
@@ -646,8 +646,8 @@ abstract class Kohana_Database
      *
      *     $value = $db->escape('any string');
      *
-     * @param   string   $value  value to quote
+     * @param string $value Value to quote
      * @return  string
      */
-    abstract public function escape($value);
+    abstract public function escape(string $value);
 }
