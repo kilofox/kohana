@@ -33,7 +33,7 @@ abstract class Kohana_HTTP
      * @throws HTTP_Exception_Redirect
      * @throws Kohana_Exception
      */
-    public static function redirect($uri = '', $code = 302)
+    public static function redirect(string $uri = '', int $code = 302)
     {
         $e = HTTP_Exception::factory($code);
 
@@ -50,11 +50,11 @@ abstract class Kohana_HTTP
      *
      * @param Request $request Request
      * @param Response $response Response
-     * @param string $etag Resource ETag
+     * @param string|null $etag Resource ETag
      * @return Response
      * @throws Request_Exception
      */
-    public static function check_cache(Request $request, Response $response, $etag = null)
+    public static function check_cache(Request $request, Response $response, string $etag = null)
     {
         // Generate an etag if necessary
         if ($etag === null) {
@@ -84,10 +84,10 @@ abstract class Kohana_HTTP
     /**
      * Parses an HTTP header string into an associative array
      *
-     * @param   string   $header_string  Header string to parse
+     * @param string $header_string Header string to parse
      * @return  HTTP_Header
      */
-    public static function parse_header_string($header_string)
+    public static function parse_header_string(string $header_string)
     {
         // If the PECL HTTP extension is loaded
         if (extension_loaded('http')) {

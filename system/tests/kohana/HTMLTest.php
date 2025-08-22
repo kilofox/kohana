@@ -89,7 +89,7 @@ class Kohana_HTMLTest extends Unittest_TestCase
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function test_attributes(array $attributes, array $options, $expected)
+    public function test_attributes(array $attributes, array $options, string $expected)
     {
         $this->setEnvironment($options);
 
@@ -150,7 +150,7 @@ class Kohana_HTMLTest extends Unittest_TestCase
      * @param bool $index Should the index file be included in URL?
      * @throws Kohana_Exception
      */
-    public function test_script($expected, $file, array $attributes = null, $protocol = null, $index = false)
+    public function test_script(string $expected, string $file, array $attributes = null, string $protocol = null, bool $index = false)
     {
         $this->assertSame(
             $expected, HTML::script($file, $attributes, $protocol, $index)
@@ -230,7 +230,7 @@ class Kohana_HTMLTest extends Unittest_TestCase
      * @param bool $index Whether the index file should be added to the link
      * @throws Kohana_Exception
      */
-    public function test_style($expected, $file, array $attributes = null, $protocol = null, $index = false)
+    public function test_style(string $expected, string $file, array $attributes = null, string $protocol = null, bool $index = false)
     {
         $this->assertSame(
             $expected, HTML::style($file, $attributes, $protocol, $index)

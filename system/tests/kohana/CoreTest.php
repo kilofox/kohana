@@ -72,7 +72,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function test_sanitize($value, $result)
+    public function test_sanitize(string $value, string $result)
     {
         $this->setEnvironment(['Kohana::$magic_quotes' => true]);
 
@@ -171,7 +171,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      * @param mixed $value Output from Kohana::cache
      * @param int $lifetime Lifetime for Kohana::cache
      */
-    public function test_cache($key, $value, $lifetime)
+    public function test_cache(string $key, $value, int $lifetime)
     {
         Kohana::cache($key, $value, $lifetime);
         $this->assertEquals($value, Kohana::cache($key));
@@ -241,12 +241,12 @@ class Kohana_CoreTest extends Unittest_TestCase
      * @dataProvider provider_message
      * @covers       Kohana::message
      * @param string $file to pass to Kohana::message
-     * @param string $key to pass to Kohana::message
+     * @param string|null $key to pass to Kohana::message
      * @param string $default to pass to Kohana::message
-     * @param string $expected Output for Kohana::message
+     * @param mixed $expected Output for Kohana::message
      * @throws Kohana_Exception
      */
-    public function test_message($file, $key, $default, $expected)
+    public function test_message(string $file, ?string $key, string $default, $expected)
     {
         $test_path = realpath(__DIR__ . '/../test_data/message_tests');
         Kohana::modules([
@@ -280,7 +280,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      * @param string $file The filename where the exception is thrown.
      * @param int $line The line number where the exception is thrown.
      */
-    public function test_error_handler($code, $error, $file, $line)
+    public function test_error_handler(int $code, string $error, string $file, int $line)
     {
         $error_level = error_reporting();
         error_reporting(E_ALL);
@@ -323,7 +323,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      * @param array $source Input for Kohana::modules
      * @throws Kohana_Exception
      */
-    public function test_modules_detects_invalid_modules($source)
+    public function test_modules_detects_invalid_modules(array $source)
     {
         $this->expectException(Kohana_Exception::class);
 
@@ -363,7 +363,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      * @param array $expected Output for Kohana::modules
      * @throws Kohana_Exception
      */
-    public function test_modules_sets_and_returns_valid_modules($source, $expected)
+    public function test_modules_sets_and_returns_valid_modules(array $source, array $expected)
     {
         $modules = Kohana::modules();
 

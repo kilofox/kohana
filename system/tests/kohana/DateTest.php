@@ -72,7 +72,7 @@ class Kohana_DateTest extends Unittest_TestCase
      * @param string|int $now Current timestamp
      * @throws Exception
      */
-    public function test_offset($expected, $remote, $local, $now = null)
+    public function test_offset(int $expected, string $remote, string $local, $now = null)
     {
         $this->assertSame($expected, Date::offset($remote, $local, $now));
     }
@@ -127,7 +127,7 @@ class Kohana_DateTest extends Unittest_TestCase
      * @param int $hour
      * @param string $expected
      */
-    public function test_am_pm($hour, $expected)
+    public function test_am_pm(int $hour, string $expected)
     {
         $this->assertSame(
             $expected, Date::ampm($hour)
@@ -179,10 +179,10 @@ class Kohana_DateTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_adjust
      * @param int $hour Hour in 12-hour format
-     * @param string  $ampm       Either am or pm
-     * @param string  $expected   Expected result
+     * @param string $ampm Either am or pm
+     * @param string $expected Expected result
      */
-    public function test_adjust($hour, $ampm, $expected)
+    public function test_adjust(int $hour, string $ampm, string $expected)
     {
         $this->assertSame(
             $expected, Date::adjust($hour, $ampm)
@@ -225,7 +225,7 @@ class Kohana_DateTest extends Unittest_TestCase
      * @param int $year
      * @param int $expected
      */
-    public function test_days($month, $year, $expected)
+    public function test_days(int $month, int $year, int $expected)
     {
         $days = Date::days($month, $year);
 
@@ -296,7 +296,7 @@ class Kohana_DateTest extends Unittest_TestCase
      * @param string|null $timezone The timezone identifier
      * @throws Exception
      */
-    public function test_formatted_time($expected, $datetime_str, $timestamp_format = null, $timezone = null)
+    public function test_formatted_time(string $expected, $datetime_str, string $timestamp_format = null, string $timezone = null)
     {
         $timestamp = Date::formatted_time($datetime_str, $timestamp_format, $timezone);
 
@@ -482,11 +482,11 @@ class Kohana_DateTest extends Unittest_TestCase
      * @covers Date::span
      * @dataProvider provider_span
      * @param int $time1 Time in the past
-     * @param int $time2 Time to compare against
-     * @param string  $output    Units to output
-     * @param array   $expected  Array of $outputs => values
+     * @param mixed $time2 Time to compare against
+     * @param string $output Units to output
+     * @param mixed $expected Array of $outputs => values
      */
-    public function test_span($time1, $time2, $output, $expected)
+    public function test_span(int $time1, $time2, string $output, $expected)
     {
         $this->assertSame(
             $expected, Date::span($time1, $time2, $output)
@@ -555,11 +555,11 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_fuzzy_span
-     * @param string  $expected        Expected output
+     * @param string $expected Expected output
      * @param int $timestamp Timestamp to use
      * @param int $local_timestamp The local timestamp to use
      */
-    public function test_fuzzy_span($expected, $timestamp, $local_timestamp)
+    public function test_fuzzy_span(string $expected, int $timestamp, int $local_timestamp)
     {
         $this->assertSame(
             $expected, Date::fuzzy_span($timestamp, $local_timestamp)
@@ -767,7 +767,7 @@ class Kohana_DateTest extends Unittest_TestCase
      * @param int $expected  Expected output
      * @param int $timestamp Input timestamp
      */
-    public function test_unix2dos($expected, $timestamp)
+    public function test_unix2dos(int $expected, int $timestamp)
     {
         $this->assertSame($expected, Date::unix2dos($timestamp));
     }
@@ -793,7 +793,7 @@ class Kohana_DateTest extends Unittest_TestCase
      * @param int $expected  Expected output
      * @param int $timestamp Input timestamp
      */
-    public function test_dos2unix($expected, $timestamp)
+    public function test_dos2unix(int $expected, int $timestamp)
     {
         $this->assertEquals($expected, Date::dos2unix($timestamp));
     }

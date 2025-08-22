@@ -64,7 +64,7 @@ class Kohana_FeedTest extends Unittest_TestCase
      * @throws Kohana_Exception
      * @throws Request_Exception
      */
-    public function test_parse($source, $expected_titles)
+    public function test_parse(string $source, $expected_titles)
     {
         $titles = [];
         foreach (Feed::parse($source) as $item) {
@@ -113,7 +113,7 @@ class Kohana_FeedTest extends Unittest_TestCase
      * @param string $child
      * @return array
      */
-    private function matcher_composer($data, $tag, $child)
+    private function matcher_composer(array $data, string $tag, string $child)
     {
         return [
             'channel > ' . $tag . ' > ' . $child,
@@ -136,7 +136,7 @@ class Kohana_FeedTest extends Unittest_TestCase
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function test_create($info, $items, $enviroment, $matcher_item, $matchers_image)
+    public function test_create(array $info, array $items, array $enviroment, array $matcher_item, array $matchers_image)
     {
         $this->setEnvironment($enviroment);
 

@@ -142,7 +142,7 @@ class Kohana_RouteTest extends Unittest_TestCase
         $modified = Route::all();
 
         // Then try and load said cache
-        $this->assertTrue(Route::cache(null, true));
+        $this->assertTrue(Route::cache(false, true));
 
         // Check the route cache flag
         $this->assertTrue(Route::$cache);
@@ -716,12 +716,12 @@ class Kohana_RouteTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_composing_url_from_route
      * @param string $expected
-     * @param array $params
+     * @param array|null $params
      * @param mixed $protocol
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function test_composing_url_from_route($expected, $params = null, $protocol = null)
+    public function test_composing_url_from_route(string $expected, array $params = null, $protocol = null)
     {
         Route::set('foobar', '(<controller>(/<action>(/<id>)))')
             ->defaults(['controller' => 'welcome']);
@@ -919,7 +919,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      * @param string $uri
      * @return PHPUnit_Framework_MockObject_MockObject|(Request&MockObject)
      */
-    public function get_request_mock($uri)
+    public function get_request_mock(string $uri)
     {
         // Mock a request class with the $uri URI
         $request = $this->getMockBuilder('Request')

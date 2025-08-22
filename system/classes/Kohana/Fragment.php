@@ -40,13 +40,13 @@ class Kohana_Fragment
      *
      *     $key = Fragment::_cache_key('footer', true);
      *
-     * @param   string  $name   fragment name
-     * @param   bool $i18n multilingual fragment support
+     * @param string $name Fragment name
+     * @param bool|null $i18n Multilingual fragment support
      * @return  string
      * @uses    I18n::lang
      * @since   3.0.4
      */
-    protected static function _cache_key($name, $i18n = null)
+    protected static function _cache_key(string $name, bool $i18n = null)
     {
         if ($i18n === null) {
             // Use the default setting
@@ -70,11 +70,11 @@ class Kohana_Fragment
      *     }
      *
      * @param string $name fragment name
-     * @param int $lifetime fragment cache lifetime
-     * @param bool $i18n multilingual fragment support
+     * @param int|null $lifetime Fragment cache lifetime
+     * @param bool|null $i18n Multilingual fragment support
      * @return bool
      */
-    public static function load($name, $lifetime = null, $i18n = null)
+    public static function load(string $name, int $lifetime = null, bool $i18n = null)
     {
         // Set the cache lifetime
         $lifetime = $lifetime === null ? Fragment::$lifetime : (int) $lifetime;
@@ -131,10 +131,10 @@ class Kohana_Fragment
      *     Fragment::delete($key);
      *
      * @param string $name fragment name
-     * @param bool $i18n multilingual fragment support
+     * @param bool|null $i18n Multilingual fragment support
      * @return  void
      */
-    public static function delete($name, $i18n = null)
+    public static function delete(string $name, bool $i18n = null)
     {
         // Invalid the cache
         Kohana::cache(Fragment::_cache_key($name, $i18n), null, -3600);

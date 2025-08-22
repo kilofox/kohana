@@ -81,12 +81,12 @@ class Kohana_Route
      *             'controller' => 'welcome',
      *         ]);
      *
-     * @param   string  $name           route name
-     * @param   string  $uri            URI pattern
-     * @param   array   $regex          regex patterns for route keys
+     * @param string $name Route name
+     * @param string|null $uri URI pattern
+     * @param array|null $regex Regex patterns for route keys
      * @return  Route
      */
-    public static function set($name, $uri = null, $regex = null)
+    public static function set(string $name, string $uri = null, array $regex = null)
     {
         return Route::$_routes[$name] = new Route($uri, $regex);
     }
@@ -96,11 +96,11 @@ class Kohana_Route
      *
      *     $route = Route::get('default');
      *
-     * @param   string  $name   route name
+     * @param string $name Route name
      * @return  Route
      * @throws  Kohana_Exception
      */
-    public static function get($name)
+    public static function get(string $name)
     {
         if (!isset(Route::$_routes[$name])) {
             throw new Kohana_Exception('The requested route does not exist: :route', [':route' => $name]);
@@ -150,9 +150,9 @@ class Kohana_Route
      * @throws Kohana_Exception
      * @uses    Kohana::cache
      */
-    public static function cache($save = false, $append = false)
+    public static function cache(bool $save = false, bool $append = false)
     {
-        if ($save === true) {
+        if ($save) {
             try {
                 // Cache all defined routes
                 Kohana::cache('Route::cache()', Route::$_routes);
@@ -194,7 +194,7 @@ class Kohana_Route
      * @uses    URL::site
      * @since   3.0.7
      */
-    public static function url($name, array $params = null, $protocol = null)
+    public static function url(string $name, array $params = null, $protocol = null)
     {
         $route = Route::get($name);
 
@@ -282,12 +282,12 @@ class Kohana_Route
      * The $uri parameter should be a string for basic regex matching.
      *
      *
-     * @param   string  $uri    route URI pattern
-     * @param   array   $regex  key patterns
+     * @param string|null $uri Route URI pattern
+     * @param array|null $regex Key patterns
      * @return  void
      * @uses    Route::_compile
      */
-    public function __construct($uri = null, $regex = null)
+    public function __construct(string $uri = null, array $regex = null)
     {
         if ($uri === null) {
             // Assume the route is from cache
@@ -351,11 +351,11 @@ class Kohana_Route
      *
      * [!!] Default parameters are added before filters are called!
      *
-     * @throws  Kohana_Exception
      * @param   array   $callback   callback string, array, or closure
      * @return  $this
+     * @throws  Kohana_Exception
      */
-    public function filter($callback)
+    public function filter(array $callback)
     {
         if (!is_callable($callback)) {
             throw new Kohana_Exception('Invalid Route::callback specified');
@@ -484,7 +484,7 @@ class Kohana_Route
          * @return  array   Tuple of the compiled portion and whether it contained specified parameters
          * @throws Kohana_Exception
          */
-        $compile = function ($portion, $required) use (&$compile, $defaults, $params) {
+        $compile = function (string $portion, bool $required) use (&$compile, $defaults, $params) {
             $missing = [];
 
             $pattern = '#(?:' . Route::REGEX_KEY . '|' . Route::REGEX_GROUP . ')#';

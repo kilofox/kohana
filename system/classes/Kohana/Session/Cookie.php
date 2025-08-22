@@ -12,11 +12,11 @@
 class Kohana_Session_Cookie extends Session
 {
     /**
-     * @param string $id session id
+     * @param string|null $id Session ID
      * @return  string
      * @throws Kohana_Exception
      */
-    protected function _read($id = null)
+    protected function _read(string $id = null)
     {
         return Cookie::get($this->_name);
     }

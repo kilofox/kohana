@@ -16,10 +16,10 @@ abstract class Kohana_Model
      *
      *     $model = Model::factory($name);
      *
-     * @param   string  $name   model name
+     * @param string $name Model name
      * @return  Model
      */
-    public static function factory($name)
+    public static function factory(string $name)
     {
         // Add the model prefix
         $class = 'Model_' . $name;

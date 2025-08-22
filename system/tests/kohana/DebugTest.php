@@ -41,7 +41,7 @@ class Kohana_DebugTest extends Unittest_TestCase
      * @param mixed $thing The thing to debug
      * @param string $expected Output for Debug::vars
      */
-    public function test_var($thing, $expected)
+    public function test_var($thing, string $expected)
     {
         $this->assertEquals($expected, Debug::vars($thing));
     }
@@ -74,7 +74,7 @@ class Kohana_DebugTest extends Unittest_TestCase
      * @param string $path Input for Debug::path
      * @param string $expected Output for Debug::path
      */
-    public function test_debug_path($path, $expected)
+    public function test_debug_path(string $path, string $expected)
     {
         $this->assertEquals($expected, Debug::path($path));
     }
@@ -155,12 +155,12 @@ class Kohana_DebugTest extends Unittest_TestCase
      * @dataProvider provider_dump
      * @covers Debug::dump
      * @covers Debug::_dump
-     * @param string $input
+     * @param mixed $input
      * @param int $length
      * @param int $limit
      * @param string $expected expected output
      */
-    public function test_dump($input, $length, $limit, $expected)
+    public function test_dump($input, int $length, int $limit, string $expected)
     {
         $this->assertEquals($expected, Debug::dump($input, $length, $limit));
     }

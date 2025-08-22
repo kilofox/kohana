@@ -64,9 +64,9 @@ class Kohana_ArrTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_callback
      * @param string $str       String to parse
-     * @param array  $expected  Callback and its parameters
+     * @param array $expected Callback and its parameters
      */
-    public function test_callback($str, $expected)
+    public function test_callback(string $str, array $expected)
     {
         $result = Arr::callback($str);
 
@@ -170,7 +170,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      * @param mixed $default
      * @param array $expected
      */
-    public function test_extract(array $array, array $paths, $default, $expected)
+    public function test_extract(array $array, array $paths, $default, array $expected)
     {
         $array = Arr::extract($array, $paths, $default);
 
@@ -207,7 +207,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      * @param string $key
      * @param array $expected
      */
-    public function test_pluck(array $array, $key, $expected)
+    public function test_pluck(array $array, string $key, array $expected)
     {
         $array = Arr::pluck($array, $key);
 
@@ -276,7 +276,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      * @param array   $array     Array to check
      * @param bool $expected Is $array assoc
      */
-    public function test_is_assoc(array $array, $expected)
+    public function test_is_assoc(array $array, bool $expected)
     {
         $this->assertSame(
             $expected, Arr::is_assoc($array)
@@ -307,7 +307,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      * @param mixed   $array     Value to check
      * @param bool $expected Is $value an array?
      */
-    public function test_is_array($array, $expected)
+    public function test_is_array($array, bool $expected)
     {
         $this->assertSame(
             $expected, Arr::is_array($array)
@@ -576,9 +576,9 @@ class Kohana_ArrTest extends Unittest_TestCase
      * @param mixed $path The path to follow
      * @param mixed   $default    The value to return if dnx
      * @param mixed $expected The expected value
-     * @param string  $delimiter  The path delimiter
+     * @param string|null $delimiter The path delimiter
      */
-    public function test_path($expected, $array, $path, $default = null, $delimiter = null)
+    public function test_path($expected, array $array, $path, $default = null, string $delimiter = null)
     {
         $this->assertSame(
             $expected, Arr::path($array, $path, $default, $delimiter)
@@ -646,9 +646,9 @@ class Kohana_ArrTest extends Unittest_TestCase
      * @param mixed $path The path to follow
      * @param mixed $value The value to set.
      * @param array $expected The expected value
-     * @param string  $delimiter  The path delimiter
+     * @param string|null $delimiter The path delimiter
      */
-    public function test_set_path($expected, $array, $path, $value, $delimiter = null)
+    public function test_set_path(array $expected, array $array, $path, $value, string $delimiter = null)
     {
         Arr::set_path($array, $path, $value, $delimiter);
 
@@ -676,7 +676,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      * @param int $step The step between each value in the array
      * @param int $max The max value of the range (inclusive)
      */
-    public function test_range($step, $max)
+    public function test_range(int $step, int $max)
     {
         $range = Arr::range($step, $max);
 
@@ -714,7 +714,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      * @param string $key
      * @param mixed $value
      */
-    public function test_unshift(array $array, $key, $value)
+    public function test_unshift(array $array, string $key, $value)
     {
         $original = $array;
 

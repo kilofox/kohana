@@ -32,10 +32,10 @@ class Kohana_Config
      *     $config->attach($reader, false); // Try last
      *
      * @param   Kohana_Config_Source    $source instance
-     * @param   bool $first add the reader as the first used object
+     * @param bool $first Add the reader as the first used object
      * @return  $this
      */
-    public function attach(Kohana_Config_Source $source, $first = true)
+    public function attach(Kohana_Config_Source $source, bool $first = true)
     {
         if ($first === true) {
             // Place the log reader at the top of the stack
@@ -78,22 +78,18 @@ class Kohana_Config
      *
      * See [Kohana_Config_Group] for more info
      *
-     * @param   string  $group  configuration group name
+     * @param string $group Configuration group name
      * @return  Kohana_Config_Group|mixed
      * @throws  Kohana_Exception
      */
-    public function load($group)
+    public function load(string $group)
     {
         if (!count($this->_sources)) {
             throw new Kohana_Exception('No configuration sources attached');
         }
 
-        if (empty($group)) {
+        if ($group === '') {
             throw new Kohana_Exception("Need to specify a config group");
-        }
-
-        if (!is_string($group)) {
-            throw new Kohana_Exception("Config group must be a string");
         }
 
         if (strpos($group, '.') !== false) {
@@ -139,7 +135,7 @@ class Kohana_Config
      * @return  $this
      * @throws Kohana_Exception
      */
-    public function copy($group)
+    public function copy(string $group)
     {
         // Load the configuration group
         $config = $this->load($group);
@@ -154,12 +150,12 @@ class Kohana_Config
     /**
      * Callback used by the config group to store changes made to configuration
      *
-     * @param string    $group  Group name
-     * @param string    $key    Variable name
+     * @param string $group Group name
+     * @param string $key Variable name
      * @param mixed     $value  The new value
      * @return Kohana_Config Chainable instance
      */
-    public function _write_config($group, $key, $value)
+    public function _write_config(string $group, string $key, $value)
     {
         foreach ($this->_sources as $source) {
             if (!($source instanceof Kohana_Config_Writer)) {

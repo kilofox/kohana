@@ -121,7 +121,7 @@ abstract class Kohana_Controller
      * @throws HTTP_Exception_Redirect
      * @throws Kohana_Exception
      */
-    public static function redirect($uri = '', $code = 302)
+    public static function redirect(string $uri = '', int $code = 302)
     {
         return HTTP::redirect((string) $uri, $code);
     }
@@ -133,11 +133,11 @@ abstract class Kohana_Controller
      *
      *     $this->check_cache(sha1($content));
      *
-     * @param string $etag Resource Etag
+     * @param string|null $etag Resource Etag
      * @return Response
      * @throws Request_Exception
      */
-    protected function check_cache($etag = null)
+    protected function check_cache(string $etag = null)
     {
         return HTTP::check_cache($this->request, $this->response, $etag);
     }

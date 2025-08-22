@@ -163,7 +163,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function test_base($protocol, $index, $expected, array $enviroment = [])
+    public function test_base($protocol, bool $index, string $expected, array $enviroment = [])
     {
         $this->setEnvironment($enviroment);
 
@@ -276,7 +276,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function test_site($uri, $protocol, $expected, array $enviroment = [])
+    public function test_site(string $uri, $protocol, string $expected, array $enviroment = [])
     {
         $this->setEnvironment($enviroment);
 
@@ -413,7 +413,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @param string $separator    Separator to replace invalid characters with
      * @param string $expected     Expected result
      */
-    public function test_title($expected, $title, $separator, $ascii_only = false)
+    public function test_title(string $expected, string $title, string $separator, $ascii_only = false)
     {
         $this->assertSame(
             $expected, URL::title($title, $separator, $ascii_only)
@@ -500,12 +500,12 @@ class Kohana_URLTest extends Unittest_TestCase
      * @dataProvider provider_query
      * @param array $enviroment Set environment
      * @param string $expected Expected result
-     * @param array $params Query string
+     * @param array|null $params Query string
      * @param bool $use_get Combine with GET parameters
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function test_query($enviroment, $expected, $params, $use_get = true)
+    public function test_query(array $enviroment, string $expected, ?array $params, bool $use_get = true)
     {
         $this->setEnvironment($enviroment);
 
@@ -558,7 +558,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @param bool $expected true if host is trusted, false otherwise
      * @throws Kohana_Exception
      */
-    public function test_is_trusted_host($host, $trusted_hosts, $expected)
+    public function test_is_trusted_host(string $host, array $trusted_hosts, bool $expected)
     {
         $this->assertSame(
             $expected, URL::is_trusted_host($host, $trusted_hosts)

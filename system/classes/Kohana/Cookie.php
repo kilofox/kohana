@@ -29,7 +29,7 @@ class Kohana_Cookie
     /**
      * @var  string  Restrict the domain that the cookie is available to
      */
-    public static $domain = null;
+    public static $domain = '';
 
     /**
      * @var bool Only transmit cookies over secure connections
@@ -54,7 +54,7 @@ class Kohana_Cookie
      * @return  string
      * @throws Kohana_Exception
      */
-    public static function get($key, $default = null)
+    public static function get(string $key, $default = null)
     {
         if (!isset($_COOKIE[$key])) {
             // The cookie does not exist
@@ -65,7 +65,7 @@ class Kohana_Cookie
         $cookie = $_COOKIE[$key];
 
         // Find the position of the split between salt and contents
-        $split = strlen(Cookie::salt($key, null));
+        $split = strlen(Cookie::salt($key, ''));
 
         if (isset($cookie[$split]) && $cookie[$split] === '~') {
             // Separate the salt and the value
@@ -97,12 +97,12 @@ class Kohana_Cookie
      *
      * @param string $name name of cookie
      * @param string $value value of cookie
-     * @param int $lifetime lifetime in seconds
+     * @param int|null $lifetime Lifetime in seconds
      * @return bool
      * @throws Kohana_Exception
      * @uses    Cookie::salt
      */
-    public static function set($name, $value, $lifetime = null)
+    public static function set(string $name, string $value, int $lifetime = null)
     {
         if ($lifetime === null) {
             // Use the default expiration
@@ -125,16 +125,16 @@ class Kohana_Cookie
      *
      *     Cookie::delete('theme');
      *
-     * @param   string  $name   cookie name
+     * @param string $name Cookie name
      * @return  bool
      */
-    public static function delete($name)
+    public static function delete(string $name)
     {
         // Remove the cookie
         unset($_COOKIE[$name]);
 
         // Nullify the cookie and make it expire
-        return static::_setcookie($name, null, -86400, Cookie::$path, Cookie::$domain, Cookie::$secure, Cookie::$httponly);
+        return static::_setcookie($name, '', -86400, Cookie::$path, Cookie::$domain, Cookie::$secure, Cookie::$httponly);
     }
 
     /**
@@ -142,13 +142,13 @@ class Kohana_Cookie
      *
      *     $salt = Cookie::salt('theme', 'red');
      *
-     * @param   string $name name of cookie
-     * @param   string $value value of cookie
+     * @param string $name Name of cookie
+     * @param string $value Value of cookie
      *
-     * @throws Kohana_Exception if Cookie::$salt is not configured
      * @return  string
+     * @throws Kohana_Exception if Cookie::$salt is not configured.
      */
-    public static function salt($name, $value)
+    public static function salt(string $name, string $value)
     {
         // Require a valid salt
         if (!Cookie::$salt) {
@@ -165,18 +165,18 @@ class Kohana_Cookie
      * Proxy for the native setcookie function - to allow mocking in unit tests so that they do not fail when headers
      * have been sent.
      *
-     * @param string  $name
-     * @param string  $value
+     * @param string $name
+     * @param string $value
      * @param int $expire
-     * @param string  $path
-     * @param string  $domain
+     * @param string $path
+     * @param string $domain
      * @param bool $secure
      * @param bool $httponly
      *
      * @return bool
      * @see setcookie
      */
-    protected static function _setcookie($name, $value, $expire, $path, $domain, $secure, $httponly)
+    protected static function _setcookie(string $name, string $value, int $expire, string $path, string $domain, bool $secure, bool $httponly)
     {
         return setcookie($name, $value, $expire, $path, $domain, $secure, $httponly);
     }

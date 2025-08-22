@@ -83,11 +83,11 @@ class Kohana_Config_Group extends ArrayObject
      *
      *     $value = $config->get($key);
      *
-     * @param   string  $key        array key
+     * @param string $key Array key
      * @param   mixed   $default    default value
      * @return  mixed
      */
-    public function get($key, $default = null)
+    public function get(string $key, $default = null)
     {
         return $this->offsetExists($key) ? $this->offsetGet($key) : $default;
     }
@@ -97,11 +97,11 @@ class Kohana_Config_Group extends ArrayObject
      *
      *     $config->set($key, $new_value);
      *
-     * @param   string  $key    array key
+     * @param string $key Array key
      * @param   mixed   $value  array value
      * @return  $this
      */
-    public function set($key, $value)
+    public function set(string $key, $value)
     {
         $this->offsetSet($key, $value);
 

@@ -47,11 +47,11 @@ class Kohana_ExceptionTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_constructor
      * @covers Kohana_Kohana_Exception::__construct
-     * @param array             $arguments          Arguments
-     * @param string            $expected_message   Value from getMessage()
+     * @param array $arguments Arguments
+     * @param string $expected_message Value from getMessage()
      * @param int|string $expected_code Value from getCode()
      */
-    public function test_constructor($arguments, $expected_message, $expected_code)
+    public function test_constructor(array $arguments, string $expected_message, $expected_code)
     {
         switch (count($arguments)) {
             case 1:
@@ -89,7 +89,7 @@ class Kohana_ExceptionTest extends Unittest_TestCase
      * @param object $exception exception to test
      * @param string $expected  expected output
      */
-    public function test_text($exception, $expected)
+    public function test_text($exception, string $expected)
     {
         $this->assertEquals($expected, Kohana_Exception::text($exception));
     }

@@ -30,11 +30,11 @@ class Kohana_Profiler
      *
      *     $token = Profiler::start('test', 'profiler');
      *
-     * @param   string  $group  group name
-     * @param   string  $name   benchmark name
+     * @param string $group Group name
+     * @param string $name Benchmark name
      * @return  string
      */
-    public static function start($group, $name)
+    public static function start(string $group, string $name)
     {
         static $counter = 0;
 
@@ -60,10 +60,10 @@ class Kohana_Profiler
      *
      *     Profiler::stop($token);
      *
-     * @param   string  $token
+     * @param string $token
      * @return  void
      */
-    public static function stop($token)
+    public static function stop(string $token)
     {
         // Stop the benchmark
         Profiler::$_marks[$token]['stop_time'] = microtime(true);
@@ -77,10 +77,10 @@ class Kohana_Profiler
      *
      *     Profiler::delete($token);
      *
-     * @param   string  $token
+     * @param string $token
      * @return  void
      */
-    public static function delete($token)
+    public static function delete(string $token)
     {
         // Remove the benchmark
         unset(Profiler::$_marks[$token]);
@@ -259,10 +259,10 @@ class Kohana_Profiler
      *
      *     list($time, $memory) = Profiler::total($token);
      *
-     * @param   string  $token
+     * @param string $token
      * @return  array   execution time, memory
      */
-    public static function total($token)
+    public static function total(string $token)
     {
         // Import the benchmark data
         $mark = Profiler::$_marks[$token];

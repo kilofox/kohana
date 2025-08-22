@@ -78,13 +78,13 @@ class Kohana_Arr
      *     // Using an array of keys
      *     $colors = Arr::path($array, ['theme', '*', 'color']);
      *
-     * @param   array   $array      array to search
+     * @param mixed $array Array to search
      * @param   mixed   $path       key path string (delimiter separated) or array of keys
      * @param   mixed   $default    default value if the path is not set
-     * @param   string  $delimiter  key path delimiter
+     * @param string|null $delimiter Key path delimiter
      * @return  mixed
      */
-    public static function path($array, $path, $default = null, $delimiter = null)
+    public static function path($array, $path, $default = null, string $delimiter = null)
     {
         if (is_array($path)) {
             // The path has already been separated into keys
@@ -168,13 +168,14 @@ class Kohana_Arr
     /**
      * Set a value on an array by path.
      *
+     * @param array $array Array to update
+     * @param string|array $path Path
+     * @param mixed $value Value to set
+     * @param string|null $delimiter Path delimiter
+     * @throws Kohana_Exception
      * @see Arr::path()
-     * @param array   $array     Array to update
-     * @param string  $path      Path
-     * @param mixed   $value     Value to set
-     * @param string  $delimiter Path delimiter
      */
-    public static function set_path(& $array, $path, $value, $delimiter = null)
+    public static function set_path(array &$array, $path, $value, string $delimiter = null)
     {
         if (!$delimiter) {
             // Use the default delimiter
@@ -182,10 +183,13 @@ class Kohana_Arr
         }
 
         // The path has already been separated into keys
-        $keys = $path;
-        if (!is_array($path)) {
+        if (is_array($path)) {
+            $keys = $path;
+        } elseif (is_string($path)) {
             // Split the keys by delimiter
             $keys = explode($delimiter, $path);
+        } else {
+            throw new Kohana_Exception('Invalid path provided');
         }
 
         // Set current $array to inner-most array path
@@ -214,11 +218,11 @@ class Kohana_Arr
      *     // Fill an array with values 5, 10, 15, 20
      *     $values = Arr::range(5, 20);
      *
-     * @param   int $step   stepping
-     * @param   int $max    ending number
+     * @param int $step   Stepping
+     * @param int $max    Ending number
      * @return  array
      */
-    public static function range($step = 10, $max = 100)
+    public static function range(int $step = 10, int $max = 100)
     {
         if ($step < 1)
             return [];
@@ -241,12 +245,12 @@ class Kohana_Arr
      *     // Get the value "sorting" from $_GET, if it exists
      *     $sorting = Arr::get($_GET, 'sorting');
      *
-     * @param   array   $array      array to extract from
-     * @param   string  $key        key name
+     * @param mixed $array Array to extract from
+     * @param string $key Key name
      * @param   mixed   $default    default value
      * @return  mixed
      */
-    public static function get($array, $key, $default = null)
+    public static function get($array, string $key, $default = null)
     {
         return $array[$key] ?? $default;
     }
@@ -262,12 +266,12 @@ class Kohana_Arr
      *     $data = ['level1' => ['level2a' => 'value 1', 'level2b' => 'value 2']];
      *     Arr::extract($data, ['level1.level2a', 'password']);
      *
-     * @param   array  $array    array to extract paths from
+     * @param array $array Array to extract paths from
      * @param   array  $paths    list of path
      * @param   mixed  $default  default value
      * @return  array
      */
-    public static function extract($array, array $paths, $default = null)
+    public static function extract(array $array, array $paths, $default = null)
     {
         $found = [];
         foreach ($paths as $path) {
@@ -285,11 +289,11 @@ class Kohana_Arr
      *
      * [!!] A list of arrays is an array that contains arrays, e.g., [array $a, array $b, array $c, ...]
      *
-     * @param   array   $array  list of arrays to check
-     * @param   string  $key    key to pluck
+     * @param array $array List of arrays to check
+     * @param string $key Key to pluck
      * @return  array
      */
-    public static function pluck($array, $key)
+    public static function pluck(array $array, string $key)
     {
         $values = [];
 
@@ -310,11 +314,11 @@ class Kohana_Arr
      *     Arr::unshift($array, 'none', 'Select a value');
      *
      * @param   array   $array  array to modify
-     * @param   string  $key    array key name
+     * @param string $key Array key name
      * @param   mixed   $val    array value
      * @return  array
      */
-    public static function unshift(array & $array, $key, $val)
+    public static function unshift(array &$array, string $key, $val)
     {
         $array = array_reverse($array, true);
         $array[$key] = $val;
@@ -343,11 +347,11 @@ class Kohana_Arr
      * a single array.
      *
      * @param   mixed   $callbacks  array of callbacks to apply to every element in the array
-     * @param   array   $array      array to map
-     * @param   array   $keys       array of keys to apply to
+     * @param array $array Array to map
+     * @param array|null $keys Array of keys to apply to
      * @return  array
      */
-    public static function map($callbacks, $array, $keys = null)
+    public static function map($callbacks, array $array, array $keys = null)
     {
         foreach ($array as $key => $val) {
             if (is_array($val)) {
@@ -382,11 +386,11 @@ class Kohana_Arr
      *     // The output of $john will now be:
      *     ['name' => 'mary', 'children' => ['fred', 'paul', 'sally', 'jane']]
      *
-     * @param   array  $array1      initial array
+     * @param array $array1 Initial array
      * @param   array  ...$arrays   array to merge
      * @return  array
      */
-    public static function merge($array1, ...$arrays)
+    public static function merge(array $array1, ...$arrays)
     {
         foreach ($arrays as $array2) {
             if (Arr::is_assoc($array2)) {
@@ -422,11 +426,11 @@ class Kohana_Arr
      *     // The output of $array will now be:
      *     ['name' => 'jack', 'mood' => 'happy', 'food' => 'tacos']
      *
-     * @param   array   $array1 master array
+     * @param array $array1 Master array
      * @param   array   ...$arrays input arrays that will overwrite existing values
      * @return  array
      */
-    public static function overwrite($array1, ...$arrays)
+    public static function overwrite(array $array1, ...$arrays)
     {
         foreach ($arrays as $array2) {
             foreach (array_intersect_key($array2, $array1) as $key => $value) {
@@ -447,10 +451,10 @@ class Kohana_Arr
      *     // Get the result of the callback
      *     $result = call_user_func_array($func, $params);
      *
-     * @param   string  $str    callback string
+     * @param string $str Callback string
      * @return  array   function, params
      */
-    public static function callback($str)
+    public static function callback(string $str)
     {
         $params = [];
 
@@ -490,11 +494,11 @@ class Kohana_Arr
      *
      * [!!] The keys of array values will be discarded.
      *
-     * @param   array   $array  array to flatten
+     * @param array $array Array to flatten
      * @return  array
      * @since   3.0.6
      */
-    public static function flatten($array)
+    public static function flatten(array $array)
     {
         $is_assoc = Arr::is_assoc($array);
 

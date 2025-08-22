@@ -45,11 +45,11 @@ class Kohana_I18n
      *     // Change the current language to Spanish
      *     I18n::lang('es-es');
      *
-     * @param   string  $lang   new language setting
+     * @param string|null $lang New language setting
      * @return  string
      * @since   3.0.2
      */
-    public static function lang($lang = null)
+    public static function lang(?string $lang = null)
     {
         if ($lang) {
             // Normalize the language
@@ -65,11 +65,11 @@ class Kohana_I18n
      *
      *     $hello = I18n::get('Hello friends, my name is :name');
      *
-     * @param   string  $string text to translate
-     * @param   string  $lang   target language
+     * @param string $string Text to translate
+     * @param string|null $lang Target language
      * @return  string
      */
-    public static function get($string, $lang = null)
+    public static function get(string $string, string $lang = null)
     {
         if (!$lang) {
             // Use the global target language
@@ -89,10 +89,10 @@ class Kohana_I18n
      *     // Get all defined Spanish messages
      *     $messages = I18n::load('es-es');
      *
-     * @param   string  $lang   language to load
+     * @param string $lang Language to load
      * @return  array
      */
-    public static function load($lang)
+    public static function load(string $lang)
     {
         if (isset(I18n::$_cache[$lang])) {
             return I18n::$_cache[$lang];
@@ -145,7 +145,7 @@ if (!function_exists('__')) {
      * @return  string
      * @uses    I18n::get
      */
-    function __($string, array $values = null, $lang = 'en-us')
+    function __(string $string, array $values = null, string $lang = 'en-us')
     {
         if ($lang !== I18n::$lang) {
             // The message and target languages are different

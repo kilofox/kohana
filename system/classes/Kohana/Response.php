@@ -144,7 +144,7 @@ class Kohana_Response implements HTTP_Response
      *
      * @return Kohana_Response|string
      */
-    public function body($content = null)
+    public function body(string $content = null)
     {
         if ($content === null)
             return $this->_body;
@@ -157,10 +157,10 @@ class Kohana_Response implements HTTP_Response
      * Gets or sets the HTTP protocol. The standard protocol to use
      * is `HTTP/1.1`.
      *
-     * @param   string   $protocol Protocol to set to the request/response
+     * @param string|null $protocol Protocol to set to the request/response
      * @return  Kohana_Response|string
      */
-    public function protocol($protocol = null)
+    public function protocol(string $protocol = null)
     {
         if ($protocol) {
             $this->_protocol = strtoupper($protocol);
@@ -184,11 +184,11 @@ class Kohana_Response implements HTTP_Response
      *      // Get the current status
      *      $status = $response->status();
      *
-     * @param int $code Status to set to this response
+     * @param int|null $code Status to set to this response
      * @return int|Kohana_Response
      * @throws Kohana_Exception
      */
-    public function status($code = null)
+    public function status(int $code = null)
     {
         if ($code === null) {
             return $this->_status;
@@ -218,10 +218,10 @@ class Kohana_Response implements HTTP_Response
      *       $response->headers(['Content-Type' => 'text/html', 'Cache-Control' => 'no-cache']);
      *
      * @param mixed $key
-     * @param string $value
+     * @param string|null $value
      * @return mixed
      */
-    public function headers($key = null, $value = null)
+    public function headers($key = null, string $value = null)
     {
         if ($key === null) {
             return $this->_header;
@@ -260,7 +260,7 @@ class Kohana_Response implements HTTP_Response
      *     ]);
      *
      * @param   mixed   $key    cookie name, or array of cookie values
-     * @param   string  $value  value to set to cookie
+     * @param mixed $value Value to set to cookie
      * @return array|string|Kohana_Response
      */
     public function cookie($key = null, $value = null)
@@ -295,10 +295,10 @@ class Kohana_Response implements HTTP_Response
     /**
      * Deletes a cookie set to the response
      *
-     * @param   string  $name
+     * @param string $name
      * @return  Kohana_Response
      */
-    public function delete_cookie($name)
+    public function delete_cookie(string $name)
     {
         unset($this->_cookies[$name]);
         return $this;
@@ -319,11 +319,11 @@ class Kohana_Response implements HTTP_Response
      * Sends the response status and all set headers.
      *
      * @param bool $replace replace existing headers
-     * @param callable $callback function to handle header output
+     * @param callable|null $callback Function to handle header output
      * @return  mixed
      * @throws Kohana_Exception
      */
-    public function send_headers($replace = false, $callback = null)
+    public function send_headers(bool $replace = false, callable $callback = null)
     {
         return $this->_header->send_headers($this, $replace, $callback);
     }
@@ -360,7 +360,7 @@ class Kohana_Response implements HTTP_Response
      * @uses    File::mime
      * @uses    Request::send_headers
      */
-    public function send_file($filename, $download = null, array $options = null)
+    public function send_file(string $filename, string $download = null, array $options = null)
     {
         if (!empty($options['mime_type'])) {
             // The mime-type has been manually set
@@ -611,10 +611,10 @@ class Kohana_Response implements HTTP_Response
      * Calculates the byte range to use with send_file. If HTTP_RANGE doesn't
      * exist then the complete byte range is returned
      *
-     * @param  int $size
+     * @param int $size
      * @return array
      */
-    protected function _calculate_byte_range($size)
+    protected function _calculate_byte_range(int $size)
     {
         // Defaults to start with when the HTTP_RANGE header doesn't exist.
         $start = 0;

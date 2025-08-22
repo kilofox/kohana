@@ -46,7 +46,7 @@ class Kohana_Kohana_Exception extends Exception
      * @param int|string $code the exception code
      * @param Exception|null $previous Previous exception
      */
-    public function __construct($message = "", array $variables = null, $code = 0, Exception $previous = null)
+    public function __construct(string $message = '', array $variables = null, $code = 0, Exception $previous = null)
     {
         // Set the message
         $message = __($message, $variables);
@@ -81,7 +81,7 @@ class Kohana_Kohana_Exception extends Exception
      * @throws Kohana_Exception
      * @uses    Kohana_Exception::response
      */
-    public static function handler($e)
+    public static function handler(Throwable $e)
     {
         $response = Kohana_Exception::_handler($e);
 
@@ -95,11 +95,11 @@ class Kohana_Kohana_Exception extends Exception
      * Exception handler, logs the exception and generates a Response object
      * for display.
      *
-     * @uses    Kohana_Exception::response
      * @param   Throwable   $e
      * @return  Response
+     * @uses    Kohana_Exception::response
      */
-    public static function _handler($e)
+    public static function _handler(Throwable $e)
     {
         try {
             // Log the exception
@@ -127,12 +127,12 @@ class Kohana_Kohana_Exception extends Exception
     /**
      * Logs an exception.
      *
-     * @uses    Kohana_Exception::text
      * @param   Throwable   $e
-     * @param   int        $level
+     * @param int $level
      * @return  void
+     * @uses    Kohana_Exception::text
      */
-    public static function log($e, $level = Log::EMERGENCY)
+    public static function log(Throwable $e, int $level = Log::EMERGENCY)
     {
         if (is_object(Kohana::$log)) {
             // Create a text version of the exception
@@ -151,10 +151,10 @@ class Kohana_Kohana_Exception extends Exception
      *
      * Error [ Code ]: Message ~ File [ Line ]
      *
-     * @param   Throwable   $e
+     * @param Throwable $e
      * @return  string
      */
-    public static function text($e)
+    public static function text(Throwable $e)
     {
         return sprintf('%s [ %s ]: %s ~ %s [ %d ]', get_class($e), $e->getCode(), strip_tags($e->getMessage()), Debug::path($e->getFile()), $e->getLine());
     }
@@ -167,7 +167,7 @@ class Kohana_Kohana_Exception extends Exception
      * @throws Kohana_Exception
      * @uses    Kohana_Exception::text
      */
-    public static function response($e)
+    public static function response(Throwable $e)
     {
         try {
             // Get the exception information

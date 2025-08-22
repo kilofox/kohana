@@ -463,11 +463,11 @@ class Kohana_Core
      *
      *     spl_autoload_register(['Kohana', 'auto_load']);
      *
-     * @param   string  $class      Class name
-     * @param   string  $directory  Directory to load from
+     * @param string $class Class name
+     * @param string $directory Directory to load from
      * @return  bool
      */
-    public static function auto_load($class, $directory = 'classes')
+    public static function auto_load(string $class, string $directory = 'classes')
     {
         // Transform the class name according to PSR-0
         $class = ltrim($class, '\\');
@@ -500,11 +500,11 @@ class Kohana_Core
      *
      * This is included for compatibility purposes with older modules.
      *
-     * @param   string  $class      Class name
-     * @param   string  $directory  Directory to load from
+     * @param string $class Class name
+     * @param string $directory Directory to load from
      * @return  bool
      */
-    public static function auto_load_lowercase($class, $directory = 'classes')
+    public static function auto_load_lowercase(string $class, string $directory = 'classes')
     {
         // Transform the class name into a path
         $file = str_replace('_', DIRECTORY_SEPARATOR, strtolower($class));
@@ -607,13 +607,13 @@ class Kohana_Core
      *     // Returns an array of all the "mimes" configuration files
      *     Kohana::find_file('config', 'mimes');
      *
-     * @param   string  $dir    directory name (views, i18n, classes, extensions, etc.)
-     * @param   string  $file   filename with subdirectory
-     * @param   string  $ext    extension to search for
-     * @param   bool $array return an array of files?
+     * @param string $dir Directory name (views, i18n, classes, extensions, etc.)
+     * @param string $file Filename with subdirectory
+     * @param string|null $ext Extension to search for
+     * @param bool $array Return an array of files?
      * @return  string[]|string List of files if $array is true, single file path otherwise.
      */
-    public static function find_file($dir, $file, $ext = null, $array = false)
+    public static function find_file(string $dir, string $file, string $ext = null, bool $array = false)
     {
         if ($ext === null) {
             // Use the default extension
@@ -695,7 +695,7 @@ class Kohana_Core
      * @param array|null $paths list of paths to search
      * @return  array
      */
-    public static function list_files($directory = null, array $paths = null)
+    public static function list_files(string $directory = null, array $paths = null)
     {
         if ($directory !== null) {
             // Add the directory separator
@@ -758,10 +758,10 @@ class Kohana_Core
      *
      *     $foo = Kohana::load('foo.php');
      *
-     * @param   string  $file
+     * @param string $file
      * @return  mixed
      */
-    public static function load($file)
+    public static function load(string $file)
     {
         return include $file;
     }
@@ -783,12 +783,12 @@ class Kohana_Core
      *
      * [ref-var]: https://www.php.net/var_export
      *
-     * @param   string  $name       name of the cache
+     * @param string $name Name of the cache
      * @param   mixed   $data       data to cache
-     * @param   int $lifetime number of seconds the cache is valid for
+     * @param int|null $lifetime Number of seconds the cache is valid for
      * @return  mixed|bool The cached data when getting, or a boolean when setting.
      */
-    public static function cache($name, $data = null, $lifetime = null)
+    public static function cache(string $name, $data = null, int $lifetime = null)
     {
         // Cache file is a hash of the name
         $file = sha1($name) . '.txt';
@@ -854,14 +854,14 @@ class Kohana_Core
      *     // Get "username" from messages/text.php
      *     $username = Kohana::message('text', 'username');
      *
-     * @param   string  $file       file name
-     * @param   string  $path       key path to get
+     * @param string $file File name
+     * @param string|null $path Key path to get
      * @param   mixed   $default    default value if the path does not exist
      * @return string|array Returns the message string for the given path, or the entire message array if no path is specified.
      * @uses    Arr::merge
      * @uses    Arr::path
      */
-    public static function message($file, $path = null, $default = null)
+    public static function message(string $file, ?string $path = null, $default = null)
     {
         static $messages;
 

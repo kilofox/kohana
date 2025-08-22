@@ -120,11 +120,11 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_parse_accept_header
      *
-     * @param   string  $accept    accept in
+     * @param string $accept Accept in
      * @param   array   $expected  expected out
      * @return  void
      */
-    public function test_parse_accept_header($accept, array $expected)
+    public function test_parse_accept_header(string $accept, array $expected)
     {
         $this->assertSame($expected, HTTP_Header::parse_accept_header($accept));
     }
@@ -170,11 +170,11 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_parse_charset_header
      *
-     * @param   string  $accept    accept
-     * @param   array   $expected  expected
+     * @param string|null $accept Accept
+     * @param array $expected Expected
      * @return  void
      */
-    public function test_parse_charset_header($accept, array $expected)
+    public function test_parse_charset_header(?string $accept, array $expected)
     {
         $this->assertSame($expected, HTTP_Header::parse_charset_header($accept));
     }
@@ -224,11 +224,11 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_parse_encoding_header
      *
-     * @param   string  $accept    accept
-     * @param   array   $expected  expected
+     * @param string|null $accept Accept
+     * @param array $expected Expected
      * @return  void
      */
-    public function test_parse_encoding_header($accept, array $expected)
+    public function test_parse_encoding_header(?string $accept, array $expected)
     {
         $this->assertSame($expected, HTTP_Header::parse_encoding_header($accept));
     }
@@ -293,11 +293,11 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_parse_language_header
      *
-     * @param   string  $accept    accept
-     * @param   array   $expected  expected
+     * @param string|null $accept Accept
+     * @param array $expected Expected
      * @return  void
      */
-    public function test_parse_language_header($accept, array $expected)
+    public function test_parse_language_header(?string $accept, array $expected)
     {
         $this->assertSame($expected, HTTP_Header::parse_language_header($accept));
     }
@@ -347,10 +347,10 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @dataProvider provider_create_cache_control
      *
      * @param   array   $input     input
-     * @param   string  $expected  expected
+     * @param string $expected Expected
      * @return  void
      */
-    public function test_create_cache_control(array $input, $expected)
+    public function test_create_cache_control(array $input, string $expected)
     {
         $this->assertSame($expected, HTTP_Header::create_cache_control($input));
     }
@@ -399,11 +399,11 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_parse_cache_control
      *
-     * @param   string  $input     input
+     * @param string $input Input
      * @param   array   $expected  expected
      * @return  void
      */
-    public function test_parse_cache_control($input, array $expected)
+    public function test_parse_cache_control(string $input, array $expected)
     {
         $parsed = HTTP_Header::parse_cache_control($input);
 
@@ -579,7 +579,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @return  void
      */
     // @codingStandardsIgnoreStart
-    public function test_offsetGet(array $state, $key, $expected)
+    public function test_offsetGet(array $state, string $key, $expected)
     // @codingStandardsIgnoreEnd
     {
         $header = new HTTP_Header($state);
@@ -642,12 +642,12 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @dataProvider provider_offsetExists
      *
      * @param   array    $state     state
-     * @param   string   $key       key
-     * @param   bool $expected expected
+     * @param string $key Key
+     * @param bool $expected Expected
      * @return  void
      */
     // @codingStandardsIgnoreStart
-    public function test_offsetExists(array $state, $key, $expected)
+    public function test_offsetExists(array $state, string $key, bool $expected)
     // @codingStandardsIgnoreEnd
     {
         $header = new HTTP_Header($state);
@@ -710,12 +710,12 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @dataProvider provider_offsetUnset
      *
      * @param   array   $state     state
-     * @param   string  $remove    remove
+     * @param string $remove Remove
      * @param   array   $expected  expected
      * @return  void
      */
     // @codingStandardsIgnoreStart
-    public function test_offsetUnset(array $state, $remove, array $expected)
+    public function test_offsetUnset(array $state, string $remove, array $expected)
     // @codingStandardsIgnoreEnd
     {
         $header = new HTTP_Header($state);
@@ -867,7 +867,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @return  void
      * @throws Kohana_Exception
      */
-    public function test_accepts_at_quality(array $state, $accept, $explicit, $expected)
+    public function test_accepts_at_quality(array $state, string $accept, bool $explicit, $expected)
     {
         $header = new HTTP_Header($state);
 
@@ -924,12 +924,12 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @param array $state state
      * @param array $accepts accepts
-     * @param string $explicit explicit
-     * @param string $expected expected
+     * @param bool $explicit Explicit
+     * @param string|false $expected Expected
      * @return  void
      * @throws Kohana_Exception
      */
-    public function test_preferred_accept(array $state, array $accepts, $explicit, $expected)
+    public function test_preferred_accept(array $state, array $accepts, bool $explicit, $expected)
     {
         $header = new HTTP_Header($state);
 
@@ -983,10 +983,10 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @param array $state state
      * @param string $charset charset
-     * @param string $expected expected
+     * @param float $expected Expected
      * @return  void
      */
-    public function test_accepts_charset_at_quality(array $state, $charset, $expected)
+    public function test_accepts_charset_at_quality(array $state, string $charset, float $expected)
     {
         $header = new HTTP_Header($state);
 
@@ -1025,7 +1025,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @param string $expected expected
      * @return  void
      */
-    public function test_preferred_charset(array $state, array $charsets, $expected)
+    public function test_preferred_charset(array $state, array $charsets, string $expected)
     {
         $header = new HTTP_Header($state);
 
@@ -1095,7 +1095,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @param float $expected expected
      * @return  void
      */
-    public function test_accepts_encoding_at_quality(array $state, $encoding, $explicit, $expected)
+    public function test_accepts_encoding_at_quality(array $state, string $encoding, bool $explicit, float $expected)
     {
         $header = new HTTP_Header($state);
         $this->assertSame($expected, $header->accepts_encoding_at_quality($encoding, $explicit));
@@ -1153,10 +1153,10 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @param array $state state in
      * @param array $encodings encodings to interrogate
      * @param bool $explicit explicit check
-     * @param string $expected expected output
+     * @param string|false $expected Expected output
      * @return  void
      */
-    public function test_preferred_encoding(array $state, array $encodings, $explicit, $expected)
+    public function test_preferred_encoding(array $state, array $encodings, bool $explicit, $expected)
     {
         $header = new HTTP_Header($state);
         $this->assertSame($expected, $header->preferred_encoding($encodings, $explicit));
@@ -1233,7 +1233,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @param float $expected expected output
      * @return  void
      */
-    public function test_accepts_language_at_quality(array $state, $language, $explicit, $expected)
+    public function test_accepts_language_at_quality(array $state, string $language, bool $explicit, float $expected)
     {
         $header = new HTTP_Header($state);
         $this->assertSame($expected, $header->accepts_language_at_quality($language, $explicit));
@@ -1302,7 +1302,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @param string $expected expected output
      * @return  void
      */
-    public function test_preferred_language(array $state, array $languages, $explicit, $expected)
+    public function test_preferred_language(array $state, array $languages, bool $explicit, string $expected)
     {
         $header = new HTTP_Header($state);
         $this->assertSame($expected, $header->preferred_language($languages, $explicit));

@@ -214,31 +214,12 @@ class Kohana_ConfigTest extends Unittest_TestCase
     }
 
     /**
-     * Provides test data for test_load_throws_exception_if_no_group_is_given()
-     *
-     * @return array
-     */
-    public function provider_load_throws_exception_if_no_group_is_given()
-    {
-        return [
-            [null],
-            [''],
-            [[]],
-            [['foo' => 'bar']],
-            [new StdClass],
-        ];
-    }
-
-    /**
-     * If an invalid group name is specified then an exception should be thrown.
-     *
-     * Invalid means it's either a non-string value, or empty
+     * If an empty group name is specified then an exception should be thrown.
      *
      * @test
-     * @dataProvider provider_load_throws_exception_if_no_group_is_given
      * @covers Config::load
      */
-    public function test_load_throws_exception_if_invalid_group($value)
+    public function test_load_throws_exception_if_empty_group()
     {
         $this->expectException(Kohana_Exception::class);
 
@@ -248,7 +229,7 @@ class Kohana_ConfigTest extends Unittest_TestCase
 
         $config->attach($reader);
 
-        $config->load($value);
+        $config->load('');
     }
 
     /**

@@ -47,12 +47,12 @@ class Kohana_Request_Client_ExternalTest extends Unittest_TestCase
      * @dataProvider provider_factory
      *
      * @param array $params params
-     * @param string $client client
-     * @param Request_Client_External $expected expected
+     * @param string|null $client Client
+     * @param string $expected Expected
      * @return  void
      * @throws Request_Exception
      */
-    public function test_factory($params, $client, $expected)
+    public function test_factory(array $params, ?string $client, string $expected)
     {
         $this->assertInstanceOf($expected, Request_Client_External::factory($params, $client));
     }
@@ -95,10 +95,10 @@ class Kohana_Request_Client_ExternalTest extends Unittest_TestCase
      *
      * @param   mixed  $key  key
      * @param   mixed  $value  value
-     * @param   array  $expected  expected
+     * @param array $expected Expected
      * @return  void
      */
-    public function test_options($key, $value, $expected)
+    public function test_options($key, $value, array $expected)
     {
         // Create a mock external client
         $client = new Request_Client_Stream;
