@@ -50,7 +50,7 @@ abstract class Kohana_Auth
      * @return  void
      * @throws Kohana_Exception
      */
-    public function __construct($config = [])
+    public function __construct(array $config = [])
     {
         // Save the config in the object
         $this->_config = $config;
@@ -76,12 +76,12 @@ abstract class Kohana_Auth
     /**
      * Attempt to log in a user by using an ORM object and plain-text password.
      *
-     * @param   string   $username  Username to log in
-     * @param   string   $password  Password to check against
-     * @param   bool $remember Enable autologin
+     * @param string $username Username to log in
+     * @param string $password Password to check against
+     * @param bool $remember Enable autologin
      * @return  bool
      */
-    public function login($username, $password, $remember = false)
+    public function login(string $username, string $password, bool $remember = false)
     {
         if (empty($password))
             return false;
@@ -92,11 +92,11 @@ abstract class Kohana_Auth
     /**
      * Log out a user by removing the related session variables.
      *
-     * @param   bool  $destroy     Completely destroy the session
-     * @param   bool  $logout_all  Remove all tokens for user
+     * @param bool $destroy     Completely destroy the session
+     * @param bool $logout_all  Remove all tokens for user
      * @return  bool
      */
-    public function logout($destroy = false, $logout_all = false)
+    public function logout(bool $destroy = false, bool $logout_all = false)
     {
         if ($destroy === true) {
             // Destroy the session completely
@@ -117,10 +117,10 @@ abstract class Kohana_Auth
      * Check if there is an active session. Optionally allows checking for a
      * specific role.
      *
-     * @param   string  $role  role name
+     * @param string|null $role Role name
      * @return  bool
      */
-    public function logged_in($role = null)
+    public function logged_in(string $role = null)
     {
         return $this->get_user() !== null;
     }
@@ -132,7 +132,7 @@ abstract class Kohana_Auth
      * @return  string
      * @throws Kohana_Exception
      */
-    public function hash($str)
+    public function hash(string $str)
     {
         if (!$this->_config['hash_key'])
             throw new Kohana_Exception('A valid hash key must be set in your auth config.');
