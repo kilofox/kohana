@@ -106,7 +106,7 @@ class Kohana_Minion_CLI
      * @param array|null $options array of options the user is shown
      * @return string  the user input
      */
-    public static function read($text = '', array $options = null)
+    public static function read(string $text = '', array $options = null)
     {
         // If a question has been asked with the read
         $options_output = '';
@@ -195,10 +195,10 @@ class Kohana_Minion_CLI
      *     // Done writing this line
      *     Minion_CLI::write_replace('100%', true);
      *
-     * @param string  $text      the text to output
+     * @param string $text The text to output
      * @param bool $end_line whether the line is done being replaced
      */
-    public static function write_replace($text = '', $end_line = false)
+    public static function write_replace(string $text = '', bool $end_line = false)
     {
         // Append a newline if $end_line is true
         $text = $end_line ? $text . PHP_EOL : $text;
@@ -209,14 +209,14 @@ class Kohana_Minion_CLI
      * Waits a certain number of seconds, optionally showing a wait message and
      * waiting for a key press.
      *
-     * @author     Fuel Development Team
-     * @license    MIT License
-     * @copyright  2010 - 2011 Fuel Development Team
-     * @link       http://fuelphp.com
      * @param int $seconds number of seconds
      * @param bool $countdown show a countdown or not
+     * @copyright  2010 - 2011 Fuel Development Team
+     * @link       http://fuelphp.com
+     * @author     Fuel Development Team
+     * @license    MIT License
      */
-    public static function wait($seconds = 0, $countdown = false)
+    public static function wait(int $seconds = 0, bool $countdown = false)
     {
         if ($countdown === true) {
             $time = $seconds;
@@ -244,7 +244,7 @@ class Kohana_Minion_CLI
      *
      * @param string $text the text to color
      * @param string $foreground the foreground color
-     * @param string $background the background color
+     * @param string|null $background The background color
      * @return string the color coded string
      * @throws Kohana_Exception
      * @license    MIT License
@@ -252,7 +252,7 @@ class Kohana_Minion_CLI
      * @link       http://fuelphp.com
      * @author     Fuel Development Team
      */
-    public static function color($text, $foreground, $background = null)
+    public static function color(string $text, string $foreground, string $background = null)
     {
 
         if (Kohana::$is_windows) {

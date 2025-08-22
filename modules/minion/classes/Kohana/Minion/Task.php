@@ -23,7 +23,7 @@ abstract class Kohana_Minion_Task
      * @param string $task Task name
      * @return string Class name
      */
-    public static function convert_task_to_class_name($task)
+    public static function convert_task_to_class_name(string $task)
     {
         $task = trim($task);
 
@@ -52,10 +52,10 @@ abstract class Kohana_Minion_Task
      * Factory for loading minion tasks
      *
      * @param array $options An array of command line options. It should contain the 'task' key
-     * @throws Minion_Exception_InvalidTask
      * @return Minion_Task The Minion task
+     * @throws Minion_Exception_InvalidTask
      */
-    public static function factory($options)
+    public static function factory(array $options)
     {
         if (($task = Arr::get($options, 'task')) !== null) {
             unset($options['task']);
@@ -271,7 +271,7 @@ abstract class Kohana_Minion_Task
      * @param string $comment The comment to parse
      * @return array First element is the comment, second is an array of tags
      */
-    protected function _parse_doccomment($comment)
+    protected function _parse_doccomment(string $comment)
     {
         // Normalize all new lines to \n
         $comment = str_replace(["\r\n", "\n"], "\n", $comment);
@@ -312,7 +312,7 @@ abstract class Kohana_Minion_Task
      * @param string $prefix prefix
      * @return array Compiled tasks
      */
-    protected function _compile_task_list(array $files, $prefix = '')
+    protected function _compile_task_list(array $files, string $prefix = '')
     {
         $output = [];
 
