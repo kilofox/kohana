@@ -27,7 +27,7 @@ class Kohana_Image_GD extends Image
      * @return bool
      * @throws Kohana_Exception
      */
-    public static function check()
+    public static function check(): bool
     {
         if (!function_exists('gd_info')) {
             throw new Kohana_Exception('GD is either not installed or not enabled, check your configuration');
@@ -499,7 +499,7 @@ class Kohana_Image_GD extends Image
      * @return bool
      * @throws Kohana_Exception
      */
-    protected function _do_save(string $file, int $quality)
+    protected function _do_save(string $file, int $quality): bool
     {
         // Loads image if not yet loaded
         $this->_load_image();
@@ -530,7 +530,7 @@ class Kohana_Image_GD extends Image
      * @return  string
      * @throws Kohana_Exception
      */
-    protected function _do_render(string $type, int $quality)
+    protected function _do_render(string $type, int $quality): string
     {
         // Loads image if not yet loaded
         $this->_load_image();
@@ -562,7 +562,7 @@ class Kohana_Image_GD extends Image
      * @return  array    save function, IMAGETYPE_* constant
      * @throws  Kohana_Exception
      */
-    protected function _save_function(string $extension, int & $quality)
+    protected function _save_function(string $extension, int & $quality): array
     {
         if (!$extension) {
             // Use the current image type

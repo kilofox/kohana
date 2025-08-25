@@ -35,7 +35,7 @@ abstract class Kohana_Image
      * @return  Image
      * @throws Kohana_Exception
      */
-    public static function factory(string $file, string $driver = null)
+    public static function factory(string $file, string $driver = null): Image
     {
         if ($driver === null) {
             // Use the driver from configuration file
@@ -163,7 +163,7 @@ abstract class Kohana_Image
      * @return  $this
      * @uses    Image::_do_resize
      */
-    public function resize(int $width = null, int $height = null, int $master = null)
+    public function resize(int $width = null, int $height = null, int $master = null): Kohana_Image
     {
         if ($master === null) {
             // Choose the master dimension automatically
@@ -261,7 +261,7 @@ abstract class Kohana_Image
      * @return  $this
      * @uses    Image::_do_crop
      */
-    public function crop(int $width, int $height, $offset_x = null, $offset_y = null)
+    public function crop(int $width, int $height, $offset_x = null, $offset_y = null): Kohana_Image
     {
         if ($width > $this->width) {
             // Use the current width
@@ -327,7 +327,7 @@ abstract class Kohana_Image
      * @return  $this
      * @uses    Image::_do_rotate
      */
-    public function rotate(int $degrees)
+    public function rotate(int $degrees): Kohana_Image
     {
         // Make the degrees an integer
         $degrees = (int) $degrees;
@@ -364,7 +364,7 @@ abstract class Kohana_Image
      * @return  $this
      * @uses    Image::_do_flip
      */
-    public function flip(int $direction)
+    public function flip(int $direction): Kohana_Image
     {
         if ($direction !== Image::HORIZONTAL) {
             // Flip vertically
@@ -386,7 +386,7 @@ abstract class Kohana_Image
      * @return  $this
      * @uses    Image::_do_sharpen
      */
-    public function sharpen(int $amount)
+    public function sharpen(int $amount): Kohana_Image
     {
         // The amount must be in the range of 1 to 100
         $amount = min(max($amount, 1), 100);
@@ -419,7 +419,7 @@ abstract class Kohana_Image
      * @return  $this
      * @uses    Image::_do_reflection
      */
-    public function reflection(int $height = null, int $opacity = 100, bool $fade_in = false)
+    public function reflection(int $height = null, int $opacity = 100, bool $fade_in = false): Kohana_Image
     {
         if ($height === null || $height > $this->height) {
             // Use the current height
@@ -452,7 +452,7 @@ abstract class Kohana_Image
      * @return  $this
      * @uses    Image::_do_watermark
      */
-    public function watermark(Image $watermark, int $offset_x = null, int $offset_y = null, int $opacity = 100)
+    public function watermark(Image $watermark, int $offset_x = null, int $offset_y = null, int $opacity = 100): Kohana_Image
     {
         if ($offset_x === null) {
             // Center the X offset
@@ -499,7 +499,7 @@ abstract class Kohana_Image
      * @return  $this
      * @uses    Image::_do_background
      */
-    public function background(string $color, int $opacity = 100)
+    public function background(string $color, int $opacity = 100): Kohana_Image
     {
         if ($color[0] === '#') {
             // Remove the pound
@@ -543,7 +543,7 @@ abstract class Kohana_Image
      * @throws  Kohana_Exception
      * @uses    Image::_save
      */
-    public function save(string $file = null, int $quality = 100)
+    public function save(string $file = null, int $quality = 100): bool
     {
         if ($file === null) {
             // Overwrite the file
@@ -583,7 +583,7 @@ abstract class Kohana_Image
      * @return  string
      * @uses    Image::_do_render
      */
-    public function render(string $type = null, int $quality = 100)
+    public function render(string $type = null, int $quality = 100): string
     {
         if ($type === null) {
             // Use the current image type
@@ -668,7 +668,7 @@ abstract class Kohana_Image
      * @param int $quality Quality
      * @return  bool
      */
-    abstract protected function _do_save(string $file, int $quality);
+    abstract protected function _do_save(string $file, int $quality): bool;
     /**
      * Execute a render.
      *
@@ -676,5 +676,5 @@ abstract class Kohana_Image
      * @param int $quality Quality
      * @return  string
      */
-    abstract protected function _do_render(string $type, int $quality);
+    abstract protected function _do_render(string $type, int $quality): string;
 }
