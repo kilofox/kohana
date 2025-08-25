@@ -39,7 +39,7 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
      * @param   mixed  $table  table name or [$table, $alias] or object
      * @return  $this
      */
-    public function table($table)
+    public function table($table): Kohana_Database_Query_Builder_Update
     {
         $this->_table = $table;
 
@@ -52,7 +52,7 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
      * @param   array   $pairs  associative (column => value) list
      * @return  $this
      */
-    public function set(array $pairs)
+    public function set(array $pairs): Kohana_Database_Query_Builder_Update
     {
         foreach ($pairs as $column => $value) {
             $this->_set[] = [$column, $value];
@@ -68,7 +68,7 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
      * @param   mixed  $value   column value
      * @return  $this
      */
-    public function value($column, $value)
+    public function value($column, $value): Kohana_Database_Query_Builder_Update
     {
         $this->_set[] = [$column, $value];
 
@@ -83,7 +83,7 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
      * @throws Database_Exception
      * @throws Kohana_Exception
      */
-    public function compile($db = null)
+    public function compile($db = null): string
     {
         if (!is_object($db)) {
             // Get the database instance
@@ -116,7 +116,7 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
         return parent::compile($db);
     }
 
-    public function reset()
+    public function reset(): Kohana_Database_Query_Builder
     {
         $this->_table = null;
 

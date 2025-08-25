@@ -48,7 +48,7 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
      * @return  $this
      * @throws Kohana_Exception
      */
-    public function on($c1, string $op, $c2)
+    public function on($c1, string $op, $c2): Kohana_Database_Query_Builder_Join
     {
         if (!empty($this->_using)) {
             throw new Kohana_Exception('JOIN ... ON ... cannot be combined with JOIN ... USING ...');
@@ -66,7 +66,7 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
      * @return  $this
      * @throws Kohana_Exception
      */
-    public function using(...$columns)
+    public function using(...$columns): Kohana_Database_Query_Builder_Join
     {
         if (!empty($this->_on)) {
             throw new Kohana_Exception('JOIN ... ON ... cannot be combined with JOIN ... USING ...');
@@ -84,7 +84,7 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
      * @return  string
      * @throws Kohana_Exception
      */
-    public function compile($db = null)
+    public function compile($db = null): string
     {
         if (!is_object($db)) {
             // Get the database instance

@@ -76,7 +76,7 @@ class Kohana_Database_PDO extends Database
      * @return bool
      * @throws Database_Exception
      */
-    public function create_aggregate(string $name, callable $step, callable $final, int $arguments = -1)
+    public function create_aggregate(string $name, callable $step, callable $final, int $arguments = -1): bool
     {
         $this->_connection or $this->connect();
 
@@ -99,7 +99,7 @@ class Kohana_Database_PDO extends Database
      * @return bool
      * @throws Database_Exception
      */
-    public function create_function(string $name, callable $callback, int $arguments = -1)
+    public function create_function(string $name, callable $callback, int $arguments = -1): bool
     {
         $this->_connection or $this->connect();
 
@@ -108,7 +108,7 @@ class Kohana_Database_PDO extends Database
         );
     }
 
-    public function disconnect()
+    public function disconnect(): bool
     {
         // Destroy the PDO object
         $this->_connection = null;

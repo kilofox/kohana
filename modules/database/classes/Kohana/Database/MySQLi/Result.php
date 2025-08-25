@@ -28,7 +28,7 @@ class Kohana_Database_MySQLi_Result extends Database_Result
         }
     }
 
-    public function seek($offset)
+    public function seek($offset): bool
     {
         if ($this->offsetExists($offset) && $this->_result->data_seek($offset)) {
             // Set the current row to the offset

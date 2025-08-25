@@ -26,7 +26,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      * @param   mixed   $value   column value
      * @return  $this
      */
-    public function where($column, string $op, $value)
+    public function where($column, string $op, $value): Kohana_Database_Query_Builder_Where
     {
         return $this->and_where($column, $op, $value);
     }
@@ -39,7 +39,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      * @param   mixed   $value   column value
      * @return  $this
      */
-    public function and_where($column, string $op, $value)
+    public function and_where($column, string $op, $value): Kohana_Database_Query_Builder_Where
     {
         $this->_where[] = ['AND' => [$column, $op, $value]];
 
@@ -54,7 +54,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      * @param   mixed   $value   column value
      * @return  $this
      */
-    public function or_where($column, string $op, $value)
+    public function or_where($column, string $op, $value): Kohana_Database_Query_Builder_Where
     {
         $this->_where[] = ['OR' => [$column, $op, $value]];
 
@@ -66,7 +66,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      *
      * @return  $this
      */
-    public function where_open()
+    public function where_open(): Kohana_Database_Query_Builder_Where
     {
         return $this->and_where_open();
     }
@@ -76,7 +76,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      *
      * @return  $this
      */
-    public function and_where_open()
+    public function and_where_open(): Kohana_Database_Query_Builder_Where
     {
         $this->_where[] = ['AND' => '('];
 
@@ -88,7 +88,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      *
      * @return  $this
      */
-    public function or_where_open()
+    public function or_where_open(): Kohana_Database_Query_Builder_Where
     {
         $this->_where[] = ['OR' => '('];
 
@@ -100,7 +100,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      *
      * @return  $this
      */
-    public function where_close()
+    public function where_close(): Kohana_Database_Query_Builder_Where
     {
         return $this->and_where_close();
     }
@@ -111,7 +111,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      *
      * @return  $this
      */
-    public function where_close_empty()
+    public function where_close_empty(): Kohana_Database_Query_Builder_Where
     {
         $group = end($this->_where);
 
@@ -129,7 +129,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      *
      * @return  $this
      */
-    public function and_where_close()
+    public function and_where_close(): Kohana_Database_Query_Builder_Where
     {
         $this->_where[] = ['AND' => ')'];
 
@@ -141,7 +141,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      *
      * @return  $this
      */
-    public function or_where_close()
+    public function or_where_close(): Kohana_Database_Query_Builder_Where
     {
         $this->_where[] = ['OR' => ')'];
 
@@ -155,7 +155,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      * @param string|null $direction Direction of sorting
      * @return  $this
      */
-    public function order_by($column, string $direction = null)
+    public function order_by($column, string $direction = null): Kohana_Database_Query_Builder_Where
     {
         $this->_order_by[] = [$column, $direction];
 
@@ -168,7 +168,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      * @param int $number Maximum results to return or null to reset
      * @return  $this
      */
-    public function limit(int $number)
+    public function limit(int $number): Kohana_Database_Query_Builder_Where
     {
         $this->_limit = $number === null ? null : (int) $number;
 

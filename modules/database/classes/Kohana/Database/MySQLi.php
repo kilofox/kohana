@@ -82,7 +82,12 @@ class Kohana_Database_MySQLi extends Database
         }
     }
 
-    public function disconnect()
+    /**
+     * Disconnect from the database.
+     *
+     * @return bool
+     */
+    public function disconnect(): bool
     {
         try {
             // Database is assumed disconnected
@@ -168,7 +173,13 @@ class Kohana_Database_MySQLi extends Database
         }
     }
 
-    public function datatype(string $type)
+    /**
+     * Returns a normalized array describing the SQL data type.
+     *
+     * @param string $type SQL data type
+     * @return array
+     */
+    public function datatype(string $type): array
     {
         static $types = [
             'blob' => ['type' => 'string', 'binary' => true, 'character_maximum_length' => '65535'],
@@ -224,7 +235,7 @@ class Kohana_Database_MySQLi extends Database
      * @return bool
      * @throws Database_Exception
      */
-    public function begin(string $mode = null)
+    public function begin(string $mode = null): bool
     {
         // Make sure the database is connected
         $this->_connection or $this->connect();
@@ -242,7 +253,7 @@ class Kohana_Database_MySQLi extends Database
      * @return bool
      * @throws Database_Exception
      */
-    public function commit()
+    public function commit(): bool
     {
         // Make sure the database is connected
         $this->_connection or $this->connect();
@@ -256,7 +267,7 @@ class Kohana_Database_MySQLi extends Database
      * @return bool
      * @throws Database_Exception
      */
-    public function rollback()
+    public function rollback(): bool
     {
         // Make sure the database is connected
         $this->_connection or $this->connect();
@@ -264,7 +275,7 @@ class Kohana_Database_MySQLi extends Database
         return (bool) $this->_connection->query('ROLLBACK');
     }
 
-    public function list_tables(string $like = null)
+    public function list_tables(string $like = null): array
     {
         if (is_string($like)) {
             // Search for table names
@@ -282,7 +293,7 @@ class Kohana_Database_MySQLi extends Database
         return $tables;
     }
 
-    public function list_columns(string $table, string $like = null, bool $add_prefix = true)
+    public function list_columns(string $table, string $like = null, bool $add_prefix = true): array
     {
         // Quote the table name
         $table = $add_prefix === true ? $this->quote_table($table) : $table;
@@ -358,7 +369,7 @@ class Kohana_Database_MySQLi extends Database
         return $columns;
     }
 
-    public function escape(string $value)
+    public function escape(string $value): string
     {
         // Make sure the database is connected
         $this->_connection or $this->connect();

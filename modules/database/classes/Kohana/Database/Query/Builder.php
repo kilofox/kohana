@@ -18,7 +18,7 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
      * @param array $joins join statements
      * @return  string
      */
-    protected function _compile_join(Database $db, array $joins)
+    protected function _compile_join(Database $db, array $joins): string
     {
         $statements = [];
 
@@ -39,7 +39,7 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
      * @return  string
      * @throws Kohana_Exception
      */
-    protected function _compile_conditions(Database $db, array $conditions)
+    protected function _compile_conditions(Database $db, array $conditions): string
     {
         $last_condition = null;
 
@@ -128,7 +128,7 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
      * @return  string
      * @throws Kohana_Exception
      */
-    protected function _compile_set(Database $db, array $values)
+    protected function _compile_set(Database $db, array $values): string
     {
         $set = [];
         foreach ($values as $group) {
@@ -157,7 +157,7 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
      * @return  string
      * @throws Kohana_Exception
      */
-    protected function _compile_group_by(Database $db, array $columns)
+    protected function _compile_group_by(Database $db, array $columns): string
     {
         $group = [];
 
@@ -185,7 +185,7 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
      * @throws Database_Exception
      * @throws Kohana_Exception
      */
-    protected function _compile_order_by(Database $db, array $columns)
+    protected function _compile_order_by(Database $db, array $columns): string
     {
         $sort = [];
         foreach ($columns as $group) {
@@ -221,5 +221,5 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
      *
      * @return  $this
      */
-    abstract public function reset();
+    abstract public function reset(): Kohana_Database_Query_Builder;
 }

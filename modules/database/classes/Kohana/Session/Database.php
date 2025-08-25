@@ -72,7 +72,7 @@ class Kohana_Session_Database extends Session
         }
     }
 
-    public function id()
+    public function id(): ?string
     {
         return $this->_session_id;
     }
@@ -102,7 +102,7 @@ class Kohana_Session_Database extends Session
         return null;
     }
 
-    protected function _regenerate()
+    protected function _regenerate(): string
     {
         // Create the query to find an ID
         $query = DB::select($this->_columns['session_id'])
@@ -122,7 +122,7 @@ class Kohana_Session_Database extends Session
         return $this->_session_id = $id;
     }
 
-    protected function _write()
+    protected function _write(): bool
     {
         if ($this->_update_id === null) {
             // Insert a new row
@@ -162,14 +162,14 @@ class Kohana_Session_Database extends Session
     /**
      * @return  bool
      */
-    protected function _restart()
+    protected function _restart(): bool
     {
         $this->_regenerate();
 
         return true;
     }
 
-    protected function _destroy()
+    protected function _destroy(): bool
     {
         if ($this->_update_id === null) {
             // Session has not been created yet

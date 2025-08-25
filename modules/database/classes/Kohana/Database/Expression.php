@@ -47,7 +47,7 @@ class Kohana_Database_Expression
      * @param   mixed   $var    variable to use
      * @return  $this
      */
-    public function bind(string $param, &$var)
+    public function bind(string $param, &$var): Kohana_Database_Expression
     {
         $this->_parameters[$param] = & $var;
 
@@ -61,7 +61,7 @@ class Kohana_Database_Expression
      * @param   mixed   $value  value to use
      * @return  $this
      */
-    public function param(string $param, $value)
+    public function param(string $param, $value): Kohana_Database_Expression
     {
         $this->_parameters[$param] = $value;
 
@@ -74,7 +74,7 @@ class Kohana_Database_Expression
      * @param   array   $params list of parameter values
      * @return  $this
      */
-    public function parameters(array $params)
+    public function parameters(array $params): Kohana_Database_Expression
     {
         $this->_parameters = $params + $this->_parameters;
 
@@ -88,7 +88,7 @@ class Kohana_Database_Expression
      *
      * @return  string
      */
-    public function value()
+    public function value(): string
     {
         return $this->_value;
     }
@@ -114,7 +114,7 @@ class Kohana_Database_Expression
      * @return  string
      * @throws Kohana_Exception
      */
-    public function compile($db = null)
+    public function compile($db = null): string
     {
         if (!is_object($db)) {
             // Get the database instance

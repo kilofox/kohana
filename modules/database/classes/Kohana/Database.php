@@ -51,7 +51,7 @@ abstract class Kohana_Database
      * @return  Database
      * @throws Kohana_Exception
      */
-    public static function instance(string $name = null, array $config = null)
+    public static function instance(string $name = null, array $config = null): Database
     {
         if ($name === null) {
             // Use the default instance name
@@ -160,7 +160,7 @@ abstract class Kohana_Database
      *
      * @return bool
      */
-    public function disconnect()
+    public function disconnect(): bool
     {
         unset(Database::$instances[$this->_instance]);
 
@@ -215,7 +215,7 @@ abstract class Kohana_Database
      * @param string|null $mode Transaction mode
      * @return bool
      */
-    abstract public function begin(string $mode = null);
+    abstract public function begin(string $mode = null): bool;
     /**
      * Commit the current transaction
      *
@@ -224,7 +224,7 @@ abstract class Kohana_Database
      *
      * @return bool
      */
-    abstract public function commit();
+    abstract public function commit(): bool;
     /**
      * Abort the current transaction
      *
@@ -233,7 +233,7 @@ abstract class Kohana_Database
      *
      * @return bool
      */
-    abstract public function rollback();
+    abstract public function rollback(): bool;
 
     /**
      * Count the number of records in a table.
@@ -245,7 +245,7 @@ abstract class Kohana_Database
      * @return int
      * @throws Kohana_Exception
      */
-    public function count_records($table)
+    public function count_records($table): int
     {
         // Quote the table name
         $table = $this->quote_table($table);
@@ -262,7 +262,7 @@ abstract class Kohana_Database
      * @param string $type SQL data type
      * @return  array
      */
-    public function datatype(string $type)
+    public function datatype(string $type): array
     {
         static $types = [
             // SQL-92
@@ -333,7 +333,7 @@ abstract class Kohana_Database
      * @param string|null $like Table to search for
      * @return  array
      */
-    abstract public function list_tables(string $like = null);
+    abstract public function list_tables(string $like = null): array;
     /**
      * Lists all the columns in a table. Optionally, a LIKE string can be
      * used to search for specific fields.
@@ -352,7 +352,7 @@ abstract class Kohana_Database
      * @param bool $add_prefix Whether to add the table prefix automatically or not
      * @return  array
      */
-    abstract public function list_columns(string $table, string $like = null, bool $add_prefix = true);
+    abstract public function list_columns(string $table, string $like = null, bool $add_prefix = true): array;
     /**
      * Extracts the text between parentheses, if any.
      *
@@ -362,7 +362,7 @@ abstract class Kohana_Database
      * @param string $type
      * @return  array   list containing the type and length, if any
      */
-    protected function _parse_type(string $type)
+    protected function _parse_type(string $type): array
     {
         if (($open = strpos($type, '(')) === false) {
             // No length specified
@@ -388,7 +388,7 @@ abstract class Kohana_Database
      *
      * @return  string
      */
-    public function table_prefix()
+    public function table_prefix(): string
     {
         return $this->_config['table_prefix'];
     }
@@ -461,7 +461,7 @@ abstract class Kohana_Database
      * @uses    Database::table_prefix
      * @uses    Database::quote_identifier
      */
-    public function quote_column($column)
+    public function quote_column($column): string
     {
         // Identifiers are escaped by repeating them
         $escaped_identifier = $this->_identifier . $this->_identifier;
@@ -532,7 +532,7 @@ abstract class Kohana_Database
      * @uses    Database::table_prefix
      * @uses    Database::quote_identifier
      */
-    public function quote_table($table)
+    public function quote_table($table): string
     {
         // Identifiers are escaped by repeating them
         $escaped_identifier = $this->_identifier . $this->_identifier;
@@ -597,7 +597,7 @@ abstract class Kohana_Database
      * @return  string
      * @throws Kohana_Exception
      */
-    public function quote_identifier($value)
+    public function quote_identifier($value): string
     {
         // Identifiers are escaped by repeating them
         $escaped_identifier = $this->_identifier . $this->_identifier;
@@ -649,5 +649,5 @@ abstract class Kohana_Database
      * @param string $value Value to quote
      * @return  string
      */
-    abstract public function escape(string $value);
+    abstract public function escape(string $value): string;
 }
