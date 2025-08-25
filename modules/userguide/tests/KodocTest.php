@@ -11,7 +11,7 @@
  */
 class Kohana_KodocTest extends PHPUnit\Framework\TestCase
 {
-    public function provider_parse_basic()
+    public function provider_parse_basic(): array
     {
         return [
             [
@@ -137,7 +137,7 @@ COMMENT
         $this->assertSame($expected, Kodoc::parse($comment));
     }
 
-    public function provider_parse_tags()
+    public function provider_parse_tags(): array
     {
         $route_api = Route::get('docs/api');
 
@@ -323,7 +323,7 @@ COMMENT
      * Provides test data for test_transparent_classes
      * @return array
      */
-    public function provider_transparent_classes()
+    public function provider_transparent_classes(): array
     {
         return [
             // Kohana_Core is a special case

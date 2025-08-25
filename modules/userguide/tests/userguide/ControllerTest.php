@@ -15,7 +15,7 @@
  */
 class Userguide_ControllerTest extends Unittest_TestCase
 {
-    public function provider_file_finds_markdown_files()
+    public function provider_file_finds_markdown_files(): array
     {
         return [
             ['userguide' . DIRECTORY_SEPARATOR . 'adding', 'guide' . DIRECTORY_SEPARATOR . 'userguide' . DIRECTORY_SEPARATOR . 'adding.md'],

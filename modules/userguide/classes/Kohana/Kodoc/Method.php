@@ -110,7 +110,7 @@ class Kohana_Kodoc_Method extends Kodoc
         $this->tags = $tags;
     }
 
-    public function params_short()
+    public function params_short(): string
     {
         $out = '';
         $required = true;

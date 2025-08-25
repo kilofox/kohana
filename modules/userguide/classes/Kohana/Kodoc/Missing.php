@@ -25,7 +25,7 @@ abstract class Kohana_Kodoc_Missing
      * @return bool
      * @since   3.0.7
      */
-    public static function create_class(string $class)
+    public static function create_class(string $class): bool
     {
         if (!class_exists($class)) {
             // Create a new missing class

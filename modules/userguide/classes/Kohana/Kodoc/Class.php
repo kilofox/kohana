@@ -89,7 +89,7 @@ class Kohana_Kodoc_Class extends Kodoc
      *
      * @return  array
      */
-    public function constants()
+    public function constants(): array
     {
         return array_map(function ($value) {
             return Debug::vars($value);
@@ -102,7 +102,7 @@ class Kohana_Kodoc_Class extends Kodoc
      *
      * @return  string  HTML
      */
-    public function description()
+    public function description(): string
     {
         $result = $this->description;
 
@@ -125,7 +125,7 @@ class Kohana_Kodoc_Class extends Kodoc
      *
      * @return  array
      */
-    public function properties()
+    public function properties(): array
     {
         $props = $this->class->getProperties();
 
@@ -141,7 +141,7 @@ class Kohana_Kodoc_Class extends Kodoc
         return $props;
     }
 
-    protected function _prop_sort($a, $b)
+    protected function _prop_sort($a, $b): int
     {
         // If one property is public, and the other is not, it goes on top
         if ($a->isPublic() && ( !$b->isPublic()))
@@ -164,7 +164,7 @@ class Kohana_Kodoc_Class extends Kodoc
      *
      * @return  array
      */
-    public function methods()
+    public function methods(): array
     {
         $methods = $this->class->getMethods();
 
@@ -186,7 +186,7 @@ class Kohana_Kodoc_Class extends Kodoc
      *  * lastly, they will be sorted alphabetically
      *
      */
-    protected function _method_sort($a, $b)
+    protected function _method_sort($a, $b): int
     {
         // If one method is public, and the other is not, it goes on top
         if ($a->isPublic() && ( !$b->isPublic()))
@@ -245,7 +245,7 @@ class Kohana_Kodoc_Class extends Kodoc
      * @return  array
      * @throws Kohana_Exception
      */
-    public function tags()
+    public function tags(): array
     {
         $result = [];
 
