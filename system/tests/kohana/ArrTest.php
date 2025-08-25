@@ -21,7 +21,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_callback()
+    public function provider_callback(): array
     {
         return [
             // Tests....
@@ -79,7 +79,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_extract()
+    public function provider_extract(): array
     {
         return [
             [
@@ -183,7 +183,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_pluck()
+    public function provider_pluck(): array
     {
         return [
             [
@@ -220,7 +220,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_get()
+    public function provider_get(): array
     {
         return [
             [['uno', 'dos', 'tress'], 1, null, 'dos'],
@@ -254,7 +254,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_is_assoc()
+    public function provider_is_assoc(): array
     {
         return [
             [
@@ -288,7 +288,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_is_array()
+    public function provider_is_array(): array
     {
         return [
             [$a = ['one', 'two', 'three'], true],
@@ -314,7 +314,7 @@ class Kohana_ArrTest extends Unittest_TestCase
         );
     }
 
-    public function provider_merge()
+    public function provider_merge(): array
     {
         return [
             // Test how it merges arrays and sub arrays with assoc keys
@@ -450,7 +450,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_path()
+    public function provider_path(): array
     {
         $array = [
             'foobar' => ['definition' => 'lost'],
@@ -590,7 +590,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_set_path()
+    public function provider_set_path(): array
     {
         return [
             // Tests returns normal values
@@ -660,7 +660,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_range()
+    public function provider_range(): array
     {
         return [
             [1, 2],
@@ -697,7 +697,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_unshift()
+    public function provider_unshift(): array
     {
         return [
             [['one' => '1', 'two' => '2'], 'zero', '0'],
@@ -733,7 +733,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      *
      * @return array Test Data
      */
-    public function provider_overwrite()
+    public function provider_overwrite(): array
     {
         return [
             [
@@ -772,7 +772,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      *
      * @return array Test Data
      */
-    public function provider_map()
+    public function provider_map(): array
     {
         return [
             [
@@ -831,7 +831,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      *
      * @return array Test Data
      */
-    public function provider_flatten()
+    public function provider_flatten(): array
     {
         return [
             [

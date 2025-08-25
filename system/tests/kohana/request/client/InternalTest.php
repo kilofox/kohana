@@ -40,7 +40,7 @@ class Kohana_Request_Client_InternalTest extends Unittest_TestCase
         parent::tearDown();
     }
 
-    public function provider_response_failure_status()
+    public function provider_response_failure_status(): array
     {
         return [
             [

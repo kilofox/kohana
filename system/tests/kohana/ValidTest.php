@@ -20,7 +20,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * Provides test data for test_alpha()
      * @return array
      */
-    public function provider_alpha()
+    public function provider_alpha(): array
     {
         return [
             ['asdavafaiwnoabwiubafpowf', true],
@@ -56,7 +56,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /*
      * Provides test data for test_alpha_numeric
      */
-    public function provide_alpha_numeric()
+    public function provide_alpha_numeric(): array
     {
         return [
             ['abcd1234', true],
@@ -93,7 +93,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * Provides test data for test_alpha_dash
      */
-    public function provider_alpha_dash()
+    public function provider_alpha_dash(): array
     {
         return [
             ['abcdef', true],
@@ -133,7 +133,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * DataProvider for the valid::date() test
      */
-    public function provider_date()
+    public function provider_date(): array
     {
         return [
             ['now', true],
@@ -169,7 +169,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * DataProvider for the valid::decimal() test
      */
-    public function provider_decimal()
+    public function provider_decimal(): array
     {
         return [
             // Empty test
@@ -204,7 +204,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * Provides test data for test_digit
      * @return array
      */
-    public function provider_digit()
+    public function provider_digit(): array
     {
         return [
             ['12345', true],
@@ -244,7 +244,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * DataProvider for the valid::color() test
      */
-    public function provider_color()
+    public function provider_color(): array
     {
         return [
             ['#000000', true],
@@ -281,7 +281,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * Provides test data for test_credit_card()
      */
-    public function provider_credit_card()
+    public function provider_credit_card(): array
     {
         return [
             ['4222222222222', 'visa', true],
@@ -319,7 +319,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * Provides test data for test_credit_card()
      */
-    public function provider_luhn()
+    public function provider_luhn(): array
     {
         return [
             ['4222222222222', true],
@@ -359,7 +359,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_email()
+    public function provider_email(): array
     {
         return [
             ['foo', true, false],
@@ -403,7 +403,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_email_domain()
+    public function provider_email_domain(): array
     {
         return [
             ['google.com', true],
@@ -441,7 +441,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_exact_length()
+    public function provider_exact_length(): array
     {
         return [
             ['somestring', 10, true],
@@ -483,7 +483,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_equals()
+    public function provider_equals(): array
     {
         return [
             ['foo', 'foo', true],
@@ -516,7 +516,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * DataProvider for the valid::ip() test
      * @return array
      */
-    public function provider_ip()
+    public function provider_ip(): array
     {
         return [
             ['75.125.175.50', false, true],
@@ -551,7 +551,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_max_length()
+    public function provider_max_length(): array
     {
         return [
             // Borderline
@@ -588,7 +588,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_min_length()
+    public function provider_min_length(): array
     {
         return [
             ['This is obviously long enough', 10, true],
@@ -622,7 +622,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_not_empty()
+    public function provider_not_empty(): array
     {
         // Create a blank arrayObject
         $ao = new ArrayObject;
@@ -663,7 +663,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * DataProvider for the Valid::numeric() test
      */
-    public function provider_numeric()
+    public function provider_numeric(): array
     {
         return [
             [12345, true],
@@ -709,7 +709,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * Provides test data for test_phone()
      * @return array
      */
-    public function provider_phone()
+    public function provider_phone(): array
     {
         return [
             ['0163634840', null, true],
@@ -745,7 +745,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * DataProvider for the valid::regex() test
      */
-    public function provider_regex()
+    public function provider_regex(): array
     {
         return [
             ['hello world', '/[a-zA-Z\s]++/', true],
@@ -780,7 +780,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * DataProvider for the valid::range() test
      */
-    public function provider_range()
+    public function provider_range(): array
     {
         return [
             [1, 0, 2, null, true],
@@ -828,7 +828,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_url()
+    public function provider_url(): array
     {
         return [
             ['http://google.com', true],
@@ -883,7 +883,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * DataProvider for the valid::matches() test
      */
-    public function provider_matches()
+    public function provider_matches(): array
     {
         return [
             [['a' => 'hello', 'b' => 'hello'], 'a', 'b', true],

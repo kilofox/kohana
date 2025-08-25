@@ -22,8 +22,8 @@ class Kohana_SessionTest extends Unittest_TestCase
      * @return Session
      */
     // @codingStandardsIgnoreStart
-    public function getMockSession(array $config = [])
-    // @codingStandardsIgnoreEnd
+    public function getMockSession(array $config = []): Session
+        // @codingStandardsIgnoreEnd
     {
         return $this->getMockForAbstractClass('Session', [$config]);
     }
@@ -35,7 +35,7 @@ class Kohana_SessionTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_constructor_uses_settings_from_config_and_casts()
+    public function provider_constructor_uses_settings_from_config_and_casts(): array
     {
         return [
             // [expected, input]
@@ -191,7 +191,7 @@ class Kohana_SessionTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_get_returns_default_if_var_dnx()
+    public function provider_get_returns_default_if_var_dnx(): array
     {
         return [
             ['something_crazy', false],
@@ -340,7 +340,7 @@ class Kohana_SessionTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_read_loads_session_data()
+    public function provider_read_loads_session_data(): array
     {
         return [
             // If driver returns array then just load it up

@@ -86,7 +86,7 @@ class Kohana_Route
      * @param array|null $regex Regex patterns for route keys
      * @return  Route
      */
-    public static function set(string $name, string $uri = null, array $regex = null)
+    public static function set(string $name, string $uri = null, array $regex = null): Route
     {
         return Route::$_routes[$name] = new Route($uri, $regex);
     }
@@ -100,7 +100,7 @@ class Kohana_Route
      * @return  Route
      * @throws  Kohana_Exception
      */
-    public static function get(string $name)
+    public static function get(string $name): Route
     {
         if (!isset(Route::$_routes[$name])) {
             throw new Kohana_Exception('The requested route does not exist: :route', [':route' => $name]);
@@ -116,7 +116,7 @@ class Kohana_Route
      *
      * @return  array  routes by name
      */
-    public static function all()
+    public static function all(): array
     {
         return Route::$_routes;
     }
@@ -127,7 +127,7 @@ class Kohana_Route
      *     $name = Route::name($route)
      *
      * @param   Route   $route  instance
-     * @return  string
+     * @return int|string|false
      */
     public static function name(Route $route)
     {
@@ -194,7 +194,7 @@ class Kohana_Route
      * @uses    URL::site
      * @since   3.0.7
      */
-    public static function url(string $name, array $params = null, $protocol = null)
+    public static function url(string $name, array $params = null, $protocol = null): string
     {
         $route = Route::get($name);
 
@@ -219,7 +219,7 @@ class Kohana_Route
      * @uses    Route::REGEX_ESCAPE
      * @uses    Route::REGEX_SEGMENT
      */
-    public static function compile($uri, array $regex = null)
+    public static function compile($uri, array $regex = null): string
     {
         // The URI should be considered literal except for keys and optional parts
         // Escape everything preg_quote would escape except for : ( ) < >
@@ -355,7 +355,7 @@ class Kohana_Route
      * @return  $this
      * @throws  Kohana_Exception
      */
-    public function filter(array $callback)
+    public function filter(array $callback): Kohana_Route
     {
         if (!is_callable($callback)) {
             throw new Kohana_Exception('Invalid Route::callback specified');
@@ -443,7 +443,7 @@ class Kohana_Route
      *
      * @return bool
      */
-    public function is_external()
+    public function is_external(): bool
     {
         return !in_array(Arr::get($this->_defaults, 'host', false), Route::$localhosts);
     }
@@ -464,7 +464,7 @@ class Kohana_Route
      * @uses    Route::REGEX_GROUP
      * @uses    Route::REGEX_KEY
      */
-    public function uri(array $params = null)
+    public function uri(array $params = null): string
     {
         if ($params) {
             // @issue #4079 rawurlencode parameters

@@ -92,7 +92,7 @@ abstract class Kohana_Request_Client
      * @uses    [Kohana::$profiling]
      * @uses    [Profiler]
      */
-    public function execute(Request $request)
+    public function execute(Request $request): Response
     {
         // Prevent too much recursion of header callback requests
         if ($this->callback_depth() > $this->max_callback_depth())
@@ -146,7 +146,7 @@ abstract class Kohana_Request_Client
      * @return  Response
      * @since   3.2.0
      */
-    abstract public function execute_request(Request $request, Response $response);
+    abstract public function execute_request(Request $request, Response $response): Response;
 
     /**
      * Getter and setter for the internal caching engine,

@@ -28,7 +28,7 @@ class Kohana_Arr
      * @param   array   $array  array to check
      * @return  bool
      */
-    public static function is_assoc(array $array)
+    public static function is_assoc(array $array): bool
     {
         // Keys of the array
         $keys = array_keys($array);
@@ -53,7 +53,7 @@ class Kohana_Arr
      * @param   mixed   $value  value to check
      * @return  bool
      */
-    public static function is_array($value)
+    public static function is_array($value): bool
     {
         if (is_array($value)) {
             // Definitely an array
@@ -222,7 +222,7 @@ class Kohana_Arr
      * @param int $max    Ending number
      * @return  array
      */
-    public static function range(int $step = 10, int $max = 100)
+    public static function range(int $step = 10, int $max = 100): array
     {
         if ($step < 1)
             return [];
@@ -271,7 +271,7 @@ class Kohana_Arr
      * @param   mixed  $default  default value
      * @return  array
      */
-    public static function extract(array $array, array $paths, $default = null)
+    public static function extract(array $array, array $paths, $default = null): array
     {
         $found = [];
         foreach ($paths as $path) {
@@ -293,7 +293,7 @@ class Kohana_Arr
      * @param string $key Key to pluck
      * @return  array
      */
-    public static function pluck(array $array, string $key)
+    public static function pluck(array $array, string $key): array
     {
         $values = [];
 
@@ -318,7 +318,7 @@ class Kohana_Arr
      * @param   mixed   $val    array value
      * @return  array
      */
-    public static function unshift(array &$array, string $key, $val)
+    public static function unshift(array &$array, string $key, $val): array
     {
         $array = array_reverse($array, true);
         $array[$key] = $val;
@@ -351,7 +351,7 @@ class Kohana_Arr
      * @param array|null $keys Array of keys to apply to
      * @return  array
      */
-    public static function map($callbacks, array $array, array $keys = null)
+    public static function map($callbacks, array $array, array $keys = null): array
     {
         foreach ($array as $key => $val) {
             if (is_array($val)) {
@@ -390,7 +390,7 @@ class Kohana_Arr
      * @param   array  ...$arrays   array to merge
      * @return  array
      */
-    public static function merge(array $array1, ...$arrays)
+    public static function merge(array $array1, ...$arrays): array
     {
         foreach ($arrays as $array2) {
             if (Arr::is_assoc($array2)) {
@@ -430,7 +430,7 @@ class Kohana_Arr
      * @param   array   ...$arrays input arrays that will overwrite existing values
      * @return  array
      */
-    public static function overwrite(array $array1, ...$arrays)
+    public static function overwrite(array $array1, ...$arrays): array
     {
         foreach ($arrays as $array2) {
             foreach (array_intersect_key($array2, $array1) as $key => $value) {
@@ -454,7 +454,7 @@ class Kohana_Arr
      * @param string $str Callback string
      * @return  array   function, params
      */
-    public static function callback(string $str)
+    public static function callback(string $str): array
     {
         $params = [];
 
@@ -498,7 +498,7 @@ class Kohana_Arr
      * @return  array
      * @since   3.0.6
      */
-    public static function flatten(array $array)
+    public static function flatten(array $array): array
     {
         $is_assoc = Arr::is_assoc($array);
 

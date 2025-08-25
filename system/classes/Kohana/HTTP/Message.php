@@ -49,5 +49,5 @@ interface Kohana_HTTP_Message
      *
      * @return  string
      */
-    public function render();
+    public function render(): string;
 }

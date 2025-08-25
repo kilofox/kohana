@@ -61,7 +61,7 @@ class Kohana_HTTPTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_redirect()
+    public function provider_redirect(): array
     {
         return [
             [
@@ -115,7 +115,7 @@ class Kohana_HTTPTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_request_headers()
+    public function provider_request_headers(): array
     {
         return [
             [

@@ -74,7 +74,7 @@ abstract class Kohana_Log_Writer
      * @return  string
      * @throws Exception
      */
-    public function format_message(array $message, string $format = "time --- level: body in file:line")
+    public function format_message(array $message, string $format = "time --- level: body in file:line"): string
     {
         $message['time'] = Date::formatted_time('@' . $message['time'], Log_Writer::$timestamp, Log_Writer::$timezone);
         $message['level'] = $this->_log_levels[$message['level']];

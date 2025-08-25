@@ -73,7 +73,7 @@ abstract class Kohana_Encrypt
      * @param string $data Data to be encrypted.
      * @return  string
      */
-    abstract public function encode(string $data);
+    abstract public function encode(string $data): string;
     /**
      * Decrypts an encoded string back to its original value.
      *

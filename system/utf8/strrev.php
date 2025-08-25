@@ -9,7 +9,7 @@
  * @copyright  (c) 2005 Harry Fuecks
  * @license    https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt
  */
-function _strrev($str)
+function _strrev($str): string
 {
     if (UTF8::is_ascii($str))
         return strrev($str);

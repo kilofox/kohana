@@ -21,7 +21,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_accept_quality()
+    public function provider_accept_quality(): array
     {
         return [
             [
@@ -79,7 +79,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_parse_accept_header()
+    public function provider_parse_accept_header(): array
     {
         return [
             [
@@ -134,7 +134,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_parse_charset_header()
+    public function provider_parse_charset_header(): array
     {
         return [
             [
@@ -184,7 +184,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_parse_encoding_header()
+    public function provider_parse_encoding_header(): array
     {
         return [
             [
@@ -238,7 +238,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_parse_language_header()
+    public function provider_parse_language_header(): array
     {
         return [
             [
@@ -307,7 +307,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_create_cache_control()
+    public function provider_create_cache_control(): array
     {
         return [
             [
@@ -360,7 +360,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_parse_cache_control()
+    public function provider_parse_cache_control(): array
     {
         return [
             [
@@ -425,8 +425,8 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @return  array
      */
     // @codingStandardsIgnoreStart
-    public function provider_offsetSet()
-    // @codingStandardsIgnoreEnd
+    public function provider_offsetSet(): array
+        // @codingStandardsIgnoreEnd
     {
         return [
             [
@@ -516,8 +516,8 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @return  array
      */
     // @codingStandardsIgnoreStart
-    public function provider_offsetGet()
-    // @codingStandardsIgnoreEnd
+    public function provider_offsetGet(): array
+        // @codingStandardsIgnoreEnd
     {
         return [
             [
@@ -593,8 +593,8 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @return  array
      */
     // @codingStandardsIgnoreStart
-    public function provider_offsetExists()
-    // @codingStandardsIgnoreEnd
+    public function provider_offsetExists(): array
+        // @codingStandardsIgnoreEnd
     {
         return [
             [
@@ -661,8 +661,8 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @return  array
      */
     // @codingStandardsIgnoreStart
-    public function provider_offsetUnset()
-    // @codingStandardsIgnoreEnd
+    public function provider_offsetUnset(): array
+        // @codingStandardsIgnoreEnd
     {
         return [
             [
@@ -729,7 +729,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_parse_header_string()
+    public function provider_parse_header_string(): array
     {
         return [
             [
@@ -789,7 +789,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_accepts_at_quality()
+    public function provider_accepts_at_quality(): array
     {
         return [
             [
@@ -879,7 +879,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_preferred_accept()
+    public function provider_preferred_accept(): array
     {
         return [
             [
@@ -941,7 +941,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_accepts_charset_at_quality()
+    public function provider_accepts_charset_at_quality(): array
     {
         return [
             [
@@ -998,7 +998,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_preferred_charset()
+    public function provider_preferred_charset(): array
     {
         return [
             [
@@ -1037,7 +1037,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_accepts_encoding_at_quality()
+    public function provider_accepts_encoding_at_quality(): array
     {
         return [
             [
@@ -1106,7 +1106,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_preferred_encoding()
+    public function provider_preferred_encoding(): array
     {
         return [
             [
@@ -1167,7 +1167,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_accepts_language_at_quality()
+    public function provider_accepts_language_at_quality(): array
     {
         return [
             [
@@ -1244,7 +1244,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_preferred_language()
+    public function provider_preferred_language(): array
     {
         return [
             [
@@ -1313,7 +1313,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_send_headers()
+    public function provider_send_headers(): array
     {
         $content_type = Kohana::$content_type . '; charset=' . Kohana::$charset;
 

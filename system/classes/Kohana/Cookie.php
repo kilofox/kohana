@@ -51,10 +51,10 @@ class Kohana_Cookie
      *
      * @param string $key cookie name
      * @param mixed $default default value to return
-     * @return  string
+     * @return string|null
      * @throws Kohana_Exception
      */
-    public static function get(string $key, $default = null)
+    public static function get(string $key, $default = null): ?string
     {
         if (!isset($_COOKIE[$key])) {
             // The cookie does not exist
@@ -102,7 +102,7 @@ class Kohana_Cookie
      * @throws Kohana_Exception
      * @uses    Cookie::salt
      */
-    public static function set(string $name, string $value, int $lifetime = null)
+    public static function set(string $name, string $value, int $lifetime = null): bool
     {
         if ($lifetime === null) {
             // Use the default expiration
@@ -128,7 +128,7 @@ class Kohana_Cookie
      * @param string $name Cookie name
      * @return  bool
      */
-    public static function delete(string $name)
+    public static function delete(string $name): bool
     {
         // Remove the cookie
         unset($_COOKIE[$name]);
@@ -148,7 +148,7 @@ class Kohana_Cookie
      * @return  string
      * @throws Kohana_Exception if Cookie::$salt is not configured.
      */
-    public static function salt(string $name, string $value)
+    public static function salt(string $name, string $value): string
     {
         // Require a valid salt
         if (!Cookie::$salt) {
@@ -176,7 +176,7 @@ class Kohana_Cookie
      * @return bool
      * @see setcookie
      */
-    protected static function _setcookie(string $name, string $value, int $expire, string $path, string $domain, bool $secure, bool $httponly)
+    protected static function _setcookie(string $name, string $value, int $expire, string $path, string $domain, bool $secure, bool $httponly): bool
     {
         return setcookie($name, $value, $expire, $path, $domain, $secure, $httponly);
     }
@@ -187,7 +187,7 @@ class Kohana_Cookie
      * @return int
      * @see    time
      */
-    protected static function _time()
+    protected static function _time(): int
     {
         return time();
     }

@@ -47,7 +47,7 @@ class Kohana_HTMLTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_attributes()
+    public function provider_attributes(): array
     {
         return [
             [
@@ -103,7 +103,7 @@ class Kohana_HTMLTest extends Unittest_TestCase
      *
      * @return array Array of test data
      */
-    public function provider_script()
+    public function provider_script(): array
     {
         return [
             [
@@ -162,7 +162,7 @@ class Kohana_HTMLTest extends Unittest_TestCase
      *
      * @return array Array of test data
      */
-    public function provider_style()
+    public function provider_style(): array
     {
         return [
             [
@@ -242,7 +242,7 @@ class Kohana_HTMLTest extends Unittest_TestCase
      *
      * @return array Test data
      */
-    public function provider_anchor()
+    public function provider_anchor(): array
     {
         return [
             // a fragment-only anchor
@@ -349,7 +349,7 @@ class Kohana_HTMLTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_file_anchor()
+    public function provider_file_anchor(): array
     {
         return [
             [

@@ -58,7 +58,7 @@ class Kohana_Text
      * @param string|null $end_char End character or entity
      * @return  string
      */
-    public static function limit_words(string $str, int $limit = 100, string $end_char = null)
+    public static function limit_words(string $str, int $limit = 100, string $end_char = null): string
     {
         $limit = (int) $limit;
         $end_char = $end_char === null ? '…' : $end_char;
@@ -88,7 +88,7 @@ class Kohana_Text
      * @return  string
      * @uses    UTF8::strlen
      */
-    public static function limit_chars(string $str, int $limit = 100, string $end_char = null, bool $preserve_words = false)
+    public static function limit_chars(string $str, int $limit = 100, string $end_char = null, bool $preserve_words = false): string
     {
         $end_char = $end_char === null ? '…' : $end_char;
 
@@ -124,7 +124,7 @@ class Kohana_Text
      * @param string ...$strings strings to alternate between
      * @return  string
      */
-    public static function alternate(...$strings)
+    public static function alternate(...$strings): string
     {
         static $i;
 
@@ -164,7 +164,7 @@ class Kohana_Text
      * @return  string
      * @uses    UTF8::split
      */
-    public static function random(string $type = null, int $length = 8)
+    public static function random(string $type = null, int $length = 8): string
     {
         if ($type === null) {
             // Default is to generate an alphanumeric string
@@ -235,7 +235,7 @@ class Kohana_Text
      * @return  string
      * @uses    UTF8::ucfirst
      */
-    public static function ucfirst(string $string, string $delimiter = '-')
+    public static function ucfirst(string $string, string $delimiter = '-'): string
     {
         // Put the keys back the Case-Convention expected
         return implode($delimiter, array_map('UTF8::ucfirst', explode($delimiter, $string)));
@@ -249,7 +249,7 @@ class Kohana_Text
      * @param string $str String to reduce slashes of
      * @return  string
      */
-    public static function reduce_slashes(string $str)
+    public static function reduce_slashes(string $str): string
     {
         return preg_replace('#(?<!:)//+#', '/', $str);
     }
@@ -269,7 +269,7 @@ class Kohana_Text
      * @return  string
      * @uses    UTF8::strlen
      */
-    public static function censor(string $str, array $badwords, string $replacement = '#', bool $replace_partial_words = true)
+    public static function censor(string $str, array $badwords, string $replacement = '#', bool $replace_partial_words = true): string
     {
         foreach ((array) $badwords as $key => $badword) {
             $badwords[$key] = str_replace('\*', '\S*?', preg_quote((string) $badword));
@@ -303,7 +303,7 @@ class Kohana_Text
      * @param   array   $words  words to find similar text of
      * @return  string
      */
-    public static function similar(array $words)
+    public static function similar(array $words): string
     {
         // First word is the word to match against
         $word = current($words);
@@ -333,7 +333,7 @@ class Kohana_Text
      * @uses    Text::auto_link_urls
      * @uses    Text::auto_link_emails
      */
-    public static function auto_link(string $text)
+    public static function auto_link(string $text): string
     {
         // Auto link emails first to prevent problems with "www.domain.com@example.com"
         return Text::auto_link_urls(Text::auto_link_emails($text));
@@ -350,7 +350,7 @@ class Kohana_Text
      * @return  string
      * @uses    HTML::anchor
      */
-    public static function auto_link_urls(string $text)
+    public static function auto_link_urls(string $text): string
     {
         // Find and replace all http/https/ftp/ftps links that are not part of an existing HTML anchor
         $text = preg_replace_callback('~\b(?<!href="|">)(?:ht|f)tps?://[^<\s]+(?:/|\b)~i', 'Text::_auto_link_urls_callback1', $text);
@@ -359,12 +359,12 @@ class Kohana_Text
         return preg_replace_callback('~\b(?<!://|">)www(?:\.[a-z0-9][-a-z0-9]*+)+\.[a-z]{2,6}[^<\s]*\b~i', 'Text::_auto_link_urls_callback2', $text);
     }
 
-    protected static function _auto_link_urls_callback1($matches)
+    protected static function _auto_link_urls_callback1($matches): string
     {
         return HTML::anchor($matches[0]);
     }
 
-    protected static function _auto_link_urls_callback2($matches)
+    protected static function _auto_link_urls_callback2($matches): string
     {
         return HTML::anchor('http://' . $matches[0], $matches[0]);
     }
@@ -381,7 +381,7 @@ class Kohana_Text
      * @return  string
      * @uses    HTML::mailto
      */
-    public static function auto_link_emails(string $text)
+    public static function auto_link_emails(string $text): string
     {
         // Find and replace all email addresses that are not part of an existing HTML mailto anchor
         // Note: The "58;" negative lookbehind prevents matching of existing encoded HTML mailto anchors
@@ -389,7 +389,7 @@ class Kohana_Text
         return preg_replace_callback('~\b(?<!href="mailto:|58;)(?!\.)[-+_a-z0-9.]++(?<!\.)@(?![-.])[-a-z0-9.]+(?<!\.)\.[a-z]{2,6}\b(?!</a>)~i', 'Text::_auto_link_emails_callback', $text);
     }
 
-    protected static function _auto_link_emails_callback($matches)
+    protected static function _auto_link_emails_callback($matches): string
     {
         return HTML::mailto($matches[0]);
     }
@@ -406,7 +406,7 @@ class Kohana_Text
      * @param bool $br Convert single linebreaks to <br />
      * @return  string
      */
-    public static function auto_p(string $str, bool $br = true)
+    public static function auto_p(string $str, bool $br = true): string
     {
         // Trim whitespace
         if (($str = trim($str)) === '')
@@ -461,7 +461,7 @@ class Kohana_Text
      * @param bool $si Whether to use SI prefixes or IEC
      * @return  string
      */
-    public static function bytes(int $bytes, string $force_unit = null, string $format = null, bool $si = true)
+    public static function bytes(int $bytes, string $force_unit = null, string $format = null, bool $si = true): string
     {
         // Format string
         $format = $format === null ? '%01.2f %s' : (string) $format;
@@ -498,7 +498,7 @@ class Kohana_Text
      * @return  string
      * @since   3.0.8
      */
-    public static function number(int $number)
+    public static function number(int $number): string
     {
         // The number must always be an integer
         $number = (int) $number;
@@ -567,7 +567,7 @@ class Kohana_Text
      * @param string $str Text to remove widows from
      * @return  string
      */
-    public static function widont(string $str)
+    public static function widont(string $str): string
     {
         // use '%' as delimiter and 'x' as modifier
         $widont_regex = "%

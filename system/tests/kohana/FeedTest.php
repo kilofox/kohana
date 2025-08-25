@@ -32,7 +32,7 @@ class Kohana_FeedTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_parse()
+    public function provider_parse(): array
     {
         return [
             // $source, $expected
@@ -79,7 +79,7 @@ class Kohana_FeedTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_create()
+    public function provider_create(): array
     {
         $info = [
             'pubDate' => 123,
@@ -113,7 +113,7 @@ class Kohana_FeedTest extends Unittest_TestCase
      * @param string $child
      * @return array
      */
-    private function matcher_composer(array $data, string $tag, string $child)
+    private function matcher_composer(array $data, string $tag, string $child): array
     {
         return [
             'channel > ' . $tag . ' > ' . $child,

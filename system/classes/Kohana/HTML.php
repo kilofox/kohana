@@ -67,9 +67,9 @@ class Kohana_HTML
      * @param bool $double_encode Encode existing entities
      * @return  string
      */
-    public static function chars(string $value, bool $double_encode = true)
+    public static function chars(string $value, bool $double_encode = true): string
     {
-        return htmlspecialchars((string) $value, ENT_QUOTES, Kohana::$charset, $double_encode);
+        return htmlspecialchars($value, ENT_QUOTES, Kohana::$charset, $double_encode);
     }
 
     /**
@@ -83,9 +83,9 @@ class Kohana_HTML
      * @param bool $double_encode Encode existing entities
      * @return  string
      */
-    public static function entities(string $value, bool $double_encode = true)
+    public static function entities(string $value, bool $double_encode = true): string
     {
-        return htmlentities((string) $value, ENT_QUOTES, Kohana::$charset, $double_encode);
+        return htmlentities($value, ENT_QUOTES, Kohana::$charset, $double_encode);
     }
 
     /**
@@ -105,7 +105,7 @@ class Kohana_HTML
      * @uses    URL::site
      * @uses    HTML::attributes
      */
-    public static function anchor(string $uri, string $title = null, array $attributes = null, $protocol = null, bool $index = true)
+    public static function anchor(string $uri, string $title = null, array $attributes = null, $protocol = null, bool $index = true): string
     {
         if ($title === null) {
             // Use the URI as the title
@@ -149,7 +149,7 @@ class Kohana_HTML
      * @uses    HTML::attributes
      * @uses    URL::base
      */
-    public static function file_anchor(string $file, string $title = null, array $attributes = null, $protocol = null, bool $index = false)
+    public static function file_anchor(string $file, string $title = null, array $attributes = null, $protocol = null, bool $index = false): string
     {
         if ($title === null) {
             // Use the file name as the title
@@ -174,7 +174,7 @@ class Kohana_HTML
      * @return  string
      * @uses    HTML::attributes
      */
-    public static function mailto(string $email, string $title = null, array $attributes = null)
+    public static function mailto(string $email, string $title = null, array $attributes = null): string
     {
         if ($title === null) {
             // Use the email address as the title
@@ -198,7 +198,7 @@ class Kohana_HTML
      * @uses    HTML::attributes
      * @uses    URL::base
      */
-    public static function style(string $file, array $attributes = null, $protocol = null, bool $index = false)
+    public static function style(string $file, array $attributes = null, $protocol = null, bool $index = false): string
     {
         if (strpos($file, '://') === false && strpos($file, '//') !== 0) {
             // Add the base URL
@@ -231,7 +231,7 @@ class Kohana_HTML
      * @uses    HTML::attributes
      * @uses    URL::base
      */
-    public static function script(string $file, array $attributes = null, $protocol = null, bool $index = false)
+    public static function script(string $file, array $attributes = null, $protocol = null, bool $index = false): string
     {
         if (strpos($file, '://') === false && strpos($file, '//') !== 0) {
             // Add the base URL
@@ -261,7 +261,7 @@ class Kohana_HTML
      * @uses    HTML::attributes
      * @uses    URL::base
      */
-    public static function image(string $file, array $attributes = null, $protocol = null, bool $index = false)
+    public static function image(string $file, array $attributes = null, $protocol = null, bool $index = false): string
     {
         if (strpos($file, '://') === false) {
             // Add the base URL
@@ -283,7 +283,7 @@ class Kohana_HTML
      * @param array|null $attributes attribute list
      * @return  string
      */
-    public static function attributes(array $attributes = null)
+    public static function attributes(array $attributes = null): string
     {
         if (empty($attributes))
             return '';

@@ -40,7 +40,7 @@ class Kohana_TextTest extends Unittest_TestCase
      *
      * @return array Test Data
      */
-    function provider_auto_para_does_not_enclose_html_tags_in_paragraphs()
+    function provider_auto_para_does_not_enclose_html_tags_in_paragraphs(): array
     {
         return [
             ['<div>Pick a plum of peppers</div>'],
@@ -95,7 +95,7 @@ class Kohana_TextTest extends Unittest_TestCase
      *
      * @return array Array of test data
      */
-    function provider_limit_words()
+    function provider_limit_words(): array
     {
         return [
             ['', '', 100, null],
@@ -120,7 +120,7 @@ class Kohana_TextTest extends Unittest_TestCase
      *
      * @return array Test data
      */
-    function provider_limit_chars()
+    function provider_limit_chars(): array
     {
         return [
             [
@@ -239,7 +239,7 @@ class Kohana_TextTest extends Unittest_TestCase
      *
      * @return array Test data
      */
-    public function provider_ucfirst()
+    public function provider_ucfirst(): array
     {
         return [
             ['Content-Type', 'content-type', '-'],
@@ -263,7 +263,7 @@ class Kohana_TextTest extends Unittest_TestCase
      *
      * @returns array Array of test data
      */
-    function provider_reduce_slashes()
+    function provider_reduce_slashes(): array
     {
         return [
             ['/', '//'],
@@ -287,7 +287,7 @@ class Kohana_TextTest extends Unittest_TestCase
      *
      * @return array Test data
      */
-    function provider_censor()
+    function provider_censor(): array
     {
         return [
             // If the replacement is 1 character long it should be repeated for the length of the removed word
@@ -339,7 +339,7 @@ class Kohana_TextTest extends Unittest_TestCase
      *
      * @return array Test Data
      */
-    function provider_random()
+    function provider_random(): array
     {
         return [
             ['alnum', 8],
@@ -404,7 +404,7 @@ class Kohana_TextTest extends Unittest_TestCase
      *
      * @return array
      */
-    function provider_similar()
+    function provider_similar(): array
     {
         return [
             // TODO: add some more cases
@@ -429,7 +429,7 @@ class Kohana_TextTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_bytes()
+    public function provider_bytes(): array
     {
         return [
             // TODO: cover the other units
@@ -458,7 +458,7 @@ class Kohana_TextTest extends Unittest_TestCase
      *
      * @return array Test data
      */
-    function provider_widont()
+    function provider_widont(): array
     {
         return [
             // A very simple widont test
@@ -587,7 +587,7 @@ class Kohana_TextTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_number()
+    public function provider_number(): array
     {
         return [
             ['one', 1],
@@ -617,7 +617,7 @@ class Kohana_TextTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_auto_link_urls()
+    public function provider_auto_link_urls(): array
     {
         return [
             // First we try with the really obvious URL
@@ -710,7 +710,7 @@ class Kohana_TextTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_auto_link_emails()
+    public function provider_auto_link_emails(): array
     {
         return [
             // @issue 3162
@@ -747,7 +747,7 @@ class Kohana_TextTest extends Unittest_TestCase
      *
      * @return array Test data
      */
-    public function provider_auto_link()
+    public function provider_auto_link(): array
     {
         return [
             [
@@ -786,7 +786,7 @@ class Kohana_TextTest extends Unittest_TestCase
         }
     }
 
-    public function provider_user_agents()
+    public function provider_user_agents(): array
     {
         return [
             [

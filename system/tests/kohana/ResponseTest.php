@@ -20,7 +20,7 @@ class Kohana_ResponseTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_body()
+    public function provider_body(): array
     {
         $view = $this->createMock('View');
 
@@ -56,7 +56,7 @@ class Kohana_ResponseTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_body_string_zero()
+    public function provider_body_string_zero(): array
     {
         return [
             ['0', '0'],
@@ -87,7 +87,7 @@ class Kohana_ResponseTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_cookie_set()
+    public function provider_cookie_set(): array
     {
         return [
             [

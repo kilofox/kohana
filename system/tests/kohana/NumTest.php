@@ -47,7 +47,7 @@ class Kohana_NumTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_bytes()
+    public function provider_bytes(): array
     {
         return [
             [204800.0, '200K'],
@@ -76,7 +76,7 @@ class Kohana_NumTest extends Unittest_TestCase
      * Provides test data for test_ordinal()
      * @return array
      */
-    public function provider_ordinal()
+    public function provider_ordinal(): array
     {
         return [
             [0, 'th'],
@@ -104,7 +104,7 @@ class Kohana_NumTest extends Unittest_TestCase
      * Provides test data for test_format()
      * @return array
      */
-    public function provider_format()
+    public function provider_format(): array
     {
         return [
             // English
@@ -135,7 +135,7 @@ class Kohana_NumTest extends Unittest_TestCase
      * Provides data for test_round()
      * @return array
      */
-    function provider_round()
+    function provider_round(): array
     {
         return [
             [5.5, 0, [6.0, 5.0, 6.0, 5.0]],

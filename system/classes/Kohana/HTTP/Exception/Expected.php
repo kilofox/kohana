@@ -63,7 +63,7 @@ abstract class Kohana_HTTP_Exception_Expected extends HTTP_Exception
      *
      * @return bool
      */
-    public function check()
+    public function check(): bool
     {
         return true;
     }
@@ -74,7 +74,7 @@ abstract class Kohana_HTTP_Exception_Expected extends HTTP_Exception
      * @return Response
      * @uses   Kohana_Exception::response()
      */
-    public function get_response()
+    public function get_response(): Response
     {
         $this->check();
 

@@ -17,7 +17,7 @@ class Kohana_SecurityTest extends Unittest_TestCase
      *
      * @return array Test data sets
      */
-    public function provider_encode_php_tags()
+    public function provider_encode_php_tags(): array
     {
         return [
             ["&lt;?php echo 'helloo'; ?&gt;", "<?php echo 'helloo'; ?>"],
@@ -42,7 +42,7 @@ class Kohana_SecurityTest extends Unittest_TestCase
      * @return array Test data sets
      * @throws Kohana_Exception
      */
-    public function provider_csrf_token()
+    public function provider_csrf_token(): array
     {
         $array = [];
         for ($i = 0; $i <= 4; $i++) {

@@ -21,7 +21,7 @@ class Kohana_Debug
      * @param mixed ...$variables variable to debug
      * @return  string
      */
-    public static function vars(...$variables)
+    public static function vars(...$variables): string
     {
         if (empty($variables)) {
             return '';
@@ -45,7 +45,7 @@ class Kohana_Debug
      * @param int $level_recursion Recursion limit
      * @return  string
      */
-    public static function dump($value, int $length = 128, int $level_recursion = 10)
+    public static function dump($value, int $length = 128, int $level_recursion = 10): string
     {
         return Debug::_dump($value, $length, $level_recursion);
     }
@@ -59,7 +59,7 @@ class Kohana_Debug
      * @param int $level Current recursion level (internal usage only!)
      * @return  string
      */
-    protected static function _dump(&$var, int $length = 128, int $limit = 10, int $level = 0)
+    protected static function _dump(&$var, int $length = 128, int $limit = 10, int $level = 0): string
     {
         if ($var === null) {
             return '<small>NULL</small>';
@@ -212,7 +212,7 @@ class Kohana_Debug
      * @param string $file Path to debug
      * @return  string
      */
-    public static function path(string $file)
+    public static function path(string $file): string
     {
         if (strpos($file, APPPATH) === 0) {
             $file = 'APPPATH' . DIRECTORY_SEPARATOR . substr($file, strlen(APPPATH));
@@ -297,7 +297,7 @@ class Kohana_Debug
      * @return array
      * @throws ReflectionException
      */
-    public static function trace(array $trace = null)
+    public static function trace(array $trace = null): array
     {
         if ($trace === null) {
             // Start a new trace

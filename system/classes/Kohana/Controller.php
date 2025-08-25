@@ -64,7 +64,7 @@ abstract class Kohana_Controller
      * @return  Response
      * @throws Kohana_HTTP_Exception
      */
-    public function execute()
+    public function execute(): Response
     {
         // Execute the "before action" method
         $this->before();
@@ -137,7 +137,7 @@ abstract class Kohana_Controller
      * @return Response
      * @throws Request_Exception
      */
-    protected function check_cache(string $etag = null)
+    protected function check_cache(string $etag = null): Response
     {
         return HTTP::check_cache($this->request, $this->response, $etag);
     }

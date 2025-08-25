@@ -21,7 +21,7 @@ class Kohana_DebugTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_vars()
+    public function provider_vars(): array
     {
         return [
             // $thing, $expected
@@ -51,7 +51,7 @@ class Kohana_DebugTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_debug_path()
+    public function provider_debug_path(): array
     {
         return [
             [
@@ -84,7 +84,7 @@ class Kohana_DebugTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_dump()
+    public function provider_dump(): array
     {
         return [
             [

@@ -56,7 +56,7 @@ class Kohana_Request implements HTTP_Request
      * @uses    Route::all
      * @uses    Route::matches
      */
-    public static function factory(string $uri = '', array $client_params = [], bool $allow_external = true, array $injected_routes = [])
+    public static function factory(string $uri = '', array $client_params = [], bool $allow_external = true, array $injected_routes = []): Request
     {
         // If this is the initial request
         if (!Request::$initial) {
@@ -186,7 +186,7 @@ class Kohana_Request implements HTTP_Request
      * @throws  Kohana_Exception
      * @since   3.0.8
      */
-    public static function detect_uri()
+    public static function detect_uri(): string
     {
         if (!empty($_SERVER['PATH_INFO'])) {
             // PATH_INFO does not contain the docroot or index
@@ -250,7 +250,7 @@ class Kohana_Request implements HTTP_Request
      * @return  Request
      * @since   3.0.5
      */
-    public static function current()
+    public static function current(): Request
     {
         return Request::$current;
     }
@@ -269,7 +269,7 @@ class Kohana_Request implements HTTP_Request
      * @return  Request
      * @since   3.1.0
      */
-    public static function initial()
+    public static function initial(): Request
     {
         return Request::$initial;
     }
@@ -298,7 +298,7 @@ class Kohana_Request implements HTTP_Request
      * @uses    Arr::get
      * @uses    Num::bytes
      */
-    public static function post_max_size_exceeded()
+    public static function post_max_size_exceeded(): bool
     {
         // Make sure the request method is POST
         if (Request::$initial->method() !== HTTP_Request::POST)
@@ -318,7 +318,7 @@ class Kohana_Request implements HTTP_Request
      * @param array|null $routes Route
      * @return  array
      */
-    public static function process(Request $request, array $routes = null)
+    public static function process(Request $request, array $routes = null): ?array
     {
         // Load routes
         $routes = empty($routes) ? Route::all() : $routes;
@@ -351,7 +351,7 @@ class Kohana_Request implements HTTP_Request
      * @param array|null $accepts Default values
      * @return  array
      */
-    protected static function _parse_accept(string &$header, array $accepts = null)
+    protected static function _parse_accept(string &$header, array $accepts = null): array
     {
         if (!empty($header)) {
             // Get all the types
@@ -570,7 +570,7 @@ class Kohana_Request implements HTTP_Request
      * Sets and gets the URI from the request.
      *
      * @param string|null $uri
-     * @return  mixed
+     * @return string|HTTP_Request
      */
     public function uri(string $uri = null)
     {
@@ -596,7 +596,7 @@ class Kohana_Request implements HTTP_Request
      * @uses    URL::site
      * @since   3.0.7
      */
-    public function url($protocol = null)
+    public function url($protocol = null): string
     {
         if ($this->is_external()) {
             // If it's an external request return the URI
@@ -777,7 +777,7 @@ class Kohana_Request implements HTTP_Request
      * @uses    [Kohana::$profiling]
      * @uses    [Profiler]
      */
-    public function execute()
+    public function execute(): Response
     {
         if (!$this->_external) {
             $processed = Request::process($this, $this->_routes);
@@ -831,7 +831,7 @@ class Kohana_Request implements HTTP_Request
      *
      * @return bool
      */
-    public function is_initial()
+    public function is_initial(): bool
     {
         return $this === Request::$initial;
     }
@@ -844,7 +844,7 @@ class Kohana_Request implements HTTP_Request
      *
      * @return bool
      */
-    public function is_external()
+    public function is_external(): bool
     {
         return $this->_external;
     }
@@ -854,7 +854,7 @@ class Kohana_Request implements HTTP_Request
      *
      * @return bool
      */
-    public function is_ajax()
+    public function is_ajax(): bool
     {
         return $this->requested_with() === 'xmlhttprequest';
     }
@@ -1015,7 +1015,7 @@ class Kohana_Request implements HTTP_Request
      *
      * @return int
      */
-    public function content_length()
+    public function content_length(): int
     {
         return strlen($this->body());
     }
@@ -1032,7 +1032,7 @@ class Kohana_Request implements HTTP_Request
      *
      * @return  string
      */
-    public function render()
+    public function render(): string
     {
         if (!$post = $this->post()) {
             $body = $this->body();

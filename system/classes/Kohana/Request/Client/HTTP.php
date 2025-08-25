@@ -53,7 +53,7 @@ class Kohana_Request_Client_HTTP extends Request_Client_External
      * @throws Kohana_Exception
      * @throws Request_Exception
      */
-    public function _send_message(Request $request, Response $response)
+    public function _send_message(Request $request, Response $response): Response
     {
         $http_method_mapping = [
             HTTP_Request::GET => HTTPRequest::METH_GET,

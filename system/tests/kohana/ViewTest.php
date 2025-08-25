@@ -53,7 +53,7 @@ class Kohana_ViewTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_instantiate()
+    public function provider_instantiate(): array
     {
         return [
             ['kohana/error', false],
@@ -67,7 +67,7 @@ class Kohana_ViewTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_set()
+    public function provider_set(): array
     {
         return [
             ['foo', 'bar', 'foo', 'bar'],

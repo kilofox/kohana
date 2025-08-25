@@ -66,7 +66,7 @@ class Kohana_Num
      * @param int $number
      * @return  string
      */
-    public static function ordinal(int $number)
+    public static function ordinal(int $number): string
     {
         if ($number % 100 > 10 && $number % 100 < 14) {
             return 'th';
@@ -103,7 +103,7 @@ class Kohana_Num
      * @return  string
      * @since   3.0.2
      */
-    public static function format(float $number, int $places, bool $monetary = false)
+    public static function format(float $number, int $places, bool $monetary = false): string
     {
         $info = localeconv();
 
@@ -182,7 +182,7 @@ class Kohana_Num
      * @return  float
      * @throws Kohana_Exception
      */
-    public static function bytes(string $size)
+    public static function bytes(string $size): float
     {
         // Prepare the size
         $size = trim($size);

@@ -33,7 +33,7 @@ class Kohana_FormTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_open()
+    public function provider_open(): array
     {
         return [
             [
@@ -99,7 +99,7 @@ class Kohana_FormTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_input()
+    public function provider_input(): array
     {
         return [
             ['input', 'foo', 'bar', null],
@@ -153,7 +153,7 @@ class Kohana_FormTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_file()
+    public function provider_file(): array
     {
         return [
             // $value, $result
@@ -180,7 +180,7 @@ class Kohana_FormTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_check()
+    public function provider_check(): array
     {
         return [
             // $value, $result
@@ -235,7 +235,7 @@ class Kohana_FormTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_text()
+    public function provider_text(): array
     {
         return [
             ['textarea', 'foo', 'bar', null],
@@ -279,7 +279,7 @@ class Kohana_FormTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_select()
+    public function provider_select(): array
     {
         return [
             // $value, $result
@@ -344,7 +344,7 @@ class Kohana_FormTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_submit()
+    public function provider_submit(): array
     {
         return [
             ['foo', 'Foobar!'],
@@ -381,7 +381,7 @@ class Kohana_FormTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_image()
+    public function provider_image(): array
     {
         return [
             // $value, $result
@@ -415,7 +415,7 @@ class Kohana_FormTest extends Unittest_TestCase
      *
      * @return array
      */
-    function provider_label()
+    function provider_label(): array
     {
         return [
             // $value, $result

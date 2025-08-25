@@ -51,7 +51,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @throws Kohana_Exception
      * @throws Request_Exception
      */
-    public function provider_base()
+    public function provider_base(): array
     {
         return [
             // $protocol, $index, $expected, $environment
@@ -177,7 +177,7 @@ class Kohana_URLTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_site()
+    public function provider_site(): array
     {
         return [
             [
@@ -291,7 +291,7 @@ class Kohana_URLTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_site_url_encode_uri()
+    public function provider_site_url_encode_uri(): array
     {
         $provider = [
             ['test', 'encode'],
@@ -328,7 +328,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * Provides test data for test_title()
      * @return array
      */
-    public function provider_title()
+    public function provider_title(): array
     {
         return [
             // Tests that…
@@ -424,7 +424,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * Provides test data for URL::query()
      * @return array
      */
-    public function provider_query()
+    public function provider_query(): array
     {
         return [
             [
@@ -518,7 +518,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * Provides test data for URL::is_trusted_host()
      * @return array
      */
-    public function provider_is_trusted_host()
+    public function provider_is_trusted_host(): array
     {
         return [
             // data set #0

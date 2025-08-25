@@ -44,7 +44,7 @@ class Kohana_Inflector
      * @return bool
      * @throws Kohana_Exception
      */
-    public static function uncountable(string $str)
+    public static function uncountable(string $str): bool
     {
         if (Inflector::$uncountable === null) {
             // Cache uncountables
@@ -77,7 +77,7 @@ class Kohana_Inflector
      * @throws Kohana_Exception
      * @uses    Inflector::uncountable
      */
-    public static function singular(string $str, $count = null)
+    public static function singular(string $str, $count = null): string
     {
         // $count should always be a float
         $count = $count === null ? 1.0 : (float) $count;
@@ -142,7 +142,7 @@ class Kohana_Inflector
      * @throws Kohana_Exception
      * @uses    Inflector::uncountable
      */
-    public static function plural(string $str, $count = null)
+    public static function plural(string $str, $count = null): string
     {
         // $count should always be a float
         $count = $count === null ? 0.0 : (float) $count;
@@ -202,7 +202,7 @@ class Kohana_Inflector
      * @param string $str Phrase to camelize
      * @return  string
      */
-    public static function camelize(string $str)
+    public static function camelize(string $str): string
     {
         $str = 'x' . strtolower(trim($str));
         $str = ucwords(preg_replace('/[\s_]+/', ' ', $str));
@@ -220,7 +220,7 @@ class Kohana_Inflector
      * @param string $sep    Word separator
      * @return  string
      */
-    public static function decamelize(string $str, string $sep = ' ')
+    public static function decamelize(string $str, string $sep = ' '): string
     {
         return strtolower(preg_replace('/([a-z])([A-Z])/', '$1' . $sep . '$2', trim($str)));
     }
@@ -233,7 +233,7 @@ class Kohana_Inflector
      * @param string $str Phrase to underscore
      * @return  string
      */
-    public static function underscore(string $str)
+    public static function underscore(string $str): string
     {
         return preg_replace('/\s+/', '_', trim($str));
     }
@@ -247,7 +247,7 @@ class Kohana_Inflector
      * @param string $str Phrase to make human-readable
      * @return  string
      */
-    public static function humanize(string $str)
+    public static function humanize(string $str): string
     {
         return preg_replace('/[_-]+/', ' ', trim($str));
     }

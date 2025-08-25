@@ -63,7 +63,7 @@ class Kohana_Config_Group extends ArrayObject
      *
      * @return array Array copy of the group's config
      */
-    public function as_array()
+    public function as_array(): array
     {
         return $this->getArrayCopy();
     }
@@ -73,7 +73,7 @@ class Kohana_Config_Group extends ArrayObject
      *
      * @return string The group name
      */
-    public function group_name()
+    public function group_name(): string
     {
         return $this->_group_name;
     }
@@ -101,7 +101,7 @@ class Kohana_Config_Group extends ArrayObject
      * @param   mixed   $value  array value
      * @return  $this
      */
-    public function set(string $key, $value)
+    public function set(string $key, $value): Kohana_Config_Group
     {
         $this->offsetSet($key, $value);
 

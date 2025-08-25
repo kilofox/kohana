@@ -99,7 +99,7 @@ class Kohana_Kohana_Exception extends Exception
      * @return  Response
      * @uses    Kohana_Exception::response
      */
-    public static function _handler(Throwable $e)
+    public static function _handler(Throwable $e): Response
     {
         try {
             // Log the exception
@@ -154,7 +154,7 @@ class Kohana_Kohana_Exception extends Exception
      * @param Throwable $e
      * @return  string
      */
-    public static function text(Throwable $e)
+    public static function text(Throwable $e): string
     {
         return sprintf('%s [ %s ]: %s ~ %s [ %d ]', get_class($e), $e->getCode(), strip_tags($e->getMessage()), Debug::path($e->getFile()), $e->getLine());
     }
@@ -167,7 +167,7 @@ class Kohana_Kohana_Exception extends Exception
      * @throws Kohana_Exception
      * @uses    Kohana_Exception::text
      */
-    public static function response(Throwable $e)
+    public static function response(Throwable $e): Response
     {
         try {
             // Get the exception information

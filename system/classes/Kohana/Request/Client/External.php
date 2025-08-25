@@ -54,7 +54,7 @@ abstract class Kohana_Request_Client_External extends Request_Client
      * @return  Request_Client_External
      * @throws  Request_Exception
      */
-    public static function factory(array $params = [], ?string $client = null)
+    public static function factory(array $params = [], ?string $client = null): Request_Client_External
     {
         if ($client === null) {
             $client = Request_Client_External::$client;
@@ -96,7 +96,7 @@ abstract class Kohana_Request_Client_External extends Request_Client
      * @uses    [Kohana::$profiling]
      * @uses    [Profiler]
      */
-    public function execute_request(Request $request, Response $response)
+    public function execute_request(Request $request, Response $response): Response
     {
         if (Kohana::$profiling) {
             // Set the benchmark name
@@ -186,5 +186,5 @@ abstract class Kohana_Request_Client_External extends Request_Client
      * @param   Response  $response   Response to send
      * @return  Response
      */
-    abstract protected function _send_message(Request $request, Response $response);
+    abstract protected function _send_message(Request $request, Response $response): Response;
 }

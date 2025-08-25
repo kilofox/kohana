@@ -37,7 +37,7 @@ class Kohana_URL
      * @uses    Request::protocol()
      * @uses    Kohana::$index_file
      */
-    public static function base($protocol = null, bool $index = false)
+    public static function base($protocol = null, bool $index = false): string
     {
         // Start with the configured base URL
         $base_url = Kohana::$base_url;
@@ -113,7 +113,7 @@ class Kohana_URL
      * @throws Kohana_Exception
      * @uses    URL::base
      */
-    public static function site(string $uri = '', $protocol = null, bool $index = true)
+    public static function site(string $uri = '', $protocol = null, bool $index = true): string
     {
         // Chop off possible scheme, host, port, user and pass parts
         $path = preg_replace('~^[-a-z0-9+.]++://[^/]++/?~', '', trim($uri, '/'));
@@ -134,7 +134,7 @@ class Kohana_URL
      * @param array $matches Array of matches from preg_replace_callback()
      * @return string          Encoded string
      */
-    protected static function _rawurlencode_callback(array $matches)
+    protected static function _rawurlencode_callback(array $matches): string
     {
         return rawurlencode($matches[0]);
     }
@@ -155,7 +155,7 @@ class Kohana_URL
      * @param bool $use_get Include current request GET parameters
      * @return  string
      */
-    public static function query(?array $params = null, bool $use_get = true)
+    public static function query(?array $params = null, bool $use_get = true): string
     {
         if ($use_get) {
             if ($params === null) {
@@ -190,7 +190,7 @@ class Kohana_URL
      * @return  string
      * @uses    UTF8::transliterate_to_ascii
      */
-    public static function title(string $title, string $separator = '-', bool $ascii_only = false)
+    public static function title(string $title, string $separator = '-', bool $ascii_only = false): string
     {
         if ($ascii_only === true) {
             // Transliterate non-ASCII characters
@@ -221,7 +221,7 @@ class Kohana_URL
      * @return bool true if $host is trustworthy.
      * @throws Kohana_Exception
      */
-    public static function is_trusted_host(string $host, array $trusted_hosts = null)
+    public static function is_trusted_host(string $host, array $trusted_hosts = null): bool
     {
 
         // If list of trusted hosts is not directly provided read from config

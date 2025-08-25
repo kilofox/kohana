@@ -23,5 +23,5 @@ interface Kohana_Config_Writer extends Kohana_Config_Source
      * @param mixed $config The configuration to write
      * @return bool
      */
-    public function write(string $group, string $key, $config);
+    public function write(string $group, string $key, $config): bool;
 }

@@ -101,7 +101,7 @@ class Kohana_Encrypt_Openssl
      * @param string $data Data to be encrypted.
      * @return  string
      */
-    public function encode(string $data)
+    public function encode(string $data): string
     {
         // Use a fake IV for unit testing, or generate a secure random IV.
         $iv = $this->iv ?? openssl_random_pseudo_bytes($this->ivSize);

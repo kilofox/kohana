@@ -36,7 +36,7 @@ interface Kohana_HTTP_Request extends HTTP_Message
     /**
      * Gets the URI of this request.
      *
-     * @return  string
+     * @return string|HTTP_Request
      */
     public function uri();
     /**

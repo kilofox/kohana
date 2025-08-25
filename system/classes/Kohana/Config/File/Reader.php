@@ -38,7 +38,7 @@ class Kohana_Config_File_Reader implements Kohana_Config_Reader
      * @return  array
      * @uses    Kohana::load
      */
-    public function load(string $group)
+    public function load(string $group): array
     {
         $config = [];
 

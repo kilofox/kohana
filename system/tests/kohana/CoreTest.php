@@ -50,7 +50,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_sanitize()
+    public function provider_sanitize(): array
     {
         return [
             // $value, $result
@@ -151,7 +151,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_cache()
+    public function provider_cache(): array
     {
         return [
             // $value, $result
@@ -182,7 +182,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_message()
+    public function provider_message(): array
     {
         return [
             [
@@ -262,7 +262,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_error_handler()
+    public function provider_error_handler(): array
     {
         return [
             [1, 'Foobar', 'foobar.php', __LINE__],
@@ -298,7 +298,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_modules_detects_invalid_modules()
+    public function provider_modules_detects_invalid_modules(): array
     {
         return [
             [
@@ -340,7 +340,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_modules_sets_and_returns_valid_modules()
+    public function provider_modules_sets_and_returns_valid_modules(): array
     {
         return [
             [

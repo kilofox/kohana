@@ -11,7 +11,7 @@ abstract class Kohana_HTTP_Exception extends Kohana_Exception
      * @param Exception|null $previous
      * @return  HTTP_Exception
      */
-    public static function factory(int $code, string $message = '', array $variables = null, Exception $previous = null)
+    public static function factory(int $code, string $message = '', array $variables = null, Exception $previous = null): HTTP_Exception
     {
         $class = 'HTTP_Exception_' . $code;
 
@@ -65,7 +65,7 @@ abstract class Kohana_HTTP_Exception extends Kohana_Exception
      * @throws Kohana_Exception
      * @uses   Kohana_Exception::response()
      */
-    public function get_response()
+    public function get_response(): Response
     {
         return Kohana_Exception::response($this);
     }

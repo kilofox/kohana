@@ -82,7 +82,7 @@ class Kohana_File
      * @throws Kohana_Exception
      * @see Kohana_File::mime_by_ext()
      */
-    public static function mimes_by_ext(string $extension)
+    public static function mimes_by_ext(string $extension): array
     {
         // Load all the mime types
         $mimes = Kohana::$config->load('mimes');
@@ -97,7 +97,7 @@ class Kohana_File
      * @return  array   File extensions matching MIME type
      * @throws Kohana_Exception
      */
-    public static function exts_by_mime(string $type)
+    public static function exts_by_mime(string $type): array
     {
         static $types = [];
 
@@ -144,7 +144,7 @@ class Kohana_File
      * @param int $piece_size Size in MB for each piece to be
      * @return  int The number of pieces that were created
      */
-    public static function split(string $filename, int $piece_size = 10)
+    public static function split(string $filename, int $piece_size = 10): int
     {
         // Open the input file
         $file = fopen($filename, 'rb');
@@ -195,7 +195,7 @@ class Kohana_File
      * @param string $filename Split filename, without .000 extension
      * @return  int The number of pieces that were joined.
      */
-    public static function join(string $filename)
+    public static function join(string $filename): int
     {
         // Open the file
         $file = fopen($filename, 'wb+');

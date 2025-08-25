@@ -25,7 +25,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  array
      * @since   3.2.0
      */
-    public static function accept_quality(array $parts)
+    public static function accept_quality(array $parts): array
     {
         $parsed = [];
 
@@ -63,7 +63,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  array
      * @since   3.2.0
      */
-    public static function parse_accept_header(string $accepts = null)
+    public static function parse_accept_header(string $accepts = null): array
     {
         $accepts = explode(',', (string) $accepts);
 
@@ -102,7 +102,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  array
      * @since   3.2.0
      */
-    public static function parse_charset_header(string $charset = null)
+    public static function parse_charset_header(string $charset = null): array
     {
         if ($charset === null) {
             return ['*' => (float) HTTP_Header::DEFAULT_QUALITY];
@@ -120,7 +120,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  array
      * @since   3.2.0
      */
-    public static function parse_encoding_header(string $encoding = null)
+    public static function parse_encoding_header(string $encoding = null): array
     {
         // Accept everything
         if ($encoding === null) {
@@ -141,7 +141,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  array
      * @since   3.2.0
      */
-    public static function parse_language_header(string $language = null)
+    public static function parse_language_header(string $language = null): array
     {
         if ($language === null) {
             return ['*' => ['*' => (float) HTTP_Header::DEFAULT_QUALITY]];
@@ -186,7 +186,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * @param   array   $cache_control  Cache-Control to render to string
      * @return  string
      */
-    public static function create_cache_control(array $cache_control)
+    public static function create_cache_control(array $cache_control): string
     {
         $parts = [];
 
@@ -343,7 +343,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  bool
      * @since   3.2.0
      */
-    public function offsetExists($key)
+    public function offsetExists($key): bool
     {
         return parent::offsetExists(strtolower($key));
     }
@@ -382,7 +382,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  array
      * @since   3.2.0
      */
-    public function exchangeArray($array)
+    public function exchangeArray($array): array
     {
         /**
          * HTTP header declarations should be treated as case-insensitive
@@ -403,7 +403,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  int
      * @since   3.2.0
      */
-    public function parse_header_string($resource, string $header_line)
+    public function parse_header_string($resource, string $header_line): int
     {
         if (preg_match_all('/(\w[^\s:]*):[ ]*([^\r\n]*(?:\r\n[ \t][^\r\n]*)*)/', $header_line, $matches)) {
             foreach ($matches[0] as $key => $value) {
@@ -537,7 +537,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  float   the quality of the charset
      * @since   3.2.0
      */
-    public function accepts_charset_at_quality(string $charset)
+    public function accepts_charset_at_quality(string $charset): float
     {
         if ($this->_accept_charset === null) {
             if ($this->offsetExists('Accept-Charset')) {
@@ -606,7 +606,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  float
      * @since   3.2.0
      */
-    public function accepts_encoding_at_quality(string $encoding, bool $explicit = false)
+    public function accepts_encoding_at_quality(string $encoding, bool $explicit = false): float
     {
         if ($this->_accept_encoding === null) {
             if ($this->offsetExists('Accept-Encoding')) {
@@ -689,7 +689,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * @return  float
      * @since   3.2.0
      */
-    public function accepts_language_at_quality(string $language, bool $explicit = false)
+    public function accepts_language_at_quality(string $language, bool $explicit = false): float
     {
         if ($this->_accept_language === null) {
             if ($this->offsetExists('Accept-Language')) {
@@ -820,7 +820,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * @throws Kohana_Exception
      * @since   3.2.0
      */
-    protected function _send_headers_to_php(array $headers, bool $replace)
+    protected function _send_headers_to_php(array $headers, bool $replace): Kohana_HTTP_Header
     {
         // If the headers have been sent, get out
         if (headers_sent())

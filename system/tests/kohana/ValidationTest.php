@@ -195,7 +195,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_check()
+    public function provider_check(): array
     {
         // $data_array, $rules, $labels, $first_expected, $expected_error
         return [
@@ -349,7 +349,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_errors()
+    public function provider_errors(): array
     {
         // [data, rules, expected], ...
         return [
@@ -405,7 +405,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_translated_errors()
+    public function provider_translated_errors(): array
     {
         // [data, rules, expected], ...
         return [
@@ -636,7 +636,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_rule_label_regex()
+    public function provider_rule_label_regex(): array
     {
         // $data, $field, $rules, $expected
         return [

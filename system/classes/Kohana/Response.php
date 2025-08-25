@@ -27,7 +27,7 @@ class Kohana_Response implements HTTP_Response
      * @param   array    $config Set up the response object
      * @return  Response
      */
-    public static function factory(array $config = [])
+    public static function factory(array $config = []): Response
     {
         return new Response($config);
     }
@@ -242,7 +242,7 @@ class Kohana_Response implements HTTP_Response
      *
      * @return int
      */
-    public function content_length()
+    public function content_length(): int
     {
         return strlen($this->body());
     }
@@ -298,7 +298,7 @@ class Kohana_Response implements HTTP_Response
      * @param string $name
      * @return  Kohana_Response
      */
-    public function delete_cookie(string $name)
+    public function delete_cookie(string $name): Kohana_Response
     {
         unset($this->_cookies[$name]);
         return $this;
@@ -309,7 +309,7 @@ class Kohana_Response implements HTTP_Response
      *
      * @return Kohana_Response
      */
-    public function delete_cookies()
+    public function delete_cookies(): Kohana_Response
     {
         $this->_cookies = [];
         return $this;
@@ -529,7 +529,7 @@ class Kohana_Response implements HTTP_Response
      *
      * @return  string
      */
-    public function render()
+    public function render(): string
     {
         if (!$this->_header->offsetExists('content-type')) {
             // Add the default Content-Type header if required
@@ -578,7 +578,7 @@ class Kohana_Response implements HTTP_Response
      * @throws Request_Exception
      * @return String Generated ETag
      */
-    public function generate_etag()
+    public function generate_etag(): string
     {
         if ($this->_body === '') {
             throw new Request_Exception('No response yet associated with request - cannot auto generate resource ETag');
@@ -614,7 +614,7 @@ class Kohana_Response implements HTTP_Response
      * @param int $size
      * @return array
      */
-    protected function _calculate_byte_range(int $size)
+    protected function _calculate_byte_range(int $size): array
     {
         // Defaults to start with when the HTTP_RANGE header doesn't exist.
         $start = 0;

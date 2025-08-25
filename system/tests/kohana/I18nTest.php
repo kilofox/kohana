@@ -31,7 +31,7 @@ class Kohana_I18nTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_lang()
+    public function provider_lang(): array
     {
         return [
             // $input, $expected_result
@@ -59,7 +59,7 @@ class Kohana_I18nTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_get()
+    public function provider_get(): array
     {
         return [
             // $value, $result

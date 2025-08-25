@@ -23,7 +23,7 @@ class Kohana_Request_Client_Curl extends Request_Client_External
      * @throws Kohana_Exception
      * @throws Request_Exception
      */
-    public function _send_message(Request $request, Response $response)
+    public function _send_message(Request $request, Response $response): Response
     {
         $options = [];
 
@@ -111,7 +111,7 @@ class Kohana_Request_Client_Curl extends Request_Client_External
      * @param array $options
      * @return array
      */
-    public function _set_curl_request_method(Request $request, array $options)
+    public function _set_curl_request_method(Request $request, array $options): array
     {
         switch ($request->method()) {
             case Request::POST:

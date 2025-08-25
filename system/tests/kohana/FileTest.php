@@ -21,7 +21,7 @@ class Kohana_FileTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_mime()
+    public function provider_mime(): array
     {
         return [
             // $value, $result
@@ -52,7 +52,7 @@ class Kohana_FileTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_split_join()
+    public function provider_split_join(): array
     {
         return [
             // $value, $result

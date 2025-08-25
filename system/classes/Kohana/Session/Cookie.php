@@ -16,7 +16,7 @@ class Kohana_Session_Cookie extends Session
      * @return  string
      * @throws Kohana_Exception
      */
-    protected function _read(string $id = null)
+    protected function _read(string $id = null): string
     {
         return Cookie::get($this->_name);
     }
@@ -24,7 +24,7 @@ class Kohana_Session_Cookie extends Session
     /**
      * @return  null
      */
-    protected function _regenerate()
+    protected function _regenerate(): ?string
     {
         // Cookie sessions have no id
         return null;
@@ -34,7 +34,7 @@ class Kohana_Session_Cookie extends Session
      * @return  bool
      * @throws Kohana_Exception
      */
-    protected function _write()
+    protected function _write(): bool
     {
         return Cookie::set($this->_name, $this->__toString(), $this->_lifetime);
     }
@@ -42,7 +42,7 @@ class Kohana_Session_Cookie extends Session
     /**
      * @return  bool
      */
-    protected function _restart()
+    protected function _restart(): bool
     {
         return true;
     }
@@ -50,7 +50,7 @@ class Kohana_Session_Cookie extends Session
     /**
      * @return  bool
      */
-    protected function _destroy()
+    protected function _destroy(): bool
     {
         return Cookie::delete($this->_name);
     }

@@ -20,7 +20,7 @@ class Kohana_ExceptionTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_constructor()
+    public function provider_constructor(): array
     {
         return [
             [[''], '', 0],
@@ -73,7 +73,7 @@ class Kohana_ExceptionTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_text()
+    public function provider_text(): array
     {
         return [
             [new Kohana_Exception('foobar'), $this->dirSeparator('Kohana_Exception [ 0 ]: foobar ~ SYSPATH/tests/kohana/ExceptionTest.php [ ' . __LINE__ . ' ]')],

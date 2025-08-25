@@ -21,7 +21,7 @@ class Kohana_InflectorTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_uncountable()
+    public function provider_uncountable(): array
     {
         return [
             // $value, $result
@@ -52,7 +52,7 @@ class Kohana_InflectorTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_singular()
+    public function provider_singular(): array
     {
         return [
             // $value, $result
@@ -90,7 +90,7 @@ class Kohana_InflectorTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_plural()
+    public function provider_plural(): array
     {
         return [
             // $value, $result
@@ -128,7 +128,7 @@ class Kohana_InflectorTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_camelize()
+    public function provider_camelize(): array
     {
         return [
             // $value, $result
@@ -160,7 +160,7 @@ class Kohana_InflectorTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_decamelize()
+    public function provider_decamelize(): array
     {
         return [
             ['getText', '_', 'get_text'],

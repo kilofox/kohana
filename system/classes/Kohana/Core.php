@@ -467,7 +467,7 @@ class Kohana_Core
      * @param string $directory Directory to load from
      * @return  bool
      */
-    public static function auto_load(string $class, string $directory = 'classes')
+    public static function auto_load(string $class, string $directory = 'classes'): bool
     {
         // Transform the class name according to PSR-0
         $class = ltrim($class, '\\');
@@ -504,7 +504,7 @@ class Kohana_Core
      * @param string $directory Directory to load from
      * @return  bool
      */
-    public static function auto_load_lowercase(string $class, string $directory = 'classes')
+    public static function auto_load_lowercase(string $class, string $directory = 'classes'): bool
     {
         // Transform the class name into a path
         $file = str_replace('_', DIRECTORY_SEPARATOR, strtolower($class));
@@ -531,7 +531,7 @@ class Kohana_Core
      * @return  array   enabled modules
      * @throws Kohana_Exception
      */
-    public static function modules(array $modules = null)
+    public static function modules(array $modules = null): array
     {
         if ($modules === null) {
             // Not changing modules, just return the current set
@@ -581,7 +581,7 @@ class Kohana_Core
      *
      * @return  array
      */
-    public static function include_paths()
+    public static function include_paths(): array
     {
         return Kohana::$_paths;
     }
@@ -695,7 +695,7 @@ class Kohana_Core
      * @param array|null $paths list of paths to search
      * @return  array
      */
-    public static function list_files(string $directory = null, array $paths = null)
+    public static function list_files(string $directory = null, array $paths = null): array
     {
         if ($directory !== null) {
             // Add the directory separator
@@ -893,7 +893,7 @@ class Kohana_Core
      * @throws  ErrorException
      * @return  true
      */
-    public static function error_handler($code, $error, $file = null, $line = null)
+    public static function error_handler($code, $error, $file = null, $line = null): bool
     {
         if (error_reporting() & $code) {
             // This error is not suppressed by current error reporting settings
@@ -946,7 +946,7 @@ class Kohana_Core
      *
      * @return string
      */
-    public static function version()
+    public static function version(): string
     {
         return 'Kohana Framework ' . Kohana::VERSION;
     }

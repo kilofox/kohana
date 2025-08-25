@@ -30,7 +30,7 @@ class Kohana_Request_Client_Internal extends Request_Client
      * @uses    [Kohana::$profiling]
      * @uses    [Profiler]
      */
-    public function execute_request(Request $request, Response $response)
+    public function execute_request(Request $request, Response $response): Response
     {
         // Create the class prefix
         $prefix = 'Controller_';

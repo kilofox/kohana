@@ -49,7 +49,7 @@ class Kohana_I18n
      * @return  string
      * @since   3.0.2
      */
-    public static function lang(?string $lang = null)
+    public static function lang(?string $lang = null): string
     {
         if ($lang) {
             // Normalize the language
@@ -69,7 +69,7 @@ class Kohana_I18n
      * @param string|null $lang Target language
      * @return  string
      */
-    public static function get(string $string, string $lang = null)
+    public static function get(string $string, string $lang = null): string
     {
         if (!$lang) {
             // Use the global target language
@@ -92,7 +92,7 @@ class Kohana_I18n
      * @param string $lang Language to load
      * @return  array
      */
-    public static function load(string $lang)
+    public static function load(string $lang): array
     {
         if (isset(I18n::$_cache[$lang])) {
             return I18n::$_cache[$lang];
@@ -145,7 +145,7 @@ if (!function_exists('__')) {
      * @return  string
      * @uses    I18n::get
      */
-    function __(string $string, array $values = null, string $lang = 'en-us')
+    function __(string $string, array $values = null, string $lang = 'en-us'): string
     {
         if ($lang !== I18n::$lang) {
             // The message and target languages are different

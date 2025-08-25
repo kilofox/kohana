@@ -95,7 +95,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * Provides the data for test_create()
      * @return  array
      */
-    public function provider_create()
+    public function provider_create(): array
     {
         return [
             ['foo/bar', 'Request_Client_Internal'],
@@ -212,7 +212,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * Provides test data for Request::url()
      * @return array
      */
-    public function provider_url()
+    public function provider_url(): array
     {
         return [
             ['foo/bar', 'http', 'http://localhost/kohana/foo/bar'],
@@ -265,7 +265,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_set_protocol()
+    public function provider_set_protocol(): array
     {
         return [
             ['http/1.1', 'HTTP/1.1'],
@@ -305,7 +305,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * @return  array
      * @throws Kohana_Exception
      */
-    public function provider_post_max_size_exceeded()
+    public function provider_post_max_size_exceeded(): array
     {
         // Get the post max size
         $post_max_size = Num::bytes(ini_get('post_max_size'));
@@ -345,7 +345,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * @return  array
      * @throws Request_Exception
      */
-    public function provider_uri_only_trimed_on_internal()
+    public function provider_uri_only_trimed_on_internal(): array
     {
         // issue #3967: inject the route so that we don't conflict with the application's default route
         $route = new Route('(<controller>(/<action>))');
@@ -390,7 +390,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_options_set_to_external_client()
+    public function provider_options_set_to_external_client(): array
     {
         return [
             [
@@ -441,7 +441,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * @return  array
      * @throws Request_Exception
      */
-    public function provider_headers_get()
+    public function provider_headers_get(): array
     {
         $x_powered_by = 'Kohana Unit Test';
         $content_type = 'application/x-www-form-urlencoded';
@@ -482,7 +482,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_headers_set()
+    public function provider_headers_set(): array
     {
         return [
             [
@@ -524,7 +524,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_query_parameter_parsing()
+    public function provider_query_parameter_parsing(): array
     {
         return [
             [
@@ -611,7 +611,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      *
      * @return  array
      */
-    public function provider_client()
+    public function provider_client(): array
     {
         $internal_client = new Request_Client_Internal;
         $external_client = new Request_Client_Stream;
@@ -716,7 +716,7 @@ class Kohana_RequestTest_Header_Spying_Request_Client_External extends Request_C
 {
     private $headers;
 
-    protected function _send_message(Request $request, Response $response)
+    protected function _send_message(Request $request, Response $response): Response
     {
         $this->headers = $request->headers();
 

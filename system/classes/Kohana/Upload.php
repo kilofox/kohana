@@ -102,7 +102,7 @@ class Kohana_Upload
      * @param array $file $_FILES item
      * @return  bool
      */
-    public static function valid(array $file)
+    public static function valid(array $file): bool
     {
         return isset($file['error'])
             && isset($file['name'])
@@ -119,7 +119,7 @@ class Kohana_Upload
      * @param   array   $file   $_FILES item
      * @return  bool
      */
-    public static function not_empty(array $file)
+    public static function not_empty(array $file): bool
     {
         return isset($file['error'])
             && isset($file['tmp_name'])
@@ -136,7 +136,7 @@ class Kohana_Upload
      * @param   array   $allowed    allowed file extensions
      * @return  bool
      */
-    public static function type(array $file, array $allowed)
+    public static function type(array $file, array $allowed): bool
     {
         if ($file['error'] !== UPLOAD_ERR_OK)
             return true;
@@ -160,7 +160,7 @@ class Kohana_Upload
      * @return  bool
      * @throws Kohana_Exception
      */
-    public static function size(array $file, string $size)
+    public static function size(array $file, string $size): bool
     {
         if ($file['error'] === UPLOAD_ERR_INI_SIZE) {
             // Upload is larger than PHP allowed size (upload_max_filesize)
@@ -198,7 +198,7 @@ class Kohana_Upload
      * @param bool $exact Match width and height exactly?
      * @return  bool
      */
-    public static function image(array $file, int $max_width = null, int $max_height = null, bool $exact = false)
+    public static function image(array $file, int $max_width = null, int $max_height = null, bool $exact = false): bool
     {
         if (Upload::not_empty($file)) {
             try {

@@ -28,7 +28,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
      *
      * @return  array   Array of $method, $key, $iv, $txtPlain, $txtEncoded.
      */
-    public function providerEncode()
+    public function providerEncode(): array
     {
         return [
             [
@@ -192,7 +192,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
      *
      * @return  array   Array of $method, $key, $iv, $txtEncoded, $txtPlain.
      */
-    public function providerDecode()
+    public function providerDecode(): array
     {
         return [
             [
@@ -352,7 +352,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
      *
      * @return  array   Array of $key, $method, $txtPlain.
      */
-    public function providerEncodeDecode()
+    public function providerEncodeDecode(): array
     {
         return [
             [
@@ -410,7 +410,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
      *
      * @return  array   Array of $key, $method, $txtInvalidEncoded.
      */
-    public function providerDecodeInvalidDate()
+    public function providerDecodeInvalidDate(): array
     {
         return [
             [
@@ -497,7 +497,7 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
      *
      * @return  array   Array of $instanceName, $configArray.
      */
-    public function providerInstanceReturnsSingleton()
+    public function providerInstanceReturnsSingleton(): array
     {
         return [
             [

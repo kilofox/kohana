@@ -94,7 +94,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      * @param string $body    A string to send back as response body (included in the JSON response)
      * @return string
      */
-    protected function _dummy_uri(string $status, array $headers, string $body)
+    protected function _dummy_uri(string $status, array $headers, string $body): string
     {
         $data = [
             'status' => $status,
@@ -114,7 +114,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      * @param string $status  HTTP response code to issue
      * @return string
      */
-    protected function _dummy_redirect_uri(string $status)
+    protected function _dummy_redirect_uri(string $status): string
     {
         return $this->_dummy_uri($status, ['Location' => $this->_dummy_uri(200, [], 'followed')], 'not-followed');
     }
@@ -123,7 +123,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      * Provider for test_follows_redirects
      * @return array
      */
-    public function provider_follows_redirects()
+    public function provider_follows_redirects(): array
     {
         return [
             [
@@ -218,7 +218,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_follows_with_strict_method()
+    public function provider_follows_with_strict_method(): array
     {
         return [
             [201, null, Request::POST, Request::GET],
@@ -263,7 +263,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_follows_with_body_if_not_get()
+    public function provider_follows_with_body_if_not_get(): array
     {
         return [
             ['GET', '301', null],
@@ -306,7 +306,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_triggers_header_callbacks()
+    public function provider_triggers_header_callbacks(): array
     {
         return [
             // Straightforward response manipulation

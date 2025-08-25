@@ -53,7 +53,7 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_offset()
+    public function provider_offset(): array
     {
         return [
             [30600, 'Asia/Calcutta', 'America/Argentina/Buenos_Aires'],
@@ -82,7 +82,7 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_am_pm()
+    public function provider_am_pm(): array
     {
         return [
             // All possible values
@@ -139,7 +139,7 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_adjust()
+    public function provider_adjust(): array
     {
         return [
             // Might as well test all possibilities
@@ -194,7 +194,7 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_days()
+    public function provider_days(): array
     {
         return [
             // According to "the rhyme" these should be the same every year
@@ -246,7 +246,7 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_formatted_time()
+    public function provider_formatted_time(): array
     {
         return [
             // Test the default format
@@ -308,7 +308,7 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @return array Test data
      */
-    public function provider_months()
+    public function provider_months(): array
     {
         return [
             [
@@ -402,7 +402,7 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_span()
+    public function provider_span(): array
     {
         $time = time();
         return [
@@ -502,7 +502,7 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @return array Test Data
      */
-    public function provider_fuzzy_span()
+    public function provider_fuzzy_span(): array
     {
         $now = time();
 
@@ -571,7 +571,7 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @return array Test Data
      */
-    public function provider_years()
+    public function provider_years(): array
     {
         return [
             [
@@ -607,7 +607,7 @@ class Kohana_DateTest extends Unittest_TestCase
         );
     }
 
-    public function provider_hours()
+    public function provider_hours(): array
     {
         return [
             [
@@ -647,7 +647,7 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @return array Test data
      */
-    public function provider_seconds()
+    public function provider_seconds(): array
     {
         return [
             [
@@ -691,7 +691,7 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @return array Test data
      */
-    public function provider_minutes()
+    public function provider_minutes(): array
     {
         return [
             [
@@ -744,7 +744,7 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @return array Test Data
      */
-    public function provider_unix2dos()
+    public function provider_unix2dos(): array
     {
         return [
             [1024341746, 1281786936],
@@ -777,7 +777,7 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @return array Test data
      */
-    public function provider_dos2unix()
+    public function provider_dos2unix(): array
     {
         return [
             [1281786936, 1024341746],
