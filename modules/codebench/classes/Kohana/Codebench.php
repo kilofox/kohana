@@ -57,7 +57,7 @@ abstract class Kohana_Codebench
      * @return  array  benchmark output
      * @throws ReflectionException
      */
-    public function run()
+    public function run(): array
     {
         // Array of all methods to loop over
         $methods = array_filter(get_class_methods($this), [$this, '_method_filter']);
@@ -180,7 +180,7 @@ abstract class Kohana_Codebench
      * @param string $method method name
      * @return bool
      */
-    protected function _method_filter(string $method)
+    protected function _method_filter(string $method): bool
     {
         // Only benchmark methods with the "bench" prefix
         return substr($method, 0, 5) === 'bench';
@@ -192,7 +192,7 @@ abstract class Kohana_Codebench
      * @param float $score score
      * @return  string  grade letter
      */
-    protected function _grade(float $score)
+    protected function _grade(float $score): string
     {
         foreach ($this->grades as $max => $grade) {
             if ($max === 'default')

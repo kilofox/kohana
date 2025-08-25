@@ -22,13 +22,13 @@ class Bench_MDDoIncludeViews extends Codebench
         '{{userguide/examples/{{hello_world_error }}',
     ];
 
-    public function bench_original($subject)
+    public function bench_original($subject): array
     {
         preg_match_all('/{{(\S+?)}}/m', $subject, $matches, PREG_SET_ORDER);
         return $matches;
     }
 
-    public function bench_possessive($subject)
+    public function bench_possessive($subject): array
     {
         // Using a possessive character class
         // Removed useless /m modifier
@@ -36,7 +36,7 @@ class Bench_MDDoIncludeViews extends Codebench
         return $matches;
     }
 
-    public function bench_lookaround($subject)
+    public function bench_lookaround($subject): array
     {
         // Using lookaround to move $matches[1] into $matches[0]
         preg_match_all('/(?<={{)[^\s{}]++(?=}})/', $subject, $matches, PREG_SET_ORDER);

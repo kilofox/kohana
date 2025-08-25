@@ -40,12 +40,12 @@ class Bench_ValidURL extends Codebench
         "http://finalnewline.com\n",
     ];
 
-    public function bench_filter_var($url)
+    public function bench_filter_var($url): bool
     {
         return (bool) filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_HOST_REQUIRED);
     }
 
-    public function bench_regex($url)
+    public function bench_regex($url): bool
     {
         // Based on https://datatracker.ietf.org/doc/html/rfc1738#section-5
         if (!preg_match(

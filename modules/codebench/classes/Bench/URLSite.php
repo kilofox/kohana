@@ -34,7 +34,7 @@ class Bench_URLSite extends Codebench
         parent::__construct();
     }
 
-    public function bench_original($uri)
+    public function bench_original($uri): string
     {
         // Get the path from the URI
         $path = trim(parse_url($uri, PHP_URL_PATH), '/');
@@ -50,7 +50,7 @@ class Bench_URLSite extends Codebench
         return $path . $query . $fragment;
     }
 
-    public function bench_explode($uri)
+    public function bench_explode($uri): string
     {
         // Chop off possible scheme, host, port, user and pass parts
         $path = preg_replace('~^[-a-z0-9+.]++://[^/]++/?~', '', trim($uri, '/'));
@@ -72,7 +72,7 @@ class Bench_URLSite extends Codebench
         return $path . $query . $fragment;
     }
 
-    public function bench_regex($uri)
+    public function bench_regex($uri): string
     {
         preg_match('~^(?:[-a-z0-9+.]++://[^/]++/?)?([^?#]++)?(\?[^#]*+)?(#.*)?~', trim($uri, '/'), $matches);
         $path = Arr::get($matches, 1, '');
@@ -82,7 +82,7 @@ class Bench_URLSite extends Codebench
         return $path . $query . $fragment;
     }
 
-    public function bench_regex_without_arrget($uri)
+    public function bench_regex_without_arrget($uri): string
     {
         preg_match('~^(?:[-a-z0-9+.]++://[^/]++/?)?([^?#]++)?(\?[^#]*+)?(#.*)?~', trim($uri, '/'), $matches);
         $path = $matches[1] ?? '';

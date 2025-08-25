@@ -28,7 +28,7 @@ class Bench_MDDoBaseURL extends Codebench
         return preg_replace_callback('~(?<!!)\[(.+?)\]\(([^#]\S*(?:\s*".+?")?)\)~', [$this, '_add_base_url_original'], $subject);
     }
 
-    public function _add_base_url_original($matches)
+    public function _add_base_url_original($matches): string
     {
         if ($matches[2] && strpos($matches[2], '://') === false) {
             // Add the base URL to the link URL
@@ -44,7 +44,7 @@ class Bench_MDDoBaseURL extends Codebench
         return preg_replace_callback('~(?<!!)\[(.+?)\]\((?!\w++://)([^#]\S*(?:\s*+".+?")?)\)~', [$this, '_add_base_url_optimized'], $subject);
     }
 
-    public function _add_base_url_optimized($matches)
+    public function _add_base_url_optimized($matches): string
     {
         // Add the base URL to the link URL
         $matches[2] = 'http://BASE/' . $matches[2];

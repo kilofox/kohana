@@ -46,7 +46,7 @@ class Bench_UserFuncArray extends Codebench
         call_user_func_array([$this, $name], $args);
     }
 
-    protected function callme()
+    protected function callme(): int
     {
         return count(func_get_args());
     }

@@ -21,7 +21,7 @@ class Bench_StripNullBytes extends Codebench
         return str_replace("\0", '', $subject);
     }
 
-    public function bench_strtr($subject)
+    public function bench_strtr($subject): string
     {
         return strtr($subject, ["\0" => '']);
     }

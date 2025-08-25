@@ -36,7 +36,7 @@ class Bench_AutoLinkEmails extends Codebench
         );
     }
 
-    protected function _callback_external($matches)
+    protected function _callback_external($matches): string
     {
         return HTML::mailto($matches[0]);
     }
