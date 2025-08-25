@@ -23,7 +23,7 @@ abstract class Kohana_Minion_Task
      * @param string $task Task name
      * @return string Class name
      */
-    public static function convert_task_to_class_name(string $task)
+    public static function convert_task_to_class_name(string $task): string
     {
         $task = trim($task);
 
@@ -39,7 +39,7 @@ abstract class Kohana_Minion_Task
      * @param string|Minion_Task $class The task class / object
      * @return string             The task name
      */
-    public static function convert_class_to_task($class)
+    public static function convert_class_to_task($class): string
     {
         if (is_object($class)) {
             $class = get_class($class);
@@ -55,7 +55,7 @@ abstract class Kohana_Minion_Task
      * @return Minion_Task The Minion task
      * @throws Minion_Exception_InvalidTask
      */
-    public static function factory(array $options)
+    public static function factory(array $options): Minion_Task
     {
         if (($task = Arr::get($options, 'task')) !== null) {
             unset($options['task']);
@@ -144,7 +144,7 @@ abstract class Kohana_Minion_Task
      * $param  array  the array of options to set
      * @return Kohana_Minion_Task
      */
-    public function set_options(array $options)
+    public function set_options(array $options): Kohana_Minion_Task
     {
         foreach ($options as $key => $value) {
             $this->_options[$key] = $value;
@@ -158,7 +158,7 @@ abstract class Kohana_Minion_Task
      *
      * @return array
      */
-    public function get_options()
+    public function get_options(): array
     {
         return $this->_options;
     }
@@ -168,7 +168,7 @@ abstract class Kohana_Minion_Task
      *
      * @return array
      */
-    public function get_accepted_options()
+    public function get_accepted_options(): array
     {
         return $this->_accepted_options;
     }
@@ -186,7 +186,7 @@ abstract class Kohana_Minion_Task
      *
      * @return Validation
      */
-    public function build_validation(Validation $validation)
+    public function build_validation(Validation $validation): Validation
     {
         // Add a rule to each key making sure it's in the task
         foreach ($validation->data() as $key => $value) {
@@ -201,7 +201,7 @@ abstract class Kohana_Minion_Task
      *
      * @return string
      */
-    public function get_errors_file()
+    public function get_errors_file(): ?string
     {
         return $this->_errors_file;
     }
@@ -271,7 +271,7 @@ abstract class Kohana_Minion_Task
      * @param string $comment The comment to parse
      * @return array First element is the comment, second is an array of tags
      */
-    protected function _parse_doccomment(string $comment)
+    protected function _parse_doccomment(string $comment): array
     {
         // Normalize all new lines to \n
         $comment = str_replace(["\r\n", "\n"], "\n", $comment);
@@ -312,7 +312,7 @@ abstract class Kohana_Minion_Task
      * @param string $prefix prefix
      * @return array Compiled tasks
      */
-    protected function _compile_task_list(array $files, string $prefix = '')
+    protected function _compile_task_list(array $files, string $prefix = ''): array
     {
         $output = [];
 

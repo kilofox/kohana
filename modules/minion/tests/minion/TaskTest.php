@@ -18,7 +18,7 @@ class Minion_TaskTest extends Kohana_Unittest_TestCase
      *
      * @return array
      */
-    public function provider_convert_task_to_class_name()
+    public function provider_convert_task_to_class_name(): array
     {
         return [
             ['Task_Db_Migrate', 'db:migrate'],
@@ -46,7 +46,7 @@ class Minion_TaskTest extends Kohana_Unittest_TestCase
      *
      * @return array
      */
-    public function provider_convert_class_to_task()
+    public function provider_convert_class_to_task(): array
     {
         return [
             ['db:migrate', 'Task_Db_Migrate'],

@@ -44,7 +44,7 @@ class Kohana_Minion_CLI
      * @param string ...$options option name
      * @return  array
      */
-    public static function options(...$options)
+    public static function options(...$options): array
     {
         // Found option values
         $values = [];
@@ -106,7 +106,7 @@ class Kohana_Minion_CLI
      * @param array|null $options array of options the user is shown
      * @return string  the user input
      */
-    public static function read(string $text = '', array $options = null)
+    public static function read(string $text = '', array $options = null): string
     {
         // If a question has been asked with the read
         $options_output = '';
@@ -142,7 +142,7 @@ class Kohana_Minion_CLI
      * @author Mathew Davies.
      * @return string
      */
-    public static function password($text = '')
+    public static function password($text = ''): string
     {
         $text .= ': ';
 
@@ -252,7 +252,7 @@ class Kohana_Minion_CLI
      * @link       http://fuelphp.com
      * @author     Fuel Development Team
      */
-    public static function color(string $text, string $foreground, string $background = null)
+    public static function color(string $text, string $foreground, string $background = null): string
     {
 
         if (Kohana::$is_windows) {
