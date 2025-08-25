@@ -15,7 +15,7 @@ class Model_Auth_Role extends ORM
         'users' => ['model' => 'User', 'through' => 'roles_users'],
     ];
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'name' => [

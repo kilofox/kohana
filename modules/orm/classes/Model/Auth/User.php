@@ -28,7 +28,7 @@ class Model_Auth_User extends ORM
      *
      * @return array Rules
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'username' => [
@@ -54,7 +54,7 @@ class Model_Auth_User extends ORM
      * @return array Filters
      * @throws Kohana_Exception
      */
-    public function filters()
+    public function filters(): array
     {
         return [
             'password' => [
@@ -68,7 +68,7 @@ class Model_Auth_User extends ORM
      *
      * @return array Labels
      */
-    public function labels()
+    public function labels(): array
     {
         return [
             'username' => 'username',
@@ -107,7 +107,7 @@ class Model_Auth_User extends ORM
      * @return bool
      * @throws Kohana_Exception
      */
-    public function unique_key_exists($value, string $field = NULL)
+    public function unique_key_exists($value, string $field = NULL): bool
     {
         if ($field === NULL) {
             // Automatically determine field by looking at the value
@@ -128,7 +128,7 @@ class Model_Auth_User extends ORM
      * @param string $value unique value
      * @return  string  field name
      */
-    public function unique_key(string $value)
+    public function unique_key(string $value): string
     {
         return Valid::email($value) ? 'email' : 'username';
     }
@@ -139,7 +139,7 @@ class Model_Auth_User extends ORM
      * @param array $values
      * @return Validation
      */
-    public static function get_password_validation(array $values)
+    public static function get_password_validation(array $values): Validation
     {
         return Validation::factory($values)
                 ->rule('password', 'min_length', [':value', 8])
@@ -168,7 +168,7 @@ class Model_Auth_User extends ORM
      * @throws ORM_Validation_Exception
      * @throws ReflectionException
      */
-    public function create_user(array $values, array $expected)
+    public function create_user(array $values, array $expected): ORM
     {
         // Validation for passwords
         $extra_validation = Model_User::get_password_validation($values)
@@ -201,7 +201,7 @@ class Model_Auth_User extends ORM
      * @throws ORM_Validation_Exception
      * @throws ReflectionException
      */
-    public function update_user(array $values, array $expected = NULL)
+    public function update_user(array $values, array $expected = NULL): ORM
     {
         if (empty($values['password'])) {
             unset($values['password'], $values['password_confirm']);

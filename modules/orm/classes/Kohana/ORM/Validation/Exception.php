@@ -60,7 +60,7 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
      * @param  mixed      $has_many The array key to use if this exception can be merged multiple times
      * @return Kohana_ORM_Validation_Exception
      */
-    public function add_object(string $alias, Validation $object, $has_many = false)
+    public function add_object(string $alias, Validation $object, $has_many = false): Kohana_ORM_Validation_Exception
     {
         // We will need this when generating errors
         $this->_objects[$alias]['_has_many'] = $has_many !== false;
@@ -86,7 +86,7 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
      * @param  mixed                    $has_many The array key to use if this exception can be merged multiple times
      * @return Kohana_ORM_Validation_Exception
      */
-    public function merge(ORM_Validation_Exception $object, $has_many = false)
+    public function merge(ORM_Validation_Exception $object, $has_many = false): Kohana_ORM_Validation_Exception
     {
         $alias = $object->alias();
 
@@ -117,7 +117,7 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
      * @return  array
      * @see generate_errors()
      */
-    public function errors(string $directory = null, $translate = true)
+    public function errors(string $directory = null, $translate = true): array
     {
         return $this->generate_errors($this->_alias, $this->_objects, $directory, $translate);
     }
@@ -131,7 +131,7 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
      * @param  mixed  $translate Translate the message
      * @return array
      */
-    protected function generate_errors(string $alias, array $array, string $directory, $translate)
+    protected function generate_errors(string $alias, array $array, string $directory, $translate): array
     {
         $errors = [];
 
@@ -163,7 +163,7 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
      *
      * @return array
      */
-    public function objects()
+    public function objects(): array
     {
         return $this->_objects;
     }
@@ -173,7 +173,7 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
      *
      * @return string
      */
-    public function alias()
+    public function alias(): ?string
     {
         return $this->_alias;
     }
