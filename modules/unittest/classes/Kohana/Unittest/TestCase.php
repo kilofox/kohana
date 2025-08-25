@@ -66,7 +66,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit\Framework\DOMTestCase
      * @param string $path The path to act on
      * @return string
      */
-    public function dirSeparator(string $path)
+    public function dirSeparator(string $path): string
     {
         return Unittest_Helpers::dir_separator($path);
     }
@@ -85,7 +85,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit\Framework\DOMTestCase
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function setEnvironment(array $environment)
+    public function setEnvironment(array $environment): ?bool
     {
         return $this->_helpers->set_environment($environment);
     }
@@ -95,7 +95,7 @@ abstract class Kohana_Unittest_TestCase extends PHPUnit\Framework\DOMTestCase
      *
      * @return bool Whether an internet connection is available
      */
-    public function hasInternet()
+    public function hasInternet(): bool
     {
         return Unittest_Helpers::has_internet();
     }

@@ -78,7 +78,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit\Framework\TestC
      * @return PDO
      * @throws Kohana_Exception
      */
-    public function getConnection()
+    public function getConnection(): PDO
     {
         // Get the unittesting db connection
         $config = Kohana::$config->load('database.' . $this->_database_connection);
@@ -105,7 +105,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit\Framework\TestC
      * @return Kohana_Database The database connection
      * @throws Kohana_Exception
      */
-    public function getKohanaConnection()
+    public function getKohanaConnection(): Kohana_Database
     {
         return Database::instance(Kohana::$config->load('unittest')->db_connection);
     }
@@ -127,7 +127,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit\Framework\TestC
      * @param string $path The path to act on
      * @return string
      */
-    public function dirSeparator(string $path)
+    public function dirSeparator(string $path): string
     {
         return Kohana_Unittest_Helpers::dir_separator($path);
     }
@@ -146,7 +146,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit\Framework\TestC
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function setEnvironment(array $environment)
+    public function setEnvironment(array $environment): ?bool
     {
         return $this->_helpers->set_environment($environment);
     }
@@ -156,7 +156,7 @@ abstract class Kohana_Unittest_Database_TestCase extends PHPUnit\Framework\TestC
      *
      * @return bool Whether an internet connection is available
      */
-    public function hasInternet()
+    public function hasInternet(): bool
     {
         return Kohana_Unittest_Helpers::has_internet();
     }
