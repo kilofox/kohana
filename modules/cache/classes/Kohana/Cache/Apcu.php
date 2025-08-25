@@ -93,7 +93,7 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      * @param int|null $lifetime Lifetime in seconds
      * @return  bool
      */
-    public function set(string $id, $data, int $lifetime = null)
+    public function set(string $id, $data, int $lifetime = null): bool
     {
         if ($lifetime === null) {
             $lifetime = Arr::get($this->_config, 'default_expire', Cache::DEFAULT_EXPIRE);
@@ -111,7 +111,7 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      * @param string $id ID to remove from cache
      * @return  bool
      */
-    public function delete(string $id)
+    public function delete(string $id): bool
     {
         return apcu_delete($this->_sanitize_id($id));
     }
@@ -128,7 +128,7 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      *
      * @return bool
      */
-    public function delete_all()
+    public function delete_all(): bool
     {
         return apcu_clear_cache();
     }

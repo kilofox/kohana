@@ -54,7 +54,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * @param string $string String to hash into filename
      * @return  string
      */
-    protected static function filename(string $string)
+    protected static function filename(string $string): string
     {
         return sha1($string) . '.cache';
     }
@@ -183,7 +183,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * @throws Cache_Exception
      * @throws ErrorException
      */
-    public function set(string $id, $data, int $lifetime = null)
+    public function set(string $id, $data, int $lifetime = null): bool
     {
         $filename = Cache_File::filename($this->_sanitize_id($id));
         $directory = $this->_resolve_directory($filename);
@@ -232,7 +232,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * @return bool
      * @throws Cache_Exception
      */
-    public function delete(string $id)
+    public function delete(string $id): bool
     {
         $filename = Cache_File::filename($this->_sanitize_id($id));
         $directory = $this->_resolve_directory($filename);
@@ -253,7 +253,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * @return bool
      * @throws Cache_Exception
      */
-    public function delete_all()
+    public function delete_all(): bool
     {
         return $this->_delete_file($this->_cache_dir, true);
     }
@@ -283,7 +283,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * @return  bool
      * @throws  Cache_Exception
      */
-    protected function _delete_file(SplFileInfo $file, bool $retain_parent_directory = false, bool $ignore_errors = false, bool $only_expired = false)
+    protected function _delete_file(SplFileInfo $file, bool $retain_parent_directory = false, bool $ignore_errors = false, bool $only_expired = false): bool
     {
         // Allow graceful error handling
         try {
@@ -383,7 +383,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * @param string $filename Filename to resolve
      * @return  string
      */
-    protected function _resolve_directory(string $filename)
+    protected function _resolve_directory(string $filename): string
     {
         return $this->_cache_dir->getRealPath() . DIRECTORY_SEPARATOR . $filename[0] . $filename[1] . DIRECTORY_SEPARATOR;
     }
@@ -400,7 +400,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * @return  SplFileInfo
      * @throws  Cache_Exception
      */
-    protected function _make_directory(string $directory, int $mode = 0777, bool $recursive = false, $context = null)
+    protected function _make_directory(string $directory, int $mode = 0777, bool $recursive = false, $context = null): SplFileInfo
     {
         // call mkdir according to the availability of a passed $context param
         $mkdir_result = $context ?
@@ -425,7 +425,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * @return bool true if expired false otherwise
      * @throws Cache_Exception
      */
-    protected function _is_expired(SplFileInfo $file)
+    protected function _is_expired(SplFileInfo $file): bool
     {
         // Open the file and parse data
         $created = $file->getMTime();

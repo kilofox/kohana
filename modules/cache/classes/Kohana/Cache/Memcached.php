@@ -198,7 +198,7 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      * @param int|null $lifetime Lifetime in seconds, maximum value 2592000.
      * @return  bool
      */
-    public function set(string $id, $data, int $lifetime = null)
+    public function set(string $id, $data, int $lifetime = null): bool
     {
         // If lifetime is null, set to the default expiry.
         if ($lifetime === null) {
@@ -237,7 +237,7 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      * @param int $time The amount of time the server will wait to delete the entry.
      * @return  bool
      */
-    public function delete(string $id, int $time = 0)
+    public function delete(string $id, int $time = 0): bool
     {
         return $this->memcached->delete($this->_sanitize_id($id), $time);
     }
@@ -253,7 +253,7 @@ class Kohana_Cache_Memcached extends Cache implements Cache_Arithmetic
      *
      * @return  bool
      */
-    public function delete_all()
+    public function delete_all(): bool
     {
         return $this->memcached->flush();
     }

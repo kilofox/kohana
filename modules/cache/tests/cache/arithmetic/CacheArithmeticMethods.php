@@ -30,7 +30,7 @@ abstract class Kohana_CacheArithmeticMethodsTest extends Kohana_CacheBasicMethod
      *
      * @return  array
      */
-    public function provider_increment()
+    public function provider_increment(): array
     {
         return [
             [
@@ -97,7 +97,7 @@ abstract class Kohana_CacheArithmeticMethodsTest extends Kohana_CacheBasicMethod
      *
      * @return  array
      */
-    public function provider_decrement()
+    public function provider_decrement(): array
     {
         return [
             [

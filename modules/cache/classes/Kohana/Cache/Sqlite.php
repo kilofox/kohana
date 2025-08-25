@@ -115,7 +115,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      * @return bool
      * @throws Cache_Exception
      */
-    public function set(string $id, $data, int $lifetime = null)
+    public function set(string $id, $data, int $lifetime = null): bool
     {
         return $this->set_with_tags($id, $data, $lifetime);
     }
@@ -127,7 +127,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      * @return  bool
      * @throws  Cache_Exception
      */
-    public function delete(string $id)
+    public function delete(string $id): bool
     {
         // Prepare statement
         $statement = $this->_db->prepare('DELETE FROM caches WHERE id = :id');
@@ -148,7 +148,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      * @return bool
      * @throws Cache_Exception
      */
-    public function delete_all()
+    public function delete_all(): bool
     {
         // Prepare statement
         $statement = $this->_db->prepare('DELETE FROM caches');
@@ -173,7 +173,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      * @return  bool
      * @throws Cache_Exception
      */
-    public function set_with_tags(string $id, $data, int $lifetime = null, array $tags = null)
+    public function set_with_tags(string $id, $data, int $lifetime = null, array $tags = null): bool
     {
         // Serialize the data
         $data = serialize($data);
@@ -209,7 +209,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      * @return  bool
      * @throws  Cache_Exception
      */
-    public function delete_tag(string $tag)
+    public function delete_tag(string $tag): bool
     {
         // Prepare the statement
         $statement = $this->_db->prepare('DELETE FROM caches WHERE tags LIKE :tag');
@@ -231,7 +231,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      * @return  array
      * @throws  Cache_Exception
      */
-    public function find(string $tag)
+    public function find(string $tag): array
     {
         // Prepare the statement
         $statement = $this->_db->prepare('SELECT id, cache FROM caches WHERE tags LIKE :tag');
@@ -286,7 +286,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
      * @return  bool
      * @throws  Cache_Exception
      */
-    protected function exists(string $id)
+    protected function exists(string $id): bool
     {
         $statement = $this->_db->prepare('SELECT id FROM caches WHERE id = :id');
         try {

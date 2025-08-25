@@ -112,7 +112,7 @@ abstract class Kohana_Cache
      * @throws Cache_Exception
      * @throws Kohana_Exception
      */
-    public static function instance(string $group = null)
+    public static function instance(string $group = null): Cache
     {
         // If there is no group supplied
         if ($group === null) {
@@ -242,7 +242,7 @@ abstract class Kohana_Cache
      * @param int $lifetime Lifetime in seconds
      * @return  bool
      */
-    abstract public function set(string $id, $data, int $lifetime = 3600);
+    abstract public function set(string $id, $data, int $lifetime = 3600): bool;
     /**
      * Delete a cache entry based on id
      *
@@ -255,7 +255,7 @@ abstract class Kohana_Cache
      * @param string $id ID to remove from cache
      * @return  bool
      */
-    abstract public function delete(string $id);
+    abstract public function delete(string $id): bool;
     /**
      * Delete all cache entries.
      *
@@ -271,7 +271,7 @@ abstract class Kohana_Cache
      *
      * @return bool
      */
-    abstract public function delete_all();
+    abstract public function delete_all(): bool;
     /**
      * Replaces troublesome characters with underscores.
      *
@@ -281,7 +281,7 @@ abstract class Kohana_Cache
      * @param string $id ID of cache to sanitize
      * @return  string
      */
-    protected function _sanitize_id(string $id)
+    protected function _sanitize_id(string $id): string
     {
         // Change slashes and spaces to underscores
         return str_replace(['/', '\\', ' '], '_', $id);

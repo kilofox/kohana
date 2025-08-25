@@ -37,7 +37,7 @@ class Kohana_HTTP_Cache
      * @throws Kohana_Exception
      * @uses    Cache
      */
-    public static function factory($cache, array $options = [])
+    public static function factory($cache, array $options = []): HTTP_Cache
     {
         if (!$cache instanceof Cache) {
             $cache = Cache::instance($cache);
@@ -59,7 +59,7 @@ class Kohana_HTTP_Cache
      * @param   Request $request
      * @return  string
      */
-    public static function basic_cache_key_generator(Request $request)
+    public static function basic_cache_key_generator(Request $request): string
     {
         $uri = $request->uri();
         $query = $request->query();
@@ -275,7 +275,7 @@ class Kohana_HTTP_Cache
      * @param   callable    $callback   optional callback to use instead of built-in method
      * @return  string
      */
-    public function create_cache_key(Request $request, $callback = false)
+    public function create_cache_key(Request $request, $callback = false): string
     {
         if (is_callable($callback))
             return call_user_func($callback, $request);
@@ -291,7 +291,7 @@ class Kohana_HTTP_Cache
      * @param   Response  $response The Response
      * @return  bool
      */
-    public function set_cache(Response $response)
+    public function set_cache(Response $response): bool
     {
         $headers = $response->headers()->getArrayCopy();
 

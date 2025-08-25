@@ -208,7 +208,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      * @param int $lifetime Lifetime in seconds, maximum value 2592000
      * @return  bool
      */
-    public function set(string $id, $data, int $lifetime = 3600)
+    public function set(string $id, $data, int $lifetime = 3600): bool
     {
         // If the lifetime is greater than the ceiling
         if ($lifetime > Cache_Memcache::CACHE_CEILING) {
@@ -242,7 +242,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      * @param int $timeout Timeout of entry, if zero item is deleted immediately, otherwise the item will delete after the specified value in seconds
      * @return  bool
      */
-    public function delete(string $id, int $timeout = 0)
+    public function delete(string $id, int $timeout = 0): bool
     {
         // Delete the id
         return $this->_memcache->delete($this->_sanitize_id($id), $timeout);
@@ -260,7 +260,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      *
      * @return bool
      */
-    public function delete_all()
+    public function delete_all(): bool
     {
         $result = $this->_memcache->flush();
 

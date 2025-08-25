@@ -166,7 +166,7 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_set_cache()
+    public function provider_set_cache(): array
     {
         return [
             [

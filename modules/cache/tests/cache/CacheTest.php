@@ -21,7 +21,7 @@ class Kohana_CacheTest extends PHPUnit\Framework\TestCase
      * @throws Cache_Exception
      * @throws Kohana_Exception
      */
-    public function provider_instance()
+    public function provider_instance(): array
     {
         $base = [];
 
@@ -96,7 +96,7 @@ class Kohana_CacheTest extends PHPUnit\Framework\TestCase
      *
      * @return  array
      */
-    public function provider_config()
+    public function provider_config(): array
     {
         return [
             [
@@ -167,7 +167,7 @@ class Kohana_CacheTest extends PHPUnit\Framework\TestCase
      *
      * @return  array
      */
-    public function provider_sanitize_id()
+    public function provider_sanitize_id(): array
     {
         return [
             [

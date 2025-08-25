@@ -99,7 +99,7 @@ class Kohana_Cache_Wincache extends Cache
      * @param int|null $lifetime Lifetime in seconds
      * @return  bool
      */
-    public function set(string $id, $data, int $lifetime = null)
+    public function set(string $id, $data, int $lifetime = null): bool
     {
         if ($lifetime === null) {
             $lifetime = Arr::get($this->_config, 'default_expire', Cache::DEFAULT_EXPIRE);
@@ -117,7 +117,7 @@ class Kohana_Cache_Wincache extends Cache
      * @param string $id ID to remove from cache
      * @return  bool
      */
-    public function delete(string $id)
+    public function delete(string $id): bool
     {
         return wincache_ucache_delete($this->_sanitize_id($id));
     }
@@ -134,7 +134,7 @@ class Kohana_Cache_Wincache extends Cache
      *
      * @return bool
      */
-    public function delete_all()
+    public function delete_all(): bool
     {
         return wincache_ucache_clear();
     }

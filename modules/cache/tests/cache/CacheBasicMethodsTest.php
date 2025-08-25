@@ -52,7 +52,7 @@ abstract class Kohana_CacheBasicMethodsTest extends PHPUnit\Framework\TestCase
      *
      * @return  array
      */
-    public function provider_set_get()
+    public function provider_set_get(): array
     {
         $object = new StdClass;
         $object->foo = 'foo';
