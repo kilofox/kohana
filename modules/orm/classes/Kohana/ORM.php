@@ -545,6 +545,7 @@ class Kohana_ORM extends Model implements serializable
      * Returns an array of changed fields and their new values.
      *
      * @return array
+     * @since 3.5.0
      */
     public function changes(): array
     {
