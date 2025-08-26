@@ -35,7 +35,7 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
 
         if ($type !== null) {
             // Set the JOIN type
-            $this->_type = (string) $type;
+            $this->_type = $type;
         }
     }
 
@@ -125,11 +125,13 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
         return $sql;
     }
 
-    public function reset()
+    public function reset(): Kohana_Database_Query_Builder_Join
     {
         $this->_type = $this->_table = null;
 
         $this->_on = [];
+
+        return $this;
     }
 
 }

@@ -183,7 +183,7 @@ class Kohana_Database_PDO extends Database
         }
     }
 
-    public function begin(string $mode = null)
+    public function begin(string $mode = null): bool
     {
         // Make sure the database is connected
         $this->_connection or $this->connect();
@@ -191,7 +191,7 @@ class Kohana_Database_PDO extends Database
         return $this->_connection->beginTransaction();
     }
 
-    public function commit()
+    public function commit(): bool
     {
         // Make sure the database is connected
         $this->_connection or $this->connect();
@@ -199,7 +199,7 @@ class Kohana_Database_PDO extends Database
         return $this->_connection->commit();
     }
 
-    public function rollback()
+    public function rollback(): bool
     {
         // Make sure the database is connected
         $this->_connection or $this->connect();
@@ -207,17 +207,17 @@ class Kohana_Database_PDO extends Database
         return $this->_connection->rollBack();
     }
 
-    public function list_tables(string $like = null)
+    public function list_tables(string $like = null): array
     {
         throw new Kohana_Exception('Database method :method is not supported by :class', [':method' => __FUNCTION__, ':class' => __CLASS__]);
     }
 
-    public function list_columns(string $table, string $like = null, bool $add_prefix = true)
+    public function list_columns(string $table, string $like = null, bool $add_prefix = true): array
     {
         throw new Kohana_Exception('Database method :method is not supported by :class', [':method' => __FUNCTION__, ':class' => __CLASS__]);
     }
 
-    public function escape(string $value)
+    public function escape(string $value): string
     {
         // Make sure the database is connected
         $this->_connection or $this->connect();

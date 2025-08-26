@@ -82,7 +82,7 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where
         return parent::compile($db);
     }
 
-    public function reset(): Kohana_Database_Query_Builder
+    public function reset(): Kohana_Database_Query_Builder_Delete
     {
         $this->_table = null;
         $this->_where = [];

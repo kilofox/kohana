@@ -54,7 +54,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      */
     public function distinct(bool $value): Kohana_Database_Query_Builder_Select
     {
-        $this->_distinct = (bool) $value;
+        $this->_distinct = $value;
 
         return $this;
     }
@@ -390,7 +390,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
         return parent::compile($db);
     }
 
-    public function reset(): Kohana_Database_Query_Builder
+    public function reset(): Kohana_Database_Query_Builder_Select
     {
         $this->_select = $this->_from = $this->_join = $this->_where = $this->_group_by = $this->_having = $this->_order_by = $this->_union = [];
 

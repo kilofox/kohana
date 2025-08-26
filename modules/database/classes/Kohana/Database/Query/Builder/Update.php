@@ -116,7 +116,7 @@ class Kohana_Database_Query_Builder_Update extends Database_Query_Builder_Where
         return parent::compile($db);
     }
 
-    public function reset(): Kohana_Database_Query_Builder
+    public function reset(): Kohana_Database_Query_Builder_Update
     {
         $this->_table = null;
 

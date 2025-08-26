@@ -67,7 +67,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      * @return  Database_Result_Cached
      * @since   3.0.5
      */
-    public function cached(): Database_Result_Cached
+    public function cached(): Database_Result
     {
         return new Database_Result_Cached($this->as_array(), $this->_query, $this->_as_object);
     }
