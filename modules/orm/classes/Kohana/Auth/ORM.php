@@ -266,7 +266,7 @@ class Kohana_Auth_ORM extends Auth
      * @param   object  $user  user ORM object
      * @return  void
      */
-    protected function complete_login($user)
+    protected function complete_login($user): bool
     {
         $user->complete_login();
 
