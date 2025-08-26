@@ -154,6 +154,10 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
         return parent::compile($db);
     }
 
+    /**
+     * @return $this
+     * @deprecated 3.5.0
+     */
     public function reset(): Kohana_Database_Query_Builder_Insert
     {
         $this->_table = null;

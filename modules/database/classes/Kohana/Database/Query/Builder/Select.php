@@ -390,6 +390,10 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
         return parent::compile($db);
     }
 
+    /**
+     * @return $this
+     * @deprecated 3.5.0
+     */
     public function reset(): Kohana_Database_Query_Builder_Select
     {
         $this->_select = $this->_from = $this->_join = $this->_where = $this->_group_by = $this->_having = $this->_order_by = $this->_union = [];

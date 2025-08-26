@@ -218,6 +218,8 @@ abstract class Kohana_Database_Query_Builder extends Database_Query
 
     /**
      * Reset the current builder status.
+     *
+     * @deprecated 3.5.0
      */
     abstract public function reset();
 }

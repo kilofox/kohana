@@ -82,6 +82,10 @@ class Kohana_Database_Query_Builder_Delete extends Database_Query_Builder_Where
         return parent::compile($db);
     }
 
+    /**
+     * @return $this
+     * @deprecated 3.5.0
+     */
     public function reset(): Kohana_Database_Query_Builder_Delete
     {
         $this->_table = null;
