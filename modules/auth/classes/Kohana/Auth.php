@@ -50,7 +50,7 @@ abstract class Kohana_Auth
      * @return  void
      * @throws Kohana_Exception
      */
-    public function __construct($config = [])
+    public function __construct(array $config = [])
     {
         // Save the config in the object
         $this->_config = $config;
@@ -76,9 +76,9 @@ abstract class Kohana_Auth
     /**
      * Attempt to log in a user by using an ORM object and plain-text password.
      *
-     * @param   string   $username  Username to log in
-     * @param   string   $password  Password to check against
-     * @param   bool $remember Enable autologin
+     * @param string $username Username to log in
+     * @param string $password Password to check against
+     * @param bool $remember Enable autologin
      * @return  bool
      */
     public function login($username, $password, $remember = false)
@@ -92,8 +92,8 @@ abstract class Kohana_Auth
     /**
      * Log out a user by removing the related session variables.
      *
-     * @param   bool  $destroy     Completely destroy the session
-     * @param   bool  $logout_all  Remove all tokens for user
+     * @param bool $destroy     Completely destroy the session
+     * @param bool $logout_all  Remove all tokens for user
      * @return  bool
      */
     public function logout($destroy = false, $logout_all = false)
@@ -117,7 +117,7 @@ abstract class Kohana_Auth
      * Check if there is an active session. Optionally allows checking for a
      * specific role.
      *
-     * @param   string  $role  role name
+     * @param string|null $role Role name
      * @return  bool
      */
     public function logged_in($role = null)
