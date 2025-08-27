@@ -66,8 +66,8 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      *     // Retrieve cache entry from apcu group and return 'bar' if missing
      *     $data = Cache::instance('apcu')->get('foo', 'bar');
      *
-     * @param   string  $id       id of cache to entry
-     * @param   string  $default  default value to return if cache miss
+     * @param string $id ID of cache to entry
+     * @param string|null $default Default value to return if cache miss
      * @return  mixed
      */
     public function get($id, $default = null)
@@ -88,9 +88,9 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      *     // Set 'bar' to 'foo' in apcu group for 30 seconds
      *     Cache::instance('apcu')->set('foo', $data, 30);
      *
-     * @param   string   $id        id of cache entry
-     * @param   string   $data      data to set to cache
-     * @param   int $lifetime lifetime in seconds
+     * @param string $id ID of cache entry
+     * @param string $data Data to set to cache
+     * @param int|null $lifetime Lifetime in seconds
      * @return  bool
      */
     public function set($id, $data, $lifetime = null)
@@ -108,7 +108,7 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      *     // Delete 'foo' entry from the apcu group
      *     Cache::instance('apcu')->delete('foo');
      *
-     * @param   string  $id  id to remove from cache
+     * @param string $id ID to remove from cache
      * @return  bool
      */
     public function delete($id)

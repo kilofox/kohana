@@ -63,8 +63,8 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
     /**
      * Retrieve a value based on an id
      *
-     * @param   string  $id       id
-     * @param   string  $default  default [Optional] Default value to return if id not found
+     * @param string $id ID
+     * @param string|null $default Default value to return if ID not found
      * @return  mixed
      * @throws  Cache_Exception
      */
@@ -109,9 +109,9 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
     /**
      * Set a value based on an id. Optionally add tags.
      *
-     * @param string $id id
-     * @param mixed $data data
-     * @param int $lifetime lifetime [Optional]
+     * @param string $id ID
+     * @param mixed $data Data to set to cache.
+     * @param int|null $lifetime Lifetime [Optional]
      * @return bool
      * @throws Cache_Exception
      */
@@ -123,7 +123,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
     /**
      * Delete a cache entry based on id
      *
-     * @param   string  $id  id
+     * @param string $id ID of cache entry to delete.
      * @return  bool
      * @throws  Cache_Exception
      */
@@ -205,7 +205,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
     /**
      * Delete cache entries based on a tag
      *
-     * @param   string  $tag  tag
+     * @param string $tag Tag label identifying cache entries to be deleted.
      * @return  bool
      * @throws  Cache_Exception
      */
@@ -227,7 +227,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
     /**
      * Find cache entries based on a tag
      *
-     * @param   string  $tag  tag
+     * @param string $tag Tag label used to find associated cache entries.
      * @return  array
      * @throws  Cache_Exception
      */
@@ -282,7 +282,7 @@ class Kohana_Cache_Sqlite extends Cache implements Cache_Tagging, Cache_GarbageC
     /**
      * Tests whether an id exists or not
      *
-     * @param   string  $id  id
+     * @param string $id ID
      * @return  bool
      * @throws  Cache_Exception
      */

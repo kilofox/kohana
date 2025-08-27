@@ -27,13 +27,13 @@ interface Kohana_Cache_Tagging
     /**
      * Delete cache entries based on a tag
      *
-     * @param   string  $tag  tag
+     * @param string $tag Tag label identifying cache entries to be deleted.
      */
     public function delete_tag($tag);
     /**
      * Find cache entries based on a tag
      *
-     * @param   string  $tag  tag
+     * @param string $tag Tag label used to find associated cache entries.
      * @return  array
      */
     public function find($tag);

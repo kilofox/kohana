@@ -214,7 +214,7 @@ class Kohana_HTTP_Cache
      * that have the `private` setting.
      *
      * @link    https://www.rfc-editor.org/rfc/rfc9111#name-private
-     * @param bool $setting allow caching of privately marked responses
+     * @param bool|null $setting Allow caching of privately marked responses
      * @return bool|Kohana_HTTP_Cache
      */
     public function allow_private_cache($setting = null)
@@ -248,11 +248,11 @@ class Kohana_HTTP_Cache
      *            return sha1($request->render());
      *      });
      *
-     * @param callable $callback
+     * @param callable|null $callback
      * @return callable|Kohana_HTTP_Cache
      * @throws Kohana_Exception
      */
-    public function cache_key_callback($callback = null)
+    public function cache_key_callback(callable $callback = null)
     {
         if ($callback === null)
             return $this->_cache_key_callback;

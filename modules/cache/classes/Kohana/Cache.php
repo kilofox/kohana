@@ -108,7 +108,7 @@ abstract class Kohana_Cache
      *     // Access an instantiated group directly
      *     $foo_group = Cache::$instances['default'];
      *
-     * @param string $group the name of the cache group to use [Optional]
+     * @param string|null $group The name of the cache group to use [Optional]
      * @return  Cache
      * @throws Cache_Exception
      * @throws Kohana_Exception
@@ -215,8 +215,8 @@ abstract class Kohana_Cache
      *     // Retrieve cache entry from memcached group
      *     $data = Cache::instance('memcached')->get('foo');
      *
-     * @param   string  $id       id of cache to entry
-     * @param   string  $default  default value to return if cache miss
+     * @param string $id ID of cache to entry
+     * @param string|null $default Default value to return if cache miss
      * @return  mixed
      * @throws  Cache_Exception
      */
@@ -238,9 +238,9 @@ abstract class Kohana_Cache
      *          return;
      *     }
      *
-     * @param   string   $id        id of cache entry
-     * @param   string   $data      data to set to cache
-     * @param   int $lifetime lifetime in seconds
+     * @param string $id ID of cache entry
+     * @param mixed $data Data to set to cache
+     * @param int $lifetime Lifetime in seconds
      * @return  bool
      */
     abstract public function set($id, $data, $lifetime = 3600);
@@ -253,7 +253,7 @@ abstract class Kohana_Cache
      *     // Delete 'foo' entry from the memcached group
      *     Cache::instance('memcached')->delete('foo');
      *
-     * @param   string  $id  id to remove from cache
+     * @param string $id ID to remove from cache
      * @return  bool
      */
     abstract public function delete($id);
@@ -279,7 +279,7 @@ abstract class Kohana_Cache
      *     // Sanitize a cache id
      *     $id = $this->_sanitize_id($id);
      *
-     * @param   string  $id  id of cache to sanitize
+     * @param string $id ID of cache to sanitize
      * @return  string
      */
     protected function _sanitize_id($id)

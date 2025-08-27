@@ -51,7 +51,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *     // Create the cache filename
      *     $filename = Cache_File::filename($this->_sanitize_id($id));
      *
-     * @param   string  $string  string to hash into filename
+     * @param string $string String to hash into filename
      * @return  string
      */
     protected static function filename($string)
@@ -109,7 +109,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *     $data = Cache::instance('file')->get('foo', 'bar');
      *
      * @param string $id id of cache to entry
-     * @param string $default default value to return if cache miss
+     * @param string|null $default Default value to return if cache miss
      * @return  mixed
      * @throws Cache_Exception
      * @throws ErrorException
@@ -178,7 +178,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *
      * @param string $id id of cache entry
      * @param string $data data to set to cache
-     * @param int $lifetime lifetime in seconds
+     * @param int|null $lifetime Lifetime in seconds
      * @return bool
      * @throws Cache_Exception
      * @throws ErrorException
@@ -277,9 +277,9 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *     $this->_delete_file($folder, true, true);
      *
      * @param   SplFileInfo  $file                     file
-     * @param   bool $retain_parent_directory retain the parent directory
-     * @param   bool $ignore_errors ignore_errors to prevent all exceptions interrupting exec
-     * @param   bool $only_expired only expired files
+     * @param bool $retain_parent_directory Retain the parent directory
+     * @param bool $ignore_errors Ignore_errors to prevent all exceptions interrupting exec
+     * @param bool $only_expired Only expired files
      * @return  bool
      * @throws  Cache_Exception
      */
@@ -380,7 +380,7 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      *      // Get the realpath of the cache folder
      *      $realpath = $this->_resolve_directory($filename);
      *
-     * @param   string  $filename  filename to resolve
+     * @param string $filename Filename to resolve
      * @return  string
      */
     protected function _resolve_directory($filename)
@@ -393,9 +393,9 @@ class Kohana_Cache_File extends Cache implements Cache_GarbageCollect
      * `mkdir` to ensure DRY principles
      *
      * @link    https://www.php.net/manual/en/function.mkdir.php
-     * @param   string    $directory    directory path
-     * @param   int $mode chmod mode
-     * @param   bool $recursive allows nested directories creation
+     * @param string $directory Directory path
+     * @param int $mode chmod mode
+     * @param bool $recursive Allows nested directories creation
      * @param   resource  $context      a stream context
      * @return  SplFileInfo
      * @throws  Cache_Exception
