@@ -96,7 +96,7 @@ class Kohana_UploadTest extends Unittest_TestCase
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function test_size($field, $bytes, $environment, $expected)
+    public function test_size($field, $bytes, array $environment, $expected)
     {
         $this->setEnvironment($environment);
 

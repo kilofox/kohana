@@ -94,7 +94,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      * @param string $body    A string to send back as response body (included in the JSON response)
      * @return string
      */
-    protected function _dummy_uri($status, $headers, $body)
+    protected function _dummy_uri($status, array $headers, $body)
     {
         $data = [
             'status' => $status,
@@ -116,7 +116,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      */
     protected function _dummy_redirect_uri($status)
     {
-        return $this->_dummy_uri($status, ['Location' => $this->_dummy_uri(200, null, 'followed')], 'not-followed');
+        return $this->_dummy_uri($status, ['Location' => $this->_dummy_uri(200, [], 'followed')], 'not-followed');
     }
 
     /**
@@ -128,7 +128,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
         return [
             [
                 true,
-                $this->_dummy_uri(200, null, 'not-followed'),
+                $this->_dummy_uri(200, [], 'not-followed'),
                 'not-followed'
             ],
             [
@@ -282,7 +282,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      *
      * @param string $original_method Request method to use for the original request
      * @param string $status Redirect status that will be issued
-     * @param string $expect_body Expected value of body() in the second request
+     * @param string|null $expect_body Expected value of body() in the second request
      * @throws Kohana_Exception
      * @throws Request_Exception
      */
@@ -328,7 +328,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
                     }
                 ],
                 $this->_dummy_uri(200, [
-                    'X-test-2' => $this->_dummy_uri(200, null, 'test2-subsequent-body')
+                    'X-test-2' => $this->_dummy_uri(200, [], 'test2-subsequent-body')
                     ], 'test2-orig-body'),
                 'test2-subsequent-body'
             ],
@@ -353,8 +353,8 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
                     }
                 ],
                 $this->_dummy_uri(200, [
-                    'X-test-1' => $this->_dummy_uri(200, null, 'test1-subsequent-body'),
-                    'X-test-2' => $this->_dummy_uri(200, null, 'test2-subsequent-body')
+                    'X-test-1' => $this->_dummy_uri(200, [], 'test1-subsequent-body'),
+                    'X-test-2' => $this->_dummy_uri(200, [], 'test2-subsequent-body')
                     ], 'test2-orig-body'),
                 'test1-subsequent-body'
             ],
@@ -370,7 +370,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
                 ],
                 $this->_dummy_uri(200, [
                     'X-test-1' => $this->_dummy_uri(200, [
-                        'X-test-2' => $this->_dummy_uri(200, null, 'test2-subsequent-body')
+                        'X-test-2' => $this->_dummy_uri(200, [], 'test2-subsequent-body')
                         ], 'test1-subsequent-body')
                     ], 'test-orig-body'),
                 'test2-subsequent-body'
@@ -390,7 +390,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      * @throws Kohana_Exception
      * @throws Request_Exception
      */
-    public function test_triggers_header_callbacks($callbacks, $uri, $expect_body)
+    public function test_triggers_header_callbacks(array $callbacks, $uri, $expect_body)
     {
         $response = Request::factory($uri, ['header_callbacks' => $callbacks])
             ->execute();
@@ -444,7 +444,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      * @param Response $response
      * @param Request_Client $client
      */
-    public function callback_assert_params($request, $response, $client)
+    public function callback_assert_params(Request $request, Response $response, Request_Client $client)
     {
         $this->assertEquals('foo', $client->callback_params('constructor_param'));
         $this->assertEquals('bar', $client->callback_params('setter_param'));

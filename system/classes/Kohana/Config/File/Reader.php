@@ -21,7 +21,7 @@ class Kohana_Config_File_Reader implements Kohana_Config_Reader
     /**
      * Creates a new file reader using the given directory as a config source
      *
-     * @param string    $directory  Configuration directory to search
+     * @param string $directory Configuration directory to search
      */
     public function __construct($directory = 'config')
     {
@@ -34,7 +34,7 @@ class Kohana_Config_File_Reader implements Kohana_Config_Reader
      *
      *     $config->load($name);
      *
-     * @param   string  $group  configuration group name
+     * @param string $group Configuration group name
      * @return  array
      * @uses    Kohana::load
      */

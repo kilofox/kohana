@@ -20,7 +20,7 @@ class Kohana_Session_Native extends Session
     }
 
     /**
-     * @param   string  $id  session id
+     * @param string|null $id Session ID
      * @return  null
      */
     protected function _read($id = null)

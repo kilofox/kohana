@@ -70,7 +70,7 @@ abstract class Kohana_Encrypt
      * to convert it to a string. This string can be stored in a database,
      * displayed, and passed using most other means without corruption.
      *
-     * @param   string  $data   Data to be encrypted.
+     * @param string $data Data to be encrypted.
      * @return  string
      */
     abstract public function encode($data);
@@ -79,7 +79,7 @@ abstract class Kohana_Encrypt
      *
      *     $data = $encrypt->decode($data);
      *
-     * @param   string  $data   Encoded string to be decrypted.
+     * @param string $data Encoded string to be decrypted.
      * @return  string|false Decrypted string on success, or false on failure.
      */
     abstract public function decode($data);

@@ -41,8 +41,8 @@ class Kohana_Debug
      * Borrows heavily on concepts from the Debug class of [Nette](http://nettephp.com/).
      *
      * @param   mixed   $value              variable to dump
-     * @param   int $length maximum length of strings
-     * @param   int $level_recursion recursion limit
+     * @param int $length Maximum length of strings
+     * @param int $level_recursion Recursion limit
      * @return  string
      */
     public static function dump($value, $length = 128, $level_recursion = 10)
@@ -54,12 +54,12 @@ class Kohana_Debug
      * Helper for Debug::dump(), handles recursion in arrays and objects.
      *
      * @param   mixed   $var    variable to dump
-     * @param   int $length maximum length of strings
-     * @param   int $limit recursion limit
-     * @param   int $level current recursion level (internal usage only!)
+     * @param int $length Maximum length of strings
+     * @param int $limit Recursion limit
+     * @param int $level Current recursion level (internal usage only!)
      * @return  string
      */
-    protected static function _dump(& $var, $length = 128, $limit = 10, $level = 0)
+    protected static function _dump(&$var, $length = 128, $limit = 10, $level = 0)
     {
         if ($var === null) {
             return '<small>NULL</small>';
@@ -209,7 +209,7 @@ class Kohana_Debug
      *     // Displays SYSPATH/classes/kohana.php
      *     echo Debug::path(Kohana::find_file('classes', 'kohana'));
      *
-     * @param   string  $file   path to debug
+     * @param string $file Path to debug
      * @return  string
      */
     public static function path($file)
@@ -234,9 +234,9 @@ class Kohana_Debug
      *     // Highlights the current line of the current file
      *     echo Debug::source(__FILE__, __LINE__);
      *
-     * @param   string  $file           file to open
-     * @param   int $line_number line number to highlight
-     * @param   int $padding number of padding lines
+     * @param string $file File to open
+     * @param int $line_number Line number to highlight
+     * @param int $padding Number of padding lines
      * @return  string|false Source of file if readable, false otherwise.
      */
     public static function source($file, $line_number, $padding = 5)

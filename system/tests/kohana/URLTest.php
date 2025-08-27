@@ -500,12 +500,12 @@ class Kohana_URLTest extends Unittest_TestCase
      * @dataProvider provider_query
      * @param array $enviroment Set environment
      * @param string $expected Expected result
-     * @param array $params Query string
+     * @param array|null $params Query string
      * @param bool $use_get Combine with GET parameters
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function test_query($enviroment, $expected, $params, $use_get = true)
+    public function test_query(array $enviroment, $expected, $params, $use_get = true)
     {
         $this->setEnvironment($enviroment);
 
@@ -558,7 +558,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @param bool $expected true if host is trusted, false otherwise
      * @throws Kohana_Exception
      */
-    public function test_is_trusted_host($host, $trusted_hosts, $expected)
+    public function test_is_trusted_host($host, array $trusted_hosts, $expected)
     {
         $this->assertSame(
             $expected, URL::is_trusted_host($host, $trusted_hosts)

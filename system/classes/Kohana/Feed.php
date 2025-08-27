@@ -85,7 +85,7 @@ class Kohana_Feed
      * @return  string
      * @throws Kohana_Exception
      */
-    public static function create($info, $items, $encoding = 'UTF-8')
+    public static function create(array $info, array $items, $encoding = 'UTF-8')
     {
         $info += ['title' => 'Generated Feed', 'link' => '', 'generator' => 'KohanaPHP'];
 

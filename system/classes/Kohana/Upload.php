@@ -44,8 +44,8 @@ class Kohana_Upload
      *     }
      *
      * @param array $file uploaded file data
-     * @param string $filename new filename
-     * @param string $directory new directory
+     * @param string|null $filename New filename
+     * @param string|null $directory New directory
      * @param int $chmod chmod mask
      * @return string|false Full path to new file on success, false on failure.
      * @throws Kohana_Exception
@@ -99,10 +99,10 @@ class Kohana_Upload
      *
      *     $array->rule('file', 'Upload::valid')
      *
-     * @param   array   $file   $_FILES item
+     * @param array $file $_FILES item
      * @return  bool
      */
-    public static function valid($file)
+    public static function valid(array $file)
     {
         return isset($file['error'])
             && isset($file['name'])
@@ -193,9 +193,9 @@ class Kohana_Upload
      *
      *
      * @param   array   $file       $_FILES item
-     * @param   int $max_width maximum width of image
-     * @param   int $max_height maximum height of image
-     * @param   bool $exact match width and height exactly?
+     * @param int|null $max_width Maximum width of image
+     * @param int|null $max_height Maximum height of image
+     * @param bool $exact Match width and height exactly?
      * @return  bool
      */
     public static function image(array $file, $max_width = null, $max_height = null, $exact = false)

@@ -131,10 +131,10 @@ class Kohana_URL
      * Callback used for encoding all non-ASCII characters, as per RFC 1738
      * Used by URL::site()
      *
-     * @param  array $matches  Array of matches from preg_replace_callback()
+     * @param array $matches Array of matches from preg_replace_callback()
      * @return string          Encoded string
      */
-    protected static function _rawurlencode_callback($matches)
+    protected static function _rawurlencode_callback(array $matches)
     {
         return rawurlencode($matches[0]);
     }
@@ -184,9 +184,9 @@ class Kohana_URL
      *
      *     echo URL::title('My Blog Post'); // "my-blog-post"
      *
-     * @param   string   $title       Phrase to convert
-     * @param   string   $separator   Word separator (any single character)
-     * @param   bool $ascii_only Transliterate to ASCII?
+     * @param string $title Phrase to convert
+     * @param string $separator Word separator (any single character)
+     * @param bool $ascii_only Transliterate to ASCII?
      * @return  string
      * @uses    UTF8::transliterate_to_ascii
      */

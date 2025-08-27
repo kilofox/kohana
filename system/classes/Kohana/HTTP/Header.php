@@ -59,7 +59,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * for each supplied media type.
      *
      * @link    https://www.rfc-editor.org/rfc/rfc9110.html#name-accept
-     * @param   string  $accepts    Accept header string to parse
+     * @param string|null $accepts Accept header string to parse
      * @return  array
      * @since   3.2.0
      */
@@ -98,7 +98,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * the charset and associated quality.
      *
      * @link    https://www.rfc-editor.org/rfc/rfc9110.html#name-accept-charset
-     * @param   string  $charset    charset string to parse
+     * @param string|null $charset Charset string to parse
      * @return  array
      * @since   3.2.0
      */
@@ -116,7 +116,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * the charsets and associated quality.
      *
      * @link    https://www.rfc-editor.org/rfc/rfc9110.html#name-accept-encoding
-     * @param   string  $encoding   charset string to parse
+     * @param string|null $encoding Charset string to parse
      * @return  array
      * @since   3.2.0
      */
@@ -137,7 +137,7 @@ class Kohana_HTTP_Header extends ArrayObject
      * the languages and associated quality.
      *
      * @link    https://www.rfc-editor.org/rfc/rfc9110.html#name-accept-language
-     * @param   string  $language   charset string to parse
+     * @param string|null $language Charset string to parse
      * @return  array
      * @since   3.2.0
      */
@@ -210,7 +210,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *          $maxAge = $cache_control['max-age'];
      *     }
      *
-     * @param   array   $cache_control Array of headers
+     * @param string $cache_control Cache-Control header string to parse
      * @return  array|false
      */
     public static function parse_cache_control($cache_control)
@@ -270,7 +270,7 @@ class Kohana_HTTP_Header extends ArrayObject
         /**
          * HTTP header declarations should be treated as case-insensitive
          */
-        $input = array_change_key_case((array) $input);
+        $input = array_change_key_case($input);
 
         parent::__construct($input, $flags, $iterator_class);
     }
@@ -399,7 +399,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *     $header->parse_header_string(null, 'content-type: application/json');
      *
      * @param   resource    $resource       the resource (required by Curl API)
-     * @param   string      $header_line    the line from the header to parse
+     * @param string $header_line The line from the header to parse
      * @return  int
      * @since   3.2.0
      */
@@ -533,7 +533,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *      $quality = $header->accepts_charset_at_quality('utf-8');
      *            // $quality = (float) 1
      *
-     * @param   string  $charset    charset to examine
+     * @param string $charset Charset to examine
      * @return  float   the quality of the charset
      * @since   3.2.0
      */
@@ -601,8 +601,8 @@ class Kohana_HTTP_Header extends ArrayObject
      *      $encoding = $header->accepts_encoding_at_quality('gzip');
      *      // $encoding = (float) 1.0s
      *
-     * @param   string  $encoding   encoding type to interrogate
-     * @param   bool $explicit explicit check, ignoring wildcards and `identity`
+     * @param string $encoding Encoding type to interrogate
+     * @param bool $explicit Explicit check, ignoring wildcards and `identity`
      * @return  float
      * @since   3.2.0
      */
@@ -648,7 +648,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *     // $encoding = 'gzip';
      *
      * @param   array   $encodings  encodings to test against
-     * @param   bool $explicit explicit check, if `true` wildcards are excluded
+     * @param bool $explicit Explicit check, if `true` wildcards are excluded
      * @return  mixed
      * @since   3.2.0
      */
@@ -684,8 +684,8 @@ class Kohana_HTTP_Header extends ArrayObject
      *     $lang3 = $header->accepts_language_at_quality('en-au', true);
      *     // $lang3 = (float) 0.0
      *
-     * @param   string  $language   language to interrogate
-     * @param   bool $explicit explicit interrogation, `true` ignores wildcards
+     * @param string $language Language to interrogate
+     * @param bool $explicit Explicit interrogation, `true` ignores wildcards
      * @return  float
      * @since   3.2.0
      */
@@ -733,7 +733,7 @@ class Kohana_HTTP_Header extends ArrayObject
      *      ]); // $lang = 'en-gb'
      *
      * @param   array   $languages
-     * @param   bool $explicit
+     * @param bool $explicit
      * @return  mixed
      * @since   3.2.0
      */

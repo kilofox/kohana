@@ -133,7 +133,7 @@ abstract class Kohana_Controller
      *
      *     $this->check_cache(sha1($content));
      *
-     * @param string $etag Resource Etag
+     * @param string|null $etag Resource Etag
      * @return Response
      * @throws Request_Exception
      */

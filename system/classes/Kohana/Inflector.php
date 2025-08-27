@@ -72,7 +72,7 @@ class Kohana_Inflector
      * [!!] Special inflections are defined in `config/inflector.php`.
      *
      * @param string $str word to make singular
-     * @param int $count count of thing
+     * @param int|float $count Count of thing
      * @return  string
      * @throws Kohana_Exception
      * @uses    Inflector::uncountable
@@ -137,7 +137,7 @@ class Kohana_Inflector
      * [!!] Special inflections are defined in `config/inflector.php`.
      *
      * @param string $str word to pluralize
-     * @param int $count count of thing
+     * @param int|float $count Count of thing
      * @return  string
      * @throws Kohana_Exception
      * @uses    Inflector::uncountable
@@ -199,7 +199,7 @@ class Kohana_Inflector
      *     $str = Inflector::camelize('mother cat');     // "motherCat"
      *     $str = Inflector::camelize('kittens in bed'); // "kittensInBed"
      *
-     * @param   string  $str    phrase to camelize
+     * @param string $str Phrase to camelize
      * @return  string
      */
     public static function camelize($str)
@@ -216,8 +216,8 @@ class Kohana_Inflector
      *     $str = Inflector::decamelize('houseCat');    // "house cat"
      *     $str = Inflector::decamelize('kingAllyCat'); // "king ally cat"
      *
-     * @param   string  $str    phrase to camelize
-     * @param   string  $sep    word separator
+     * @param string $str    Phrase to camelize
+     * @param string $sep    Word separator
      * @return  string
      */
     public static function decamelize($str, $sep = ' ')
@@ -230,7 +230,7 @@ class Kohana_Inflector
      *
      *     $str = Inflector::underscore('five cats'); // "five_cats";
      *
-     * @param   string  $str    phrase to underscore
+     * @param string $str Phrase to underscore
      * @return  string
      */
     public static function underscore($str)
@@ -244,7 +244,7 @@ class Kohana_Inflector
      *     $str = Inflector::humanize('kittens-are-cats'); // "kittens are cats"
      *     $str = Inflector::humanize('dogs_as_well');     // "dogs as well"
      *
-     * @param   string  $str    phrase to make human-readable
+     * @param string $str Phrase to make human-readable
      * @return  string
      */
     public static function humanize($str)

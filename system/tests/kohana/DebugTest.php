@@ -155,7 +155,7 @@ class Kohana_DebugTest extends Unittest_TestCase
      * @dataProvider provider_dump
      * @covers Debug::dump
      * @covers Debug::_dump
-     * @param string $input
+     * @param mixed $input
      * @param int $length
      * @param int $limit
      * @param string $expected expected output

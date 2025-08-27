@@ -21,8 +21,8 @@ class Kohana_Log_Syslog extends Log_Writer
      *
      * @link    https://www.php.net/manual/en/function.openlog
      *
-     * @param   string  $ident      syslog identifier
-     * @param   int     $facility   facility to log to
+     * @param string $ident Syslog identifier
+     * @param int $facility Facility to log to
      * @return  void
      */
     public function __construct($ident = 'KohanaPHP', $facility = LOG_USER)
