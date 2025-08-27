@@ -76,7 +76,7 @@ class Kohana_InflectorTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_singular
      * @param string $input Input for Inflector::singular
-     * @param int $count Optional count to determine inflection logic
+     * @param int|float $count Optional count to determine inflection logic
      * @param string $expected Output for Inflector::mime
      * @throws Kohana_Exception
      */
@@ -114,7 +114,7 @@ class Kohana_InflectorTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_plural
      * @param string $input Input for Inflector::plural
-     * @param int $count Optional count to determine inflection logic
+     * @param int|float $count Optional count to determine inflection logic
      * @param string $expected Output for Inflector::plural
      * @throws Kohana_Exception
      */

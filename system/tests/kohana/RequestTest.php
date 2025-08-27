@@ -126,7 +126,7 @@ class Kohana_RequestTest extends Unittest_TestCase
         $route = new Route('(<controller>(/<action>(/<id>)))');
 
         $uri = 'kohana_requesttest_dummy/foobar/some_id';
-        $request = Request::factory($uri, null, true, [$route]);
+        $request = Request::factory($uri, [], true, [$route]);
 
         // We need to execute the request before it has matched a route
         $response = $request->execute();
@@ -153,7 +153,7 @@ class Kohana_RequestTest extends Unittest_TestCase
             'controller' => 'kohana_requesttest_dummy',
             'action' => 'foobar'
         ]);
-        $request = Request::factory('kohana_requesttest_dummy', null, true, [$route]);
+        $request = Request::factory('kohana_requesttest_dummy', [], true, [$route]);
 
         // We need to execute the request before it has matched a route
         $response = $request->execute();
@@ -287,7 +287,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * @covers       Request::url
      * @param string $uri the URI to use
      * @param string $protocol the protocol to use
-     * @param array $expected The string we expect
+     * @param string $expected The string we expect
      * @throws Kohana_Exception
      * @throws ReflectionException
      * @throws Request_Exception
@@ -476,7 +476,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * @return void
      * @throws Request_Exception
      */
-    public function test_options_set_to_external_client($settings, $expected)
+    public function test_options_set_to_external_client(array $settings, array $expected)
     {
         $request_client = Request_Client_External::factory([], 'Request_Client_Curl');
 
@@ -527,7 +527,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * @param array $headers headers to test against
      * @return  void
      */
-    public function test_headers_get($request, $headers)
+    public function test_headers_get(Request $request, array $headers)
     {
         foreach ($headers as $key => $expected_value) {
             $this->assertSame((string) $request->headers($key), $expected_value);
@@ -569,7 +569,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * @return  void
      * @throws Request_Exception
      */
-    public function test_headers_set($headers, $expected)
+    public function test_headers_set(array $headers, $expected)
     {
         $request = new Request(true, [], true, []);
         $request->headers($headers);
@@ -626,7 +626,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * @return  void
      * @throws Request_Exception
      */
-    public function test_query_parameter_parsing($url, $query, $expected)
+    public function test_query_parameter_parsing($url,array $query, array $expected)
     {
         Request::$initial = null;
 
@@ -650,7 +650,7 @@ class Kohana_RequestTest extends Unittest_TestCase
      * @return  void
      * @throws Request_Exception
      */
-    public function test_query_parameter_parsing_in_subrequest($url, $query, $expected)
+    public function test_query_parameter_parsing_in_subrequest($url, array $query, array $expected)
     {
         Request::$initial = new Request(true);
 

@@ -105,7 +105,7 @@ class Kohana_Security
      *
      *     $str = Security::encode_php_tags($str);
      *
-     * @param   string  $str    string to sanitize
+     * @param string $str String to sanitize
      * @return  string
      */
     public static function encode_php_tags($str)

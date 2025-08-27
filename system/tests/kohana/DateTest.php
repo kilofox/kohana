@@ -179,8 +179,8 @@ class Kohana_DateTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_adjust
      * @param int $hour Hour in 12-hour format
-     * @param string  $ampm       Either am or pm
-     * @param string  $expected   Expected result
+     * @param string $ampm Either am or pm
+     * @param string $expected Expected result
      */
     public function test_adjust($hour, $ampm, $expected)
     {
@@ -482,9 +482,9 @@ class Kohana_DateTest extends Unittest_TestCase
      * @covers Date::span
      * @dataProvider provider_span
      * @param int $time1 Time in the past
-     * @param int $time2 Time to compare against
-     * @param string  $output    Units to output
-     * @param array   $expected  Array of $outputs => values
+     * @param mixed $time2 Time to compare against
+     * @param string $output Units to output
+     * @param mixed $expected Array of $outputs => values
      */
     public function test_span($time1, $time2, $output, $expected)
     {
@@ -555,7 +555,7 @@ class Kohana_DateTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_fuzzy_span
-     * @param string  $expected        Expected output
+     * @param string $expected Expected output
      * @param int $timestamp Timestamp to use
      * @param int $local_timestamp The local timestamp to use
      */

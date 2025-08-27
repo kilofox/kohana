@@ -50,7 +50,7 @@ abstract class Kohana_HTTP
      *
      * @param Request $request Request
      * @param Response $response Response
-     * @param string $etag Resource ETag
+     * @param string|null $etag Resource ETag
      * @return Response
      * @throws Request_Exception
      */
@@ -84,7 +84,7 @@ abstract class Kohana_HTTP
     /**
      * Parses an HTTP header string into an associative array
      *
-     * @param   string   $header_string  Header string to parse
+     * @param string $header_string Header string to parse
      * @return  HTTP_Header
      */
     public static function parse_header_string($header_string)

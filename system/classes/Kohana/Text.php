@@ -53,9 +53,9 @@ class Kohana_Text
      *
      *     $text = Text::limit_words($text);
      *
-     * @param   string  $str        phrase to limit words of
-     * @param   int $limit number of words to limit to
-     * @param   string  $end_char   end character or entity
+     * @param string $str Phrase to limit words of
+     * @param int $limit Number of words to limit to
+     * @param string|null $end_char End character or entity
      * @return  string
      */
     public static function limit_words($str, $limit = 100, $end_char = null)
@@ -81,10 +81,10 @@ class Kohana_Text
      *
      *     $text = Text::limit_chars($text);
      *
-     * @param   string  $str            phrase to limit characters of
-     * @param   int $limit number of characters to limit to
-     * @param   string  $end_char       end character or entity
-     * @param   bool $preserve_words enable or disable the preservation of words while limiting
+     * @param string $str Phrase to limit characters of
+     * @param int $limit Number of characters to limit to
+     * @param string|null $end_char End character or entity
+     * @param bool $preserve_words Enable or disable the preservation of words while limiting
      * @return  string
      * @uses    UTF8::strlen
      */
@@ -159,8 +159,8 @@ class Kohana_Text
      * You can also create a custom type by providing the "pool" of characters
      * as the type.
      *
-     * @param   string  $type   a type of pool, or a string of characters to use as the pool
-     * @param   int $length length of string to return
+     * @param string|null $type A type of pool, or a string of characters to use as the pool
+     * @param int $length Length of string to return
      * @return  string
      * @uses    UTF8::split
      */
@@ -230,10 +230,10 @@ class Kohana_Text
      *
      *      $str = Text::ucfirst('content-type'); // returns "Content-Type"
      *
-     * @param   string  $string     string to transform
-     * @param   string  $delimiter  delimiter to use
-     * @uses    UTF8::ucfirst
+     * @param string $string String to transform
+     * @param string $delimiter Delimiter to use
      * @return  string
+     * @uses    UTF8::ucfirst
      */
     public static function ucfirst($string, $delimiter = '-')
     {
@@ -246,7 +246,7 @@ class Kohana_Text
      *
      *     $str = Text::reduce_slashes('foo//bar/baz'); // "foo/bar/baz"
      *
-     * @param   string  $str    string to reduce slashes of
+     * @param string $str String to reduce slashes of
      * @return  string
      */
     public static function reduce_slashes($str)
@@ -262,16 +262,16 @@ class Kohana_Text
      *         'frick' => '#####',
      *     ]);
      *
-     * @param   string  $str                    phrase to replace words in
-     * @param   array   $badwords               words to replace
-     * @param   string  $replacement            replacement string
-     * @param   bool $replace_partial_words replace words across word boundaries (space, period, etc.)
+     * @param string $str Phrase to replace words in
+     * @param array $badwords Words to replace
+     * @param string $replacement Replacement string
+     * @param bool $replace_partial_words Replace words across word boundaries (space, period, etc.)
      * @return  string
      * @uses    UTF8::strlen
      */
-    public static function censor($str, $badwords, $replacement = '#', $replace_partial_words = true)
+    public static function censor($str, array $badwords, $replacement = '#', $replace_partial_words = true)
     {
-        foreach ((array) $badwords as $key => $badword) {
+        foreach ($badwords as $key => $badword) {
             $badwords[$key] = str_replace('\*', '\S*?', preg_quote((string) $badword));
         }
 
@@ -328,7 +328,7 @@ class Kohana_Text
      *
      * [!!] This method is not foolproof since it uses regex to parse HTML.
      *
-     * @param   string  $text   text to auto link
+     * @param string $text Text to auto link
      * @return  string
      * @uses    Text::auto_link_urls
      * @uses    Text::auto_link_emails
@@ -346,7 +346,7 @@ class Kohana_Text
      *
      * [!!] This method is not foolproof since it uses regex to parse HTML.
      *
-     * @param   string  $text   text to auto link
+     * @param string $text Text to auto link
      * @return  string
      * @uses    HTML::anchor
      */
@@ -377,7 +377,7 @@ class Kohana_Text
      *
      * [!!] This method is not foolproof since it uses regex to parse HTML.
      *
-     * @param   string  $text   text to auto link
+     * @param string $text Text to auto link
      * @return  string
      * @uses    HTML::mailto
      */
@@ -402,8 +402,8 @@ class Kohana_Text
      *
      * [!!] This method is not foolproof since it uses regex to parse HTML.
      *
-     * @param   string  $str    subject
-     * @param   bool $br convert single linebreaks to <br />
+     * @param string $str Subject
+     * @param bool $br Convert single linebreaks to <br />
      * @return  string
      */
     public static function auto_p($str, $br = true)
@@ -455,10 +455,10 @@ class Kohana_Text
      *
      *     echo Text::bytes(filesize($file));
      *
-     * @param   int $bytes size in bytes
-     * @param   string  $force_unit a definitive unit
-     * @param   string  $format     the return string format
-     * @param   bool $si whether to use SI prefixes or IEC
+     * @param int $bytes Size in bytes
+     * @param string|null $force_unit A definitive unit
+     * @param string|null $format The return string format
+     * @param bool $si Whether to use SI prefixes or IEC
      * @return  string
      */
     public static function bytes($bytes, $force_unit = null, $format = null, $si = true)
@@ -494,7 +494,7 @@ class Kohana_Text
      *     // Display: five million, six hundred and thirty-two
      *     echo Text::number(5000632);
      *
-     * @param   int $number number to format
+     * @param int $number Number to format
      * @return  string
      * @since   3.0.8
      */
@@ -564,7 +564,7 @@ class Kohana_Text
      * regex courtesy of the Typogrify project
      * @link http://code.google.com/p/typogrify/
      *
-     * @param   string  $str    text to remove widows from
+     * @param string $str Text to remove widows from
      * @return  string
      */
     public static function widont($str)

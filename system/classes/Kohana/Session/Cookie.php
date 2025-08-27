@@ -12,7 +12,7 @@
 class Kohana_Session_Cookie extends Session
 {
     /**
-     * @param string $id session id
+     * @param string|null $id Session ID
      * @return  string
      * @throws Kohana_Exception
      */

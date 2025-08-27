@@ -32,7 +32,7 @@ class Kohana_Config
      *     $config->attach($reader, false); // Try last
      *
      * @param   Kohana_Config_Source    $source instance
-     * @param   bool $first add the reader as the first used object
+     * @param bool $first Add the reader as the first used object
      * @return  $this
      */
     public function attach(Kohana_Config_Source $source, $first = true)
@@ -78,7 +78,7 @@ class Kohana_Config
      *
      * See [Kohana_Config_Group] for more info
      *
-     * @param   string  $group  configuration group name
+     * @param string $group Configuration group name
      * @return  Kohana_Config_Group|mixed
      * @throws  Kohana_Exception
      */
@@ -154,8 +154,8 @@ class Kohana_Config
     /**
      * Callback used by the config group to store changes made to configuration
      *
-     * @param string    $group  Group name
-     * @param string    $key    Variable name
+     * @param string $group Group name
+     * @param string $key Variable name
      * @param mixed     $value  The new value
      * @return Kohana_Config Chainable instance
      */

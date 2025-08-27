@@ -157,11 +157,11 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
     /**
      * Test encode.
      *
-     * @param   string  $method     Encryption cipher.
-     * @param   string  $key        Encryption key.
-     * @param   string  $iv         Initialization vector.
-     * @param   string  $txtPlain   Plain text to be encrypted.
-     * @param   string  $txtEncoded Known ecrypted text.
+     * @param string $method     Encryption cipher.
+     * @param string $key        Encryption key.
+     * @param string $iv         Initialization vector.
+     * @param string $txtPlain   Plain text to be encrypted.
+     * @param string $txtEncoded Known ecrypted text.
      *
      * @dataProvider providerEncode
      * @covers Encrypt_Openssl::encode
@@ -321,11 +321,11 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
     /**
      * Test decode.
      *
-     * @param   string  $method     Encryption cipher.
-     * @param   string  $key        Encryption key.
-     * @param   string  $iv         Initialization vector.
-     * @param   string  $txtEncoded Encrypted text.
-     * @param   string  $txtPlain   Known plain text that is decrypted.
+     * @param string $method     Encryption cipher.
+     * @param string $key        Encryption key.
+     * @param string $iv         Initialization vector.
+     * @param string $txtEncoded Encrypted text.
+     * @param string $txtPlain   Known plain text that is decrypted.
      *
      * @dataProvider providerDecode
      * @covers Encrypt_Openssl::decode
@@ -377,9 +377,9 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
     /**
      * Test encode/decode.
      *
-     * @param   string  $key        Encryption key.
-     * @param   string  $method     Encryption cipher.
-     * @param   string  $txtPlain   Plain text to encode and then decode back.
+     * @param string $key        Encryption key.
+     * @param string $method     Encryption cipher.
+     * @param string $txtPlain   Plain text to encode and then decode back.
      *
      * @dataProvider providerEncodeDecode
      * @covers Encrypt_Openssl::encode
@@ -436,9 +436,9 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
      * Tests for decode when the string is not valid base64, or is too short to
      * contain a valid IV.
      *
-     * @param   string  $key                    Encryption key.
-     * @param   string  $method                 Encryption cipher.
-     * @param   string  $txtInvalidEncoded      Invalid encoded text.
+     * @param string $key                    Encryption key.
+     * @param string $method                 Encryption cipher.
+     * @param string $txtInvalidEncoded      Invalid encoded text.
      *
      * @dataProvider providerDecodeInvalidDate
      */
@@ -458,9 +458,9 @@ class Kohana_Encrypt_OpensslTest extends Unittest_TestCase
     /**
      * Validate consecutive encode produce different results.
      *
-     * @param   string  $key        Encryption key.
-     * @param   string  $method     Encryption cipher.
-     * @param   string  $txtPlain   Plain text to encode and then decode back.
+     * @param string $key        Encryption key.
+     * @param string $method     Encryption cipher.
+     * @param string $txtPlain   Plain text to encode and then decode back.
      *
      * @dataProvider providerEncodeDecode
      * @covers Encrypt_Openssl::encode

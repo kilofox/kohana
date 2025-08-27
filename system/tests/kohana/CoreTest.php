@@ -241,9 +241,9 @@ class Kohana_CoreTest extends Unittest_TestCase
      * @dataProvider provider_message
      * @covers       Kohana::message
      * @param string $file to pass to Kohana::message
-     * @param string $key to pass to Kohana::message
+     * @param string|null $key to pass to Kohana::message
      * @param string $default to pass to Kohana::message
-     * @param string $expected Output for Kohana::message
+     * @param mixed $expected Output for Kohana::message
      * @throws Kohana_Exception
      */
     public function test_message($file, $key, $default, $expected)
@@ -323,7 +323,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      * @param array $source Input for Kohana::modules
      * @throws Kohana_Exception
      */
-    public function test_modules_detects_invalid_modules($source)
+    public function test_modules_detects_invalid_modules(array $source)
     {
         $this->expectException(Kohana_Exception::class);
 
@@ -363,7 +363,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      * @param array $expected Output for Kohana::modules
      * @throws Kohana_Exception
      */
-    public function test_modules_sets_and_returns_valid_modules($source, $expected)
+    public function test_modules_sets_and_returns_valid_modules(array $source, array $expected)
     {
         $modules = Kohana::modules();
 

@@ -63,8 +63,8 @@ class Kohana_HTML
      *
      *     echo HTML::chars($username);
      *
-     * @param   string  $value          string to convert
-     * @param   bool $double_encode encode existing entities
+     * @param string $value String to convert
+     * @param bool $double_encode Encode existing entities
      * @return  string
      */
     public static function chars($value, $double_encode = true)
@@ -79,8 +79,8 @@ class Kohana_HTML
      *
      *     echo HTML::entities($username);
      *
-     * @param   string  $value          string to convert
-     * @param   bool $double_encode encode existing entities
+     * @param string $value String to convert
+     * @param bool $double_encode Encode existing entities
      * @return  string
      */
     public static function entities($value, $double_encode = true)

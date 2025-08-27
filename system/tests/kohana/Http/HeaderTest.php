@@ -120,7 +120,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_parse_accept_header
      *
-     * @param   string  $accept    accept in
+     * @param string $accept Accept in
      * @param   array   $expected  expected out
      * @return  void
      */
@@ -170,8 +170,8 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_parse_charset_header
      *
-     * @param   string  $accept    accept
-     * @param   array   $expected  expected
+     * @param string|null $accept Accept
+     * @param array $expected Expected
      * @return  void
      */
     public function test_parse_charset_header($accept, array $expected)
@@ -224,8 +224,8 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_parse_encoding_header
      *
-     * @param   string  $accept    accept
-     * @param   array   $expected  expected
+     * @param string|null $accept Accept
+     * @param array $expected Expected
      * @return  void
      */
     public function test_parse_encoding_header($accept, array $expected)
@@ -293,8 +293,8 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_parse_language_header
      *
-     * @param   string  $accept    accept
-     * @param   array   $expected  expected
+     * @param string|null $accept Accept
+     * @param array $expected Expected
      * @return  void
      */
     public function test_parse_language_header($accept, array $expected)
@@ -347,7 +347,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @dataProvider provider_create_cache_control
      *
      * @param   array   $input     input
-     * @param   string  $expected  expected
+     * @param string $expected Expected
      * @return  void
      */
     public function test_create_cache_control(array $input, $expected)
@@ -399,7 +399,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @dataProvider provider_parse_cache_control
      *
-     * @param   string  $input     input
+     * @param string $input Input
      * @param   array   $expected  expected
      * @return  void
      */
@@ -642,8 +642,8 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @dataProvider provider_offsetExists
      *
      * @param   array    $state     state
-     * @param   string   $key       key
-     * @param   bool $expected expected
+     * @param string $key Key
+     * @param bool $expected Expected
      * @return  void
      */
     // @codingStandardsIgnoreStart
@@ -710,7 +710,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @dataProvider provider_offsetUnset
      *
      * @param   array   $state     state
-     * @param   string  $remove    remove
+     * @param string $remove Remove
      * @param   array   $expected  expected
      * @return  void
      */
@@ -924,8 +924,8 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @param array $state state
      * @param array $accepts accepts
-     * @param string $explicit explicit
-     * @param string $expected expected
+     * @param bool $explicit Explicit
+     * @param string|false $expected Expected
      * @return  void
      * @throws Kohana_Exception
      */
@@ -983,7 +983,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      *
      * @param array $state state
      * @param string $charset charset
-     * @param string $expected expected
+     * @param float $expected Expected
      * @return  void
      */
     public function test_accepts_charset_at_quality(array $state, $charset, $expected)
@@ -1153,7 +1153,7 @@ class Kohana_HTTP_HeaderTest extends Unittest_TestCase
      * @param array $state state in
      * @param array $encodings encodings to interrogate
      * @param bool $explicit explicit check
-     * @param string $expected expected output
+     * @param string|false $expected Expected output
      * @return  void
      */
     public function test_preferred_encoding(array $state, array $encodings, $explicit, $expected)

@@ -131,8 +131,8 @@ class Kohana_Validation implements ArrayAccess
     /**
      * Sets or overwrites the label name for a field.
      *
-     * @param   string  $field  field name
-     * @param   string  $label  label
+     * @param string $field Field name
+     * @param string $label Label
      * @return  $this
      */
     public function label($field, $label)
@@ -184,7 +184,7 @@ class Kohana_Validation implements ArrayAccess
      * [!!] Errors must be added manually when using closures!
      *
      * @param string $field field name
-     * @param callable $rule valid PHP callback or closure
+     * @param mixed $rule Valid PHP callback or closure
      * @param array|null $params extra parameters for the rule
      * @return  $this
      */
@@ -209,7 +209,7 @@ class Kohana_Validation implements ArrayAccess
     /**
      * Add rules using an array.
      *
-     * @param   string  $field  field name
+     * @param string $field Field name
      * @param   array   $rules  list of callbacks
      * @return  $this
      */
@@ -229,7 +229,7 @@ class Kohana_Validation implements ArrayAccess
      *     $validation->bind(':model', $model)
      *         ->rule('status', 'valid_status', [':model']);
      *
-     * @param   string  $key    variable name or an array of variables
+     * @param string|string[] $key Variable name or an array of variables
      * @param   mixed   $value  value
      * @return  $this
      */
@@ -429,10 +429,10 @@ class Kohana_Validation implements ArrayAccess
      *     // Get errors from messages/forms/login.php
      *     $errors = $Validation->errors('forms/login');
      *
-     * @uses    Kohana::message
-     * @param   string  $file       file to load error messages from
+     * @param string|null $file File to load error messages from
      * @param   mixed   $translate  translate the message
      * @return  array
+     * @uses    Kohana::message
      */
     public function errors($file = null, $translate = true)
     {

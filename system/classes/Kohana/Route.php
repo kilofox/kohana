@@ -81,9 +81,9 @@ class Kohana_Route
      *             'controller' => 'welcome',
      *         ]);
      *
-     * @param   string  $name           route name
-     * @param   string  $uri            URI pattern
-     * @param   array   $regex          regex patterns for route keys
+     * @param string $name Route name
+     * @param string|null $uri URI pattern
+     * @param array|null $regex Regex patterns for route keys
      * @return  Route
      */
     public static function set($name, $uri = null, $regex = null)
@@ -96,7 +96,7 @@ class Kohana_Route
      *
      *     $route = Route::get('default');
      *
-     * @param   string  $name   route name
+     * @param string $name Route name
      * @return  Route
      * @throws  Kohana_Exception
      */
@@ -282,12 +282,12 @@ class Kohana_Route
      * The $uri parameter should be a string for basic regex matching.
      *
      *
-     * @param   string  $uri    route URI pattern
-     * @param   array   $regex  key patterns
+     * @param string|null $uri Route URI pattern
+     * @param array|null $regex Key patterns
      * @return  void
      * @uses    Route::_compile
      */
-    public function __construct($uri = null, $regex = null)
+    public function __construct($uri = null, array $regex = null)
     {
         if ($uri === null) {
             // Assume the route is from cache
@@ -351,9 +351,9 @@ class Kohana_Route
      *
      * [!!] Default parameters are added before filters are called!
      *
-     * @throws  Kohana_Exception
      * @param   array   $callback   callback string, array, or closure
      * @return  $this
+     * @throws  Kohana_Exception
      */
     public function filter($callback)
     {

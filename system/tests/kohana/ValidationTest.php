@@ -231,8 +231,9 @@ class Kohana_ValidationTest extends Unittest_TestCase
                         // Tests the Class::method syntax for callbacks
                         ['Valid::exact_length', [':value', 3]],
                         // Tests the lambda function syntax for callbacks
-                        // Commented out for PHP 5.2 support
-                        // [function($value){return true;}, [':value']],
+                        [function ($value) {
+                            return $value === 'bar';
+                        }, [':value']],
                         // Tests using a function as a rule
                         ['is_string', [':value']]
                     ],
@@ -287,7 +288,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
      * @param array $expected_errors Array of expected errors
      * @throws ReflectionException
      */
-    public function test_check($array, $rules, $labels, $expected, $expected_errors)
+    public function test_check(array $array, array $rules, array $labels, $expected, array $expected_errors)
     {
         $validation = new Validation($array);
 
@@ -386,7 +387,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
      * @param array $expected Array of expected errors
      * @throws ReflectionException
      */
-    public function test_errors($array, $rules, $expected)
+    public function test_errors(array $array, array $rules, array $expected)
     {
         $validation = Validation::factory($array);
 
@@ -432,7 +433,7 @@ class Kohana_ValidationTest extends Unittest_TestCase
      * @param array $untranslated_expected The array of expected errors when not translated
      * @throws ReflectionException
      */
-    public function test_translated_errors($data, $rules, $translated_expected, $untranslated_expected)
+    public function test_translated_errors(array $data, array $rules, array $translated_expected, array $untranslated_expected)
     {
         $validation = Validation::factory($data);
 

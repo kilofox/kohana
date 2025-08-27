@@ -95,9 +95,9 @@ class Kohana_Kohana_Exception extends Exception
      * Exception handler, logs the exception and generates a Response object
      * for display.
      *
-     * @uses    Kohana_Exception::response
      * @param   Throwable   $e
      * @return  Response
+     * @uses    Kohana_Exception::response
      */
     public static function _handler($e)
     {
@@ -127,10 +127,10 @@ class Kohana_Kohana_Exception extends Exception
     /**
      * Logs an exception.
      *
-     * @uses    Kohana_Exception::text
      * @param   Throwable   $e
-     * @param   int        $level
+     * @param int $level
      * @return  void
+     * @uses    Kohana_Exception::text
      */
     public static function log($e, $level = Log::EMERGENCY)
     {
@@ -151,7 +151,7 @@ class Kohana_Kohana_Exception extends Exception
      *
      * Error [ Code ]: Message ~ File [ Line ]
      *
-     * @param   Throwable   $e
+     * @param Throwable $e
      * @return  string
      */
     public static function text($e)

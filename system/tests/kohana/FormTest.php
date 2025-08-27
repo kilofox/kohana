@@ -64,7 +64,7 @@ class Kohana_FormTest extends Unittest_TestCase
      * @param array $expected Output for Form::open
      * @throws Kohana_Exception
      */
-    public function test_open($input, $expected)
+    public function test_open(array $input, array $expected)
     {
         list($action, $attributes) = $input;
 
@@ -116,8 +116,8 @@ class Kohana_FormTest extends Unittest_TestCase
      * @dataProvider provider_input
      * @param string $type
      * @param string $name
-     * @param string $value
-     * @param array $attributes
+     * @param string|null $value
+     * @param array|null $attributes
      */
     public function test_input($type, $name, $value, $attributes)
     {
@@ -167,7 +167,7 @@ class Kohana_FormTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_file
      * @param string $name
-     * @param array $attributes
+     * @param array|null $attributes
      * @param string $expected Output for Form::file
      */
     public function test_file($name, $attributes, $expected)
@@ -200,9 +200,9 @@ class Kohana_FormTest extends Unittest_TestCase
      * @dataProvider provider_check
      * @param string $type
      * @param string $name
-     * @param string $value
+     * @param string|null $value
      * @param bool $checked
-     * @param array $attributes
+     * @param array|null $attributes
      */
     public function test_check($type, $name, $value, $checked, $attributes)
     {
@@ -253,8 +253,8 @@ class Kohana_FormTest extends Unittest_TestCase
      * @dataProvider provider_text
      * @param string $type
      * @param string $name
-     * @param string $body
-     * @param array $attributes
+     * @param string|null $body
+     * @param array|null $attributes
      */
     public function test_text($type, $name, $body, $attributes)
     {
@@ -329,8 +329,8 @@ class Kohana_FormTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_select
      * @param string $name
-     * @param array $options
-     * @param string $selected
+     * @param array|null $options
+     * @param mixed $selected
      * @param string $expected Output for Form::select
      */
     public function test_select($name, $options, $selected, $expected)
@@ -405,7 +405,7 @@ class Kohana_FormTest extends Unittest_TestCase
      * @param string $expected The expected output from Form::image().
      * @throws Kohana_Exception
      */
-    public function test_image($name, $value, $attributes, $expected)
+    public function test_image($name, $value, array $attributes, $expected)
     {
         $this->assertSame($expected, Form::image($name, $value, $attributes));
     }
@@ -467,8 +467,8 @@ class Kohana_FormTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_label
      * @param string $for The "for" attribute of the label.
-     * @param string $text The text content of the label.
-     * @param array $attributes Additional HTML attributes for the label.
+     * @param string|null $text The text content of the label.
+     * @param array|null $attributes Additional HTML attributes for the label.
      * @param string $expected The expected output from Form::label().
      */
     function test_label($for, $text, $attributes, $expected)

@@ -140,8 +140,8 @@ class Kohana_File
      *
      *     $count = File::split($file);
      *
-     * @param   string  $filename   file to be split
-     * @param   int $piece_size size, in MB, for each piece to be
+     * @param string $filename File to be split
+     * @param int $piece_size Size in MB for each piece to be
      * @return  int The number of pieces that were created
      */
     public static function split($filename, $piece_size = 10)
@@ -192,7 +192,7 @@ class Kohana_File
      *
      *     $count = File::join($file);
      *
-     * @param   string  $filename   split filename, without .000 extension
+     * @param string $filename Split filename, without .000 extension
      * @return  int The number of pieces that were joined.
      */
     public static function join($filename)

@@ -28,12 +28,12 @@ class Kohana_Config_GroupTest extends Kohana_Unittest_TestCase
     /**
      * Gets a fresh instance of Kohana_Config_Group
      *
-     * @param string        $group    Config Group name
-     * @param array         $config   Configuration
-     * @param Kohana_Config $instance Instance of Kohana_Config
+     * @param string $group Config Group name
+     * @param array $config Configuration
+     * @param Kohana_Config|null $instance Instance of Kohana_Config
      * @return Kohana_Config_Group
      */
-    public function get_mock_group($group, $config = [], $instance = null)
+    public function get_mock_group($group, array $config = [], $instance = null)
     {
         if ($instance === null) {
             $instance = $this->get_mock_config();

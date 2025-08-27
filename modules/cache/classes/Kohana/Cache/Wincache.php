@@ -71,8 +71,8 @@ class Kohana_Cache_Wincache extends Cache
      *     // Retrieve cache entry from wincache group and return 'bar' if missing
      *     $data = Cache::instance('wincache')->get('foo', 'bar');
      *
-     * @param   string  $id       id of cache to entry
-     * @param   string  $default  default value to return if cache miss
+     * @param string $id ID of cache to entry
+     * @param string|null $default Default value to return if cache miss
      * @return  mixed
      */
     public function get($id, $default = null)
@@ -93,9 +93,9 @@ class Kohana_Cache_Wincache extends Cache
      *     // Set 'bar' to 'foo' in wincache group for 30 seconds
      *     Cache::instance('wincache')->set('foo', $data, 30);
      *
-     * @param   string   $id        id of cache entry
+     * @param string $id ID of cache entry
      * @param   string   $data      data to set to cache
-     * @param   int $lifetime lifetime in seconds
+     * @param int|null $lifetime Lifetime in seconds
      * @return  bool
      */
     public function set($id, $data, $lifetime = null)
@@ -113,7 +113,7 @@ class Kohana_Cache_Wincache extends Cache
      *     // Delete 'foo' entry from the wincache group
      *     Cache::instance('wincache')->delete('foo');
      *
-     * @param   string  $id  id to remove from cache
+     * @param string $id ID to remove from cache
      * @return  bool
      */
     public function delete($id)

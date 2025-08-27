@@ -45,8 +45,8 @@ class Kohana_I18nTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_lang
-     * @param  string  $input     Input for I18n::lang
-     * @param  string  $expected  Output for I18n::lang
+     * @param string|null $input Input for I18n::lang
+     * @param string $expected Output for I18n::lang
      */
     public function test_lang($input, $expected)
     {

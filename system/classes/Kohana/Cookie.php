@@ -97,7 +97,7 @@ class Kohana_Cookie
      *
      * @param string $name name of cookie
      * @param string $value value of cookie
-     * @param int $lifetime lifetime in seconds
+     * @param int|null $lifetime Lifetime in seconds
      * @return bool
      * @throws Kohana_Exception
      * @uses    Cookie::salt
@@ -125,7 +125,7 @@ class Kohana_Cookie
      *
      *     Cookie::delete('theme');
      *
-     * @param   string  $name   cookie name
+     * @param string $name Cookie name
      * @return  bool
      */
     public static function delete($name)
@@ -142,8 +142,8 @@ class Kohana_Cookie
      *
      *     $salt = Cookie::salt('theme', 'red');
      *
-     * @param   string $name name of cookie
-     * @param   string $value value of cookie
+     * @param string $name Name of cookie
+     * @param string $value Value of cookie
      *
      * @throws Kohana_Exception if Cookie::$salt is not configured
      * @return  string
@@ -165,11 +165,11 @@ class Kohana_Cookie
      * Proxy for the native setcookie function - to allow mocking in unit tests so that they do not fail when headers
      * have been sent.
      *
-     * @param string  $name
-     * @param string  $value
+     * @param string $name
+     * @param string $value
      * @param int $expire
-     * @param string  $path
-     * @param string  $domain
+     * @param string $path
+     * @param string $domain
      * @param bool $secure
      * @param bool $httponly
      *

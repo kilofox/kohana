@@ -63,7 +63,7 @@ class Kohana_Num
      *     echo 10, Num::ordinal(10); // "10th"
      *     echo 33, Num::ordinal(33); // "33rd"
      *
-     * @param   int $number
+     * @param int $number
      * @return  string
      */
     public static function ordinal($number)
@@ -97,9 +97,9 @@ class Kohana_Num
      *     // In Portuguese, "1.200.05"
      *     echo Num::format(1200.05, 2, true);
      *
-     * @param   float   $number     number to format
-     * @param   int $places decimal places
-     * @param   bool $monetary monetary formatting?
+     * @param float $number Number to format
+     * @param int $places Decimal places
+     * @param bool $monetary Monetary formatting?
      * @return  string
      * @since   3.0.2
      */

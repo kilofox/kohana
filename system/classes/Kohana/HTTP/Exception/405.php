@@ -10,7 +10,7 @@ class Kohana_HTTP_Exception_405 extends HTTP_Exception_Expected
     /**
      * Specifies the list of allowed HTTP methods
      *
-     * @param  array $methods List of allowed methods
+     * @param array|string $methods List of allowed methods
      */
     public function allowed($methods)
     {

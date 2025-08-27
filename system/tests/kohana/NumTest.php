@@ -63,7 +63,7 @@ class Kohana_NumTest extends Unittest_TestCase
      * @test
      * @covers       Num::bytes
      * @dataProvider provider_bytes
-     * @param int $expected Expected Value
+     * @param float $expected Expected Value
      * @param string $size Input value
      * @throws Kohana_Exception
      */
@@ -117,14 +117,14 @@ class Kohana_NumTest extends Unittest_TestCase
     }
 
     /**
-     * @todo test locales
-     * @test
-     * @requires OS Linux
-     * @dataProvider provider_format
      * @param float $number
      * @param int $places
      * @param bool $monetary
      * @param string $expected
+     * @todo test locales
+     * @test
+     * @requires OS Linux
+     * @dataProvider provider_format
      */
     public function test_format($number, $places, $monetary, $expected)
     {
