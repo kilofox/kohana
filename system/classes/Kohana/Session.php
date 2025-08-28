@@ -252,7 +252,7 @@ abstract class Kohana_Session
      */
     public function bind(string $key, &$value): Kohana_Session
     {
-        $this->_data[$key] = & $value;
+        $this->_data[$key] = &$value;
 
         return $this;
     }

@@ -60,7 +60,7 @@ class Kohana_Session_Native extends Session
         session_start();
 
         // Use the $_SESSION global for storing data
-        $this->_data = & $_SESSION;
+        $this->_data = &$_SESSION;
 
         return null;
     }
@@ -96,7 +96,7 @@ class Kohana_Session_Native extends Session
         $status = session_start();
 
         // Use the $_SESSION global for storing data
-        $this->_data = & $_SESSION;
+        $this->_data = &$_SESSION;
 
         return $status;
     }

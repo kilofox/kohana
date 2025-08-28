@@ -113,7 +113,7 @@ class Kohana_View
      */
     public static function bind_global(string $key, &$value)
     {
-        View::$_global_data[$key] = & $value;
+        View::$_global_data[$key] = &$value;
     }
 
     // View filename
@@ -300,7 +300,7 @@ class Kohana_View
      */
     public function bind(string $key, &$value): Kohana_View
     {
-        $this->_data[$key] = & $value;
+        $this->_data[$key] = &$value;
 
         return $this;
     }

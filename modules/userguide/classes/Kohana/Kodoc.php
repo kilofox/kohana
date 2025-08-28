@@ -317,7 +317,7 @@ class Kohana_Kodoc
         if (preg_match('/^(\s+)/', $file[0], $matches)) {
             $padding = strlen($matches[1]);
 
-            foreach ($file as & $line) {
+            foreach ($file as &$line) {
                 $line = substr($line, $padding);
             }
         }

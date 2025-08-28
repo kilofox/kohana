@@ -664,7 +664,7 @@ abstract class Kohana_Image
     /**
      * Execute a save.
      *
-     * @param string $file Nnew image filename
+     * @param string $file New image filename
      * @param int $quality Quality
      * @return  bool
      */

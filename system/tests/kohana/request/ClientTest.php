@@ -456,7 +456,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      * the Request_Client and are assigned to subsequent requests
      */
     public function test_client_can_hold_params_for_callbacks()
-    {$this->markTestSkipped('This test is broken and needs to be fixed');
+    {
         // Test with param in constructor
         $request = Request::factory($this->_dummy_uri(302, [
                     'Location' => $this->_dummy_uri('200', [
