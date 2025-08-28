@@ -202,7 +202,7 @@ class Kohana_Unittest_Tests
      * @param array $files Array of files to whitelist
      * @param Unittest_TestSuite|null $suite Suite to load the whitelist into
      */
-    static protected function set_whitelist($files, Unittest_TestSuite $suite = null)
+    static protected function set_whitelist(array $files, Unittest_TestSuite $suite = null)
     {
 
         foreach ($files as $file) {
