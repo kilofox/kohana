@@ -220,7 +220,7 @@ class Kohana_Database_MySQLi extends Database
      *
      * @link http://dev.mysql.com/doc/refman/5.0/en/set-transaction.html
      *
-     * @param string $mode Isolation level
+     * @param string|null $mode Isolation level
      * @return bool
      * @throws Database_Exception
      */

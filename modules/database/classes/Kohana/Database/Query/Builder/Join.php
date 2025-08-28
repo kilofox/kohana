@@ -25,7 +25,7 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
      * can be specified as the second parameter.
      *
      * @param   mixed   $table  column name or [$column, $alias] or object
-     * @param   string  $type   type of JOIN: INNER, RIGHT, LEFT, etc
+     * @param string|null $type Type of JOIN: INNER, RIGHT, LEFT, etc.
      * @return  void
      */
     public function __construct($table, $type = null)

@@ -102,7 +102,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      * Adds addition tables to "JOIN ...".
      *
      * @param   mixed   $table  column name or [$column, $alias] or object
-     * @param   string  $type   join type (LEFT, RIGHT, INNER, etc.)
+     * @param string|null $type Join type (LEFT, RIGHT, INNER, etc.)
      * @return  $this
      */
     public function join($table, $type = null)
@@ -116,7 +116,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      * Adds "ON ..." conditions for the last created JOIN statement.
      *
      * @param   mixed   $c1  column name or [$column, $alias] or object
-     * @param   string  $op  logic operator
+     * @param string $op Logic operator
      * @param   mixed   $c2  column name or [$column, $alias] or object
      * @return  $this
      */
@@ -157,7 +157,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      * Alias of and_having()
      *
      * @param   mixed   $column  column name or [$column, $alias] or object
-     * @param   string  $op      logic operator
+     * @param string $op Logic operator
      * @param   mixed   $value   column value
      * @return  $this
      */
@@ -170,7 +170,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      * Creates a new "AND HAVING" condition for the query.
      *
      * @param   mixed   $column  column name or [$column, $alias] or object
-     * @param   string  $op      logic operator
+     * @param string $op Logic operator
      * @param   mixed   $value   column value
      * @return  $this
      */
@@ -185,7 +185,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
      * Creates a new "OR HAVING" condition for the query.
      *
      * @param   mixed   $column  column name or [$column, $alias] or object
-     * @param   string  $op      logic operator
+     * @param string $op Logic operator
      * @param   mixed   $value   column value
      * @return  $this
      */
@@ -287,7 +287,7 @@ class Kohana_Database_Query_Builder_Select extends Database_Query_Builder_Where
     /**
      * Start returning results after "OFFSET ..."
      *
-     * @param   int $number starting result number or null to reset
+     * @param int|null $number Starting result number or null to reset
      * @return  $this
      */
     public function offset($number)

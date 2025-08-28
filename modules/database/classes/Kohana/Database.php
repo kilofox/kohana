@@ -172,9 +172,9 @@ abstract class Kohana_Database
      *
      *     $db->set_charset('utf8');
      *
-     * @throws  Database_Exception
      * @param   string   $charset  character set name
      * @return  void
+     * @throws  Database_Exception
      */
     abstract public function set_charset($charset);
 
@@ -212,7 +212,7 @@ abstract class Kohana_Database
      *          $db->rollback();
      *      }
      *
-     * @param string $mode  transaction mode
+     * @param string|null $mode Transaction mode
      * @return bool
      */
     abstract public function begin($mode = null);
@@ -259,7 +259,7 @@ abstract class Kohana_Database
      *
      *     $db->datatype('char');
      *
-     * @param   string  $type  SQL data type
+     * @param string $type SQL data type
      * @return  array
      */
     public function datatype($type)
@@ -330,7 +330,7 @@ abstract class Kohana_Database
      *     // Get all user-related tables
      *     $tables = $db->list_tables('user%');
      *
-     * @param   string   $like  table to search for
+     * @param string|null $like Table to search for
      * @return  array
      */
     abstract public function list_tables($like = null);
@@ -347,9 +347,9 @@ abstract class Kohana_Database
      *     // Get the columns from a table that doesn't use the table prefix
      *     $columns = $db->list_columns('users', null, false);
      *
-     * @param   string  $table       table to get columns from
-     * @param   string  $like        column to search for
-     * @param   bool $add_prefix whether to add the table prefix automatically or not
+     * @param string $table Table to get columns from
+     * @param string|null $like Column to search for
+     * @param bool $add_prefix Whether to add the table prefix automatically or not
      * @return  array
      */
     abstract public function list_columns($table, $like = null, $add_prefix = true);
@@ -359,7 +359,7 @@ abstract class Kohana_Database
      *     // Returns: ['CHAR', '6']
      *     list($type, $length) = $db->_parse_type('CHAR(6)');
      *
-     * @param   string  $type
+     * @param string $type
      * @return  array   list containing the type and length, if any
      */
     protected function _parse_type($type)
@@ -646,7 +646,7 @@ abstract class Kohana_Database
      *
      *     $value = $db->escape('any string');
      *
-     * @param   string   $value  value to quote
+     * @param string $value Value to quote
      * @return  string
      */
     abstract public function escape($value);
