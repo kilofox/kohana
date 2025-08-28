@@ -496,7 +496,7 @@ abstract class Kohana_Database
                     $parts[$offset] = $prefix . $parts[$offset];
                 }
 
-                foreach ($parts as & $part) {
+                foreach ($parts as &$part) {
                     if ($part !== '*') {
                         // Quote each of the parts
                         $part = $this->_identifier . $part . $this->_identifier;
@@ -565,7 +565,7 @@ abstract class Kohana_Database
                     $parts[$offset] = $prefix . $parts[$offset];
                 }
 
-                foreach ($parts as & $part) {
+                foreach ($parts as &$part) {
                     // Quote each of the parts
                     $part = $this->_identifier . $part . $this->_identifier;
                 }
@@ -622,7 +622,7 @@ abstract class Kohana_Database
             if (strpos($value, '.') !== false) {
                 $parts = explode('.', $value);
 
-                foreach ($parts as & $part) {
+                foreach ($parts as &$part) {
                     // Quote each of the parts
                     $part = $this->_identifier . $part . $this->_identifier;
                 }

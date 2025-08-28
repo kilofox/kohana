@@ -132,7 +132,7 @@ class Kohana_Debug
                 $output[] = "<span>(";
 
                 $var[$marker] = true;
-                foreach ($var as $key => & $val) {
+                foreach ($var as $key => &$val) {
                     if ($key === $marker)
                         continue;
                     if (!is_int($key)) {
@@ -174,7 +174,7 @@ class Kohana_Debug
                 $output[] = "<code>{";
 
                 $objects[$hash] = true;
-                foreach ($array as $key => & $val) {
+                foreach ($array as $key => &$val) {
                     if ($key[0] === "\x00") {
                         // Determine if the access is protected or protected
                         $access = '<small>' . ($key[1] === '*' ? 'protected' : 'private') . '</small>';

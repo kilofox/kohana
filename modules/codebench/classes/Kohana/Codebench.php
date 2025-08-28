@@ -145,7 +145,7 @@ abstract class Kohana_Codebench
         }
 
         // Percentage calculations for methods
-        foreach ($codebench['benchmarks'] as & $method) {
+        foreach ($codebench['benchmarks'] as &$method) {
             // Calculate percentage difference relative to fastest and slowest methods
             $method['percent']['fastest']['time'] = empty($fastest_method['time']) ? 0 : $method['time'] / $fastest_method['time'] * 100;
             $method['percent']['fastest']['memory'] = empty($fastest_method['memory']) ? 0 : $method['memory'] / $fastest_method['memory'] * 100;
@@ -157,7 +157,7 @@ abstract class Kohana_Codebench
             $method['grade']['memory'] = $this->_grade($method['percent']['fastest']['memory']);
 
             // Percentage calculations for subjects
-            foreach ($method['subjects'] as & $subject) {
+            foreach ($method['subjects'] as &$subject) {
                 // Calculate percentage difference relative to fastest and slowest subjects for this method
                 $subject['percent']['fastest']['time'] = empty($fastest_subject['time']) ? 0 : $subject['time'] / $fastest_subject['time'] * 100;
                 $subject['percent']['fastest']['memory'] = empty($fastest_subject['memory']) ? 0 : $subject['memory'] / $fastest_subject['memory'] * 100;

@@ -196,7 +196,7 @@ class Kohana_Kohana_Exception extends Exception
                 if (function_exists('xdebug_get_function_stack') && $code === E_ERROR) {
                     $trace = array_slice(array_reverse(xdebug_get_function_stack()), 4);
 
-                    foreach ($trace as & $frame) {
+                    foreach ($trace as &$frame) {
                         /**
                          * XDebug pre 2.1.1 doesn't currently set the call type key
                          * http://bugs.xdebug.org/view.php?id=695

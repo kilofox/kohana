@@ -9,7 +9,7 @@
  * @copyright  (c) 2005 Harry Fuecks
  * @license    https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt
  */
-function _str_ireplace($search, $replace, $str, & $count = null)
+function _str_ireplace($search, $replace, $str, &$count = null)
 {
     if (UTF8::is_ascii($search) && UTF8::is_ascii($replace) && UTF8::is_ascii($str))
         return str_ireplace($search, $replace, $str, $count);

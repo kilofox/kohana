@@ -49,7 +49,7 @@ class Kohana_Database_Expression
      */
     public function bind($param, &$var)
     {
-        $this->_parameters[$param] = & $var;
+        $this->_parameters[$param] = &$var;
 
         return $this;
     }

@@ -143,7 +143,7 @@ class Kohana_Database_Query
     public function bind($param, &$var)
     {
         // Bind a value to a variable
-        $this->_parameters[$param] = & $var;
+        $this->_parameters[$param] = &$var;
 
         return $this;
     }

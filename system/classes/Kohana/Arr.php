@@ -204,7 +204,7 @@ class Kohana_Arr
                 $array[$key] = [];
             }
 
-            $array = & $array[$key];
+            $array = &$array[$key];
         }
 
         // Set key on inner-most array

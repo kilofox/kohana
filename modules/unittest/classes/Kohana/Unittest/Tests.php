@@ -147,7 +147,7 @@ class Kohana_Unittest_Tests
         }
 
         if (count($directories)) {
-            foreach ($directories as & $directory) {
+            foreach ($directories as &$directory) {
                 $directory = realpath($directory) . '/';
             }
 

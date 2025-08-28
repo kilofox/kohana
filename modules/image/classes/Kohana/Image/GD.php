@@ -562,7 +562,7 @@ class Kohana_Image_GD extends Image
      * @return  array    save function, IMAGETYPE_* constant
      * @throws  Kohana_Exception
      */
-    protected function _save_function($extension, & $quality)
+    protected function _save_function($extension, &$quality)
     {
         if (!$extension) {
             // Use the current image type
