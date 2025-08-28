@@ -22,7 +22,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      * Alias of and_where()
      *
      * @param   mixed   $column  column name or [$column, $alias] or object
-     * @param   string  $op      logic operator
+     * @param string $op Logic operator
      * @param   mixed   $value   column value
      * @return  $this
      */
@@ -35,7 +35,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      * Creates a new "AND WHERE" condition for the query.
      *
      * @param   mixed   $column  column name or [$column, $alias] or object
-     * @param   string  $op      logic operator
+     * @param string $op Logic operator
      * @param   mixed   $value   column value
      * @return  $this
      */
@@ -50,7 +50,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      * Creates a new "OR WHERE" condition for the query.
      *
      * @param   mixed   $column  column name or [$column, $alias] or object
-     * @param   string  $op      logic operator
+     * @param string $op Logic operator
      * @param   mixed   $value   column value
      * @return  $this
      */
@@ -152,7 +152,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
      * Applies sorting with "ORDER BY ..."
      *
      * @param   mixed   $column     column name or [$column, $alias] or object
-     * @param   string  $direction  direction of sorting
+     * @param string|null $direction Direction of sorting
      * @return  $this
      */
     public function order_by($column, $direction = null)
@@ -165,7 +165,7 @@ abstract class Kohana_Database_Query_Builder_Where extends Database_Query_Builde
     /**
      * Return up to "LIMIT ..." results
      *
-     * @param   int $number maximum results to return or null to reset
+     * @param int $number Maximum results to return or null to reset
      * @return  $this
      */
     public function limit($number)

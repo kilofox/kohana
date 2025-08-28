@@ -103,7 +103,7 @@ class Model_Auth_User extends ORM
      * Tests if a unique key value exists in the database.
      *
      * @param mixed $value the value to test
-     * @param string $field field name
+     * @param string|null $field Field name
      * @return bool
      * @throws Kohana_Exception
      */
@@ -139,7 +139,7 @@ class Model_Auth_User extends ORM
      * @param array $values
      * @return Validation
      */
-    public static function get_password_validation($values)
+    public static function get_password_validation(array $values)
     {
         return Validation::factory($values)
                 ->rule('password', 'min_length', [':value', 8])
@@ -168,7 +168,7 @@ class Model_Auth_User extends ORM
      * @throws ORM_Validation_Exception
      * @throws ReflectionException
      */
-    public function create_user($values, $expected)
+    public function create_user(array $values, array $expected)
     {
         // Validation for passwords
         $extra_validation = Model_User::get_password_validation($values)
@@ -195,13 +195,13 @@ class Model_Auth_User extends ORM
      * ~~~
      *
      * @param array $values
-     * @param array $expected
+     * @param array|null $expected
      * @return ORM
      * @throws Kohana_Exception
      * @throws ORM_Validation_Exception
      * @throws ReflectionException
      */
-    public function update_user($values, $expected = NULL)
+    public function update_user(array $values, array $expected = NULL)
     {
         if (empty($values['password'])) {
             unset($values['password'], $values['password_confirm']);

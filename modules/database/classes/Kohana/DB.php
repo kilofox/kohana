@@ -36,8 +36,8 @@ class Kohana_DB
      * `Database::INSERT` queries will return the insert id and number of rows.
      * For all other queries, the number of affected rows is returned.
      *
-     * @param   int $type type: Database::SELECT, Database::UPDATE, etc
-     * @param   string   $sql   SQL statement
+     * @param int $type Type: Database::SELECT, Database::UPDATE, etc.
+     * @param string $sql SQL statement
      * @return  Database_Query
      */
     public static function query($type, $sql)
@@ -99,7 +99,7 @@ class Kohana_DB
      *     // UPDATE users
      *     $query = DB::update('users');
      *
-     * @param   string  $table  table to update
+     * @param string|null $table Table to update
      * @return  Database_Query_Builder_Update
      */
     public static function update($table = null)
@@ -113,7 +113,7 @@ class Kohana_DB
      *     // DELETE FROM users
      *     $query = DB::delete('users');
      *
-     * @param   string  $table  table to delete from
+     * @param string|null $table Table to delete from
      * @return  Database_Query_Builder_Delete
      */
     public static function delete($table = null)
@@ -133,7 +133,7 @@ class Kohana_DB
      * @param array $parameters parameters
      * @return  Database_Expression
      */
-    public static function expr($string, $parameters = [])
+    public static function expr($string, array $parameters = [])
     {
         return new Database_Expression($string, $parameters);
     }

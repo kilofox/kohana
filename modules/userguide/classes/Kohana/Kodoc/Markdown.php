@@ -43,10 +43,9 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
     /**
      * Transform some text using [Kodoc_Markdown]
      *
-     * @see Markdown()
-     *
      * @param string $text Text to parse
      * @return  string  Transformed text
+     * @see Markdown()
      */
     public static function markdown($text)
     {

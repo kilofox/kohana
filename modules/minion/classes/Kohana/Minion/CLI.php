@@ -195,7 +195,7 @@ class Kohana_Minion_CLI
      *     // Done writing this line
      *     Minion_CLI::write_replace('100%', true);
      *
-     * @param string  $text      the text to output
+     * @param string $text The text to output
      * @param bool $end_line whether the line is done being replaced
      */
     public static function write_replace($text = '', $end_line = false)
@@ -209,12 +209,12 @@ class Kohana_Minion_CLI
      * Waits a certain number of seconds, optionally showing a wait message and
      * waiting for a key press.
      *
-     * @author     Fuel Development Team
-     * @license    MIT License
-     * @copyright  2010 - 2011 Fuel Development Team
-     * @link       http://fuelphp.com
      * @param int $seconds number of seconds
      * @param bool $countdown show a countdown or not
+     * @copyright  2010 - 2011 Fuel Development Team
+     * @link       http://fuelphp.com
+     * @author     Fuel Development Team
+     * @license    MIT License
      */
     public static function wait($seconds = 0, $countdown = false)
     {
@@ -244,7 +244,7 @@ class Kohana_Minion_CLI
      *
      * @param string $text the text to color
      * @param string $foreground the foreground color
-     * @param string $background the background color
+     * @param string|null $background The background color
      * @return string the color coded string
      * @throws Kohana_Exception
      * @license    MIT License

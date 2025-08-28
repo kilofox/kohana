@@ -52,10 +52,10 @@ abstract class Kohana_Minion_Task
      * Factory for loading minion tasks
      *
      * @param array $options An array of command line options. It should contain the 'task' key
-     * @throws Minion_Exception_InvalidTask
      * @return Minion_Task The Minion task
+     * @throws Minion_Exception_InvalidTask
      */
-    public static function factory($options)
+    public static function factory(array $options)
     {
         if (($task = Arr::get($options, 'task')) !== null) {
             unset($options['task']);

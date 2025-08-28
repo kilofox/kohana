@@ -285,7 +285,7 @@ class Kohana_Image_Imagick extends Image
     /**
      * Get the image type and format for an extension.
      *
-     * @param   string  $extension  image extension: png, jpg, etc
+     * @param string $extension Image extension: png, jpg, etc.
      * @return array Array with normalized format and IMAGETYPE_* constant.
      * @throws  Kohana_Exception
      */

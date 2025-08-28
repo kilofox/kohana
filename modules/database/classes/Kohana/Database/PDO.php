@@ -76,7 +76,7 @@ class Kohana_Database_PDO extends Database
      * @return bool
      * @throws Database_Exception
      */
-    public function create_aggregate($name, $step, $final, $arguments = -1)
+    public function create_aggregate($name, callable $step, callable $final, $arguments = -1)
     {
         $this->_connection or $this->connect();
 
@@ -99,7 +99,7 @@ class Kohana_Database_PDO extends Database
      * @return bool
      * @throws Database_Exception
      */
-    public function create_function($name, $callback, $arguments = -1)
+    public function create_function($name, callable $callback, $arguments = -1)
     {
         $this->_connection or $this->connect();
 

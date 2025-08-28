@@ -132,7 +132,7 @@ COMMENT
      * @param array $expected Expected result
      * @throws Kohana_Exception
      */
-    public function test_parse_basic($comment, $expected)
+    public function test_parse_basic($comment, array $expected)
     {
         $this->assertSame($expected, Kodoc::parse($comment));
     }
@@ -314,7 +314,7 @@ COMMENT
      * @param array $expected Expected result
      * @throws Kohana_Exception
      */
-    public function test_parse_tags($comment, $expected)
+    public function test_parse_tags($comment, array $expected)
     {
         $this->assertSame($expected, Kodoc::parse($comment));
     }
@@ -369,7 +369,7 @@ COMMENT
      * @dataProvider provider_transparent_classes
      * @param mixed $expected
      * @param string $class
-     * @param array $classes
+     * @param array|null $classes
      * @throws Kohana_Exception
      */
     public function test_transparent_classes($expected, $class, $classes)

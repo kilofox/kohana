@@ -55,7 +55,7 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
      *     //     ]
      *     // ];
      *
-     * @param  string     $alias    The relationship alias from the model
+     * @param string $alias The relationship alias from the model
      * @param  Validation $object   The Validation object to merge
      * @param  mixed      $has_many The array key to use if this exception can be merged multiple times
      * @return Kohana_ORM_Validation_Exception
@@ -112,7 +112,7 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
      *     // Will load Model_User errors from messages/orm-validation/user.php
      *     $e->errors('orm-validation');
      *
-     * @param   string  $directory Directory to load error messages from
+     * @param string|null $directory Directory to load error messages from
      * @param   mixed   $translate Translate the message
      * @return  array
      * @see generate_errors()
@@ -125,9 +125,9 @@ class Kohana_ORM_Validation_Exception extends Kohana_Exception
     /**
      * Recursive method to fetch all the errors in this exception
      *
-     * @param  string $alias     Alias to use for messages file
+     * @param string $alias Alias to use for messages file
      * @param  array  $array     Array of Validation objects to get errors from
-     * @param  string $directory Directory to load error messages from
+     * @param string $directory Directory to load error messages from
      * @param  mixed  $translate Translate the message
      * @return array
      */

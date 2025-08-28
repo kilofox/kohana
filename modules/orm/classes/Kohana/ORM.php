@@ -480,7 +480,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Checks if object data is set.
      *
-     * @param  string $column Column name
+     * @param string $column Column name
      * @return bool
      */
     public function __isset($column)
@@ -495,7 +495,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Unsets object data.
      *
-     * @param  string $column Column name
+     * @param string $column Column name
      * @return void
      */
     public function __unset($column)
@@ -580,9 +580,9 @@ class Kohana_ORM extends Model implements serializable
      * Handles getting of column
      * Override this method to add custom get behavior
      *
-     * @param   string $column Column name
-     * @throws Kohana_Exception
+     * @param string $column Column name
      * @return mixed
+     * @throws Kohana_Exception
      */
     public function get($column)
     {
@@ -778,7 +778,7 @@ class Kohana_ORM extends Model implements serializable
      * Binds another one-to-one object to this model.  One-to-one objects
      * can be nested using 'object1:object2' syntax
      *
-     * @param  string $target_path Target model to bind to
+     * @param string $target_path Target model to bind to
      * @return Kohana_ORM
      */
     public function with($target_path)
@@ -850,7 +850,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Initializes the Database Builder to given query type
      *
-     * @param  int $type Type of Database query
+     * @param int $type Type of Database query
      * @return Kohana_ORM
      */
     protected function _build($type)
@@ -1553,7 +1553,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Returns an ORM model for the given one-one related alias
      *
-     * @param  string $alias Alias name
+     * @param string $alias Alias name
      * @return ORM
      */
     protected function _related($alias)
@@ -1716,7 +1716,7 @@ class Kohana_ORM extends Model implements serializable
      * Alias of and_where()
      *
      * @param   mixed   $column  column name or [$column, $alias] or object
-     * @param   string  $op      logic operator
+     * @param string $op Logic operator
      * @param   mixed   $value   column value
      * @return  $this
      */
@@ -1735,7 +1735,7 @@ class Kohana_ORM extends Model implements serializable
      * Creates a new "AND WHERE" condition for the query.
      *
      * @param   mixed   $column  column name or [$column, $alias] or object
-     * @param   string  $op      logic operator
+     * @param string $op Logic operator
      * @param   mixed   $value   column value
      * @return  $this
      */
@@ -1754,7 +1754,7 @@ class Kohana_ORM extends Model implements serializable
      * Creates a new "OR WHERE" condition for the query.
      *
      * @param   mixed   $column  column name or [$column, $alias] or object
-     * @param   string  $op      logic operator
+     * @param string $op Logic operator
      * @param   mixed   $value   column value
      * @return  $this
      */
@@ -1857,7 +1857,7 @@ class Kohana_ORM extends Model implements serializable
      * Applies sorting with "ORDER BY ..."
      *
      * @param   mixed   $column     column name or [$column, $alias] or object
-     * @param   string  $direction  direction of sorting
+     * @param string|null $direction Direction of sorting
      * @return  $this
      */
     public function order_by($column, $direction = null)
@@ -1874,7 +1874,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Return up to "LIMIT ..." results
      *
-     * @param   int $number maximum results to return
+     * @param int $number Maximum results to return
      * @return  $this
      */
     public function limit($number)
@@ -1943,7 +1943,7 @@ class Kohana_ORM extends Model implements serializable
      * Adds addition tables to "JOIN ...".
      *
      * @param   mixed   $table  column name or [$column, $alias] or object
-     * @param   string  $type   join type (LEFT, RIGHT, INNER, etc.)
+     * @param string $type Join type (LEFT, RIGHT, INNER, etc.)
      * @return  $this
      */
     public function join($table, $type = null)
@@ -1961,7 +1961,7 @@ class Kohana_ORM extends Model implements serializable
      * Adds "ON ..." conditions for the last created JOIN statement.
      *
      * @param   mixed   $c1  column name or [$column, $alias] or object
-     * @param   string  $op  logic operator
+     * @param string $op Logic operator
      * @param   mixed   $c2  column name or [$column, $alias] or object
      * @return  $this
      */
@@ -1998,7 +1998,7 @@ class Kohana_ORM extends Model implements serializable
      * Alias of and_having()
      *
      * @param   mixed   $column  column name or [$column, $alias] or object
-     * @param   string  $op      logic operator
+     * @param string $op Logic operator
      * @param   mixed   $value   column value
      * @return  $this
      */
@@ -2011,7 +2011,7 @@ class Kohana_ORM extends Model implements serializable
      * Creates a new "AND HAVING" condition for the query.
      *
      * @param   mixed   $column  column name or [$column, $alias] or object
-     * @param   string  $op      logic operator
+     * @param string $op Logic operator
      * @param   mixed   $value   column value
      * @return  $this
      */
@@ -2030,7 +2030,7 @@ class Kohana_ORM extends Model implements serializable
      * Creates a new "OR HAVING" condition for the query.
      *
      * @param   mixed   $column  column name or [$column, $alias] or object
-     * @param   string  $op      logic operator
+     * @param string $op Logic operator
      * @param   mixed   $value   column value
      * @return  $this
      */
@@ -2132,7 +2132,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Start returning results after "OFFSET ..."
      *
-     * @param   int $number starting result number
+     * @param int $number Starting result number
      * @return  $this
      */
     public function offset($number)
@@ -2149,7 +2149,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Enables the query to be cached for a specified amount of time.
      *
-     * @param   int $lifetime number of seconds to cache
+     * @param int|null $lifetime Number of seconds to cache
      * @return  $this
      * @uses    Kohana::$cache_life
      */
@@ -2167,7 +2167,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Set the value of a parameter in the query.
      *
-     * @param   string   $param  parameter key to replace
+     * @param string $param Parameter key to replace
      * @param   mixed    $value  value to use
      * @return  $this
      */
@@ -2185,7 +2185,7 @@ class Kohana_ORM extends Model implements serializable
     /**
      * Adds "USING ..." conditions for the last created JOIN statement.
      *
-     * @param   string  $columns  column name
+     * @param string $columns Column name
      * @return  $this
      */
     public function using($columns)

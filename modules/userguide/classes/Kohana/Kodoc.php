@@ -23,7 +23,7 @@ class Kohana_Kodoc
      * @return  string
      * @throws Kohana_Exception
      */
-    public static function link_class_member($matches)
+    public static function link_class_member(array $matches)
     {
         $link = $matches[1];
         $class = $matches[2];
@@ -248,7 +248,7 @@ class Kohana_Kodoc
          * @return  void
          * @throws Kohana_Exception
          */
-        $add_tag = function ($tag, $text) use ($html, & $tags) {
+        $add_tag = function ($tag, $text) use ($html, &$tags) {
             // Don't show @access lines, they are shown elsewhere
             if ($tag !== 'access') {
                 if ($html) {
@@ -376,11 +376,11 @@ class Kohana_Kodoc
      * namespaces and exclude them from the userguide.
      *
      * @param string $class The name of the class to check for transparency
-     * @param array $classes An optional list of all defined classes
+     * @param array|null $classes An optional list of all defined classes
      * @return  false                     If this is not a transparent extension class
      * @throws Kohana_Exception
      */
-    public static function is_transparent($class, $classes = null)
+    public static function is_transparent($class, array $classes = null)
     {
 
         static $transparent_prefixes = null;
