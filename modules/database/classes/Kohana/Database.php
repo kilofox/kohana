@@ -187,7 +187,7 @@ abstract class Kohana_Database
      *     // Make a SELECT query and use "Model_User" for the results
      *     $db->query(Database::SELECT, 'SELECT * FROM users LIMIT 1', 'Model_User');
      *
-     * @param int $type Database::SELECT, Database::INSERT, etc
+     * @param int $type Database::SELECT, Database::INSERT, etc.
      * @param string $sql SQL query
      * @param mixed $as_object result object class string, true for stdClass, false for assoc array
      * @param array|null $params object construct parameters for result class
@@ -496,7 +496,7 @@ abstract class Kohana_Database
                     $parts[$offset] = $prefix . $parts[$offset];
                 }
 
-                foreach ($parts as & $part) {
+                foreach ($parts as &$part) {
                     if ($part !== '*') {
                         // Quote each of the parts
                         $part = $this->_identifier . $part . $this->_identifier;
@@ -565,7 +565,7 @@ abstract class Kohana_Database
                     $parts[$offset] = $prefix . $parts[$offset];
                 }
 
-                foreach ($parts as & $part) {
+                foreach ($parts as &$part) {
                     // Quote each of the parts
                     $part = $this->_identifier . $part . $this->_identifier;
                 }
@@ -622,7 +622,7 @@ abstract class Kohana_Database
             if (strpos($value, '.') !== false) {
                 $parts = explode('.', $value);
 
-                foreach ($parts as & $part) {
+                foreach ($parts as &$part) {
                     // Quote each of the parts
                     $part = $this->_identifier . $part . $this->_identifier;
                 }
