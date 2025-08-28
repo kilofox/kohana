@@ -71,7 +71,7 @@ class Kohana_Image_GD extends Image
     /**
      * Runs [Image_GD::check] and loads the image.
      *
-     * @param   string  $file  image file path
+     * @param string $file Image file path
      * @return  void
      * @throws  Kohana_Exception
      */
@@ -143,8 +143,8 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a resize.
      *
-     * @param   int  $width   new width
-     * @param   int  $height  new height
+     * @param int $width   New width
+     * @param int $height  New height
      * @return  void
      */
     protected function _do_resize($width, $height)
@@ -196,10 +196,10 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a crop.
      *
-     * @param   int  $width     new width
-     * @param   int  $height    new height
-     * @param   int  $offset_x  offset from the left
-     * @param   int  $offset_y  offset from the top
+     * @param int $width     New width
+     * @param int $height    New height
+     * @param int $offset_x  Offset from the left
+     * @param int $offset_y  Offset from the top
      * @return  void
      */
     protected function _do_crop($width, $height, $offset_x, $offset_y)
@@ -265,7 +265,7 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a flip.
      *
-     * @param   int $direction direction to flip
+     * @param int $direction Direction to flip
      * @return  void
      */
     protected function _do_flip($direction)
@@ -336,7 +336,7 @@ class Kohana_Image_GD extends Image
      *
      * @param int $height reflection height
      * @param int $opacity reflection opacity
-     * @param bool $fade_in true to fade out, false to fade in
+     * @param bool $fade_in True to fade in, false to fade out
      * @return  void
      * @throws Kohana_Exception
      */
@@ -457,10 +457,10 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a background.
      *
-     * @param   int  $r        red
-     * @param   int  $g        green
-     * @param   int  $b        blue
-     * @param   int  $opacity  opacity
+     * @param int $r        Red
+     * @param int $g        Green
+     * @param int $b        Blue
+     * @param int $opacity  Opacity
      * @return void
      */
     protected function _do_background($r, $g, $b, $opacity)
@@ -557,8 +557,8 @@ class Kohana_Image_GD extends Image
      * Get the GD saving function and image type for this extension.
      * Also normalizes the quality setting
      *
-     * @param   string   $extension  image type: png, jpg, etc
-     * @param   int $quality image quality
+     * @param string $extension Image type: png, jpg, etc.
+     * @param int $quality Image quality
      * @return  array    save function, IMAGETYPE_* constant
      * @throws  Kohana_Exception
      */
@@ -603,8 +603,8 @@ class Kohana_Image_GD extends Image
     /**
      * Create an empty image with the given width and height.
      *
-     * @param   int   $width   image width
-     * @param   int   $height  image height
+     * @param int $width   Image width
+     * @param int $height  Image height
      * @return  resource
      */
     protected function _create($width, $height)
