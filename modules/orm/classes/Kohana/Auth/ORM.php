@@ -13,7 +13,7 @@ class Kohana_Auth_ORM extends Auth
     /**
      * Checks if a session is active.
      *
-     * @param mixed $role Role name string, role ORM object, or array with role names
+     * @param string|null $role Role name string, role ORM object, or array with role names
      * @return bool
      * @throws Kohana_Exception
      * @throws ORM_Validation_Exception
