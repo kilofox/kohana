@@ -24,7 +24,7 @@ abstract class Kohana_Image
 
     /**
      * @deprecated - provide an image.default_driver value in your configuration instead
-     * @var  string  default driver: GD, ImageMagick, etc
+     * @var  string  default driver: GD, ImageMagick, etc.
      */
     public static $default_driver = 'GD';
     // Status of the driver check

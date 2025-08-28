@@ -65,7 +65,7 @@ abstract class Kohana_HTTP
         $response->headers('etag', $etag);
 
         // Add the Cache-Control header if it is not already set
-        // This allows etags to be used with max-age, etc
+        // This allows etags to be used with max-age, etc.
         if ($response->headers('cache-control')) {
             $response->headers('cache-control', $response->headers('cache-control') . ', must-revalidate');
         } else {

@@ -499,12 +499,12 @@ class Kohana_Request implements HTTP_Request
     protected $_requested_with;
 
     /**
-     * @var  string  method: GET, POST, PUT, DELETE, HEAD, etc
+     * @var  string  method: GET, POST, PUT, DELETE, HEAD, etc.
      */
     protected $_method = 'GET';
 
     /**
-     * @var  string  protocol: HTTP/1.1, FTP, CLI, etc
+     * @var  string  protocol: HTTP/1.1, FTP, CLI, etc.
      */
     protected $_protocol;
 
