@@ -672,7 +672,7 @@ abstract class Kohana_Image
     /**
      * Execute a render.
      *
-     * @param string $type Image type: png, jpg, gif, etc
+     * @param string $type Image type: png, jpg, gif, etc.
      * @param int $quality Quality
      * @return  string
      */

@@ -4,7 +4,7 @@
  * Redirect HTTP exception class. Used for all [HTTP_Exception]'s where the status
  * code indicates a redirect.
  *
- * Eg [HTTP_Exception_301], [HTTP_Exception_302] and most of the other 30x's
+ * E.g. [HTTP_Exception_301], [HTTP_Exception_302] and most of the other 30x's
  *
  * @package    Kohana
  * @category   Exceptions

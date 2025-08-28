@@ -4,7 +4,7 @@
  * "Expected" HTTP exception class. Used for all [HTTP_Exception]'s where a standard
  * Kohana error page should never be shown.
  *
- * Eg [HTTP_Exception_301], [HTTP_Exception_302] etc
+ * E.g. [HTTP_Exception_301], [HTTP_Exception_302].
  *
  * @package    Kohana
  * @category   Exceptions

@@ -62,7 +62,7 @@ class Kohana_File
      *
      *     $mime = File::mime_by_ext('png'); // "image/png"
      *
-     * @param string $extension php, pdf, txt, etc
+     * @param string $extension php, pdf, txt, etc.
      * @return string|false MIME type on success or false on failure.
      * @throws Kohana_Exception
      */

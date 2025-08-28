@@ -525,7 +525,7 @@ class Kohana_Image_GD extends Image
     /**
      * Execute a render.
      *
-     * @param string $type image type: png, jpg, gif, etc
+     * @param string $type image type: png, jpg, gif, etc.
      * @param int $quality quality
      * @return  string
      * @throws Kohana_Exception

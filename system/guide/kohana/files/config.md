@@ -70,7 +70,7 @@ Let's say we want an archive of versions of some software. We could use config f
             'released' => '10/15/2009',
             'issues' => 'link/to/bug/tracker',
         ],
-        // ... etc ...
+        // ... etc. ...
     ];
 
 You could then do the following:

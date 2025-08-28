@@ -22,12 +22,12 @@
 class Kohana_I18n
 {
     /**
-     * @var  string   target language: en-us, es-es, zh-cn, etc
+     * @var  string   target language: en-us, es-es, zh-cn, etc.
      */
     public static $lang = 'en-us';
 
     /**
-     * @var  string  source language: en-us, es-es, zh-cn, etc
+     * @var  string  source language: en-us, es-es, zh-cn, etc.
      */
     public static $source = 'en-us';
 
@@ -101,7 +101,7 @@ class Kohana_I18n
         // New translation table
         $table = [];
 
-        // Split the language: language, region, locale, etc
+        // Split the language: language, region, locale, etc.
         $parts = explode('-', $lang);
 
         do {

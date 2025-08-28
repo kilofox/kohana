@@ -154,7 +154,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      * @dataProvider provider_follows_redirects
      *
      * @param bool $follow Option value to set
-     * @param string $request_url URL to request initially (contains data to set up redirect etc)
+     * @param string $request_url URL to request initially (contains data to set up redirect etc.)
      * @param string $expect_body Body text expected in the eventual result
      * @throws Kohana_Exception
      * @throws Request_Exception
