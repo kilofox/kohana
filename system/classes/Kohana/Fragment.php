@@ -77,7 +77,7 @@ class Kohana_Fragment
     public static function load(string $name, int $lifetime = null, bool $i18n = null): bool
     {
         // Set the cache lifetime
-        $lifetime = $lifetime === null ? Fragment::$lifetime : (int) $lifetime;
+        $lifetime = $lifetime === null ? Fragment::$lifetime : $lifetime;
 
         // Get the cache key name
         $cache_key = Fragment::_cache_key($name, $i18n);

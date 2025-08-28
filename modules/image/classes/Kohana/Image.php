@@ -329,9 +329,6 @@ abstract class Kohana_Image
      */
     public function rotate(int $degrees): Kohana_Image
     {
-        // Make the degrees an integer
-        $degrees = (int) $degrees;
-
         if ($degrees > 180) {
             do {
                 // Keep subtracting full circles until the degrees have normalized

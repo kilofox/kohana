@@ -640,7 +640,7 @@ class Kohana_Request implements HTTP_Request
         }
 
         // Act as a setter
-        $this->_referrer = (string) $referrer;
+        $this->_referrer = $referrer;
 
         return $this;
     }
@@ -678,7 +678,7 @@ class Kohana_Request implements HTTP_Request
         }
 
         // Act as a setter
-        $this->_directory = (string) $directory;
+        $this->_directory = $directory;
 
         return $this;
     }
@@ -697,7 +697,7 @@ class Kohana_Request implements HTTP_Request
         }
 
         // Act as a setter
-        $this->_controller = (string) $controller;
+        $this->_controller = $controller;
 
         return $this;
     }
@@ -716,7 +716,7 @@ class Kohana_Request implements HTTP_Request
         }
 
         // Act as a setter
-        $this->_action = (string) $action;
+        $this->_action = $action;
 
         return $this;
     }
@@ -913,7 +913,7 @@ class Kohana_Request implements HTTP_Request
             return $this->_secure;
 
         // Act as a setter
-        $this->_secure = (bool) $secure;
+        $this->_secure = $secure;
         return $this;
     }
 
@@ -984,7 +984,7 @@ class Kohana_Request implements HTTP_Request
         }
 
         // Act as a setter for a single cookie
-        $this->_cookies[$key] = (string) $value;
+        $this->_cookies[$key] = $value;
 
         return $this;
     }

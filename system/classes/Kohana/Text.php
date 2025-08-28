@@ -60,7 +60,6 @@ class Kohana_Text
      */
     public static function limit_words(string $str, int $limit = 100, string $end_char = null): string
     {
-        $limit = (int) $limit;
         $end_char = $end_char === null ? '…' : $end_char;
 
         if (trim($str) === '')
@@ -91,8 +90,6 @@ class Kohana_Text
     public static function limit_chars(string $str, int $limit = 100, string $end_char = null, bool $preserve_words = false): string
     {
         $end_char = $end_char === null ? '…' : $end_char;
-
-        $limit = (int) $limit;
 
         if (trim($str) === '' || UTF8::strlen($str) <= $limit)
             return $str;
@@ -464,7 +461,7 @@ class Kohana_Text
     public static function bytes(int $bytes, string $force_unit = null, string $format = null, bool $si = true): string
     {
         // Format string
-        $format = $format === null ? '%01.2f %s' : (string) $format;
+        $format = $format === null ? '%01.2f %s' : $format;
 
         // IEC prefixes (binary)
         if (!$si || strpos($force_unit, 'i') !== false) {
@@ -500,9 +497,6 @@ class Kohana_Text
      */
     public static function number(int $number): string
     {
-        // The number must always be an integer
-        $number = (int) $number;
-
         // Uncompiled text version
         $text = [];
 

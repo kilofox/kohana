@@ -27,9 +27,6 @@ class Kohana_Feed
         if (!function_exists('simplexml_load_file'))
             throw new Kohana_Exception('SimpleXML must be installed!');
 
-        // Make limit an integer
-        $limit = (int) $limit;
-
         // Disable error reporting while opening the feed
         $error_level = error_reporting(0);
 

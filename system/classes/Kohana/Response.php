@@ -149,7 +149,7 @@ class Kohana_Response implements HTTP_Response
         if ($content === null)
             return $this->_body;
 
-        $this->_body = (string) $content;
+        $this->_body = $content;
         return $this;
     }
 
@@ -193,7 +193,7 @@ class Kohana_Response implements HTTP_Response
         if ($code === null) {
             return $this->_status;
         } elseif (array_key_exists($code, Response::$messages)) {
-            $this->_status = (int) $code;
+            $this->_status = $code;
             return $this;
         } else {
             throw new Kohana_Exception(__METHOD__ . ' unknown status value : :value', [':value' => $code]);

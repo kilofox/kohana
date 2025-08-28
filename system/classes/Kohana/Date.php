@@ -87,9 +87,6 @@ class Kohana_Date
      */
     public static function seconds(int $step = 1, int $start = 0, int $end = 60): array
     {
-        // Always integer
-        $step = (int) $step;
-
         $seconds = [];
 
         for ($i = $start; $i < $end; $i += $step) {
@@ -131,10 +128,6 @@ class Kohana_Date
      */
     public static function hours(int $step = 1, bool $long = false, int $start = null): array
     {
-        // Default values
-        $step = (int) $step;
-        $long = (bool) $long;
-
         // Set the default start if none was specified.
         if ($start === null) {
             $start = $long === false ? 1 : 0;
@@ -163,9 +156,6 @@ class Kohana_Date
      */
     public static function ampm(int $hour): string
     {
-        // Always integer
-        $hour = (int) $hour;
-
         return $hour > 11 ? 'PM' : 'AM';
     }
 
@@ -180,7 +170,6 @@ class Kohana_Date
      */
     public static function adjust(int $hour, string $ampm): string
     {
-        $hour = (int) $hour;
         $ampm = strtolower($ampm);
 
         switch ($ampm) {
@@ -219,7 +208,6 @@ class Kohana_Date
         }
 
         // Always integers
-        $month = (int) $month;
         $year = (int) $year;
 
         // We use caching for months, because time functions are used
@@ -317,7 +305,7 @@ class Kohana_Date
     public static function span(int $remote, ?int $local = null, string $output = 'years,months,weeks,days,hours,minutes,seconds')
     {
         // Normalize output
-        $output = trim(strtolower((string) $output));
+        $output = trim(strtolower($output));
 
         if (!$output) {
             // Invalid output
@@ -396,7 +384,7 @@ class Kohana_Date
      */
     public static function fuzzy_span(int $timestamp, int $local_timestamp = null): string
     {
-        $local_timestamp = $local_timestamp === null ? time() : (int) $local_timestamp;
+        $local_timestamp = $local_timestamp === null ? time() : $local_timestamp;
 
         // Determine the difference in seconds
         $offset = abs($local_timestamp - $timestamp);

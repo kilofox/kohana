@@ -123,7 +123,7 @@ abstract class Kohana_Controller
      */
     public static function redirect(string $uri = '', int $code = 302)
     {
-        return HTTP::redirect((string) $uri, $code);
+        return HTTP::redirect($uri, $code);
     }
 
     /**
