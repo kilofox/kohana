@@ -1115,24 +1115,15 @@ class Kohana_ORM extends Model implements serializable
                 }
             }
 
-            if (is_array($filter) || !is_string($filter)) {
+            if (is_callable($filter)) {
                 // This is either a callback as an array or a lambda
                 $value = call_user_func_array($filter, $params);
-            } elseif (strpos($filter, '::') === false) {
+            } else {
                 // Use a function call
                 $function = new ReflectionFunction($filter);
 
                 // Call $function($this[$field], $param, ...) with Reflection
                 $value = $function->invokeArgs($params);
-            } else {
-                // Split the class and method of the rule
-                list($class, $method) = explode('::', $filter, 2);
-
-                // Use a static method call
-                $method = new ReflectionMethod($class, $method);
-
-                // Call $Class::$method($this[$field], $param, ...) with Reflection
-                $value = $method->invokeArgs(null, $params);
             }
         }
 
