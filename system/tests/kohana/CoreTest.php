@@ -407,7 +407,7 @@ class Kohana_CoreTest extends Unittest_TestCase
         $include_paths = Kohana::include_paths();
         $modules = Kohana::modules();
 
-        $this->assertInternalType('array', $include_paths);
+        $this->assertIsArray($include_paths);
 
         // We must have at least 2 items in include paths (APP / SYS)
         $this->assertGreaterThan(2, count($include_paths));
