@@ -151,6 +151,7 @@ class Kohana_Request_Client_ExternalTest extends Unittest_TestCase
      * @return  void
      * @throws Kohana_Exception
      * @throws Request_Exception
+     * @throws ReflectionException
      */
     public function test_execute($content_type, $body, $post, $expected)
     {

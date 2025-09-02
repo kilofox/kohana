@@ -20,6 +20,7 @@ class Kohana_SessionTest extends Unittest_TestCase
      * Gets a mock of the session class
      *
      * @return Session
+     * @throws ReflectionException
      */
     // @codingStandardsIgnoreStart
     public function getMockSession(array $config = []): Session
