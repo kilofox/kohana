@@ -9,7 +9,7 @@
  * @copyright  (c) 2005 Harry Fuecks
  * @license    https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt
  */
-function _trim($str, $charlist = null)
+function _trim($str, $charlist = null): string
 {
     if ($charlist === null)
         return trim($str);

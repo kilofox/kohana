@@ -29,7 +29,7 @@ class Kohana_Request_Client_Stream extends Request_Client_External
      * @throws Kohana_Exception
      * @uses    [PHP cURL](https://www.php.net/manual/en/book.curl.php)
      */
-    public function _send_message(Request $request, Response $response)
+    public function _send_message(Request $request, Response $response): Response
     {
         // Calculate stream mode
         $mode = $request->method() === HTTP_Request::GET ? 'r' : 'r+';

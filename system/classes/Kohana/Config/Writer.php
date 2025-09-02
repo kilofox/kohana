@@ -18,10 +18,10 @@ interface Kohana_Config_Writer extends Kohana_Config_Source
      * Returns chainable instance on success or throws
      * Kohana_Config_Exception on failure
      *
-     * @param string      $group  The config group
-     * @param string      $key    The config key to write to
-     * @param array       $config The configuration to write
+     * @param string $group The config group
+     * @param string $key The config key to write to
+     * @param mixed $config The configuration to write
      * @return bool
      */
-    public function write($group, $key, $config);
+    public function write(string $group, string $key, $config): bool;
 }

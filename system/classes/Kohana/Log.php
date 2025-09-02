@@ -40,7 +40,7 @@ class Kohana_Log
      *
      * @return  Log
      */
-    public static function instance()
+    public static function instance(): Log
     {
         if (Log::$_instance === null) {
             // Create a new instance
@@ -71,10 +71,10 @@ class Kohana_Log
      *
      * @param   Log_Writer  $writer     instance
      * @param   mixed       $levels     array of messages levels to write OR max level to write
-     * @param   int $min_level min level to write IF $levels is not an array
+     * @param int $min_level Min level to write IF $levels is not an array
      * @return  Kohana_Log
      */
-    public function attach(Log_Writer $writer, $levels = [], $min_level = 0)
+    public function attach(Log_Writer $writer, $levels = [], int $min_level = 0): Kohana_Log
     {
         if (!is_array($levels)) {
             $levels = range($min_level, $levels);
@@ -96,7 +96,7 @@ class Kohana_Log
      * @param   Log_Writer  $writer instance
      * @return  Kohana_Log
      */
-    public function detach(Log_Writer $writer)
+    public function detach(Log_Writer $writer): Kohana_Log
     {
         // Remove the writer
         unset($this->_writers["$writer"]);
@@ -112,13 +112,13 @@ class Kohana_Log
      *         ':user' => $username,
      *     ]);
      *
-     * @param   string  $level       level of message
-     * @param   string  $message     message body
-     * @param   array   $values      values to replace in the message
-     * @param   array   $additional  additional custom parameters to supply to the log writer
+     * @param string $level level of message
+     * @param string $message message body
+     * @param array|null $values values to replace in the message
+     * @param array|null $additional additional custom parameters to supply to the log writer
      * @return  Kohana_Log
      */
-    public function add($level, $message, array $values = null, array $additional = null)
+    public function add(string $level, string $message, array $values = null, array $additional = null): Kohana_Log
     {
         if ($values) {
             // Insert the values into the message

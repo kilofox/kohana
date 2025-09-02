@@ -46,7 +46,7 @@ class Bench_Transliterate extends Codebench
         'Û', 'Þ', 'Ð', 'Æ', 'İ',
     ];
 
-    public function bench_utf8($subject)
+    public function bench_utf8($subject): string
     {
         return UTF8::transliterate_to_ascii($subject);
     }

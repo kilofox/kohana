@@ -20,7 +20,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * Provides test data for test_alpha()
      * @return array
      */
-    public function provider_alpha()
+    public function provider_alpha(): array
     {
         return [
             ['asdavafaiwnoabwiubafpowf', true],
@@ -32,8 +32,6 @@ class Kohana_ValidTest extends Unittest_TestCase
             ['¥', false, true],
             // Empty test
             ['', false, false],
-            [null, false, false],
-            [false, false, false],
         ];
     }
 
@@ -44,11 +42,11 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_alpha
-     * @param string  $string
+     * @param string $string
      * @param bool $expected
      * @param bool $utf8 Whether to use UTF-8 mode.
      */
-    public function test_alpha($string, $expected, $utf8 = false)
+    public function test_alpha(string $string, bool $expected, bool $utf8 = false)
     {
         $this->assertSame(
             $expected, Valid::alpha($string, $utf8)
@@ -58,7 +56,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /*
      * Provides test data for test_alpha_numeric
      */
-    public function provide_alpha_numeric()
+    public function provide_alpha_numeric(): array
     {
         return [
             ['abcd1234', true],
@@ -71,8 +69,6 @@ class Kohana_ValidTest extends Unittest_TestCase
             ['あい四五£^£^', false, true],
             // Empty test
             ['', false, false],
-            [null, false, false],
-            [false, false, false],
         ];
     }
 
@@ -83,11 +79,11 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provide_alpha_numeric
-     * @param string  $input     The string to test
+     * @param string $input The string to test
      * @param bool $expected Is $input valid
      * @param bool $utf8 Whether to use UTF-8 mode.
      */
-    public function test_alpha_numeric($input, $expected, $utf8 = false)
+    public function test_alpha_numeric(string $input, bool $expected, bool $utf8 = false)
     {
         $this->assertSame(
             $expected, Valid::alpha_numeric($input, $utf8)
@@ -97,7 +93,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * Provides test data for test_alpha_dash
      */
-    public function provider_alpha_dash()
+    public function provider_alpha_dash(): array
     {
         return [
             ['abcdef', true],
@@ -107,8 +103,6 @@ class Kohana_ValidTest extends Unittest_TestCase
             ['abc123&^/-', false],
             // Empty test
             ['', false],
-            [null, false],
-            [false, false],
         ];
     }
 
@@ -119,11 +113,11 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_alpha_dash
-     * @param string  $input          The string to test
+     * @param string $input The string to test
      * @param bool $contains_utf8 Does the string contain utf8 specific characters
      * @param bool $expected Is $input valid?
      */
-    public function test_alpha_dash($input, $expected, $contains_utf8 = false)
+    public function test_alpha_dash(string $input, bool $expected, bool $contains_utf8 = false)
     {
         if (!$contains_utf8) {
             $this->assertSame(
@@ -139,7 +133,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * DataProvider for the valid::date() test
      */
-    public function provider_date()
+    public function provider_date(): array
     {
         return [
             ['now', true],
@@ -154,8 +148,6 @@ class Kohana_ValidTest extends Unittest_TestCase
             ['324824', false],
             // Empty test
             ['', false],
-            [null, false],
-            [false, false],
         ];
     }
 
@@ -164,10 +156,10 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_date
-     * @param string  $date  The date to validate
+     * @param string $date The date to validate
      * @param bool $expected Whether the date is valid.
      */
-    public function test_date($date, $expected)
+    public function test_date(string $date, bool $expected)
     {
         $this->assertSame(
             $expected, Valid::date($date)
@@ -177,13 +169,11 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * DataProvider for the valid::decimal() test
      */
-    public function provider_decimal()
+    public function provider_decimal(): array
     {
         return [
             // Empty test
             ['', 2, null, false],
-            [null, 2, null, false],
-            [false, 2, null, false],
             ['45.1664', 3, null, false],
             ['45.1664', 4, null, true],
             ['45.1664', 4, 2, true],
@@ -198,12 +188,12 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_decimal
-     * @param string  $decimal  The decimal to validate
+     * @param string $decimal The decimal to validate
      * @param int $places The number of places to check to
-     * @param int $digits The number of digits preceding the point to check
+     * @param int|null $digits The number of digits preceding the point to check
      * @param bool $expected Whether $decimal conforms to $places AND $digits
      */
-    public function test_decimal($decimal, $places, $digits, $expected)
+    public function test_decimal(string $decimal, int $places, ?int $digits, bool $expected)
     {
         $this->assertSame(
             $expected, Valid::decimal($decimal, $places, $digits), 'Decimal: "' . $decimal . '" to ' . $places . ' places and ' . $digits . ' digits (preceding period)'
@@ -214,7 +204,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * Provides test data for test_digit
      * @return array
      */
-    public function provider_digit()
+    public function provider_digit(): array
     {
         return [
             ['12345', true],
@@ -238,7 +228,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @param mixed   $input     Input to validate
      * @param bool $expected Is $input valid
      */
-    public function test_digit($input, $expected, $contains_utf8 = false)
+    public function test_digit($input, bool $expected, $contains_utf8 = false)
     {
         if (!$contains_utf8) {
             $this->assertSame(
@@ -254,7 +244,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * DataProvider for the valid::color() test
      */
-    public function provider_color()
+    public function provider_color(): array
     {
         return [
             ['#000000', true],
@@ -270,8 +260,6 @@ class Kohana_ValidTest extends Unittest_TestCase
             ['DEF', true],
             // Empty test
             ['', false],
-            [null, false],
-            [false, false],
         ];
     }
 
@@ -280,10 +268,10 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_color
-     * @param string  $color     The color to test
+     * @param string $color The color to test
      * @param bool $expected Is $color valid
      */
-    public function test_color($color, $expected)
+    public function test_color(string $color, bool $expected)
     {
         $this->assertSame(
             $expected, Valid::color($color)
@@ -293,7 +281,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * Provides test data for test_credit_card()
      */
-    public function provider_credit_card()
+    public function provider_credit_card(): array
     {
         return [
             ['4222222222222', 'visa', true],
@@ -307,8 +295,6 @@ class Kohana_ValidTest extends Unittest_TestCase
             ['6011111111111117', 'visa', false],
             // Empty test
             ['', null, false],
-            [null, null, false],
-            [false, null, false],
         ];
     }
 
@@ -323,7 +309,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @param bool $expected
      * @throws Kohana_Exception
      */
-    public function test_credit_card($number, $type, $expected)
+    public function test_credit_card(string $number, $type, bool $expected)
     {
         $this->assertSame(
             $expected, Valid::credit_card($number, $type)
@@ -333,13 +319,14 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * Provides test data for test_credit_card()
      */
-    public function provider_luhn()
+    public function provider_luhn(): array
     {
         return [
             ['4222222222222', true],
             ['4012888888881881', true],
             ['5105105105105100', true],
             ['6011111111111117', true],
+            [6011111111111117, true],
             ['60111111111111.7', false],
             ['6011111111111117X', false],
             ['6011111111111117 ', false],
@@ -357,10 +344,10 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @test
      * @covers Valid::luhn
      * @dataProvider  provider_luhn()
-     * @param string  $number   Credit card number
+     * @param mixed $number Credit card number
      * @param bool $expected
      */
-    public function test_luhn($number, $expected)
+    public function test_luhn($number, bool $expected)
     {
         $this->assertSame(
             $expected, Valid::luhn($number)
@@ -372,7 +359,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_email()
+    public function provider_email(): array
     {
         return [
             ['foo', true, false],
@@ -390,8 +377,6 @@ class Kohana_ValidTest extends Unittest_TestCase
             [Text::random(null, 200) . '@' . Text::random(null, 50) . '.com', false, false],
             // Empty test
             ['', true, false],
-            [null, true, false],
-            [false, true, false],
         ];
     }
 
@@ -402,11 +387,11 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_email
-     * @param string  $email   Address to check
+     * @param string $email Address to check
      * @param bool $strict Use strict settings
      * @param bool $correct Is $email address valid?
      */
-    public function test_email($email, $strict, $correct)
+    public function test_email(string $email, bool $strict, bool $correct)
     {
         $this->assertSame(
             $correct, Valid::email($email, $strict)
@@ -418,7 +403,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_email_domain()
+    public function provider_email_domain(): array
     {
         return [
             ['google.com', true],
@@ -426,8 +411,6 @@ class Kohana_ValidTest extends Unittest_TestCase
             ['DAWOMAWIDAIWNDAIWNHDAWIHDAIWHDAIWOHDAIOHDAIWHD.com', false],
             // Empty test
             ['', false],
-            [null, false],
-            [false, false],
         ];
     }
 
@@ -441,10 +424,10 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_email_domain
-     * @param string  $email   Email domain to check
+     * @param string $email Email domain to check
      * @param bool $correct Is it correct?
      */
-    public function test_email_domain($email, $correct)
+    public function test_email_domain(string $email, bool $correct)
     {
         if (!$this->hasInternet()) {
             $this->markTestSkipped('An internet connection is required for this test');
@@ -458,16 +441,15 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_exact_length()
+    public function provider_exact_length(): array
     {
         return [
             ['somestring', 10, true],
             ['somestring', 11, false],
             ['anotherstring', 13, true],
             // Empty test
+            ['', 0, true],
             ['', 10, false],
-            [null, 10, false],
-            [false, 10, false],
             // Test array of allowed lengths
             ['somestring', [1, 3, 5, 7, 9, 10], true],
             ['somestring', [1, 3, 5, 7, 9], false],
@@ -482,12 +464,12 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_exact_length
-     * @param string  $string  The string to length check
+     * @param string $string The string to length check
      * @param int|array $length The length of the string
      * @param bool $correct Is $length the actual length of the string?
      * @return void
      */
-    public function test_exact_length($string, $length, $correct)
+    public function test_exact_length(string $string, $length, bool $correct)
     {
         $this->assertSame(
                 $correct,
@@ -501,7 +483,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_equals()
+    public function provider_equals(): array
     {
         return [
             ['foo', 'foo', true],
@@ -522,10 +504,10 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @dataProvider provider_equals
      * @param   mixed $string value to check
      * @param   mixed $required required value
-     * @param   bool $correct is $string the same as $required?
+     * @param bool $correct Is $string the same as $required?
      * @return  void
      */
-    public function test_equals($string, $required, $correct)
+    public function test_equals($string, $required, bool $correct)
     {
         $this->assertSame($correct, Valid::equals($string, $required), 'Values are not equal');
     }
@@ -534,7 +516,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * DataProvider for the valid::ip() test
      * @return array
      */
-    public function provider_ip()
+    public function provider_ip(): array
     {
         return [
             ['75.125.175.50', false, true],
@@ -545,8 +527,6 @@ class Kohana_ValidTest extends Unittest_TestCase
             ['192.168.0.1', true, true],
             // Empty test
             ['', true, false],
-            [null, true, false],
-            [false, true, false],
         ];
     }
 
@@ -555,11 +535,11 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider  provider_ip
-     * @param string  $input_ip
+     * @param string $input_ip
      * @param bool $allow_private
      * @param bool $expected_result
      */
-    public function test_ip($input_ip, $allow_private, $expected_result)
+    public function test_ip(string $input_ip, bool $allow_private, bool $expected_result)
     {
         $this->assertEquals(
             $expected_result, Valid::ip($input_ip, $allow_private)
@@ -571,7 +551,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_max_length()
+    public function provider_max_length(): array
     {
         return [
             // Borderline
@@ -582,8 +562,6 @@ class Kohana_ValidTest extends Unittest_TestCase
             ['CakeSucks', 10, true],
             // Empty test
             ['', -10, false],
-            [null, -10, false],
-            [false, -10, false],
         ];
     }
 
@@ -594,11 +572,11 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_max_length
-     * @param string  $string    String to test
+     * @param string $string String to test
      * @param int $maxlength Max length for this string
      * @param bool $correct Is $string <= $maxlength
      */
-    public function test_max_length($string, $maxlength, $correct)
+    public function test_max_length(string $string, int $maxlength, bool $correct)
     {
         $this->assertSame(
             $correct, Valid::max_length($string, $maxlength)
@@ -610,7 +588,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_min_length()
+    public function provider_min_length(): array
     {
         return [
             ['This is obviously long enough', 10, true],
@@ -618,8 +596,6 @@ class Kohana_ValidTest extends Unittest_TestCase
             ['This is on the borderline', 25, true],
             // Empty test
             ['', 10, false],
-            [null, 10, false],
-            [false, 10, false],
         ];
     }
 
@@ -630,11 +606,11 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_min_length
-     * @param string  $string     String to compare
+     * @param string $string String to compare
      * @param int $minlength The minimum allowed length
      * @param bool $correct Is $string 's length >= $minlength
      */
-    public function test_min_length($string, $minlength, $correct)
+    public function test_min_length(string $string, int $minlength, bool $correct)
     {
         $this->assertSame(
             $correct, Valid::min_length($string, $minlength)
@@ -646,7 +622,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_not_empty()
+    public function provider_not_empty(): array
     {
         // Create a blank arrayObject
         $ao = new ArrayObject;
@@ -679,7 +655,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @param bool $empty Is the value really empty?
      * @return void
      */
-    public function test_not_empty($value, $empty)
+    public function test_not_empty($value, bool $empty)
     {
         $this->assertSame($empty, Valid::not_empty($value));
     }
@@ -687,7 +663,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * DataProvider for the Valid::numeric() test
      */
-    public function provider_numeric()
+    public function provider_numeric(): array
     {
         return [
             [12345, true],
@@ -719,10 +695,10 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_numeric
-     * @param string  $input     Input to test
+     * @param mixed $input Input to test
      * @param bool $expected Whether $input is numeric
      */
-    public function test_numeric($input, $expected)
+    public function test_numeric($input, bool $expected)
     {
         $this->assertSame(
             $expected, Valid::numeric($input)
@@ -733,7 +709,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * Provides test data for test_phone()
      * @return array
      */
-    public function provider_phone()
+    public function provider_phone(): array
     {
         return [
             ['0163634840', null, true],
@@ -748,8 +724,6 @@ class Kohana_ValidTest extends Unittest_TestCase
             ['020 7356 5000', null, true],
             // Empty test
             ['', null, false],
-            [null, null, false],
-            [false, null, false],
         ];
     }
 
@@ -758,10 +732,10 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider  provider_phone
-     * @param string  $phone     Phone number to test
+     * @param string $phone Phone number to test
      * @param bool $expected Is $phone valid
      */
-    public function test_phone($phone, $lengths, $expected)
+    public function test_phone(string $phone, $lengths, bool $expected)
     {
         $this->assertSame(
             $expected, Valid::phone($phone, $lengths)
@@ -771,7 +745,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * DataProvider for the valid::regex() test
      */
-    public function provider_regex()
+    public function provider_regex(): array
     {
         return [
             ['hello world', '/[a-zA-Z\s]++/', true],
@@ -792,11 +766,11 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_regex
-     * @param string $value Value to test against
+     * @param mixed $value Value to test against
      * @param string $regex Valid pcre regular expression
      * @param bool $expected Does the value match the expression?
      */
-    public function test_regex($value, $regex, $expected)
+    public function test_regex($value, string $regex, bool $expected)
     {
         $this->AssertSame(
             $expected, Valid::regex($value, $regex)
@@ -806,7 +780,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * DataProvider for the valid::range() test
      */
-    public function provider_range()
+    public function provider_range(): array
     {
         return [
             [1, 0, 2, null, true],
@@ -827,10 +801,6 @@ class Kohana_ValidTest extends Unittest_TestCase
             [10, 0, 10, 2, true],
             [10, 0, 10, 3, false], // max outside $step
             [12, 0, 12, 3, true],
-            // Empty test
-            ['', 5, 10, null, false],
-            [null, 5, 10, null, false],
-            [false, 5, 10, null, false],
         ];
     }
 
@@ -846,7 +816,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      * @param int $max       Upper bound
      * @param bool $expected Is Number within the bounds of $min && $max
      */
-    public function test_range($number, $min, $max, $step, $expected)
+    public function test_range(int $number, int $min, int $max, $step, bool $expected)
     {
         $this->AssertSame(
             $expected, Valid::range($number, $min, $max, $step)
@@ -858,7 +828,7 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_url()
+    public function provider_url(): array
     {
         return [
             ['http://google.com', true],
@@ -888,8 +858,6 @@ class Kohana_ValidTest extends Unittest_TestCase
             ["http://finalnewline.com\n", false],
             // Empty test
             ['', false],
-            [null, false],
-            [false, false],
             // 253 chars
             ['http://' . str_repeat('123456789.', 25) . 'com/', true],
             // 254 chars
@@ -902,10 +870,10 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_url
-     * @param string  $url       The URL to test
+     * @param string $url The URL to test
      * @param bool $expected Is it valid?
      */
-    public function test_url($url, $expected)
+    public function test_url(string $url, bool $expected)
     {
         $this->assertSame(
             $expected, Valid::url($url)
@@ -915,7 +883,7 @@ class Kohana_ValidTest extends Unittest_TestCase
     /**
      * DataProvider for the valid::matches() test
      */
-    public function provider_matches()
+    public function provider_matches(): array
     {
         return [
             [['a' => 'hello', 'b' => 'hello'], 'a', 'b', true],
@@ -935,12 +903,12 @@ class Kohana_ValidTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_matches
-     * @param array   $data      Array of fields
+     * @param array $data Array of fields
      * @param string $field First field name
      * @param string $match Field name that must match $field in $data
      * @param bool $expected Do the two fields match?
      */
-    public function test_matches($data, $field, $match, $expected)
+    public function test_matches(array $data, string $field, string $match, bool $expected)
     {
         $this->AssertSame(
             $expected, Valid::matches($data, $field, $match)

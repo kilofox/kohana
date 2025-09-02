@@ -29,11 +29,11 @@ class Kohana_Database_Expression
      *
      *     $expression = new Database_Expression('COUNT(users.id)');
      *
-     * @param   string  $value      raw SQL expression string
-     * @param   array   $parameters unquoted parameter values
+     * @param string $value Raw SQL expression string
+     * @param array $parameters Unquoted parameter values
      * @return  void
      */
-    public function __construct($value, $parameters = [])
+    public function __construct(string $value, array $parameters = [])
     {
         // Set the expression string
         $this->_value = $value;
@@ -43,13 +43,13 @@ class Kohana_Database_Expression
     /**
      * Bind a variable to a parameter.
      *
-     * @param   string  $param  parameter key to replace
+     * @param string $param Parameter key to replace
      * @param   mixed   $var    variable to use
      * @return  $this
      */
-    public function bind($param, & $var)
+    public function bind(string $param, &$var): Kohana_Database_Expression
     {
-        $this->_parameters[$param] = & $var;
+        $this->_parameters[$param] = &$var;
 
         return $this;
     }
@@ -57,11 +57,11 @@ class Kohana_Database_Expression
     /**
      * Set the value of a parameter.
      *
-     * @param   string  $param  parameter key to replace
+     * @param string $param Parameter key to replace
      * @param   mixed   $value  value to use
      * @return  $this
      */
-    public function param($param, $value)
+    public function param(string $param, $value): Kohana_Database_Expression
     {
         $this->_parameters[$param] = $value;
 
@@ -74,7 +74,7 @@ class Kohana_Database_Expression
      * @param   array   $params list of parameter values
      * @return  $this
      */
-    public function parameters(array $params)
+    public function parameters(array $params): Kohana_Database_Expression
     {
         $this->_parameters = $params + $this->_parameters;
 
@@ -88,7 +88,7 @@ class Kohana_Database_Expression
      *
      * @return  string
      */
-    public function value()
+    public function value(): string
     {
         return $this->_value;
     }
@@ -114,7 +114,7 @@ class Kohana_Database_Expression
      * @return  string
      * @throws Kohana_Exception
      */
-    public function compile($db = null)
+    public function compile($db = null): string
     {
         if (!is_object($db)) {
             // Get the database instance

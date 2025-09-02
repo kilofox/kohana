@@ -47,7 +47,7 @@ class Kohana_HTMLTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_attributes()
+    public function provider_attributes(): array
     {
         return [
             [
@@ -89,7 +89,7 @@ class Kohana_HTMLTest extends Unittest_TestCase
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function test_attributes(array $attributes, array $options, $expected)
+    public function test_attributes(array $attributes, array $options, string $expected)
     {
         $this->setEnvironment($options);
 
@@ -103,7 +103,7 @@ class Kohana_HTMLTest extends Unittest_TestCase
      *
      * @return array Array of test data
      */
-    public function provider_script()
+    public function provider_script(): array
     {
         return [
             [
@@ -145,12 +145,12 @@ class Kohana_HTMLTest extends Unittest_TestCase
      * @dataProvider  provider_script
      * @param string $expected Expected output
      * @param string $file URL to script
-     * @param array $attributes HTML attributes for the anchor
-     * @param string $protocol Protocol to use
+     * @param array|null $attributes HTML attributes for the anchor
+     * @param string|null $protocol Protocol to use
      * @param bool $index Should the index file be included in URL?
      * @throws Kohana_Exception
      */
-    public function test_script($expected, $file, array $attributes = null, $protocol = null, $index = false)
+    public function test_script(string $expected, string $file, array $attributes = null, string $protocol = null, bool $index = false)
     {
         $this->assertSame(
             $expected, HTML::script($file, $attributes, $protocol, $index)
@@ -162,7 +162,7 @@ class Kohana_HTMLTest extends Unittest_TestCase
      *
      * @return array Array of test data
      */
-    public function provider_style()
+    public function provider_style(): array
     {
         return [
             [
@@ -225,12 +225,12 @@ class Kohana_HTMLTest extends Unittest_TestCase
      * @dataProvider  provider_style
      * @param string $expected The expected output
      * @param string $file The file to link to
-     * @param array $attributes Any extra attributes for the link
-     * @param string $protocol Protocol to use
+     * @param array|null $attributes Any extra attributes for the link
+     * @param string|null $protocol Protocol to use
      * @param bool $index Whether the index file should be added to the link
      * @throws Kohana_Exception
      */
-    public function test_style($expected, $file, array $attributes = null, $protocol = null, $index = false)
+    public function test_style(string $expected, string $file, array $attributes = null, string $protocol = null, bool $index = false)
     {
         $this->assertSame(
             $expected, HTML::style($file, $attributes, $protocol, $index)
@@ -242,7 +242,7 @@ class Kohana_HTMLTest extends Unittest_TestCase
      *
      * @return array Test data
      */
-    public function provider_anchor()
+    public function provider_anchor(): array
     {
         return [
             // a fragment-only anchor
@@ -349,7 +349,7 @@ class Kohana_HTMLTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_file_anchor()
+    public function provider_file_anchor(): array
     {
         return [
             [

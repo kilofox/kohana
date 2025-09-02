@@ -295,7 +295,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
      * @param string $page The relative URL of the guide page
      * @return string
      */
-    public function file($page)
+    public function file(string $page): string
     {
 
         // Strip optional .md or .markdown suffix from the passed filename
@@ -306,7 +306,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         return Kohana::find_file('guide', $page, 'md');
     }
 
-    public function section($page)
+    public function section($page): string
     {
         $markdown = $this->_get_all_menu_markdown();
 
@@ -317,7 +317,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         return $page;
     }
 
-    public function title($page)
+    public function title($page): string
     {
         $markdown = $this->_get_all_menu_markdown();
 
@@ -329,7 +329,7 @@ abstract class Kohana_Controller_Userguide extends Controller_Template
         return $page;
     }
 
-    protected function _get_all_menu_markdown()
+    protected function _get_all_menu_markdown(): string
     {
         // Only do this once per request...
         static $markdown = '';

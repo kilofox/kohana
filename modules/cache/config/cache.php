@@ -36,27 +36,6 @@ return [
 //        // Take server offline immediately on first fail (no retry)
 //        'instant_death' => true,
 //    ],
-//    'memcachetag' => [
-//        'driver' => 'memcachetag',
-//        'default_expire' => 3600,
-//        // Use Zlib compression (can cause issues with integers)
-//        'compression' => false,
-//        'servers' => [
-//            'local' => [
-//                // Memcache Server
-//                'host' => 'localhost',
-//                // Memcache port number
-//                'port' => 11211,
-//                // Persistent connection
-//                'persistent' => false,
-//                'weight' => 1,
-//                'timeout' => 1,
-//                'retry_interval' => 15,
-//                'status' => true,
-//            ],
-//        ],
-//        'instant_death' => true,
-//    ],
 //    'apcu' => [
 //        'driver' => 'apcu',
 //        'default_expire' => 3600,

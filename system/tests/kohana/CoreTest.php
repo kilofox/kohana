@@ -3,8 +3,6 @@
 /**
  * Tests Kohana Core
  *
- * @TODO Use a virtual filesystem (see phpunit doc on mocking fs) for find_file etc.
- *
  * @group kohana
  * @group kohana.core
  * @group kohana.core.core
@@ -52,7 +50,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_sanitize()
+    public function provider_sanitize(): array
     {
         return [
             // $value, $result
@@ -74,7 +72,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function test_sanitize($value, $result)
+    public function test_sanitize(string $value, string $result)
     {
         $this->setEnvironment(['Kohana::$magic_quotes' => true]);
 
@@ -90,8 +88,8 @@ class Kohana_CoreTest extends Unittest_TestCase
      */
     public function test_find_file_no_extension()
     {
-        // EXT is manually appended to the _file name_, not passed as the extension
-        $path = Kohana::find_file('classes', $file = 'Kohana/Core' . EXT, false);
+        // ".php" is manually appended to the _file name_, not passed as the extension
+        $path = Kohana::find_file('classes', $file = 'Kohana/Core.php', false);
 
         $this->assertInternalType('string', $path);
 
@@ -153,7 +151,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_cache()
+    public function provider_cache(): array
     {
         return [
             // $value, $result
@@ -172,9 +170,8 @@ class Kohana_CoreTest extends Unittest_TestCase
      * @param string $key Key to cache/get for Kohana::cache
      * @param mixed $value Output from Kohana::cache
      * @param int $lifetime Lifetime for Kohana::cache
-     * @throws Kohana_Exception
      */
-    public function test_cache($key, $value, $lifetime)
+    public function test_cache(string $key, $value, int $lifetime)
     {
         Kohana::cache($key, $value, $lifetime);
         $this->assertEquals($value, Kohana::cache($key));
@@ -185,7 +182,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_message()
+    public function provider_message(): array
     {
         return [
             [
@@ -244,14 +241,14 @@ class Kohana_CoreTest extends Unittest_TestCase
      * @dataProvider provider_message
      * @covers       Kohana::message
      * @param string $file to pass to Kohana::message
-     * @param string $key to pass to Kohana::message
+     * @param string|null $key to pass to Kohana::message
      * @param string $default to pass to Kohana::message
-     * @param string $expected Output for Kohana::message
+     * @param mixed $expected Output for Kohana::message
      * @throws Kohana_Exception
      */
-    public function test_message($file, $key, $default, $expected)
+    public function test_message(string $file, ?string $key, string $default, $expected)
     {
-        $test_path = realpath(dirname(__FILE__) . '/../test_data/message_tests');
+        $test_path = realpath(__DIR__ . '/../test_data/message_tests');
         Kohana::modules([
             'top' => "$test_path/top_module",
             'bottom' => "$test_path/bottom_module"
@@ -265,7 +262,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_error_handler()
+    public function provider_error_handler(): array
     {
         return [
             [1, 'Foobar', 'foobar.php', __LINE__],
@@ -283,7 +280,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      * @param string $file The filename where the exception is thrown.
      * @param int $line The line number where the exception is thrown.
      */
-    public function test_error_handler($code, $error, $file, $line)
+    public function test_error_handler(int $code, string $error, string $file, int $line)
     {
         $error_level = error_reporting();
         error_reporting(E_ALL);
@@ -301,7 +298,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_modules_detects_invalid_modules()
+    public function provider_modules_detects_invalid_modules(): array
     {
         return [
             [
@@ -323,22 +320,16 @@ class Kohana_CoreTest extends Unittest_TestCase
      *
      * @test
      * @dataProvider provider_modules_detects_invalid_modules
-     * @expectedException Kohana_Exception
      * @param array $source Input for Kohana::modules
-     *
+     * @throws Kohana_Exception
      */
-    public function test_modules_detects_invalid_modules($source)
+    public function test_modules_detects_invalid_modules(array $source)
     {
+        $this->expectException(Kohana_Exception::class);
+
         $modules = Kohana::modules();
 
-        try {
-            Kohana::modules($source);
-        } catch (Exception $e) {
-            // Restore modules
-            Kohana::modules($modules);
-
-            throw $e;
-        }
+        Kohana::modules($source);
 
         // Restore modules
         Kohana::modules($modules);
@@ -349,7 +340,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_modules_sets_and_returns_valid_modules()
+    public function provider_modules_sets_and_returns_valid_modules(): array
     {
         return [
             [
@@ -372,7 +363,7 @@ class Kohana_CoreTest extends Unittest_TestCase
      * @param array $expected Output for Kohana::modules
      * @throws Kohana_Exception
      */
-    public function test_modules_sets_and_returns_valid_modules($source, $expected)
+    public function test_modules_sets_and_returns_valid_modules(array $source, array $expected)
     {
         $modules = Kohana::modules();
 
@@ -416,7 +407,7 @@ class Kohana_CoreTest extends Unittest_TestCase
         $include_paths = Kohana::include_paths();
         $modules = Kohana::modules();
 
-        $this->assertInternalType('array', $include_paths);
+        $this->assertIsArray($include_paths);
 
         // We must have at least 2 items in include paths (APP / SYS)
         $this->assertGreaterThan(2, count($include_paths));

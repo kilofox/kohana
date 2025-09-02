@@ -17,7 +17,7 @@ class Route_Holder
      *
      * @return array
      */
-    public static function route_filter_modify_params_array(Route $route, $params)
+    public static function route_filter_modify_params_array(Route $route, $params): array
     {
         $params['action'] = 'modified';
 
@@ -29,7 +29,7 @@ class Route_Holder
      *
      * @return bool
      */
-    public static function route_filter_modify_params_false()
+    public static function route_filter_modify_params_false(): bool
     {
         return false;
     }

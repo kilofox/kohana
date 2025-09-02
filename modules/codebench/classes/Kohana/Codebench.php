@@ -57,7 +57,7 @@ abstract class Kohana_Codebench
      * @return  array  benchmark output
      * @throws ReflectionException
      */
-    public function run()
+    public function run(): array
     {
         // Array of all methods to loop over
         $methods = array_filter(get_class_methods($this), [$this, '_method_filter']);
@@ -145,7 +145,7 @@ abstract class Kohana_Codebench
         }
 
         // Percentage calculations for methods
-        foreach ($codebench['benchmarks'] as & $method) {
+        foreach ($codebench['benchmarks'] as &$method) {
             // Calculate percentage difference relative to fastest and slowest methods
             $method['percent']['fastest']['time'] = empty($fastest_method['time']) ? 0 : $method['time'] / $fastest_method['time'] * 100;
             $method['percent']['fastest']['memory'] = empty($fastest_method['memory']) ? 0 : $method['memory'] / $fastest_method['memory'] * 100;
@@ -157,7 +157,7 @@ abstract class Kohana_Codebench
             $method['grade']['memory'] = $this->_grade($method['percent']['fastest']['memory']);
 
             // Percentage calculations for subjects
-            foreach ($method['subjects'] as & $subject) {
+            foreach ($method['subjects'] as &$subject) {
                 // Calculate percentage difference relative to fastest and slowest subjects for this method
                 $subject['percent']['fastest']['time'] = empty($fastest_subject['time']) ? 0 : $subject['time'] / $fastest_subject['time'] * 100;
                 $subject['percent']['fastest']['memory'] = empty($fastest_subject['memory']) ? 0 : $subject['memory'] / $fastest_subject['memory'] * 100;
@@ -180,7 +180,7 @@ abstract class Kohana_Codebench
      * @param string $method method name
      * @return bool
      */
-    protected function _method_filter($method)
+    protected function _method_filter(string $method): bool
     {
         // Only benchmark methods with the "bench" prefix
         return substr($method, 0, 5) === 'bench';
@@ -192,7 +192,7 @@ abstract class Kohana_Codebench
      * @param float $score score
      * @return  string  grade letter
      */
-    protected function _grade($score)
+    protected function _grade(float $score): string
     {
         foreach ($this->grades as $max => $grade) {
             if ($max === 'default')

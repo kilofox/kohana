@@ -13,13 +13,13 @@ class Kohana_Auth_ORM extends Auth
     /**
      * Checks if a session is active.
      *
-     * @param mixed $role Role name string, role ORM object, or array with role names
+     * @param string|null $role Role name string, role ORM object, or array with role names
      * @return bool
      * @throws Kohana_Exception
      * @throws ORM_Validation_Exception
      * @throws ReflectionException
      */
-    public function logged_in($role = null)
+    public function logged_in(string $role = null): bool
     {
         // Get the user from the session
         $user = $this->get_user();
@@ -73,7 +73,7 @@ class Kohana_Auth_ORM extends Auth
      * @throws ORM_Validation_Exception
      * @throws ReflectionException
      */
-    protected function _login($user, $password, $remember)
+    protected function _login($user, $password, $remember): bool
     {
         if (!is_object($user)) {
             $username = $user;
@@ -125,7 +125,7 @@ class Kohana_Auth_ORM extends Auth
      * @return  void
      * @throws Kohana_Exception
      */
-    public function force_login($user, $mark_session_as_forced = false)
+    public function force_login($user, bool $mark_session_as_forced = false)
     {
         if (!is_object($user)) {
             $username = $user;
@@ -212,7 +212,7 @@ class Kohana_Auth_ORM extends Auth
      * @return bool
      * @throws Kohana_Exception
      */
-    public function logout($destroy = false, $logout_all = false)
+    public function logout(bool $destroy = false, bool $logout_all = false): bool
     {
         // Set by force_login()
         $this->_session->delete('auth_forced');
@@ -246,7 +246,7 @@ class Kohana_Auth_ORM extends Auth
      * @return  string
      * @throws Kohana_Exception
      */
-    public function password($user)
+    public function password($user): string
     {
         if (!is_object($user)) {
             $username = $user;
@@ -266,7 +266,7 @@ class Kohana_Auth_ORM extends Auth
      * @param   object  $user  user ORM object
      * @return  void
      */
-    protected function complete_login($user)
+    protected function complete_login($user): bool
     {
         $user->complete_login();
 
@@ -282,7 +282,7 @@ class Kohana_Auth_ORM extends Auth
      * @throws ORM_Validation_Exception
      * @throws ReflectionException
      */
-    public function check_password($password)
+    public function check_password($password): bool
     {
         $user = $this->get_user();
 

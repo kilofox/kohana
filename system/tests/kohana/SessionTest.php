@@ -20,10 +20,11 @@ class Kohana_SessionTest extends Unittest_TestCase
      * Gets a mock of the session class
      *
      * @return Session
+     * @throws ReflectionException
      */
     // @codingStandardsIgnoreStart
-    public function getMockSession(array $config = [])
-    // @codingStandardsIgnoreEnd
+    public function getMockSession(array $config = []): Session
+        // @codingStandardsIgnoreEnd
     {
         return $this->getMockForAbstractClass('Session', [$config]);
     }
@@ -35,7 +36,7 @@ class Kohana_SessionTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_constructor_uses_settings_from_config_and_casts()
+    public function provider_constructor_uses_settings_from_config_and_casts(): array
     {
         return [
             // [expected, input]
@@ -191,7 +192,7 @@ class Kohana_SessionTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_get_returns_default_if_var_dnx()
+    public function provider_get_returns_default_if_var_dnx(): array
     {
         return [
             ['something_crazy', false],
@@ -256,7 +257,7 @@ class Kohana_SessionTest extends Unittest_TestCase
     {
         $session = $this->getMockSession();
 
-        $data_ref = & $session->as_array();
+        $data_ref = &$session->as_array();
 
         $data_ref['something'] = 'pie';
 
@@ -305,7 +306,7 @@ class Kohana_SessionTest extends Unittest_TestCase
         $session = $this->getMockSession();
 
         // A bit of a hack for mass-loading session data
-        $data = & $session->as_array();
+        $data = &$session->as_array();
 
         $data += [
             'a' => 'A',
@@ -340,7 +341,7 @@ class Kohana_SessionTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_read_loads_session_data()
+    public function provider_read_loads_session_data(): array
     {
         return [
             // If driver returns array then just load it up

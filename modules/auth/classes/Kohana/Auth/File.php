@@ -34,7 +34,7 @@ class Kohana_Auth_File extends Auth
      * @return bool
      * @throws Kohana_Exception
      */
-    protected function _login($username, $password, $remember)
+    protected function _login($username, $password, $remember): bool
     {
         if (is_string($password)) {
             // Create a hashed password
@@ -56,7 +56,7 @@ class Kohana_Auth_File extends Auth
      * @param   mixed    $username  Username
      * @return  bool
      */
-    public function force_login($username)
+    public function force_login($username): bool
     {
         // Complete the login
         return $this->complete_login($username);
@@ -68,7 +68,7 @@ class Kohana_Auth_File extends Auth
      * @param   mixed   $username  Username
      * @return  string
      */
-    public function password($username)
+    public function password($username): string
     {
         return Arr::get($this->_users, $username, false);
     }
@@ -79,7 +79,7 @@ class Kohana_Auth_File extends Auth
      * @param   string   $password  Password
      * @return  bool
      */
-    public function check_password($password)
+    public function check_password($password): bool
     {
         $username = $this->get_user();
 

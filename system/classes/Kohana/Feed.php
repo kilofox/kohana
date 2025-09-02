@@ -21,14 +21,11 @@ class Kohana_Feed
      * @throws Kohana_Exception
      * @throws Request_Exception
      */
-    public static function parse($feed, $limit = 0)
+    public static function parse(string $feed, int $limit = 0): array
     {
         // Check if SimpleXML is installed
         if (!function_exists('simplexml_load_file'))
             throw new Kohana_Exception('SimpleXML must be installed!');
-
-        // Make limit an integer
-        $limit = (int) $limit;
 
         // Disable error reporting while opening the feed
         $error_level = error_reporting(0);
@@ -85,7 +82,7 @@ class Kohana_Feed
      * @return  string
      * @throws Kohana_Exception
      */
-    public static function create($info, $items, $encoding = 'UTF-8')
+    public static function create(array $info, array $items, string $encoding = 'UTF-8'): string
     {
         $info += ['title' => 'Generated Feed', 'link' => '', 'generator' => 'KohanaPHP'];
 

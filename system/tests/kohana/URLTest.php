@@ -51,7 +51,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @throws Kohana_Exception
      * @throws Request_Exception
      */
-    public function provider_base()
+    public function provider_base(): array
     {
         return [
             // $protocol, $index, $expected, $environment
@@ -163,7 +163,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function test_base($protocol, $index, $expected, array $enviroment = [])
+    public function test_base($protocol, bool $index, string $expected, array $enviroment = [])
     {
         $this->setEnvironment($enviroment);
 
@@ -177,7 +177,7 @@ class Kohana_URLTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_site()
+    public function provider_site(): array
     {
         return [
             [
@@ -276,7 +276,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function test_site($uri, $protocol, $expected, array $enviroment = [])
+    public function test_site(string $uri, $protocol, string $expected, array $enviroment = [])
     {
         $this->setEnvironment($enviroment);
 
@@ -291,7 +291,7 @@ class Kohana_URLTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_site_url_encode_uri()
+    public function provider_site_url_encode_uri(): array
     {
         $provider = [
             ['test', 'encode'],
@@ -328,7 +328,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * Provides test data for test_title()
      * @return array
      */
-    public function provider_title()
+    public function provider_title(): array
     {
         return [
             // Tests that…
@@ -413,7 +413,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @param string $separator    Separator to replace invalid characters with
      * @param string $expected     Expected result
      */
-    public function test_title($expected, $title, $separator, $ascii_only = false)
+    public function test_title(string $expected, string $title, string $separator, $ascii_only = false)
     {
         $this->assertSame(
             $expected, URL::title($title, $separator, $ascii_only)
@@ -424,7 +424,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * Provides test data for URL::query()
      * @return array
      */
-    public function provider_query()
+    public function provider_query(): array
     {
         return [
             [
@@ -500,12 +500,12 @@ class Kohana_URLTest extends Unittest_TestCase
      * @dataProvider provider_query
      * @param array $enviroment Set environment
      * @param string $expected Expected result
-     * @param array $params Query string
+     * @param array|null $params Query string
      * @param bool $use_get Combine with GET parameters
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function test_query($enviroment, $expected, $params, $use_get = true)
+    public function test_query(array $enviroment, string $expected, ?array $params, bool $use_get = true)
     {
         $this->setEnvironment($enviroment);
 
@@ -518,7 +518,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * Provides test data for URL::is_trusted_host()
      * @return array
      */
-    public function provider_is_trusted_host()
+    public function provider_is_trusted_host(): array
     {
         return [
             // data set #0
@@ -558,7 +558,7 @@ class Kohana_URLTest extends Unittest_TestCase
      * @param bool $expected true if host is trusted, false otherwise
      * @throws Kohana_Exception
      */
-    public function test_is_trusted_host($host, $trusted_hosts, $expected)
+    public function test_is_trusted_host(string $host, array $trusted_hosts, bool $expected)
     {
         $this->assertSame(
             $expected, URL::is_trusted_host($host, $trusted_hosts)
@@ -569,11 +569,12 @@ class Kohana_URLTest extends Unittest_TestCase
      * Tests if invalid host throws "Invalid host" exception
      *
      * @test
-     * @expectedException Kohana_Exception
-     * @expectedExceptionMessage Invalid host <invalid>
      */
     public function test_if_invalid_host_throws_exception()
     {
+        $this->expectException(Kohana_Exception::class);
+        $this->expectExceptionMessage('Invalid host <invalid>');
+
         // set the global HTTP_HOST to <invalid>
         $_SERVER['HTTP_HOST'] = '<invalid>';
         // trigger exception
@@ -584,11 +585,12 @@ class Kohana_URLTest extends Unittest_TestCase
      * Tests if untrusted host throws "Untrusted host" exception
      *
      * @test
-     * @expectedException Kohana_Exception
-     * @expectedExceptionMessage Untrusted host untrusted.com
      */
     public function test_if_untrusted_host_throws_exception()
     {
+        $this->expectException(Kohana_Exception::class);
+        $this->expectExceptionMessage('Untrusted host untrusted.com');
+
         // set the global HTTP_HOST to a valid but untrusted host
         $_SERVER['HTTP_HOST'] = 'untrusted.com';
         // trigger exception

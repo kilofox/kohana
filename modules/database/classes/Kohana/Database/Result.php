@@ -26,13 +26,12 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
     /**
      * Sets the total number of rows and stores the result locally.
      *
-     * @param   mixed   $result     query result
-     * @param   string  $sql        SQL query
-     * @param   mixed   $as_object
-     * @param   array   $params
-     * @return  void
+     * @param mixed $result query result
+     * @param string $sql SQL query
+     * @param mixed $as_object
+     * @param array|null $params
      */
-    public function __construct($result, $sql, $as_object = false, array $params = null)
+    public function __construct($result, string $sql, $as_object = false, array $params = null)
     {
         // Store the result locally
         $this->_result = $result;
@@ -68,7 +67,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      * @return  Database_Result_Cached
      * @since   3.0.5
      */
-    public function cached()
+    public function cached(): Database_Result
     {
         return new Database_Result_Cached($this->as_array(), $this->_query, $this->_as_object);
     }
@@ -85,11 +84,11 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      *     // Associative array of rows, "id" => "name"
      *     $rows = $result->as_array('id', 'name');
      *
-     * @param   string  $key    column for associative keys
-     * @param   string  $value  column for values
+     * @param string|null $key Column for associative keys
+     * @param string|null $value Column for values
      * @return  array
      */
-    public function as_array($key = null, $value = null)
+    public function as_array(string $key = null, string $value = null): array
     {
         $results = [];
 
@@ -148,11 +147,11 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      *     // Get the "id" value
      *     $id = $result->get('id');
      *
-     * @param   string  $name     column to get
+     * @param string $name Column to get
      * @param   mixed   $default  default value if the column does not exist
      * @return  mixed
      */
-    public function get($name, $default = null)
+    public function get(string $name, $default = null)
     {
         $row = $this->current();
 
@@ -175,7 +174,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return $this->_total_rows;
     }
@@ -191,7 +190,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      * @param   int     $offset
      * @return  bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return $offset >= 0 && $offset < $this->_total_rows;
     }
@@ -248,7 +247,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      *
      * @return int
      */
-    public function key()
+    public function key(): int
     {
         return $this->_current_row;
     }
@@ -260,7 +259,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      *
      * @return  $this
      */
-    public function next()
+    public function next(): Kohana_Database_Result
     {
         ++$this->_current_row;
         return $this;
@@ -273,7 +272,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      *
      * @return  $this
      */
-    public function prev()
+    public function prev(): Kohana_Database_Result
     {
         --$this->_current_row;
         return $this;
@@ -286,7 +285,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      *
      * @return  $this
      */
-    public function rewind()
+    public function rewind(): Kohana_Database_Result
     {
         $this->_current_row = 0;
         return $this;
@@ -299,7 +298,7 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
      *
      * @return bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return $this->offsetExists($this->_current_row);
     }

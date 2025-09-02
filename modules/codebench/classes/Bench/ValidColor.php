@@ -32,58 +32,58 @@ class Bench_ValidColor extends Codebench
 
     // Note that I added the D modifier to corey's regexes. We need to match exactly
     // the same if we want the benchmarks to be of any value.
-    public function bench_corey_regex_1_invalid($subject)
+    public function bench_corey_regex_1_invalid($subject): bool
     {
         return (bool) preg_match('/^#?([0-9a-f]{1,2}){3}$/iD', $subject);
     }
 
-    public function bench_corey_regex_2($subject)
+    public function bench_corey_regex_2($subject): bool
     {
         return (bool) preg_match('/^#?([0-9a-f]){3}(([0-9a-f]){3})?$/iD', $subject);
     }
 
     // Optimized corey_regex_1
     // Using non-capturing parentheses and a possessive interval
-    public function bench_geert_regex_1a_invalid($subject)
+    public function bench_geert_regex_1a_invalid($subject): bool
     {
         return (bool) preg_match('/^#?(?:[0-9a-f]{1,2}+){3}$/iD', $subject);
     }
 
     // Optimized corey_regex_2
     // Removed useless parentheses, made the remaining ones non-capturing
-    public function bench_geert_regex_2a($subject)
+    public function bench_geert_regex_2a($subject): bool
     {
         return (bool) preg_match('/^#?[0-9a-f]{3}(?:[0-9a-f]{3})?$/iD', $subject);
     }
 
     // Optimized geert_regex_1a
     // Possessive "#"
-    public function bench_geert_regex_1b_invalid($subject)
+    public function bench_geert_regex_1b_invalid($subject): bool
     {
         return (bool) preg_match('/^#?+(?:[0-9a-f]{1,2}+){3}$/iD', $subject);
     }
 
     // Optimized geert_regex_2a
     // Possessive "#"
-    public function bench_geert_regex_2b($subject)
+    public function bench_geert_regex_2b($subject): bool
     {
         return (bool) preg_match('/^#?+[0-9a-f]{3}(?:[0-9a-f]{3})?$/iD', $subject);
     }
 
     // Using \z instead of $
-    public function bench_salathe_regex_1($subject)
+    public function bench_salathe_regex_1($subject): bool
     {
         return (bool) preg_match('/^#?+[0-9a-f]{3}(?:[0-9a-f]{3})?\z/i', $subject);
     }
 
     // Using \A instead of ^
-    public function bench_salathe_regex_2($subject)
+    public function bench_salathe_regex_2($subject): bool
     {
         return (bool) preg_match('/\A#?+[0-9a-f]{3}(?:[0-9a-f]{3})?\z/i', $subject);
     }
 
     // A solution without regex
-    public function bench_geert_str($subject)
+    public function bench_geert_str($subject): bool
     {
         if ($subject[0] === '#') {
             $subject = substr($subject, 1);
@@ -94,7 +94,7 @@ class Bench_ValidColor extends Codebench
     }
 
     // An ugly, but fast, solution without regex
-    public function bench_salathe_str($subject)
+    public function bench_salathe_str($subject): bool
     {
         if ($subject[0] === '#') {
             $subject = substr($subject, 1);

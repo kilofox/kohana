@@ -9,7 +9,7 @@
  * @copyright  (c) 2005 Harry Fuecks
  * @license    https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt
  */
-function _strspn($str, $mask, $offset = null, $length = null)
+function _strspn($str, $mask, $offset = null, $length = null): int
 {
     if ($str === '' || $mask === '')
         return 0;

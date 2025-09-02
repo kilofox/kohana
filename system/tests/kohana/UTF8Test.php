@@ -18,7 +18,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_clean()
      */
-    public function provider_clean()
+    public function provider_clean(): array
     {
         return [
             ["\0", ''],
@@ -44,7 +44,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_is_ascii()
      */
-    public function provider_is_ascii()
+    public function provider_is_ascii(): array
     {
         return [
             ["\0", true],
@@ -69,7 +69,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_strip_ascii_ctrl()
      */
-    public function provider_strip_ascii_ctrl()
+    public function provider_strip_ascii_ctrl(): array
     {
         return [
             ["\0", ''],
@@ -94,7 +94,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_strip_non_ascii()
      */
-    public function provider_strip_non_ascii()
+    public function provider_strip_non_ascii(): array
     {
         return [
             ["\0\021\x7F", "\0\021\x7F"],
@@ -116,7 +116,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_transliterate_to_ascii()
      */
-    public function provider_transliterate_to_ascii()
+    public function provider_transliterate_to_ascii(): array
     {
         return [
             ['Cocoñùт', -1, 'Coconuт'],
@@ -142,7 +142,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_strlen()
      */
-    public function provider_strlen()
+    public function provider_strlen(): array
     {
         return [
             ['Cocoñùт', 7],
@@ -164,7 +164,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_strpos()
      */
-    public function provider_strpos()
+    public function provider_strpos(): array
     {
         return [
             ['Cocoñùт', 'o', 0, 1],
@@ -186,7 +186,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_strrpos()
      */
-    public function provider_strrpos()
+    public function provider_strrpos(): array
     {
         return [
             ['Cocoñùт', 'o', 0, 3],
@@ -208,7 +208,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_substr()
      */
-    public function provider_substr()
+    public function provider_substr(): array
     {
         return [
             ['Cocoñùт', 3, 2, 'oñ'],
@@ -232,7 +232,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_substr_replace()
      */
-    public function provider_substr_replace()
+    public function provider_substr_replace(): array
     {
         return [
             ['Cocoñùт', 'šš', 3, 2, 'Cocššùт'],
@@ -254,7 +254,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_strtolower()
      */
-    public function provider_strtolower()
+    public function provider_strtolower(): array
     {
         return [
             ['COCOÑÙТ', 'cocoñùт'],
@@ -276,7 +276,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_strtoupper()
      */
-    public function provider_strtoupper()
+    public function provider_strtoupper(): array
     {
         return [
             ['Cocoñùт', 'COCOÑÙТ'],
@@ -298,7 +298,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_ucfirst()
      */
-    public function provider_ucfirst()
+    public function provider_ucfirst(): array
     {
         return [
             ['ñùт', 'Ñùт'],
@@ -319,7 +319,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_strip_non_ascii()
      */
-    public function provider_ucwords()
+    public function provider_ucwords(): array
     {
         return [
             ['ExAmple', 'ExAmple'],
@@ -341,7 +341,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_strcasecmp()
      */
-    public function provider_strcasecmp()
+    public function provider_strcasecmp(): array
     {
         return [
             ['Cocoñùт', 'Cocoñùт', 0],
@@ -366,7 +366,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_str_ireplace()
      */
-    public function provider_str_ireplace()
+    public function provider_str_ireplace(): array
     {
         return [
             ['т', 't', 'cocoñuт', 'cocoñut'],
@@ -390,7 +390,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_stristr()
      */
-    public function provider_stristr()
+    public function provider_stristr(): array
     {
         return [
             ['Cocoñùт', 'oñ', 'oñùт'],
@@ -413,7 +413,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_strspn()
      */
-    public function provider_strspn()
+    public function provider_strspn(): array
     {
         return [
             ["foo", "o", 1, 2, 2],
@@ -437,7 +437,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_strcspn()
      */
-    public function provider_strcspn()
+    public function provider_strcspn(): array
     {
         return [
             ['Cocoñùт', 'oñ', null, null, 1],
@@ -460,7 +460,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_str_pad()
      */
-    public function provider_str_pad()
+    public function provider_str_pad(): array
     {
         return [
             ['Cocoñùт', 10, 'š', STR_PAD_RIGHT, 'Cocoñùтššš'],
@@ -484,17 +484,18 @@ class Kohana_UTF8Test extends Unittest_TestCase
      * Tests UTF8::str_pad error
      *
      * @test
-     * @expectedException UTF8_Exception
      */
     public function test_str_pad_error()
     {
+        $this->expectException(UTF8_Exception::class);
+
         UTF8::str_pad('Cocoñùт', 10, 'š', 15);
     }
 
     /**
      * Provides test data for test_str_split()
      */
-    public function provider_str_split()
+    public function provider_str_split(): array
     {
         return [
             ['Bár', 1, ['B', 'á', 'r']],
@@ -517,7 +518,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_strrev()
      */
-    public function provider_strrev()
+    public function provider_strrev(): array
     {
         return [
             ['Cocoñùт', 'тùñocoC'],
@@ -538,7 +539,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_trim()
      */
-    public function provider_trim()
+    public function provider_trim(): array
     {
         return [
             [' bar ', null, 'bar'],
@@ -561,7 +562,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_ltrim()
      */
-    public function provider_ltrim()
+    public function provider_ltrim(): array
     {
         return [
             [' bar ', null, 'bar '],
@@ -585,7 +586,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_rtrim()
      */
-    public function provider_rtrim()
+    public function provider_rtrim(): array
     {
         return [
             [' bar ', null, ' bar'],
@@ -609,7 +610,7 @@ class Kohana_UTF8Test extends Unittest_TestCase
     /**
      * Provides test data for test_ord()
      */
-    public function provider_ord()
+    public function provider_ord(): array
     {
         return [
             ['f', 102],

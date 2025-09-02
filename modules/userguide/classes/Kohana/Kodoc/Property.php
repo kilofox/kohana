@@ -17,7 +17,7 @@ class Kohana_Kodoc_Property extends Kodoc
     public $property;
 
     /**
-     * @var  string   modifiers: public, private, static, etc
+     * @var  string   modifiers: public, private, static, etc.
      */
     public $modifiers = 'public';
 

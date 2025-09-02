@@ -17,7 +17,7 @@ class Kohana_Validation implements ArrayAccess
      * @param   array   $array  array to use for validation
      * @return  Validation
      */
-    public static function factory(array $array)
+    public static function factory(array $array): Validation
     {
         return new Validation($array);
     }
@@ -68,7 +68,7 @@ class Kohana_Validation implements ArrayAccess
      * @param   string  $offset key to check
      * @return  bool    whether the key is set
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->_data[$offset]);
     }
@@ -107,7 +107,7 @@ class Kohana_Validation implements ArrayAccess
      * @return  Kohana_Validation
      * @since   3.0.5
      */
-    public function copy(array $array)
+    public function copy(array $array): Kohana_Validation
     {
         // Create a copy of the current validation set
         $copy = clone $this;
@@ -123,7 +123,7 @@ class Kohana_Validation implements ArrayAccess
      *
      * @return  array
      */
-    public function data()
+    public function data(): array
     {
         return $this->_data;
     }
@@ -131,11 +131,11 @@ class Kohana_Validation implements ArrayAccess
     /**
      * Sets or overwrites the label name for a field.
      *
-     * @param   string  $field  field name
-     * @param   string  $label  label
+     * @param string $field Field name
+     * @param string $label Label
      * @return  $this
      */
-    public function label($field, $label)
+    public function label(string $field, string $label): Kohana_Validation
     {
         // Set the label for this field
         $this->_labels[$field] = $label;
@@ -149,7 +149,7 @@ class Kohana_Validation implements ArrayAccess
      * @param   array   $labels list of field => label names
      * @return  $this
      */
-    public function labels(array $labels)
+    public function labels(array $labels): Kohana_Validation
     {
         $this->_labels = $labels + $this->_labels;
 
@@ -183,12 +183,12 @@ class Kohana_Validation implements ArrayAccess
      *
      * [!!] Errors must be added manually when using closures!
      *
-     * @param   string      $field  field name
-     * @param   callback    $rule   valid PHP callback or closure
-     * @param   array       $params extra parameters for the rule
+     * @param string $field field name
+     * @param mixed $rule Valid PHP callback or closure
+     * @param array|null $params extra parameters for the rule
      * @return  $this
      */
-    public function rule($field, $rule, array $params = null)
+    public function rule(string $field, $rule, ?array $params = null): Kohana_Validation
     {
         if ($params === null) {
             // Default to [':value']
@@ -209,11 +209,11 @@ class Kohana_Validation implements ArrayAccess
     /**
      * Add rules using an array.
      *
-     * @param   string  $field  field name
+     * @param string $field Field name
      * @param   array   $rules  list of callbacks
      * @return  $this
      */
-    public function rules($field, array $rules)
+    public function rules(string $field, array $rules): Kohana_Validation
     {
         foreach ($rules as $rule) {
             $this->rule($field, $rule[0], Arr::get($rule, 1));
@@ -229,11 +229,11 @@ class Kohana_Validation implements ArrayAccess
      *     $validation->bind(':model', $model)
      *         ->rule('status', 'valid_status', [':model']);
      *
-     * @param   string  $key    variable name or an array of variables
+     * @param string|string[] $key Variable name or an array of variables
      * @param   mixed   $value  value
      * @return  $this
      */
-    public function bind($key, $value = null)
+    public function bind($key, $value = null): Kohana_Validation
     {
         if (is_array($key)) {
             foreach ($key as $name => $value) {
@@ -258,7 +258,7 @@ class Kohana_Validation implements ArrayAccess
      * @return bool
      * @throws ReflectionException
      */
-    public function check()
+    public function check(): bool
     {
         if (Kohana::$profiling === true) {
             // Start a new benchmark
@@ -403,12 +403,12 @@ class Kohana_Validation implements ArrayAccess
     /**
      * Add an error to a field.
      *
-     * @param   string  $field  field name
-     * @param   string  $error  error message
-     * @param   array   $params
+     * @param string $field field name
+     * @param string $error error message
+     * @param array|null $params
      * @return  $this
      */
-    public function error($field, $error, array $params = null)
+    public function error(string $field, string $error, array $params = null): Kohana_Validation
     {
         $this->_errors[$field] = [$error, $params];
 
@@ -429,12 +429,12 @@ class Kohana_Validation implements ArrayAccess
      *     // Get errors from messages/forms/login.php
      *     $errors = $Validation->errors('forms/login');
      *
-     * @uses    Kohana::message
-     * @param   string  $file       file to load error messages from
+     * @param   string|null $file File to load error messages from
      * @param   mixed   $translate  translate the message
      * @return  array
+     * @uses    Kohana::message
      */
-    public function errors($file = null, $translate = true)
+    public function errors(string $file = null, $translate = true): array
     {
         if ($file === null) {
             // Return the error list

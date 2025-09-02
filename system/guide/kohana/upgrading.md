@@ -7,6 +7,8 @@ certain features may not function as expected.
 
 ## Changes
 
+- The global EXT constant has been removed. Explicitly specify `.php` or another file extension instead.
+
 ### Arr
 
 - The `Arr::callback()` method now ensures that the second element of the returned array (`$params`) is always an array,
@@ -22,7 +24,6 @@ certain features may not function as expected.
 ### Core
 
 - The `Kohana::CODENAME` constant has been removed.
-
 - The static property `Kohana::$magic_quotes` was deprecated.
 
 ### Encrypt
@@ -34,11 +35,14 @@ certain features may not function as expected.
 - The static property `Image::$default_driver` has been removed. To configure the default driver, refer to
   the [Image driver configuration](../../guide/image/#drivers).
 
+### ORM
+
+- The `changed()` method now has a strict boolean return type and only returns true or false.
+- A new `changes()` method was added to retrieve the actual changed fields and their values.
+
 ### Request
 
 - The `Request::accept_encoding()` method has been removed. Use `Request::headers()->accepts_encoding_at_quality()`
   instead.
-
 - The `Request::accept_lang()` method has been removed. Use `Request::headers()->accepts_language_at_quality()` instead.
-
 - The `Request::accept_type()` method has been removed. Use `Request::headers()->accepts_at_quality()` instead.

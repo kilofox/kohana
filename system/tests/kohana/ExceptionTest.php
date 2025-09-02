@@ -20,7 +20,7 @@ class Kohana_ExceptionTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_constructor()
+    public function provider_constructor(): array
     {
         return [
             [[''], '', 0],
@@ -47,11 +47,11 @@ class Kohana_ExceptionTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_constructor
      * @covers Kohana_Kohana_Exception::__construct
-     * @param array             $arguments          Arguments
-     * @param string            $expected_message   Value from getMessage()
+     * @param array $arguments Arguments
+     * @param string $expected_message Value from getMessage()
      * @param int|string $expected_code Value from getCode()
      */
-    public function test_constructor($arguments, $expected_message, $expected_code)
+    public function test_constructor(array $arguments, string $expected_message, $expected_code)
     {
         switch (count($arguments)) {
             case 1:
@@ -73,7 +73,7 @@ class Kohana_ExceptionTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_text()
+    public function provider_text(): array
     {
         return [
             [new Kohana_Exception('foobar'), $this->dirSeparator('Kohana_Exception [ 0 ]: foobar ~ SYSPATH/tests/kohana/ExceptionTest.php [ ' . __LINE__ . ' ]')],
@@ -89,7 +89,7 @@ class Kohana_ExceptionTest extends Unittest_TestCase
      * @param object $exception exception to test
      * @param string $expected  expected output
      */
-    public function test_text($exception, $expected)
+    public function test_text($exception, string $expected)
     {
         $this->assertEquals($expected, Kohana_Exception::text($exception));
     }

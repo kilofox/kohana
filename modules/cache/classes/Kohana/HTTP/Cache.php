@@ -37,7 +37,7 @@ class Kohana_HTTP_Cache
      * @throws Kohana_Exception
      * @uses    Cache
      */
-    public static function factory($cache, array $options = [])
+    public static function factory($cache, array $options = []): HTTP_Cache
     {
         if (!$cache instanceof Cache) {
             $cache = Cache::instance($cache);
@@ -59,7 +59,7 @@ class Kohana_HTTP_Cache
      * @param   Request $request
      * @return  string
      */
-    public static function basic_cache_key_generator(Request $request)
+    public static function basic_cache_key_generator(Request $request): string
     {
         $uri = $request->uri();
         $query = $request->query();
@@ -214,15 +214,15 @@ class Kohana_HTTP_Cache
      * that have the `private` setting.
      *
      * @link    https://www.rfc-editor.org/rfc/rfc9111#name-private
-     * @param bool $setting allow caching of privately marked responses
+     * @param bool|null $setting Allow caching of privately marked responses
      * @return bool|Kohana_HTTP_Cache
      */
-    public function allow_private_cache($setting = null)
+    public function allow_private_cache(bool $setting = null)
     {
         if ($setting === null)
             return $this->_allow_private_cache;
 
-        $this->_allow_private_cache = (bool) $setting;
+        $this->_allow_private_cache = $setting;
         return $this;
     }
 
@@ -248,11 +248,11 @@ class Kohana_HTTP_Cache
      *            return sha1($request->render());
      *      });
      *
-     * @param callback $callback
+     * @param callable|null $callback
      * @return callable|Kohana_HTTP_Cache
      * @throws Kohana_Exception
      */
-    public function cache_key_callback($callback = null)
+    public function cache_key_callback(callable $callback = null)
     {
         if ($callback === null)
             return $this->_cache_key_callback;
@@ -272,10 +272,10 @@ class Kohana_HTTP_Cache
      * by setting [HTTP_Cache::cache_key_callback()].
      *
      * @param   Request     $request    request to create key for
-     * @param   callback    $callback   optional callback to use instead of built-in method
+     * @param   callable    $callback   optional callback to use instead of built-in method
      * @return  string
      */
-    public function create_cache_key(Request $request, $callback = false)
+    public function create_cache_key(Request $request, $callback = false): string
     {
         if (is_callable($callback))
             return call_user_func($callback, $request);
@@ -291,7 +291,7 @@ class Kohana_HTTP_Cache
      * @param   Response  $response The Response
      * @return  bool
      */
-    public function set_cache(Response $response)
+    public function set_cache(Response $response): bool
     {
         $headers = $response->headers()->getArrayCopy();
 
@@ -335,11 +335,11 @@ class Kohana_HTTP_Cache
      *
      * @param string $key the cache key to use
      * @param Request $request the HTTP Request
-     * @param Response $response the HTTP Response
+     * @param Response|null $response the HTTP Response
      * @return bool|Response
      * @throws Cache_Exception
      */
-    public function cache_response($key, Request $request, Response $response = null)
+    public function cache_response(string $key, Request $request, Response $response = null)
     {
         if (!$this->_cache instanceof Cache)
             return false;

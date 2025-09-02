@@ -100,7 +100,7 @@ Arbitrary parameters can be passed to the callbacks through the [Request_Client:
                 'X-Custom-1' => function (Request $request, Response $response, Request_Client $client) {
                     // Do something that needs an external parameter
                     if ($client->callback_params('foo') === 'bar') {
-                        // etc
+                        // etc.
                     }
                 },
             ],

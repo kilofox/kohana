@@ -9,9 +9,9 @@
  * @copyright  (c) 2008-2013 Kohana Team
  * @license    https://kohana.top/license
  */
-class Kohana_KodocTest extends PHPUnit_Framework_TestCase
+class Kohana_KodocTest extends PHPUnit\Framework\TestCase
 {
-    public function provider_parse_basic()
+    public function provider_parse_basic(): array
     {
         return [
             [
@@ -132,12 +132,12 @@ COMMENT
      * @param array $expected Expected result
      * @throws Kohana_Exception
      */
-    public function test_parse_basic($comment, $expected)
+    public function test_parse_basic(string $comment, array $expected)
     {
         $this->assertSame($expected, Kodoc::parse($comment));
     }
 
-    public function provider_parse_tags()
+    public function provider_parse_tags(): array
     {
         $route_api = Route::get('docs/api');
 
@@ -314,7 +314,7 @@ COMMENT
      * @param array $expected Expected result
      * @throws Kohana_Exception
      */
-    public function test_parse_tags($comment, $expected)
+    public function test_parse_tags(string $comment, array $expected)
     {
         $this->assertSame($expected, Kodoc::parse($comment));
     }
@@ -323,7 +323,7 @@ COMMENT
      * Provides test data for test_transparent_classes
      * @return array
      */
-    public function provider_transparent_classes()
+    public function provider_transparent_classes(): array
     {
         return [
             // Kohana_Core is a special case
@@ -369,10 +369,10 @@ COMMENT
      * @dataProvider provider_transparent_classes
      * @param mixed $expected
      * @param string $class
-     * @param array $classes
+     * @param array|null $classes
      * @throws Kohana_Exception
      */
-    public function test_transparent_classes($expected, $class, $classes)
+    public function test_transparent_classes($expected, string $class, ?array $classes)
     {
         $result = Kodoc::is_transparent($class, $classes);
         $this->assertSame($expected, $result);

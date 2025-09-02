@@ -4,7 +4,7 @@
  * Redirect HTTP exception class. Used for all [HTTP_Exception]'s where the status
  * code indicates a redirect.
  *
- * Eg [HTTP_Exception_301], [HTTP_Exception_302] and most of the other 30x's
+ * E.g. [HTTP_Exception_301], [HTTP_Exception_302] and most of the other 30x's
  *
  * @package    Kohana
  * @category   Exceptions
@@ -17,10 +17,10 @@ abstract class Kohana_HTTP_Exception_Redirect extends HTTP_Exception_Expected
     /**
      * Specifies the URI to redirect to.
      *
-     * @param string $uri URI of the proxy
+     * @param string|null $uri URI of the proxy
      * @throws Kohana_Exception
      */
-    public function location($uri = null)
+    public function location(string $uri = null)
     {
         if ($uri === null)
             return $this->headers('Location');
@@ -41,7 +41,7 @@ abstract class Kohana_HTTP_Exception_Redirect extends HTTP_Exception_Expected
      * @throws Kohana_Exception
      * @return bool
      */
-    public function check()
+    public function check(): bool
     {
         if ($this->headers('location') === null)
             throw new Kohana_Exception('A \'location\' must be specified for a redirect');

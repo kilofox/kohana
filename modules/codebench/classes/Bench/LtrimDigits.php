@@ -19,7 +19,7 @@ class Bench_LtrimDigits extends Codebench
         return preg_replace('/^\d+/', '', $subject);
     }
 
-    public function bench_ltrim($subject)
+    public function bench_ltrim($subject): string
     {
         return ltrim($subject, '0..9');
     }

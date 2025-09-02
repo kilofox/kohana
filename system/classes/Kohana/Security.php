@@ -40,7 +40,7 @@ class Kohana_Security
      * @throws Kohana_Exception
      * @uses    Session::instance
      */
-    public static function token($new = false)
+    public static function token(bool $new = false): string
     {
         $session = Session::instance();
 
@@ -78,7 +78,7 @@ class Kohana_Security
      * @throws Kohana_Exception
      * @uses    Security::token
      */
-    public static function check($token)
+    public static function check(string $token): bool
     {
         return Security::slow_equals(Security::token(), $token);
     }
@@ -91,7 +91,7 @@ class Kohana_Security
      * @param string $b cryptographic hash
      * @return bool
      */
-    public static function slow_equals($a, $b)
+    public static function slow_equals(string $a, string $b): bool
     {
         $diff = strlen($a) ^ strlen($b);
         for ($i = 0; $i < strlen($a) && $i < strlen($b); $i++) {
@@ -105,10 +105,10 @@ class Kohana_Security
      *
      *     $str = Security::encode_php_tags($str);
      *
-     * @param   string  $str    string to sanitize
+     * @param string $str String to sanitize
      * @return  string
      */
-    public static function encode_php_tags($str)
+    public static function encode_php_tags(string $str): string
     {
         return str_replace(['<?', '?>'], ['&lt;?', '?&gt;'], $str);
     }

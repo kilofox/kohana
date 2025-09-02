@@ -9,7 +9,7 @@
  * @copyright  (c) 2009-2012 Kohana Team
  * @license    https://kohana.top/license
  */
-abstract class Kohana_CacheBasicMethodsTest extends PHPUnit_Framework_TestCase
+abstract class Kohana_CacheBasicMethodsTest extends PHPUnit\Framework\TestCase
 {
     /**
      * @var     Cache driver for this test
@@ -52,7 +52,7 @@ abstract class Kohana_CacheBasicMethodsTest extends PHPUnit_Framework_TestCase
      *
      * @return  array
      */
-    public function provider_set_get()
+    public function provider_set_get(): array
     {
         $object = new StdClass;
         $object->foo = 'foo';

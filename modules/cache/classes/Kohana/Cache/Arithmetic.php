@@ -22,7 +22,7 @@ interface Kohana_Cache_Arithmetic
      * @param int $step step value to increment by
      * @return int|false
      */
-    public function increment($id, $step = 1);
+    public function increment(string $id, int $step = 1);
     /**
      * Decrements a given value by the step value supplied.
      * Useful for shared counters and other persistent integer based
@@ -32,5 +32,5 @@ interface Kohana_Cache_Arithmetic
      * @param int $step step value to decrement by
      * @return int|false
      */
-    public function decrement($id, $step = 1);
+    public function decrement(string $id, int $step = 1);
 }

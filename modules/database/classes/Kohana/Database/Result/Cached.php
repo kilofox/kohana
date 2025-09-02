@@ -24,12 +24,12 @@ class Kohana_Database_Result_Cached extends Database_Result
         // Cached results do not use resources
     }
 
-    public function cached()
+    public function cached(): Database_Result
     {
         return $this;
     }
 
-    public function seek($offset)
+    public function seek($offset): bool
     {
         if ($this->offsetExists($offset)) {
             $this->_current_row = $offset;

@@ -27,14 +27,14 @@ class Kohana_Form
      *     echo Form::open(null, ['enctype' => 'multipart/form-data']);
      *
      * @param mixed $action form action, defaults to the current request URI, or [Request] class to use
-     * @param array $attributes HTML attributes
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @throws Kohana_Exception
      * @uses    URL::site
      * @uses    HTML::attributes
      * @uses    Request
      */
-    public static function open($action = null, array $attributes = null)
+    public static function open($action = null, array $attributes = null): string
     {
         if ($action instanceof Request) {
             // Use the current URI
@@ -70,7 +70,7 @@ class Kohana_Form
      *
      * @return  string
      */
-    public static function close()
+    public static function close(): string
     {
         return '</form>';
     }
@@ -81,13 +81,13 @@ class Kohana_Form
      *
      *     echo Form::input('username', $username);
      *
-     * @param   string  $name       input name
-     * @param   string  $value      input value
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param string|null $value input value
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    HTML::attributes
      */
-    public static function input($name, $value = null, array $attributes = null)
+    public static function input(string $name, string $value = null, array $attributes = null): string
     {
         // Set the input name
         $attributes['name'] = $name;
@@ -108,13 +108,13 @@ class Kohana_Form
      *
      *     echo Form::hidden('csrf', $token);
      *
-     * @param   string  $name       input name
-     * @param   string  $value      input value
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param string|null $value input value
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
-    public static function hidden($name, $value = null, array $attributes = null)
+    public static function hidden(string $name, string $value = null, array $attributes = null): string
     {
         $attributes['type'] = 'hidden';
 
@@ -126,13 +126,13 @@ class Kohana_Form
      *
      *     echo Form::password('password');
      *
-     * @param   string  $name       input name
-     * @param   string  $value      input value
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param string|null $value input value
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
-    public static function password($name, $value = null, array $attributes = null)
+    public static function password(string $name, string $value = null, array $attributes = null): string
     {
         $attributes['type'] = 'password';
 
@@ -144,12 +144,12 @@ class Kohana_Form
      *
      *     echo Form::file('image');
      *
-     * @param   string  $name       input name
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
-    public static function file($name, array $attributes = null)
+    public static function file(string $name, array $attributes = null): string
     {
         $attributes['type'] = 'file';
 
@@ -161,14 +161,14 @@ class Kohana_Form
      *
      *     echo Form::checkbox('remember_me', 1, (bool) $remember);
      *
-     * @param   string  $name       input name
-     * @param   string  $value      input value
-     * @param   bool $checked checked status
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param string|null $value input value
+     * @param bool $checked checked status
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
-    public static function checkbox($name, $value = null, $checked = false, array $attributes = null)
+    public static function checkbox(string $name, string $value = null, bool $checked = false, array $attributes = null): string
     {
         $attributes['type'] = 'checkbox';
 
@@ -186,14 +186,14 @@ class Kohana_Form
      *     echo Form::radio('like_cats', 1, $cats);
      *     echo Form::radio('like_cats', 0, !$cats);
      *
-     * @param   string  $name       input name
-     * @param   string  $value      input value
-     * @param   bool $checked checked status
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param string|null $value input value
+     * @param bool $checked checked status
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
-    public static function radio($name, $value = null, $checked = false, array $attributes = null)
+    public static function radio(string $name, string $value = null, bool $checked = false, array $attributes = null): string
     {
         $attributes['type'] = 'radio';
 
@@ -210,15 +210,15 @@ class Kohana_Form
      *
      *     echo Form::textarea('about', $about);
      *
-     * @param   string  $name           textarea name
-     * @param   string  $body           textarea body
-     * @param   array   $attributes     HTML attributes
-     * @param   bool $double_encode encode existing HTML characters
+     * @param string $name textarea name
+     * @param string $body textarea body
+     * @param array|null $attributes HTML attributes
+     * @param bool $double_encode encode existing HTML characters
      * @return  string
      * @uses    HTML::attributes
      * @uses    HTML::chars
      */
-    public static function textarea($name, $body = '', array $attributes = null, $double_encode = true)
+    public static function textarea(string $name, string $body = '', array $attributes = null, bool $double_encode = true): string
     {
         // Set the input name
         $attributes['name'] = $name;
@@ -236,14 +236,14 @@ class Kohana_Form
      *
      * [!!] Support for multiple selected options was added in v3.0.7.
      *
-     * @param   string  $name       input name
-     * @param   array   $options    available options
-     * @param   mixed   $selected   selected option string, or an array of selected options
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param array|null $options available options
+     * @param mixed $selected selected option string, or an array of selected options
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    HTML::attributes
      */
-    public static function select($name, array $options = null, $selected = null, array $attributes = null)
+    public static function select(string $name, array $options = null, $selected = null, array $attributes = null): string
     {
         // Set the input name
         $attributes['name'] = $name;
@@ -324,13 +324,13 @@ class Kohana_Form
      *
      *     echo Form::submit(null, 'Login');
      *
-     * @param   string  $name       input name
-     * @param   string  $value      input value
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param string $value input value
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    Form::input
      */
-    public static function submit($name, $value, array $attributes = null)
+    public static function submit(string $name, string $value, array $attributes = null): string
     {
         $attributes['type'] = 'submit';
 
@@ -344,13 +344,13 @@ class Kohana_Form
      *
      * @param string $name input name
      * @param string $value input value
-     * @param array $attributes HTML attributes
+     * @param array|null $attributes HTML attributes
      * @param bool $index add index file to URL?
      * @return  string
      * @throws Kohana_Exception
      * @uses    Form::input
      */
-    public static function image($name, $value, array $attributes = null, $index = false)
+    public static function image(string $name, string $value, array $attributes = null, bool $index = false): string
     {
         if (!empty($attributes['src'])) {
             if (strpos($attributes['src'], '://') === false) {
@@ -370,13 +370,13 @@ class Kohana_Form
      *
      *     echo Form::button('save', 'Save Profile', ['type' => 'submit']);
      *
-     * @param   string  $name       input name
-     * @param   string  $body       input value
-     * @param   array   $attributes HTML attributes
+     * @param string $name input name
+     * @param string $body input value
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    HTML::attributes
      */
-    public static function button($name, $body, array $attributes = null)
+    public static function button(string $name, string $body, array $attributes = null): string
     {
         // Set the input name
         $attributes['name'] = $name;
@@ -389,13 +389,13 @@ class Kohana_Form
      *
      *     echo Form::label('username', 'Username');
      *
-     * @param   string  $input      target input
-     * @param   string  $text       label text
-     * @param   array   $attributes HTML attributes
+     * @param string $input target input
+     * @param string|null $text label text
+     * @param array|null $attributes HTML attributes
      * @return  string
      * @uses    HTML::attributes
      */
-    public static function label($input, $text = null, array $attributes = null)
+    public static function label(string $input, string $text = null, array $attributes = null): string
     {
         if ($text === null) {
             // Use the input name as the text

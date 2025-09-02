@@ -94,7 +94,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      * @param string $body    A string to send back as response body (included in the JSON response)
      * @return string
      */
-    protected function _dummy_uri($status, $headers, $body)
+    protected function _dummy_uri(string $status, array $headers, string $body): string
     {
         $data = [
             'status' => $status,
@@ -114,21 +114,21 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      * @param string $status  HTTP response code to issue
      * @return string
      */
-    protected function _dummy_redirect_uri($status)
+    protected function _dummy_redirect_uri(string $status): string
     {
-        return $this->_dummy_uri($status, ['Location' => $this->_dummy_uri(200, null, 'followed')], 'not-followed');
+        return $this->_dummy_uri($status, ['Location' => $this->_dummy_uri(200, [], 'followed')], 'not-followed');
     }
 
     /**
      * Provider for test_follows_redirects
      * @return array
      */
-    public function provider_follows_redirects()
+    public function provider_follows_redirects(): array
     {
         return [
             [
                 true,
-                $this->_dummy_uri(200, null, 'not-followed'),
+                $this->_dummy_uri(200, [], 'not-followed'),
                 'not-followed'
             ],
             [
@@ -154,12 +154,12 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      * @dataProvider provider_follows_redirects
      *
      * @param bool $follow Option value to set
-     * @param string $request_url URL to request initially (contains data to set up redirect etc)
+     * @param string $request_url URL to request initially (contains data to set up redirect etc.)
      * @param string $expect_body Body text expected in the eventual result
      * @throws Kohana_Exception
      * @throws Request_Exception
      */
-    public function test_follows_redirects($follow, $request_url, $expect_body)
+    public function test_follows_redirects(bool $follow, string $request_url, string $expect_body)
     {
         $response = Request::factory($request_url, ['follow' => $follow])
             ->execute();
@@ -218,7 +218,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_follows_with_strict_method()
+    public function provider_follows_with_strict_method(): array
     {
         return [
             [201, null, Request::POST, Request::GET],
@@ -237,13 +237,13 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      * @dataProvider provider_follows_with_strict_method
      *
      * @param string $status_code HTTP response code to fake
-     * @param bool $strict_redirect Option value to set
+     * @param bool|null $strict_redirect Option value to set
      * @param string $orig_method Request method for the original request
      * @param string $expect_method Request method expected for the follow request
      * @throws Kohana_Exception
      * @throws Request_Exception
      */
-    public function test_follows_with_strict_method($status_code, $strict_redirect, $orig_method, $expect_method)
+    public function test_follows_with_strict_method(string $status_code, ?bool $strict_redirect, string $orig_method, string $expect_method)
     {
         $response = Request::factory($this->_dummy_redirect_uri($status_code), [
                 'follow' => true,
@@ -263,7 +263,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_follows_with_body_if_not_get()
+    public function provider_follows_with_body_if_not_get(): array
     {
         return [
             ['GET', '301', null],
@@ -282,11 +282,11 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      *
      * @param string $original_method Request method to use for the original request
      * @param string $status Redirect status that will be issued
-     * @param string $expect_body Expected value of body() in the second request
+     * @param string|null $expect_body Expected value of body() in the second request
      * @throws Kohana_Exception
      * @throws Request_Exception
      */
-    public function test_follows_with_body_if_not_get($original_method, $status, $expect_body)
+    public function test_follows_with_body_if_not_get(string $original_method, string $status, ?string $expect_body)
     {
         $response = Request::factory($this->_dummy_redirect_uri($status), [
                 'follow' => true
@@ -306,7 +306,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_triggers_header_callbacks()
+    public function provider_triggers_header_callbacks(): array
     {
         return [
             // Straightforward response manipulation
@@ -328,7 +328,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
                     }
                 ],
                 $this->_dummy_uri(200, [
-                    'X-test-2' => $this->_dummy_uri(200, null, 'test2-subsequent-body')
+                    'X-test-2' => $this->_dummy_uri(200, [], 'test2-subsequent-body')
                     ], 'test2-orig-body'),
                 'test2-subsequent-body'
             ],
@@ -353,8 +353,8 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
                     }
                 ],
                 $this->_dummy_uri(200, [
-                    'X-test-1' => $this->_dummy_uri(200, null, 'test1-subsequent-body'),
-                    'X-test-2' => $this->_dummy_uri(200, null, 'test2-subsequent-body')
+                    'X-test-1' => $this->_dummy_uri(200, [], 'test1-subsequent-body'),
+                    'X-test-2' => $this->_dummy_uri(200, [], 'test2-subsequent-body')
                     ], 'test2-orig-body'),
                 'test1-subsequent-body'
             ],
@@ -370,7 +370,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
                 ],
                 $this->_dummy_uri(200, [
                     'X-test-1' => $this->_dummy_uri(200, [
-                        'X-test-2' => $this->_dummy_uri(200, null, 'test2-subsequent-body')
+                        'X-test-2' => $this->_dummy_uri(200, [], 'test2-subsequent-body')
                         ], 'test1-subsequent-body')
                     ], 'test-orig-body'),
                 'test2-subsequent-body'
@@ -390,7 +390,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      * @throws Kohana_Exception
      * @throws Request_Exception
      */
-    public function test_triggers_header_callbacks($callbacks, $uri, $expect_body)
+    public function test_triggers_header_callbacks(array $callbacks, $uri, string $expect_body)
     {
         $response = Request::factory($uri, ['header_callbacks' => $callbacks])
             ->execute();
@@ -444,7 +444,7 @@ class Kohana_Request_ClientTest extends Unittest_TestCase
      * @param Response $response
      * @param Request_Client $client
      */
-    public function callback_assert_params($request, $response, $client)
+    public function callback_assert_params(Request $request, Response $response, Request_Client $client)
     {
         $this->assertEquals('foo', $client->callback_params('constructor_param'));
         $this->assertEquals('bar', $client->callback_params('setter_param'));

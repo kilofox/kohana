@@ -61,17 +61,17 @@ If multiple cache operations are required, it is best to assign an instance of C
 Certain cache drivers support setting values with tags. To set a value to cache with tags using the following interface.
 
     // Get a cache instance that supports tags
-    $memcache = Cache::instance('memcachetag');
+    $cache = Cache::instance('sqlite');
 
     // Test for tagging interface
-    if ($memcache instanceof Cache_Tagging) {
+    if ($cache instanceof Cache_Tagging) {
         // Set a value with some tags for 30 seconds
-        $memcache->set('foo', $object, 30, ['snafu', 'stfu', 'fubar']);
+        $cache->set_with_tags('foo', $object, 30, ['snafu', 'stfu', 'fubar']);
     }
     // Otherwise set without tags
     else {
         // Set a value for 30 seconds
-        $memcache->set('foo', $object, 30);
+        $cache->set('foo', $object, 30);
     }
 
 It is possible to implement custom tagging solutions onto existing or new cache drivers by implementing the [Cache_Tagging] interface. Kohana_Cache only applies the interface to drivers that support tagging natively as standard.
@@ -96,19 +96,10 @@ In cases where the requested key is not available or the entry has expired, a de
 
 It is possible to retrieve values from cache grouped by tag, using the [Cache::find] method with drivers that support tagging.
 
-[!!] The __Memcachetag__ driver does not support the `Cache::find($tag)` interface and will throw an exception.
-
     // Get an instance of cache
-    $cache = Cache::instance('memcachetag');
+    $cache = Cache::instance('sqlite');
 
-    // Wrap in a try/catch statement to gracefully handle memcachetag
-    try {
-        // Find values based on tag
-        return $cache->find('snafu');
-    } catch (Cache_Exception $e) {
-        // Handle gracefully
-        return false;
-    }
+    return $cache->find('snafu');
 
 ### Deleting values from cache
 
@@ -116,7 +107,7 @@ Deleting variables is very similar to the getting and setting methods already de
 
  - __Delete value by key__. Deletes a cached value by the associated key.
  - __Delete all values__. Deletes all caches values stored in the cache instance.
- - __Delete values by tag__. Deletes all values that have the supplied tag. This is only supported by Memcached-Tag and Sqlite.
+ - __Delete values by tag__. Deletes all values that have the supplied tag. This is only supported by Sqlite.
 
 #### Delete value by key
 
@@ -183,7 +174,6 @@ When not automated, garbage collection is the responsibility of the developer. I
 Kohana Cache comes with two interfaces that are implemented where the drivers support them:
 
  - __[Cache_Tagging] for tagging support on cache entries__
-    - [Cache_MemcacheTag]
     - [Cache_Sqlite]
  - __[Cache_GarbageCollect] for garbage collection with drivers without native support__
     - [Cache_File]

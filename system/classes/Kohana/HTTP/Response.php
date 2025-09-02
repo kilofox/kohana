@@ -24,8 +24,8 @@ interface Kohana_HTTP_Response extends HTTP_Message
      *      // Get the current status
      *      $status = $response->status();
      *
-     * @param   int $code Status to set to this response
+     * @param int|null $code Status to set to this response
      * @return  mixed
      */
-    public function status($code = null);
+    public function status(int $code = null);
 }

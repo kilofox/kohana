@@ -53,14 +53,13 @@ class Kohana_RouteTest extends Unittest_TestCase
      * If Route::get() is asked for a route that does not exist then
      * it should throw a Kohana_Exception
      *
-     * Note use of @expectedException
-     *
      * @test
      * @covers Route::get
-     * @expectedException Kohana_Exception
      */
     public function test_get_throws_exception_if_route_dnx()
     {
+        $this->expectException(Kohana_Exception::class);
+
         Route::get('HAHAHAHAHAHAHAHAHA');
     }
 
@@ -143,7 +142,7 @@ class Kohana_RouteTest extends Unittest_TestCase
         $modified = Route::all();
 
         // Then try and load said cache
-        $this->assertTrue(Route::cache(null, true));
+        $this->assertTrue(Route::cache(false, true));
 
         // Check the route cache flag
         $this->assertTrue(Route::$cache);
@@ -202,7 +201,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_constructor_only_changes_custom_regex_if_passed()
+    public function provider_constructor_only_changes_custom_regex_if_passed(): array
     {
         return [
             ['<controller>/<action>', '<controller>/<action>'],
@@ -256,7 +255,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_matches_returns_false_on_failure()
+    public function provider_matches_returns_false_on_failure(): array
     {
         return [
             [
@@ -289,7 +288,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_matches_returns_array_of_parameters_on_successful_match()
+    public function provider_matches_returns_array_of_parameters_on_successful_match(): array
     {
         return [
             [
@@ -333,7 +332,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_defaults_are_used_if_params_arent_specified()
+    public function provider_defaults_are_used_if_params_arent_specified(): array
     {
         return [
             [
@@ -396,7 +395,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_optional_groups_containing_specified_params()
+    public function provider_optional_groups_containing_specified_params(): array
     {
         return [
             /**
@@ -518,7 +517,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_required_parameters_are_needed()
+    public function provider_required_parameters_are_needed(): array
     {
         return [
             [
@@ -569,7 +568,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_reverse_routing_returns_routes_uri_if_route_is_static()
+    public function provider_reverse_routing_returns_routes_uri_if_route_is_static(): array
     {
         return [
             [
@@ -604,7 +603,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_uri_throws_exception_if_required_params_are_missing()
+    public function provider_uri_throws_exception_if_required_params_are_missing(): array
     {
         return [
             [
@@ -648,7 +647,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_uri_fills_required_uri_segments_from_params()
+    public function provider_uri_fills_required_uri_segments_from_params(): array
     {
         return [
             [
@@ -691,7 +690,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      * Provides test data for test_composing_url_from_route()
      * @return array
      */
-    public function provider_composing_url_from_route()
+    public function provider_composing_url_from_route(): array
     {
         return [
             [
@@ -717,12 +716,12 @@ class Kohana_RouteTest extends Unittest_TestCase
      * @test
      * @dataProvider provider_composing_url_from_route
      * @param string $expected
-     * @param array $params
+     * @param array|null $params
      * @param mixed $protocol
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function test_composing_url_from_route($expected, $params = null, $protocol = null)
+    public function test_composing_url_from_route(string $expected, array $params = null, $protocol = null)
     {
         Route::set('foobar', '(<controller>(/<action>(/<id>)))')
             ->defaults(['controller' => 'welcome']);
@@ -787,7 +786,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_external_route_includes_params_in_uri()
+    public function provider_external_route_includes_params_in_uri(): array
     {
         return [
             [
@@ -837,7 +836,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_route_filter_modify_params()
+    public function provider_route_filter_modify_params(): array
     {
         return [
             [
@@ -880,7 +879,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_route_uri_encode_parameters()
+    public function provider_route_uri_encode_parameters(): array
     {
         return [
             [
@@ -920,7 +919,7 @@ class Kohana_RouteTest extends Unittest_TestCase
      * @param string $uri
      * @return PHPUnit_Framework_MockObject_MockObject|(Request&MockObject)
      */
-    public function get_request_mock($uri)
+    public function get_request_mock(string $uri)
     {
         // Mock a request class with the $uri URI
         $request = $this->getMockBuilder('Request')

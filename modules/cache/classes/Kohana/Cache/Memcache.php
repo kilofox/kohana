@@ -173,11 +173,11 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      *     // Retrieve cache entry from memcache group and return 'bar' if missing
      *     $data = Cache::instance('memcache')->get('foo', 'bar');
      *
-     * @param   string  $id       id of cache to entry
-     * @param   string  $default  default value to return if cache miss
+     * @param string $id ID of cache entry
+     * @param string|null $default Default value to return if cache miss
      * @return  mixed
      */
-    public function get($id, $default = null)
+    public function get(string $id, string $default = null)
     {
         // Get the value from Memcache
         $value = $this->_memcache->get($this->_sanitize_id($id));
@@ -203,12 +203,12 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      *          return
      *     }
      *
-     * @param   string   $id        id of cache entry
+     * @param string $id ID of cache entry
      * @param   mixed    $data      data to set to cache
-     * @param   int $lifetime lifetime in seconds, maximum value 2592000
+     * @param int $lifetime Lifetime in seconds, maximum value 2592000
      * @return  bool
      */
-    public function set($id, $data, $lifetime = 3600)
+    public function set(string $id, $data, int $lifetime = 3600): bool
     {
         // If the lifetime is greater than the ceiling
         if ($lifetime > Cache_Memcache::CACHE_CEILING) {
@@ -238,11 +238,11 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      *     // Delete the 'bar' cache entry after 30 seconds
      *     Cache::instance('memcache')->delete('bar', 30);
      *
-     * @param   string   $id       id of entry to delete
-     * @param   int $timeout timeout of entry, if zero item is deleted immediately, otherwise the item will delete after the specified value in seconds
+     * @param string $id ID of entry to delete
+     * @param int $timeout Timeout of entry, if zero item is deleted immediately, otherwise the item will delete after the specified value in seconds
      * @return  bool
      */
-    public function delete($id, $timeout = 0)
+    public function delete(string $id, int $timeout = 0): bool
     {
         // Delete the id
         return $this->_memcache->delete($this->_sanitize_id($id), $timeout);
@@ -260,7 +260,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      *
      * @return bool
      */
-    public function delete_all()
+    public function delete_all(): bool
     {
         $result = $this->_memcache->flush();
 
@@ -276,12 +276,12 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      * on a particular server fails. This method switches off that instance of the
      * server if the configuration setting `instant_death` is set to `true`.
      *
-     * @param   string   $hostname
-     * @param   int $port
+     * @param string $hostname
+     * @param int $port
      * @return  void|boolean
      * @since   3.0.8
      */
-    public function _failed_request($hostname, $port)
+    public function _failed_request(string $hostname, int $port)
     {
         if (!$this->_config['instant_death'])
             return;
@@ -320,7 +320,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      * @param int $step step value to increment by
      * @return int|false
      */
-    public function increment($id, $step = 1)
+    public function increment(string $id, int $step = 1)
     {
         return $this->_memcache->increment($id, $step);
     }
@@ -334,7 +334,7 @@ class Kohana_Cache_Memcache extends Cache implements Cache_Arithmetic
      * @param int $step step value to decrement by
      * @return int|false
      */
-    public function decrement($id, $step = 1)
+    public function decrement(string $id, int $step = 1)
     {
         return $this->_memcache->decrement($id, $step);
     }

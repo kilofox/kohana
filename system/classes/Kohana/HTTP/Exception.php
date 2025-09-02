@@ -5,12 +5,13 @@ abstract class Kohana_HTTP_Exception extends Kohana_Exception
     /**
      * Creates an HTTP_Exception of the specified type.
      *
-     * @param   int $code the http status code
-     * @param   string  $message    status message, custom content to display with error
-     * @param   array   $variables  translation variables
+     * @param int $code the http status code
+     * @param string $message Status message, custom content to display with error
+     * @param array|null $variables translation variables
+     * @param Exception|null $previous
      * @return  HTTP_Exception
      */
-    public static function factory($code, $message = null, array $variables = null, Exception $previous = null)
+    public static function factory(int $code, string $message = '', array $variables = null, Exception $previous = null): HTTP_Exception
     {
         $class = 'HTTP_Exception_' . $code;
 
@@ -32,11 +33,11 @@ abstract class Kohana_HTTP_Exception extends Kohana_Exception
      *
      *     throw new Kohana_Exception('Something went terrible wrong, :user', [':user' => $user]);
      *
-     * @param   string  $message    status message, custom content to display with error
-     * @param   array   $variables  translation variables
-     * @return  void
+     * @param string $message status message, custom content to display with error
+     * @param array|null $variables translation variables
+     * @param Exception|null $previous
      */
-    public function __construct($message = null, array $variables = null, Exception $previous = null)
+    public function __construct(string $message = '', array $variables = null, Exception $previous = null)
     {
         parent::__construct($message, $variables, $this->_code, $previous);
     }
@@ -44,7 +45,7 @@ abstract class Kohana_HTTP_Exception extends Kohana_Exception
     /**
      * Store the Request that triggered this exception.
      *
-     * @param   Request   $request  Request object that triggered this exception.
+     * @param Request|null $request Request object that triggered this exception.
      * @return  Kohana_HTTP_Exception|Request
      */
     public function request(Request $request = null)
@@ -64,7 +65,7 @@ abstract class Kohana_HTTP_Exception extends Kohana_Exception
      * @throws Kohana_Exception
      * @uses   Kohana_Exception::response()
      */
-    public function get_response()
+    public function get_response(): Response
     {
         return Kohana_Exception::response($this);
     }

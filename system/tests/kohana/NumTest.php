@@ -47,7 +47,7 @@ class Kohana_NumTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_bytes()
+    public function provider_bytes(): array
     {
         return [
             [204800.0, '200K'],
@@ -63,11 +63,11 @@ class Kohana_NumTest extends Unittest_TestCase
      * @test
      * @covers       Num::bytes
      * @dataProvider provider_bytes
-     * @param int $expected Expected Value
+     * @param float $expected Expected Value
      * @param string $size Input value
      * @throws Kohana_Exception
      */
-    public function test_bytes($expected, $size)
+    public function test_bytes(float $expected, string $size)
     {
         $this->assertSame($expected, Num::bytes($size));
     }
@@ -76,7 +76,7 @@ class Kohana_NumTest extends Unittest_TestCase
      * Provides test data for test_ordinal()
      * @return array
      */
-    public function provider_ordinal()
+    public function provider_ordinal(): array
     {
         return [
             [0, 'th'],
@@ -95,7 +95,7 @@ class Kohana_NumTest extends Unittest_TestCase
      * @param int $number
      * @param string $expected
      */
-    public function test_ordinal($number, $expected)
+    public function test_ordinal(int $number, string $expected)
     {
         $this->assertSame($expected, Num::ordinal($number));
     }
@@ -104,7 +104,7 @@ class Kohana_NumTest extends Unittest_TestCase
      * Provides test data for test_format()
      * @return array
      */
-    public function provider_format()
+    public function provider_format(): array
     {
         return [
             // English
@@ -117,16 +117,16 @@ class Kohana_NumTest extends Unittest_TestCase
     }
 
     /**
-     * @todo test locales
-     * @test
-     * @requires OS Linux
-     * @dataProvider provider_format
      * @param float $number
      * @param int $places
      * @param bool $monetary
      * @param string $expected
+     * @todo test locales
+     * @test
+     * @requires OS Linux
+     * @dataProvider provider_format
      */
-    public function test_format($number, $places, $monetary, $expected)
+    public function test_format(float $number, int $places, bool $monetary, string $expected)
     {
         $this->assertSame($expected, Num::format($number, $places, $monetary));
     }
@@ -135,7 +135,7 @@ class Kohana_NumTest extends Unittest_TestCase
      * Provides data for test_round()
      * @return array
      */
-    function provider_round()
+    function provider_round(): array
     {
         return [
             [5.5, 0, [6.0, 5.0, 6.0, 5.0]],
@@ -156,7 +156,7 @@ class Kohana_NumTest extends Unittest_TestCase
      * @param int $precision
      * @param number $expected
      */
-    function test_round($input, $precision, $expected)
+    function test_round($input, int $precision, $expected)
     {
         foreach ([Num::ROUND_HALF_UP, Num::ROUND_HALF_DOWN, Num::ROUND_HALF_EVEN, Num::ROUND_HALF_ODD] as $i => $mode) {
             $this->assertSame($expected[$i], Num::round($input, $precision, $mode, false));

@@ -4,7 +4,7 @@
  * "Expected" HTTP exception class. Used for all [HTTP_Exception]'s where a standard
  * Kohana error page should never be shown.
  *
- * Eg [HTTP_Exception_301], [HTTP_Exception_302] etc
+ * E.g. [HTTP_Exception_301], [HTTP_Exception_302].
  *
  * @package    Kohana
  * @category   Exceptions
@@ -26,12 +26,12 @@ abstract class Kohana_HTTP_Exception_Expected extends HTTP_Exception
      *         ':user' => $user
      *     ]);
      *
-     * @param string $message status message, custom content to display with error
-     * @param array $variables translation variables
-     * @return  void
+     * @param string $message Status message, custom content to display with error
+     * @param array|null $variables translation variables
+     * @param Exception|null $previous
      * @throws Kohana_Exception
      */
-    public function __construct($message = null, array $variables = null, Exception $previous = null)
+    public function __construct(string $message = '', array $variables = null, Exception $previous = null)
     {
         parent::__construct($message, $variables, $previous);
 
@@ -43,12 +43,12 @@ abstract class Kohana_HTTP_Exception_Expected extends HTTP_Exception
     /**
      * Gets and sets headers to the [Response].
      *
-     * @see     [Response::headers]
      * @param   mixed   $key
-     * @param   string  $value
+     * @param   string|null $value
      * @return  mixed
+     * @see     [Response::headers]
      */
-    public function headers($key = null, $value = null)
+    public function headers($key = null, string $value = null)
     {
         $result = $this->_response->headers($key, $value);
 
@@ -63,7 +63,7 @@ abstract class Kohana_HTTP_Exception_Expected extends HTTP_Exception
      *
      * @return bool
      */
-    public function check()
+    public function check(): bool
     {
         return true;
     }
@@ -72,10 +72,9 @@ abstract class Kohana_HTTP_Exception_Expected extends HTTP_Exception
      * Generate a Response for the current Exception
      *
      * @return Response
-     * @throws Kohana_Exception
      * @uses   Kohana_Exception::response()
      */
-    public function get_response()
+    public function get_response(): Response
     {
         $this->check();
 

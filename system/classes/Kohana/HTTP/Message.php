@@ -17,10 +17,10 @@ interface Kohana_HTTP_Message
      * Gets or sets the HTTP protocol. The standard protocol to use
      * is `HTTP/1.1`.
      *
-     * @param   string   $protocol  Protocol to set to the request/response
+     * @param string|null $protocol Protocol to set to the request/response
      * @return  mixed
      */
-    public function protocol($protocol = null);
+    public function protocol(string $protocol = null);
     /**
      * Gets or sets HTTP headers to the request or response. All headers
      * are included immediately after the HTTP protocol definition during
@@ -28,18 +28,18 @@ interface Kohana_HTTP_Message
      * interface to the headers.
      *
      * @param   mixed   $key    Key or array of key/value pairs to set
-     * @param   string  $value  Value to set to the supplied key
+     * @param string|null $value Value to set to the supplied key
      * @return  mixed
      */
-    public function headers($key = null, $value = null);
+    public function headers($key = null, string $value = null);
     /**
      * Gets or sets the HTTP body to the request or response. The body is
      * included after the header, separated by a single empty new line.
      *
-     * @param   string    $content  Content to set to the object
+     * @param string|null $content Content to set to the object
      * @return  string|void
      */
-    public function body($content = null);
+    public function body(string $content = null);
     /**
      * Renders the HTTP_Interaction to a string, producing
      *
@@ -49,5 +49,5 @@ interface Kohana_HTTP_Message
      *
      * @return  string
      */
-    public function render();
+    public function render(): string;
 }

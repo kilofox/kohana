@@ -202,52 +202,34 @@ class Kohana_ConfigTest extends Unittest_TestCase
      *
      * @test
      * @covers Config::load
-     * @expectedException Kohana_Exception
      */
     public function test_load_throws_exception_if_there_are_no_sources()
     {
+        $this->expectException(Kohana_Exception::class);
+
         // The following code should throw an exception and phpunit will catch / handle it
-        // (see the @expectedException doccomment)
         $config = new Kohana_config;
 
         $config->load('random');
     }
 
     /**
-     * Provides test data for test_load_throws_exception_if_no_group_is_given()
-     *
-     * @return array
-     */
-    public function provider_load_throws_exception_if_no_group_is_given()
-    {
-        return [
-            [null],
-            [''],
-            [[]],
-            [['foo' => 'bar']],
-            [new StdClass],
-        ];
-    }
-
-    /**
-     * If an invalid group name is specified then an exception should be thrown.
-     *
-     * Invalid means it's either a non-string value, or empty
+     * If an empty group name is specified then an exception should be thrown.
      *
      * @test
-     * @dataProvider provider_load_throws_exception_if_no_group_is_given
      * @covers Config::load
-     * @expectedException Kohana_Exception
      */
-    public function test_load_throws_exception_if_invalid_group($value)
+    public function test_load_throws_exception_if_empty_group()
     {
+        $this->expectException(Kohana_Exception::class);
+
         $config = new Kohana_Config;
 
         $reader = $this->createMock('Kohana_Config_Reader');
 
         $config->attach($reader);
 
-        $config->load($value);
+        $config->load('');
     }
 
     /**

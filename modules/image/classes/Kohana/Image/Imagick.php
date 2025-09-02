@@ -22,14 +22,10 @@ class Kohana_Image_Imagick extends Image
      * @throws  Kohana_Exception
      * @return  bool
      */
-    public static function check()
+    public static function check(): bool
     {
         if (!extension_loaded('imagick')) {
             throw new Kohana_Exception('Imagick is not installed, or the extension is not loaded');
-        }
-
-        if (version_compare(phpversion('imagick'), '3.6.0', '<')) {
-            throw new Kohana_Exception('Imagick version must be at least 3.6.0');
         }
 
         return Image_Imagick::$_checked = true;
@@ -70,7 +66,7 @@ class Kohana_Image_Imagick extends Image
         $this->im->clear();
     }
 
-    protected function _do_resize($width, $height)
+    protected function _do_resize(int $width, int $height): bool
     {
         if ($this->im->scaleImage($width, $height)) {
             // Reset the width and height
@@ -83,7 +79,7 @@ class Kohana_Image_Imagick extends Image
         return false;
     }
 
-    protected function _do_crop($width, $height, $offset_x, $offset_y)
+    protected function _do_crop(int $width, int $height, int $offset_x, int $offset_y): bool
     {
         if ($this->im->cropImage($width, $height, $offset_x, $offset_y)) {
             // Reset the width and height
@@ -99,7 +95,7 @@ class Kohana_Image_Imagick extends Image
         return false;
     }
 
-    protected function _do_rotate($degrees)
+    protected function _do_rotate(int $degrees): bool
     {
         if ($this->im->rotateImage(new ImagickPixel('transparent'), $degrees)) {
             // Reset the width and height
@@ -115,7 +111,7 @@ class Kohana_Image_Imagick extends Image
         return false;
     }
 
-    protected function _do_flip($direction)
+    protected function _do_flip(int $direction)
     {
         if ($direction === Image::HORIZONTAL) {
             return $this->im->flopImage();
@@ -124,7 +120,7 @@ class Kohana_Image_Imagick extends Image
         }
     }
 
-    protected function _do_sharpen($amount)
+    protected function _do_sharpen(int $amount)
     {
         // ImageMagick does not support $amount under 5 (0.15)
         $amount = max($amount, 5);
@@ -135,7 +131,7 @@ class Kohana_Image_Imagick extends Image
         return $this->im->sharpenImage(0, $amount);
     }
 
-    protected function _do_reflection($height, $opacity, $fade_in)
+    protected function _do_reflection(int $height, int $opacity, bool $fade_in): bool
     {
         // Clone the current image and flip it for reflection
         $reflection = $this->im->clone();
@@ -191,7 +187,7 @@ class Kohana_Image_Imagick extends Image
         return false;
     }
 
-    protected function _do_watermark(Image $image, $offset_x, $offset_y, $opacity)
+    protected function _do_watermark(Image $image, int $offset_x, int $offset_y, int $opacity)
     {
         // Convert the Image instance into an Imagick instance
         $watermark = new Imagick;
@@ -213,7 +209,7 @@ class Kohana_Image_Imagick extends Image
         return $this->im->compositeImage($watermark, Imagick::COMPOSITE_DISSOLVE, $offset_x, $offset_y);
     }
 
-    protected function _do_background($r, $g, $b, $opacity)
+    protected function _do_background(int $r, int $g, int $b, int $opacity): bool
     {
         // Create an RGB color for the background
         $color = sprintf('rgb(%d, %d, %d)', $r, $g, $b);
@@ -246,7 +242,7 @@ class Kohana_Image_Imagick extends Image
         return false;
     }
 
-    protected function _do_save($file, $quality)
+    protected function _do_save(string $file, int $quality): bool
     {
         // Get the image format and type
         list($format, $type) = $this->_get_imagetype(pathinfo($file, PATHINFO_EXTENSION));
@@ -268,7 +264,7 @@ class Kohana_Image_Imagick extends Image
         return false;
     }
 
-    protected function _do_render($type, $quality)
+    protected function _do_render(string $type, int $quality): string
     {
         // Get the image format and type
         list($format, $type) = $this->_get_imagetype($type);
@@ -289,11 +285,11 @@ class Kohana_Image_Imagick extends Image
     /**
      * Get the image type and format for an extension.
      *
-     * @param   string  $extension  image extension: png, jpg, etc
+     * @param string $extension Image extension: png, jpg, etc.
      * @return array Array with normalized format and IMAGETYPE_* constant.
      * @throws  Kohana_Exception
      */
-    protected function _get_imagetype($extension)
+    protected function _get_imagetype(string $extension): array
     {
         // Normalize the extension to a format
         $format = strtolower($extension);

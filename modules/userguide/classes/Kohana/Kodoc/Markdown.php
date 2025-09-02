@@ -43,12 +43,11 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
     /**
      * Transform some text using [Kodoc_Markdown]
      *
-     * @see Markdown()
-     *
      * @param string $text Text to parse
      * @return  string  Transformed text
+     * @see Markdown()
      */
-    public static function markdown($text)
+    public static function markdown(string $text): string
     {
         static $instance;
 
@@ -92,7 +91,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      * @param array $matches Matches from regex call
      * @return  string  Generated HTML
      */
-    function _doHeaders_callback_setext($matches)
+    function _doHeaders_callback_setext($matches): string
     {
         if ($matches[3] === '-' && preg_match('{^- }', $matches[1]))
             return $matches[0];
@@ -119,7 +118,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      * @param array $matches Matches from regex call
      * @return  string  Generated HTML
      */
-    function _doHeaders_callback_atx($matches)
+    function _doHeaders_callback_atx($matches): string
     {
         $level = strlen($matches[1]);
         $attr = $this->_doHeaders_attr($matches[3] ?? '');
@@ -143,7 +142,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      * @param string $heading The heading text
      * @return  string  ID for the heading
      */
-    function make_heading_id($heading)
+    function make_heading_id(string $heading): string
     {
         $id = url::title($heading, '-', true);
 
@@ -198,7 +197,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      * @param string $text Span text
      * @return  string
      */
-    public function doBaseURL($text)
+    public function doBaseURL(string $text): string
     {
         // URLs containing "://" are left untouched
         return preg_replace('~(?<!!)(\[.+?\]\()(?!\w++://)(?!#)(\S*(?:\s*+".+?")?\))~', '$1' . Kodoc_Markdown::$base_url . '$2', $text);
@@ -212,7 +211,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      * @param string $text Span text
      * @return  string
      */
-    public function doImageURL($text)
+    public function doImageURL(string $text): string
     {
         // URLs containing "://" are left untouched
         return preg_replace('~(!\[.+?\]\()(?!\w++://)(\S*(?:\s*+".+?")?\))~', '$1' . Kodoc_Markdown::$image_url . '$2', $text);
@@ -226,7 +225,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      * @param string $text Span text
      * @return  string
      */
-    public function doAPI($text)
+    public function doAPI(string $text): string
     {
         return preg_replace_callback('/\[' . Kodoc::$regex_class_member . '\]/i', 'Kodoc::link_class_member', $text);
     }
@@ -239,7 +238,7 @@ class Kohana_Kodoc_Markdown extends MarkdownExtra_Parser
      * @param string $text Span text
      * @return  string
      */
-    public function doNotes($text)
+    public function doNotes(string $text): string
     {
         if (!preg_match('/^\[!!\]\s*+(.+?)(?=\n{2,}|$)/s', $text, $match)) {
             return $text;

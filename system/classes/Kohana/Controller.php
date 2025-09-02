@@ -64,7 +64,7 @@ abstract class Kohana_Controller
      * @return  Response
      * @throws Kohana_HTTP_Exception
      */
-    public function execute()
+    public function execute(): Response
     {
         // Execute the "before action" method
         $this->before();
@@ -121,9 +121,9 @@ abstract class Kohana_Controller
      * @throws HTTP_Exception_Redirect
      * @throws Kohana_Exception
      */
-    public static function redirect($uri = '', $code = 302)
+    public static function redirect(string $uri = '', int $code = 302)
     {
-        return HTTP::redirect((string) $uri, $code);
+        return HTTP::redirect($uri, $code);
     }
 
     /**
@@ -133,11 +133,11 @@ abstract class Kohana_Controller
      *
      *     $this->check_cache(sha1($content));
      *
-     * @param string $etag Resource Etag
+     * @param string|null $etag Resource Etag
      * @return Response
      * @throws Request_Exception
      */
-    protected function check_cache($etag = null)
+    protected function check_cache(string $etag = null): Response
     {
         return HTTP::check_cache($this->request, $this->response, $etag);
     }

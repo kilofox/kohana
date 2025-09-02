@@ -26,7 +26,7 @@ class Kohana_Log_File extends Log_Writer
      * @return  void
      * @throws Kohana_Exception
      */
-    public function __construct($directory)
+    public function __construct(string $directory)
     {
         if (!is_dir($directory) || !is_writable($directory)) {
             throw new Kohana_Exception('Directory :dir must be writable', [':dir' => Debug::path($directory)]);
@@ -72,7 +72,7 @@ class Kohana_Log_File extends Log_Writer
         }
 
         // Set the name of the log file
-        $filename = $directory . DIRECTORY_SEPARATOR . date('d') . EXT;
+        $filename = $directory . DIRECTORY_SEPARATOR . date('d') . '.php';
 
         if (!file_exists($filename)) {
             // Create the log file

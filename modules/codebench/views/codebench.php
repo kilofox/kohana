@@ -95,13 +95,13 @@
 
                 // Runner form
                 $(':input:first', $runner).focus();
-                $runner.submit(function() {
+                $runner.on('submit', function() {
                     $(':submit', this).attr('value', 'Running…').attr('disabled', 'disabled');
                     $('.alert', this).remove();
                 });
 
                 // Toggle details for all benchmarks
-                $toggle_all.click(function() {
+                $toggle_all.on('click', function() {
                     if ($(this).data('expanded')) {
                         $(this).data('expanded', false);
                         $(this).text(expand_all_text);
@@ -115,11 +115,11 @@
 
 <?php if (Kohana::$config->load('codebench')->expand_all) { ?>
                     // Expand all benchmark details by default
-                    $toggle_all.click();
+                    $toggle_all.trigger('click');
 <?php } ?>
 
                 // Toggle details for a single benchmark
-                $bench_titles.click(function() {
+                $bench_titles.on('click', function() {
                     $(this).toggleClass('expanded').siblings().toggle();
 
                     // Counts of bench titles
@@ -128,33 +128,27 @@
 
                     // If no benchmark details are expanded, change "Collapse all" to "Expand all"
                     if (expanded_bench_titles === 0 && $toggle_all.data('expanded')) {
-                        $toggle_all.click();
+                        $toggle_all.trigger('click');
                     }
                     // If all benchmark details are expanded, change "Expand all" to "Collapse all"
                     else if (expanded_bench_titles === total_bench_titles && !$toggle_all.data('expanded')) {
-                        $toggle_all.click();
+                        $toggle_all.trigger('click');
                     }
                 });
 
                 // Highlight clicked rows
-                $bench_rows.click(function() {
+                $bench_rows.on('click', function() {
                     $(this).toggleClass('highlight');
                     // Highlight double-clicked rows globally
-                }).dblclick(function() {
+                }).on('dblclick', function() {
                     const nth_row = $(this).parent().children().index(this) + 1;
-                    if ($(this).hasClass('highlight')) {
-                        $bench_rows.filter(':nth-child(' + nth_row + ')').removeClass('highlight');
-                    } else {
-                        $bench_rows.filter(':nth-child(' + nth_row + ')').addClass('highlight');
-                    }
+                    $bench_rows.filter(':nth-child(' + nth_row + ')').toggleClass('highlight');
                 });
             });
         </script>
 
     </head>
     <body>
-
-    <!--[if IE]><p class="alert">This page is not meant to be viewed in Internet Explorer. Get a better browser.</p><![endif]-->
 
         <form id="runner" method="post" action="<?php echo URL::site('codebench') ?>">
             <h1>
@@ -245,8 +239,6 @@
             <?php if (!empty($codebench['description'])) { ?>
                 <?php echo Text::auto_p(Text::auto_link($codebench['description']), false) ?>
             <?php } ?>
-
-            <?php // echo '<h2>Raw output:</h2>', Debug::vars($codebench)  ?>
 
         <?php } ?>
 

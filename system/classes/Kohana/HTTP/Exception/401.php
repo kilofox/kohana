@@ -10,9 +10,9 @@ class Kohana_HTTP_Exception_401 extends HTTP_Exception_Expected
     /**
      * Specifies the WWW-Authenticate challenge.
      *
-     * @param  string  $challenge  WWW-Authenticate challenge (e.g. `Basic realm="Control Panel"`)
+     * @param string|null $challenge WWW-Authenticate challenge (e.g. `Basic realm="Control Panel"`)
      */
-    public function authenticate($challenge = null)
+    public function authenticate(string $challenge = null)
     {
         if ($challenge === null)
             return $this->headers('www-authenticate');
@@ -28,7 +28,7 @@ class Kohana_HTTP_Exception_401 extends HTTP_Exception_Expected
      * @throws Kohana_Exception
      * @return bool
      */
-    public function check()
+    public function check(): bool
     {
         if ($this->headers('www-authenticate') === null)
             throw new Kohana_Exception('A \'www-authenticate\' header must be specified for a HTTP 401 Unauthorized');

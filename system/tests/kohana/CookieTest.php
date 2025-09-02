@@ -65,7 +65,7 @@ class Kohana_CookieTest extends Unittest_TestCase
      *
      * @return array of $lifetime, $expect_expiry
      */
-    public function provider_set_calculates_expiry_from_lifetime()
+    public function provider_set_calculates_expiry_from_lifetime(): array
     {
         return [
             [null, self::COOKIE_EXPIRATION + self::UNIX_TIMESTAMP],
@@ -75,7 +75,7 @@ class Kohana_CookieTest extends Unittest_TestCase
     }
 
     /**
-     * @param int $expiration
+     * @param int|null $expiration
      * @param int $expect_expiry
      *
      * @throws Kohana_Exception
@@ -83,7 +83,7 @@ class Kohana_CookieTest extends Unittest_TestCase
      * @dataProvider provider_set_calculates_expiry_from_lifetime
      * @covers       Cookie::set
      */
-    public function test_set_calculates_expiry_from_lifetime($expiration, $expect_expiry)
+    public function test_set_calculates_expiry_from_lifetime(?int $expiration, int $expect_expiry)
     {
         $this->setEnvironment([
             'Cookie::$expiration' => self::COOKIE_EXPIRATION
@@ -117,7 +117,7 @@ class Kohana_CookieTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_get_returns_default_without_deleting_if_cookie_unsigned()
+    public function provider_get_returns_default_without_deleting_if_cookie_unsigned(): array
     {
         return [
             ['unsalted'],
@@ -135,7 +135,7 @@ class Kohana_CookieTest extends Unittest_TestCase
      * @covers       Cookie::get
      * @throws Kohana_Exception
      */
-    public function test_get_returns_default_without_deleting_if_cookie_unsigned($unsigned_value)
+    public function test_get_returns_default_without_deleting_if_cookie_unsigned(string $unsigned_value)
     {
         $_COOKIE['cookie'] = $unsigned_value;
         $this->assertEquals('default', Kohana_CookieTest_TestableCookie::get('cookie', 'default'));
@@ -179,10 +179,11 @@ class Kohana_CookieTest extends Unittest_TestCase
 
     /**
      * @covers Cookie::salt
-     * @expectedException Kohana_Exception
      */
     public function test_salt_throws_with_no_configured_salt()
     {
+        $this->expectException(Kohana_Exception::class);
+
         Cookie::$salt = null;
         Cookie::salt('key', 'value');
     }
@@ -202,7 +203,7 @@ class Kohana_CookieTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_salt_creates_different_hash_for_different_data()
+    public function provider_salt_creates_different_hash_for_different_data(): array
     {
         return [
             [
@@ -261,7 +262,7 @@ class Kohana_CookieTest extends Unittest_TestCase
      * @covers       Cookie::salt
      * @throws Kohana_Exception
      */
-    public function test_salt_creates_different_hash_for_different_data($first_args, $changed_args)
+    public function test_salt_creates_different_hash_for_different_data(array $first_args, array $changed_args)
     {
         $second_args = array_merge($first_args, $changed_args);
         $hashes = [];
@@ -282,7 +283,7 @@ class Kohana_CookieTest extends Unittest_TestCase
      * @param string $name
      */
     // @codingStandardsIgnoreStart
-    protected function assertDeletedCookie($name)
+    protected function assertDeletedCookie(string $name)
     // @codingStandardsIgnoreEnd
     {
         $this->assertArrayNotHasKey($name, $_COOKIE);
@@ -304,7 +305,7 @@ class Kohana_CookieTest extends Unittest_TestCase
      * @param array $expected
      */
     // @codingStandardsIgnoreStart
-    protected function assertSetCookieWith($expected)
+    protected function assertSetCookieWith(array $expected)
     // @codingStandardsIgnoreEnd
     {
         $this->assertCount(1, Kohana_CookieTest_TestableCookie::$_mock_cookies_set);
@@ -315,9 +316,9 @@ class Kohana_CookieTest extends Unittest_TestCase
     /**
      * Configure the $_SERVER[HTTP_USER_AGENT] environment variable for the test
      *
-     * @param string $user_agent
+     * @param string|null $user_agent
      */
-    protected function set_or_remove_http_user_agent($user_agent)
+    protected function set_or_remove_http_user_agent(?string $user_agent)
     {
         if ($user_agent === null) {
             unset($_SERVER['HTTP_USER_AGENT']);
@@ -342,7 +343,7 @@ class Kohana_CookieTest_TestableCookie extends Cookie
     /**
      * {@inheritdoc}
      */
-    protected static function _setcookie($name, $value, $expire, $path, $domain, $secure, $httponly)
+    protected static function _setcookie(string $name, ?string $value, int $expire, string $path, string $domain, bool $secure, bool $httponly): bool
     {
         self::$_mock_cookies_set[] = [
             'name' => $name,
@@ -360,7 +361,7 @@ class Kohana_CookieTest_TestableCookie extends Cookie
     /**
      * @return int
      */
-    protected static function _time()
+    protected static function _time(): int
     {
         return Kohana_CookieTest::UNIX_TIMESTAMP;
     }

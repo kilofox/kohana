@@ -30,7 +30,7 @@ class Kohana_ViewTest extends Unittest_TestCase
         self::$old_modules = Kohana::modules();
 
         $new_modules = self::$old_modules + [
-            'test_views' => realpath(dirname(__FILE__) . '/../test_data/')
+            'test_views' => realpath(__DIR__ . '/../test_data/')
         ];
         Kohana::modules($new_modules);
     }
@@ -53,7 +53,7 @@ class Kohana_ViewTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_instantiate()
+    public function provider_instantiate(): array
     {
         return [
             ['kohana/error', false],
@@ -67,7 +67,7 @@ class Kohana_ViewTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_set()
+    public function provider_set(): array
     {
         return [
             ['foo', 'bar', 'foo', 'bar'],

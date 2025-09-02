@@ -18,7 +18,7 @@ class Kohana_Unittest_Helpers
      *
      * @return bool Whether an internet connection is available
      */
-    public static function has_internet()
+    public static function has_internet(): ?bool
     {
         if (!isset(self::$_has_internet)) {
             // The @ operator is used here to avoid DNS errors when there is no connection.
@@ -36,7 +36,7 @@ class Kohana_Unittest_Helpers
      * @param string $path
      * @return string
      */
-    static public function dir_separator($path)
+    static public function dir_separator(string $path): string
     {
         return str_replace('/', DIRECTORY_SEPARATOR, $path);
     }

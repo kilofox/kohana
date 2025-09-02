@@ -25,17 +25,19 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
      * can be specified as the second parameter.
      *
      * @param   mixed   $table  column name or [$column, $alias] or object
-     * @param   string  $type   type of JOIN: INNER, RIGHT, LEFT, etc
+     * @param string|null $type Type of JOIN: INNER, RIGHT, LEFT, etc.
      * @return  void
      */
-    public function __construct($table, $type = null)
+    public function __construct($table, string $type = null)
     {
+        parent::__construct(Database::SELECT, '');
+
         // Set the table to JOIN on
         $this->_table = $table;
 
         if ($type !== null) {
             // Set the JOIN type
-            $this->_type = (string) $type;
+            $this->_type = $type;
         }
     }
 
@@ -48,7 +50,7 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
      * @return  $this
      * @throws Kohana_Exception
      */
-    public function on($c1, $op, $c2)
+    public function on($c1, string $op, $c2): Kohana_Database_Query_Builder_Join
     {
         if (!empty($this->_using)) {
             throw new Kohana_Exception('JOIN ... ON ... cannot be combined with JOIN ... USING ...');
@@ -66,7 +68,7 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
      * @return  $this
      * @throws Kohana_Exception
      */
-    public function using(...$columns)
+    public function using(...$columns): Kohana_Database_Query_Builder_Join
     {
         if (!empty($this->_on)) {
             throw new Kohana_Exception('JOIN ... ON ... cannot be combined with JOIN ... USING ...');
@@ -84,7 +86,7 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
      * @return  string
      * @throws Kohana_Exception
      */
-    public function compile($db = null)
+    public function compile($db = null): string
     {
         if (!is_object($db)) {
             // Get the database instance
@@ -125,11 +127,17 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
         return $sql;
     }
 
-    public function reset()
+    /**
+     * @return $this
+     * @deprecated 3.5.0
+     */
+    public function reset(): Kohana_Database_Query_Builder_Join
     {
         $this->_type = $this->_table = null;
 
         $this->_on = [];
+
+        return $this;
     }
 
 }

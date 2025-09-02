@@ -3,8 +3,6 @@
 /**
  * Tests Kohana Core
  *
- * @TODO Use a virtual filesystem (see phpunit doc on mocking fs) for find_file etc.
- *
  * @group kohana
  * @group kohana.core
  * @group kohana.core.debug
@@ -23,7 +21,7 @@ class Kohana_DebugTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_vars()
+    public function provider_vars(): array
     {
         return [
             // $thing, $expected
@@ -43,7 +41,7 @@ class Kohana_DebugTest extends Unittest_TestCase
      * @param mixed $thing The thing to debug
      * @param string $expected Output for Debug::vars
      */
-    public function test_var($thing, $expected)
+    public function test_var($thing, string $expected)
     {
         $this->assertEquals($expected, Debug::vars($thing));
     }
@@ -53,16 +51,16 @@ class Kohana_DebugTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_debug_path()
+    public function provider_debug_path(): array
     {
         return [
             [
-                SYSPATH . 'classes' . DIRECTORY_SEPARATOR . 'kohana' . EXT,
-                'SYSPATH' . DIRECTORY_SEPARATOR . 'classes' . DIRECTORY_SEPARATOR . 'kohana.php'
+                SYSPATH . 'classes' . DIRECTORY_SEPARATOR . 'Kohana.php',
+                'SYSPATH' . DIRECTORY_SEPARATOR . 'classes' . DIRECTORY_SEPARATOR . 'Kohana.php'
             ],
             [
-                MODPATH . $this->dirSeparator('unittest/classes/kohana/unittest/runner') . EXT,
-                $this->dirSeparator('MODPATH/unittest/classes/kohana/unittest/runner') . EXT
+                MODPATH . $this->dirSeparator('unittest/classes/kohana/unittest/runner.php'),
+                $this->dirSeparator('MODPATH/unittest/classes/kohana/unittest/runner.php')
             ],
         ];
     }
@@ -76,7 +74,7 @@ class Kohana_DebugTest extends Unittest_TestCase
      * @param string $path Input for Debug::path
      * @param string $expected Output for Debug::path
      */
-    public function test_debug_path($path, $expected)
+    public function test_debug_path(string $path, string $expected)
     {
         $this->assertEquals($expected, Debug::path($path));
     }
@@ -86,7 +84,7 @@ class Kohana_DebugTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_dump()
+    public function provider_dump(): array
     {
         return [
             [
@@ -157,12 +155,12 @@ class Kohana_DebugTest extends Unittest_TestCase
      * @dataProvider provider_dump
      * @covers Debug::dump
      * @covers Debug::_dump
-     * @param string $input
+     * @param mixed $input
      * @param int $length
      * @param int $limit
      * @param string $expected expected output
      */
-    public function test_dump($input, $length, $limit, $expected)
+    public function test_dump($input, int $length, int $limit, string $expected)
     {
         $this->assertEquals($expected, Debug::dump($input, $length, $limit));
     }

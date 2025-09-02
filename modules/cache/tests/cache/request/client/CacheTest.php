@@ -74,7 +74,7 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
             'action' => 'index',
         ]);
 
-        $request = new Request('welcome/index', null, [$route]);
+        $request = new Request('welcome/index', [], true, [$route]);
         $cache_mock = $this->createMock('Cache_File');
 
         $request->client()->cache(HTTP_Cache::factory($cache_mock));
@@ -166,7 +166,7 @@ class Kohana_Request_Client_CacheTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_set_cache()
+    public function provider_set_cache(): array
     {
         return [
             [

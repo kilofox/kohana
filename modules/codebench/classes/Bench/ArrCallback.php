@@ -21,7 +21,7 @@ class Bench_ArrCallback extends Codebench
         'foo[apple,orange', // no closing bracket
     ];
 
-    public function bench_geert_regex_1($subject)
+    public function bench_geert_regex_1($subject): array
     {
         if (preg_match('/^([^(]*+)\((.*)\)$/', $subject, $matches))
             return $matches;
@@ -29,7 +29,7 @@ class Bench_ArrCallback extends Codebench
         return [];
     }
 
-    public function bench_geert_regex_2($subject)
+    public function bench_geert_regex_2($subject): array
     {
         // A rather experimental approach using \K which requires PCRE 7.2 ~ PHP 5.2.4
         // Note: $matches[0] = params, $matches[1] = command

@@ -32,7 +32,7 @@ class Kohana_FeedTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_parse()
+    public function provider_parse(): array
     {
         return [
             // $source, $expected
@@ -64,7 +64,7 @@ class Kohana_FeedTest extends Unittest_TestCase
      * @throws Kohana_Exception
      * @throws Request_Exception
      */
-    public function test_parse($source, $expected_titles)
+    public function test_parse(string $source, $expected_titles)
     {
         $titles = [];
         foreach (Feed::parse($source) as $item) {
@@ -79,32 +79,23 @@ class Kohana_FeedTest extends Unittest_TestCase
      *
      * @return array
      */
-    public function provider_create()
+    public function provider_create(): array
     {
         $info = [
             'pubDate' => 123,
             'image' => [
                 'link' => 'https://kohana.top/image.png',
-                'url' => 'https://kohana.top/', 'title' => 'title'
+                'url' => 'https://kohana.top/',
+                'title' => 'title'
             ]
         ];
 
         return [
-            // $source, $expected
             [
                 $info,
                 ['foo' => ['foo' => 'bar', 'pubDate' => 123, 'link' => 'foo']],
                 ['_SERVER' => ['HTTP_HOST' => 'localhost'] + $_SERVER],
-                [
-                    'tag' => 'channel',
-                    'descendant' => [
-                        'tag' => 'item',
-                        'child' => [
-                            'tag' => 'foo',
-                            'content' => 'bar'
-                        ]
-                    ]
-                ],
+                ['channel > item > foo', 'bar'],
                 [
                     $this->matcher_composer($info, 'image', 'link'),
                     $this->matcher_composer($info, 'image', 'url'),
@@ -122,17 +113,11 @@ class Kohana_FeedTest extends Unittest_TestCase
      * @param string $child
      * @return array
      */
-    private function matcher_composer($data, $tag, $child)
+    private function matcher_composer(array $data, string $tag, string $child): array
     {
         return [
-            'tag' => 'channel',
-            'descendant' => [
-                'tag' => $tag,
-                'child' => [
-                    'tag' => $child,
-                    'content' => $data[$tag][$child]
-                ]
-            ]
+            'channel > ' . $tag . ' > ' . $child,
+            $data[$tag][$child]
         ];
     }
 
@@ -151,14 +136,14 @@ class Kohana_FeedTest extends Unittest_TestCase
      * @throws Kohana_Exception
      * @throws ReflectionException
      */
-    public function test_create($info, $items, $enviroment, $matcher_item, $matchers_image)
+    public function test_create(array $info, array $items, array $enviroment, array $matcher_item, array $matchers_image)
     {
         $this->setEnvironment($enviroment);
 
-        $this->assertTag($matcher_item, Feed::create($info, $items), '', false);
+        $this->assertSelectEquals($matcher_item[0], $matcher_item[1], true, Feed::create($info, $items), '', false);
 
         foreach ($matchers_image as $matcher_image) {
-            $this->assertTag($matcher_image, Feed::create($info, $items), '', false);
+            $this->assertSelectEquals($matcher_image[0], $matcher_image[1], true, Feed::create($info, $items), '', false);
         }
     }
 

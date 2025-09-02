@@ -22,8 +22,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
      * Set the table and columns for an insert.
      *
      * @param mixed $table table name or [$table, $alias] or object
-     * @param array $columns column names
-     * @return  void
+     * @param array|null $columns column names
      * @throws Kohana_Exception
      */
     public function __construct($table = null, array $columns = null)
@@ -49,7 +48,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
      * @return  $this
      * @throws Kohana_Exception
      */
-    public function table($table)
+    public function table(string $table): Kohana_Database_Query_Builder_Insert
     {
         if (!is_string($table))
             throw new Kohana_Exception('INSERT INTO syntax does not allow table aliasing');
@@ -65,7 +64,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
      * @param   array  $columns  column names
      * @return  $this
      */
-    public function columns(array $columns)
+    public function columns(array $columns): Kohana_Database_Query_Builder_Insert
     {
         $this->_columns = $columns;
 
@@ -79,7 +78,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
      * @return  $this
      * @throws Kohana_Exception
      */
-    public function values(array ...$values)
+    public function values(array ...$values): Kohana_Database_Query_Builder_Insert
     {
         if (!is_array($this->_values)) {
             throw new Kohana_Exception('INSERT INTO ... SELECT statements cannot be combined with INSERT INTO ... VALUES');
@@ -99,7 +98,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
      * @return  $this
      * @throws Kohana_Exception
      */
-    public function select(Database_Query $query)
+    public function select(Database_Query $query): Kohana_Database_Query_Builder_Insert
     {
         if ($query->type() !== Database::SELECT) {
             throw new Kohana_Exception('Only SELECT queries can be combined with INSERT queries');
@@ -117,7 +116,7 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
      * @return  string
      * @throws Kohana_Exception
      */
-    public function compile($db = null)
+    public function compile($db = null): string
     {
         if (!is_object($db)) {
             // Get the database instance
@@ -155,7 +154,11 @@ class Kohana_Database_Query_Builder_Insert extends Database_Query_Builder
         return parent::compile($db);
     }
 
-    public function reset()
+    /**
+     * @return $this
+     * @deprecated 3.5.0
+     */
+    public function reset(): Kohana_Database_Query_Builder_Insert
     {
         $this->_table = null;
 

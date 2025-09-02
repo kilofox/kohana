@@ -14,16 +14,16 @@ class Kohana_Session_Native extends Session
     /**
      * @return  string
      */
-    public function id()
+    public function id(): string
     {
         return session_id();
     }
 
     /**
-     * @param   string  $id  session id
+     * @param string|null $id Session ID
      * @return  null
      */
-    protected function _read($id = null)
+    protected function _read(string $id = null)
     {
         /**
          * session_set_cookie_params will override php ini settings
@@ -60,7 +60,7 @@ class Kohana_Session_Native extends Session
         session_start();
 
         // Use the $_SESSION global for storing data
-        $this->_data = & $_SESSION;
+        $this->_data = &$_SESSION;
 
         return null;
     }
@@ -68,7 +68,7 @@ class Kohana_Session_Native extends Session
     /**
      * @return  string
      */
-    protected function _regenerate()
+    protected function _regenerate(): string
     {
         // Regenerate the session id
         session_regenerate_id();
@@ -79,7 +79,7 @@ class Kohana_Session_Native extends Session
     /**
      * @return  bool
      */
-    protected function _write()
+    protected function _write(): bool
     {
         // Write and close the session
         session_write_close();
@@ -90,13 +90,13 @@ class Kohana_Session_Native extends Session
     /**
      * @return  bool
      */
-    protected function _restart()
+    protected function _restart(): bool
     {
         // Fire up a new session
         $status = session_start();
 
         // Use the $_SESSION global for storing data
-        $this->_data = & $_SESSION;
+        $this->_data = &$_SESSION;
 
         return $status;
     }
@@ -104,7 +104,7 @@ class Kohana_Session_Native extends Session
     /**
      * @return  bool
      */
-    protected function _destroy()
+    protected function _destroy(): bool
     {
         // Destroy the current session
         session_destroy();

@@ -66,11 +66,11 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      *     // Retrieve cache entry from apcu group and return 'bar' if missing
      *     $data = Cache::instance('apcu')->get('foo', 'bar');
      *
-     * @param   string  $id       id of cache to entry
-     * @param   string  $default  default value to return if cache miss
+     * @param string $id ID of cache entry
+     * @param string|null $default Default value to return if cache miss
      * @return  mixed
      */
-    public function get($id, $default = null)
+    public function get(string $id, string $default = null)
     {
         $data = apcu_fetch($this->_sanitize_id($id), $success);
 
@@ -88,12 +88,12 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      *     // Set 'bar' to 'foo' in apcu group for 30 seconds
      *     Cache::instance('apcu')->set('foo', $data, 30);
      *
-     * @param   string   $id        id of cache entry
-     * @param   string   $data      data to set to cache
-     * @param   int $lifetime lifetime in seconds
+     * @param string $id ID of cache entry
+     * @param mixed $data Data to set to cache
+     * @param int|null $lifetime Lifetime in seconds
      * @return  bool
      */
-    public function set($id, $data, $lifetime = null)
+    public function set(string $id, $data, int $lifetime = null): bool
     {
         if ($lifetime === null) {
             $lifetime = Arr::get($this->_config, 'default_expire', Cache::DEFAULT_EXPIRE);
@@ -108,10 +108,10 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      *     // Delete 'foo' entry from the apcu group
      *     Cache::instance('apcu')->delete('foo');
      *
-     * @param   string  $id  id to remove from cache
+     * @param string $id ID to remove from cache
      * @return  bool
      */
-    public function delete($id)
+    public function delete(string $id): bool
     {
         return apcu_delete($this->_sanitize_id($id));
     }
@@ -128,7 +128,7 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      *
      * @return bool
      */
-    public function delete_all()
+    public function delete_all(): bool
     {
         return apcu_clear_cache();
     }
@@ -142,7 +142,7 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      * @param int $step step value to increment by
      * @return int|false
      */
-    public function increment($id, $step = 1)
+    public function increment(string $id, int $step = 1)
     {
         if (apcu_exists($id)) {
             return apcu_inc($id, $step);
@@ -160,7 +160,7 @@ class Kohana_Cache_Apcu extends Cache implements Cache_Arithmetic
      * @param int $step step value to decrement by
      * @return int|false
      */
-    public function decrement($id, $step = 1)
+    public function decrement(string $id, int $step = 1)
     {
         if (apcu_exists($id)) {
             return apcu_dec($id, $step);

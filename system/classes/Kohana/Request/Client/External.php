@@ -50,11 +50,11 @@ abstract class Kohana_Request_Client_External extends Request_Client
      * Request_Client_External::$client can be set in the application bootstrap.
      *
      * @param   array   $params parameters to pass to the client
-     * @param   string  $client external client to use
+     * @param string|null $client External client to use
      * @return  Request_Client_External
      * @throws  Request_Exception
      */
-    public static function factory(array $params = [], $client = null)
+    public static function factory(array $params = [], ?string $client = null): Request_Client_External
     {
         if ($client === null) {
             $client = Request_Client_External::$client;
@@ -93,11 +93,10 @@ abstract class Kohana_Request_Client_External extends Request_Client
      * @param   Request   $request   A request object
      * @param   Response  $response  A response object
      * @return  Response
-     * @throws  Kohana_Exception
      * @uses    [Kohana::$profiling]
      * @uses    [Profiler]
      */
-    public function execute_request(Request $request, Response $response)
+    public function execute_request(Request $request, Response $response): Response
     {
         if (Kohana::$profiling) {
             // Set the benchmark name
@@ -187,5 +186,5 @@ abstract class Kohana_Request_Client_External extends Request_Client
      * @param   Response  $response   Response to send
      * @return  Response
      */
-    abstract protected function _send_message(Request $request, Response $response);
+    abstract protected function _send_message(Request $request, Response $response): Response;
 }
