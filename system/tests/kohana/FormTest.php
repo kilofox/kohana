@@ -358,7 +358,6 @@ class Kohana_FormTest extends Unittest_TestCase
      * @dataProvider provider_submit
      * @param string $name
      * @param string $value
-     * @param string $expected Output for Form::submit
      */
     public function test_submit(string $name, string $value)
     {
