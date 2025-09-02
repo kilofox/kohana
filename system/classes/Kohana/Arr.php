@@ -172,6 +172,7 @@ class Kohana_Arr
      * @param string|array $path Path
      * @param mixed $value Value to set
      * @param string|null $delimiter Path delimiter
+     * @throws Kohana_Exception
      * @see Arr::path()
      */
     public static function set_path(array &$array, $path, $value, $delimiter = null)
@@ -266,9 +267,10 @@ class Kohana_Arr
      *     Arr::extract($data, ['level1.level2a', 'password']);
      *
      * @param array $array Array to extract paths from
-     * @param   array  $paths    list of path
-     * @param   mixed  $default  default value
+     * @param array $paths List of path
+     * @param mixed $default Default value
      * @return  array
+     * @throws Kohana_Exception
      */
     public static function extract(array $array, array $paths, $default = null)
     {
