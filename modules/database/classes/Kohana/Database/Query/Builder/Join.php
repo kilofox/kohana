@@ -30,6 +30,8 @@ class Kohana_Database_Query_Builder_Join extends Database_Query_Builder
      */
     public function __construct($table, $type = null)
     {
+        parent::__construct(Database::SELECT, '');
+
         // Set the table to JOIN on
         $this->_table = $table;
 

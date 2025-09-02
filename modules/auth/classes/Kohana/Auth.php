@@ -30,11 +30,11 @@ abstract class Kohana_Auth
                 $type = 'file';
             }
 
-            // Set the session class name
+            // Set the authentication class name
             $class = 'Auth_' . ucfirst($type);
 
-            // Create a new session instance
-            Auth::$_instance = new $class($config);
+            // Create a new authentication instance
+            Auth::$_instance = new $class($config->as_array());
         }
 
         return Auth::$_instance;
