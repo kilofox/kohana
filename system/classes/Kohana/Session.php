@@ -297,8 +297,6 @@ abstract class Kohana_Session
 
                 // Unserialize the data
                 $data = $this->_unserialize($data);
-            } else {
-                // Ignore these, session is valid, likely no data though.
             }
         } catch (Exception $e) {
             // Error reading the session, usually a corrupt session.
