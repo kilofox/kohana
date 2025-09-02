@@ -169,6 +169,7 @@ class Kohana_ArrTest extends Unittest_TestCase
      * @param array $paths
      * @param mixed $default
      * @param array $expected
+     * @throws Kohana_Exception
      */
     public function test_extract(array $array, array $paths, $default, array $expected)
     {
