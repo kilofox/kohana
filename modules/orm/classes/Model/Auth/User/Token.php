@@ -16,7 +16,7 @@ class Model_Auth_User_Token extends ORM
     ];
     protected $_created_column = [
         'column' => 'created',
-        'format' => TRUE,
+        'format' => true,
     ];
 
     /**
@@ -25,7 +25,7 @@ class Model_Auth_User_Token extends ORM
      * @return  void
      * @throws Kohana_Exception
      */
-    public function __construct($id = NULL)
+    public function __construct($id = null)
     {
         parent::__construct($id);
 
@@ -56,7 +56,7 @@ class Model_Auth_User_Token extends ORM
         return $this;
     }
 
-    public function create(Validation $validation = NULL): Kohana_ORM
+    public function create(Validation $validation = null): Kohana_ORM
     {
         $this->token = $this->create_token();
 
@@ -66,7 +66,7 @@ class Model_Auth_User_Token extends ORM
     protected function create_token(): string
     {
         do {
-            $token = sha1(uniqid(Text::random('alnum', 32), TRUE));
+            $token = sha1(uniqid(Text::random('alnum', 32), true));
         } while (ORM::factory('User_Token', ['token' => $token])->loaded());
 
         return $token;
