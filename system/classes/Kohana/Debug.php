@@ -202,7 +202,7 @@ class Kohana_Debug
     }
 
     /**
-     * Removes application, system, modpath, or docroot from a filename,
+     * Removes application, system, modpath, vendor, or docroot from a filename,
      * replacing them with the plain text equivalents. Useful for debugging
      * when you want to display a shorter path.
      *
@@ -220,6 +220,8 @@ class Kohana_Debug
             $file = 'SYSPATH' . DIRECTORY_SEPARATOR . substr($file, strlen(SYSPATH));
         } elseif (strpos($file, MODPATH) === 0) {
             $file = 'MODPATH' . DIRECTORY_SEPARATOR . substr($file, strlen(MODPATH));
+        } elseif (strpos($file, VENDOR_PATH) === 0) {
+            $file = 'VENDOR_PATH' . DIRECTORY_SEPARATOR . substr($file, strlen(VENDOR_PATH));
         } elseif (strpos($file, DOCROOT) === 0) {
             $file = 'DOCROOT' . DIRECTORY_SEPARATOR . substr($file, strlen(DOCROOT));
         }
