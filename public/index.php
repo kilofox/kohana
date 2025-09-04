@@ -28,7 +28,7 @@ error_reporting(E_ALL);
  * @link https://kohana.top/guide/using.configuration
  */
 // Set the full path to the docroot
-define('DOCROOT', __DIR__ . DIRECTORY_SEPARATOR);
+const DOCROOT = __DIR__ . DIRECTORY_SEPARATOR;
 
 // Define the absolute paths for required directories
 define('APPPATH', realpath(DOCROOT . '../application') . DIRECTORY_SEPARATOR);
