@@ -107,9 +107,9 @@ class Model_Auth_User extends ORM
      * @return bool
      * @throws Kohana_Exception
      */
-    public function unique_key_exists($value, $field = NULL)
+    public function unique_key_exists($value, $field = null)
     {
-        if ($field === NULL) {
+        if ($field === null) {
             // Automatically determine field by looking at the value
             $field = $this->unique_key($value);
         }
@@ -201,7 +201,7 @@ class Model_Auth_User extends ORM
      * @throws ORM_Validation_Exception
      * @throws ReflectionException
      */
-    public function update_user(array $values, array $expected = NULL)
+    public function update_user(array $values, array $expected = null)
     {
         if (empty($values['password'])) {
             unset($values['password'], $values['password_confirm']);
