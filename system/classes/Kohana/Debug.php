@@ -341,7 +341,7 @@ class Kohana_Debug
                     $args = [$step['args'][0]];
                 }
             } elseif (isset($step['args'])) {
-                if (!function_exists($step['function']) || strpos($step['function'], '{closure}') !== false) {
+                if (!isset($step['class']) && !function_exists($step['function']) || strpos($step['function'], '{closure}') !== false) {
                     // Introspection on closures or language constructs in a stack trace is impossible
                     $params = null;
                 } else {
