@@ -34,6 +34,7 @@ const DOCROOT = __DIR__ . DIRECTORY_SEPARATOR;
 define('APPPATH', realpath(DOCROOT . '../application') . DIRECTORY_SEPARATOR);
 define('MODPATH', realpath(DOCROOT . '../modules') . DIRECTORY_SEPARATOR);
 define('SYSPATH', realpath(DOCROOT . '../system') . DIRECTORY_SEPARATOR);
+define('VENDOR_PATH', realpath(DOCROOT . '../vendor') . DIRECTORY_SEPARATOR);
 
 if (file_exists('install' . EXT)) {
     // Load the installation check
